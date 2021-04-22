@@ -1,0 +1,206 @@
+---
+title: O Programa
+---
+<br>
+<br>
+<br>
+
+## **1. Apresentação**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+O PROGRAMA DE PÓS-GRADUAÇÃO EM CIÊNCIAS DA REABILITAÇÃO DA UNISUAM (PPGCR-UNISUAM) tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-060. O PPGCR-UNISUAM insere-se na Grande Área de Conhecimento de Ciências da Saúde (40000001), na Área Básica de Educação Física (40900002), Subárea de Fisioterapia e Terapia Ocupacional (40800008) (http://www.capes.gov.br/avaliacao/instrumentos-de-apoio/tabela-de-areas-do-conhecimento-avaliacao). O PPGCR-UNISUAM oferece as titulações de Mestre em Ciências da Reabilitação e Doutor em Ciências da Reabilitação, além do Estágio Pós-Doutoral em Ciências da Reabilitação.
+
+<br>
+
+O PPGCR-UNISUAM organiza sua ÁREA DE CONCENTRAÇÃO (AC), LINHAS DE PESQUISA (LP) e PROJETOS DE PESQUISA (PP) de acordo com o princípio geral de que a reabilitação está centrada no âmbito da avaliação e intervenção, sendo aplicável às diferentes fases do processo saúde-doença e em diversas populações. Atendem-se assim às demandas por investigação em níveis de atenção primária (prevenção e promoção da saúde), secundária (diagnóstico precoce e intervenção imediata) e terciária (reabilitação propriamente dita) nas diversas especialidades da área de saúde em geral e da Fisioterapia em particular.
+
+<br>
+
+<!-- ## Setup for chunk codes -->
+```{r echo = FALSE, results = "asis"}
+# read packages
+library(knitr)
+library(readxl)
+
+# read separate sheets
+dados.do.programa.raw <- read_excel("../PPGCR Unisuam/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))
+
+endereco.raw <- read_excel("../PPGCR Unisuam/Dados Cadastrais.xlsx", sheet = "Endereço", col_types = c("text"))
+
+# print tables
+kable(dados.do.programa.raw, caption = "Dados Cadastrais")
+kable(endereco.raw, caption = "Endereço")
+
+```
+
+<br>
+
+## **2. Objetivos**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+O PPGCR-UNUSUAM tem por objetivo a formação de recursos humanos, em nível de Mestrado e Doutorado, para atuar na pesquisa e no ensino superior, bem como estimular e sediar o desenvolvimento continuado de profissionais via realização de projetos de Pós-Doutorado, culminando nesse processo com a produção de conhecimentos para as Ciências da Reabilitação. O PPGCR-UNISUAM busca formar professores competentes que possam atender à constante demanda por melhoria na qualidade do ensino superior, da pesquisa científica e da prática clínica, sobretudo com impacto regional (Sudeste). O PPGCR-UNISUAM busca ainda estimular o desenvolvimento da pesquisa científica por meio da preparação adequada de novos pesquisadores, assegurando o treinamento eficaz e de alto padrão para fazer face às necessidades do desenvolvimento regional e nacional em todos os setores, especialmente no que tange às Ciências da Reabilitação.
+
+<br>
+
+A produção do conhecimento teórico e prático nas Ciências da Reabilitação é alcançada pelo PPGCR por meio da multidisciplinaridade do corpo docente, abrangendo profissionais com diversas formações de graduação (Fisioterapia, Educação Física, Medicina e Engenharia) e pós-graduação (Ciências Médica, Saúde Mental, Fisiologia, Neurologia, Epidemiologia/Saúde Coletiva, Ciências Biológicas, Biofísica e Engenharia Biomédica) envolvidos tanto no processo de produção de conhecimento (publicação) e formação discente (orientação) na área de Ciências da Reabilitação. Adicionalmente, o PPGCR-UNISUAM apresenta características interdisciplinares e transdisciplinares, uma vez que as LP e Grupos de Pesquisa permitem o cruzamento de PP que se complementam e que albergam pesquisadores de diversas áreas. Esta configuração possibilita a capacitação de docentes mais autônomos e com distintas formações acadêmicas, que atuam ou pretendem atuar nas Ciências da Reabilitação.
+
+<br>
+
+## **3. Cursos**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+O curso de Mestrado Acadêmico em Ciências da Reabilitação objetiva a qualificação do pós-graduando para docência em nível superior e pesquisa por meio do aprimoramento do conhecimento acadêmico e profissional. O curso proporciona ao aluno bases técnico-científicas para a pesquisa e o ensino, tornando-o apto a exercer as atividades da docente de nível universitário e inseri-lo em atividades de pesquisa.
+
+<br>
+
+O curso de Doutorado Acadêmico em Ciências da Reabilitação objetiva a formação de pesquisadores independentes com capacidade de produzir evidências científicas em Ciências da Reabilitação, bem como atuar na docência superior. O curso visa a intensificação do aprendizado e a consolidação do conhecimento científico, visando formar pesquisadores independentes com capacidade de desenvolver projetos de pesquisa e orientar discentes nos diferentes níveis de formação acadêmica.
+
+<br>
+
+<!-- ## Setup for chunk codes -->
+```{r echo = FALSE, results = "asis"}
+# read packages
+library(knitr)
+library(readxl)
+
+# read separate sheets
+cursos.raw <- read_excel("../PPGCR Unisuam/Dados Cadastrais.xlsx", sheet = "Cursos", col_types = c("text"))
+
+# print tables
+kable(cursos.raw, caption = "Cursos")
+
+```
+<br>
+<br>
+
+## **4. Área de Concentração**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+O PPGCR-UNISUAM possui uma AC, “ASPECTOS FUNCIONAIS EM REABILITAÇÃO”, cuja finalidade é analisar os processos envolvidos nas respostas funcionais, os métodos e técnicas de avaliação, bem como a investigação da eficácia de intervenções relacionadas à prevenção e reabilitação física dos sistemas orgânicos no âmbito individual e coletivo. A partir desta AC são derivadas as LP vigentes.
+
+<br>
+
+```{r echo = FALSE, results = "asis"}
+# read packages
+library(knitr)
+library(readxl)
+
+area.raw <- read_excel("../PPGCR Unisuam/Dados Cadastrais.xlsx", sheet = "Área de concentração", col_types = c("text"))
+
+# print tables
+kable(area.raw, caption = "Área de Concentração")
+
+```
+
+<br>
+<br>
+
+## **5. Linhas de Pesquisa**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+### **Abordagem Terapêutica em Reabilitação**
+
+- Estudo de ações de atenção primária, secundária e terciária, considerando as diferentes características populacionais e sua inserção nas políticas públicas de saúde. Estudo do efeito das intervenções terapêuticas na capacidade funcional e na qualidade de vida nas fases do desenvolvimento, visando a reabilitação de desordens nas diversas populações.
+
+<br>
+
+### **Avaliação Funcional em Reabilitação**
+
+- Estudo dos aspectos funcionais do processo saúde-doença nas diversas populações, considerando as dimensões biopsicossociais (morfológica, biomecânica, fisiológica, fisiopatológica, cognitiva, emocional e participação). Estudo, desenvolvimento e validação de procedimentos e tecnologias para avaliação funcional em reabilitação.
+
+<br>
+
+### **Reabilitação no Esporte e no Esporte Adaptado**
+
+- Estudo dos aspectos fisiológicos, biomecânicos, funcionais e sociais relacionados à prática de esportes, incluindo os adaptados, e a otimização do desempenho, abrangendo praticantes recreacionais e profissionais em todas as faixas etárias. Estudo dos fatores de risco e proteção de lesões advindas da prática esportiva e dos efeitos de intervenções para sua prevenção, recuperação e reabilitação em diversas populações.
+
+<br>
+
+## **6. Grupos de Pesquisa**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+O PPGCR possui 4 grupos de pesquisa cadastrados no Diretório de Grupos de Pesquisa do Conselho Nacional de Pesquisa (DGP-CNPq), listado abaixo. Os grupos de pesquisa são organizados por especialidades, sendo assim transversais às LP, o que permite docentes e alunos de diferentes LP interagir com membros de grupos de pesquisa diferentes.
+
+<br>
+
+### **Avaliação e Intervenção em Reabilitação Cardiorrespiratória e terapia Intensiva**
+
+http://dgp.cnpq.br/dgp/espelhogrupo/503897
+
+<br>
+
+### **Reabilitação Neuromusculoesquelética** 
+
+http://dgp.cnpq.br/dgp/espelhogrupo/529898
+
+<br>
+
+### **Reabilitação no Esporte e no Esporte Adaptado** 
+
+http://dgp.cnpq.br/dgp/espelhogrupo/216803
+
+<br>
+
+### **Inovação e Tecnologia Biomédica** 
+
+http://dgp.cnpq.br/dgp/espelhogrupo/532778
+
+<br>
+
+## **7. Projetos de Pesquisa**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+Os docentes vinculados ao PPGCR são orientados a coordenar até 2 PP “guarda-chuva” por LP, de modo ainda que cada docente não coordene PP em mais de 2 LP simultaneamente. Entretanto, todos são estimulados a colaborar internamente nos projetos, de modo que a transdisciplinaridade gere aspectos inovadores para as Ciências da Reabilitação. Desse modo, PP anteriores a 2017 tem sido concluídos e substituídos por novos projetos “guarda-chuva”, promovendo assim uma melhor distribuição dos PP e respectivas produções entre as LP. Considerando-se a interação de aspectos tais como a temática dos PP, as áreas de formação e atuação dos discentes e sua aderência aos grupos de pesquisa, pode ocorrer uma assimetria na distribuição dos PP entre as LP (Linha 1: 12 [46%] PP; Linha 2: 10 [38%] PP; Linha 3: 4 [15%] PP).
+
+<br>
+
+## **8. Breve histórico**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+A valorização da pesquisa científica no meio acadêmico e a busca constante pela excelência na formação docente são ambas características da UNISUAM, evidenciadas a partir do Plano de Desenvolvimento Institucional (PDI) 2003-2007 quando, com recursos próprios, criou o Programa Institucional de Bolsas de Iniciação Científica (PIBIC). A partir deste PDI, a UNISUAM passa a atribuir carga horária remunerada para que seus docentes exerçam atividades de pesquisa científica. A partir do PDI 2003-2007, a UNISUAM iniciou a contratação de docentes titulados (doutores) com o objetivo de instituir a Pós-Graduação Stricto Sensu na área de Ciências da Reabilitação. A atuação conjunta do grupo de pesquisa da UNISUAM iniciou-se com o estudo dos documentos da Área 21, seguida da definição criteriosa tanto da AC quanto das respectivas LP, de modo a nortear os PP e a respectiva produção intelectual. Este processo culminou na certificação do Grupo de Pesquisa em Fisioterapia da UNISUAM no DGP-CNPq em 2005 (http://dgp.cnpq.br/dgp/espelhogrupo/6275564297217717), substituído a partir de 2017 por grupos mais recentes do Programa.
+
+<br>
+
+No período de 2005 a 2009, em consonância com o PDI 2008-2012, o grupo de pesquisa foi progressivamente ampliado e fortalecido; participavam do grupo 10 docentes, capazes de captar recursos para seus projetos via editais e de publicar seus resultados em periódicos científicos. Ao todo, foram contemplados 4 projetos em editais de agências regionais de fomento à pesquisa (Fundação de Amparo à Pesquisa do Estado do Rio de Janeiro – FAPERJ), sendo 3 editais de Auxílio à Pesquisa e 1 edital temático em “Apoio à Construção da Cidadania da Pessoa com Deficiência”, somando aproximadamente R$200.000,00. A produção científica da UNISUAM foi impulsionada, mostrando em 2009 ainda como Grupo de Pesquisa, 3 artigos publicados indexados somente no PubMed. A participação dos alunos da graduação com bolsas do PIBIC foi decisiva para o desenvolvimento das pesquisas nessa etapa. Visando promover e aprimorar os aspectos éticos da pesquisa, os docentes do Grupo de Pesquisa em Fisioterapia organizaram o Comitê de Ética em Pesquisa (CEP) da IES, que foi aprovado pelo Comissão Nacional de Ética em Pesquisa (CONEP) pela Carta nº. 341 CONEP/CNS/MS de 10/04/2006. Desde sua criação, os docentes do Grupo de Pesquisa fazem parte deste comitê nas funções de coordenação, coordenação adjunta e/ou de membros efetivos (https://www.unisuam.edu.br/pesquisa-extensao-e-inova/pesquisa-e-inovacao).
+
+<br>
+
+A sequência desses fatos, somada ao total apoio institucional e ao desenvolvimento técnico-científico do grupo, resultou na elaboração da Proposta de Curso Novo de Mestrado Acadêmico em Ciências da Reabilitação. A proposta de curso, submetida em meados de 2009, foi aprovada após primeira avaliação. O Curso de Mestrado Acadêmico do Programa de Pós-Graduação em Ciências da Reabilitação da UNISUAM (PPGCR-UNISUAM) foi então instalado em 2010, logo após a recomendação da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES), com conceito 3, conforme Portaria n° 1045, publicada no D.O.U. de 19/8/2010, Seção 1, Pág. 10 (http://pesquisa.in.gov.br/imprensa/jsp/visualiza/index.jsp?data=19/08/2010&jornal=1&pagina=10&totalArquivos=136). O pioneirismo da UNISUAM na Pós-Graduação em Ciências da Reabilitação revitaliza então o mesmo ideal de 1979 com a absorção do curso de graduação em Fisioterapia no RJ.
+
+<br>
+
+No triênio de 2010-2012, o PPGCR-UNISUAM obteve um crescimento quantitativo e qualitativo, tanto na formação de recursos humanos (docentes em nível superior) quanto no desenvolvimento científico e produção intelectual, assim como na captação de recursos para financiamento de PP. Em síntese desse triênio, o corpo docente foi expandido para 14 docentes permanentes (mais 2 colaboradores), 18 mestrandos foram titulados em tempo médio de 23 meses e 17 artigos foram publicados, considerando apenas os indexados no PubMed. Adicionalmente, 10 projetos foram contemplados em editais da FAPERJ e CAPES – 4 editais de Auxílio à Pesquisa, 3 editais de Apoio ao Pesquisador Recém-Contratado, 2 editais de Apoios a Eventos e 1 edital de “Jovem Cientista do Nosso Estado” – somando aproximadamente R$197.000,00 em captação de recursos. Estes resultados, contextualizados com os demais indicadores do PPGCR-UNISUAM para a Área 21, culminaram no conceito 4 já em sua primeira avaliação trienal, conforme Portaria n° 656, publicada no D.O.U. de 23/5/2017, Seção 1, Págs. 14 (http://pesquisa.in.gov.br/imprensa/jsp/visualiza/index.jsp?data=23/05/2017&jornal=1&pagina=14&totalArquivos=184).
+
+<br>
+
+Em 2013, ainda somente com o curso de Mestrado autorizado, o PPGCR-UNISUAM foi contemplado com 1 bolsa de Estágio Pós-Doutoral, acompanhando a implantação do Programa Nacional de Pós-Doutorado (PNPD) da CAPES, de acordo com a Portaria Nº 086 de 3/7/2013 (https://www.capes.gov.br/images/stories/download/legislacao/Portaria_86_2013_Regulamento_PNPD.pdf). A política da IES foi então dedicada à utilização da bolsa para captação e fixação de docentes para o PPGCR-UNISUAM. Devido ao excelente desempenho dos pesquisadores durante o Estágio Pós-Doutoral, todos os 2 pesquisadores bolsistas no período 2013-2016 foram contratados para compor o quadro de docentes permanentes do Programa.
+
+<br>
+
+O comprometimento institucional no fortalecimento das políticas de pesquisa é novamente reforçado no PDI 2012-2016, no qual são definidas ações de estímulo à pesquisa por meio de capacitação e fixação de docentes titulados na IES. O amadurecimento da experiência do corpo docente na orientação dos mestrandos e a continuada elevação da produção acadêmica do grupo viabilizaram o envio da Proposta de Curso Novo de Doutorado Acadêmico em Ciências da Reabilitação. A proposta de curso, submetida em 2014, foi também aprovada após primeira avaliação. O curso de Doutorado Acadêmico do PPGCR-UNISUAM foi então instalado em 2015, logo após a recomendação CAPES, conforme Portaria n° 919, publicada no D.O.U. de 18/8/2016, Seção 1, Pág. 13 (http://pesquisa.in.gov.br/imprensa/jsp/visualiza/index.jsp?data=19/08/2016&jornal=1&pagina=13&totalArquivos=256).
+
+<br>
+
+No quadriênio de 2013-2016, o PPGCR-UNISUAM manteve seu compromisso com a qualidade na formação de recursos humanos, produção intelectual e captação de financiamentos. Em síntese desse quadriênio, o corpo docente foi estabilizado em 13 docentes permanentes (mais 1 colaborador), 66 mestrandos foram titulados em tempo médio de 25 meses e 111 artigos foram publicados, considerando apenas os indexados no PubMed. Adicionalmente, 28 projetos foram contemplados em editais da FAPERJ e CNPq – merecendo destaque 13 editais de Auxílio à Pesquisa, 2 editais temáticos de “Apoio ao Desenvolvimento de Inovações no Esporte”, 2 editais de “Jovem Cientista do Nosso Estado” e 1 bolsa de Pós-Doutorado no Exterior – somando aproximadamente R$1.335.000,00 em recursos captados. Estes resultados, contextualizados com os demais indicadores do PPGCR-UNISUAM para a Área 21 nesse período, resultaram na manutenção no conceito 4, mostrando a consistência do desenvolvimento do PPGCR-UNISUAM em uma Área ainda em expansão (http://avaliacaoquadrienal.capes.gov.br/resultado-da-avaliacao-quadrienal-2017-2).
+
+<br>
+
+No atual quadriênio, 2017-2020, o PPGCR-UNISUAM amplia seu compromisso com formação de recursos humanos qualificada, de produção intelectual internacional e captação de financiamentos para pesquisa. Em síntese do período 2017-2018, o corpo docente está passando por um processo de renovação com e conta em 2019 com 12 docentes permanentes e mais 2 colaboradores, além de 4 pesquisadores em Estágio Pós-doutoral (1 com bolsa PNPD-CAPES e 2 pesquisadores estrangeiros). Um total de 65 Mestres e 8 Doutores foram titulados [(65+8)/12 = 6 titulações/DP] em tempo médio de 28 e 44 meses, respectivamente. A produção de artigos alcançou o número de 147 artigos em periódicos nacionais e internacionais. Adicionalmente, 18 projetos foram contemplados em editais da FAPERJ, CAPES e CNPq obtidos por 8 dos 12 docentes permanentes – merecendo destaque 3 editais de “Jovem Cientista do Nosso Estado”, 2 editais de “Universidades Sediadas no RJ” e 1 bolsa de Pesquisador do CNPq – somando aproximadamente R$1.750.000,00 em recursos captados desde a abertura do Programa. Estes resultados, ainda em consolidação no quadriênio vigente e contextualizados com os demais indicadores do PPGCR-UNISUAM, reiteram o compromisso do grupo de pesquisadores em desenvolver a Ciência no Estado e no País.
+
+<br>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Docentes</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PPGCR-UNISUAM</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-binoculars"></span>
+     
+    Observatório
+  </a>
+</li>
+<li>
+  <a href="programa.html">
+    <span class="fas fa-university"></span>
+     
+    Programa
+  </a>
+</li>
+<li>
+  <a href="formacao.html">
+    <span class="fas fa-graduation-cap"></span>
+     
+    Formação
+  </a>
+</li>
+<li>
+  <a href="impacto.html">
+    <span class="fas fa-users"></span>
+     
+    Impacto na sociedade
+  </a>
+</li>
+<li>
+  <a href="destaques.html">
+    <span class="fas fa-trophy"></span>
+     
+    Destaques
+  </a>
+</li>
+<li>
+  <a href="producao.html">
+    <span class="fas fa-book"></span>
+     
+    Produção
+  </a>
+</li>
+<li>
+  <a href="ods.html">
+    <span class="fas fa-heart"></span>
+     
+    ODS
+  </a>
+</li>
+<li>
+  <a href="downloads.html">
+    <span class="fas fa-download"></span>
+     
+    Downloads
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<!--Script for adding a Google Translation bar-->
+
+<html lang="pt-BR">
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'pt'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+</html>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Docentes</h1>
+
+</div>
+
+
+<p><br> <br> <br></p>
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="PPGCR.png"></div>');
+  });
+</script>
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
+<div id="histórico-de-docentes-credenciados" class="section level2">
+<h2><strong>Histórico de docentes credenciados</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<table style="width:100%;">
+<caption>Histórico de docentes credenciados</caption>
+<colgroup>
+<col width="9%" />
+<col width="3%" />
+<col width="5%" />
+<col width="16%" />
+<col width="15%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Nome</th>
+<th align="left">Credenciamento</th>
+<th align="left">Categoria</th>
+<th align="left">Currículo</th>
+<th align="left">ORCID</th>
+<th align="left">Research Gate</th>
+<th align="left">Scholar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>André Luis dos Santos Silva</strong></td>
+<td align="left">2010-2012</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/9095239943744523" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0001-7195-0386" target="_blank">ORCID</a></td>
+<td align="left"><a href="*" target="_blank">Research Gate</a></td>
+<td align="left"><a href="*" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Anke Bergmann</strong></td>
+<td align="left">2010-2014</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/8708733143383938" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-1972-8777" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Anke_Bergmann" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=crtd95wAAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Antonio Guilherme Fonseca Pacheco</strong></td>
+<td align="left">2010-2016</td>
+<td align="left">Colaborador</td>
+<td align="left"><a href="http://lattes.cnpq.br/5392568548228414" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0003-3095-1774" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Antonio_Pacheco4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=AdJ-8Y8AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Bruno Ferreira Viana</strong></td>
+<td align="left">2019-2020</td>
+<td align="left">Colaborador</td>
+<td align="left"><a href="http://lattes.cnpq.br/3689383775662959" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-4117-5929" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Bruno_Viana4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?hl=pt-BR&amp;user=45TBgGMAAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Cristina Márcia Dias</strong></td>
+<td align="left">2010-2013</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/8118576049292408" target="_blank">Lattes</a></td>
+<td align="left"><a href="*" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Cristina-Dias-4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="*" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Erika de Carvalho Rodrigues</strong></td>
+<td align="left">2010-2021</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/5100534432082982" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0001-5464-2963" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Erika_De_Carvalho_Rodrigues" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=_6qAG0wAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Felipe Amorim da Cunha</strong></td>
+<td align="left">2015-2018</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/3875848900740841" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-8912-5656" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Felipe_Da_Cunha2" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=zW_W-V8AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Fernando Silva Guimarães</strong></td>
+<td align="left">2010-2019</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/4190757874421966" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0003-1277-9325" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/FERNANDO_GUIMARAES" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=2PLQ_v4AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Igor Ramathur Telles de Jesus</strong></td>
+<td align="left">2019-2020</td>
+<td align="left">Colaborador</td>
+<td align="left"><a href="http://lattes.cnpq.br/9518195795476332" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-9031-5609" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Igor_Ramathur2" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=QwFIqIMAAAAJ&amp;hl=pt-BR&amp;oi=ao" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Jaya Shanker Tedla</strong></td>
+<td align="left">2019-2020</td>
+<td align="left">Pós-Doc (Voluntário)</td>
+<td align="left"><a href="*" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-2876-4227" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Jaya_Shanker_Tedla" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=oLYUyl8AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Juliana Flávia de Oliveira</strong></td>
+<td align="left">2010-2013</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/4749497328069275" target="_blank">Lattes</a></td>
+<td align="left"><a href="*" target="_blank">ORCID</a></td>
+<td align="left"><a href="*" target="_blank">Research Gate</a></td>
+<td align="left"><a href="*" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Julio Guilherne Silva</strong></td>
+<td align="left">2010-2019</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/3335633004443074" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-0490-8409" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Julio_Silva11" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=offwZlMAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Laura Alice Santos de Oliveira</strong></td>
+<td align="left">2011-2020</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/8642128462270383" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-5554-457X" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Laura_Oliveira10" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=6QJtZvQAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Lilian Ramiro Felício</strong></td>
+<td align="left">2012-2014</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/5721303841655608" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0003-2237-7610" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Lilian_Felicio" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=E6Wow_IAAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Marco Antonio Orsini Neves</strong></td>
+<td align="left">2011-2016</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/4916508642400535" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-8948-3955" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Marco_Neves4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=0Z4Y1E0AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Marco Antonio Orsini Neves</strong></td>
+<td align="left">2017-2018</td>
+<td align="left">Colaborador</td>
+<td align="left"><a href="http://lattes.cnpq.br/4916508642400535" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-8948-3955" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Marco_Neves4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=0Z4Y1E0AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Miíriam Raquel Meira Mainenti</strong></td>
+<td align="left">2010-2014</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/7214529757377550" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-2562-9142" target="_blank">ORCID</a></td>
+<td align="left"><a href="*" target="_blank">Research Gate</a></td>
+<td align="left"><a href="*" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Ney Armando de Mello Meziat Filho</strong></td>
+<td align="left">2014-2015</td>
+<td align="left">Pós-Doc (Bolsista)</td>
+<td align="left"><a href="http://lattes.cnpq.br/8950578636133031" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0003-2794-7299" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Ney_Meziat_Filho" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=9tXdI7MAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Ravi Shankar Reddy</strong></td>
+<td align="left">2019-2020</td>
+<td align="left">Pós-Doc (Voluntário)</td>
+<td align="left"><a href="*" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0001-6638-0585" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Ravi_Shankar_Y_Reddy" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?hl=pt-BR&amp;user=9-LSUk0AAAAJ" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Renato Santos de Almeida</strong></td>
+<td align="left">2017-2020</td>
+<td align="left">Pós-Doc (Bolsista)</td>
+<td align="left"><a href="http://lattes.cnpq.br/1829536275567695" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0003-2148-334X" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Renato_Almeida12" target="_blank">Research Gate</a></td>
+<td align="left"><a href="http://scholar.google.com.br/citations?user=du9MHc8AAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sara Lucia Silveira de Menezes</strong></td>
+<td align="left">2010-2018</td>
+<td align="left">Permanente</td>
+<td align="left"><a href="http://lattes.cnpq.br/1227065353827577" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-4450-7642" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Sara-Menezes-4" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com/citations?user=GcZxnIcAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Susana Ortiz Costa</strong></td>
+<td align="left">2010-2016</td>
+<td align="left">Colaborador</td>
+<td align="left"><a href="http://lattes.cnpq.br/5206354782426860" target="_blank">Lattes</a></td>
+<td align="left"><a href="*" target="_blank">ORCID</a></td>
+<td align="left"><a href="*" target="_blank">Research Gate</a></td>
+<td align="left"><a href="*" target="_blank">Google</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Thiago Lemos de Carvalho</strong></td>
+<td align="left">2013-2014</td>
+<td align="left">Pós-Doc (Bolsista)</td>
+<td align="left"><a href="http://lattes.cnpq.br/2047525646037395" target="_blank">Lattes</a></td>
+<td align="left"><a href="https://orcid.org/0000-0002-6657-5689" target="_blank">ORCID</a></td>
+<td align="left"><a href="https://www.researchgate.net/profile/Thiago_Lemos" target="_blank">Research Gate</a></td>
+<td align="left"><a href="https://scholar.google.com.br/citations?user=opKvvscAAAAJ&amp;hl=pt-BR" target="_blank">Google</a></td>
+</tr>
+</tbody>
+</table>
+<p><br> <br></p>
+</div>
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<p></p>
+
+<!--script for generating TWITTER share button-->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+<a class="twitter-share-button"
+  href="https://twitter.com/intent"
+  data-size="large">
+Tweet</a>
+
+<!--script for generating FACEBOOK share button-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0" nonce="WQgXfG1k"></script>
+
+<div class="fb-share-button" data-href="https://rehab-tech.github.io/observatoriocr/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
+
+<!--PAGE CONTENT STARTS BELOW-->
+<p></p>
+
+<p>Copyright &copy; 2021 Arthur de Sá Ferreira, PhD, em nome do colegiado do PPGCR-UNISUAM. Todos os direitos reservados. Última atualização em 13 Maio 2021.</p>
+
+<p>Arthur de Sá Ferreira is creating websites for sharing science & art.</p>
+
+<p>If you enjoyed this content you can <a href="https://www.buymeacoffee.com/Arthur.Sa.Ferreira/">buy me a  ☕ coffee!</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

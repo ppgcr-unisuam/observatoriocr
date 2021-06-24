@@ -11,9 +11,9 @@
 
 
 
-<title>Observatório CR</title>
+<title>index.knit</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,9 +29,6 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -224,69 +221,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -294,16 +228,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -322,56 +246,56 @@ div.tocify {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa-eye"></span>
+    <span class="fa fa-eye"></span>
      
     Apresentação
   </a>
 </li>
 <li>
   <a href="programa.html">
-    <span class="fas fa-university"></span>
+    <span class="fa fa-university"></span>
      
     Programa
   </a>
 </li>
 <li>
   <a href="pessoas.html">
-    <span class="fas fa-user-graduate"></span>
+    <span class="fa fa-user-graduate"></span>
      
     Pessoas
   </a>
 </li>
 <li>
   <a href="producao.html">
-    <span class="fas fa-book"></span>
+    <span class="fa fa-book"></span>
      
     Produções Acadêmicas
   </a>
 </li>
 <li>
   <a href="destaques.html">
-    <span class="fas fa-trophy"></span>
+    <span class="fa fa-trophy"></span>
      
     Destaques
   </a>
 </li>
 <li>
   <a href="impacto.html">
-    <span class="fas fa-users"></span>
+    <span class="fa fa-users"></span>
      
     Impacto
   </a>
 </li>
 <li>
   <a href="autoavaliacao.html">
-    <span class="fas fa-clipboard-check"></span>
+    <span class="fa fa-clipboard-check"></span>
      
     Autoavaliação
   </a>
 </li>
 <li>
   <a href="galeria.html">
-    <span class="fas fa-images"></span>
+    <span class="fa fa-images"></span>
      
     Galeria
   </a>
@@ -383,11 +307,6 @@ div.tocify {
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-<!--Script for adding a visitor counter-->
-
-<a style="float:right" href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&count_bg=%23E1761A&title_bg=%235185D7&icon=&icon_color=%23E7E7E7&title=Visitas&edge_flat=false"/></a>
-<br>
-<br>
 <!--Script for adding a Google Translation bar-->
 
 <html lang="pt-BR">
@@ -407,16 +326,16 @@ function googleTranslateElementInit() {
 
 
 
-<h1 class="title toc-ignore">Observatório CR</h1>
+<h1 class="title toc-ignore">OBSERVATÓRIO CR
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></h1>
 
 </div>
 
 
-<p><br> <br> <br></p>
 <!--script for narrow margins-->
 <style type="text/css">
 div.main-container {
-  max-width: 1800px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -432,23 +351,57 @@ div.main-container {
   width: 100%;
   margin-top: 20px;
 }
+h1.title {
+  text-align: center;
+  font-weight: bold;
+}
+
 </style>
-<div id="objetivos" class="section level2">
-<h2><strong>Objetivos</strong></h2>
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<center>
+<p style="font-size:18px">
+O <strong>OBSERVATÓRIO CR</strong> é uma iniciativa do Programa de Pós-graduação em Ciências da Reabilitação do Centro Universitário Augusto Motta que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
+</p>
+</center>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="programa.html">PROGRAMA<br><br></a>
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="pessoas.html">PESSOAS<br><br></a>
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="producoes.html">PRODUÇÕES<br><br></a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="destaques.html">DESTAQUES<br><br></a>
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="impacto.html">IMPACTO<br><br></a>
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="autoavaliacao.html">AUTOAVALIAÇÃO<br><br></a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+<br><a href="galeria.html">GALERIA<br><br></a>
+</td>
+<td style="text-align:left;width: 12em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 100%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
+</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<p>O projeto <strong>Observatório CR</strong> é uma iniciativa do Programa de Pós-graduação em Ciências da Reabilitação do Centro Universitário Augusto Motta que envolve análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
-<p><br></p>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
-<p><br></p>
-</div>
 <div id="institucional" class="section level2 tabset">
 <h2 class="tabset"><strong>Institucional</strong></h2>
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<div id="sites" class="section level3">
-<h3><strong>Sites</strong></h3>
 <table>
 <tr>
 <td>
@@ -463,18 +416,12 @@ div.main-container {
 </tr>
 </table>
 <p><br></p>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
-<p><br></p>
-</div>
-<div id="vídeo" class="section level3">
-<h3><strong>Vídeo</strong></h3>
 <figure class="video_container" align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j-00xtX20X0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </figure>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
-</div>
 </div>
 <div id="fontes-de-dados" class="section level2 tabset">
 <h2 class="tabset"><strong>Fontes de dados</strong></h2>
@@ -711,21 +658,21 @@ SCImago Journal Rank
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <div id="ministério-da-saúde" class="section level3">
 <h3><strong>Ministério da Saúde</strong></h3>
-<iframe src="https://bvsms.saude.gov.br/bvs/publicacoes/agenda_prioridades_pesquisa_ms.pdf" style="width:100%; height:600px; border:0;">
+<iframe src="https://bvsms.saude.gov.br/bvs/publicacoes/agenda_prioridades_pesquisa_ms.pdf" style="width:100%; height:500px; border:0;">
 </iframe>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
 <div id="ministério-da-ciência-tecnologia-inovações-e-comunicações" class="section level3">
 <h3><strong>Ministério da Ciência, Tecnologia, Inovações e Comunicações</strong></h3>
-<iframe src="https://antigo.mctic.gov.br/mctic/export/sites/institucional/ciencia/SEPED/Arquivos/PlanosDeAcao/PACTI_Saude_Web.pdf" style="width:100%; height:600px; border:0;">
+<iframe src="https://antigo.mctic.gov.br/mctic/export/sites/institucional/ciencia/SEPED/Arquivos/PlanosDeAcao/PACTI_Saude_Web.pdf" style="width:100%; height:500px; border:0;">
 </iframe>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
 <div id="nações-unidas" class="section level3">
 <h3><strong>Nações Unidas</strong></h3>
-<iframe src="https://sustainabledevelopment.un.org/content/documents/21252030%20Agenda%20for%20Sustainable%20Development%20web.pdf" style="width:100%; height:600px; border:0;">
+<iframe src="https://sustainabledevelopment.un.org/content/documents/21252030%20Agenda%20for%20Sustainable%20Development%20web.pdf" style="width:100%; height:500px; border:0;">
 </iframe>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
@@ -735,6 +682,8 @@ SCImago Journal Rank
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 <p></p>
+
+
 
 <!--script for generating TWITTER share button-->
 <script>window.twttr = (function(d, s, id) {
@@ -750,32 +699,60 @@ SCImago Journal Rank
   t.ready = function(f) {
     t._e.push(f);
   };
-
   return t;
 }(document, "script", "twitter-wjs"));</script>
 
-<a class="twitter-share-button"
-  href="https://twitter.com/intent"
-  data-size="large">
-Tweet</a>
+
 
 <!--script for generating FACEBOOK share button-->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0" nonce="WQgXfG1k"></script>
+<div class="text-center" id="fb-root">
+</div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0"
+  nonce="WQgXfG1k">
+</script>
 
-<div class="fb-share-button" data-href="https://rehab-tech.github.io/observatoriocr/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
+
+
+<!--print FACEBOOK share button-->
+<div style="text-align: center; width: 100%;" class="fb-share-button" data-href="https://rehab-tech.github.io/observatoriocr/" data-layout="button" data-size="large">
+  <a class="fb-xfbml-parse-ignore"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&amp;src=sdkpreparse"      target="_blank">
+  Compartilhar</a>
+</div>
+<p></p>
+<!--print TWEETER share button-->
+<div style="text-align: center">
+  <a class="twitter-share-button"
+    href="https://twitter.com/intent"
+    data-size="large">
+  Tweet</a>
+</div>
+<p></p>
 
 <!--PAGE CONTENT STARTS BELOW-->
 <p></p>
+
+<div style="text-align: center">
 
 <p>Copyright &copy; 2021 Arthur de Sá Ferreira, PhD, em nome do colegiado do PPGCR-UNISUAM. Todos os direitos reservados. Última atualização em <span id="datetime"></span></p><script>var dt = new Date();
 document.getElementById("datetime").innerHTML=dt.toLocaleString();</script>
 
 <p>Arthur de Sá Ferreira is creating websites for sharing science & art. If you enjoyed this content you can <a href="https://www.buymeacoffee.com/Arthur.Sa.Ferreira/">buy me a  ☕ coffee!</p>
 
+</div>
 
+<!--print visitor counter-->
+<div style="text-align: center">
+  <a style="float:center" href="https://hits.seeyoufarm.com">
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&count_bg=%23E1761A&title_bg=%235185D7&icon=&icon_color=%23E7E7E7&title=Visitas&edge_flat=false"/>
+  </a>
 </div>
-</div>
+
+
 
 </div>
 
@@ -808,32 +785,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

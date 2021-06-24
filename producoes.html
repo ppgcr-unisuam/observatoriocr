@@ -11,7 +11,7 @@
 
 
 
-<title>index.knit</title>
+<title>Produções Acadêmicas</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,6 +224,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -228,6 +294,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -326,16 +402,16 @@ function googleTranslateElementInit() {
 
 
 
-<h1 class="title toc-ignore">OBSERVATÓRIO CR
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></h1>
+<h1 class="title toc-ignore">Produções Acadêmicas</h1>
 
 </div>
 
 
+<p><br> <br> <br></p>
 <!--script for narrow margins-->
 <style type="text/css">
 div.main-container {
-  max-width: 1200px;
+  max-width: 1800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -351,93 +427,130 @@ div.main-container {
   width: 100%;
   margin-top: 20px;
 }
-h1.title {
-  text-align: center;
-  font-weight: bold;
+</style>
+<div id="trabalhos-de-conclusão" class="section level2 tabset">
+<h2 class="tabset"><strong>Trabalhos de conclusão</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div id="síntese" class="section level3">
+<h3><strong>Síntese</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="repositório-institucional" class="section level3 tabset">
+<h3 class="tabset"><strong>Repositório institucional</strong></h3>
+<div id="dissertações" class="section level4">
+<h4><strong>Dissertações</strong></h4>
+<iframe src="https://drive.google.com/embeddedfolderview?id=1k-1AJCm9n8k_yWuQANA7kjREj2N8dMWj#list" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="teses" class="section level4">
+<h4><strong>Teses</strong></h4>
+<iframe src="https://drive.google.com/embeddedfolderview?id=1VyudoKSCr_ElHSDUBK33xi2bYHzQpWgE#list" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="deposita-ibict" class="section level3">
+<h3><strong>Deposita IBICT</strong></h3>
+<iframe src="https://deposita.ibict.br" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="catálogo-capes" class="section level3">
+<h3><strong>Catálogo CAPES</strong></h3>
+<iframe src="https://catalogodeteses.capes.gov.br/catalogo-teses" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="produção-intelectual" class="section level2 tabset">
+<h2 class="tabset"><strong>Produção intelectual</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div id="síntese-1" class="section level3">
+<h3><strong>Síntese</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="atual" class="section level3">
+<h3><strong>Atual</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="artigos-em-periódicos-científicos" class="section level3">
+<h3><strong>Artigos em periódicos científicos</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="pubmed" class="section level3">
+<h3><strong>PubMed</strong></h3>
+<p align="center">
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Augusto+Motta%22%5BAD%5D+OR+%22Augusto+Mota%22%5BAD%5D" target="_blank"><img align="center" src="PubMed.png"></a>
+</p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="sjr" class="section level3">
+<h3><strong>SJR</strong></h3>
+<iframe src="https://www.scimagojr.com" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="qualis" class="section level3">
+<h3><strong>Qualis</strong></h3>
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="programas-de-computador" class="section level2 tabset">
+<h2 class="tabset"><strong>Programas de computador</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div id="telas" class="section level3">
+<h3><strong>Telas</strong></h3>
+<style>
+th, td {
+  padding: 10px;
 }
 </style>
-<center>
-<p style="font-size:18px">
-O <strong>OBSERVATÓRIO CR</strong> é uma iniciativa do Programa de Pós-graduação em Ciências da Reabilitação do Centro Universitário Augusto Motta que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
-</p>
-</center>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<tbody>
-<tr>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="programa.html"><i class="fas fa-solid fa-3x fa-university "></i><br>PROGRAMA<br></a>
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="pessoas.html"><i class="fas fa-solid fa-3x fa-user-graduate "></i><br>PESSOAS<br></a>
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="producoes.html"><i class="fas fa-solid fa-3x fa-book "></i><br>PRODUÇÕES<br></a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="destaques.html"><i class="fas fa-solid fa-3x fa-trophy "></i><br>DESTAQUES<br></a>
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="impacto.html"><i class="fas fa-solid fa-3x fa-users "></i><br>IMPACTO<br></a>
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="autoavaliacao.html"><i class="fas fa-solid fa-3x fa-clipboard-check "></i><br>AUTOAVALIAÇÃO<br></a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-<a href="galeria.html"><i class="fas fa-solid fa-3x fa-images "></i><br>GALERIA<br></a>
-</td>
-<td style="text-align:left;width: 16em; font-weight: bold;color: white !important;background-color: #2C3E50 !important;border: 10px solid; padding: 50%font-weight: bold;color: white !important;background-color: #2C3E50 !important;text-align: center;font-size: 20px;border-radius: 10px">
-</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<div id="institucional" class="section level2 tabset">
-<h2 class="tabset"><strong>Institucional</strong></h2>
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<table>
+<table class="center">
 <tr>
 <td>
-<a href="https://www.unisuam.edu.br/mestrado/mestrado-academico-em-ciencias-da-reabilitacao" target="_blank"><img align="center" src="MACR_logo.png"></a>
+<a href="https://drive.google.com/file/d/1SbGREXOSVq0KxWEPxJQP1-t_2A6j57-c/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteMYO.png"></a>
 </td>
 <td>
-<a href="https://www.unisuam.edu.br/doutorado-academico-em-ciencias-da-reabilitacao" target="_blank"><img align="center" src="DACR_logo.png"></a>
+<a href="https://drive.google.com/file/d/1TSzz64zTI7-6C-38k4hO_CMqSGOrbe-I/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteEBG.png"></a>
 </td>
 <td>
-<a href="https://www.unisuam.edu.br/pos-doutorado-academico-em-ciencias-da-reabilitacao" target="_blank"><img align="center" src="PDCR_logo.png"></a>
+<a href="https://drive.google.com/file/d/18-LCadmw-phwueqSrrIBsfgtirX6SYHW/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteTCM.png"></a>
 </td>
 </tr>
 </table>
-<p><br></p>
-<figure class="video_container" align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j-00xtX20X0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-</figure>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
-<div id="fontes-de-dados" class="section level2 tabset">
-<h2 class="tabset"><strong>Fontes de dados</strong></h2>
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<!-- -->
-<div id="nacionais" class="section level3">
-<h3><strong>Nacionais</strong></h3>
-<!-- -->
+<div id="donwloads" class="section level3">
+<h3><strong>Donwloads</strong></h3>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-Sigla
+Programa
 </th>
 <th style="text-align:center;">
-Fonte
+Versão
 </th>
 <th style="text-align:right;">
 Abrir
@@ -447,232 +560,72 @@ Abrir
 <tbody>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteEBG Instalador.zip
 </td>
 <td style="text-align:center;">
-Catálogo de Teses e Dissertações
+1.8
 </td>
 <td style="text-align:right;">
-<a href="https://catalogodeteses.capes.gov.br/catalogo-teses" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/1nQmJbOiacDI4PIro7x7nXYvdu5w9GDGS/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteEBG.zip
 </td>
 <td style="text-align:center;">
-Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
+1.8
 </td>
 <td style="text-align:right;">
-<a href="https://www.gov.br/capes/pt-br" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/1TSzz64zTI7-6C-38k4hO_CMqSGOrbe-I/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteMYO Instalador.zip
 </td>
 <td style="text-align:center;">
-Periódicos
+1.2
 </td>
 <td style="text-align:right;">
-<a href="https://www-periodicos-capes-gov-br.ezl.periodicos.capes.gov.br" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/14CfUsls-gLUY5qdX1mHb7y3-VrvQiPh1/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteMYO.zip
 </td>
 <td style="text-align:center;">
-Plataforma Sucupira
+1.2
 </td>
 <td style="text-align:right;">
-<a href="https://sucupira.capes.gov.br" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/1SbGREXOSVq0KxWEPxJQP1-t_2A6j57-c/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteTCM Instalador.zip
 </td>
 <td style="text-align:center;">
-Qualis Periódicos
+1.0.0.2
 </td>
 <td style="text-align:right;">
-<a href="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/1jVFJDV26qD9sbaIrfqpUoOFD7h-OEzZL/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-<strong>CAPES</strong>
+SuiteTCM.zip
 </td>
 <td style="text-align:center;">
-Sistema de Concessão de Bolsas e Auxílios
+1.0.0.2
 </td>
 <td style="text-align:right;">
-<a href="https://sso.capes.gov.br/sso/oauth?response_type=code&amp;redirect_uri=https://scba.capes.gov.br/scba/oauth.seam&amp;client_id=scba.capes.gov.br" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>CNPq</strong>
-</td>
-<td style="text-align:center;">
-Conselho Nacional de Desenvolvimento Científico e Tecnológico
-</td>
-<td style="text-align:right;">
-<a href="https://www.gov.br/cnpq/pt-br" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>CNPq</strong>
-</td>
-<td style="text-align:center;">
-Plataforma Lattes
-</td>
-<td style="text-align:right;">
-<a href="http://lattes.cnpq.br" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>CNPq</strong>
-</td>
-<td style="text-align:center;">
-Diretório dos Grupos de Pesquisa
-</td>
-<td style="text-align:right;">
-<a href="http://lattes.cnpq.br/web/dg" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>FAPERJ</strong>
-</td>
-<td style="text-align:center;">
-Fundação Carlos Chagas Filho de Apoio à Pesquisa do Estado do Rio de Janeiro
-</td>
-<td style="text-align:right;">
-<a href="http://www.faperj.br" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>IBICT</strong>
-</td>
-<td style="text-align:center;">
-Depósito do Instituto Brasileiro de Informação em Ciência e Tecnologia
-</td>
-<td style="text-align:right;">
-<a href="https://deposita.ibict.br" target="_blank">↗️</a>
+<a href="https://drive.google.com/file/d/18-LCadmw-phwueqSrrIBsfgtirX6SYHW/view?usp=sharing" target="_blank">↗️</a>
 </td>
 </tr>
 </tbody>
 </table>
-<!-- -->
-<p><br><a style="float:right" href="#top"><b>Início  </b>⬆️</a><br></p>
-<!-- -->
-</div>
-<div id="internacionais" class="section level3">
-<h3><strong>Internacionais</strong></h3>
-<!-- -->
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Sigla
-</th>
-<th style="text-align:center;">
-Fonte
-</th>
-<th style="text-align:right;">
-Abrir
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<strong>Altmetrics</strong>
-</td>
-<td style="text-align:center;">
-Alternative metrics
-</td>
-<td style="text-align:right;">
-<a href="https://www.altmetric.com" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>Elsevier</strong>
-</td>
-<td style="text-align:center;">
-Scopus
-</td>
-<td style="text-align:right;">
-<a href="https://www.scopus.com" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>ORCID</strong>
-</td>
-<td style="text-align:center;">
-Open Researcher and Contributor ID
-</td>
-<td style="text-align:right;">
-<a href="https://orcid.org" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>Publons</strong>
-</td>
-<td style="text-align:center;">
-Web of Science
-</td>
-<td style="text-align:right;">
-<a href="https://publons.com" target="_blank">↗️</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>SJR</strong>
-</td>
-<td style="text-align:center;">
-SCImago Journal Rank
-</td>
-<td style="text-align:right;">
-<a href="https://www.scimagojr.com" target="_blank">↗️</a>
-</td>
-</tr>
-</tbody>
-</table>
-<!-- -->
-<p><br><a style="float:right" href="#top"><b>Início  </b>⬆️</a><br></p>
-</div>
-</div>
-<div id="agendas-de-pesquisa" class="section level2 tabset">
-<h2 class="tabset"><strong>Agendas de pesquisa</strong></h2>
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-<div id="ministério-da-saúde" class="section level3">
-<h3><strong>Ministério da Saúde</strong></h3>
-<iframe src="https://bvsms.saude.gov.br/bvs/publicacoes/agenda_prioridades_pesquisa_ms.pdf" style="width:100%; height:500px; border:0;">
-</iframe>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
-<p><br></p>
-</div>
-<div id="ministério-da-ciência-tecnologia-inovações-e-comunicações" class="section level3">
-<h3><strong>Ministério da Ciência, Tecnologia, Inovações e Comunicações</strong></h3>
-<iframe src="https://antigo.mctic.gov.br/mctic/export/sites/institucional/ciencia/SEPED/Arquivos/PlanosDeAcao/PACTI_Saude_Web.pdf" style="width:100%; height:500px; border:0;">
-</iframe>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
-<p><br></p>
-</div>
-<div id="nações-unidas" class="section level3">
-<h3><strong>Nações Unidas</strong></h3>
-<iframe src="https://sustainabledevelopment.un.org/content/documents/21252030%20Agenda%20for%20Sustainable%20Development%20web.pdf" style="width:100%; height:500px; border:0;">
-</iframe>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
@@ -756,6 +709,8 @@ document.getElementById("datetime").innerHTML=dt.toLocaleString();</script>
 <p></p>
 
 
+</div>
+</div>
 
 </div>
 
@@ -788,6 +743,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

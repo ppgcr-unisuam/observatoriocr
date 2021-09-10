@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Produções Acadêmicas</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-info-circle"></span>
+     
+    Observatório CR
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-university"></span>
+     
+    Programa
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="programa.html#Institucional">Institucional</a>
+    </li>
+    <li>
+      <a href="programa.html#Apresentação">Apresentação</a>
+    </li>
+    <li>
+      <a href="programa.html#BreveHistorico">Breve histórico</a>
+    </li>
+    <li>
+      <a href="programa.html#AC">Área de concentração</a>
+    </li>
+    <li>
+      <a href="programa.html#LP">Linhas de pesquisa</a>
+    </li>
+    <li>
+      <a href="programa.html#PP">Projetos de pesquisa</a>
+    </li>
+    <li>
+      <a href="programa.html#AP">Agendas de pesquisa</a>
+    </li>
+    <li>
+      <a href="programa.html#Financiadores">Financiadores</a>
+    </li>
+    <li>
+      <a href="programa.html#Bolsas">Bolsas de estudo</a>
+    </li>
+    <li>
+      <a href="programa.html#Cursos">Cursos</a>
+    </li>
+    <li>
+      <a href="programa.html#EstruturaCurricular">Estrutura curricular</a>
+    </li>
+    <li>
+      <a href="programa.html#Turmas">Turmas</a>
+    </li>
+    <li>
+      <a href="programa.html#Calendários">Calendários</a>
+    </li>
+    <li>
+      <a href="programa.html#Infraestrutura">Infraestrutura</a>
+    </li>
+    <li>
+      <a href="programa.html#Convênios">Convênios Institucionais</a>
+    </li>
+    <li>
+      <a href="programa.html#Cooperação">Cooperação entre instituições</a>
+    </li>
+    <li>
+      <a href="programa.html#Downloads">Downloads</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-user-graduate"></span>
+     
+    Pessoas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pessoas.html#Secretaria">Secretaria</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Colegiado">Colegiado</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Coordenação">Coordenação</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Docentes">Docentes</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Posdoc">Pós-doutorandos</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Discentes">Discentes</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Egressos">Egressos</a>
+    </li>
+    <li>
+      <a href="pessoas.html#GruposPesquisa">Grupos de pesquisa</a>
+    </li>
+    <li>
+      <a href="pessoas.html#Externos">Participantes externos</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+    Produções
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="producoes.html#TCC">Trabalhos de conclusão</a>
+    </li>
+    <li>
+      <a href="producoes.html#Bibliográfica">Produção bibliográfica</a>
+    </li>
+    <li>
+      <a href="producoes.html#Técnica">Produção técnica</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-trophy"></span>
+     
+    Destaques
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="destaques.html#EgressosDestaque">Egressos</a>
+    </li>
+    <li>
+      <a href="destaques.html#TCCDestaque">Dissertações/Teses</a>
+    </li>
+    <li>
+      <a href="destaques.html#ProdutosDestaque">Produções</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-users"></span>
+     
+    Impacto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="impacto.html#ImpactoEducacional">Educacional</a>
+    </li>
+    <li>
+      <a href="impacto.html#ImpactoCientífico">Científico</a>
+    </li>
+    <li>
+      <a href="impacto.html#ImpactoSociocultural">Sociocultural</a>
+    </li>
+    <li>
+      <a href="impacto.html#ImpactoTecnológico">Tecnológico/Econômico</a>
+    </li>
+    <li>
+      <a href="impacto.html#AçõesPandemia">Ações durante a pandemia</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-clipboard-check"></span>
+     
+    Autoavaliação
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="autoavaliacao.html#GT">Grupos de trabalho</a>
+    </li>
+    <li>
+      <a href="autoavaliacao.html#QualidadeDisciplinas">Qualidade das disciplinas</a>
+    </li>
+    <li>
+      <a href="autoavaliacao.html#PesquisaEgresso">Pesquisa do egresso</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Galeria
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="galeria.html#Fotos">Fotos</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="blog.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    Blog
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<!--Script for adding a Google Translation bar-->
+
+<html lang="pt-BR">
+<div align="right" id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'pt'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+</html>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Produções Acadêmicas</h1>
+
+</div>
+
+
+<p><br> <br> <br></p>
+<style type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body .main-container {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+      }
+    body {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+    }
+    section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    }
+</style>
+<!--script for narrow margins-->
+<style type="text/css">
+div.main-container {
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="PPGCR.png"></div>');
+  });
+</script>
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
+<div id="TCC" class="section level2">
+<h2><strong>Trabalhos de conclusão</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="síntese" class="section level3">
+<h3><strong>Síntese</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="repositórios" class="section level3 tabset">
+<h3 class="tabset"><strong>Repositórios</strong></h3>
+<div id="institucional" class="section level4 tabset">
+<h4 class="tabset"><strong>Institucional</strong></h4>
+<div id="dissertações" class="section level5">
+<h5><strong>Dissertações</strong></h5>
+<iframe src="https://drive.google.com/embeddedfolderview?id=1k-1AJCm9n8k_yWuQANA7kjREj2N8dMWj#list" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="teses" class="section level5">
+<h5><strong>Teses</strong></h5>
+<iframe src="https://drive.google.com/embeddedfolderview?id=1VyudoKSCr_ElHSDUBK33xi2bYHzQpWgE#list" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="deposita-ibict" class="section level4">
+<h4><strong>Deposita IBICT</strong></h4>
+<iframe src="https://deposita.ibict.br" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="catálogo-capes" class="section level4">
+<h4><strong>Catálogo CAPES</strong></h4>
+<iframe src="https://catalogodeteses.capes.gov.br/catalogo-teses" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="Bibliográfica" class="section level2">
+<h2><strong>Produção bibliográfica</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="síntese-1" class="section level3">
+<h3><strong>Síntese</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="artigos-em-periódicos" class="section level3 tabset">
+<h3 class="tabset"><strong>Artigos em periódicos</strong></h3>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="institucional-1" class="section level4">
+<h4><strong>Institucional</strong></h4>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="pubmed" class="section level4">
+<h4><strong>PubMed</strong></h4>
+<p align="center">
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Augusto+Motta%22%5BAD%5D+OR+%22Augusto+Mota%22%5BAD%5D" target="_blank"><img align="center" src="PubMed.png"></a>
+</p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="sjr" class="section level4">
+<h4><strong>SJR</strong></h4>
+<iframe src="https://www.scimagojr.com" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="qualis" class="section level4">
+<h4><strong>Qualis</strong></h4>
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf" style="width:100%; height:600px; border:0;">
+</iframe>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="livros-e-capítulos" class="section level3 tabset">
+<h3 class="tabset"><strong>Livros e capítulos</strong></h3>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="trabalhos-em-anais-de-eventos" class="section level3 tabset">
+<h3 class="tabset"><strong>Trabalhos em anais de eventos</strong></h3>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="Técnica" class="section level2">
+<h2><strong>Produção técnica</strong></h2>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="síntese-2" class="section level3">
+<h3><strong>Síntese</strong></h3>
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="aprentação-de-trabalhos" class="section level3 tabset">
+<h3 class="tabset"><strong>Aprentação de trabalhos</strong></h3>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<p><em>Em construção!</em></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="desenvolvimento-de-aplicativo" class="section level3 tabset">
+<h3 class="tabset"><strong>Desenvolvimento de aplicativo</strong></h3>
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="telas" class="section level4">
+<h4><strong>Telas</strong></h4>
+<style>
+th, td {
+  padding: 10px;
+}
+</style>
+<table class="center">
+<tr>
+<td>
+<a href="https://drive.google.com/file/d/1SbGREXOSVq0KxWEPxJQP1-t_2A6j57-c/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteMYO.png"></a>
+</td>
+<td>
+<a href="https://drive.google.com/file/d/1TSzz64zTI7-6C-38k4hO_CMqSGOrbe-I/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteEBG.png"></a>
+</td>
+<td>
+<a href="https://drive.google.com/file/d/18-LCadmw-phwueqSrrIBsfgtirX6SYHW/view?usp=sharing" target="_blank"><img align="center" src="Softwares/SuiteTCM.png"></a>
+</td>
+</tr>
+</table>
+<p><br></p>
+</div>
+<div id="donwloads" class="section level4">
+<h4><strong>Donwloads</strong></h4>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Programa
+</th>
+<th style="text-align:center;">
+Versão
+</th>
+<th style="text-align:right;">
+Abrir
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+SuiteEBG Instalador.zip
+</td>
+<td style="text-align:center;">
+1.8
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/1nQmJbOiacDI4PIro7x7nXYvdu5w9GDGS/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SuiteEBG.zip
+</td>
+<td style="text-align:center;">
+1.8
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/1TSzz64zTI7-6C-38k4hO_CMqSGOrbe-I/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SuiteMYO Instalador.zip
+</td>
+<td style="text-align:center;">
+1.2
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/14CfUsls-gLUY5qdX1mHb7y3-VrvQiPh1/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SuiteMYO.zip
+</td>
+<td style="text-align:center;">
+1.2
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/1SbGREXOSVq0KxWEPxJQP1-t_2A6j57-c/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SuiteTCM Instalador.zip
+</td>
+<td style="text-align:center;">
+1.0.0.2
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/1jVFJDV26qD9sbaIrfqpUoOFD7h-OEzZL/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SuiteTCM.zip
+</td>
+<td style="text-align:center;">
+1.0.0.2
+</td>
+<td style="text-align:right;">
+<a href="https://drive.google.com/file/d/18-LCadmw-phwueqSrrIBsfgtirX6SYHW/view?usp=sharing" target="_blank">↗️</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+</div>
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:5px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<br>
+
+<div style="text-align: center; font-size:14px">
+  <p>Copyright &copy; 2021 Arthur de Sá Ferreira, PhD, em nome do colegiado do PPGCR-UNISUAM. Todos os direitos reservados. Última atualização em <span id="datetime"></span></p><script>var dt = new Date();
+  document.getElementById("datetime").innerHTML=dt.toLocaleString();</script>
+</div>
+<br>
+
+<!--script for printing share buttons-->
+<div style="text-align: center">
+  <!-- Twitter -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:5px; font-size:1.25em;" role="button" href="http://twitter.com/home?status=https://rehab-tech.github.io/observatoriocr/" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter fa-solid fa-2x"></i>&nbsp;&nbsp;Twitter</a>
+   <!-- Facebook -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:5px; font-size:1.25em;" role="button" href="https://www.facebook.com/sharer/sharer.php?u=https://rehab-tech.github.io/observatoriocr/" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook fa-solid fa-2x"></i>&nbsp;&nbsp;Facebook</a>
+  <!-- LinkedIn --> 
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:5px; font-size:1.25em;" role="button" href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=https://rehab-tech.github.io/observatoriocr/" title="Share on LinkedIn" target="_blank" class="btn btn-linkedin"><i class="fa fa-linkedin fa-solid fa-2x"></i>&nbsp;&nbsp;LinkedIn</a>
+</div>
+<br>
+
+<!--print visitor counter-->
+<div style="text-align: center">
+  <a style="float:center" href="https://hits.seeyoufarm.com">
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Frehab-tech.github.io%2Fobservatoriocr%2F&count_bg=%23E1761A&title_bg=%235185D7&icon=&icon_color=%23E7E7E7&title=Visitas&edge_flat=false"/>
+  </a>
+</div>
+<br>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

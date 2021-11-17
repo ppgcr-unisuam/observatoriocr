@@ -71,6 +71,14 @@ doi_reshaped_data <- subset_data %>%
 
 year_publ <- as.Date(as.POSIXct(as.numeric(doi_reshaped_data$published_on), origin = "1970-01-01"))
 
+author.names <- c()
+for(k in 1:dim(metric_data)[1]){
+  names <- paste(na.omit(metric_data$authors1[k]), na.omit(metric_data$authors2[k]), na.omit(metric_data$authors3[k]), na.omit(metric_data$authors4[k]), na.omit(metric_data$authors5[k]), na.omit(metric_data$authors6[k]), na.omit(metric_data$authors7[k]), na.omit(metric_data$authors8[k]), na.omit(metric_data$authors9[k]), na.omit(metric_data$authors10[k]), na.omit(metric_data$authors11[k]), na.omit(metric_data$authors12[k]), na.omit(metric_data$authors13[k]), na.omit(metric_data$authors14[k]), na.omit(metric_data$authors15[k]), sep = ", ", collapse = "")
+  names <- gsub(", , ", "", names)
+  author.names <- c(author.names, names)
+}
+
 # convert score to integer
 doi_reshaped_data$score <- ceiling(as.numeric(doi_reshaped_data$score))
 doi_reshaped_data$published_on <- as.numeric(format(year_publ, "%Y"))
+doi_reshaped_data$author.names <- author.names

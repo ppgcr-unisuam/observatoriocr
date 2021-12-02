@@ -46,25 +46,28 @@ metric_data <- ldply(raw_metrics, altmetric_data)
 
 # Step 11. Specify a list of the columns you want for your analysis. 
 columns_to_grab <- c("title", "doi", "url", "score", "journal", "cited_by_fbwalls_count", "cited_by_posts_count", "cited_by_policies_count", "cited_by_wikipedia_count", "cited_by_feeds_count", "cited_by_gplus_count", "cited_by_msm_count", "cited_by_tweeters_count", "cited_by_accounts_count", "published_on")
+columns_to_grab <- c("title", "doi", "url", "score", "journal", "published_on")
 
 # Step 12. Create a data subset only including columns specified in Step 9. 
 subset_data <- select(metric_data, one_of(columns_to_grab))
 
-# Step 13. Clean up and rename social media categories. 
-doi_reshaped_data <- subset_data %>%
- gather(cited_by, times, cited_by_fbwalls_count:cited_by_accounts_count) %>% # collapses range of columns into two
- mutate(cited_by = gsub("_count", "", cited_by)) %>%
- mutate(cited_by = gsub("cited_by_", "", cited_by)) %>%
- mutate(cited_by = gsub("tweeters", "Twitter", cited_by)) %>%
- mutate(cited_by = gsub("fbwalls", "Facebook", cited_by)) %>%
- mutate(cited_by = gsub("gplus", "Google+", cited_by)) %>%
- mutate(cited_by = gsub("feeds", "Bloggers", cited_by)) %>%
- mutate(cited_by = gsub("msm", "News Outlets", cited_by)) %>%
- mutate(cited_by = gsub("posts", "Posts", cited_by)) %>%
- mutate(cited_by = gsub("accounts", "Total", cited_by)) %>%
- mutate(cited_by = gsub("policies", "Policies", cited_by)) %>%
- mutate(cited_by = gsub("wikipedia", "Wikipedia", cited_by)) %>%
- mutate(times = as.numeric(times))
+doi_reshaped_data <- subset_data
+
+# # Step 13. Clean up and rename social media categories. 
+# doi_reshaped_data <- subset_data %>%
+#  gather(cited_by, times, cited_by_fbwalls_count:cited_by_accounts_count) %>% # collapses range of columns into two
+#  mutate(cited_by = gsub("_count", "", cited_by)) %>%
+#  mutate(cited_by = gsub("cited_by_", "", cited_by)) %>%
+#  mutate(cited_by = gsub("tweeters", "Twitter", cited_by)) %>%
+#  mutate(cited_by = gsub("fbwalls", "Facebook", cited_by)) %>%
+#  mutate(cited_by = gsub("gplus", "Google+", cited_by)) %>%
+#  mutate(cited_by = gsub("feeds", "Bloggers", cited_by)) %>%
+#  mutate(cited_by = gsub("msm", "News Outlets", cited_by)) %>%
+#  mutate(cited_by = gsub("posts", "Posts", cited_by)) %>%
+#  mutate(cited_by = gsub("accounts", "Total", cited_by)) %>%
+#  mutate(cited_by = gsub("policies", "Policies", cited_by)) %>%
+#  mutate(cited_by = gsub("wikipedia", "Wikipedia", cited_by)) %>%
+#  mutate(times = as.numeric(times))
 
 year_publ <- as.Date(as.POSIXct(as.numeric(metric_data$published_on), origin = "1970-01-01"))
 

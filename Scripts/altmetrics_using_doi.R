@@ -30,8 +30,10 @@ raw_metrics <- lapply(dois_list, function(x) getArticleData(x))  # apply getArti
 # Step 8. Notice that there are lots of dois with NA values. Now write a function to remove all those dois that have NA values (because they have no data). 
 # This code comes from this source on github : https://gist.github.com/rhochreiter/7029236
 na.omit.list <- function(y) { 
- return(y[!sapply(y, function(x) all(is.na(x)))]) 
+ return(y[!sapply(y, function(x) all(is.na(x)))])
 }
+
+no_altmetric_dois_list <- dois_list[is.na(raw_metrics)]
 
 # Step 9. You haven't actually removed the values yet. Now remove those NA values by passing the raw_metrics
 # data into the function just created, na.omit.list(). 
@@ -64,7 +66,7 @@ doi_reshaped_data <- subset_data %>%
  mutate(cited_by = gsub("wikipedia", "Wikipedia", cited_by)) %>%
  mutate(times = as.numeric(times))
 
-year_publ <- as.Date(as.POSIXct(as.numeric(doi_reshaped_data$published_on), origin = "1970-01-01"))
+year_publ <- as.Date(as.POSIXct(as.numeric(metric_data$published_on), origin = "1970-01-01"))
 
 author.names <- c()
 for(k in 1:dim(metric_data)[1]){

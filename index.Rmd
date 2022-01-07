@@ -1,0 +1,842 @@
+---
+title: OBSERVATÓRIO CR
+
+output:
+  html_document:
+    toc: false
+---
+
+```{css, echo=FALSE}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body .main-container {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+      }
+    body {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+    }
+    section {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+```
+
+<!--script for background color-->
+<style>
+  body {
+  background-color:#2C3E50;
+  color: white;}
+</style>
+
+<!--script for narrow margins-->
+<style type="text/css">
+div.main-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+  });
+</script>
+
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 1.25em;
+}
+h1.title {
+  text-align: center;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
+h2 {
+  text-align: center;
+  font-weight: bold;
+}
+</style>
+
+<center>
+[<img align="center" src="Images/coruja.png">](https://www.unisuam.edu.br){target="_blank"}
+<p style = "font-size:1.25em">
+<br>
+O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ciências da Reabilitação** do [Centro Universitário Augusto Motta](http://www.unisuam.edu.br) que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
+</p>
+
+</center>
+
+<br>
+
+<!--script for printing landing page buttons-->
+<div style="text-align: center">
+  <!-- Programa -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="programa.html" title="Programa" target="_self" class="btn"><i class="fa fa-university fa-solid fa-2x"></i>&nbsp;&nbsp;Programa</a>
+   <!-- Pessoas -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="pessoas.html" title="Pessoas" target="_self" class="btn"><i class="fa fa-user-graduate fa-solid fa-2x"></i>&nbsp;&nbsp;Pessoas</a>
+  <!-- Produções --> 
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="producoes.html" title="Produções" target="_self" class="btn"><i class="fa fa-book fa-solid fa-2x"></i>&nbsp;&nbsp;Produções</a>
+</div>
+
+<div style="text-align: center">
+  <!-- Destaques -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="destaques.html" title="Destaques" target="_self" class="btn"><i class="fa fa-trophy fa-solid fa-2x"></i>&nbsp;&nbsp;Destaques</a>
+   <!-- Impacto -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="impacto.html" title="Impacto" target="_self" class="btn"><i class="fa fa-users fa-solid fa-2x"></i>&nbsp;&nbsp;Impacto</a>
+  <!-- Autoavaliaçào --> 
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="autoavaliacao.html" title="Autoavaliação" target="_self" class="btn"><i class="fa fa-clipboard-check fa-solid fa-2x"></i>&nbsp;&nbsp;Autoavaliação</a>
+</div>
+
+<div style="text-align: center">
+  <!-- Galeria -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="galeria.html" title="Galeria" target="_self" class="btn"><i class="fa fa-images fa-solid fa-2x"></i>&nbsp;&nbsp;Galeria</a>
+   <!-- News -->
+  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="news.html" title="News" target="_self" class="btn"><i class="fa fa-newspaper-o fa-solid fa-2x"></i>&nbsp;&nbsp;News</a>
+</div>
+
+<br>
+<br>
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#projetos}
+
+<h1> [**Projetos de pesquisa, temas**](programa.html#PP) </h1>
+
+```{r projetos-de-pesquisa-sintese-temas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+library(wordcloud)
+library(wordcloud2)
+library(tm)
+
+sheet <- "Projetos"
+projetos.raw <- c()
+files.to.read <- list.files("../PPGCR Unisuam/Sucupira/", pattern = "xlsx", full.names = TRUE)
+for(i in 1:length(files.to.read)){
+  projetos.raw <- rbind(projetos.raw, read_excel(files.to.read[i], sheet = sheet))
+}
+
+linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
+projetos.temas <- projetos.raw$`Nome do Projeto de Pesquisa`
+
+# create a corpus
+docs <- Corpus(VectorSource(projetos.temas))
+
+# cleaning text
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
+
+# create a document-term matrix
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm)
+words <- sort(rowSums(matrix),decreasing=TRUE)
+df <- data.frame(word = names(words),freq=words)
+
+# generate word cloud
+par(bg = "#2C3E50")
+set.seed(0) # for reproducibility 
+wordcloud(words = df$word, freq = df$freq, min.freq = 10, max.words = 200, random.order = FALSE, rot.per = 0.35, colors = brewer.pal(8, "Set3"))
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#tcc}
+
+<h1> [**Trabalhos de conclusão de curso, temas**](producoes.html#TCC) </h1>
+
+```{r projetos-de-pesquisa-sintese-tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+library(wordcloud)
+library(wordcloud2)
+library(tm)
+
+sheet <- "TCC"
+projetos.raw <- c()
+files.to.read <- list.files("../PPGCR Unisuam/Sucupira/", pattern = "xlsx", full.names = TRUE)
+for(i in 1:length(files.to.read)){
+  projetos.raw <- rbind(projetos.raw, read_excel(files.to.read[i], sheet = sheet))
+}
+
+linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
+projetos.temas <- projetos.raw$`Nome do Trabalho de Conclusão`
+
+# create a corpus
+docs <- Corpus(VectorSource(projetos.temas))
+
+# cleaning text
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
+
+# create a document-term matrix
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm)
+words <- sort(rowSums(matrix),decreasing=TRUE)
+df <- data.frame(word = names(words),freq=words)
+
+# generate word cloud
+par(bg = "#2C3E50")
+set.seed(0) # for reproducibility 
+wordcloud(words = df$word, freq = df$freq, min.freq = 5, max.words = 200, random.order = FALSE, rot.per = 0.35, colors = brewer.pal(8, "Set3"))
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#news}
+
+<h1> [**Notícias**](news.html) </h1>
+
+```{r news-cloud, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+library(wordcloud)
+library(wordcloud2)
+library(tm)
+
+# read separate sheets
+file.path <- "../PPGCR Unisuam/News.xlsx"
+tabs <- excel_sheets(file.path)
+topics <- c()
+news.list <- vector(mode = "list", length = length(tabs))
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
+  # replace the link by a tag
+  for(i in 1:dim(news)[1]){
+    news[i,1] <- paste("## **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
+    news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
+  }
+  
+  # drop date column
+  news <- news[, -1]
+  # store data to print table
+  news.list[[j]] <- news
+  
+  # store data to plot wordcloud
+  topics <- rbind(topics, news[i,1])
+}
+
+# create a corpus
+docs <- Corpus(VectorSource(topics))
+
+# cleaning text
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("portuguese"))
+
+# create a document-term matrix
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm)
+words <- sort(rowSums(matrix),decreasing=TRUE)
+df <- data.frame(word = names(words),freq=words)
+
+# generate word cloud
+par(bg = "#2C3E50")
+set.seed(0) # for reproducibility 
+wordcloud(words = df$word, freq = df$freq, min.freq = 1, max.words = 200, random.order = FALSE, rot.per = 0.35, colors = brewer.pal(8, "Set3"))
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#projetoslinha}
+
+<h1> [**Projetos de pesquisa, por linha de pesquisa**](programa.html#LP) </h1>
+
+```{r projetos-de-pesquisa-sintese-figura, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+projetos.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Projetos - Membros")
+projetos.2020 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx", sheet = "Projetos - Membros")
+projetos.2019 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx", sheet = "Projetos - Membros")
+projetos.2018 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx", sheet = "Projetos - Membros")
+projetos.2017 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2017.xlsx", sheet = "Projetos - Membros")
+projetos.2016 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2016.xlsx", sheet = "Projetos - Membros")
+projetos.2015 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2015.xlsx", sheet = "Projetos - Membros")
+projetos.2014 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx", sheet = "Projetos - Membros")
+projetos.2013 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx", sheet = "Projetos - Membros")
+projetos.2012 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx", sheet = "Projetos - Membros")
+
+projetos.raw <- rbind(projetos.2021, projetos.2020, projetos.2019, projetos.2018, projetos.2017, projetos.2016, projetos.2015, projetos.2014, projetos.2013, projetos.2012)
+linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
+
+projetos.list <- list(projetos.2021, projetos.2020, projetos.2019, projetos.2018, projetos.2017, projetos.2016, projetos.2015, projetos.2014, projetos.2013, projetos.2012)
+
+anos <- c(2021, 2012)
+ano <- seq(max(anos, na.rm = TRUE), min(anos, na.rm = TRUE))
+
+andamento.ano <- matrix(NA, nrow = length(linhas), ncol = length(ano))
+colnames(andamento.ano) <- ano
+rownames(andamento.ano) <- linhas
+concluido.ano <- andamento.ano
+
+for(i in length(ano):1){
+  projetos <- projetos.list[[i]]
+  projetos <- projetos[projetos$`Membro Responsável`=="Sim" & projetos$Situação == "EM ANDAMENTO", ]
+  for(j in 1:length(linhas)){
+    andamento.ano[j, i] <- sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
+  }
+  projetos <- projetos.list[[i]]
+  projetos <- projetos[projetos$`Membro Responsável`=="Sim" & projetos$Situação == "CONCLUÍDO", ]
+  for(j in 1:length(linhas)){
+    concluido.ano[j, i] <- sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
+  }
+}
+projetos.ano <- andamento.ano + concluido.ano
+projetos.ano <- projetos.ano[, order(colnames(projetos.ano), decreasing = FALSE)]
+
+layout(matrix(c(1:2), nrow = 2, ncol = 1, byrow = TRUE), heights = c(1/2, 1/2))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white")
+# generate plot of projetos per linha by year
+barplot(projetos.ano, xlab = "Ano", ylab = "Quantidade", col = brewer.pal(n = length(linhas), name = "Set3"), xaxt = 'n', ann = FALSE)
+barplot(scale(as.matrix(projetos.ano), center=FALSE, scale=colSums(as.matrix(projetos.ano)))*100, xlab = "Ano", ylab = "Proporção por linha", col = brewer.pal(n = length(linhas), name = "Set3"), yaxt='n')
+axis(2, at = c(0,100))
+# par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white")
+# legend("top", legend = linhas, fill = brewer.pal(n = length(linhas), name = "Set3"), box.lwd = 0, cex = 1)
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#financiamentos}
+
+<h1> [**Financiamentos dos projetos**](programa.html#Financiadores) </h1>
+
+```{r financiadores-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(gtsummary)
+library(RColorBrewer)
+
+options(scipen = 10)
+
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+
+# select variables to display, by AGENCIA & PROGRAMA
+financiadores <- financiadores.raw %>% select("Agência", "Total", "Programa")
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+# generate table
+table.1 <- tbl_summary(financiadores, by = "Agência", type = all_continuous() ~ "continuous2", statistic = list(all_continuous() ~ c("R$ {sum}", "{min}", "{max}"), all_categorical() ~ c("{n}")), missing = "no", digits = "Total" ~ 2, sort = all_categorical() ~ "frequency") %>%
+  add_overall(TRUE, "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  bold_labels()
+# print tables
+# table.1
+
+# line break
+# cat("  \n")
+# cat("  \n")
+
+editais.agencia <- table(financiadores$'Agência')
+
+layout(matrix(c(1,2,3,4,5,6), ncol = 2, byrow = TRUE), widths = c(3,1))
+par(oma=c(0.1, 2, 2, 0.1), mar = c(2, 2, 2, 0.1), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+# generate plot of total per year
+total.ano <- aggregate(financiadores.raw$Total, by = list(financiadores.raw$Ano), FUN = sum, na.rm = TRUE)
+barplot(total.ano[ , 2] ~ total.ano[ , 1], ylab = "Total (R$)", main = "Valores de financiamentos", col = brewer.pal(n = length(unique(editais.agencia))+1, name = "Set3")[length(unique(editais.agencia)) + 1])
+total.agencia <- aggregate(financiadores.raw$Total, by = list(financiadores.raw$'Agência'), FUN = sum, na.rm = TRUE)
+pie(total.agencia[ , 2], labels = NA, col = brewer.pal(n = length(unique(editais.agencia)), name = "Set3"), init.angle = 90, main = "Valores por Agência", inset = -1)
+
+# generate plot of total per year
+editais.ano <- aggregate(financiadores.raw$Total, by = list(financiadores.raw$Ano), FUN = function(x) sum(!is.na(x)))
+barplot(editais.ano[ , 2] ~ editais.ano[ , 1], ylab = "Editais", main = "Quantidade de editais financiados", col = brewer.pal(n =length(unique(editais.agencia))+1, name = "Set3")[length(unique(editais.agencia)) + 1])
+pie(editais.agencia, labels = NA, col = brewer.pal(n = length(unique(editais.agencia)), name = "Set3"), init.angle = 90, main = "Editais por Agência", inset = -1)
+
+# generate plot of total per professor
+professores.ano <- rowSums(table(financiadores.raw$Ano, financiadores.raw$Proponente) != 0)
+barplot(professores.ano ~ names(professores.ano), ylab = "Docentes", main = "Quantidade de docentes com financiamentos", col = brewer.pal(n =length(unique(editais.agencia))+1, name = "Set3")[length(unique(editais.agencia)) + 1])
+plot(0, type = 'n', axes = FALSE)
+legend("center", legend = c("Total", names(editais.agencia)), fill = c(brewer.pal(n =length(unique(editais.agencia))+1, name = "Set3")[length(unique(editais.agencia)) + 1], brewer.pal(n = length(names(editais.agencia)), name = "Set3")), box.lwd = 0, cex = 1)
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#producao}
+
+<h1> [**Produção bibliográfica**](producoes.html#Bibliográfica) </h1>
+
+```{r producao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(geobr)
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(Rmisc)
+library(cowplot)
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.artigos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI),]
+
+artigos <- dois[dois$Publicado.em != "Aceito" & dois$Publicado.em != "Submetido", ]
+
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+# generate plot of titulados per year
+table.1 <- table(artigos$Publicado.em)
+barplot(t(table.1), xlab = "Ano", ylab = "Artigos", col = c("lightblue"), bty = "n")
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#producao-qualidade}
+
+<h1> [**Qualidade da produção, por estrato**](producoes.html#Bibliográfica) </h1>
+
+```{r producao-qualidade, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(Rmisc)
+library(cowplot)
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.artigos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI),]
+dois$WebQualis[dois$WebQualis == "Sem WebQualis"] <- NA
+  
+artigos <- dois[dois$Publicado.em != "Aceito" & dois$Publicado.em != "Submetido", ]
+estratos <- sort(unique(artigos$WebQualis))
+ano <- sort(unique(artigos$Publicado.em))
+table.1 <- t(table(artigos$Publicado.em, artigos$WebQualis))
+table.1 <- apply(table.1, 2, rev)
+
+layout(matrix(c(1:2), nrow = 2, ncol = 1, byrow = TRUE), heights = c(1/2, 1/2))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white")
+# generate plot of artigos per estrato by year
+barplot(as.matrix(table.1), xlab = "Ano", ylab = "Estrato", col = brewer.pal(n = length(estratos) + 1, name = "Blues"), xaxt = 'n')
+barplot(scale(as.matrix(table.1), center=FALSE, scale=colSums(as.matrix(table.1)))*100, xlab = "Ano", ylab = "Proporção por estrato", col = brewer.pal(n = length(estratos), name = "Blues"), yaxt='n', legend.text = rownames(table.1), args.legend = list(x = 18, y = -80, ncol = 3, bty = "n", cex = 0.7, x.intersp = 0.2, y.intersp = 0.8))
+axis(2, at = c(0,100))
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#pessoal}
+
+<h1> **Formação de pessoal de nível superior** </h1>
+
+```{r egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(geobr)
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(Rmisc)
+library(cowplot)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+mestres <- discentes[discentes$Curso == "Mestrado", ]
+doutores <- discentes[discentes$Curso == "Doutorado", ]
+
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+# generate plot of titulados per year
+table.1 <- table(discentes$Curso, discentes$`Ano Titulação`)
+barplot(as.matrix(table.1), xlab = "Ano", ylab = "Titulados", col = c("darkblue", "lightblue"), bty = "n")
+legend("topleft", legend = levels(as.factor(discentes$Curso)), fill = c("darkblue", "lightblue"), box.lty = 0)
+
+cat("<br>")
+cat('<hr style="height:2px;border-width:0;color:white;background-color:white">')
+cat("<br>")
+
+cat("<h1> **Tempo médio de titulação, por ano** </h1>  \n")
+
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+# generate plot of tempo para titulação per year
+tmt.mestr.ano <- aggregate(as.numeric(mestres$`Tempo de Curso (meses)`), by = list(mestres$`Ano Titulação`), FUN = mean, na.rm = TRUE)
+tmt.dout.ano <- aggregate(as.numeric(doutores$`Tempo de Curso (meses)`), by = list(doutores$`Ano Titulação`), FUN = mean, na.rm = TRUE)
+
+plot(tmt.mestr.ano$Group.1, tmt.mestr.ano$x, type = "l", lty = 1, lwd = 6, xlab = "Ano", ylab = "Meses", col = c("lightblue"), ylim = c(18,60), bty = "n")
+lines(tmt.dout.ano$Group.1, tmt.dout.ano$x, type = "l", lty = 1, lwd = 6, xlab = "Ano", ylab = "Meses", col = c("darkblue"), ylim = c(18,60))
+legend("topleft", legend = levels(as.factor(discentes$Curso)), col = c("darkblue", "lightblue"), pch = "lines", lwd = 6, box.lty = 0)
+
+cat("<br>")
+cat('<hr style="height:2px;border-width:0;color:white;background-color:white">')
+cat("<br>")
+
+# code for html anchor frmo yml file
+cat('<div id="egressos" class="section level2">', sep = "")
+
+cat("<h1> [**Egressos**](pessoas.html#Egressos) </h1>  \n")
+
+par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+states <- read_state(year=2019, showProgress = FALSE)
+states$discentes <- rep(NA, dim(states)[1])
+UF <- as.data.frame(table(discentes$UF))
+for (i in 1:length(UF$Var1)){
+    states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+}
+p1 <- ggplot() +
+  geom_sf(data=states, aes(fill = discentes), color = "grey") +
+  scale_fill_distiller(palette = "Spectral", name = "Egressos, n", limits = c(min(0, UF$Freq), max(UF$Freq)), na.value = "grey") +
+  theme_minimal() +
+  theme(legend.position = 'bottom', legend.title = element_text(colour="white"), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), panel.grid.major = element_line(colour = "transparent"), axis.text.x= element_blank(), axis.text.y = element_blank())
+
+data <- as.data.frame(table(c(discentes$UF[discentes$UF == "RJ"], rep("Outras UF", length(discentes$UF[discentes$UF != "RJ"])))))
+colnames(data) <- c("Regiões", "N")
+
+p2 <- ggplot(data, aes(x = "", y = N, fill = Regiões)) +
+  scale_fill_manual(values = c("darkblue", "lightblue")) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  theme(legend.position = 'bottom', legend.title = element_blank(), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'))
+
+data <- as.data.frame(table(discentes$Curso))
+colnames(data) <- c("Cursos", "N")
+
+p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
+  scale_fill_manual(values = c("darkblue", "lightblue")) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  theme(legend.position = 'bottom', legend.title = element_blank(), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'))
+
+g <- arrangeGrob(p1, p2, p3, layout_matrix = rbind(c(1,2), c(1,3)), widths =c(7/10, 3/10))
+
+g2 <- ggdraw(g) +
+  theme(plot.background = element_rect(fill="#2C3E50", color = NA))
+
+plot(g2)
+
+cat('<p><br></p>')
+cat('</div>')
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#discentes}
+
+<h1> [**Discentes**](pessoas.html#Discentes) </h1>
+
+```{r discentes-região, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(geobr)
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(ggpubr)
+library(Rmisc)
+library(cowplot)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" | discentes.raw$`Status SAGA` == "Pré-inscrito", ]
+
+# generate plot of UF per course
+states <- read_state(year=2019, showProgress = FALSE)
+states$discentes <- rep(NA, dim(states)[1])
+UF <- as.data.frame(table(discentes$UF))
+for (i in 1:length(UF$Var1)){
+    states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+}
+
+p1 <- ggplot() +
+  geom_sf(data=states, aes(fill = discentes), color = "grey") +
+  scale_fill_distiller(palette = "Spectral", name = "Discentes, n", limits = c(min(0, UF$Freq), max(UF$Freq)), na.value = "grey") +
+  theme_minimal() +
+  theme(legend.position = 'bottom', legend.title = element_text(colour="white"), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), panel.grid.major = element_line(colour = "transparent"), axis.text.x= element_blank(), axis.text.y = element_blank())
+
+data <- as.data.frame(table(c(discentes$UF[discentes$UF == "RJ"], rep("Outras UF", length(discentes$UF[discentes$UF != "RJ"])))))
+colnames(data) <- c("Regiões", "N")
+
+p2 <- ggplot(data, aes(x = "", y = N, fill = Regiões)) +
+  scale_fill_manual(values = c("darkblue", "lightblue")) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  theme(legend.position = 'bottom', legend.title = element_blank(), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'))
+
+data <- as.data.frame(table(discentes$Curso))
+colnames(data) <- c("Cursos", "N")
+
+p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
+  scale_fill_manual(values = c("darkblue", "lightblue")) +
+  geom_bar(stat = "identity") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  theme(legend.position = 'bottom', legend.title = element_blank(), legend.text = element_text(colour="white")) +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"), panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'), plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'))
+
+g <- arrangeGrob(p1, p2, p3, layout_matrix = rbind(c(1,2), c(1,3)), widths =c(7/10, 3/10))
+
+g2 <- ggdraw(g) +
+  theme(plot.background = element_rect(fill="#2C3E50", color = NA))
+
+plot(g2)
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#disciplinas}
+
+<h1> [**Disciplinas oferecidas**](programa.html#EstruturaCurricular) </h1>
+
+```{r turmas-sintese-turmas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+sheet <- "Turmas"
+turmas.raw <- c()
+files.to.read <- list.files("../PPGCR Unisuam/Sucupira/", pattern = "xlsx", full.names = TRUE)
+for(i in 1:length(files.to.read)){
+  turmas.raw <- rbind(turmas.raw, read_excel(files.to.read[i], sheet = sheet))
+}
+
+# build a cross table DISCIPLINA vs. ANO
+turmas.raw <- turmas.raw[turmas.raw$`Indicador de responsável principal` == "Sim", ]
+turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
+cross.table.turmas <- as.matrix(table(turmas.raw$`Nível do curso`, turmas.raw$`Período/Ano`))
+
+# generate plot of total per year
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+# generate plot of turmas per year
+barplot(cross.table.turmas, las = 2, ylab = "Turmas", main = "Quantidade de turmas", col = c("darkblue", "lightblue"), beside = TRUE, bty = "n")
+legend("topleft", legend = levels(as.factor(turmas.raw$`Nível do curso`)), fill = c("darkblue", "lightblue"), box.lty = 0)
+
+# line break
+cat("  \n")
+cat("  \n")
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#nota}
+
+<h1> **Nota do Programa** </h1>
+
+```{r conceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+periodos.raw <- read_excel("../PPGCR Unisuam/Avaliação.xlsx", sheet = "Períodos")
+
+par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white")
+# generate plot of conceitos per year
+barplot(periodos.raw$Nota ~ periodos.raw$Período, xlab = "Período", ylab = "Nota CAPES", col = brewer.pal(n = length(periodos.raw$Período), name = "Set3")[1], ylim = c(0,7))
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#fontes}
+
+<h1> **Fontes dos dados** </h1>
+
+<style>
+.table-hover > tbody > tr:hover { 
+  background-color: #18BC9C;
+}
+</style>
+
+```{r fontes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+# read separate sheets
+file.path <- "../PPGCR Unisuam/Fontes.xlsx"
+tabs <- excel_sheets(file.path)
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", tabs[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  fontes <- read_excel(file.path, sheet = tabs[j], col_types = c("text"))
+  # replace the link by a tag
+  for(i in 1:dim(fontes)[1]){
+    fontes[i,1] <- paste("**", fontes[i,1], "**", sep = "")
+    fontes[i,3] <- paste("[↗️](", fontes[i,3], '){target="_blank"}', sep = "")
+  }
+  # print table
+  print(kable(fontes, align = c("l", rep("c", ncol(fontes)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
+  cat('\n\n<!-- -->\n\n')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+}
+
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">

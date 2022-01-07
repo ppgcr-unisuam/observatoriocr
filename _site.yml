@@ -1,0 +1,192 @@
+---
+title: "Observatório CR"
+name: "observatorio_cr_unisuam"
+output_dir: "docs"
+include:
+  - footer.html
+  - google_translate.html
+  - /Images
+  - /Labs
+  - /Qualis
+  - /Scripts
+  - /SJR
+  - /Softwares
+navbar:
+  search: true
+  left:
+    - text: ""
+      icon: "fa-home"
+      href: index.html
+    - text: "Observatório CR"
+      menu:
+        - text: "Projetos de pesquisa"
+          href: [index.html#projetos]
+        - text: "Trabalhos de conclusão de curso"
+          href: [index.html#tcc]
+        - text: "Notícias"
+          href: [index.html#news]
+        - text: "Projetos de pesquisa"
+          href: [index.html#projetoslinha]
+        - text: "Financiamentos"
+          href: [index.html#financiamentos]
+        - text: "Produção bibliográfica"
+          href: [index.html#producao]
+        - text: "Qualidade da produção"
+          href: [index.html#producao-qualidade]
+        - text: "Formação de pessoal"
+          href: [index.html#pessoal]
+        - text: "Egressos"
+          href: [index.html#egressos]
+        - text: "Discentes"
+          href: [index.html#discentes]
+        - text: "Disciplinas"
+          href: [index.html#disciplinas]
+        - text: "Nota do Programa"
+          href: [index.html#nota]
+        - text: "Fontes de dados"
+          href: [index.html#fontes]
+    - text: "Programa"
+      href: programa.html
+      menu:
+        - text: "Programa"
+          href: [programa.html]
+        - text: "Institucional"
+          href: [programa.html#Institucional]
+        - text: "Apresentação"
+          href: [programa.html#Apresentação]
+        - text: "Breve histórico"
+          href: [programa.html#BreveHistorico]
+        - text: "Área de concentração"
+          href: [programa.html#AC]
+        - text: "Linhas de pesquisa"
+          href: [programa.html#LP]
+        - text: "Projetos de pesquisa"
+          href: [programa.html#PP]
+        - text: "Agendas de pesquisa"
+          href: [programa.html#AP]
+        - text: "Financiadores"
+          href: [programa.html#Financiadores]
+        - text: "Bolsas de estudo"
+          href: [programa.html#Bolsas]
+        - text: "Cursos"
+          href: [programa.html#Cursos]
+        - text: "Estrutura curricular"
+          href: [programa.html#EstruturaCurricular]
+        - text: "Turmas"
+          href: [programa.html#Turmas]
+        - text: "Calendários"
+          href: [programa.html#Calendários]
+        - text: "Infraestrutura"
+          href: [programa.html#Infraestrutura]
+        - text: "Convênios Institucionais"
+          href: [programa.html#Convênios]
+        - text: "Cooperação entre instituições"
+          href: [programa.html#Cooperação]
+        - text: "Downloads"
+          href: [programa.html#Downloads]
+    - text: "Pessoas"
+      href: pessoas.html
+      menu:
+        - text: "Pessoas"
+          href: [pessoas.html]
+        - text: "Secretaria"
+          href: [pessoas.html#Secretaria]
+        - text: "Colegiado"
+          href: [pessoas.html#Colegiado]
+        - text: "Coordenação"
+          href: [pessoas.html#Coordenação]
+        - text: "Docentes"
+          href: [pessoas.html#Docentes]
+        - text: "Pós-doutorandos"
+          href: [pessoas.html#Posdoc]
+        - text: "Discentes"
+          href: [pessoas.html#Discentes]
+        - text: "Egressos"
+          href: [pessoas.html#Egressos]
+        - text: "Grupos de pesquisa"
+          href: [pessoas.html#GruposPesquisa]
+        - text: "Grupos de pesquisa externos"
+          href: [pessoas.html#GruposExternos]
+        - text: "Participantes externos"
+          href: [pessoas.html#Externos]
+    - text: "Produções"
+      href: producoes.html
+      menu:
+        - text: "Produções"
+          href: [producoes.html]
+        - text: "Trabalhos de conclusão"
+          href: [producoes.html#TCC]
+        - text: "Produção bibliográfica"
+          href: [producoes.html#Bibliográfica]
+        - text: "Produção técnica"
+          href: [producoes.html#Técnica]
+    - text: "Destaques"
+      href: destaques.html
+      menu:
+        - text: "Destaques"
+          href: [destaques.html]
+        - text: "Egressos"
+          href: [destaques.html#EgressosDestaque]
+        - text: "Dissertações/Teses"
+          href: [destaques.html#TCCDestaque]
+        - text: "Produções"
+          href: [destaques.html#ProdutosDestaque]
+    - text: "Impacto"
+      href: impacto.html
+      menu:
+        - text: "Impacto"
+          href: [impacto.html]
+        - text: "Educacional"
+          href: [impacto.html#ImpactoEducacional]
+        - text: "Científico"
+          href: [impacto.html#ImpactoCientífico]
+        - text: "Sociocultural"
+          href: [impacto.html#ImpactoSociocultural]
+        - text: "Tecnológico/Econômico"
+          href: [impacto.html#ImpactoTecnológico]
+        - text: "Ações durante a pandemia"
+          href: [impacto.html#AçõesPandemia]
+    - text: "Autoavaliação"
+      href: autoavaliacao.html
+      menu:
+        - text: "Autoavaliação"
+          href: [autoavaliacao.html]
+        - text: "Grupos de trabalho"
+          href: [autoavaliacao.html#GT]
+        - text: "Qualidade das disciplinas"
+          href: [autoavaliacao.html#QualidadeDisciplinas]
+        - text: "Pesquisa do egresso"
+          href: [autoavaliacao.html#PesquisaEgresso]
+    - text: "Galeria"
+      href: galeria.html
+      menu:
+        - text: "Galeria"
+          href: [galeria.html]
+        - text: "Fotos"
+          href: [galeria.html#Fotos]
+        - text: "Videos"
+          href: [galeria.html#Videos]
+    - text: "News"
+      href: news.html
+      menu:
+        - text: "News"
+          href: [news.html]
+
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
+    include:
+      before_body: [google_translate.html]
+      after_body: [footer.html]
+    css: style.css
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    edit: null
+    sharing:
+      facebook: yes
+      twitter: yes
+      google: yes
+      all: ["facebook", "twitter", "google"]
+---

@@ -1,0 +1,1977 @@
+---
+title: Pessoas
+---
+
+<!--script for computer/mobile devices-->
+```{css, echo=FALSE}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body .main-container {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+      }
+    body {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+    }
+      section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+```
+
+<!--script for narrow margins-->
+<style type="text/css">
+div.main-container {
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+  });
+</script>
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
+
+<br>
+
+<!--script for sharing-->
+<p align="right">
+```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+# sorteia participante para relatar no texto
+library(fontawesome)
+
+cat("[")
+fa("twitter-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](https://twitter.com/share?url=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("facebook-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("linkedin", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/)")
+```
+</p>
+
+<br>
+<br>
+<br>
+
+## **Secretaria** {#Secretaria}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+**Endereço**: Rua Dona Isabel, 94, Bonsucesso. Rio de Janeiro, RJ - Brasil CEP 21041-010
+<br>
+**Telefone**: +55 (21) 3882-9797, ramal 2012
+<br>
+**E-mail**: secretariacr@unisuam.edu.br
+<br>
+**Horário de atendimento**: 8h00 às 17h00
+<br>
+
+<div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20Dona%20Isabel,%2094,%20Bonsucesso.%20Rio%20de%20Janeiro,%20RJ%20-%20Brasil%20CEP%2021041-010&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://getasearch.com">getasearch</a><br><style>.mapouter{position:relative;text-align:right;height:300px;width:600px;}</style><a href="https://www.embedgooglemap.net">google maps html</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:600px;}</style></div></div>
+
+*Fonte*: https://google-map-generator.com
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Colegiado** {#Colegiado}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r docentes-atual-perfil, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
+docentes <- docentes.raw[id1 | id2, ]
+# remove duplicates between docs and postdocs
+docentes <- docentes[!duplicated(docentes$Nome),]
+
+ids <- seq(1:dim(docentes)[1])
+docentes <- docentes[order(docentes$Nome), ]
+
+for(i in 1:dim(docentes)[1]){
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", paste(docentes$Nome[i], sep = ""), "**", "\n", sep = "")
+  cat('<center>\n')
+  if(!is.na(docentes$ResearcherID[i])){
+    cat(paste0('<iframe src="', docentes$ResearcherID[i], '" style="width:100%; height:600px; border:0;"></iframe>'))
+  } else {
+    cat("<br>No data available<br>")
+  }
+  cat('\n</center>')
+  cat('\n\n<!-- -->\n\n')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+}
+
+```
+
+## **Coordenação** {.tabset #Coordenação}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Atual**
+
+```{r coordenadores-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+if(length(ids) != 0) {docentes <- docentes[ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2020-2017**
+
+```{r coordenadores-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+if(length(ids) != 0) {docentes <- docentes[ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2016-2013**
+
+```{r coordenadores-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento >= 2013
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+if(length(ids) != 0) {docentes <- docentes[ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2010-2012**
+
+```{r coordenadores-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+if(length(ids) != 0) {docentes <- docentes[ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Docentes** {.tabset #Docentes}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Síntese** {.tabset}
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Atual** {.tabset}
+
+#### **Figura 1**
+
+```{r docentes-atual-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+# print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# line break
+# cat("  \n")
+# cat("  \n")
+
+# generate plot of docentes per information
+layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+
+total.categoria <- table(docentes$Categoria)
+pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.regime <- table(docentes$`Regime de trabalho`)
+pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.dedicação <- table(docentes$Dedicação)
+pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.graduação <- table(docentes$Graduação)
+pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Tabela 1**
+
+```{r docentes-atual-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= 2021
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# # line break
+# cat("  \n")
+# cat("  \n")
+# 
+# # generate plot of docentes per information
+# layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+# par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+# 
+# total.categoria <- table(docentes$Categoria)
+# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.regime <- table(docentes$`Regime de trabalho`)
+# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.dedicação <- table(docentes$Dedicação)
+# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.graduação <- table(docentes$Graduação)
+# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2020-2017** {.tabset}
+
+#### **Figura 2**
+
+```{r docentes-2020-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+# print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# line break
+# cat("  \n")
+# cat("  \n")
+
+# generate plot of docentes per information
+layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+
+total.categoria <- table(docentes$Categoria)
+pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.regime <- table(docentes$`Regime de trabalho`)
+pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.dedicação <- table(docentes$Dedicação)
+pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.graduação <- table(docentes$Graduação)
+pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Tabela 2**
+
+```{r docentes-2020-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# # line break
+# cat("  \n")
+# cat("  \n")
+# 
+# # generate plot of docentes per information
+# layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+# par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+# 
+# total.categoria <- table(docentes$Categoria)
+# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.regime <- table(docentes$`Regime de trabalho`)
+# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.dedicação <- table(docentes$Dedicação)
+# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.graduação <- table(docentes$Graduação)
+# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2016-2013** {.tabset}
+
+#### **Figura 3**
+
+```{r docentes-2016-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento >= 2013
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+# print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# line break
+# cat("  \n")
+# cat("  \n")
+
+# generate plot of docentes per information
+layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+
+total.categoria <- table(docentes$Categoria)
+pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.regime <- table(docentes$`Regime de trabalho`)
+pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.dedicação <- table(docentes$Dedicação)
+pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.graduação <- table(docentes$Graduação)
+pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Tabela 3**
+
+```{r docentes-2016-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento >= 2013
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# # line break
+# cat("  \n")
+# cat("  \n")
+# 
+# # generate plot of docentes per information
+# layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+# par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+# 
+# total.categoria <- table(docentes$Categoria)
+# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.regime <- table(docentes$`Regime de trabalho`)
+# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.dedicação <- table(docentes$Dedicação)
+# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.graduação <- table(docentes$Graduação)
+# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2012-2010** {.tabset}
+
+#### **Figura 4**
+
+```{r docentes-2012-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+# print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# line break
+# cat("  \n")
+# cat("  \n")
+
+# generate plot of docentes per information
+layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+
+total.categoria <- table(docentes$Categoria)
+pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.regime <- table(docentes$`Regime de trabalho`)
+pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.dedicação <- table(docentes$Dedicação)
+pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+total.graduação <- table(docentes$Graduação)
+pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+
+title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Tabela 4**
+
+```{r docentes-2012-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[-grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) != 0) {docentes <- docentes[new.ids, ]}
+docentes <- docentes[order(docentes$Nome), ]
+
+table.2 <- matrix(NA, nrow=0, ncol = 7)
+for(i in 1:dim(docentes)[1]){
+  table <- cbind(
+    docentes$Bandeira[i],
+    paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+    paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+    ifelse(!is.na(docentes$Lattes[i]),
+      paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+      docentes$Lattes[i]),
+    ifelse(!is.na(docentes$ORCID[i]),
+      paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+      docentes$ORCID[i]),
+    ifelse(!is.na(docentes$Scopus[i]),
+      paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+      docentes$Scopus[i]),
+    ifelse(!is.na(docentes$ResearcherID[i]),
+      paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+      docentes$ResearcherID[i])
+  )
+  table.2 <- rbind(table.2, table)
+}
+colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+
+# print tables
+print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+# # line break
+# cat("  \n")
+# cat("  \n")
+# 
+# # generate plot of docentes per information
+# layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+# par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+# 
+# total.categoria <- table(docentes$Categoria)
+# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.regime <- table(docentes$`Regime de trabalho`)
+# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.dedicação <- table(docentes$Dedicação)
+# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# total.graduação <- table(docentes$Graduação)
+# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# 
+# title("Descrição do Corpo Docente", outer = TRUE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Pós-doutorandos** {.tabset #Posdoc}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Síntese** {.tabset}
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Atual**
+
+```{r pos-doc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) == 0) {print("*Sem dados para exibir*")}
+if(length(new.ids) != 0) {
+  docentes <- docentes[new.ids, ]
+  docentes <- docentes[order(docentes$Nome), ]
+  
+  table.2 <- matrix(NA, nrow=0, ncol = 7)
+  for(i in 1:dim(docentes)[1]){
+    table <- cbind(
+      docentes$Bandeira[i],
+      paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+      paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+      ifelse(!is.na(docentes$Lattes[i]),
+             paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+             docentes$Lattes[i]),
+      ifelse(!is.na(docentes$ORCID[i]),
+             paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+             docentes$ORCID[i]),
+      ifelse(!is.na(docentes$Scopus[i]),
+             paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+             docentes$Scopus[i]),
+      ifelse(!is.na(docentes$ResearcherID[i]),
+             paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+             docentes$ResearcherID[i])
+    )
+    table.2 <- rbind(table.2, table)
+  }
+  colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+  
+  # print tables
+  print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  # generate plot of docentes per information
+  layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+  par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+  
+  total.categoria <- table(docentes$Categoria)
+  pie(total.categoria, labels = names(total.categoria), init.angle = 90, main = names(docentes$Categoria))
+  
+  total.regime <- table(docentes$`Regime de trabalho`)
+  pie(total.regime, labels = names(total.regime), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+  
+  total.dedicação <- table(docentes$Dedicação)
+  pie(total.dedicação, labels = names(total.dedicação), init.angle = 90, main = names(docentes$Dedicação))
+  
+  total.graduação <- table(docentes$Graduação)
+  pie(total.graduação, labels = names(total.graduação), init.angle = 90, main = names(docentes$Graduação))
+  
+  title("Descrição do Corpo Docente", outer = TRUE)
+}
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2020-2017**
+
+```{r pos-doc-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) == 0) {print("*Sem dados para exibir*")}
+if(length(new.ids) != 0) {
+  docentes <- docentes[new.ids, ]
+  docentes <- docentes[order(docentes$Nome), ]
+  
+  table.2 <- matrix(NA, nrow=0, ncol = 7)
+  for(i in 1:dim(docentes)[1]){
+    table <- cbind(
+      docentes$Bandeira[i],
+      paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+      paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+      ifelse(!is.na(docentes$Lattes[i]),
+             paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+             docentes$Lattes[i]),
+      ifelse(!is.na(docentes$ORCID[i]),
+             paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+             docentes$ORCID[i]),
+      ifelse(!is.na(docentes$Scopus[i]),
+             paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+             docentes$Scopus[i]),
+      ifelse(!is.na(docentes$ResearcherID[i]),
+             paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+             docentes$ResearcherID[i])
+    )
+    table.2 <- rbind(table.2, table)
+  }
+  colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+  
+  # print tables
+  print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  # generate plot of docentes per information
+  layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+  par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+  
+  total.categoria <- table(docentes$Categoria)
+  pie(total.categoria, labels = names(total.categoria), init.angle = 90, main = names(docentes$Categoria))
+  
+  total.regime <- table(docentes$`Regime de trabalho`)
+  pie(total.regime, labels = names(total.regime), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+  
+  total.dedicação <- table(docentes$Dedicação)
+  pie(total.dedicação, labels = names(total.dedicação), init.angle = 90, main = names(docentes$Dedicação))
+  
+  total.graduação <- table(docentes$Graduação)
+  pie(total.graduação, labels = names(total.graduação), init.angle = 90, main = names(docentes$Graduação))
+  
+  title("Descrição do Corpo Docente", outer = TRUE)
+}
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2016-2013**
+
+```{r pos-doc-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento >= 2013
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) == 0) {print("*Sem dados para exibir*")}
+if(length(new.ids) != 0) {
+  docentes <- docentes[new.ids, ]
+  docentes <- docentes[order(docentes$Nome), ]
+  
+  table.2 <- matrix(NA, nrow=0, ncol = 7)
+  for(i in 1:dim(docentes)[1]){
+    table <- cbind(
+      docentes$Bandeira[i],
+      paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+      paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+      ifelse(!is.na(docentes$Lattes[i]),
+             paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+             docentes$Lattes[i]),
+      ifelse(!is.na(docentes$ORCID[i]),
+             paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+             docentes$ORCID[i]),
+      ifelse(!is.na(docentes$Scopus[i]),
+             paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+             docentes$Scopus[i]),
+      ifelse(!is.na(docentes$ResearcherID[i]),
+             paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+             docentes$ResearcherID[i])
+    )
+    table.2 <- rbind(table.2, table)
+  }
+  colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+  
+  # print tables
+  print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  # generate plot of docentes per information
+  layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+  par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+  
+  total.categoria <- table(docentes$Categoria)
+  pie(total.categoria, labels = names(total.categoria), init.angle = 90, main = names(docentes$Categoria))
+  
+  total.regime <- table(docentes$`Regime de trabalho`)
+  pie(total.regime, labels = names(total.regime), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+  
+  total.dedicação <- table(docentes$Dedicação)
+  pie(total.dedicação, labels = names(total.dedicação), init.angle = 90, main = names(docentes$Dedicação))
+  
+  total.graduação <- table(docentes$Graduação)
+  pie(total.graduação, labels = names(total.graduação), init.angle = 90, main = names(docentes$Graduação))
+  
+  title("Descrição do Corpo Docente", outer = TRUE)
+}
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2010-2012**
+
+```{r pos-doc-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
+id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
+docentes <- docentes.raw[id1 | id2, ]
+
+ids <- seq(1:dim(docentes)[1])
+new.ids <- ids[grep("Pós-Doc", docentes$Categoria)]
+if(length(new.ids) == 0) {cat("*Sem dados para exibir*")}
+if(length(new.ids) != 0) {
+  docentes <- docentes[new.ids, ]
+  docentes <- docentes[order(docentes$Nome), ]
+  
+  table.2 <- matrix(NA, nrow=0, ncol = 7)
+  for(i in 1:dim(docentes)[1]){
+    table <- cbind(
+      docentes$Bandeira[i],
+      paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
+      paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
+      ifelse(!is.na(docentes$Lattes[i]),
+             paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
+             docentes$Lattes[i]),
+      ifelse(!is.na(docentes$ORCID[i]),
+             paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
+             docentes$ORCID[i]),
+      ifelse(!is.na(docentes$Scopus[i]),
+             paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
+             docentes$Scopus[i]),
+      ifelse(!is.na(docentes$ResearcherID[i]),
+             paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
+             docentes$ResearcherID[i])
+    )
+    table.2 <- rbind(table.2, table)
+  }
+  colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+  
+  # print tables
+  print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  # generate plot of docentes per information
+  layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
+  par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+  
+  total.categoria <- table(docentes$Categoria)
+  pie(total.categoria, labels = names(total.categoria), init.angle = 90, main = names(docentes$Categoria))
+  
+  total.regime <- table(docentes$`Regime de trabalho`)
+  pie(total.regime, labels = names(total.regime), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+  
+  total.dedicação <- table(docentes$Dedicação)
+  pie(total.dedicação, labels = names(total.dedicação), init.angle = 90, main = names(docentes$Dedicação))
+  
+  total.graduação <- table(docentes$Graduação)
+  pie(total.graduação, labels = names(total.graduação), init.angle = 90, main = names(docentes$Graduação))
+  
+  title("Descrição do Corpo Docente", outer = TRUE)
+}
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Discentes** {.tabset #Discentes}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Síntese** {.tabset}
+
+#### **Por Orientador**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Doutorado**
+
+```{r historico-discentes-dsc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" | discentes.raw$`Status SAGA` == "Pré-inscrito" , ]
+
+discentes <- discentes %>% select("Ano Matrícula", "Curso", "Nome", "Orientador")
+doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Matrícula", "Nome", "Orientador")
+if(dim(doutores)[1] != 0){
+  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+  ids <- order(doutores$`Ano Matrícula`, decreasing = TRUE)
+  table <- doutores[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+}
+
+```
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Mestrado**
+
+```{r historico-discentes-msc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" | discentes.raw$`Status SAGA` == "Pré-inscrito" , ]
+
+discentes <- discentes %>% select("Ano Matrícula", "Curso", "Nome", "Orientador")
+mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Matrícula", "Nome", "Orientador")
+if(dim(mestres)[1] != 0){
+  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+  ids <- order(mestres$`Ano Matrícula`, decreasing = TRUE)
+  table <- mestres[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+}
+
+```
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Iniciação científica**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Egressos** {.tabset #Egressos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Síntese** {.tabset}
+
+```{r egressos-periodo, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(geobr)
+library(ggplot2)
+library(sf)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(Rmisc)
+library(cowplot)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+mestres <- discentes[discentes$Curso == "Mestrado", ]
+doutores <- discentes[discentes$Curso == "Doutorado", ]
+
+states <- read_state(year=2019, showProgress = FALSE)
+states$discentes <- rep(NA, dim(states)[1])
+UF <- as.data.frame(table(discentes$UF))
+for (i in 1:length(UF$Var1)){
+    states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+}
+
+# plot Brazil states per period
+periodos <- rbind(cbind(2010, 2012), c(2013, 2016), c(2017, 2020))
+colnames(periodos) <- c("Início", "Fim")
+rownames(periodos) <- c("Trienal", "Quadrienal", "Quadrienal")
+
+par(oma=c(0, 0, 0, 0), mar = c(5.1, 4.1, 4.1, 2.1), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+layout(matrix(seq(1:dim(periodos)[1]), ncol = dim(periodos)[1], byrow = TRUE))
+maps <- list()
+for(j in 1:dim(periodos)[1]){
+  discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+  discentes <- discentes[discentes$`Ano Titulação` >= periodos[j,1] & discentes$`Ano Titulação` <= periodos[j,2], ]
+  states$discentes <- rep(NA, dim(states)[1])
+  UF <- as.data.frame(table(discentes$UF))
+  for (i in 1:length(UF$Var1)){
+    states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+  }
+  maps[[j]] <- ggplot() +
+    geom_sf(data=states, aes(fill=discentes), color= NA, size=.15) +
+    labs(subtitle=paste(periodos[j,1], "-", periodos[j,2], sep = ""), size=12) +
+    scale_fill_distiller(palette = "Spectral", name="Egressos, n", limits = c(min(0, UF$Freq), max(UF$Freq)), na.value = "grey") +
+    guides(fill=FALSE) + 
+    theme_minimal()
+}
+multiplot(plotlist = maps, cols = dim(periodos)[1])
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Atual** {.tabset}
+
+#### **Doutores**
+
+```{r historico-egressos-dsc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2021 & discentes.raw$`Ano Titulação` <= 2024, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(doutores)[1] != 0){
+  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+  ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
+  table <- doutores[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Mestres**
+
+```{r historico-egressos-msc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2021 & discentes.raw$`Ano Titulação` <= 2024, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(mestres)[1] != 0){
+  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+  ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
+  table <- mestres[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2020-2017** {.tabset}
+
+#### **Doutores**
+
+```{r historico-egressos-dsc-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2017 & discentes.raw$`Ano Titulação` <= 2020, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(doutores)[1] != 0){
+  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+  ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
+  table <- doutores[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Mestres**
+
+```{r historico-egressos-msc-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2017 & discentes.raw$`Ano Titulação` <= 2020, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(mestres)[1] != 0){
+  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+  ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
+  table <- mestres[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2016-2013** {.tabset}
+
+#### **Doutores**
+
+```{r historico-egressos-dsc-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2013 & discentes.raw$`Ano Titulação` <= 2016, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(doutores)[1] != 0){
+  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+  ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
+  table <- doutores[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Mestres**
+
+```{r historico-egressos-msc-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2013 & discentes.raw$`Ano Titulação` <= 2016, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(mestres)[1] != 0){
+  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+  ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
+  table <- mestres[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **2012-2010** {.tabset}
+
+#### **Doutores**
+
+```{r historico-egressos-dsc-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2010 & discentes.raw$`Ano Titulação` <= 2012, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(doutores)[1] != 0){
+  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+  ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
+  table <- doutores[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Mestres**
+
+```{r historico-egressos-msc-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(RColorBrewer)
+
+library(gtsummary)
+library(lemon)
+
+library(stringr)
+library(DT)
+
+discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2010 & discentes.raw$`Ano Titulação` <= 2012, ]
+
+discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
+if(dim(mestres)[1] != 0){
+  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+  ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
+  table <- mestres[ids, ]
+  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+  } else {
+    cat("*Sem dados para exibir*")
+  }
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Grupos de pesquisa** {.tabset #GruposPesquisa}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Descrição**
+
+O PPGCR possui 4 grupos de pesquisa cadastrados no Diretório de Grupos de Pesquisa do Conselho Nacional de Pesquisa (DGP-CNPq). Os grupos de pesquisa são organizados por especialidades, sendo assim transversais às LP, permitindo que docentes e alunos de diferentes LP possam interagir transdisciplinarmente nas Ciências da Reabilitação.
+
+<br>
+
+```{r grupos-de-pesquisa-ativos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+grupos.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
+
+# print tables
+print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Membros**
+
+```{r grupos-de-pesquisa-membros, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(magrittr)
+library(readxl)
+
+membros.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "DGP")
+
+# print tables
+print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Grupos ativos** {.tabset}
+
+#### **Neuromusculoesquelética**
+
+<iframe src="http://dgp.cnpq.br/dgp/espelhogrupo/529898" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Esporte e Esporte Adaptado**
+
+<iframe src="http://dgp.cnpq.br/dgp/espelhogrupo/216803" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Cardiorrespiratória e Terapia Intensiva**
+
+<iframe src="http://dgp.cnpq.br/dgp/espelhogrupo/503897" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Inovação e Tecnologia Biomédica**
+
+<iframe src="http://dgp.cnpq.br/dgp/espelhogrupo/532778" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Grupos inativos** {.tabset}
+
+#### **Fisioterapia**
+
+<iframe src="http://dgp.cnpq.br/dgp/espelhogrupo/6275564297217717" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Grupos de pesquisa externos** {.tabset #GruposExternos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Pesquisa em Dor**
+
+<iframe src="http://pesquisaemdor.com.br" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Participantes externos** {.tabset #Externos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Síntese**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Nacionais**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Internacionais**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Inativos**
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

@@ -1,0 +1,301 @@
+---
+title: Impacto
+---
+
+<!--script for computer/mobile devices-->
+```{css, echo=FALSE}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body .main-container {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+      }
+    body {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+    }
+      section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+```
+
+<!--script for narrow margins-->
+<style type="text/css">
+div.main-container {
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+  });
+</script>
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
+
+<br>
+
+<!--script for sharing-->
+<p align="right">
+```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+# sorteia participante para relatar no texto
+library(fontawesome)
+
+cat("[")
+fa("twitter-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](https://twitter.com/share?url=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("facebook-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("linkedin", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/)")
+```
+</p>
+
+<br>
+<br>
+<br>
+
+## **Impacto educacional** {#ImpactoEducacional}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Organização de eventos** {.tabset}
+
+<br>
+
+#### **Semana de Pesquisa, Extensão e Inovação** {.tabset}
+
+##### **2021**
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://hotsite.unisuam.edu.br/xviiispe/index.php" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sBn1gOF8Atg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+
+#### **Seminários**
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oCiy3mVQzwc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Simpósio Paradesportivo Carioca**
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1O_S0kEW9Rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/i_PZ-Bgy1dE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LCwWYpWo6fs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cS0fTOzBtPg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9NqqtmxrDzs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/g3UPrMRnuWw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Impacto científico** {#ImpactoCientífico}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<br>
+
+### **Periódicos institucionais**
+
+<iframe src="https://revistas.unisuam.edu.br" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Comitê de ética em pesquisa** {.tabset}
+
+<br>
+
+#### **Resoluções e normativas CNS**
+
+<iframe src="http://conselho.saude.gov.br/o-que-e-rss/92-comissoes/conep/normativas-conep/642-lista-de-resolucoes-conep" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Plataforma Brasil CONEP**
+
+<iframe src="https://plataformabrasil.saude.gov.br/login.jsf" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **CEP-UNISUAM** {#CEP}
+
+<p align="center">
+[<img align="center" src="Images/CEP-UNISUAM.png">](https://www.unisuam.edu.br/pesquisa-e-inovacao/){target="_blank"}
+</p>
+
+<br>
+
+```{r docs-cep, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(kableExtra)
+library(magrittr)
+library(readxl)
+library(DT)
+
+# read separate sheets
+turmas.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Documentos", col_types = c("text"))
+
+Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
+colnames(Abrir) <- "Abrir"
+# add hyperlinks
+for(i in 1:dim(turmas.raw)[1]){
+  if(!is.na(turmas.raw[i,3])){
+    Abrir[i] <- paste0('<a href="', turmas.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>", sep = "")
+  }
+}
+
+turmas <- cbind(turmas.raw[,-3], Abrir)
+turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
+
+# print table
+datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Impacto sociocultural** {#ImpactoSociocultural}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Impacto tecnológico/econômico** {#ImpactoTecnológico}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Ações durante a pandemia de COVID-19** {#AçõesPandemia}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+*Em construção!*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

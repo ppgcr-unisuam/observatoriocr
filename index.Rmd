@@ -650,7 +650,7 @@ cat('</div>')
 
 <h1> [**Discentes**](pessoas.html#Discentes) </h1>
 
-```{r discentes-região, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+```{r discentes-regiao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages

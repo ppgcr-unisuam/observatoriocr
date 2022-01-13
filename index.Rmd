@@ -698,7 +698,7 @@ plot(g2)
 
 ## {#rede}
 
-<h1> [**Rede de projetos de pesquisa**](pessoas.html#Externos) </h1>
+<h1> [**Rede de pesquisa**](pessoas.html) </h1>
 
 ```{r rede-pesquisa, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")

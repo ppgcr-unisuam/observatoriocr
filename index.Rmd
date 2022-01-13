@@ -718,66 +718,54 @@ for(i in 1:length(files.to.read)){
   membros.raw <- rbind(membros.raw, read_excel(files.to.read[i], sheet = sheet))
 }
 
-# create adjacency matrix
+# create edge matrix
 proj.id <- as.factor(membros.raw$`Identificador do Projeto de Pesquisa`)
 n.proj <- nlevels(proj.id)
 membros <- sort(unique(membros.raw$`Nome do Membro do Projeto`))
 n.membros <- length(membros)
 categ <- as.factor(membros.raw$`Categoria do Membro do Projeto`)
-adj.matrix <- matrix(0, nrow = n.membros, ncol = n.membros)
-colnames(adj.matrix) <- membros
-rownames(adj.matrix) <- membros
+n.categ <- nlevels(categ)
+edge.matrix <- matrix(NA, nrow = 0, ncol = 2)
+colnames(edge.matrix) <- c("from", "to")
 
-# loop across all projects to populate the adjacency matrix
+# loop across all projects to populate the edge matrix
 for(i in 1:n.proj){
-  # get the project members
-  membros.proj <- unique(membros.raw$`Nome do Membro do Projeto`[proj.id == proj.id[i]])
-  # add a vote to the adjacency matrix
+  # get the members by project id
+  membros.proj <- unique(membros.raw$`Nome do Membro do Projeto`[proj.id == levels(proj.id)[i]])
+  # only vote for upper diagonal elements
   for(n in 1:length(membros.proj)){
-    for(m in 1:length(membros.proj)){
-      row.n <- match(membros.proj[n], membros)
-      col.m <- match(membros.proj[m], membros)
-      # edge list
-      # print(paste(membros[row.n], "->", membros[col.m]))
-      adj.matrix[row.n, col.m] <- adj.matrix[row.n, col.m] + 1
-      adj.matrix[col.m, row.n] <- adj.matrix[row.n, col.m]
+    for(m in n:length(membros.proj)){
+      if(n != m){
+      # find members
+        row.n <- match(membros.proj[n], membros)
+        col.m <- match(membros.proj[m], membros)
+        new.edge <- cbind(membros[row.n], membros[col.m])
+      # add edges
+        edge.matrix <- rbind(edge.matrix, new.edge)
+      }
     }
   }
 }
 
 # build the graph object
-network <- graph_from_adjacency_matrix(adj.matrix, mode = "undirected", weighted = NULL, diag = FALSE)
-
-# plot it
-par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white")
-
-# remove isolated nodes
-Isolated <- which(degree(network) == 0)
-G2 <- delete.vertices(network, Isolated)
-LO <- layout_with_fr(network)
-LO2 <- LO[-Isolated, ]
-deg <- degree(G2, mode = "all")
-
-colrs <- brewer.pal(n = length(unique(categ)), name = "Set3")
-
-# G2 <- network
+network <- graph_from_edgelist(edge.matrix, directed = FALSE)
 
 # set member category and color
-for (i in 1:length(V(G2))){
-  categ.id <- match(V(G2)[[i]]$name, membros.raw$`Nome do Membro do Projeto`)
-  V(G2)[[i]]$categ <- membros.raw$`Categoria do Membro do Projeto`[categ.id]
-  col.id <- match(V(G2)[[i]]$categ, levels(categ))
-  V(G2)[i]$color <- colrs[col.id]
-  V(G2)[i]$frame.color <- "white"
+colrs <- brewer.pal(n = n.categ, name = "Set3")
+for (i in 1:length(V(network))){
+  categ.id <- match(V(network)[[i]]$name, membros.raw$`Nome do Membro do Projeto`)
+  V(network)[[i]]$categ <- membros.raw$`Categoria do Membro do Projeto`[categ.id]
+  col.id <- match(V(network)[[i]]$categ, levels(categ))
+  V(network)[i]$color <- colrs[col.id]
 }
 
-# color the edges of the graph based on their source node color
-edge.start <- ends(G2, es=E(G2), names=F)[,1]
-edge.col <- V(G2)$color[edge.start]
+# plot it
+par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white", mfrow=c(1,1))
 
-plot(G2, layout = LO2, margin = c(0.1,0,0,0), directed = FALSE, arrow.mode = 0, vertex.label = NA, vertex.frame.color = "darkgrey", vertex.size = log(deg)*0.7, edge.color = edge.col, edge.lty = "solid", edge.size = 1, edge.curved = .2)
+plot(network, directed = FALSE, arrow.mode = 0, vertex.label = NA, vertex.frame.color = "darkgrey", vertex.size = log(degree(network, mode="all"))*1.2, edge.color = "lightgrey", edge.lty = "solid", edge.size = edge.betweenness(network), edge.curved = .2)
 
-legend("bottom", legend = levels(categ), pch = 19, col = colrs, text.col = "white", bty = "n", horiz = TRUE, cex = 0.8, x.intersp = 0.2)
+legend("bottomleft", legend = levels(categ), pch = 19, col = colrs, text.col = "white", bty = "n", horiz = FALSE, cex = 0.8)
+
 ```
 
 <br>

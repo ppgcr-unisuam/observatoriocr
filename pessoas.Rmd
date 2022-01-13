@@ -139,9 +139,9 @@ for(i in 1:dim(docentes)[1]){
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Atual**
+### **2024-2021**
 
-```{r coordenadores-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r coordenadores-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
@@ -362,11 +362,11 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 <br>
 
-### **Atual** {.tabset}
+### **2024-2021** {.tabset}
 
 #### **Figura 1**
 
-```{r docentes-atual-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r docentes-2024-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
@@ -446,7 +446,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 #### **Tabela 1**
 
-```{r docentes-atual-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r docentes-2024-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
@@ -1023,9 +1023,9 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 <br>
 
-### **Atual**
+### **2024-2021**
 
-```{r pos-doc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r pos-doc-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
@@ -1511,11 +1511,11 @@ multiplot(plotlist = maps, cols = dim(periodos)[1])
 
 <br>
 
-### **Atual** {.tabset}
+### **2024-2021** {.tabset}
 
 #### **Doutores**
 
-```{r historico-egressos-dsc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r historico-egressos-dsc-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
@@ -1554,7 +1554,7 @@ if(dim(doutores)[1] != 0){
 
 #### **Mestres**
 
-```{r historico-egressos-msc-atual, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r historico-egressos-msc-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages

@@ -71,43 +71,14 @@ h2 {
 
 <center>
 [<img align="center" src="Images/coruja.png">](https://www.unisuam.edu.br){target="_blank"}
-<p style = "font-size:1.25em">
+<p style = "font-size:1.5em">
+<br>
 <br>
 O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ciências da Reabilitação** do [Centro Universitário Augusto Motta](http://www.unisuam.edu.br) que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
 </p>
 
 </center>
 
-<br>
-
-<!--script for printing landing page buttons-->
-<div style="text-align: center">
-  <!-- Programa -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="programa.html" title="Programa" target="_self" class="btn"><i class="fa fa-university fa-solid fa-2x"></i>&nbsp;&nbsp;Programa</a>
-   <!-- Pessoas -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="pessoas.html" title="Pessoas" target="_self" class="btn"><i class="fa fa-user-graduate fa-solid fa-2x"></i>&nbsp;&nbsp;Pessoas</a>
-  <!-- Produções --> 
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="producoes.html" title="Produções" target="_self" class="btn"><i class="fa fa-book fa-solid fa-2x"></i>&nbsp;&nbsp;Produções</a>
-</div>
-
-<div style="text-align: center">
-  <!-- Destaques -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="destaques.html" title="Destaques" target="_self" class="btn"><i class="fa fa-trophy fa-solid fa-2x"></i>&nbsp;&nbsp;Destaques</a>
-   <!-- Impacto -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="impacto.html" title="Impacto" target="_self" class="btn"><i class="fa fa-users fa-solid fa-2x"></i>&nbsp;&nbsp;Impacto</a>
-  <!-- Autoavaliaçào --> 
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="autoavaliacao.html" title="Autoavaliação" target="_self" class="btn"><i class="fa fa-clipboard-check fa-solid fa-2x"></i>&nbsp;&nbsp;Autoavaliação</a>
-</div>
-
-<div style="text-align: center">
-  <!-- Galeria -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="galeria.html" title="Galeria" target="_self" class="btn"><i class="fa fa-images fa-solid fa-2x"></i>&nbsp;&nbsp;Galeria</a>
-   <!-- News -->
-  <a style="background-color: #2C3E50; border-radius: 1.00em; margin:0.3125em; font-size:1.25em;" role="button" href="news.html" title="News" target="_self" class="btn"><i class="fa fa-newspaper-o fa-solid fa-2x"></i>&nbsp;&nbsp;News</a>
-</div>
-
-<br>
-<br>
 <br>
 
 <hr style="height:2px;border-width:0;color:white;background-color:white">
@@ -717,6 +688,96 @@ g2 <- ggdraw(g) +
 
 plot(g2)
 
+```
+
+<br>
+
+<hr style="height:2px;border-width:0;color:white;background-color:white">
+
+<br>
+
+## {#rede}
+
+<h1> [**Rede de projetos de pesquisa**](pessoas.html#Externos) </h1>
+
+```{r rede-pesquisa, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read packages
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(igraph)
+library(RColorBrewer)
+
+# read data and row-bind all Sucupira XLSX files
+sheet <- "Projetos - Membros"
+membros.raw <- c()
+files.to.read <- list.files("../PPGCR Unisuam/Sucupira/", pattern = "xlsx", full.names = TRUE)
+for(i in 1:length(files.to.read)){
+  membros.raw <- rbind(membros.raw, read_excel(files.to.read[i], sheet = sheet))
+}
+
+# create adjacency matrix
+proj.id <- as.factor(membros.raw$`Identificador do Projeto de Pesquisa`)
+n.proj <- nlevels(proj.id)
+membros <- sort(unique(membros.raw$`Nome do Membro do Projeto`))
+n.membros <- length(membros)
+categ <- as.factor(membros.raw$`Categoria do Membro do Projeto`)
+adj.matrix <- matrix(0, nrow = n.membros, ncol = n.membros)
+colnames(adj.matrix) <- membros
+rownames(adj.matrix) <- membros
+
+# loop across all projects to populate the adjacency matrix
+for(i in 1:n.proj){
+  # get the project members
+  membros.proj <- unique(membros.raw$`Nome do Membro do Projeto`[proj.id == proj.id[i]])
+  # add a vote to the adjacency matrix
+  for(n in 1:length(membros.proj)){
+    for(m in 1:length(membros.proj)){
+      row.n <- match(membros.proj[n], membros)
+      col.m <- match(membros.proj[m], membros)
+      # edge list
+      # print(paste(membros[row.n], "->", membros[col.m]))
+      adj.matrix[row.n, col.m] <- adj.matrix[row.n, col.m] + 1
+      adj.matrix[col.m, row.n] <- adj.matrix[row.n, col.m]
+    }
+  }
+}
+
+# build the graph object
+network <- graph_from_adjacency_matrix(adj.matrix, mode = "undirected", weighted = NULL, diag = FALSE)
+
+# plot it
+par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white")
+
+# remove isolated nodes
+Isolated <- which(degree(network) == 0)
+G2 <- delete.vertices(network, Isolated)
+LO <- layout_with_fr(network)
+LO2 <- LO[-Isolated, ]
+deg <- degree(G2, mode = "all")
+
+colrs <- brewer.pal(n = length(unique(categ)), name = "Set3")
+
+# G2 <- network
+
+# set member category and color
+for (i in 1:length(V(G2))){
+  categ.id <- match(V(G2)[[i]]$name, membros.raw$`Nome do Membro do Projeto`)
+  V(G2)[[i]]$categ <- membros.raw$`Categoria do Membro do Projeto`[categ.id]
+  col.id <- match(V(G2)[[i]]$categ, levels(categ))
+  V(G2)[i]$color <- colrs[col.id]
+  V(G2)[i]$frame.color <- "white"
+}
+
+# color the edges of the graph based on their source node color
+edge.start <- ends(G2, es=E(G2), names=F)[,1]
+edge.col <- V(G2)$color[edge.start]
+
+plot(G2, layout = LO2, margin = c(0.1,0,0,0), directed = FALSE, arrow.mode = 0, vertex.label = NA, vertex.frame.color = "darkgrey", vertex.size = log(deg)*0.7, edge.color = edge.col, edge.lty = "solid", edge.size = 1, edge.curved = .2)
+
+legend("bottom", legend = levels(categ), pch = 19, col = colrs, text.col = "white", bty = "n", horiz = TRUE, cex = 0.8, x.intersp = 0.2)
 ```
 
 <br>

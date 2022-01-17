@@ -72,7 +72,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 
-## **Impacto educacional** {#ImpactoEducacional}
+## **Impacto educacional** {#impacto-educacional}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -193,7 +193,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Impacto científico** {#ImpactoCientífico}
+## **Impacto científico** {#impacto-cientifico}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -269,7 +269,7 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 <br>
 
-## **Impacto sociocultural** {#ImpactoSociocultural}
+## **Impacto sociocultural** {#impacto-sociocultural}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -280,7 +280,7 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 <br>
 
-## **Impacto tecnológico/econômico** {#ImpactoTecnológico}
+## **Impacto tecnológico/econômico** {#impacto-tecnologico}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -291,7 +291,7 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 <br>
 
-## **Ações durante a pandemia de COVID-19** {#AçõesPandemia}
+## **Ações durante a pandemia de COVID-19** {#acoes-pandemia}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

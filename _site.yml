@@ -1,6 +1,7 @@
 ---
 title: "Observatório CR"
 name: "observatorio_cr_unisuam"
+author: "Arthur de Sá Ferreira"
 output_dir: "docs"
 include:
   - footer.html
@@ -53,64 +54,64 @@ navbar:
         - text: "Programa"
           href: [programa.html]
         - text: "Institucional"
-          href: [programa.html#Institucional]
+          href: [programa.html#institucional]
         - text: "Apresentação"
-          href: [programa.html#Apresentação]
+          href: [programa.html#apresentacao]
         - text: "Breve histórico"
-          href: [programa.html#BreveHistorico]
+          href: [programa.html#breve-historico]
         - text: "Área de concentração"
-          href: [programa.html#AC]
+          href: [programa.html#area-concentracao]
         - text: "Linhas de pesquisa"
-          href: [programa.html#LP]
+          href: [programa.html#linha-pesquisa]
         - text: "Projetos de pesquisa"
-          href: [programa.html#PP]
+          href: [programa.html#projeto-pesquisa]
         - text: "Agendas de pesquisa"
-          href: [programa.html#AP]
+          href: [programa.html#agenda-pesquisa]
         - text: "Financiadores"
-          href: [programa.html#Financiadores]
+          href: [programa.html#financiadores]
         - text: "Bolsas de estudo"
-          href: [programa.html#Bolsas]
+          href: [programa.html#bolsas]
         - text: "Cursos"
-          href: [programa.html#Cursos]
+          href: [programa.html#cursos]
         - text: "Estrutura curricular"
-          href: [programa.html#EstruturaCurricular]
+          href: [programa.html#estrutura-curricular]
         - text: "Turmas"
-          href: [programa.html#Turmas]
+          href: [programa.html#turmas]
         - text: "Calendários"
-          href: [programa.html#Calendários]
+          href: [programa.html#calendarios]
         - text: "Infraestrutura"
-          href: [programa.html#Infraestrutura]
+          href: [programa.html#infraestrutura]
         - text: "Convênios Institucionais"
-          href: [programa.html#Convênios]
+          href: [programa.html#convenios]
         - text: "Cooperação entre instituições"
-          href: [programa.html#Cooperação]
+          href: [programa.html#cooperacao]
         - text: "Downloads"
-          href: [programa.html#Downloads]
+          href: [programa.html#downloads]
     - text: "Pessoas"
       href: pessoas.html
       menu:
         - text: "Pessoas"
           href: [pessoas.html]
         - text: "Secretaria"
-          href: [pessoas.html#Secretaria]
+          href: [pessoas.html#secretaria]
         - text: "Colegiado"
-          href: [pessoas.html#Colegiado]
+          href: [pessoas.html#colegiado]
         - text: "Coordenação"
-          href: [pessoas.html#Coordenação]
+          href: [pessoas.html#coordenacao]
         - text: "Docentes"
-          href: [pessoas.html#Docentes]
+          href: [pessoas.html#docentes]
         - text: "Pós-doutorandos"
-          href: [pessoas.html#Posdoc]
+          href: [pessoas.html#posdocs]
         - text: "Discentes"
-          href: [pessoas.html#Discentes]
+          href: [pessoas.html#discentes]
         - text: "Egressos"
-          href: [pessoas.html#Egressos]
+          href: [pessoas.html#egressos]
         - text: "Grupos de pesquisa"
-          href: [pessoas.html#GruposPesquisa]
+          href: [pessoas.html#grupos-pesquisa]
         - text: "Grupos de pesquisa externos"
-          href: [pessoas.html#GruposExternos]
+          href: [pessoas.html#grupos-externos]
         - text: "Participantes externos"
-          href: [pessoas.html#Externos]
+          href: [pessoas.html#participantes-externos]
     - text: "Produções"
       href: producoes.html
       menu:
@@ -119,55 +120,55 @@ navbar:
         - text: "Trabalhos de conclusão"
           href: [producoes.html#TCC]
         - text: "Produção bibliográfica"
-          href: [producoes.html#Bibliográfica]
+          href: [producoes.html#bibliografica]
         - text: "Produção técnica"
-          href: [producoes.html#Técnica]
+          href: [producoes.html#tecnica]
     - text: "Destaques"
       href: destaques.html
       menu:
         - text: "Destaques"
           href: [destaques.html]
         - text: "Egressos"
-          href: [destaques.html#EgressosDestaque]
+          href: [destaques.html#egressos-destaque]
         - text: "Dissertações/Teses"
-          href: [destaques.html#TCCDestaque]
+          href: [destaques.html#TCC-destaque]
         - text: "Produções"
-          href: [destaques.html#ProdutosDestaque]
+          href: [destaques.html#produtos-destaque]
     - text: "Impacto"
       href: impacto.html
       menu:
         - text: "Impacto"
           href: [impacto.html]
         - text: "Educacional"
-          href: [impacto.html#ImpactoEducacional]
+          href: [impacto.html#impacto-educacional]
         - text: "Científico"
-          href: [impacto.html#ImpactoCientífico]
+          href: [impacto.html#impacto-cientifico]
         - text: "Sociocultural"
-          href: [impacto.html#ImpactoSociocultural]
+          href: [impacto.html#impacto-sociocultural]
         - text: "Tecnológico/Econômico"
-          href: [impacto.html#ImpactoTecnológico]
+          href: [impacto.html#impacto-tecnologico]
         - text: "Ações durante a pandemia"
-          href: [impacto.html#AçõesPandemia]
+          href: [impacto.html#acoes-pandemia]
     - text: "Autoavaliação"
       href: autoavaliacao.html
       menu:
         - text: "Autoavaliação"
           href: [autoavaliacao.html]
         - text: "Grupos de trabalho"
-          href: [autoavaliacao.html#GT]
+          href: [autoavaliacao.html#grupos-trabalho]
         - text: "Qualidade das disciplinas"
-          href: [autoavaliacao.html#QualidadeDisciplinas]
+          href: [autoavaliacao.html#qualidade-disciplinas]
         - text: "Pesquisa do egresso"
-          href: [autoavaliacao.html#PesquisaEgresso]
+          href: [autoavaliacao.html#pesquisa-egresso]
     - text: "Galeria"
       href: galeria.html
       menu:
         - text: "Galeria"
           href: [galeria.html]
         - text: "Fotos"
-          href: [galeria.html#Fotos]
+          href: [galeria.html#fotos]
         - text: "Videos"
-          href: [galeria.html#Videos]
+          href: [galeria.html#videos]
     - text: "News"
       href: news.html
       menu:

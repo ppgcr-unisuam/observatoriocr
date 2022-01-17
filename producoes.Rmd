@@ -113,7 +113,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Produção bibliográfica** {#Bibliográfica}
+## **Produção bibliográfica** {#bibliografica}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -691,7 +691,7 @@ if (dim(dois)[1] == 0) {
 
 <br>
 
-## **Produção técnica** {#Técnica}
+## **Produção técnica** {#tecnica}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

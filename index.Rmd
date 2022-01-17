@@ -562,7 +562,7 @@ cat("<br>")
 # code for html anchor frmo yml file
 cat('<div id="egressos" class="section level2">', sep = "")
 
-cat("<h1> [**Egressos**](pessoas.html#Egressos) </h1>  \n")
+cat("<h1> [**Egressos**](pessoas.html#egressos) </h1>  \n")
 
 par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
 states <- read_state(year=2019, showProgress = FALSE)

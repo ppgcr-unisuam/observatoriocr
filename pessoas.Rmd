@@ -72,7 +72,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 
-## **Secretaria** {#Secretaria}
+## **Secretaria** {#secretaria}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -94,7 +94,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Colegiado** {#Colegiado}
+## **Colegiado** {#colegiado}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -134,7 +134,7 @@ for(i in 1:dim(docentes)[1]){
 
 ```
 
-## **Coordenação** {.tabset #Coordenação}
+## **Coordenação** {.tabset #coordenacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -349,7 +349,7 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 <br>
 
-## **Docentes** {.tabset #Docentes}
+## **Docentes** {.tabset #docentes}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1010,7 +1010,7 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 <br>
 
-## **Pós-doutorandos** {.tabset #Posdoc}
+## **Pós-doutorandos** {.tabset #posdocs}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1339,7 +1339,7 @@ if(length(new.ids) != 0) {
 
 <br>
 
-## **Discentes** {.tabset #Discentes}
+## **Discentes** {.tabset #discentes}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1442,7 +1442,7 @@ if(dim(mestres)[1] != 0){
 
 <br>
 
-## **Egressos** {.tabset #Egressos}
+## **Egressos** {.tabset #egressos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1831,7 +1831,7 @@ if(dim(mestres)[1] != 0){
 
 <br>
 
-## **Grupos de pesquisa** {.tabset #GruposPesquisa}
+## **Grupos de pesquisa** {.tabset #grupos-pesquisa}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1928,7 +1928,7 @@ print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>%
 
 <br>
 
-## **Grupos de pesquisa externos** {.tabset #GruposExternos}
+## **Grupos de pesquisa externos** {.tabset #grupos-externos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1941,7 +1941,7 @@ print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>%
 
 <br>
 
-## **Participantes externos** {.tabset #Externos}
+## **Participantes externos** {.tabset #participantes-externos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

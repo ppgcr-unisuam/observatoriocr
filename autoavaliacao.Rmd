@@ -73,7 +73,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 
-## **Grupos de trabalho** {.tabset #GT}
+## **Grupos de trabalho** {.tabset #grupos-trabalho}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -146,7 +146,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Qualidade das disciplinas** {.tabset #QualidadeDisciplinas}
+## **Qualidade das disciplinas** {.tabset #qualidade-disciplinas}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -177,7 +177,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Pesquisa do egresso** {.tabset #PesquisaEgresso}
+## **Pesquisa do egresso** {.tabset #pesquisa-egresso}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

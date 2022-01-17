@@ -72,7 +72,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 
-## **Institucional** {#Institucional}
+## **Institucional** {#institucional}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -106,7 +106,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 
 <br>
 
-## **Apresentação** {.tabset #Apresentação}
+## **Apresentação** {.tabset #apresentacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -271,7 +271,7 @@ print(kable(historico.raw, align = c("l", rep("c", ncol(historico.raw)-2), "r"))
 
 <br>
 
-## **Breve histórico** {.tabset #BreveHistorico}
+## **Breve histórico** {.tabset #breve-historico}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -328,7 +328,7 @@ A sequência desses fatos, somada ao total apoio institucional e ao desenvolvime
 
 <br>
 
-## **Área de concentração** {.tabset #AC}
+## **Área de concentração** {.tabset #area-concentracao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -392,7 +392,7 @@ if(dim(areas.inativas)[1] !=0){
 
 <br>
 
-## **Linhas de pesquisa** {.tabset #LP}
+## **Linhas de pesquisa** {.tabset #linha-pesquisa}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -457,7 +457,7 @@ if(dim(linhas.inativas)[1] !=0){
 
 <br>
 
-## **Projetos de pesquisa** {.tabset #PP}
+## **Projetos de pesquisa** {.tabset #projeto-pesquisa}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1205,7 +1205,7 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 
 <br>
 
-## **Agendas de pesquisa** {.tabset #AP}
+## **Agendas de pesquisa** {.tabset #agenda-pesquisa}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1234,7 +1234,7 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 
 <br>
 
-## **Financiadores** {.tabset #Financiadores}
+## **Financiadores** {.tabset #financiadores}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1525,7 +1525,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 <br>
 
-## **Bolsas de estudo** {.tabset #Bolsas}
+## **Bolsas de estudo** {.tabset #bolsas}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1563,7 +1563,7 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 <br>
 
-## **Cursos** {.tabset #Cursos}
+## **Cursos** {.tabset #cursos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1626,7 +1626,7 @@ print(kable(creditos.raw, align = c("l", rep("c", ncol(creditos.raw)-2), "r")) %
 
 <br>
 
-## **Estrutura curricular** {.tabset #EstruturaCurricular}
+## **Estrutura curricular** {.tabset #estrutura-curricular}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2003,7 +2003,7 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 
 <br>
 
-## **Turmas** {.tabset #Turmas}
+## **Turmas** {.tabset #turmas}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2422,7 +2422,7 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 <br>
 
-## **Calendários** {.tabset #Calendários}
+## **Calendários** {.tabset #calendarios}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2460,7 +2460,7 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 <br>
 
-## **Infraestrutura** {.tabset #Infraestrutura}
+## **Infraestrutura** {.tabset #infraestrutura}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2556,7 +2556,7 @@ knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 
 <br>
 
-## **Convênios institucionais** {#Convênios}
+## **Convênios institucionais** {#convenios}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2624,7 +2624,7 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 <br>
 
-## **Cooperação entre instituições** {.tabset #Cooperação}
+## **Cooperação entre instituições** {.tabset #cooperacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -2717,7 +2717,7 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 
 <br>
 
-## **Donwloads** {.tabset #Downloads}
+## **Donwloads** {.tabset #downloads}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

@@ -2,10 +2,14 @@
 title: "Observatório CR"
 name: "observatorio_cr_unisuam"
 author: "Arthur de Sá Ferreira"
+repository_url: https://github.com/rehab-tech/observatoriocr/
+source_url: true
+creative_commons: CC BY-NC
 output_dir: "docs"
 include:
   - footer.html
   - google_translate.html
+  - /CSS
   - /Images
   - /Labs
   - /Qualis
@@ -13,13 +17,13 @@ include:
   - /SJR
   - /Softwares
 navbar:
-  search: true
   left:
     - text: ""
       icon: "fa-home"
       href: index.html
-    - text: "Observatório CR"
       menu:
+        - text: "Observatório CR"
+          href: index.html
         - text: "Projetos de pesquisa"
           href: [index.html#projetos]
         - text: "Trabalhos de conclusão de curso"
@@ -174,6 +178,9 @@ navbar:
       menu:
         - text: "News"
           href: [news.html]
+    - text: ""
+      icon: "fa-github"
+      href: [https://github.com/rehab-tech/observatoriocr/]
 
 output:
   html_document:
@@ -182,10 +189,14 @@ output:
     include:
       before_body: [google_translate.html]
       after_body: [footer.html]
-    css: style.css
+    css:
+      - style.css
+      - CSS/responsive.css
+      - CSS/narrow-margins.css
+      - CSS/logo-above-toc.css
     toc: true
-    toc_float: true
     toc_depth: 3
+    toc_float: true
     edit: null
     sharing:
       facebook: yes

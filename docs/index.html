@@ -60,6 +60,9 @@ if (window.hljs) {
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="CSS/responsive.css" type="text/css" />
+<link rel="stylesheet" href="CSS/narrow-margins.css" type="text/css" />
+<link rel="stylesheet" href="CSS/logo-above-toc.css" type="text/css" />
 
 
 
@@ -244,20 +247,18 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-home"></span>
      
     
-  </a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Observatório CR
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html">Observatório CR</a>
+    </li>
     <li>
       <a href="index.html#projetos">Projetos de pesquisa</a>
     </li>
@@ -527,6 +528,13 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li>
+  <a href="https://github.com/rehab-tech/observatoriocr/">
+    <span class="fa fa-github"></span>
+     
+    
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -558,68 +566,17 @@ function googleTranslateElementInit() {
 </div>
 
 
-<style type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    body .main-container {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-      }
-    body {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-    }
-    section {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
-    }
-</style>
 <!--script for background color-->
 <style>
   body {
   background-color:#2C3E50;
   color: white;}
 </style>
-<!--script for narrow margins-->
-<style type="text/css">
-div.main-container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<!--script for inserting LOGO ABOVE THE TOC-->
-<script>
-  $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
-  });
-</script>
-<style>
-#nav_logo {
-  width: 100%;
-  margin-top: 1.25em;
-}
-h1.title {
-  text-align: center;
-  font-weight: bold;
-}
-h1 {
-  text-align: center;
-  font-weight: bold;
-}
-h2 {
-  text-align: center;
-  font-weight: bold;
-}
-</style>
 <center>
-<a href="https://www.unisuam.edu.br" target="_blank"><img align="center" src="Images/coruja.png"></a>
+<p><a href="https://www.unisuam.edu.br" target="_blank"><img align="center" src="Images/coruja.png"></a></p>
+<p><br></p>
 <p style="font-size:1.5em">
-<br> <br> O <strong>OBSERVATÓRIO CR</strong> é uma iniciativa do <strong>Programa de Pós-graduação em Ciências da Reabilitação</strong> do <a href="http://www.unisuam.edu.br">Centro Universitário Augusto Motta</a> que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
+O <strong>OBSERVATÓRIO CR</strong> é uma iniciativa do <strong>Programa de Pós-graduação em Ciências da Reabilitação</strong> do <a href="http://www.unisuam.edu.br">Centro Universitário Augusto Motta</a> que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
 </p>
 </center>
 <p><br></p>
@@ -628,9 +585,9 @@ h2 {
 <div id="projetos" class="section level2">
 <h2></h2>
 <h1>
-<a href="programa.html#PP"><strong>Projetos de pesquisa, temas</strong></a>
+<a href="programa.html#projetos-pesquisa"><strong>Projetos de pesquisa, temas</strong></a>
 </h1>
-<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-temas-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-temas-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -640,7 +597,7 @@ h2 {
 <h1>
 <a href="producoes.html#TCC"><strong>Trabalhos de conclusão de curso, temas</strong></a>
 </h1>
-<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-tcc-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-tcc-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -650,7 +607,7 @@ h2 {
 <h1>
 <a href="news.html"><strong>Notícias</strong></a>
 </h1>
-<p><img src="index_files/figure-html/news-cloud-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/news-cloud-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -658,9 +615,9 @@ h2 {
 <div id="projetoslinha" class="section level2">
 <h2></h2>
 <h1>
-<a href="programa.html#LP"><strong>Projetos de pesquisa, por linha de pesquisa</strong></a>
+<a href="programa.html#linhas-pesquisa"><strong>Projetos de pesquisa, por linha de pesquisa</strong></a>
 </h1>
-<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-figura-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/projetos-de-pesquisa-sintese-figura-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -668,9 +625,9 @@ h2 {
 <div id="financiamentos" class="section level2">
 <h2></h2>
 <h1>
-<a href="programa.html#Financiadores"><strong>Financiamentos dos projetos</strong></a>
+<a href="programa.html#financiadores"><strong>Financiamentos dos projetos</strong></a>
 </h1>
-<p><img src="index_files/figure-html/financiadores-grafico-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/financiadores-grafico-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -678,9 +635,9 @@ h2 {
 <div id="producao" class="section level2">
 <h2></h2>
 <h1>
-<a href="producoes.html#Bibliográfica"><strong>Produção bibliográfica</strong></a>
+<a href="producoes.html#bibliografica"><strong>Produção bibliográfica</strong></a>
 </h1>
-<p><img src="index_files/figure-html/producao-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/producao-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -688,9 +645,9 @@ h2 {
 <div id="producao-qualidade" class="section level2">
 <h2></h2>
 <h1>
-<a href="producoes.html#Bibliográfica"><strong>Qualidade da produção, por estrato</strong></a>
+<a href="producoes.html#bibliografica"><strong>Qualidade da produção, por estrato</strong></a>
 </h1>
-<p><img src="index_files/figure-html/producao-qualidade-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/producao-qualidade-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -700,20 +657,22 @@ h2 {
 <h1>
 <strong>Formação de pessoal de nível superior</strong>
 </h1>
-<img src="index_files/figure-html/egressos-1.png" width="80%" style="display: block; margin: auto;" /><br>
+<img src="index_files/figure-html/egressos-1.png" width="95%" style="display: block; margin: auto;" /><br>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <br>
-<h1>
+<h1 style="text-align:center;">
 <strong>Tempo médio de titulação, por ano</strong>
 </h1>
-<img src="index_files/figure-html/egressos-2.png" width="80%" style="display: block; margin: auto;" /><br>
+<img src="index_files/figure-html/egressos-2.png" width="95%" style="display: block; margin: auto;" /><br>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <br>
 <div id="egressos" class="section level2">
+<h2>
+</h2>
 <h1>
 <a href="pessoas.html#egressos"><strong>Egressos</strong></a>
 </h1>
-<img src="index_files/figure-html/egressos-3.png" width="80%" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/egressos-3.png" width="95%" style="display: block; margin: auto;" />
 <p>
 <br>
 </p>
@@ -725,9 +684,9 @@ h2 {
 <div id="discentes" class="section level2">
 <h2></h2>
 <h1>
-<a href="pessoas.html#Discentes"><strong>Discentes</strong></a>
+<a href="pessoas.html#discentes"><strong>Discentes</strong></a>
 </h1>
-<p><img src="index_files/figure-html/discentes-regiao-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/discentes-regiao-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -737,7 +696,7 @@ h2 {
 <h1>
 <a href="pessoas.html"><strong>Rede de pesquisa</strong></a>
 </h1>
-<p><img src="index_files/figure-html/rede-pesquisa-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/rede-pesquisa-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -745,9 +704,9 @@ h2 {
 <div id="disciplinas" class="section level2">
 <h2></h2>
 <h1>
-<a href="programa.html#EstruturaCurricular"><strong>Disciplinas oferecidas</strong></a>
+<a href="programa.html#estrutura-curricular"><strong>Disciplinas oferecidas</strong></a>
 </h1>
-<p><img src="index_files/figure-html/turmas-sintese-turmas-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/turmas-sintese-turmas-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>
@@ -757,7 +716,7 @@ h2 {
 <h1>
 <strong>Nota do Programa</strong>
 </h1>
-<p><img src="index_files/figure-html/conceitos-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/conceitos-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <hr style="height:2px;border-width:0;color:white;background-color:white">
 <p><br></p>

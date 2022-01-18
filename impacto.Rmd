@@ -1,5 +1,9 @@
 ---
 title: Impacto
+
+output:
+  html_document:
+    toc: true
 ---
 
 <!--script for computer/mobile devices-->

@@ -63,6 +63,9 @@ if (window.hljs) {
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="CSS/responsive.css" type="text/css" />
+<link rel="stylesheet" href="CSS/narrow-margins.css" type="text/css" />
+<link rel="stylesheet" href="CSS/logo-above-toc.css" type="text/css" />
 
 
 
@@ -320,20 +323,18 @@ div.tocify {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-home"></span>
      
     
-  </a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Observatório CR
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html">Observatório CR</a>
+    </li>
     <li>
       <a href="index.html#projetos">Projetos de pesquisa</a>
     </li>
@@ -602,6 +603,13 @@ div.tocify {
       <a href="news.html">News</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="https://github.com/rehab-tech/observatoriocr/">
+    <span class="fa fa-github"></span>
+     
+    
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

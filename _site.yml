@@ -1,5 +1,6 @@
 ---
 title: "Observatório CR"
+date: '`r format(Sys.Date())`'
 name: "observatorio_cr_unisuam"
 author: "Arthur de Sá Ferreira"
 repository_url: https://github.com/rehab-tech/observatoriocr/

@@ -60,48 +60,10 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 sheet <- "Projetos"
-projetos.raw <- c()
-files.to.read <-
-  list.files("../PPGCR Unisuam/Sucupira/",
-             pattern = "xlsx",
-             full.names = TRUE)
-for (i in 1:length(files.to.read)) {
-  projetos.raw <-
-    rbind(projetos.raw, read_excel(files.to.read[i], sheet = sheet))
-}
+source("Scripts/read_sucupira.R")
 
-linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
-projetos.temas <- projetos.raw$`Nome do Projeto de Pesquisa`
-
-# create a corpus
-docs <- Corpus(VectorSource(projetos.temas))
-
-# cleaning text
-docs <- docs %>%
-  tm_map(removeNumbers) %>%
-  tm_map(removePunctuation) %>%
-  tm_map(stripWhitespace)
-docs <- tm_map(docs, content_transformer(tolower))
-docs <- tm_map(docs, removeWords, stopwords("portuguese"))
-
-# create a document-term matrix
-dtm <- TermDocumentMatrix(docs)
-matrix <- as.matrix(dtm)
-words <- sort(rowSums(matrix), decreasing = TRUE)
-df <- data.frame(word = names(words), freq = words)
-
-# generate word cloud
-par(bg = "#2C3E50")
-set.seed(0) # for reproducibility
-wordcloud(
-  words = df$word,
-  freq = df$freq,
-  min.freq = 10,
-  max.words = 200,
-  random.order = FALSE,
-  rot.per = 0.35,
-  colors = brewer.pal(8, "Set3")
-)
+data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
+source("Scripts/docs_to_wordcloud.R")
 ```
 
 <br>
@@ -118,48 +80,10 @@ wordcloud(
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 sheet <- "TCC"
-projetos.raw <- c()
-files.to.read <-
-  list.files("../PPGCR Unisuam/Sucupira/",
-             pattern = "xlsx",
-             full.names = TRUE)
-for (i in 1:length(files.to.read)) {
-  projetos.raw <-
-    rbind(projetos.raw, read_excel(files.to.read[i], sheet = sheet))
-}
+source("Scripts/read_sucupira.R")
 
-linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
-projetos.temas <- projetos.raw$`Nome do Trabalho de Conclusão`
-
-# create a corpus
-docs <- Corpus(VectorSource(projetos.temas))
-
-# cleaning text
-docs <- docs %>%
-  tm_map(removeNumbers) %>%
-  tm_map(removePunctuation) %>%
-  tm_map(stripWhitespace)
-docs <- tm_map(docs, content_transformer(tolower))
-docs <- tm_map(docs, removeWords, stopwords("portuguese"))
-
-# create a document-term matrix
-dtm <- TermDocumentMatrix(docs)
-matrix <- as.matrix(dtm)
-words <- sort(rowSums(matrix), decreasing = TRUE)
-df <- data.frame(word = names(words), freq = words)
-
-# generate word cloud
-par(bg = "#2C3E50")
-set.seed(0) # for reproducibility
-wordcloud(
-  words = df$word,
-  freq = df$freq,
-  min.freq = 5,
-  max.words = 200,
-  random.order = FALSE,
-  rot.per = 0.35,
-  colors = brewer.pal(8, "Set3")
-)
+data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
+source("Scripts/docs_to_wordcloud.R")
 ```
 
 <br>
@@ -204,35 +128,8 @@ for (j in 1:length(tabs)) {
   topics <- rbind(topics, news[i, 1])
 }
 
-# create a corpus
-docs <- Corpus(VectorSource(topics))
-
-# cleaning text
-docs <- docs %>%
-  tm_map(removeNumbers) %>%
-  tm_map(removePunctuation) %>%
-  tm_map(stripWhitespace)
-docs <- tm_map(docs, content_transformer(tolower))
-docs <- tm_map(docs, removeWords, stopwords("portuguese"))
-
-# create a document-term matrix
-dtm <- TermDocumentMatrix(docs)
-matrix <- as.matrix(dtm)
-words <- sort(rowSums(matrix), decreasing = TRUE)
-df <- data.frame(word = names(words), freq = words)
-
-# generate word cloud
-par(bg = "#2C3E50")
-set.seed(0) # for reproducibility
-wordcloud(
-  words = df$word,
-  freq = df$freq,
-  min.freq = 1,
-  max.words = 200,
-  random.order = FALSE,
-  rot.per = 0.35,
-  colors = brewer.pal(8, "Set3")
-)
+data.to.cloud <- topics
+source("Scripts/docs_to_wordcloud.R")
 ```
 
 <br>

@@ -6,15 +6,25 @@ output:
     toc: false
 ---
 
+## {#observatoriocr}
+
 <!--script for background color-->
 <style>
-  body {
-  background-color:#2C3E50;
-  color: white;}
+body {background-color:#2C3E50;
+  color: white;
+  }
+</style>
+
+<!--script for hover effect on table-->
+<style>
+.table-hover > tbody > tr:hover { 
+  background-color: #18BC9C;
+  }
 </style>
 
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
 # create a new code chunk and then use the PACKUP add-in to generate this code with all the required libraries for this Rmd
+library(bsplus)
 library(cowplot)
 library(dplyr)
 library(geobr)
@@ -23,6 +33,7 @@ library(ggpubr)
 library(grid)
 library(gridExtra)
 library(gtsummary)
+library(htmlwidgets)
 library(igraph)
 library(kableExtra)
 library(knitr)
@@ -32,7 +43,8 @@ library(readxl)
 library(Rmisc)
 library(sf)
 library(tm)
-library(wordcloud)
+library(viridis)
+library(webshot2)
 library(wordcloud2)
 ```
 
@@ -52,84 +64,78 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 
 <br>
 
-## {#projetos}
+## {#tematicas}
 
-<h1> [**Projetos de pesquisa, temas**](programa.html#projetos-pesquisa) </h1>
+<h1> [**Temáticas**](programa.html) </h1>
 
-```{r projetos-de-pesquisa-sintese-temas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+# file path to save the wordclouds
+dir.path <- file.path(getwd(), "index_files", "figure-html")
+dir.create(dir.path, recursive = TRUE)
+
+# projetos
 sheet <- "Projetos"
 source("Scripts/read_sucupira.R")
-
 data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
 source("Scripts/docs_to_wordcloud.R")
-```
 
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
-<br>
-
-## {#tcc}
-
-<h1> [**Trabalhos de conclusão de curso, temas**](producoes.html#TCC) </h1>
-
-```{r projetos-de-pesquisa-sintese-tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+# dissertações e teses
 sheet <- "TCC"
 source("Scripts/read_sucupira.R")
-
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
 source("Scripts/docs_to_wordcloud.R")
-```
 
-<br>
+# artigos
+sheet <- "Produções"
+source("Scripts/read_sucupira.R")
+data.to.cloud <- sucupira.raw$`Nome da Produção`
+source("Scripts/docs_to_wordcloud.R")
 
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
-<br>
-
-## {#news}
-
-<h1> [**Notícias**](news.html) </h1>
-
-```{r news-cloud, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+# news
 # read separate sheets
 file.path <- "../PPGCR Unisuam/News.xlsx"
 tabs <- excel_sheets(file.path)
 topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))
-
 # iterate across sheets
 for (j in 1:length(tabs)) {
   news <-
     read_excel(file.path,
                sheet = tabs[j],
                col_types = c("text", "text", "text"))
-  # replace the link by a tag
-  for (i in 1:dim(news)[1]) {
-    news[i, 1] <-
-      paste("## **", as.character(as.Date(as.numeric(news[i, 1]), origin = "1899-12-30")), "**", sep = "")
-    news[i, 3] <-
-      paste("[↗️](", news[i, 3], '){target="_blank"}', sep = "")
-  }
-  
-  # drop date column
-  news <- news[,-1]
-  # store data to print table
-  news.list[[j]] <- news
-  
-  # store data to plot wordcloud
-  topics <- rbind(topics, news[i, 1])
+  topics <- rbind(topics, news[, 2])
 }
 
+sheet <- "News e Blogs"
 data.to.cloud <- topics
 source("Scripts/docs_to_wordcloud.R")
+```
+
+```{r sintese-temas-wordcloud, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# carousel of wordclouds
+bs_carousel(id = "wordcloud",
+            use_indicators = TRUE,
+            use_controls = TRUE) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/Projetos.png"),
+    caption = bs_carousel_caption("Projetos de Pesquisa")
+  ) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/TCC.png"),
+    caption = bs_carousel_caption("Dissertações e Teses")
+  ) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/Produções.png"),
+    caption = bs_carousel_caption("Produção Bibliográfica")
+  ) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/News e Blogs.png"),
+    caption = bs_carousel_caption("News e Blogs")
+  )
 ```
 
 <br>
@@ -138,83 +144,42 @@ source("Scripts/docs_to_wordcloud.R")
 
 <br>
 
-## {#projetoslinha}
+## {#projetos-linha}
 
-<h1> [**Projetos de pesquisa, por linha de pesquisa**](programa.html#linhas-pesquisa) </h1>
+<h1> [**Projetos por linha de pesquisa**](programa.html#linhas-pesquisa) </h1>
 
-```{r projetos-de-pesquisa-sintese-figura, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-projetos.2021 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2020 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2019 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2018 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2017 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2017.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2016 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2016.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2015 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2015.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2014 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2013 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx",
-             sheet = "Projetos - Membros")
-projetos.2012 <-
-  read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx",
-             sheet = "Projetos - Membros")
+# projetos - membros
+sheet <- "Projetos - Membros"
+source("Scripts/read_sucupira.R")
+projetos.list <- sucupira.list
 
-projetos.raw <-
-  rbind(
-    projetos.2021,
-    projetos.2020,
-    projetos.2019,
-    projetos.2018,
-    projetos.2017,
-    projetos.2016,
-    projetos.2015,
-    projetos.2014,
-    projetos.2013,
-    projetos.2012
-  )
-linhas <- na.exclude(unique(projetos.raw$`Linha de Pesquisa`))
+# list all available years
+anos <-
+  as.numeric(list.dirs(
+    file.path(getwd(), "Sucupira"),
+    recursive = FALSE,
+    full.names = FALSE
+  ))
 
-projetos.list <-
-  list(
-    projetos.2021,
-    projetos.2020,
-    projetos.2019,
-    projetos.2018,
-    projetos.2017,
-    projetos.2016,
-    projetos.2015,
-    projetos.2014,
-    projetos.2013,
-    projetos.2012
-  )
+# get all history of 'linha de pesquisa'
+linhas <- na.exclude(unique(sucupira.raw$`Linha de Pesquisa`))
 
-anos <- c(2021, 2012)
-ano <- seq(max(anos, na.rm = TRUE), min(anos, na.rm = TRUE))
+# get only current 'linha de pesquisa'
+linhas.curr <-
+  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
 
+# initialize data structure
 andamento.ano <-
-  matrix(NA, nrow = length(linhas), ncol = length(ano))
-colnames(andamento.ano) <- ano
+  matrix(NA, nrow = length(linhas), ncol = length(anos))
+colnames(andamento.ano) <- anos
 rownames(andamento.ano) <- linhas
 concluido.ano <- andamento.ano
 
-for (i in length(ano):1) {
+# iterate across all Sucupira list elements to search for active and closed projects
+for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
@@ -236,43 +201,73 @@ projetos.ano <- andamento.ano + concluido.ano
 projetos.ano <-
   projetos.ano[, order(colnames(projetos.ano), decreasing = FALSE)]
 
-layout(matrix(
-  c(1:2),
-  nrow = 2,
-  ncol = 1,
-  byrow = TRUE
-), heights = c(1 / 2, 1 / 2))
+# plot area setup
 par(
   oma = c(2, 0.1, 2, 0.1),
   mar = c(5, 4, 2, 2),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
-  fg = "white"
+  fg = "white",
+  col.main = "white"
 )
-# generate plot of projetos per linha by year
-barplot(
-  projetos.ano,
-  xlab = "Ano",
-  ylab = "Quantidade",
-  col = brewer.pal(n = length(linhas), name = "Set3"),
-  xaxt = 'n',
-  ann = FALSE
+
+# generate plot of projetos per linha by year (absolute frequency)
+barplot(projetos.ano,
+        ylab = "Frequência",
+        col = brewer.pal(n = length(linhas), name = "Set3"))
+legend("topleft",
+  legend = linhas.curr,
+  fill = brewer.pal(n = length(linhas.curr), name = "Set3"),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = TRUE,
+  cex = 0.5,
+  x.intersp = 0.1,
+  inset = c(0, -0.02)
 )
+
+# generate plot of projetos per linha by year (relative frequency)
 barplot(
   scale(
     as.matrix(projetos.ano),
     center = FALSE,
     scale = colSums(as.matrix(projetos.ano))
   ) * 100,
-  xlab = "Ano",
-  ylab = "Proporção por linha",
+  ylab = "Proporção",
   col = brewer.pal(n = length(linhas), name = "Set3"),
-  yaxt = 'n'
+  ylim = c(0, 100)
 )
-axis(2, at = c(0, 100))
-# par(oma=c(0, 0, 0, 0), mar = c(0, 0, 0, 0), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white")
-# legend("top", legend = linhas, fill = brewer.pal(n = length(linhas), name = "Set3"), box.lwd = 0, cex = 1)
+
+legend("topleft",
+  legend = linhas.curr,
+  fill = brewer.pal(n = length(linhas.curr), name = "Set3"),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = TRUE,
+  cex = 0.5,
+  x.intersp = 0.1,
+  inset = c(0, -0.02)
+)
+```
+
+```{r sintese-projetos-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# carousel of barplots
+bs_carousel(id = "barplot-projetos",
+            use_indicators = TRUE,
+            use_controls = TRUE) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png"),
+    caption = bs_carousel_caption("Projetos por Linha de Pesquisa", "Quantidade")
+  ) %>%
+  bs_append(
+    content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"),
+    caption = bs_carousel_caption("Projetos por Linha de Pesquisa", "Proporção")
+  )
 ```
 
 <br>
@@ -446,7 +441,7 @@ par(
   fg = "white",
   col.main = "white"
 )
-# generate plot of titulados per year
+# generate plot of artigos per year
 table.1 <- table(artigos$Publicado.em)
 barplot(
   t(table.1),
@@ -1086,12 +1081,6 @@ barplot(
 ## {#fontes}
 
 <h1> **Fontes dos dados** </h1>
-
-<style>
-.table-hover > tbody > tr:hover { 
-  background-color: #18BC9C;
-}
-</style>
 
 ```{r fontes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")

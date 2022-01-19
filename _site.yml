@@ -17,22 +17,19 @@ include:
   - /Scripts
   - /SJR
   - /Softwares
+  - /Sucupira
 navbar:
   left:
     - text: ""
       icon: "fa-home"
       href: index.html
+    - text: "Observatório CR"
+      href: index.html#observatoriocr
       menu:
-        - text: "Observatório CR"
-          href: index.html
+        - text: "Temáticas"
+          href: [index.html#tematicas]
         - text: "Projetos de pesquisa"
-          href: [index.html#projetos]
-        - text: "Trabalhos de conclusão de curso"
-          href: [index.html#tcc]
-        - text: "Notícias"
-          href: [index.html#news]
-        - text: "Projetos de pesquisa"
-          href: [index.html#projetoslinha]
+          href: [index.html#projetos-linha]
         - text: "Financiamentos"
           href: [index.html#financiamentos]
         - text: "Produção bibliográfica"

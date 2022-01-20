@@ -146,7 +146,7 @@ bs_carousel(id = "wordcloud",
 
 ## {#projetos-linha}
 
-<h1> [**Projetos por linha de pesquisa**](programa.html#linhas-pesquisa) </h1>
+<h1> [**Projetos de pesquisa**](programa.html#projeto-pesquisa) </h1>
 
 ```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -166,10 +166,6 @@ anos <-
 
 # get all history of 'linha de pesquisa'
 linhas <- na.exclude(unique(sucupira.raw$`Linha de Pesquisa`))
-
-# get only current 'linha de pesquisa'
-linhas.curr <-
-  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
 
 # initialize data structure
 andamento.ano <-
@@ -212,20 +208,24 @@ par(
   col.main = "white"
 )
 
+# get only current 'linha de pesquisa'
+linhas.curr <-
+  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
+col.curr <- match(linhas.curr, linhas)
+
 # generate plot of projetos per linha by year (absolute frequency)
 barplot(projetos.ano,
-        ylab = "Frequência",
+        ylab = "Projetos por Linha de Pesquisa",
         col = brewer.pal(n = length(linhas), name = "Set3"))
-legend("topleft",
+legend(
+  "topright",
   legend = linhas.curr,
-  fill = brewer.pal(n = length(linhas.curr), name = "Set3"),
+  fill = brewer.pal(n = length(linhas), name = "Set3")[col.curr],
   text.col = "white",
   box.lwd = 0,
   bty = "n",
-  horiz = TRUE,
+  horiz = FALSE,
   cex = 0.5,
-  x.intersp = 0.1,
-  inset = c(0, -0.02)
 )
 
 # generate plot of projetos per linha by year (relative frequency)
@@ -235,21 +235,9 @@ barplot(
     center = FALSE,
     scale = colSums(as.matrix(projetos.ano))
   ) * 100,
-  ylab = "Proporção",
+  ylab = "Projetos por Linha de Pesquisa",
   col = brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)
-)
-
-legend("topleft",
-  legend = linhas.curr,
-  fill = brewer.pal(n = length(linhas.curr), name = "Set3"),
-  text.col = "white",
-  box.lwd = 0,
-  bty = "n",
-  horiz = TRUE,
-  cex = 0.5,
-  x.intersp = 0.1,
-  inset = c(0, -0.02)
 )
 ```
 
@@ -260,14 +248,8 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 bs_carousel(id = "barplot-projetos",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png"),
-    caption = bs_carousel_caption("Projetos por Linha de Pesquisa", "Quantidade")
-  ) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"),
-    caption = bs_carousel_caption("Projetos por Linha de Pesquisa", "Proporção")
-  )
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"))
 ```
 
 <br>
@@ -292,7 +274,7 @@ financiadores.raw <-
 financiadores <-
   financiadores.raw %>% select("Agência", "Total", "Programa")
 # drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores),]
+financiadores <- financiadores[complete.cases(financiadores), ]
 # generate table
 table.1 <-
   tbl_summary(
@@ -310,12 +292,6 @@ table.1 <-
   add_overall(TRUE, "Total") %>%
   modify_header(label = "**Agência**") %>%
   bold_labels()
-# print tables
-# table.1
-
-# line break
-# cat("  \n")
-# cat("  \n")
 
 editais.agencia <- table(financiadores$'Agência')
 
@@ -426,11 +402,11 @@ dois <-
   ))
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI), ]
+dois <- dois[complete.cases(dois$DOI),]
 
 artigos <-
   dois[dois$Publicado.em != "Aceito" &
-         dois$Publicado.em != "Submetido",]
+         dois$Publicado.em != "Submetido", ]
 
 par(
   oma = c(2, 0.1, 2, 0.1),
@@ -474,12 +450,12 @@ dois <-
   ))
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI), ]
+dois <- dois[complete.cases(dois$DOI),]
 dois$WebQualis[dois$WebQualis == "Sem WebQualis"] <- NA
 
 artigos <-
   dois[dois$Publicado.em != "Aceito" &
-         dois$Publicado.em != "Submetido",]
+         dois$Publicado.em != "Submetido", ]
 estratos <- sort(unique(artigos$WebQualis))
 ano <- sort(unique(artigos$Publicado.em))
 table.1 <- t(table(artigos$Publicado.em, artigos$WebQualis))

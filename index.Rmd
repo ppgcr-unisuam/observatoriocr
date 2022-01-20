@@ -10,7 +10,8 @@ output:
 
 <!--script for background color-->
 <style>
-body {background-color:#2C3E50;
+body {
+  background-color:#2C3E50;
   color: white;
   }
 </style>
@@ -215,6 +216,7 @@ col.curr <- match(linhas.curr, linhas)
 
 # generate plot of projetos per linha by year (absolute frequency)
 barplot(projetos.ano,
+        xlab = "Ano",
         ylab = "Projetos por Linha de Pesquisa",
         col = brewer.pal(n = length(linhas), name = "Set3"))
 legend(
@@ -235,6 +237,7 @@ barplot(
     center = FALSE,
     scale = colSums(as.matrix(projetos.ano))
   ) * 100,
+  xlab = "Ano",
   ylab = "Projetos por Linha de Pesquisa",
   col = brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)

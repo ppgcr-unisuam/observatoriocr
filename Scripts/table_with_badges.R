@@ -50,7 +50,7 @@ for (i in 1:dim(doi_sort)[1]) {
   )))
   cat(paste0("*", doi_sort$journal[i], "*", "<br>"))
   # initialize the DIV element for the badges
-  cat("<div style=\"vertical-align: middle; display: inline-block;\">")
+  cat("<div style=\"vertical-align: top; display: inline-block;\">")
   # add Altmetric badge
   cat(
     "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" class=\"altmetric-embed\" data-badge-type=\"donut\" data-badge-popover=\"right\" data-doi=\"",
@@ -131,7 +131,7 @@ if (length(my_dois_works) != 0) {
     cat(paste0("*", my_dois_works$container.title[i], "*", "<br>"))
     
     # initialize the DIV element for the badges
-    cat("<div style=\"vertical-align: middle; display: inline-block;\">")
+    cat("<div style=\"vertical-align: top; display: inline-block;\">")
     # add Altmetric badge
     cat(
       "<img style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" src=\"https://badges.altmetric.com/?score=?&types=????????\">",

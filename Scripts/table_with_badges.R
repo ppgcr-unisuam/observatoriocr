@@ -11,7 +11,7 @@ cat(
   "<style>.PlumX-Popup{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
 )
 cat(
-  "<style>.ppp-container.ppp-medium{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
+  "<style>.ppp-container ppp-medium{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
 )
 cat(
   "<style>.plx-wrapping-print-link{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
@@ -50,7 +50,7 @@ for (i in 1:dim(doi_sort)[1]) {
   )))
   cat(paste0("*", doi_sort$journal[i], "*", "<br>"))
   # initialize the DIV element for the badges
-  cat("<div style=\"vertical-align: top; display: inline-block;\">")
+  cat("<div style=\"vertical-align: middle; display: inline-block;\">")
   # add Altmetric badge
   cat(
     "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" class=\"altmetric-embed\" data-badge-type=\"donut\" data-badge-popover=\"right\" data-doi=\"",
@@ -78,7 +78,7 @@ for (i in 1:dim(doi_sort)[1]) {
   cat(
     "<a target=\"_blank\" href=\"https://www.scimagojr.com/journalsearch.php?q=",
     SJR_id,
-    "&tip=sid&clean=0\" style=\"border-radius:10%; border-style: solid; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em; text-decoration:none; text-align: center; display:inline-block; float:left; font-size:1.1em; color:white; background-color:rgb(216,124,78);\"> SJR <br>",
+    "&tip=sid&clean=0\" style=\"border-radius:10%; border-style: solid; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em; text-decoration:none; text-align: center; display:inline-block; float:left; font-size:1.1em; color:white; background-color:rgb(216,124,78);\"> SJR <br>",
     sep = ""
   )
   SJR <-
@@ -131,7 +131,7 @@ if (length(my_dois_works) != 0) {
     cat(paste0("*", my_dois_works$container.title[i], "*", "<br>"))
     
     # initialize the DIV element for the badges
-    cat("<div style=\"vertical-align: top; display: inline-block;\">")
+    cat("<div style=\"vertical-align: middle; display: inline-block;\">")
     # add Altmetric badge
     cat(
       "<img style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" src=\"https://badges.altmetric.com/?score=?&types=????????\">",
@@ -146,7 +146,7 @@ if (length(my_dois_works) != 0) {
     )
     # add PlumX badge
     cat(
-      "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
+      "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
       my_dois_works$doi[i],
       "\" data-popup=\"right\" data-size=\"medium\" data-site=\"plum\"></a>",
       sep = ""

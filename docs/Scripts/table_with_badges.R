@@ -7,6 +7,19 @@ library("janitor")
 library("rcrossref")
 library("dplyr")
 
+cat(
+  "<style>.PlumX-Popup{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
+)
+cat(
+  "<style>.ppp-container.ppp-medium{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
+)
+cat(
+  "<style>.plx-wrapping-print-link{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
+)
+cat(
+  "<style>.plx-print{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
+)
+
 # start table
 cat(
   "<table style=\"width:100%\">\n    <tr>\n      <th>Artigos (n = ",
@@ -53,18 +66,6 @@ for (i in 1:dim(doi_sort)[1]) {
     sep = ""
   )
   # add PlumX badge
-  cat(
-    "<style>.PlumX-Popup{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-  )
-  cat(
-    "<style>.ppp-container.ppp-medium{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-  )
-  cat(
-    "<style>.plx-wrapping-print-link{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-  )
-  cat(
-    "<style>.plx-print{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-  )
   cat(
     "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
     doi_sort$doi[i],
@@ -144,18 +145,6 @@ if (length(my_dois_works) != 0) {
       sep = ""
     )
     # add PlumX badge
-    cat(
-      "<style>.PlumX-Popup{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-    )
-    cat(
-      "<style>.ppp-container.ppp-medium{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-    )
-    cat(
-      "<style>.plx-wrapping-print-link{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-    )
-    cat(
-      "<style>.plx-print{display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;}</style>"
-    )
     cat(
       "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
       my_dois_works$doi[i],

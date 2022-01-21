@@ -174,7 +174,7 @@ if (dim(dois)[1] == 0) {
   
   # sort columns by citations
   doi_sort <-
-    doi_unique[order(-as.numeric(doi_unique$score), -doi_unique$published_on), ]
+    doi_unique[order(-as.numeric(doi_unique$score), -doi_unique$last_updated), ]
   
   # TOP 10 (removing papers with no Altmetric)
   top <- 20
@@ -279,7 +279,7 @@ if (dim(dois)[1] == 0) {
 
     # sort columns by SJR
   doi_sort <-
-    doi_unique[order(-as.numeric(SJRs), -doi_unique$published_on), ]
+    doi_unique[order(-as.numeric(SJRs), -doi_unique$last_updated), ]
   
   top <- 20
   doi_sort <- doi_sort[1:top, ]

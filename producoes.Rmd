@@ -188,7 +188,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -196,6 +196,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")
@@ -274,7 +278,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -282,6 +286,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")
@@ -361,7 +369,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -369,6 +377,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")
@@ -448,7 +460,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -456,6 +468,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")
@@ -535,7 +551,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -543,6 +559,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")
@@ -622,7 +642,7 @@ if (dim(dois)[1] == 0) {
   doi_unique <-
     doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
   
-  # sort columns by citations
+  # sort columns by title
   doi_sort <-
     doi_unique[order(doi_unique$title), ]
   
@@ -630,6 +650,10 @@ if (dim(dois)[1] == 0) {
   my_dois_works <-
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
+  
+  # sort columns by title
+  my_dois_works <-
+    my_dois_works[order(as.vector(my_dois_works$title)), ]
   
   # print table of papers with/without badges
   source("scripts/table_with_badges.R")

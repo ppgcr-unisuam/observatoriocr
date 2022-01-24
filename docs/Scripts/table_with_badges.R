@@ -83,10 +83,10 @@ for (i in 1:dim(doi_sort)[1]) {
   )
   SJR <-
     scimago[grep(gsub("-", "", doi_sort$issn[i]), scimago$Issn), 6]
-  cat(paste0(ifelse(length(SJR) != 0 |
-                      all(!is.na(
-                        SJR
-                      )), SJR, "?"), "</a>"), sep = "")
+  cat(paste0(ifelse(
+    identical(SJR, numeric(0)) |
+      all(is.na(SJR)), "?", SJR
+  ), "</a>"), sep = "")
   # add QUALIS
   cat(
     "<a style=\"border-radius:10%; border-style: solid; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em; text-decoration:none; text-align: center; display:inline-block; float:left; font-size:1.1em; color:black;\"> Qualis <br>",
@@ -94,8 +94,8 @@ for (i in 1:dim(doi_sort)[1]) {
   )
   WebQualis <- qualis[match(doi_sort$issn[i], qualis$ISSN), 3]
   cat(paste0(ifelse(
-    length(WebQualis) != 0 |
-      all(!is.na(WebQualis)), WebQualis, "?"
+    identical(WebQualis, numeric(0)) |
+      all(is.na(WebQualis)), "?", WebQualis
   ), "</a>"), sep = "")
   cat("</div>")
   cat("</tr>")
@@ -163,7 +163,8 @@ if (length(my_dois_works) != 0) {
     SJR <-
       scimago[grep(gsub("-", "", substr(my_dois_works$issn[i], 1, 9)), scimago$Issn), 6]
     cat(paste0(ifelse(
-      length(SJR) != 0 | all(!is.na(SJR)), SJR, "?"
+      identical(SJR, numeric(0)) |
+        all(is.na(SJR)), "?", SJR
     ), "</a>"), sep = "")
     
     # add QUALIS
@@ -174,8 +175,10 @@ if (length(my_dois_works) != 0) {
     WebQualis <-
       qualis$ESTRATO[match(my_dois_works$issn[i], qualis$ISSN)]
     cat(paste0(ifelse(
-      length(WebQualis) != 0 |
-        all(!is.na(WebQualis)), WebQualis, "?"
+      identical(WebQualis, numeric(0)) |
+        all(is.na(WebQualis)),
+      "?",
+      WebQualis
     ), "</a>"), sep = "")
     cat("</div>")
     cat("</td></tr>")

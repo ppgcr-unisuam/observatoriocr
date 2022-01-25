@@ -67,8 +67,6 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 
 ## {#tematicas}
 
-<h1> [**Temáticas**](programa.html) </h1>
-
 ```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
@@ -80,37 +78,21 @@ dir.create(dir.path, recursive = TRUE)
 sheet <- "Projetos"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
+cloud.title <- "Projetos de Pesquisa"
 source("Scripts/docs_to_wordcloud.R")
 
 # dissertações e teses
 sheet <- "TCC"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
+cloud.title <- "Dissertações e Teses"
 source("Scripts/docs_to_wordcloud.R")
 
 # artigos
 sheet <- "Produções"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome da Produção`
-source("Scripts/docs_to_wordcloud.R")
-
-# news
-# read separate sheets
-file.path <- "../PPGCR Unisuam/News.xlsx"
-tabs <- excel_sheets(file.path)
-topics <- c()
-news.list <- vector(mode = "list", length = length(tabs))
-# iterate across sheets
-for (j in 1:length(tabs)) {
-  news <-
-    read_excel(file.path,
-               sheet = tabs[j],
-               col_types = c("text", "text", "text"))
-  topics <- rbind(topics, news[, 2])
-}
-
-sheet <- "News e Blogs"
-data.to.cloud <- topics
+cloud.title <- "Produção Bibliográfica"
 source("Scripts/docs_to_wordcloud.R")
 ```
 
@@ -121,22 +103,9 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 bs_carousel(id = "wordcloud",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/Projetos.png"),
-    caption = bs_carousel_caption("Projetos de Pesquisa")
-  ) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/TCC.png"),
-    caption = bs_carousel_caption("Dissertações e Teses")
-  ) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/Produções.png"),
-    caption = bs_carousel_caption("Produção Bibliográfica")
-  ) %>%
-  bs_append(
-    content = bs_carousel_image(src = "index_files/figure-html/News e Blogs.png"),
-    caption = bs_carousel_caption("News e Blogs")
-  )
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/TCC.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Produções.png"))
 ```
 
 <br>
@@ -146,8 +115,6 @@ bs_carousel(id = "wordcloud",
 <br>
 
 ## {#projetos-linha}
-
-<h1> [**Projetos de pesquisa**](programa.html#projeto-pesquisa) </h1>
 
 ```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -216,9 +183,9 @@ col.curr <- match(linhas.curr, linhas)
 
 # generate plot of projetos per linha by year (absolute frequency)
 barplot(projetos.ano,
-        xlab = "Ano",
-        ylab = "Projetos por Linha de Pesquisa",
+        ylab = "N",
         col = brewer.pal(n = length(linhas), name = "Set3"))
+title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.4)
 legend(
   "topright",
   legend = linhas.curr,
@@ -237,11 +204,11 @@ barplot(
     center = FALSE,
     scale = colSums(as.matrix(projetos.ano))
   ) * 100,
-  xlab = "Ano",
-  ylab = "Projetos por Linha de Pesquisa",
+  ylab = "%",
   col = brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)
 )
+title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.4)
 ```
 
 ```{r sintese-projetos-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}

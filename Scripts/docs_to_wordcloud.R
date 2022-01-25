@@ -24,34 +24,45 @@ words <- sort(rowSums(matrix), decreasing = TRUE)
 df <- data.frame(word = names(words), freq = words)
 
 # set minimum word frequency
-df <- df[df$freq >= 1,]
+df <- df[df$freq >= 1, ]
 
 # set plot area
-par(oma = c(0, 0, 0, 0),
-    mar = c(0, 0, 0, 0),
-    bg = "#2C3E50")
+par(
+  oma = c(0, 0, 0, 0),
+  mar = c(0, 0, 0, 0),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
 # generate word cloud
 wordcloud <- wordcloud2(
   data = df,
   size = 0.5,
-  #  color = rev(viridis(length(unique(df$freq)))),
-  color = colorRampPalette(brewer.pal(11, "Blues"))(diff(range(df$freq))),
+  color = colorRampPalette(brewer.pal(9, "Blues"))(diff(range(df$freq))),
   backgroundColor = "#2C3E50",
   shuffle = FALSE,
   rotateRatio = 0,
   ellipticity = 0.5
-)
+) %>%
+  htmlwidgets::prependContent(
+    htmltools::tags$h1(style = "position:absolute; left:50%; transform:translateX(-50%); background-color:#2C3E50; color:white; line-height:normal;", cloud.title)
+  ) %>%
+  htmlwidgets::prependContent(
+    htmltools::tags$body(style = "font-family:'Lato','Helvetica Neue',Helvetica, Arial,sans-serif; background-color:#2C3E50; margin:0; padding:0;")
+  )
 
 # save it in html
 saveWidget(wordcloud, file.path(dir.path, "tmp.html"), selfcontained = F)
 
 # and in png
 webshot(
-  file.path(dir.path, "tmp.html"),
-  file.path(dir.path, paste0(sheet, ".png")),
+  url = file.path(dir.path, "tmp.html"),
+  file = file.path(dir.path, paste0(sheet, ".png")),
   delay = 5,
-  vwidth = 600,
-  vheight = 600
+  vwidth = round(1344 * 0.7),
+  vheight = round(960 * 0.7)
 )
 
 # delete the tmp folder and file

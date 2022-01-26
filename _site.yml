@@ -13,11 +13,13 @@ include:
   - /CSS
   - /Images
   - /Labs
+  - /Softwares
+exclude:
+  - /Sucupira
   - /Qualis
   - /Scripts
   - /SJR
-  - /Softwares
-  - /Sucupira
+search: true
 navbar:
   left:
     - text: ""
@@ -26,7 +28,7 @@ navbar:
     - text: "Observatório CR"
       href: index.html#observatoriocr
       menu:
-        - text: "Temáticas"
+        - text: "Temáticas de pesquisa"
           href: [index.html#tematicas]
         - text: "Projetos de pesquisa"
           href: [index.html#projetos-linha]
@@ -176,7 +178,8 @@ navbar:
       menu:
         - text: "News"
           href: [news.html]
-    - text: ""
+  right:
+    - text: "GitHub"
       icon: "fa-github"
       href: [https://github.com/rehab-tech/observatoriocr/]
 

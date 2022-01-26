@@ -6,12 +6,12 @@ output:
     toc: false
 ---
 
-## {#observatoriocr}
+<!--CUSTOM SCRIPTS FOR THIS PAGE ONLY-->
 
 <!--script for background color-->
 <style>
 body {
-  background-color:#2C3E50;
+  background-color: #2C3E50 !important;
   color: white;
   }
 </style>
@@ -21,6 +21,14 @@ body {
 .table-hover > tbody > tr:hover { 
   background-color: #18BC9C;
   }
+</style>
+
+<!--script for removing background shading of carousel controls-->
+<style>
+.carousel-control.left, .carousel-control.right {
+   background-image:none !important;
+   filter:none !important;
+   }
 </style>
 
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
@@ -49,8 +57,16 @@ library(webshot2)
 library(wordcloud2)
 ```
 
+## {#observatoriocr}
+
+<br>
+
+<br>
+
 <center>
 [<img align="center" src="Images/coruja.png">](https://www.unisuam.edu.br){target="_blank"}
+
+<br>
 
 <br>
 
@@ -60,8 +76,6 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 </center>
 
 <br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
 
 <br>
 
@@ -109,8 +123,6 @@ bs_carousel(id = "wordcloud",
 ```
 
 <br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
 
 <br>
 
@@ -185,7 +197,7 @@ col.curr <- match(linhas.curr, linhas)
 barplot(projetos.ano,
         ylab = "N",
         col = brewer.pal(n = length(linhas), name = "Set3"))
-title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.4)
+title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
 legend(
   "topright",
   legend = linhas.curr,
@@ -208,7 +220,7 @@ barplot(
   col = brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)
 )
-title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.4)
+title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
 ```
 
 ```{r sintese-projetos-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
@@ -223,8 +235,6 @@ bs_carousel(id = "barplot-projetos",
 ```
 
 <br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
 
 <br>
 
@@ -606,6 +616,8 @@ par(
 datasets <- list_geobr()$years[3]
 last.update <-
   as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
+
+last.update <- 2019
 
 states <-
   read_state(

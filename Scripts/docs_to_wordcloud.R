@@ -47,7 +47,7 @@ wordcloud <- wordcloud2(
   ellipticity = 0.5
 ) %>%
   htmlwidgets::prependContent(
-    htmltools::tags$h1(style = "position:absolute; left:50%; transform:translateX(-50%); background-color:#2C3E50; color:white; line-height:normal;", cloud.title)
+    htmltools::tags$h1(style = "position:absolute; left:50%; transform:translateX(-50%); background-color:#2C3E50; font-size:40px; color:white; line-height:normal;", cloud.title)
   ) %>%
   htmlwidgets::prependContent(
     htmltools::tags$body(style = "font-family:'Lato','Helvetica Neue',Helvetica, Arial,sans-serif; background-color:#2C3E50; margin:0; padding:0;")

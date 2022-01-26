@@ -177,6 +177,11 @@ projetos.ano <- andamento.ano + concluido.ano
 projetos.ano <-
   projetos.ano[, order(colnames(projetos.ano), decreasing = FALSE)]
 
+# get only current 'linha de pesquisa'
+linhas.curr <-
+  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
+col.curr <- match(linhas.curr, linhas)
+
 # plot area setup
 par(
   oma = c(2, 0.1, 2, 0.1),
@@ -187,11 +192,6 @@ par(
   fg = "white",
   col.main = "white"
 )
-
-# get only current 'linha de pesquisa'
-linhas.curr <-
-  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
-col.curr <- match(linhas.curr, linhas)
 
 # generate plot of projetos per linha by year (absolute frequency)
 barplot(projetos.ano,
@@ -240,129 +240,137 @@ bs_carousel(id = "barplot-projetos",
 
 ## {#financiamentos}
 
-<h1> [**Financiamentos dos projetos**](programa.html#financiadores) </h1>
-
-```{r financiadores-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-financiamentos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+# for displaying large numbers
 options(scipen = 10)
 
 financiadores.raw <-
   read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
 
-# select variables to display, by AGENCIA & PROGRAMA
+# select variables to display
 financiadores <-
-  financiadores.raw %>% select("Agência", "Total", "Programa")
+  financiadores.raw %>% select("Ano", "Agência", "Total", "Programa", "Proponente")
+
 # drop rows with empty cells
 financiadores <- financiadores[complete.cases(financiadores), ]
-# generate table
-table.1 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    type = all_continuous() ~ "continuous2",
-    statistic = list(
-      all_continuous() ~ c("R$ {sum}", "{min}", "{max}"),
-      all_categorical() ~ c("{n}")
-    ),
-    missing = "no",
-    digits = "Total" ~ 2,
-    sort = all_categorical() ~ "frequency"
-  ) %>%
-  add_overall(TRUE, "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  bold_labels()
 
-editais.agencia <- table(financiadores$'Agência')
+# generate cross-table
+N.editais.agencia.ano <- table(financiadores$'Agência', financiadores$'Ano')
+N.editais.agencia.ano <-
+  N.editais.agencia.ano[, order(colnames(N.editais.agencia.ano), decreasing = FALSE)]
 
-layout(matrix(c(1, 2, 3, 4, 5, 6), ncol = 2, byrow = TRUE), widths = c(3, 1))
+# get all 'agencias'
+agencias <-
+  na.exclude(rownames(N.editais.agencia.ano))
+
+# plot area setup
 par(
-  oma = c(0.1, 2, 2, 0.1),
-  mar = c(2, 2, 2, 0.1),
+  oma = c(2, 0.1, 2, 0.1),
+  mar = c(5, 4, 2, 2),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
   fg = "white",
   col.main = "white"
 )
-# generate plot of total per year
-total.ano <-
-  aggregate(
-    financiadores.raw$Total,
-    by = list(financiadores.raw$Ano),
-    FUN = sum,
-    na.rm = TRUE
-  )
-barplot(
-  total.ano[, 2] ~ total.ano[, 1],
-  ylab = "Total (R$)",
-  main = "Valores de financiamentos",
-  col = brewer.pal(n = length(unique(editais.agencia)) + 1, name = "Set3")[length(unique(editais.agencia)) + 1]
-)
-total.agencia <-
-  aggregate(
-    financiadores.raw$Total,
-    by = list(financiadores.raw$'Agência'),
-    FUN = sum,
-    na.rm = TRUE
-  )
-pie(
-  total.agencia[, 2],
-  labels = NA,
-  col = brewer.pal(n = length(unique(editais.agencia)), name = "Set3"),
-  init.angle = 90,
-  main = "Valores por Agência",
-  inset = -1
-)
 
-# generate plot of total per year
-editais.ano <-
-  aggregate(
-    financiadores.raw$Total,
-    by = list(financiadores.raw$Ano),
-    FUN = function(x)
-      sum(!is.na(x))
-  )
-barplot(
-  editais.ano[, 2] ~ editais.ano[, 1],
-  ylab = "Editais",
-  main = "Quantidade de editais financiados",
-  col = brewer.pal(n = length(unique(editais.agencia)) + 1, name = "Set3")[length(unique(editais.agencia)) + 1]
-)
-pie(
-  editais.agencia,
-  labels = NA,
-  col = brewer.pal(n = length(unique(editais.agencia)), name = "Set3"),
-  init.angle = 90,
-  main = "Editais por Agência",
-  inset = -1
-)
-
-# generate plot of total per professor
-professores.ano <-
-  rowSums(table(financiadores.raw$Ano, financiadores.raw$Proponente) != 0)
-barplot(
-  professores.ano ~ names(professores.ano),
-  ylab = "Docentes",
-  main = "Quantidade de docentes com financiamentos",
-  col = brewer.pal(n = length(unique(editais.agencia)) + 1, name = "Set3")[length(unique(editais.agencia)) + 1]
-)
-plot(0, type = 'n', axes = FALSE)
+# generate plot of financiamentos per agency by year (absolute frequency)
+barplot(N.editais.agencia.ano,
+        ylab = "N",
+        col = brewer.pal(n = length(agencias), name = "Set3"))
+title(main = "Editais Financiados por Agência", outer = TRUE, cex.main = 1.7)
 legend(
-  "center",
-  legend = c("Total", names(editais.agencia)),
-  fill = c(
-    brewer.pal(n = length(unique(editais.agencia)) + 1, name = "Set3")[length(unique(editais.agencia)) + 1],
-    brewer.pal(n = length(names(editais.agencia)), name = "Set3")
-  ),
+  "topright",
+  legend = agencias,
+  fill = brewer.pal(n = length(agencias), name = "Set3"),
+  text.col = "white",
   box.lwd = 0,
-  cex = 1
+  bty = "n",
+  horiz = FALSE,
+  cex = 0.5,
 )
+
+# generate cross-table
+T.editais.agencia.ano <- with(financiadores, tapply(financiadores$Total, list(financiadores$'Agência', financiadores$'Ano'), FUN= sum))
+
+# add zero to not available values
+T.editais.agencia.ano[is.na(T.editais.agencia.ano)] <- 0
+
+T.editais.agencia.ano <-
+  T.editais.agencia.ano[, order(colnames(T.editais.agencia.ano), decreasing = FALSE)]
+
+# em milhares
+T.editais.agencia.ano <- T.editais.agencia.ano/1000
+
+# get all 'agencias'
+agencias <-
+  na.exclude(rownames(T.editais.agencia.ano))
+
+# plot area setup
+par(
+  oma = c(2, 0.1, 2, 0.1),
+  mar = c(5, 4, 2, 2),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
+
+# generate plot of financiamentos per agency by year (absolute frequency)
+barplot(T.editais.agencia.ano,
+        ylab = "R$, em milhares",
+        col = brewer.pal(n = length(agencias), name = "Set3"))
+title(main = "Valores Financiados por Agência", outer = TRUE, cex.main = 1.7)
+legend(
+  "topright",
+  legend = agencias,
+  fill = brewer.pal(n = length(agencias), name = "Set3"),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = FALSE,
+  cex = 0.5,
+)
+
+# generate cross-table
+professores.ano <-
+  rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
+
+# plot area setup
+par(
+  oma = c(2, 0.1, 2, 0.1),
+  mar = c(5, 4, 2, 2),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
+
+# generate plot of financiamentos per agency by year (absolute frequency)
+barplot(professores.ano,
+        ylab = "N",
+        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano))
+)
+title(main = "Docentes com Financiamento", outer = TRUE, cex.main = 1.7)
+```
+
+```{r sintese-financiamentos-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# carousel of barplots
+bs_carousel(id = "barplot-financiamentos",
+            use_indicators = TRUE,
+            use_controls = TRUE) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiamentos-1.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiamentos-2.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiamentos-3.png"))
 ```
 
 <br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
 
 <br>
 

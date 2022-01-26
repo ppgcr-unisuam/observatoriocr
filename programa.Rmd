@@ -1258,7 +1258,7 @@ library(RColorBrewer)
 
 options(scipen = 10)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 # select variables to display, by AGENCIA & PROGRAMA
 financiadores <- financiadores.raw %>% select("Agência", "Total", "Programa")
@@ -1318,7 +1318,7 @@ library(gtsummary)
 library(lemon)
 library(DT)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1363,7 +1363,7 @@ library(gtsummary)
 library(lemon)
 library(DT)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1408,7 +1408,7 @@ library(gtsummary)
 library(lemon)
 library(DT)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1453,7 +1453,7 @@ library(gtsummary)
 library(lemon)
 library(DT)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1498,7 +1498,7 @@ library(gtsummary)
 library(lemon)
 library(DT)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "DADOS.fomento")
+financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")

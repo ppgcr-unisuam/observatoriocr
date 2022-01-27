@@ -110,11 +110,11 @@ cloud.title <- "Produção Bibliográfica"
 source("Scripts/docs_to_wordcloud.R")
 ```
 
-```{r sintese-temas-wordcloud, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel of wordclouds
-bs_carousel(id = "wordcloud",
+bs_carousel(id = "temas",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
@@ -184,8 +184,8 @@ col.curr <- match(linhas.curr, linhas)
 
 # plot area setup
 par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(2, 1, 2, 1),
+  oma = c(1, 1, 1, 1),
+  mar = c(1, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -223,11 +223,11 @@ barplot(
 title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
 ```
 
-```{r sintese-projetos-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# carousel of barplots
-bs_carousel(id = "barplot-projetos",
+# carousel
+bs_carousel(id = "projetos",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
@@ -265,8 +265,8 @@ agencias <-
 
 # plot area setup
 par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(2, 1, 2, 1),
+  oma = c(1, 1, 1, 1),
+  mar = c(1, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -365,24 +365,23 @@ summ.table.financiadores <-
       format = "f",
       digits = 0,
       big.mark = "."
+    )),
+    paste0("R$ ", formatC(
+      sum(financiadores$Total, na.rm = TRUE),
+      format = "f",
+      digits = 0,
+      big.mark = "."
     ))
   )
 colnames(summ.table.financiadores) <-
   cbind("Projetos Financiados",
         "Média Anual",
         "Menor Financiamento",
-        "Maior Financiamento")
+        "Maior Financiamento",
+        "Total de Financiamento")
+
 # plot area setup
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(2, 1, 2, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white",
-  mfrow = c(2, 2)
-)
+layout(matrix(c(1,2,3,4,5,5), ncol = 2, byrow = TRUE))
 
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
@@ -417,11 +416,11 @@ title(main = "Síntese dos Financiamentos",
       cex.main = 2)
 ```
 
-```{r sintese-financiadores-barplot, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# carousel of barplots
-bs_carousel(id = "barplot-financiadores",
+# carousel
+bs_carousel(id = "financiadores",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")) %>%
@@ -438,7 +437,7 @@ bs_carousel(id = "barplot-financiadores",
 
 <h1> [**Produção bibliográfica**](producoes.html#bibliografica) </h1>
 
-```{r producao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-producao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
@@ -476,9 +475,20 @@ barplot(
 )
 ```
 
-<br>
+```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-<hr style="height:2px;border-width:0;color:white;background-color:white">
+# carousel
+# bs_carousel(id = "producao",
+#             use_indicators = TRUE,
+#             use_controls = TRUE) %>%
+#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
+#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
+#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
+#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
+```
+
+<br>
 
 <br>
 

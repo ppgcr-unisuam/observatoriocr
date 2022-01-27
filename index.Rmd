@@ -92,21 +92,21 @@ dir.create(dir.path, recursive = TRUE)
 sheet <- "Projetos"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
-cloud.title <- "Projetos de Pesquisa"
+cloud.title <- "Temas de Projetos"
 source("Scripts/docs_to_wordcloud.R")
 
 # dissertações e teses
 sheet <- "TCC"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
-cloud.title <- "Dissertações e Teses"
+cloud.title <- "Temas de Dissertações e Teses"
 source("Scripts/docs_to_wordcloud.R")
 
 # artigos
 sheet <- "Produções"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome da Produção`
-cloud.title <- "Produção Bibliográfica"
+cloud.title <- "Temas de Produção"
 source("Scripts/docs_to_wordcloud.R")
 ```
 
@@ -159,7 +159,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "EM ANDAMENTO",]
+               projetos$Situação == "EM ANDAMENTO", ]
   for (j in 1:length(linhas)) {
     andamento.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -167,7 +167,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "CONCLUÍDO",]
+               projetos$Situação == "CONCLUÍDO", ]
   for (j in 1:length(linhas)) {
     concluido.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -197,7 +197,9 @@ par(
 barplot(projetos.ano,
         ylab = "N",
         col = brewer.pal(n = length(linhas), name = "Set3"))
-title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
+title(main = "Projetos por Linha de Pesquisa",
+      outer = TRUE,
+      cex.main = 1.7)
 legend(
   "topright",
   legend = linhas.curr,
@@ -220,7 +222,9 @@ barplot(
   col = brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)
 )
-title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
+title(main = "Projetos por Linha de Pesquisa",
+      outer = TRUE,
+      cex.main = 1.7)
 ```
 
 ```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
@@ -251,7 +255,7 @@ financiadores <-
   financiadores.raw %>% select("Ano", "Agência", "Programa", "Total", "Proponente")
 
 # drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores),]
+financiadores <- financiadores[complete.cases(financiadores), ]
 
 # generate cross-table
 N.editais.agencia.ano <-
@@ -366,23 +370,28 @@ summ.table.financiadores <-
       digits = 0,
       big.mark = "."
     )),
-    paste0("R$ ", formatC(
-      sum(financiadores$Total, na.rm = TRUE),
-      format = "f",
-      digits = 2,
-      big.mark = ".",
-      decimal.mark = ","
-    ))
+    paste0(
+      "R$ ",
+      formatC(
+        sum(financiadores$Total, na.rm = TRUE),
+        format = "f",
+        digits = 2,
+        big.mark = ".",
+        decimal.mark = ","
+      )
+    )
   )
 colnames(summ.table.financiadores) <-
-  cbind("Projetos Financiados",
-        "Média Anual",
-        "Menor Financiamento",
-        "Maior Financiamento",
-        "Total de Financiamento")
+  cbind(
+    "Projetos Financiados",
+    "Média Anual",
+    "Menor Financiamento",
+    "Maior Financiamento",
+    "Total de Financiamento"
+  )
 
 # plot area setup
-layout(matrix(c(1,2,3,4,5,5), ncol = 2, byrow = TRUE))
+layout(matrix(c(1, 2, 3, 4, 5, 5), ncol = 2, byrow = TRUE))
 
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
@@ -412,9 +421,6 @@ for (i in 1:ncol(summ.table.financiadores)) {
       lwd = 15,
       col = brewer.pal(n = 9, name = "Set3")[1])
 }
-title(main = "Síntese dos Financiamentos",
-      outer = TRUE,
-      cex.main = 2.0)
 ```
 
 ```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
@@ -439,7 +445,6 @@ bs_carousel(id = "financiadores-carouse",
 ```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 dois <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
@@ -449,13 +454,20 @@ dois <-
 
 # Data cleaning
 dois <- dois[complete.cases(dois$DOI),]
+dois$WebQualis[dois$WebQualis == "Sem WebQualis"] <- NA
 
 artigos <-
   dois[dois$Publicado.em != "Aceito" &
          dois$Publicado.em != "Submetido", ]
 
+estratos <- sort(unique(artigos$WebQualis))
+ano <- sort(unique(artigos$Publicado.em))
+
 # generate plot of artigos per year
 table.1 <- table(artigos$Publicado.em)
+
+table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
+table.2 <- apply(table.2, 2, rev)
 
 # plot area setup
 par(
@@ -474,6 +486,31 @@ barplot(table.1,
 title(main = "Produção Bibliográfica",
       outer = TRUE,
       cex.main = 1.7)
+
+barplot(
+  as.matrix(table.2),
+  xlab = "Ano",
+  ylab = "Estrato",
+  col = brewer.pal(n = length(estratos) + 1, name = "Blues"),
+  xaxt = 'n'
+)
+title(main = "Qualidade da produção, por estrato",
+      outer = TRUE,
+      cex.main = 1.7)
+
+barplot(
+  scale(
+    as.matrix(table.2),
+    center = FALSE,
+    scale = colSums(as.matrix(table.2))
+  ) * 100,
+  ylab = "%",
+  col = brewer.pal(n = length(linhas), name = "Set3"),
+  ylim = c(0, 100)
+)
+title(main = "Qualidade da produção, por estrato",
+      outer = TRUE,
+      cex.main = 1.7)
 ```
 
 ```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
@@ -483,88 +520,13 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 bs_carousel(id = "producao-carouse",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png"))
-#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
-#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png"))
 #   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
 ```
 
 <br>
-
-<br>
-
-## {#producao-qualidade}
-
-<h1> [**Qualidade da produção, por estrato**](producoes.html#bibliografica) </h1>
-
-```{r producao-qualidade, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-dois <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.artigos",
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- dois[complete.cases(dois$DOI),]
-dois$WebQualis[dois$WebQualis == "Sem WebQualis"] <- NA
-
-artigos <-
-  dois[dois$Publicado.em != "Aceito" &
-         dois$Publicado.em != "Submetido", ]
-estratos <- sort(unique(artigos$WebQualis))
-ano <- sort(unique(artigos$Publicado.em))
-table.1 <- t(table(artigos$Publicado.em, artigos$WebQualis))
-table.1 <- apply(table.1, 2, rev)
-
-layout(matrix(
-  c(1:2),
-  nrow = 2,
-  ncol = 1,
-  byrow = TRUE
-), heights = c(1 / 2, 1 / 2))
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white"
-)
-# generate plot of artigos per estrato by year
-barplot(
-  as.matrix(table.1),
-  xlab = "Ano",
-  ylab = "Estrato",
-  col = brewer.pal(n = length(estratos) + 1, name = "Blues"),
-  xaxt = 'n'
-)
-barplot(
-  scale(
-    as.matrix(table.1),
-    center = FALSE,
-    scale = colSums(as.matrix(table.1))
-  ) * 100,
-  xlab = "Ano",
-  ylab = "Proporção por estrato",
-  col = brewer.pal(n = length(estratos), name = "Blues"),
-  yaxt = 'n',
-  legend.text = rownames(table.1),
-  args.legend = list(
-    x = 18,
-    y = -80,
-    ncol = 3,
-    bty = "n",
-    cex = 0.7,
-    x.intersp = 0.2,
-    y.intersp = 0.8
-  )
-)
-axis(2, at = c(0, 100))
-```
 
 <br>
 

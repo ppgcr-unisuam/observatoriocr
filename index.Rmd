@@ -79,7 +79,7 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 
 <br>
 
-## {#tematicas}
+## {#temas}
 
 ```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -99,7 +99,7 @@ source("Scripts/docs_to_wordcloud.R")
 sheet <- "TCC"
 source("Scripts/read_sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
-cloud.title <- "Temas de Dissertações e Teses"
+cloud.title <- "Dissertações e Teses"
 source("Scripts/docs_to_wordcloud.R")
 
 # artigos
@@ -194,6 +194,7 @@ par(
 )
 
 # generate plot of projetos per linha by year (absolute frequency)
+# plot 1
 barplot(projetos.ano,
         ylab = "N",
         col = brewer.pal(n = length(linhas), name = "Set3"))
@@ -208,10 +209,11 @@ legend(
   box.lwd = 0,
   bty = "n",
   horiz = FALSE,
-  cex = 0.5,
+  cex = 0.75,
 )
 
 # generate plot of projetos per linha by year (relative frequency)
+# plot 2
 barplot(
   scale(
     as.matrix(projetos.ano),
@@ -279,6 +281,7 @@ par(
 )
 
 # generate plot of financiadores per agency by year (absolute frequency)
+# plot 1
 barplot(N.editais.agencia.ano,
         ylab = "N",
         col = brewer.pal(n = length(agencias), name = "Set3"))
@@ -286,14 +289,14 @@ title(main = "Editais Financiados por Agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
-  "topright",
+  "topleft",
   legend = agencias,
   fill = brewer.pal(n = length(agencias), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
   horiz = FALSE,
-  cex = 0.5,
+  cex = 1,
 )
 
 # generate cross-table
@@ -310,29 +313,27 @@ T.editais.agencia.ano[is.na(T.editais.agencia.ano)] <- 0
 T.editais.agencia.ano <-
   T.editais.agencia.ano[, order(colnames(T.editais.agencia.ano), decreasing = FALSE)]
 
-# em milhares
-T.editais.agencia.ano <- T.editais.agencia.ano / 1000
-
 # get all 'agencias'
 agencias <-
   na.exclude(rownames(T.editais.agencia.ano))
 
 # generate plot of financiadores per agency by year (absolute frequency)
+# plot 2
 barplot(T.editais.agencia.ano,
-        ylab = "R$, em milhares",
+        ylab = "R$",
         col = brewer.pal(n = length(agencias), name = "Set3"))
 title(main = "Valores Financiados por Agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
-  "topright",
+  "topleft",
   legend = agencias,
   fill = brewer.pal(n = length(agencias), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
   horiz = FALSE,
-  cex = 0.5,
+  cex = 1,
 )
 
 # generate cross-table
@@ -340,6 +341,7 @@ professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
 # generate plot of financiadores per docente by year (absolute frequency)
+# plot 3
 barplot(professores.ano,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
@@ -393,6 +395,7 @@ colnames(summ.table.financiadores) <-
 # plot area setup
 layout(matrix(c(1, 2, 3, 4, 5, 5), ncol = 2, byrow = TRUE))
 
+# plot 4
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
     c(0, 1),
@@ -445,7 +448,27 @@ bs_carousel(id = "financiadores-carouse",
 ```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-dois <-
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# read data
+artigos <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
     sheet = "PI.artigos",
@@ -453,21 +476,62 @@ dois <-
   ))
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI),]
-dois$WebQualis[dois$WebQualis == "Sem WebQualis"] <- NA
+artigos <- artigos[complete.cases(artigos$DOI),]
+artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 
+# remove os aceitos e submetidos
 artigos <-
-  dois[dois$Publicado.em != "Aceito" &
-         dois$Publicado.em != "Submetido", ]
+  artigos[artigos$Publicado.em != "Aceito" &
+            artigos$Publicado.em != "Submetido", ]
 
+# estratos Qualis
 estratos <- sort(unique(artigos$WebQualis))
-ano <- sort(unique(artigos$Publicado.em))
 
-# generate plot of artigos per year
+# SJR
+SJR <- c()
+for (i in 1:dim(artigos)[1]) {
+  SJR.i <-
+    as.numeric(scimago[grep(gsub("-", "", artigos$ISSN[i]), scimago$Issn), 6])
+  SJR <-
+    c(SJR, ifelse(identical(SJR.i, numeric(0)) |
+                    all(is.na(SJR.i)), NA, SJR.i))
+}
+
+# generate cross tables of artigos per year
 table.1 <- table(artigos$Publicado.em)
 
 table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
 table.2 <- apply(table.2, 2, rev)
+table.2 <- table.2[order(rownames(table.2)),]
+
+table.3 <- data.frame(artigos$Publicado.em, SJR)
+table.3.mean <-
+  aggregate(
+    table.3,
+    by = list(artigos$Publicado.em),
+    FUN = mean,
+    na.rm = TRUE
+  )
+table.3.mean <- t(as.matrix(table.3.mean[, -2]))
+table.3.mean <- as.numeric(table.3.mean[-1,])
+names(table.3.mean) <- names(table.1)
+
+table.3.min <-
+  aggregate(
+    table.3,
+    by = list(artigos$Publicado.em),
+    FUN = min,
+    na.rm = TRUE
+  )[, 3]
+table.3.max <-
+  aggregate(
+    table.3,
+    by = list(artigos$Publicado.em),
+    FUN = max,
+    na.rm = TRUE
+  )[, 3]
+names(table.3.min) <- names(table.3.mean)
+names(table.3.max) <- names(table.3.mean)
 
 # plot area setup
 par(
@@ -480,6 +544,7 @@ par(
   col.main = "white"
 )
 
+# plot 1
 barplot(table.1,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.1)))
@@ -487,17 +552,25 @@ title(main = "Produção Bibliográfica",
       outer = TRUE,
       cex.main = 1.7)
 
-barplot(
-  as.matrix(table.2),
-  xlab = "Ano",
-  ylab = "Estrato",
-  col = brewer.pal(n = length(estratos) + 1, name = "Blues"),
-  xaxt = 'n'
-)
-title(main = "Qualidade da produção, por estrato",
+# plot 2
+barplot(table.2,
+        ylab = "Estrato",
+        col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)))
+title(main = "Qualidade da produção (Qualis)",
       outer = TRUE,
       cex.main = 1.7)
+legend(
+  "topleft",
+  legend = estratos,
+  fill = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = FALSE,
+  cex = 1,
+)
 
+# plot 3
 barplot(
   scale(
     as.matrix(table.2),
@@ -505,10 +578,28 @@ barplot(
     scale = colSums(as.matrix(table.2))
   ) * 100,
   ylab = "%",
-  col = brewer.pal(n = length(linhas), name = "Set3"),
+  col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
   ylim = c(0, 100)
 )
-title(main = "Qualidade da produção, por estrato",
+title(main = "Qualidade da produção (Qualis)",
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 4
+barplot(
+  table.3.mean,
+  col = NA,
+  border = NA,
+  ylim = c(mean(table.3.mean) - 0.5, mean(table.3.mean) + 0.5)
+)
+lines(
+  table.3.mean,
+  type = "l",
+  lwd = 3,
+  ylab = "SJR",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
+)
+title(main = "Qualidade da produção (SJR)",
       outer = TRUE,
       cex.main = 1.7)
 ```
@@ -517,20 +608,16 @@ title(main = "Qualidade da produção, por estrato",
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
-bs_carousel(id = "producao-carouse",
+bs_carousel(id = "producao-carousel",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png"))
-#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
 ```
 
 <br>
-
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
 
 <br>
 
@@ -538,7 +625,7 @@ bs_carousel(id = "producao-carouse",
 
 <h1> **Formação de pessoal de nível superior** </h1>
 
-```{r egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 discentes.raw <-

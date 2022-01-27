@@ -147,7 +147,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",
@@ -241,7 +241,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",
@@ -332,7 +332,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",
@@ -423,7 +423,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",
@@ -514,7 +514,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",
@@ -605,7 +605,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",

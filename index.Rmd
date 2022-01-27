@@ -370,7 +370,8 @@ summ.table.financiadores <-
       sum(financiadores$Total, na.rm = TRUE),
       format = "f",
       digits = 2,
-      big.mark = "."
+      big.mark = ".",
+      decimal.mark = ","
     ))
   )
 colnames(summ.table.financiadores) <-
@@ -413,7 +414,7 @@ for (i in 1:ncol(summ.table.financiadores)) {
 }
 title(main = "Síntese dos Financiamentos",
       outer = TRUE,
-      cex.main = 2)
+      cex.main = 2.0)
 ```
 
 ```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}

@@ -28,6 +28,8 @@ navbar:
     - text: "Observatório CR"
       href: index.html#observatoriocr
       menu:
+        - text: "Coerência do Programa"
+          href: [index.html#coerencia-programa]
         - text: "Temas de pesquisa"
           href: [index.html#temas]
         - text: "Projetos de pesquisa"

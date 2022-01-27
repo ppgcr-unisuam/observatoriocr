@@ -114,7 +114,7 @@ source("Scripts/docs_to_wordcloud.R")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel of wordclouds
-bs_carousel(id = "temas",
+bs_carousel(id = "temas-carouse",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
@@ -227,7 +227,7 @@ title(main = "Projetos por Linha de Pesquisa", outer = TRUE, cex.main = 1.7)
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
-bs_carousel(id = "projetos",
+bs_carousel(id = "projetos-carouse",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
@@ -369,7 +369,7 @@ summ.table.financiadores <-
     paste0("R$ ", formatC(
       sum(financiadores$Total, na.rm = TRUE),
       format = "f",
-      digits = 0,
+      digits = 2,
       big.mark = "."
     ))
   )
@@ -420,7 +420,7 @@ title(main = "Síntese dos Financiamentos",
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
-bs_carousel(id = "financiadores",
+bs_carousel(id = "financiadores-carouse",
             use_indicators = TRUE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")) %>%
@@ -435,9 +435,7 @@ bs_carousel(id = "financiadores",
 
 ## {#producao}
 
-<h1> [**Produção bibliográfica**](producoes.html#bibliografica) </h1>
-
-```{r sintese-producao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
@@ -455,34 +453,36 @@ artigos <-
   dois[dois$Publicado.em != "Aceito" &
          dois$Publicado.em != "Submetido", ]
 
+# generate plot of artigos per year
+table.1 <- table(artigos$Publicado.em)
+
+# plot area setup
 par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
+  oma = c(1, 1, 1, 1),
+  mar = c(1, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
   fg = "white",
   col.main = "white"
 )
-# generate plot of artigos per year
-table.1 <- table(artigos$Publicado.em)
-barplot(
-  t(table.1),
-  xlab = "Ano",
-  ylab = "Artigos",
-  col = c("lightblue"),
-  bty = "n"
-)
+
+barplot(table.1,
+        ylab = "N",
+        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.1)))
+title(main = "Produção Bibliográfica",
+      outer = TRUE,
+      cex.main = 1.7)
 ```
 
 ```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
-# bs_carousel(id = "producao",
-#             use_indicators = TRUE,
-#             use_controls = TRUE) %>%
-#   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
+bs_carousel(id = "producao-carouse",
+            use_indicators = TRUE,
+            use_controls = TRUE) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png"))
 #   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
 #   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
 #   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))

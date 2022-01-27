@@ -185,7 +185,7 @@ col.curr <- match(linhas.curr, linhas)
 # plot area setup
 par(
   oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
+  mar = c(2, 1, 2, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -313,17 +313,6 @@ T.editais.agencia.ano <- T.editais.agencia.ano / 1000
 agencias <-
   na.exclude(rownames(T.editais.agencia.ano))
 
-# plot area setup
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(2, 1, 2, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
-
 # generate plot of financiadores per agency by year (absolute frequency)
 barplot(T.editais.agencia.ano,
         ylab = "R$, em milhares",
@@ -346,18 +335,7 @@ legend(
 professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
-# plot area setup
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(2, 1, 2, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
-
-# generate plot of financiadores per agency by year (absolute frequency)
+# generate plot of financiadores per docente by year (absolute frequency)
 barplot(professores.ano,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
@@ -365,29 +343,28 @@ title(main = "Docentes com Financiamento",
       outer = TRUE,
       cex.main = 1.7)
 
-
 # calculate summary statistics for financiamentos
 summ.table.financiadores <- matrix(0, nrow = 1, ncol = 4)
 summ.table.financiadores <-
   cbind(
     length(financiadores$Total),
-    paste0("R$", formatC(
+    paste0("R$ ", formatC(
       mean(financiadores$Total, na.rm = TRUE),
       format = "f",
       digits = 0,
-      big.mark = ","
+      big.mark = "."
     )),
-    paste0("R$", formatC(
+    paste0("R$ ", formatC(
       min(financiadores$Total, na.rm = TRUE),
       format = "f",
       digits = 0,
-      big.mark = ","
+      big.mark = "."
     )),
-    paste0("R$", formatC(
+    paste0("R$ ", formatC(
       max(financiadores$Total, na.rm = TRUE),
       format = "f",
       digits = 0,
-      big.mark = ","
+      big.mark = "."
     ))
   )
 colnames(summ.table.financiadores) <-
@@ -406,6 +383,7 @@ par(
   col.main = "white",
   mfrow = c(2, 2)
 )
+
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
     c(0, 1),
@@ -420,7 +398,7 @@ for (i in 1:ncol(summ.table.financiadores)) {
     x = 0.5,
     y = 0.6,
     labels = as.character(summ.table.financiadores[i]),
-    cex = 4.25,
+    cex = 4.2,
     col = brewer.pal(n = 9, name = "Set3")[3]
   )
   text(

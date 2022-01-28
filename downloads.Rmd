@@ -132,4 +132,8 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 
 ```
 
+<br>
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>

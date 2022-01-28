@@ -85,8 +85,6 @@ navbar:
           href: [programa.html#convenios]
         - text: "Cooperação entre instituições"
           href: [programa.html#cooperacao]
-        - text: "Downloads"
-          href: [programa.html#downloads]
     - text: "Pessoas"
       href: pessoas.html
       menu:
@@ -177,6 +175,9 @@ navbar:
         - text: "News"
           href: [news.html]
   right:
+    - text: ""
+      icon: "fa-download"
+      href: [downloads.html]
     - text: ""
       icon: "fa-link"
       href: [fontes.html]

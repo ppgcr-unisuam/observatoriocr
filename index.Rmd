@@ -178,8 +178,7 @@ bs_carousel(id = "coerencia-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png"))
 ```
 
-*Fontes:*
-^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <br>
 
@@ -228,8 +227,7 @@ bs_carousel(id = "temas-carouse",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Produções.png"))
 ```
 
-*Fontes:*
-^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <br>
 
@@ -349,8 +347,7 @@ bs_carousel(id = "projetos-carouse",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"))
 ```
 
-*Fontes:*
-^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <br>
 
@@ -551,11 +548,7 @@ bs_carousel(id = "financiadores-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png"))
 ```
 
-*Fontes:*
-^1^ [**CAPES**](https://www.gov.br/capes/pt-br)
-^2^ [**CNPq**](https://www.gov.br/cnpq/pt-br)
-^3^ [**FAPERJ**](http://www.faperj.br)
-^4^ **UNISUAM**
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <br>
 
@@ -752,10 +745,7 @@ bs_carousel(id = "producao-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
 ```
 
-*Fontes:*
-^1^ [**SCImago**](https://www.scimagojr.com)
-^2^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
-^3^ **UNISUAM**
+*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
 <br>
 
@@ -981,8 +971,6 @@ cat('</div>')
 
 <br>
 
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
 <br>
 
 ## {#discentes}
@@ -1094,8 +1082,6 @@ plot(g2)
 
 <br>
 
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
 <br>
 
 ## {#rede}
@@ -1198,8 +1184,6 @@ legend(
 
 <br>
 
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
 <br>
 
 ## {#disciplinas}
@@ -1263,41 +1247,3 @@ legend(
 cat("  \n")
 cat("  \n")
 ```
-
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
-<br>
-
-## {#nota}
-
-<h1> **Nota do Programa** </h1>
-
-```{r conceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-periodos.raw <-
-  read_excel("../PPGCR Unisuam/Avaliação.xlsx", sheet = "Períodos")
-
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white"
-)
-# generate plot of conceitos per year
-barplot(
-  periodos.raw$Nota ~ periodos.raw$Período,
-  xlab = "Período",
-  ylab = "Nota CAPES",
-  col = brewer.pal(n = length(periodos.raw$Período), name = "Set3")[1],
-  ylim = c(0, 7)
-)
-```
-
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">

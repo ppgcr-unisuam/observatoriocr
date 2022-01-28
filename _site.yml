@@ -22,11 +22,11 @@ exclude:
 search: true
 navbar:
   left:
-    - text: "Observatório CR"
+    - text: ""
       icon: "fa-home"
       href: index.html#observatoriocr
       menu:
-        - text: "Descrição"
+        - text: "Observatório CR"
           href: index.html
         - text: "Coerência do Programa"
           href: [index.html#coerencia-programa]
@@ -48,8 +48,6 @@ navbar:
           href: [index.html#rede]
         - text: "Disciplinas"
           href: [index.html#disciplinas]
-        - text: "Nota do Programa"
-          href: [index.html#nota]
     - text: "Programa"
       href: programa.html
       menu:
@@ -156,6 +154,8 @@ navbar:
       menu:
         - text: "Autoavaliação"
           href: [autoavaliacao.html]
+        - text: "Notas do Programa"
+          href: [autoavaliacao.html#notas]
         - text: "Grupos de trabalho"
           href: [autoavaliacao.html#grupos-trabalho]
         - text: "Qualidade das disciplinas"

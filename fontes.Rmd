@@ -1,5 +1,5 @@
 ---
-title: Fontes
+title: Fontes dos dados
 
 output:
   html_document:
@@ -56,6 +56,8 @@ div.main-container {
 <p align="right">
 ```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 # sorteia participante para relatar no texto
+library(kableExtra)
+library(readxl)
 library(fontawesome)
 
 cat("*Compartilhe* &nbsp;")
@@ -77,8 +79,6 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 <br>
-
-<h1> **Fontes dos dados** </h1>
 
 ```{r fontes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="85%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -114,7 +114,3 @@ for (j in 1:length(tabs)) {
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
-
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">

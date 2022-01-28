@@ -82,8 +82,7 @@ O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ci
 
 ## {#coerencia-programa}
 
-```{r sintese-coerencia, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
-
+```{r sintese-coerencia, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # structure the alluvial plot
@@ -91,19 +90,56 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 sheet <- "Projetos"
 source("Scripts/read_sucupira.R")
 
-alluv.data <- data.frame(sucupira.raw$`Área de Concentração`, sucupira.raw$`Linha de Pesquisa`, sucupira.raw$`Nome do Projeto de Pesquisa`)
+alluv.data <-
+  data.frame(
+    sucupira.raw$`Área de Concentração`,
+    sucupira.raw$`Linha de Pesquisa`,
+    sucupira.raw$`Nome do Projeto de Pesquisa`
+  )
+start <- sucupira.raw$`Data de Início`[complete.cases(alluv.data)]
 alluv.data <- alluv.data[complete.cases(alluv.data), ]
 
-alluv.data.aggr <- aggregate(alluv.data, by = list(alluv.data$sucupira.raw..Área.de.Concentração., alluv.data$sucupira.raw..Linha.de.Pesquisa., alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.), FUN = length)
+alluv.data.aggr <-
+  aggregate(
+    alluv.data,
+    by = list(
+      alluv.data$sucupira.raw..Área.de.Concentração.,
+      alluv.data$sucupira.raw..Linha.de.Pesquisa.,
+      alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.
+    ),
+    FUN = length
+  )
 
 # drop repeated columns
 alluv.data.aggr <- alluv.data.aggr[, 1:4]
 colnames(alluv.data.aggr) <- c("AC", "LP", "PP", "Freq")
 
+# get all history of 'linha de pesquisa'
+linhas <-
+  na.exclude(unique(alluv.data$sucupira.raw..Linha.de.Pesquisa.))
+
+# ordering
+ordering <- c()
+for (i in 1:length(alluv.data.aggr$PP)) {
+  index <- match(alluv.data.aggr$PP[i],
+                 alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.)
+  ordering <- c(ordering, start[index])
+}
+ordering <-
+  as.Date(ordering, format = "%d/%m/%y")
+
+
 # recoding
 alluv.data.aggr$AC <- as.numeric(as.factor(alluv.data.aggr$AC))
 alluv.data.aggr$LP <- as.numeric(as.factor(alluv.data.aggr$LP))
 alluv.data.aggr$PP <- as.numeric(as.factor(alluv.data.aggr$PP))
+
+# colors
+alluv.colors <- c()
+for (i in 1:length(alluv.data.aggr$LP)) {
+  alluv.colors <- c(alluv.colors,
+                    brewer.pal(n = length(linhas), name = "Set3")[alluv.data.aggr$LP[i]])
+}
 
 # plot area setup
 par(
@@ -112,15 +148,27 @@ par(
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
-  fg = "white",
-  col.main = "white"
+  col.main = "white",
+  fg = NA
 )
 
 # plot 1
-alluvial(alluv.data.aggr[,1:3], freq = alluv.data.aggr$Freq)
+alluvial(
+  alluv.data.aggr[, 1:3],
+  freq = alluv.data.aggr$Freq,
+  col = alluv.colors,
+  border = NA,
+  blocks = FALSE,
+  ordering = list(NULL,
+                  NULL,
+                  order(ordering, decreasing = TRUE))
+)
+title(main = "Área de Concentração - Linhas de Pesquisa - Projetos de Pesquisa",
+      outer = TRUE,
+      cex.main = 1.15)
 ```
 
-```{r sintese-coerencia-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-coerencia-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -130,13 +178,16 @@ bs_carousel(id = "coerencia-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png"))
 ```
 
+*Fontes:*
+^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <br>
 
 <br>
 
 ## {#temas}
 
-```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
+```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # file path to save the wordclouds
@@ -165,7 +216,7 @@ cloud.title <- "Temas de Produção"
 source("Scripts/docs_to_wordcloud.R")
 ```
 
-```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel of wordclouds
@@ -177,13 +228,16 @@ bs_carousel(id = "temas-carouse",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Produções.png"))
 ```
 
+*Fontes:*
+^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <br>
 
 <br>
 
 ## {#projetos-linha}
 
-```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
+```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos - membros
@@ -284,7 +338,7 @@ title(main = "Projetos por Linha de Pesquisa",
       cex.main = 1.7)
 ```
 
-```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -295,13 +349,16 @@ bs_carousel(id = "projetos-carouse",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"))
 ```
 
+*Fontes:*
+^1^ [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <br>
 
 <br>
 
 ## {#financiadores}
 
-```{r sintese-financiadores, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
+```{r sintese-financiadores, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 financiadores.raw <-
@@ -481,7 +538,7 @@ for (i in 1:ncol(summ.table.financiadores)) {
 }
 ```
 
-```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -494,13 +551,19 @@ bs_carousel(id = "financiadores-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png"))
 ```
 
+*Fontes:*
+^1^ [**CAPES**](https://www.gov.br/capes/pt-br)
+^2^ [**CNPq**](https://www.gov.br/cnpq/pt-br)
+^3^ [**FAPERJ**](http://www.faperj.br)
+^4^ **UNISUAM**
+
 <br>
 
 <br>
 
 ## {#producao}
 
-```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="95%"}
+```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read SCImago csv file (download from https://www.scimagojr.com)
@@ -645,12 +708,29 @@ barplot(
   table.3.mean,
   col = NA,
   border = NA,
-  ylim = c(mean(table.3.mean) - 0.5, mean(table.3.mean) + 0.5)
+  ylim = c(min(table.3.min) - 0.2, max(table.3.max) + 0.2)
 )
 lines(
   table.3.mean,
   type = "l",
+  lty = "solid",
   lwd = 3,
+  ylab = "SJR",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
+)
+lines(
+  table.3.min,
+  type = "l",
+  lty = "dashed",
+  lwd = 2,
+  ylab = "SJR",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
+)
+lines(
+  table.3.max,
+  type = "l",
+  lty = "dashed",
+  lwd = 2,
   ylab = "SJR",
   col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
 )
@@ -659,7 +739,7 @@ title(main = "Qualidade da produção (SJR)",
       cex.main = 1.7)
 ```
 
-```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -672,6 +752,11 @@ bs_carousel(id = "producao-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png"))
 ```
 
+*Fontes:*
+^1^ [**SCImago**](https://www.scimagojr.com)
+^2^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+^3^ **UNISUAM**
+
 <br>
 
 <br>
@@ -680,7 +765,7 @@ bs_carousel(id = "producao-carousel",
 
 <h1> **Formação de pessoal de nível superior** </h1>
 
-```{r sintese-egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r sintese-egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 discentes.raw <-
@@ -800,7 +885,7 @@ datasets <- list_geobr()$years[3]
 last.update <-
   as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
 
-last.update <- 2019
+# last.update <- 2019
 
 states <-
   read_state(
@@ -904,7 +989,7 @@ cat('</div>')
 
 <h1> [**Discentes**](pessoas.html#discentes) </h1>
 
-```{r discentes-regiao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r discentes-regiao, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 discentes.raw <-
@@ -1017,7 +1102,7 @@ plot(g2)
 
 <h1> [**Rede de pesquisa**](pessoas.html) </h1>
 
-```{r rede-pesquisa, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r rede-pesquisa, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read data and row-bind all Sucupira XLSX files
@@ -1121,7 +1206,7 @@ legend(
 
 <h1> [**Disciplinas oferecidas**](programa.html#estrutura-curricular) </h1>
 
-```{r turmas-sintese-turmas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r turmas-sintese-turmas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 sheet <- "Turmas"
@@ -1189,7 +1274,7 @@ cat("  \n")
 
 <h1> **Nota do Programa** </h1>
 
-```{r conceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
+```{r conceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 periodos.raw <-
@@ -1211,51 +1296,6 @@ barplot(
   col = brewer.pal(n = length(periodos.raw$Período), name = "Set3")[1],
   ylim = c(0, 7)
 )
-```
-
-<br>
-
-<hr style="height:2px;border-width:0;color:white;background-color:white">
-
-<br>
-
-## {#fontes}
-
-<h1> **Fontes dos dados** </h1>
-
-```{r fontes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="95%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read separate sheets
-file.path <- "../PPGCR Unisuam/Fontes.xlsx"
-tabs <- excel_sheets(file.path)
-
-# iterate across sheets
-for (j in 1:length(tabs)) {
-  cat('\n\n<!-- -->\n\n')
-  cat("### **", tabs[j], "**", "\n", sep = "")
-  cat('\n\n<!-- -->\n\n')
-  fontes <-
-    read_excel(file.path, sheet = tabs[j], col_types = c("text"))
-  # replace the link by a tag
-  for (i in 1:dim(fontes)[1]) {
-    fontes[i, 1] <- paste("**", fontes[i, 1], "**", sep = "")
-    fontes[i, 3] <-
-      paste("[↗️](", fontes[i, 3], '){target="_blank"}', sep = "")
-  }
-  # print table
-  print(
-    kable(fontes, align = c("l", rep(
-      "c", ncol(fontes) - 2
-    ), "r")) %>% kable_styling(
-      bootstrap_options = c("hover", "condensed", "responsive"),
-      full_width = T,
-      position = "center"
-    )
-  )
-  cat('\n\n<!-- -->\n\n')
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
-}
 ```
 
 <br>

@@ -22,12 +22,12 @@ exclude:
 search: true
 navbar:
   left:
-    - text: ""
-      icon: "fa-home"
-      href: index.html
     - text: "Observatório CR"
+      icon: "fa-home"
       href: index.html#observatoriocr
       menu:
+        - text: "Descrição"
+          href: index.html
         - text: "Coerência do Programa"
           href: [index.html#coerencia-programa]
         - text: "Temas de pesquisa"
@@ -50,8 +50,6 @@ navbar:
           href: [index.html#disciplinas]
         - text: "Nota do Programa"
           href: [index.html#nota]
-        - text: "Fontes de dados"
-          href: [index.html#fontes]
     - text: "Programa"
       href: programa.html
       menu:
@@ -179,7 +177,10 @@ navbar:
         - text: "News"
           href: [news.html]
   right:
-    - text: "GitHub"
+    - text: ""
+      icon: "fa-link"
+      href: [fontes.html]
+    - text: ""
       icon: "fa-github"
       href: [https://github.com/rehab-tech/observatoriocr/]
 

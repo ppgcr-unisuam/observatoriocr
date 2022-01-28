@@ -143,8 +143,8 @@ for (i in 1:length(alluv.data.aggr$LP)) {
 
 # plot area setup
 par(
-  oma = c(1, 1, 1, 1),
-  mar = c(1, 1, 1, 1),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -291,8 +291,8 @@ col.curr <- match(linhas.curr, linhas)
 
 # plot area setup
 par(
-  oma = c(1, 1, 1, 1),
-  mar = c(1, 1, 1, 1),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -380,8 +380,8 @@ agencias <-
 
 # plot area setup
 par(
-  oma = c(1, 1, 1, 1),
-  mar = c(1, 1, 1, 1),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
@@ -646,8 +646,8 @@ names(table.3.max) <- names(table.3.mean)
 
 # plot area setup
 par(
-  oma = c(1, 1, 1, 1),
-  mar = c(1, 1, 1, 1),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",

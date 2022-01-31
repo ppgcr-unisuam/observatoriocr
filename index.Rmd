@@ -177,7 +177,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
 bs_carousel(id = "coerencia-carousel",
-            use_indicators = TRUE,
+            use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png"))
 ```
@@ -224,7 +224,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel of wordclouds
 bs_carousel(id = "temas-carouse",
-            use_indicators = TRUE,
+            use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/TCC.png")) %>%
@@ -345,7 +345,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
 bs_carousel(id = "projetos-carouse",
-            use_indicators = TRUE,
+            use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"))
@@ -544,7 +544,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
 bs_carousel(id = "financiadores-carousel",
-            use_indicators = TRUE,
+            use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")) %>%
@@ -840,7 +840,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
 bs_carousel(id = "producao-carousel",
-            use_indicators = TRUE,
+            use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%

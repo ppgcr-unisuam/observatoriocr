@@ -194,9 +194,9 @@ output:
       after_body: [footer.html]
     css:
       - style.css
-      - CSS/responsive.css
-      - CSS/narrow-margins.css
-      - CSS/logo-above-toc.css
+      - /CSS/responsive.css
+      - /CSS/narrow-margins.css
+      - /CSS/logo-above-toc.css
     toc: true
     toc_depth: 3
     toc_float: true

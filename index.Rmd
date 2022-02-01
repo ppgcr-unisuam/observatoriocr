@@ -16,6 +16,26 @@ body {
   }
 </style>
 
+<!--script for centering titles in the landing page-->
+<style>
+h1.title {
+  text-align: center;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
+h2 {
+  text-align: center;
+  font-weight: bold;
+}
+h3 {
+  text-align: center;
+  font-weight: bold;
+}
+</style>
+
 <!--script for hover effect on table-->
 <style>
 .table-hover > tbody > tr:hover { 
@@ -72,12 +92,7 @@ library(wordcloud2)
 
 <br>
 
-<p style="font-size:1.5em">
-
-O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ciências da Reabilitação** do [Centro Universitário Augusto Motta](http://www.unisuam.edu.br) que envolve o registro, o acompanhamento, a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.
-
-</p>
-
+<p style="font-size:1.5em"> O **OBSERVATÓRIO CR** é uma iniciativa do **Programa de Pós-graduação em Ciências da Reabilitação** do [Centro Universitário Augusto Motta](http://www.unisuam.edu.br) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade. </p>
 </center>
 
 <br>

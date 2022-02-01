@@ -9,15 +9,3 @@ $(document).ready(function() {
   width: 100%;
   margin-top: 1.25em;
 }
-h1.title {
-  text-align: center;
-  font-weight: bold;
-}
-h1 {
-  text-align: center;
-  font-weight: bold;
-}
-h2 {
-  text-align: center;
-  font-weight: bold;
-}

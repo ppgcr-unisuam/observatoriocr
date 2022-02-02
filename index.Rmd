@@ -53,29 +53,29 @@ h3 {
 
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
 # create a new code chunk and then use the PACKUP add-in to generate this code with all the required libraries for this Rmd
-library(alluvial)
-library(bsplus)
-library(cowplot)
+library(alluvial) # for alluvial plots
+library(bsplus) # for carousel outputs
+library(cowplot) # for mutipannel plots
 library(dplyr)
-library(geobr)
-library(ggplot2)
+library(geobr) # for BR geospacial data 
+library(ggplot2) # for plotting
 library(ggpubr)
-library(grid)
-library(gridExtra)
+library(grid) # for mutipannel plots
+library(gridExtra) # for mutipannel plots
 library(gtsummary)
-library(htmlwidgets)
-library(igraph)
-library(kableExtra)
+library(htmlwidgets) # for saving HTML as images
+library(igraph) # for network analysis
+library(kableExtra) # for printing tables
 library(knitr)
 library(magrittr)
-library(RColorBrewer)
-library(readxl)
+library(RColorBrewer) # for custom color palettes
+library(readxl) # for reading Excel files
 library(Rmisc)
-library(sf)
+library(sf) # for plotting geospacial data
 library(tm)
-library(viridis)
-library(webshot2)
-library(wordcloud2)
+library(vioplot) # for violin plots
+library(webshot2) # for saving HTML as images
+library(wordcloud2) # for generating wordclouds
 ```
 
 ##  {#observatoriocr}
@@ -646,23 +646,6 @@ table.3.mean <- t(as.matrix(table.3.mean[, -2]))
 table.3.mean <- as.numeric(table.3.mean[-1,])
 names(table.3.mean) <- names(table.1)
 
-table.3.min <-
-  aggregate(
-    table.3,
-    by = list(artigos$Publicado.em),
-    FUN = min,
-    na.rm = TRUE
-  )[, 3]
-table.3.max <-
-  aggregate(
-    table.3,
-    by = list(artigos$Publicado.em),
-    FUN = max,
-    na.rm = TRUE
-  )[, 3]
-names(table.3.min) <- names(table.3.mean)
-names(table.3.max) <- names(table.3.mean)
-
 # calculate summary statistics for producao
 summ.table.producao <-
   cbind(
@@ -782,39 +765,15 @@ title(main = "Qualidade da produção (Qualis)",
       cex.main = 1.7)
 
 # plot 4
-barplot(
-  table.3.mean,
-  col = NA,
-  border = NA,
-  ylim = c(min(table.3.min) - 0.2, max(table.3.max) + 0.2)
-)
-lines(
-  table.3.mean,
-  type = "l",
-  lty = "solid",
-  lwd = 3,
-  ylab = "SJR",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
-)
-lines(
-  table.3.min,
-  type = "l",
-  lty = "dashed",
-  lwd = 2,
-  ylab = "SJR",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
-)
-lines(
-  table.3.max,
-  type = "l",
-  lty = "dashed",
-  lwd = 2,
-  ylab = "SJR",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.3.mean))
+vioplot(
+  as.numeric(table.3[,2]) ~ as.numeric(table.3[,1]),
+  xlab = NA,
+  ylab = "SJR"
 )
 title(main = "Qualidade da produção (SJR)",
       outer = TRUE,
       cex.main = 1.7)
+
 
 # plot area setup
 layout(matrix(c(1, 2, 3, 4, 5, 6, 7, 8), ncol = 2, byrow = TRUE))

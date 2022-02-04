@@ -135,7 +135,7 @@ colnames(alluv.data.aggr) <- c("AC", "LP", "PP", "Freq")
 
 # get all history of 'linha de pesquisa'
 linhas <-
-  na.exclude(unique(alluv.data$sucupira.raw..Linha.de.Pesquisa.))
+  as.character(na.exclude(unique(alluv.data$sucupira.raw..Linha.de.Pesquisa.)))
 
 # ordering
 ordering <- c()
@@ -146,7 +146,6 @@ for (i in 1:length(alluv.data.aggr$PP)) {
 }
 ordering <-
   as.Date(ordering, format = "%d/%m/%y")
-
 
 # recoding
 alluv.data.aggr$AC <- as.numeric(as.factor(alluv.data.aggr$AC))
@@ -193,7 +192,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 # carousel
 bs_carousel(id = "coerencia-carousel",
             use_indicators = FALSE,
-            use_controls = TRUE) %>%
+            use_controls = FALSE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png"))
 ```
 
@@ -271,7 +270,7 @@ anos <-
   ))
 
 # get all history of 'linha de pesquisa'
-linhas <- na.exclude(unique(sucupira.raw$`Linha de Pesquisa`))
+linhas <- as.character(na.exclude(unique(sucupira.raw$`Linha de Pesquisa`)))
 
 # initialize data structure
 andamento.ano <-
@@ -303,11 +302,6 @@ projetos.ano <- andamento.ano + concluido.ano
 projetos.ano <-
   projetos.ano[, order(colnames(projetos.ano), decreasing = FALSE)]
 
-# get only current 'linha de pesquisa'
-linhas.curr <-
-  na.exclude(unique(sucupira.list[[length(anos)]]$`Linha de Pesquisa`))
-col.curr <- match(linhas.curr, linhas)
-
 # plot area setup
 par(
   oma = c(1.5, 1, 1, 1),
@@ -329,13 +323,13 @@ title(main = "Projetos por Linha de Pesquisa",
       cex.main = 1.7)
 legend(
   "topright",
-  legend = linhas.curr,
-  fill = brewer.pal(n = length(linhas), name = "Set3")[col.curr],
+  legend = linhas,
+  fill = brewer.pal(n = length(linhas), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
   horiz = FALSE,
-  cex = 0.75,
+  cex = 0.70,
 )
 
 # generate plot of projetos per linha by year (relative frequency)

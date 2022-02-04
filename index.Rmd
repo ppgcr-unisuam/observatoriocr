@@ -170,7 +170,7 @@ par(
   fg = NA
 )
 
-# plot 1
+# plot 1 (fluxo AC -> LP -> PP)
 alluvial(
   alluv.data.aggr[, 1:3],
   freq = alluv.data.aggr$Freq,
@@ -313,8 +313,7 @@ par(
   col.main = "white"
 )
 
-# generate plot of projetos per linha by year (absolute frequency)
-# plot 1
+# plot 1 (total de projetos por linha, por ano)
 barplot(projetos.ano,
         ylab = "N",
         col = brewer.pal(n = length(linhas), name = "Set3"))
@@ -332,8 +331,7 @@ legend(
   cex = 0.70,
 )
 
-# generate plot of projetos per linha by year (relative frequency)
-# plot 2
+# plot 2 (percentual de projetos por linha, por ano)
 barplot(
   scale(
     as.matrix(projetos.ano),
@@ -402,8 +400,7 @@ par(
   col.main = "white"
 )
 
-# generate plot of financiadores per agency by year (absolute frequency)
-# plot 1
+# plot 1 (financiadores per agency by year (absolute frequency)
 barplot(N.editais.agencia.ano,
         ylab = "N",
         col = brewer.pal(n = length(agencias), name = "Set3"))
@@ -439,8 +436,7 @@ T.editais.agencia.ano <-
 agencias <-
   na.exclude(rownames(T.editais.agencia.ano))
 
-# generate plot of financiadores per agency by year (absolute frequency)
-# plot 2
+# plot 2 (financiadores per agency by year (absolute frequency))
 barplot(T.editais.agencia.ano,
         ylab = "R$",
         col = brewer.pal(n = length(agencias), name = "Set3"))
@@ -462,8 +458,8 @@ legend(
 professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
-# generate plot of financiadores per docente by year (absolute frequency)
-# plot 3
+
+# plot 3 (financiadores per docente by year (absolute frequency))
 barplot(professores.ano,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
@@ -517,7 +513,7 @@ colnames(summ.table.financiadores) <-
 # plot area setup
 layout(matrix(c(1, 2, 3, 4, 5, 5), ncol = 2, byrow = TRUE))
 
-# plot 4
+# plot 4 (summary table in plot)
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
     c(0, 1),
@@ -717,7 +713,7 @@ par(
   col.main = "white"
 )
 
-# plot 1
+# plot 1 (total de produção bilbiográfica, por ano)
 barplot(table.1,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.1)))
@@ -725,7 +721,7 @@ title(main = "Produção Bibliográfica",
       outer = TRUE,
       cex.main = 1.7)
 
-# plot 2
+# plot 2 (total de produção bilbiográfica, por estrato, por ano)
 barplot(table.2,
         ylab = "Estrato",
         col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)))
@@ -743,7 +739,7 @@ legend(
   cex = 1,
 )
 
-# plot 3
+# plot 3(percetual de produção bilbiográfica, por estrato, por ano)
 barplot(
   scale(
     as.matrix(table.2),
@@ -758,7 +754,7 @@ title(main = "Qualidade da produção (Qualis)",
       outer = TRUE,
       cex.main = 1.7)
 
-# plot 4
+# plot 4 (violin plot of SJR por ano)
 vioplot(
   as.numeric(table.3[,2]) ~ as.numeric(table.3[,1]),
   xlab = NA,
@@ -768,11 +764,10 @@ title(main = "Qualidade da produção (SJR)",
       outer = TRUE,
       cex.main = 1.7)
 
-
 # plot area setup
 layout(matrix(c(1, 2, 3, 4, 5, 6, 7, 8), ncol = 2, byrow = TRUE))
 
-# plot 5
+# plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.producao)) {
   plot(
     c(0, 1),
@@ -825,225 +820,208 @@ bs_carousel(id = "producao-carousel",
 
 ##  {#pessoal}
 
-<h1>
-
-**Formação de pessoal de nível superior**
-
-</h1>
-
-```{r sintese-egressos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+```{r sintese-pessoal, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 discentes.raw <-
   read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
-mestres <- discentes[discentes$Curso == "Mestrado",]
-doutores <- discentes[discentes$Curso == "Doutorado",]
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+mestres <- discentes[discentes$Curso == "Mestrado", ]
+doutores <- discentes[discentes$Curso == "Doutorado", ]
+cursos <- levels(as.factor(discentes$Curso))
 
+# plot area setup
 par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
   col.axis = "white",
   fg = "white",
   col.main = "white"
 )
-# generate plot of titulados per year
+
+# generate plot of egressos per year
 table.1 <- table(discentes$Curso, discentes$`Ano Titulação`)
-barplot(
-  as.matrix(table.1),
-  xlab = "Ano",
-  ylab = "Titulados",
-  col = c("darkblue", "lightblue"),
-  bty = "n"
-)
+
+# plot 1 (egressos titulados)
+barplot(as.matrix(table.1),
+        ylab = "Egressos",
+        col = brewer.pal(n = 9, name = "Set3"))
+title(main = "Formação de pessoal de nível superior",
+      outer = TRUE,
+      cex.main = 1.7)
 legend(
   "topleft",
-  legend = levels(as.factor(discentes$Curso)),
-  fill = c("darkblue", "lightblue"),
-  box.lty = 0
+  legend = cursos,
+  fill = brewer.pal(n = 9, name = "Set3"),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = FALSE,
+  cex = 1
 )
 
-cat("<br>")
-cat('<hr style="height:2px;border-width:0;color:white;background-color:white">')
-cat("<br>")
-
-cat("<h1 style='text-align:center;'> **Tempo médio de titulação, por ano** </h1>  \n")
-
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
 # generate plot of tempo para titulação per year
-tmt.mestr.ano <-
-  aggregate(
-    as.numeric(mestres$`Tempo de Curso (meses)`),
-    by = list(mestres$`Ano Titulação`),
-    FUN = mean,
-    na.rm = TRUE
-  )
-tmt.dout.ano <-
-  aggregate(
-    as.numeric(doutores$`Tempo de Curso (meses)`),
-    by = list(doutores$`Ano Titulação`),
-    FUN = mean,
-    na.rm = TRUE
-  )
+table.2.msc <- data.frame(mestres$`Ano Titulação`, as.numeric(mestres$`Tempo de Curso (meses)`))
+table.2.dsc <- data.frame(doutores$`Ano Titulação`, as.numeric(doutores$`Tempo de Curso (meses)`))
 
-plot(
-  tmt.mestr.ano$Group.1,
-  tmt.mestr.ano$x,
-  type = "l",
-  lty = 1,
-  lwd = 6,
-  xlab = "Ano",
-  ylab = "Meses",
-  col = c("lightblue"),
-  ylim = c(18, 60),
-  bty = "n"
+# plot 2 (violin plot of tempo para titulação por ano)
+vioplot(
+  as.numeric(table.2.msc[,2]) ~ as.numeric(table.2.msc[,1]),
+  col = brewer.pal(n = 9, name = "Set3")[2],
+  xlab = NA,
+  side = "left",
+  at = sort(unique(as.numeric(table.2.msc[,1]))),
+  ylim = c(min(as.numeric(table.2.msc[,2]), as.numeric(table.2.dsc[,2])), max(as.numeric(table.2.msc[,2]), as.numeric(table.2.dsc[,2]))),
+  ylab = "Meses"
 )
-lines(
-  tmt.dout.ano$Group.1,
-  tmt.dout.ano$x,
-  type = "l",
-  lty = 1,
-  lwd = 6,
-  xlab = "Ano",
+vioplot(
+  as.numeric(table.2.dsc[,2]) ~ as.numeric(table.2.dsc[,1]),
+  col = brewer.pal(n = 9, name = "Set3")[1],
+  xlab = NA,
+  side = "right",
   ylab = "Meses",
-  col = c("darkblue"),
-  ylim = c(18, 60)
+  at = sort(unique(as.numeric(table.2.dsc[,1]))),
+  ylim = c(min(as.numeric(table.2.msc[,2]), as.numeric(table.2.dsc[,2])), max(as.numeric(table.2.msc[,2]), as.numeric(table.2.dsc[,2]))),
+  add = TRUE
 )
+title(main = "Tempo para titulação",
+      outer = TRUE,
+      cex.main = 1.7)
 legend(
   "topleft",
-  legend = levels(as.factor(discentes$Curso)),
-  col = c("darkblue", "lightblue"),
-  pch = "lines",
-  lwd = 6,
-  box.lty = 0
+  legend = cursos,
+  fill = brewer.pal(n = 9, name = "Set3"),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = FALSE,
+  cex = 1
 )
 
-cat("<br>")
-cat('<hr style="height:2px;border-width:0;color:white;background-color:white">')
-cat("<br>")
-
-# code for html anchor from yml file
-cat('<div id="egressos" class="section level2">', sep = "")
-cat('<h2></h2>')
-cat('<h1> [**Egressos**](pessoas.html#egressos) </h1>')
-
-par(
-  oma = c(0, 0, 0, 0),
-  mar = c(0, 0, 0, 0),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
-
-datasets <- list_geobr()$years[3]
-last.update <-
-  as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
-
-last.update <- 2019
-
-states <-
-  read_state(
-    code_state = "all",
-    year = last.update,
-    simplified = TRUE,
-    showProgress = FALSE
-  )
-states$discentes <- rep(NA, dim(states)[1])
-UF <- as.data.frame(table(discentes$UF))
-for (i in 1:length(UF$Var1)) {
-  states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
-}
-p1 <- ggplot() +
-  geom_sf(data = states, aes(fill = discentes), color = "grey") +
-  scale_fill_distiller(
-    palette = "Spectral",
-    name = "Egressos, n",
-    limits = c(min(0, UF$Freq), max(UF$Freq)),
-    na.value = "grey"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = 'bottom',
-    legend.title = element_text(colour = "white"),
-    legend.text = element_text(colour = "white")
-  ) +
-  theme(
-    plot.margin = unit(c(0, 0, 0, 0), "cm"),
-    panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
-    plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
-    panel.grid.major = element_line(colour = "transparent"),
-    axis.text.x = element_blank(),
-    axis.text.y = element_blank()
-  )
-
-data <-
-  as.data.frame(table(c(discentes$UF[discentes$UF == "RJ"], rep(
-    "Outras UF", length(discentes$UF[discentes$UF != "RJ"])
-  ))))
-colnames(data) <- c("Regiões", "N")
-
-p2 <- ggplot(data, aes(x = "", y = N, fill = Regiões)) +
-  scale_fill_manual(values = c("darkblue", "lightblue")) +
-  geom_bar(stat = "identity") +
-  coord_polar("y", start = 0) +
-  theme_void() +
-  theme(
-    legend.position = 'bottom',
-    legend.title = element_blank(),
-    legend.text = element_text(colour = "white")
-  ) +
-  theme(
-    plot.margin = unit(c(0, 0, 0, 0), "cm"),
-    panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
-    plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50')
-  )
-
-data <- as.data.frame(table(discentes$Curso))
-colnames(data) <- c("Cursos", "N")
-
-p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
-  scale_fill_manual(values = c("darkblue", "lightblue")) +
-  geom_bar(stat = "identity") +
-  coord_polar("y", start = 0) +
-  theme_void() +
-  theme(
-    legend.position = 'bottom',
-    legend.title = element_blank(),
-    legend.text = element_text(colour = "white")
-  ) +
-  theme(
-    plot.margin = unit(c(0, 0, 0, 0), "cm"),
-    panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
-    plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50')
-  )
-
-g <-
-  arrangeGrob(p1,
-              p2,
-              p3,
-              layout_matrix = rbind(c(1, 2), c(1, 3)),
-              widths = c(7 / 10, 3 / 10))
-
-g2 <- ggdraw(g) +
-  theme(plot.background = element_rect(fill = "#2C3E50", color = NA))
-
-plot(g2)
-
-cat('<p><br></p>')
-cat('</div>')
+# cat('<h1> [**Egressos**](pessoas.html#egressos) </h1>')
+# 
+# par(
+#   oma = c(0, 0, 0, 0),
+#   mar = c(0, 0, 0, 0),
+#   bg = '#2C3E50',
+#   col.lab = "white",
+#   col.axis = "white",
+#   fg = "white",
+#   col.main = "white"
+# )
+# 
+# datasets <- list_geobr()$years[3]
+# last.update <-
+#   as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
+# 
+# last.update <- 2019
+# 
+# states <-
+#   read_state(
+#     code_state = "all",
+#     year = last.update,
+#     simplified = TRUE,
+#     showProgress = FALSE
+#   )
+# states$discentes <- rep(NA, dim(states)[1])
+# UF <- as.data.frame(table(discentes$UF))
+# for (i in 1:length(UF$Var1)) {
+#   states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+# }
+# p1 <- ggplot() +
+#   geom_sf(data = states, aes(fill = discentes), color = "grey") +
+#   scale_fill_distiller(
+#     palette = "Spectral",
+#     name = "Egressos, n",
+#     limits = c(min(0, UF$Freq), max(UF$Freq)),
+#     na.value = "grey"
+#   ) +
+#   theme_minimal() +
+#   theme(
+#     legend.position = 'bottom',
+#     legend.title = element_text(colour = "white"),
+#     legend.text = element_text(colour = "white")
+#   ) +
+#   theme(
+#     plot.margin = unit(c(0, 0, 0, 0), "cm"),
+#     panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
+#     plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
+#     panel.grid.major = element_line(colour = "transparent"),
+#     axis.text.x = element_blank(),
+#     axis.text.y = element_blank()
+#   )
+# 
+# data <-
+#   as.data.frame(table(c(discentes$UF[discentes$UF == "RJ"], rep(
+#     "Outras UF", length(discentes$UF[discentes$UF != "RJ"])
+#   ))))
+# colnames(data) <- c("Regiões", "N")
+# 
+# p2 <- ggplot(data, aes(x = "", y = N, fill = Regiões)) +
+#   scale_fill_manual(values = c("darkblue", "lightblue")) +
+#   geom_bar(stat = "identity") +
+#   coord_polar("y", start = 0) +
+#   theme_void() +
+#   theme(
+#     legend.position = 'bottom',
+#     legend.title = element_blank(),
+#     legend.text = element_text(colour = "white")
+#   ) +
+#   theme(
+#     plot.margin = unit(c(0, 0, 0, 0), "cm"),
+#     panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
+#     plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50')
+#   )
+# 
+# data <- as.data.frame(table(discentes$Curso))
+# colnames(data) <- c("Cursos", "N")
+# 
+# p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
+#   scale_fill_manual(values = c("darkblue", "lightblue")) +
+#   geom_bar(stat = "identity") +
+#   coord_polar("y", start = 0) +
+#   theme_void() +
+#   theme(
+#     legend.position = 'bottom',
+#     legend.title = element_blank(),
+#     legend.text = element_text(colour = "white")
+#   ) +
+#   theme(
+#     plot.margin = unit(c(0, 0, 0, 0), "cm"),
+#     panel.background = element_rect(fill = '#2C3E50', colour = '#2C3E50'),
+#     plot.background = element_rect(fill = '#2C3E50', colour = '#2C3E50')
+#   )
+# 
+# g <-
+#   arrangeGrob(p1,
+#               p2,
+#               p3,
+#               layout_matrix = rbind(c(1, 2), c(1, 3)),
+#               widths = c(7 / 10, 3 / 10))
+# 
+# g2 <- ggdraw(g) +
+#   theme(plot.background = element_rect(fill = "#2C3E50", color = NA))
+# 
+# plot(g2)
+# 
+# cat('<p><br></p>')
+# cat('</div>')
 ```
+
+```{r sintese-pessoal-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# carousel
+bs_carousel(id = "pessoal-carousel",
+            use_indicators = FALSE,
+            use_controls = TRUE) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-1.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-2.png"))  
+```
+
+*Fontes:* **UNISUAM**
 
 <br>
 

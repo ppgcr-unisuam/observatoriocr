@@ -1048,6 +1048,9 @@ discentes <-
 datasets <- list_geobr()$years[3]
 last.update <-
   as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
+
+last.update <- 2019
+
 states <-
   read_state(
     code_state = "all",

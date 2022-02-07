@@ -1894,7 +1894,7 @@ library(readxl)
 library(DT)
 
 # read separate sheets
-bibliografia.raw <- read_excel("../PPGCR Unisuam/Estrutura curricular.xlsx", sheet = "Bibliografia", col_types = c("text"))
+bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE))
 
@@ -1918,7 +1918,7 @@ library(readxl)
 library(RColorBrewer)
 
 # read separate sheets
-bibliografia.raw <- read_excel("../PPGCR Unisuam/Estrutura curricular.xlsx", sheet = "Bibliografia", col_types = c("text"))
+bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 bib.ano.raw <- bibliografia.raw$Referência
 bib.ano <- as.numeric(na.exclude(str_extract(bib.ano.raw, "[' '][2-2][0-9][0-9][0-9]")))

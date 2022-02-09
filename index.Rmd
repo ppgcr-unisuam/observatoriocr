@@ -1125,34 +1125,20 @@ bs_carousel(id = "pessoal-carousel",
 
 ##  {#rede}
 
-<h1>
-
-[**Rede de pesquisa**](pessoas.html)
-
-</h1>
-
-```{r rede-pesquisa, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+```{r sintese-rede, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read data and row-bind all Sucupira XLSX files
+# projetos
 sheet <- "Projetos - Membros"
-membros.raw <- c()
-files.to.read <-
-  list.files("../PPGCR Unisuam/Sucupira/",
-             pattern = "xlsx",
-             full.names = TRUE)
-for (i in 1:length(files.to.read)) {
-  membros.raw <-
-    rbind(membros.raw, read_excel(files.to.read[i], sheet = sheet))
-}
+source("Scripts/read_sucupira.R")
 
 # create edge matrix
 proj.id <-
-  as.factor(membros.raw$`Identificador do Projeto de Pesquisa`)
+  as.factor(sucupira.raw$`Identificador do Projeto de Pesquisa`)
 n.proj <- nlevels(proj.id)
-membros <- sort(unique(membros.raw$`Nome do Membro do Projeto`))
+membros <- sort(unique(sucupira.raw$`Nome do Membro do Projeto`))
 n.membros <- length(membros)
-categ <- as.factor(membros.raw$`Categoria do Membro do Projeto`)
+categ <- as.factor(sucupira.raw$`Categoria do Membro do Projeto`)
 n.categ <- nlevels(categ)
 edge.matrix <- matrix(NA, nrow = 0, ncol = 2)
 colnames(edge.matrix) <- c("from", "to")
@@ -1161,7 +1147,7 @@ colnames(edge.matrix) <- c("from", "to")
 for (i in 1:n.proj) {
   # get the members by project id
   membros.proj <-
-    unique(membros.raw$`Nome do Membro do Projeto`[proj.id == levels(proj.id)[i]])
+    unique(sucupira.raw$`Nome do Membro do Projeto`[proj.id == levels(proj.id)[i]])
   # only vote for upper diagonal elements
   for (n in 1:length(membros.proj)) {
     for (m in n:length(membros.proj)) {
@@ -1184,22 +1170,25 @@ network <- graph_from_edgelist(edge.matrix, directed = FALSE)
 colrs <- brewer.pal(n = n.categ, name = "Set3")
 for (i in 1:length(V(network))) {
   categ.id <-
-    match(V(network)[[i]]$name, membros.raw$`Nome do Membro do Projeto`)
+    match(V(network)[[i]]$name, sucupira.raw$`Nome do Membro do Projeto`)
   V(network)[[i]]$categ <-
-    membros.raw$`Categoria do Membro do Projeto`[categ.id]
+    sucupira.raw$`Categoria do Membro do Projeto`[categ.id]
   col.id <- match(V(network)[[i]]$categ, levels(categ))
   V(network)[i]$color <- colrs[col.id]
 }
 
-# plot it
+# plot area setup
 par(
-  oma = c(0, 0, 0, 0),
-  mar = c(0, 0, 0, 0),
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
   bg = '#2C3E50',
   col.lab = "white",
-  mfrow = c(1, 1)
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
 )
 
+# plot 1
 plot(
   network,
   directed = FALSE,
@@ -1212,7 +1201,6 @@ plot(
   edge.size = edge.betweenness(network),
   edge.curved = .2
 )
-
 legend(
   "bottomleft",
   legend = levels(categ),
@@ -1223,74 +1211,23 @@ legend(
   horiz = FALSE,
   cex = 0.8
 )
+title(main = "Membros de projetos de pesquisa",
+      outer = TRUE,
+      cex.main = 1.7)
 ```
 
-<br>
-
-<br>
-
-##  {#disciplinas}
-
-<h1>
-
-[**Disciplinas oferecidas**](programa.html#estrutura-curricular)
-
-</h1>
-
-```{r turmas-sintese-turmas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-sheet <- "Turmas"
-turmas.raw <- c()
-files.to.read <-
-  list.files("../PPGCR Unisuam/Sucupira/",
-             pattern = "xlsx",
-             full.names = TRUE)
-for (i in 1:length(files.to.read)) {
-  turmas.raw <-
-    rbind(turmas.raw, read_excel(files.to.read[i], sheet = sheet))
-}
-
-# build a cross table DISCIPLINA vs. ANO
-turmas.raw <-
-  turmas.raw[turmas.raw$`Indicador de responsável principal` == "Sim", ]
-turmas.raw$`Período/Ano` <-
-  paste(
-    sub(".*/", "", turmas.raw$`Período/Ano`),
-    sub("/.*", "", turmas.raw$`Período/Ano`),
-    sep = "/"
-  )
-cross.table.turmas <-
-  as.matrix(table(turmas.raw$`Nível do curso`, turmas.raw$`Período/Ano`))
-
-# generate plot of total per year
-par(
-  oma = c(2, 0.1, 2, 0.1),
-  mar = c(5, 4, 2, 2),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
-# generate plot of turmas per year
-barplot(
-  cross.table.turmas,
-  las = 2,
-  ylab = "Turmas",
-  main = "Quantidade de turmas",
-  col = c("darkblue", "lightblue"),
-  beside = TRUE,
-  bty = "n"
-)
-legend(
-  "topleft",
-  legend = levels(as.factor(turmas.raw$`Nível do curso`)),
-  fill = c("darkblue", "lightblue"),
-  box.lty = 0
-)
-
-# line break
-cat("  \n")
-cat("  \n")
+# carousel
+bs_carousel(id = "rede-carousel",
+            use_indicators = FALSE,
+            use_controls = TRUE) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png"))
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<br>
+
+<br>

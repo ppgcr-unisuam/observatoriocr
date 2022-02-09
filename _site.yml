@@ -15,10 +15,10 @@ include:
   - /Labs
   - /Softwares
 exclude:
-  - /Sucupira
-  - /Qualis
-  - /Scripts
-  - /SJR
+  - docs/Sucupira
+  - docs/Qualis
+  - docs/Scripts
+  - docs/SJR
 search: true
 navbar:
   left:
@@ -42,8 +42,6 @@ navbar:
           href: [index.html#pessoal]
         - text: "Rede de pesquisa"
           href: [index.html#rede]
-        - text: "Disciplinas"
-          href: [index.html#disciplinas]
     - text: "Programa"
       href: programa.html
       menu:
@@ -201,5 +199,8 @@ output:
       facebook: yes
       twitter: yes
       google: yes
-      all: ["facebook", "twitter", "google"]
+      all:
+        - facebook
+        - twitter
+        - google
 ---

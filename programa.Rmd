@@ -2012,6 +2012,70 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
+### **Síntese**
+
+```{r turmas-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+sheet <- "Turmas"
+turmas.raw <- c()
+files.to.read <-
+  list.files("../PPGCR Unisuam/Sucupira/",
+             pattern = "xlsx",
+             full.names = TRUE)
+for (i in 1:length(files.to.read)) {
+  turmas.raw <-
+    rbind(turmas.raw, read_excel(files.to.read[i], sheet = sheet))
+}
+
+# build a cross table DISCIPLINA vs. ANO
+turmas.raw <-
+  turmas.raw[turmas.raw$`Indicador de responsável principal` == "Sim", ]
+turmas.raw$`Período/Ano` <-
+  paste(
+    sub(".*/", "", turmas.raw$`Período/Ano`),
+    sub("/.*", "", turmas.raw$`Período/Ano`),
+    sep = "/"
+  )
+cross.table.turmas <-
+  as.matrix(table(turmas.raw$`Nível do curso`, turmas.raw$`Período/Ano`))
+
+# generate plot of total per year
+par(
+  oma = c(2, 0.1, 2, 0.1),
+  mar = c(5, 4, 2, 2),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
+# generate plot of turmas per year
+barplot(
+  cross.table.turmas,
+  las = 2,
+  ylab = "Turmas",
+  main = "Quantidade de turmas",
+  col = c("darkblue", "lightblue"),
+  beside = TRUE,
+  bty = "n"
+)
+legend(
+  "topleft",
+  legend = levels(as.factor(turmas.raw$`Nível do curso`)),
+  fill = c("darkblue", "lightblue"),
+  box.lty = 0
+)
+
+# line break
+cat("  \n")
+cat("  \n")
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 ### **2024-2021** {.tabset}
 
 #### **Disciplinas**

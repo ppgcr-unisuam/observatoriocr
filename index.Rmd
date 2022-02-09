@@ -372,6 +372,8 @@ bs_carousel(id = "projetos-carouse",
 ```{r sintese-financiadores, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+options("scipen" = 100, "digits" = 0)
+
 financiadores.raw <-
   read_excel("../PPGCR Unisuam/financiadores.xlsx", sheet = "financiadores")
 

@@ -56,13 +56,13 @@ h3 {
 library(alluvial) # for alluvial plots
 library(bsplus) # for carousel outputs
 library(cowplot) # for mutipannel plots
-library(dplyr)
+library(dplyr) # for string manipulation
 library(geobr) # for BR geospacial data
 library(ggplot2) # for plotting
 library(ggpubr)
 library(grid) # for mutipannel plots
 library(gridExtra) # for mutipannel plots
-library(gtsummary)
+library(gtsummary) # for summary tables
 library(htmlwidgets) # for saving HTML as images
 library(igraph) # for network analysis
 library(kableExtra) # for printing tables
@@ -72,7 +72,7 @@ library(RColorBrewer) # for custom color palettes
 library(readxl) # for reading Excel files
 library(Rmisc)
 library(sf) # for plotting geospacial data
-library(tm)
+library(tm) # for text manipulation
 library(vioplot) # for violin plots
 library(webshot2) # for saving HTML as images
 library(wordcloud2) # for generating wordclouds
@@ -1216,6 +1216,37 @@ legend(
 title(main = "Membros de projetos de pesquisa",
       outer = TRUE,
       cex.main = 1.7)
+
+# file path to save the wordclouds
+dir.path <- file.path(getwd(), "index_files", "figure-html")
+dir.create(dir.path, recursive = TRUE)
+
+# IES participantes externos
+sheet <- "Participante Externo"
+source("Scripts/read_sucupira.R")
+sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
+IES <- sucupira.raw$`Instituição de Origem`
+IES <- IES[!is.na(IES)]
+# get initials
+siglas <- c()
+for (i in 1:length(IES)) {
+  IES.abbr <-
+    paste0(substr(strsplit(
+      gsub('\\b\\w{1,2}\\b', '', IES[i]), split = " "
+    )[[1]], 1, 1), collapse = "")
+  siglas <- c(siglas, IES.abbr)
+}
+ranked.ies <- c()
+rank <- 1
+for (i in 1:length(sort(table(siglas), decreasing = FALSE))) {
+  ranked.ies <-
+    c(ranked.ies,
+      rep(names(sort(table(siglas))[i]), match(sort(table(siglas))[i][[1]], unique(sort(table(siglas)))))
+      )
+}
+data.to.cloud <- ranked.ies
+cloud.title <- "Instituições"
+source("Scripts/docs_to_wordcloud.R")
 ```
 
 ```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
@@ -1225,7 +1256,8 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 bs_carousel(id = "rede-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Participante Externo.png"))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

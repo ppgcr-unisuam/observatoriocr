@@ -24,7 +24,7 @@ words <- sort(rowSums(matrix), decreasing = TRUE)
 df <- data.frame(word = names(words), freq = words)
 
 # set minimum word frequency
-df <- df[df$freq >= 1, ]
+df <- df[df$freq >= 1,]
 
 # set plot area
 par(

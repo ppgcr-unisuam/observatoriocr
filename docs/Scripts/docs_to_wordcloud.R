@@ -40,7 +40,7 @@ par(
 wordcloud <- wordcloud2(
   data = df,
   size = 0.5,
-  color = rep(brewer.pal(n = 9, name = "Set3"), length.out = df$freq),
+  color = rep(brewer.pal(n = 9, name = "Set3"), length.out = length(df$freq)),
   backgroundColor = "#2C3E50",
   shuffle = FALSE,
   rotateRatio = 0,

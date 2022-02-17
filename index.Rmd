@@ -600,6 +600,17 @@ artigos <-
     col_types = c("text")
   ))
 
+# read data
+resumos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.tecnica",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts (all with DOI)
+artigos <- rbind(artigos[, 1:11], resumos[, 1:11])
+
 # Data cleaning
 artigos <- artigos[complete.cases(artigos$DOI), ]
 artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"

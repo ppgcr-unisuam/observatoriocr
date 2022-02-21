@@ -15,10 +15,11 @@ include:
   - /Labs
   - /Softwares
 exclude:
-  - docs/Sucupira
-  - docs/Qualis
-  - docs/Scripts
-  - docs/SJR
+  - /docs/CiteScore
+  - /docs/Sucupira
+  - /docs/Qualis
+  - /docs/Scripts
+  - /docs/SJR
 search: true
 navbar:
   left:

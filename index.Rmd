@@ -113,7 +113,7 @@ current.sucupira <- sucupira.list[[length(sucupira.list)]]
 current.AC <-
   unique(current.sucupira$`Área de Concentração`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
 current.LP <-
-   unique(current.sucupira$`Linha de Pesquisa`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
+  unique(current.sucupira$`Linha de Pesquisa`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
 current.AC <- current.AC[!is.na(current.AC)]
 current.LP <- current.LP[!is.na(current.LP)]
 
@@ -128,7 +128,7 @@ alluv.data <-
   )
 
 start <- sucupira.raw$`Data de Início`[complete.cases(alluv.data)]
-alluv.data <- alluv.data[complete.cases(alluv.data), ]
+alluv.data <- alluv.data[complete.cases(alluv.data),]
 
 alluv.data.aggr <-
   aggregate(
@@ -226,7 +226,7 @@ legend(
 # plot area setup
 
 summ.coerencia <- c(length(unique(current.AC)),
-                      length(unique(current.LP)))
+                    length(unique(current.LP)))
 names(summ.coerencia) <-
   c("Área de Concentração", "Linhas de Pesquisa")
 layout(matrix(c(1, 2), ncol = 1, byrow = TRUE))
@@ -327,7 +327,7 @@ bs_carousel(id = "temas-carouse",
 
 <br>
 
-##  {#projetos-linha}
+##  {#projetos-linhas}
 
 ```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "hide", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -361,7 +361,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "EM ANDAMENTO", ]
+               projetos$Situação == "EM ANDAMENTO",]
   for (j in 1:length(linhas)) {
     andamento.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -369,7 +369,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "CONCLUÍDO", ]
+               projetos$Situação == "CONCLUÍDO",]
   for (j in 1:length(linhas)) {
     concluido.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -483,7 +483,7 @@ par(
 barplot(N.editais.agencia.ano,
         ylab = "N",
         col = brewer.pal(n = length(agencias), name = "Set3"))
-title(main = "Editais Financiados por Agência",
+title(main = "Editais financiados por agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
@@ -519,7 +519,7 @@ agencias <-
 barplot(T.editais.agencia.ano,
         ylab = "R$",
         col = brewer.pal(n = length(agencias), name = "Set3"))
-title(main = "Valores Financiados por Agência",
+title(main = "Valores financiados por agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
@@ -542,57 +542,66 @@ professores.ano <-
 barplot(professores.ano,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
-title(main = "Docentes com Financiamento",
+title(main = "Docentes com financiamento",
       outer = TRUE,
       cex.main = 1.7)
 
 # calculate summary statistics for financiamentos
-summ.table.financiadores <- matrix(0, nrow = 1, ncol = 4)
+summ.table.financiadores <- matrix(0, nrow = 1, ncol = 5)
 summ.table.financiadores <-
   cbind(
-    length(financiadores$Total),
-    paste0("R$ ", formatC(
-      mean(financiadores$Total, na.rm = TRUE),
-      format = "f",
-      digits = 0,
-      big.mark = "."
-    )),
-    paste0("R$ ", formatC(
-      min(financiadores$Total, na.rm = TRUE),
-      format = "f",
-      digits = 0,
-      big.mark = "."
-    )),
-    paste0("R$ ", formatC(
-      max(financiadores$Total, na.rm = TRUE),
-      format = "f",
-      digits = 0,
-      big.mark = "."
-    )),
+    paste0(
+        formatC(
+        length(na.omit(financiadores$Total)),
+        format = "d",
+        digits = 0,
+        big.mark = ".",
+        decimal.mark = ","
+      )
+    ),
     paste0(
       "R$ ",
       formatC(
-        sum(financiadores$Total, na.rm = TRUE),
+        sum(na.omit(financiadores$Total)),
         format = "f",
         digits = 2,
         big.mark = ".",
         decimal.mark = ","
       )
-    )
+    ),
+    paste0("R$ ", formatC(
+      median(na.omit(financiadores$Total)),
+      format = "f",
+      digits = 0,
+      big.mark = "."
+    )),
+    paste0("R$ ", formatC(
+      min(na.omit(financiadores$Total)),
+      format = "f",
+      digits = 0,
+      big.mark = "."
+    )),
+    paste0("R$ ",
+           formatC(
+             max(na.omit(financiadores$Total)),
+             format = "f",
+             digits = 0,
+             big.mark = "."
+           ))
   )
 colnames(summ.table.financiadores) <-
   cbind(
-    "Editais Financiados",
-    "Média Anual",
-    "Menor Financiamento",
-    "Maior Financiamento",
-    "Total de Financiamentos"
+    "Editais financiados",
+    "Total de financiamentos",
+    "Mediana anual",
+    "Menor",
+    "Maior"
   )
 
 # plot 4 (summary table in plot)
 
 # plot area setup
-layout(matrix(c(1, 2, 3, 4, 5, 5), ncol = 2, byrow = TRUE))
+layout(matrix(c(1, 1, 2, 2, 3, 3, 4, 5), ncol = 2, byrow = TRUE))
 
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
@@ -687,13 +696,13 @@ resumos <-
 artigos <- rbind(artigos[, 1:11], resumos[, 1:11])
 
 # Data cleaning
-artigos <- artigos[complete.cases(artigos$DOI), ]
+artigos <- artigos[complete.cases(artigos$DOI),]
 artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 
 # remove os aceitos e submetidos
 artigos <-
   artigos[artigos$Publicado.em != "Aceito" &
-            artigos$Publicado.em != "Submetido",]
+            artigos$Publicado.em != "Submetido", ]
 
 # estratos Qualis
 estratos <- sort(unique(artigos$WebQualis))
@@ -713,32 +722,32 @@ table.1 <- table(artigos$Publicado.em)
 
 table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
 table.2 <- apply(table.2, 2, rev)
-table.2 <- table.2[order(rownames(table.2)), ]
+table.2 <- table.2[order(rownames(table.2)),]
 
 table.3 <- data.frame(artigos$Publicado.em, SJR)
-table.3.mean <-
+table.3.median <-
   aggregate(
     table.3,
     by = list(artigos$Publicado.em),
-    FUN = mean,
+    FUN = median,
     na.rm = TRUE
   )
-table.3.mean <- t(as.matrix(table.3.mean[,-2]))
-table.3.mean <- as.numeric(table.3.mean[-1, ])
-names(table.3.mean) <- names(table.1)
+table.3.median <- t(as.matrix(table.3.median[, -2]))
+table.3.median <- as.numeric(table.3.median[-1,])
+names(table.3.median) <- names(table.1)
 
 # calculate summary statistics for producao
 summ.table.producao <-
   cbind(
     sum(table.1),
     formatC(
-      mean(table.1, na.rm = TRUE),
+      min(table.1, na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      min(table.1, na.rm = TRUE),
+      median(table.1, na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
@@ -756,6 +765,12 @@ summ.table.producao <-
       big.mark = "."
     ),
     formatC(
+      median(SJR, na.rm = TRUE),
+      format = "f",
+      digits = 3,
+      big.mark = "."
+    ),
+    formatC(
       max(SJR, na.rm = TRUE),
       format = "f",
       digits = 3,
@@ -763,7 +778,7 @@ summ.table.producao <-
     ),
     paste0(
       formatC(
-        sum(table.2[1:4,]) / sum(table.2) * 100,
+        sum(table.2[1:4, ]) / sum(table.2) * 100,
         format = "d",
         digits = 0,
         big.mark = "."
@@ -772,7 +787,7 @@ summ.table.producao <-
     ),
     paste0(
       formatC(
-        sum(table.2[5:8,]) / sum(table.2) * 100,
+        sum(table.2[5:8, ]) / sum(table.2) * 100,
         format = "d",
         digits = 0,
         big.mark = "."
@@ -783,12 +798,13 @@ summ.table.producao <-
 
 colnames(summ.table.producao) <-
   cbind(
-    "Artigos Publicados",
-    "Média Anual",
-    "Mínimo no ano",
-    "Máximo no ano",
-    "Menor SJR",
-    "Maior SJR",
+    "Artigos publicados",
+    "Mínimo",
+    "Mediana anual",
+    "Máximo",
+    "Menor",
+    "Mediana SJR",
+    "Maior",
     "A1-A4",
     "B1-B4"
   )
@@ -854,7 +870,11 @@ title(main = "Qualidade da produção (SJR)",
       cex.main = 1.7)
 
 # plot area setup
-layout(matrix(c(1, 2, 3, 4, 5, 6, 7, 8), ncol = 2, byrow = TRUE))
+layout(matrix(
+  c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 0, 9),
+  ncol = 3,
+  byrow = TRUE
+))
 
 # plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.producao)) {

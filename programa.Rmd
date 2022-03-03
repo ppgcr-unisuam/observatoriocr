@@ -488,8 +488,19 @@ library(magrittr)
 library(readxl)
 library(RColorBrewer)
 
-projetos.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Projetos - Membros")
-projetos <- projetos.raw[projetos.raw$`Membro Responsável`=="Sim" & projetos.raw$Situação == "EM ANDAMENTO", ]
+projetos.raw.2012 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2013 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2014 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2015 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2015.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2016 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2016.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2017 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2017.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2018 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2019 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2020 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Projetos - Membros")
+projetos.raw.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Projetos - Membros")
+projetos.all <- rbind(projetos.raw.2012, projetos.raw.2013, projetos.raw.2014, projetos.raw.2015, projetos.raw.2016, projetos.raw.2017, projetos.raw.2018, projetos.raw.2019, projetos.raw.2020, projetos.raw.2021, projetos.raw.2022)
+projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -558,7 +569,7 @@ library(magrittr)
 library(readxl)
 library(RColorBrewer)
 
-projetos.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Projetos - Membros")
+projetos.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Projetos - Membros")
 projetos <- projetos.raw[projetos.raw$`Membro Responsável`=="Sim" & projetos.raw$Situação == "EM ANDAMENTO", ]
 
 # select data DOCENTES
@@ -631,7 +642,7 @@ library(readxl)
 library(stringr)
 library(DT)
 
-projetos.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Projetos - Membros")
+projetos.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Projetos - Membros")
 projetos <- projetos.raw[projetos.raw$`Membro Responsável`=="Sim", ]
 projetos <- projetos[projetos$Situação=="EM ANDAMENTO", ]
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
@@ -1693,7 +1704,7 @@ initials <- function(names){
 }
 
 # read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Disciplinas")
+disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -1726,9 +1737,9 @@ obrigatoria[which(obrigatoria == "Não")] <- "Eletiva"
 legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
 
 # # read separate sheets
-# turmas.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Turmas", )
+# turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
 # # bind all sheets
-# turmas.raw <- turmas.2021
+# turmas.raw <- turmas.2022
 # # replace full names by initials
 # 
 # # build a cross table DISCIPLINA vs. DOCENTE
@@ -1803,7 +1814,7 @@ initials <- function(names){
 }
 
 # read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Disciplinas")
+disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -1836,9 +1847,9 @@ cat("  \n")
 # legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
 
 # # read separate sheets
-# turmas.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Turmas", )
+# turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
 # # bind all sheets
-# turmas.raw <- turmas.2021
+# turmas.raw <- turmas.2022
 # # replace full names by initials
 # 
 # # build a cross table DISCIPLINA vs. DOCENTE
@@ -1975,6 +1986,8 @@ initials <- function(names){
 }
 
 # read separate sheets
+disciplinas.raw.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas", col_types = c("text"))
+disciplinas.raw.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Disciplinas", col_types = c("text"))
 disciplinas.raw.2020 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx", sheet = "Disciplinas", col_types = c("text"))
 disciplinas.raw.2019 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx", sheet = "Disciplinas", col_types = c("text"))
 disciplinas.raw.2018 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx", sheet = "Disciplinas", col_types = c("text"))
@@ -1984,7 +1997,7 @@ disciplinas.raw.2015 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_progra
 disciplinas.raw.2014 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx", sheet = "Disciplinas", col_types = c("text"))
 disciplinas.raw.2013 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx", sheet = "Disciplinas", col_types = c("text"))
 disciplinas.raw.2012 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw <- rbind(disciplinas.raw.2020, disciplinas.raw.2019, disciplinas.raw.2018, disciplinas.raw.2017, disciplinas.raw.2016, disciplinas.raw.2015, disciplinas.raw.2014, disciplinas.raw.2013, disciplinas.raw.2012)
+disciplinas.raw <- rbind(disciplinas.raw.2022, disciplinas.raw.2021, disciplinas.raw.2020, disciplinas.raw.2019, disciplinas.raw.2018, disciplinas.raw.2017, disciplinas.raw.2016, disciplinas.raw.2015, disciplinas.raw.2014, disciplinas.raw.2013, disciplinas.raw.2012)
 disciplinas.raw <- disciplinas.raw[!is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -2119,8 +2132,9 @@ initials <- function(names){
 
 # read separate sheets
 turmas.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Turmas",  col_types = c("text"))
+turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", col_types = c("text"))
 # bind all sheets
-turmas.raw <- rbind(turmas.2021)
+turmas.raw <- rbind(turmas.2021, turmas.2022)
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
@@ -2198,7 +2212,7 @@ initials <- function(names){
 }
 
 # read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Disciplinas")
+disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -2231,9 +2245,9 @@ cat("  \n")
 # legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
 
 # read separate sheets
-turmas.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Turmas", )
+turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
 # bind all sheets
-turmas.raw <- turmas.2021
+turmas.raw <- turmas.2022
 # replace full names by initials
 
 # build a cross table DISCIPLINA vs. DOCENTE

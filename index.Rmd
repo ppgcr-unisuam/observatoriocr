@@ -361,7 +361,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "EM ANDAMENTO",]
+               projetos$Situação == "EM ANDAMENTO", ]
   for (j in 1:length(linhas)) {
     andamento.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -369,7 +369,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "CONCLUÍDO",]
+               projetos$Situação == "CONCLUÍDO", ]
   for (j in 1:length(linhas)) {
     concluido.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -378,6 +378,41 @@ for (i in 1:length(anos)) {
 projetos.ano <- andamento.ano + concluido.ano
 projetos.ano <-
   projetos.ano[, order(colnames(projetos.ano), decreasing = FALSE)]
+
+membros <-
+  data.frame(sucupira.raw$`Nome do Membro do Projeto`,
+             sucupira.raw$`Categoria do Membro do Projeto`)
+membros <- membros[!duplicated(membros),]
+categorias <-
+  table(membros$sucupira.raw..Categoria.do.Membro.do.Projeto.)
+
+# calculate summary statistics for projetos
+summ.table.projetos <-
+  c(paste0(
+    formatC(
+      sum(na.omit(concluido.ano)),
+      format = "d",
+      digits = 0,
+      big.mark = ".",
+      decimal.mark = ","
+    )
+  ),
+  paste0(
+    formatC(
+      sum(na.omit(andamento.ano[, dim(andamento.ano)[2]])),
+      format = "d",
+      digits = 0,
+      big.mark = ".",
+      decimal.mark = ","
+    )
+  ),
+  categorias,
+  sum(categorias))
+names(summ.table.projetos) <-
+  c("Projetos concluídos",
+    "Projetos em andamento",
+    names(categorias),
+    "Total")
 
 # plot area setup
 par(
@@ -422,6 +457,44 @@ barplot(
 title(main = "Projetos por Linha de Pesquisa",
       outer = TRUE,
       cex.main = 1.7)
+
+# plot 3 (summary table in plot)
+
+# plot area setup
+layout(matrix(
+  c(1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 7, 8),
+  ncol = 3,
+  byrow = TRUE
+))
+
+for (i in 1:length(summ.table.projetos)) {
+  plot(
+    c(0, 1),
+    c(0, 1),
+    ann = F,
+    bty = 'n',
+    type = 'n',
+    xaxt = 'n',
+    yaxt = 'n'
+  )
+  text(
+    x = 0.5,
+    y = 0.6,
+    labels = as.character(summ.table.projetos[i]),
+    cex = 4.2,
+    col = brewer.pal(n = 9, name = "Set3")[3]
+  )
+  text(
+    x = 0.5,
+    y = 0.2,
+    labels = names(summ.table.projetos)[i],
+    cex = 1.7,
+    col = brewer.pal(n = 9, name = "Set3")[2]
+  )
+  box(lty = "solid",
+      lwd = 15,
+      col = brewer.pal(n = 9, name = "Set3")[1])
+}
 ```
 
 ```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
@@ -432,7 +505,8 @@ bs_carousel(id = "projetos-carouse",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-3.png"))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -793,6 +867,15 @@ summ.table.producao <-
         big.mark = "."
       ),
       "%"
+    ),
+    paste0(
+      formatC(
+        sum(table.2[9:10, ]) / sum(table.2) * 100,
+        format = "d",
+        digits = 0,
+        big.mark = "."
+      ),
+      "%"
     )
   )
 
@@ -806,7 +889,8 @@ colnames(summ.table.producao) <-
     "Mediana SJR",
     "Maior",
     "A1-A4",
-    "B1-B4"
+    "B1-B4",
+    "Outros"
   )
 
 # plot area setup
@@ -871,7 +955,7 @@ title(main = "Qualidade da produção (SJR)",
 
 # plot area setup
 layout(matrix(
-  c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 0, 9),
+  c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
   ncol = 3,
   byrow = TRUE
 ))

@@ -1294,6 +1294,84 @@ g2 <- ggdraw(g) +
   theme(plot.background = element_rect(fill = "#2C3E50", color = NA))
 
 plot(g2)
+
+# plot 5
+
+# calculate summary statistics for producao
+summ.table.pessoal <-
+  cbind(
+    sum(table.1),
+    formatC(
+      sum(table.1[2,], na.rm = TRUE),
+      format = "d",
+      digits = 0,
+      big.mark = "."
+    ),
+    formatC(
+      sum(table.1[1,], na.rm = TRUE),
+      format = "d",
+      digits = 0,
+      big.mark = "."
+    ),
+    formatC(
+      median(table.2.msc$as.numeric.mestres..Tempo.de.Curso..meses..., na.rm = TRUE),
+      format = "d",
+      digits = 0,
+      big.mark = "."
+    ),
+    formatC(
+      median(table.2.dsc$as.numeric.doutores..Tempo.de.Curso..meses..., na.rm = TRUE),
+      format = "d",
+      digits = 0,
+      big.mark = "."
+    )
+  )
+
+colnames(summ.table.pessoal) <-
+  cbind(
+    "Egressos",
+    "Mestres",
+    "Doutores",
+    "Meses",
+    "Meses"
+  )
+
+# plot area setup
+layout(matrix(
+  c(1, 1, 2, 3, 4, 5),
+  ncol = 2,
+  byrow = TRUE
+))
+
+# plot 5 (summary table in plot)
+for (i in 1:ncol(summ.table.pessoal)) {
+  plot(
+    c(0, 1),
+    c(0, 1),
+    ann = F,
+    bty = 'n',
+    type = 'n',
+    xaxt = 'n',
+    yaxt = 'n'
+  )
+  text(
+    x = 0.5,
+    y = 0.6,
+    labels = as.character(summ.table.pessoal[i]),
+    cex = 4.2,
+    col = brewer.pal(n = 9, name = "Set3")[3]
+  )
+  text(
+    x = 0.5,
+    y = 0.2,
+    labels = colnames(summ.table.pessoal)[i],
+    cex = 2,
+    col = brewer.pal(n = 9, name = "Set3")[2]
+  )
+  box(lty = "solid",
+      lwd = 15,
+      col = brewer.pal(n = 9, name = "Set3")[1])
+}
 ```
 
 ```{r sintese-pessoal-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
@@ -1306,7 +1384,8 @@ bs_carousel(id = "pessoal-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-4.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-4.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-5.png"))
 ```
 
 *Fontes:* **UNISUAM**

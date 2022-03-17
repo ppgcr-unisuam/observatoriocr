@@ -1023,10 +1023,10 @@ discentes.raw <-
 # separating egressos (master and doctoral) and current canditates
 discentes <-
   discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" |
-                  discentes.raw$`Status SAGA` == "Pré-inscrito", ]
-egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-mestres <- egressos[egressos$Curso == "Mestrado", ]
-doutores <- egressos[egressos$Curso == "Doutorado", ]
+                  discentes.raw$`Status SAGA` == "Pré-inscrito",]
+egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+mestres <- egressos[egressos$Curso == "Mestrado",]
+doutores <- egressos[egressos$Curso == "Doutorado",]
 
 # identifying available courses
 cursos <- levels(as.factor(c(discentes$Curso, egressos$Curso)))
@@ -1302,25 +1302,31 @@ summ.table.pessoal <-
   cbind(
     sum(table.1),
     formatC(
-      sum(table.1[2,], na.rm = TRUE),
+      sum(table.1[2, ], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      sum(table.1[1,], na.rm = TRUE),
+      sum(table.1[1, ], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      median(table.2.msc$as.numeric.mestres..Tempo.de.Curso..meses..., na.rm = TRUE),
+      median(
+        table.2.msc$as.numeric.mestres..Tempo.de.Curso..meses...,
+        na.rm = TRUE
+      ),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      median(table.2.dsc$as.numeric.doutores..Tempo.de.Curso..meses..., na.rm = TRUE),
+      median(
+        table.2.dsc$as.numeric.doutores..Tempo.de.Curso..meses...,
+        na.rm = TRUE
+      ),
       format = "d",
       digits = 0,
       big.mark = "."
@@ -1328,20 +1334,16 @@ summ.table.pessoal <-
   )
 
 colnames(summ.table.pessoal) <-
-  cbind(
-    "Egressos",
-    "Mestres",
-    "Doutores",
-    "Meses",
-    "Meses"
-  )
+  cbind("Egressos",
+        "Mestres",
+        "Doutores",
+        "Meses",
+        "Meses")
 
 # plot area setup
-layout(matrix(
-  c(1, 1, 2, 3, 4, 5),
-  ncol = 2,
-  byrow = TRUE
-))
+layout(matrix(c(1, 1, 2, 3, 4, 5),
+              ncol = 2,
+              byrow = TRUE))
 
 # plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.pessoal)) {
@@ -1496,6 +1498,14 @@ source("Scripts/read_sucupira.R")
 sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
+países <- sucupira.raw$`País da Instituição de Origem`
+
+part.ext.nac <- sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+part.ext.inter <- sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+
+IES.nac <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+IES.inter <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+
 # get initials
 siglas <- c()
 for (i in 1:length(IES)) {
@@ -1516,6 +1526,137 @@ for (i in 1:length(sort(table(siglas), decreasing = FALSE))) {
 data.to.cloud <- ranked.ies
 cloud.title <- "Instituições"
 source("Scripts/docs_to_wordcloud.R")
+
+# plot 3
+
+# plot area setup
+par(
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 15, 1, 1),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
+
+top <- 10
+
+data.nac <- data.frame(
+  name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
+  value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top])
+)
+
+# break vector names in 2 lines
+text.2.break <- data.nac$name
+source("Scripts/line_break.R")
+data.nac$name <- broken_text
+
+barplot(
+  height = rev(data.nac$value),
+  names = rev(data.nac$name),
+  xlab = "N",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(main = paste0("Top-", top, " nacionais"),
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 4
+
+data.inter <- data.frame(
+  name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
+  value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top])
+)
+
+# break vector names in 2 lines
+text.2.break <- data.inter$name
+source("Scripts/line_break.R")
+data.inter$name <- broken_text
+
+barplot(
+  height = rev(data.inter$value),
+  names = rev(data.inter$name),
+  xlab = "N",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(main = paste0("Top-", top, " internacionais"),
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 5
+
+# calculate summary statistics for IES
+summ.table.ies <-
+  cbind(
+    length(unique(na.omit(IES.nac))) + length(unique(na.omit(IES.inter))),
+    length(unique(na.omit(IES.nac))),
+    length(unique(na.omit(IES.inter))),
+    length(unique(part.ext.nac)) + length(unique(part.ext.inter)),
+    length(unique(part.ext.nac)),
+    length(unique(part.ext.inter))
+  )
+
+colnames(summ.table.ies) <-
+  cbind("IES colaboradoras",
+        "Nacionais",
+        "Internacionais",
+        "Participantes externos",
+        "Nacionais",
+        "Internacionais"
+        )
+
+# plot area setup
+par(
+  oma = c(1.5, 1, 1, 1),
+  mar = c(1.5, 1, 1, 1),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
+
+# plot area setup
+layout(matrix(c(1, 1, 2, 3, 4, 4, 5, 6),
+              ncol = 2,
+              byrow = TRUE))
+
+# plot 5 (summary table in plot)
+for (i in 1:ncol(summ.table.ies)) {
+  plot(
+    c(0, 1),
+    c(0, 1),
+    ann = F,
+    bty = 'n',
+    type = 'n',
+    xaxt = 'n',
+    yaxt = 'n'
+  )
+  text(
+    x = 0.5,
+    y = 0.6,
+    labels = as.character(summ.table.ies[i]),
+    cex = 4.2,
+    col = brewer.pal(n = 9, name = "Set3")[3]
+  )
+  text(
+    x = 0.5,
+    y = 0.2,
+    labels = colnames(summ.table.ies)[i],
+    cex = 2,
+    col = brewer.pal(n = 9, name = "Set3")[2]
+  )
+  box(lty = "solid",
+      lwd = 15,
+      col = brewer.pal(n = 9, name = "Set3")[1])
+}
 ```
 
 ```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
@@ -1526,11 +1667,12 @@ bs_carousel(id = "rede-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Participante Externo.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Participante Externo.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-2.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png"))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<br>
 
 <br>

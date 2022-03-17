@@ -1495,16 +1495,20 @@ dir.create(dir.path, recursive = TRUE)
 # IES participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read_sucupira.R")
-sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
+sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw),]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
 países <- sucupira.raw$`País da Instituição de Origem`
 
-part.ext.nac <- sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
-part.ext.inter <- sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+part.ext.nac <-
+  sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+part.ext.inter <-
+  sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
 
-IES.nac <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
-IES.inter <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+IES.nac <-
+  sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+IES.inter <-
+  sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
 
 # get initials
 siglas <- c()
@@ -1520,8 +1524,13 @@ rank <- 1
 for (i in 1:length(sort(table(siglas), decreasing = FALSE))) {
   ranked.ies <-
     c(ranked.ies,
-      rep(names(sort(table(siglas))[i]), match(sort(table(siglas))[i][[1]], unique(sort(table(siglas)))))
-      )
+      rep(names(sort(table(
+        siglas
+      ))[i]), match(sort(table(
+        siglas
+      ))[i][[1]], unique(sort(
+        table(siglas)
+      )))))
 }
 data.to.cloud <- ranked.ies
 cloud.title <- "Instituições"
@@ -1542,10 +1551,8 @@ par(
 
 top <- 10
 
-data.nac <- data.frame(
-  name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
-  value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top])
-)
+data.nac <- data.frame(name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
+                       value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top]))
 
 # break vector names in 2 lines
 text.2.break <- data.nac$name
@@ -1561,16 +1568,16 @@ barplot(
   las = 1,
   cex.names = 0.7
 )
-title(main = paste0("Top-", top, " nacionais"),
-      outer = TRUE,
-      cex.main = 1.7)
+title(
+  main = paste0("Top-", top, " nacionais"),
+  outer = TRUE,
+  cex.main = 1.7
+)
 
 # plot 4
 
-data.inter <- data.frame(
-  name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
-  value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top])
-)
+data.inter <- data.frame(name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
+                         value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top]))
 
 # break vector names in 2 lines
 text.2.break <- data.inter$name
@@ -1586,9 +1593,11 @@ barplot(
   las = 1,
   cex.names = 0.7
 )
-title(main = paste0("Top-", top, " internacionais"),
-      outer = TRUE,
-      cex.main = 1.7)
+title(
+  main = paste0("Top-", top, " internacionais"),
+  outer = TRUE,
+  cex.main = 1.7
+)
 
 # plot 5
 
@@ -1604,13 +1613,14 @@ summ.table.ies <-
   )
 
 colnames(summ.table.ies) <-
-  cbind("IES colaboradoras",
-        "Nacionais",
-        "Internacionais",
-        "Participantes externos",
-        "Nacionais",
-        "Internacionais"
-        )
+  cbind(
+    "IES colaboradoras",
+    "Nacionais",
+    "Internacionais",
+    "Participantes externos",
+    "Nacionais",
+    "Internacionais"
+  )
 
 # plot area setup
 par(

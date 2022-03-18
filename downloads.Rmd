@@ -80,7 +80,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <br>
 <br>
 
-### **Documentos vigentes**
+### **Documentos vigentes** {#vigentes}
 
 ```{r documentos-vigentes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -108,7 +108,7 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 <br>
 
-### **Documentos revogados**
+### **Documentos revogados** {#revogados}
 
 ```{r documentos-revogados, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")

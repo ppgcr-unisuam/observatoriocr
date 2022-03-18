@@ -90,7 +90,7 @@ tabs <- excel_sheets(file.path)
 # iterate across sheets
 for (j in 1:length(tabs)) {
   cat('\n\n<!-- -->\n\n')
-  cat("### **", tabs[j], "**", "\n", sep = "")
+  cat("### **", tabs[j], "** {#", tolower(tabs[j]), "} \n", sep = "")
   cat('\n\n<!-- -->\n\n')
   fontes <-
     read_excel(file.path, sheet = tabs[j], col_types = c("text"))

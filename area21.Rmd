@@ -1,0 +1,162 @@
+---
+title: Área 21
+
+output:
+  html_document:
+    toc: true
+---
+
+<!--script for computer/mobile devices-->
+```{css, echo=FALSE}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body .main-container {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+      }
+    body {
+      max-width: 1280px !important;
+      width: 80%;
+      margin: auto;
+    }
+      section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+```
+
+<!--script for narrow margins-->
+<style type="text/css">
+div.main-container {
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script>
+  $(document).ready(function() {
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+  });
+</script>
+<style>
+#nav_logo {
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
+
+<br>
+
+<!--script for sharing-->
+<p align="right">
+```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+# sorteia participante para relatar no texto
+library(kableExtra)
+library(readxl)
+library(fontawesome)
+
+cat("*Compartilhe* &nbsp;")
+
+cat("[")
+fa("twitter-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](https://twitter.com/share?url=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("facebook-square", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/)")
+cat("&nbsp;&nbsp;&nbsp;")
+cat("[")
+fa("linkedin", margin_left = "0.2em", margin_right = "0.2em", height = "2em", width = "2em")
+cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/)")
+```
+</p>
+
+<br>
+<br>
+<br>
+
+## **Área 21**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml;jsessionid=8UcciF3BwDTfXQbKOZoFT-Xn.sucupira-214?areaAvaliacao=21" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+<br>
+
+### **Educação Física**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40900002" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+<br>
+
+### **Fisioterapia e Terapia ocupacional**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40800008" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+<br>
+
+### **Fonoaudiologia**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40700003" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+<br>
+
+## **Forum da Área 21**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="http://www.fef.unicamp.br/fef/posgraduacao/forumpg21" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>

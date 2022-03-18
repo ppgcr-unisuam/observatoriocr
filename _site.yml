@@ -170,6 +170,8 @@ navbar:
         - text: "News"
           href: [news.html]
   right:
+    - text: "21"
+      href: [area21.html]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]

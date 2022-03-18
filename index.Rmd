@@ -1023,10 +1023,10 @@ discentes.raw <-
 # separating egressos (master and doctoral) and current canditates
 discentes <-
   discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" |
-                  discentes.raw$`Status SAGA` == "Pré-inscrito",]
-egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
-mestres <- egressos[egressos$Curso == "Mestrado",]
-doutores <- egressos[egressos$Curso == "Doutorado",]
+                  discentes.raw$`Status SAGA` == "Pré-inscrito", ]
+egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
+mestres <- egressos[egressos$Curso == "Mestrado", ]
+doutores <- egressos[egressos$Curso == "Doutorado", ]
 
 # identifying available courses
 cursos <- levels(as.factor(c(discentes$Curso, egressos$Curso)))
@@ -1297,18 +1297,18 @@ plot(g2)
 
 # plot 5
 
-# calculate summary statistics for producao
+# calculate summary statistics for pessoal
 summ.table.pessoal <-
   cbind(
     sum(table.1),
     formatC(
-      sum(table.1[2, ], na.rm = TRUE),
+      sum(table.1[2,], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      sum(table.1[1, ], na.rm = TRUE),
+      sum(table.1[1,], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
@@ -1330,19 +1330,27 @@ summ.table.pessoal <-
       format = "d",
       digits = 0,
       big.mark = "."
-    )
+    ),
+    dim(discentes)[1],
+    sum(discentes$Curso == "Mestrado"),
+    sum(discentes$Curso == "Doutorado")
   )
 
 colnames(summ.table.pessoal) <-
-  cbind("Egressos",
-        "Mestres",
-        "Doutores",
-        "Meses",
-        "Meses")
+  cbind(
+    "Egressos",
+    "Mestres",
+    "Doutores",
+    "Meses",
+    "Meses",
+    "Candidatos",
+    "Mestrandos",
+    "Doutorandos"
+  )
 
 # plot area setup
-layout(matrix(c(1, 1, 2, 3, 4, 5),
-              ncol = 2,
+layout(matrix(c(1, 2, 3, 1, 4, 5, 6, 7, 8),
+              ncol = 3,
               byrow = TRUE))
 
 # plot 5 (summary table in plot)
@@ -1614,7 +1622,7 @@ summ.table.ies <-
 
 colnames(summ.table.ies) <-
   cbind(
-    "IES colaboradoras",
+    "Instituições colaboradoras",
     "Nacionais",
     "Internacionais",
     "Participantes externos",

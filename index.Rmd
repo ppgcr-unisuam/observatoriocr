@@ -1506,18 +1506,18 @@ source("Scripts/read_sucupira.R")
 sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw),]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
-países <- sucupira.raw$`País da Instituição de Origem`
-mundo <- sucupira.raw$`País da Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+países <- na.omit(sucupira.raw$`País da Instituição de Origem`)
+mundo <- na.omit(sucupira.raw$`País da Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
 
 part.ext.nac <-
-  sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+  na.omit(sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"])
 part.ext.inter <-
-  sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+  na.omit(sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
 
 IES.nac <-
-  sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
+  na.omit(sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` == "Brasil"])
 IES.inter <-
-  sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
+  na.omit(sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
 
 # get initials
 siglas <- c()
@@ -1558,7 +1558,7 @@ par(
   col.main = "white"
 )
 
-top <- min(length(unique(IES.nac)), 10)
+top <- min(length(na.omit(unique(IES.nac))), 10)
 data.nac <- na.omit(data.frame(name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
                        value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top])))
 
@@ -1584,7 +1584,7 @@ title(
 
 # plot 4
 
-top <- min(length(unique(IES.inter)), 10)
+top <- min(length(na.omit(unique(IES.inter))), 10)
 data.inter <- na.omit(data.frame(name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
                          value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top])))
 
@@ -1610,7 +1610,7 @@ title(
 
 # plot 5
 
-top <- min(length(unique(mundo)), 10)
+top <- min(length(na.omit(unique(mundo))), 10)
 data.pais <- na.omit(data.frame(name = names(sort(table(mundo), decreasing = TRUE)[1:top]),
                          value = as.numeric(sort(table(mundo), decreasing = TRUE)[1:top])))
 
@@ -1642,9 +1642,9 @@ summ.table.ies <-
     length(unique(na.omit(IES.nac))) + length(unique(na.omit(IES.inter))),
     length(unique(na.omit(IES.nac))),
     length(unique(na.omit(IES.inter))),
-    length(unique(part.ext.nac)) + length(unique(part.ext.inter)),
-    length(unique(part.ext.nac)),
-    length(unique(part.ext.inter))
+    length(unique(na.omit(part.ext.nac))) + length(unique(na.omit(part.ext.inter))),
+    length(unique(na.omit(part.ext.nac))),
+    length(unique(na.omit(part.ext.inter)))
   )
 
 colnames(summ.table.ies) <-
@@ -1716,7 +1716,7 @@ bs_carousel(id = "rede-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-5.png"))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

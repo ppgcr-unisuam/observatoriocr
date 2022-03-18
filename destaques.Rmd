@@ -81,12 +81,16 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/76131bUiBxs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
+
+### **Ana Paula Antunes Ferreira, DSc**
+
+<iframe src="https://oialliance.org/about-us/board-of-directors/" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Osteopathic International Alliance**](https://oialliance.org)
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -311,3 +315,34 @@ source("scripts/table_with_badges.R")
 
 <!--script for generating multiple PLUMX badges-->
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
+
+## **Representatividade** {.tabset #representatividade}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **ABRAPG-Ft** {.tabset}
+
+<iframe src="https://abrapg-ft.org.br/portal/" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**ABRAPG-FT**](https://abrapg-ft.org.br/portal/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+### *Comitê Gestor do Forum 21** {.tabset}
+
+<br>
+
+<iframe src="https://iframely.net/678B7BG" style="width:100%; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**UNICAMP**](https://www.fef.unicamp.br/fef/posgraduacao/forumpg21)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

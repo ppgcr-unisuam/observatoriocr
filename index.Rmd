@@ -1507,6 +1507,7 @@ sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw),]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
 países <- sucupira.raw$`País da Instituição de Origem`
+mundo <- sucupira.raw$`País da Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
 
 part.ext.nac <-
   sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"]
@@ -1557,10 +1558,9 @@ par(
   col.main = "white"
 )
 
-top <- 10
-
-data.nac <- data.frame(name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
-                       value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top]))
+top <- min(length(unique(IES.nac)), 10)
+data.nac <- na.omit(data.frame(name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
+                       value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top])))
 
 # break vector names in 2 lines
 text.2.break <- data.nac$name
@@ -1584,8 +1584,9 @@ title(
 
 # plot 4
 
-data.inter <- data.frame(name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
-                         value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top]))
+top <- min(length(unique(IES.inter)), 10)
+data.inter <- na.omit(data.frame(name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
+                         value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top])))
 
 # break vector names in 2 lines
 text.2.break <- data.inter$name
@@ -1608,6 +1609,32 @@ title(
 )
 
 # plot 5
+
+top <- min(length(unique(mundo)), 10)
+data.pais <- na.omit(data.frame(name = names(sort(table(mundo), decreasing = TRUE)[1:top]),
+                         value = as.numeric(sort(table(mundo), decreasing = TRUE)[1:top])))
+
+# break vector names in 2 lines
+text.2.break <- data.pais$name
+source("Scripts/line_break.R")
+data.pais$name <- broken_text
+
+barplot(
+  height = rev(data.pais$value),
+  names = rev(data.pais$name),
+  xlab = "N",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(
+  main = paste0("Top-", top, " países"),
+  outer = TRUE,
+  cex.main = 1.7
+)
+
+# plot 6
 
 # calculate summary statistics for IES
 summ.table.ies <-
@@ -1688,6 +1715,7 @@ bs_carousel(id = "rede-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Participante Externo.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png"))
 ```
 

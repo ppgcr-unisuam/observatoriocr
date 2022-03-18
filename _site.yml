@@ -127,6 +127,8 @@ navbar:
           href: [destaques.html#TCC-destaque]
         - text: "Produções"
           href: [destaques.html#produtos-destaque]
+        - text: "Representatividade"
+          href: [destaques.html#representatividade]
     - text: "Impacto"
       href: impacto.html
       menu:
@@ -183,7 +185,7 @@ navbar:
           href: [area21.html#FT-TO]
         - text: "Fonoaudiologia"
           href: [area21.html#FO]
-        - text: "Forum"
+        - text: "Forum Nacional"
           href: [area21.html#forum]
     - text: ""
       icon: "fa-download"

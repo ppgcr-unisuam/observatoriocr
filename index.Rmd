@@ -128,7 +128,7 @@ alluv.data <-
   )
 
 start <- sucupira.raw$`Data de Início`[complete.cases(alluv.data)]
-alluv.data <- alluv.data[complete.cases(alluv.data),]
+alluv.data <- alluv.data[complete.cases(alluv.data), ]
 
 alluv.data.aggr <-
   aggregate(
@@ -175,16 +175,8 @@ for (i in 1:length(alluv.data.aggr$LP)) {
 
 # plot 1
 # plot area setup
-layout(c(1, 1, 1, 1, 2))
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  col.main = "white",
-  fg = NA
-)
+layout.m <- c(1, 1, 1, 1, 2)
+source("Scripts/plot_margins.R")
 
 # plot 1 (fluxo AC -> LP -> PP)
 alluvial(
@@ -361,7 +353,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "EM ANDAMENTO", ]
+               projetos$Situação == "EM ANDAMENTO",]
   for (j in 1:length(linhas)) {
     andamento.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -369,7 +361,7 @@ for (i in 1:length(anos)) {
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
-               projetos$Situação == "CONCLUÍDO", ]
+               projetos$Situação == "CONCLUÍDO",]
   for (j in 1:length(linhas)) {
     concluido.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
@@ -382,7 +374,7 @@ projetos.ano <-
 membros <-
   data.frame(sucupira.raw$`Nome do Membro do Projeto`,
              sucupira.raw$`Categoria do Membro do Projeto`)
-membros <- membros[!duplicated(membros),]
+membros <- membros[!duplicated(membros), ]
 categorias <-
   table(membros$sucupira.raw..Categoria.do.Membro.do.Projeto.)
 
@@ -415,15 +407,8 @@ names(summ.table.projetos) <-
     "Total")
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
 
 # plot 1 (total de projetos por linha, por ano)
 barplot(projetos.ano,
@@ -461,11 +446,10 @@ title(main = "Projetos por Linha de Pesquisa",
 # plot 3 (summary table in plot)
 
 # plot area setup
-layout(matrix(
-  c(1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 7, 8),
-  ncol = 3,
-  byrow = TRUE
-))
+layout.m <- matrix(c(1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 7, 8),
+                   ncol = 3,
+                   byrow = TRUE)
+source("Scripts/plot_margins.R")
 
 for (i in 1:length(summ.table.projetos)) {
   plot(
@@ -530,7 +514,7 @@ financiadores <-
   financiadores.raw %>% select("Ano", "Agência", "Programa", "Total", "Proponente")
 
 # drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
+financiadores <- financiadores[complete.cases(financiadores),]
 
 # generate cross-table
 N.editais.agencia.ano <-
@@ -543,15 +527,8 @@ agencias <-
   na.exclude(rownames(N.editais.agencia.ano))
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
 
 # plot 1 (financiadores per agency by year (absolute frequency)
 barplot(N.editais.agencia.ano,
@@ -611,7 +588,6 @@ legend(
 professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
-
 # plot 3 (financiadores per docente by year (absolute frequency))
 barplot(professores.ano,
         ylab = "N",
@@ -625,7 +601,7 @@ summ.table.financiadores <- matrix(0, nrow = 1, ncol = 5)
 summ.table.financiadores <-
   cbind(
     paste0(
-        formatC(
+      formatC(
         length(na.omit(financiadores$Total)),
         format = "d",
         digits = 0,
@@ -664,18 +640,18 @@ summ.table.financiadores <-
            ))
   )
 colnames(summ.table.financiadores) <-
-  cbind(
-    "Editais financiados",
-    "Total de financiamentos",
-    "Mediana anual",
-    "Menor",
-    "Maior"
-  )
+  cbind("Editais financiados",
+        "Total de financiamentos",
+        "Mediana anual",
+        "Menor",
+        "Maior")
 
 # plot 4 (summary table in plot)
 
 # plot area setup
-layout(matrix(c(1, 1, 2, 2, 3, 3, 4, 5), ncol = 2, byrow = TRUE))
+layout.m <-
+  matrix(c(1, 1, 2, 2, 3, 3, 4, 5), ncol = 2, byrow = TRUE)
+source("Scripts/plot_margins.R")
 
 for (i in 1:ncol(summ.table.financiadores)) {
   plot(
@@ -770,13 +746,13 @@ resumos <-
 artigos <- rbind(artigos[, 1:11], resumos[, 1:11])
 
 # Data cleaning
-artigos <- artigos[complete.cases(artigos$DOI),]
+artigos <- artigos[complete.cases(artigos$DOI), ]
 artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 
 # remove os aceitos e submetidos
 artigos <-
   artigos[artigos$Publicado.em != "Aceito" &
-            artigos$Publicado.em != "Submetido", ]
+            artigos$Publicado.em != "Submetido",]
 
 # estratos Qualis
 estratos <- sort(unique(artigos$WebQualis))
@@ -796,7 +772,7 @@ table.1 <- table(artigos$Publicado.em)
 
 table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
 table.2 <- apply(table.2, 2, rev)
-table.2 <- table.2[order(rownames(table.2)),]
+table.2 <- table.2[order(rownames(table.2)), ]
 
 table.3 <- data.frame(artigos$Publicado.em, SJR)
 table.3.median <-
@@ -806,8 +782,8 @@ table.3.median <-
     FUN = median,
     na.rm = TRUE
   )
-table.3.median <- t(as.matrix(table.3.median[, -2]))
-table.3.median <- as.numeric(table.3.median[-1,])
+table.3.median <- t(as.matrix(table.3.median[,-2]))
+table.3.median <- as.numeric(table.3.median[-1, ])
 names(table.3.median) <- names(table.1)
 
 # calculate summary statistics for producao
@@ -852,7 +828,7 @@ summ.table.producao <-
     ),
     paste0(
       formatC(
-        sum(table.2[1:4, ]) / sum(table.2) * 100,
+        sum(table.2[1:4,]) / sum(table.2) * 100,
         format = "d",
         digits = 0,
         big.mark = "."
@@ -861,7 +837,7 @@ summ.table.producao <-
     ),
     paste0(
       formatC(
-        sum(table.2[5:8, ]) / sum(table.2) * 100,
+        sum(table.2[5:8,]) / sum(table.2) * 100,
         format = "d",
         digits = 0,
         big.mark = "."
@@ -870,7 +846,7 @@ summ.table.producao <-
     ),
     paste0(
       formatC(
-        sum(table.2[9:10, ]) / sum(table.2) * 100,
+        sum(table.2[9:10,]) / sum(table.2) * 100,
         format = "d",
         digits = 0,
         big.mark = "."
@@ -894,15 +870,8 @@ colnames(summ.table.producao) <-
   )
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
 
 # plot 1 (total de produção bilbiográfica, por ano)
 barplot(table.1,
@@ -930,7 +899,7 @@ legend(
   cex = 1,
 )
 
-# plot 3(percetual de produção bilbiográfica, por estrato, por ano)
+# plot 3 (percentual de produção bilbiográfica, por estrato, por ano)
 barplot(
   scale(
     as.matrix(table.2),
@@ -954,11 +923,10 @@ title(main = "Qualidade da produção (SJR)",
       cex.main = 1.7)
 
 # plot area setup
-layout(matrix(
-  c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-  ncol = 3,
-  byrow = TRUE
-))
+layout.m <- matrix(c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+                   ncol = 3,
+                   byrow = TRUE)
+source("Scripts/plot_margins.R")
 
 # plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.producao)) {
@@ -1023,10 +991,10 @@ discentes.raw <-
 # separating egressos (master and doctoral) and current canditates
 discentes <-
   discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" |
-                  discentes.raw$`Status SAGA` == "Pré-inscrito", ]
-egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-mestres <- egressos[egressos$Curso == "Mestrado", ]
-doutores <- egressos[egressos$Curso == "Doutorado", ]
+                  discentes.raw$`Status SAGA` == "Pré-inscrito",]
+egressos <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+mestres <- egressos[egressos$Curso == "Mestrado",]
+doutores <- egressos[egressos$Curso == "Doutorado",]
 
 # identifying available courses
 cursos <- levels(as.factor(c(discentes$Curso, egressos$Curso)))
@@ -1044,15 +1012,8 @@ states <-
   )
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
 
 # generate plot of egressos per year
 table.1 <- table(egressos$Curso, egressos$`Ano Titulação`)
@@ -1302,13 +1263,13 @@ summ.table.pessoal <-
   cbind(
     sum(table.1),
     formatC(
-      sum(table.1[2,], na.rm = TRUE),
+      sum(table.1[2, ], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
     ),
     formatC(
-      sum(table.1[1,], na.rm = TRUE),
+      sum(table.1[1, ], na.rm = TRUE),
       format = "d",
       digits = 0,
       big.mark = "."
@@ -1349,9 +1310,10 @@ colnames(summ.table.pessoal) <-
   )
 
 # plot area setup
-layout(matrix(c(1, 2, 3, 1, 4, 5, 6, 7, 8),
-              ncol = 3,
-              byrow = TRUE))
+layout.m <- matrix(c(1, 2, 3, 1, 4, 5, 6, 7, 8),
+                   ncol = 3,
+                   byrow = TRUE)
+source("Scripts/plot_margins.R")
 
 # plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.pessoal)) {
@@ -1459,15 +1421,8 @@ for (i in 1:length(V(network))) {
 }
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
 
 # plot 1
 plot(
@@ -1503,11 +1458,12 @@ dir.create(dir.path, recursive = TRUE)
 # IES participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read_sucupira.R")
-sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw),]
+sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
 países <- na.omit(sucupira.raw$`País da Instituição de Origem`)
-mundo <- na.omit(sucupira.raw$`País da Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
+mundo <-
+  na.omit(sucupira.raw$`País da Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
 
 part.ext.nac <-
   na.omit(sucupira.raw$`Nome do Participante`[sucupira.raw$`País da Instituição de Origem` == "Brasil"])
@@ -1548,19 +1504,20 @@ source("Scripts/docs_to_wordcloud.R")
 # plot 3
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 15, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
+
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
 
 top <- min(length(na.omit(unique(IES.nac))), 10)
-data.nac <- na.omit(data.frame(name = names(sort(table(IES.nac), decreasing = TRUE)[1:top]),
-                       value = as.numeric(sort(table(IES.nac), decreasing = TRUE)[1:top])))
+data.nac <-
+  na.omit(data.frame(name = names(sort(
+    table(IES.nac), decreasing = TRUE
+  )[1:top]),
+  value = as.numeric(sort(
+    table(IES.nac), decreasing = TRUE
+  )[1:top])))
 
 # break vector names in 2 lines
 text.2.break <- data.nac$name
@@ -1584,9 +1541,21 @@ title(
 
 # plot 4
 
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
+
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
+
 top <- min(length(na.omit(unique(IES.inter))), 10)
-data.inter <- na.omit(data.frame(name = names(sort(table(IES.inter), decreasing = TRUE)[1:top]),
-                         value = as.numeric(sort(table(IES.inter), decreasing = TRUE)[1:top])))
+data.inter <-
+  na.omit(data.frame(name = names(sort(
+    table(IES.inter), decreasing = TRUE
+  )[1:top]),
+  value = as.numeric(sort(
+    table(IES.inter), decreasing = TRUE
+  )[1:top])))
 
 # break vector names in 2 lines
 text.2.break <- data.inter$name
@@ -1610,9 +1579,21 @@ title(
 
 # plot 5
 
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot_margins.R")
+
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
+
 top <- min(length(na.omit(unique(mundo))), 10)
-data.pais <- na.omit(data.frame(name = names(sort(table(mundo), decreasing = TRUE)[1:top]),
-                         value = as.numeric(sort(table(mundo), decreasing = TRUE)[1:top])))
+data.pais <-
+  na.omit(data.frame(name = names(sort(
+    table(mundo), decreasing = TRUE
+  )[1:top]),
+  value = as.numeric(sort(
+    table(mundo), decreasing = TRUE
+  )[1:top])))
 
 # break vector names in 2 lines
 text.2.break <- data.pais$name
@@ -1658,20 +1639,10 @@ colnames(summ.table.ies) <-
   )
 
 # plot area setup
-par(
-  oma = c(1.5, 1, 1, 1),
-  mar = c(1.5, 1, 1, 1),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
-
-# plot area setup
-layout(matrix(c(1, 1, 2, 3, 4, 4, 5, 6),
-              ncol = 2,
-              byrow = TRUE))
+layout.m <- matrix(c(1, 1, 2, 3, 4, 4, 5, 6),
+                   ncol = 2,
+                   byrow = TRUE)
+source("Scripts/plot_margins.R")
 
 # plot 5 (summary table in plot)
 for (i in 1:ncol(summ.table.ies)) {

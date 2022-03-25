@@ -174,35 +174,15 @@ navbar:
   right:
     - text: "21"
       href: [area21.html]
-      menu:
-        - text: "CAPES"
-          href: [area21.html#capes]
-        - text: "Sucupira"
-          href: [area21.html#sucupira]
-        - text: "Educação Física"
-          href: [area21.html#EF]
-        - text: "Fisioterapia e Terapia Ocupacional"
-          href: [area21.html#FT-TO]
-        - text: "Fonoaudiologia"
-          href: [area21.html#FO]
-        - text: "Forum Nacional"
-          href: [area21.html#forum]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]
-      menu:
-        - text: "Vigentes"
-          href: [downloads.html#vigentes]
-        - text: "Revogados"
-          href: [downloads.html#revogados]
     - text: ""
       icon: "fa-link"
       href: [fontes.html]
-      menu:
-        - text: "Nacionais"
-          href: [fontes.html#nacionais]
-        - text: "Interncionais"
-          href: [fontes.html#internacionais]
+    - text: ""
+      icon: "fa-info"
+      href: [sobre.html]
     - text: ""
       icon: "fa-github"
       href: [https://github.com/rehab-tech/observatoriocr/]

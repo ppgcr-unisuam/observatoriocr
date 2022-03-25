@@ -25,24 +25,24 @@ navbar:
   left:
     - text: ""
       icon: "fa-home"
-      href: index.html#observatoriocr
-      menu:
-        - text: "Observatório CR"
-          href: index.html
-        - text: "Coerência do Programa"
-          href: [index.html#coerencia-programa]
-        - text: "Temas de pesquisa"
-          href: [index.html#temas]
-        - text: "Projetos de pesquisa"
-          href: [index.html#projetos-linhas]
-        - text: "Financiamentos"
-          href: [index.html#financiadores]
-        - text: "Produção bibliográfica"
-          href: [index.html#producao]
-        - text: "Formação de pessoal"
-          href: [index.html#pessoal]
-        - text: "Rede de pesquisa"
-          href: [index.html#rede]
+      href: index.html
+      # menu:
+      #   - text: "Observatório CR"
+      #     href: index.html
+      #   - text: "Coerência do Programa"
+      #     href: [index.html#coerencia-programa]
+      #   - text: "Temas de pesquisa"
+      #     href: [index.html#temas]
+      #   - text: "Projetos de pesquisa"
+      #     href: [index.html#projetos-linhas]
+      #   - text: "Financiamentos"
+      #     href: [index.html#financiadores]
+      #   - text: "Produção bibliográfica"
+      #     href: [index.html#producao]
+      #   - text: "Formação de pessoal"
+      #     href: [index.html#pessoal]
+      #   - text: "Rede de pesquisa"
+      #     href: [index.html#rede]
     - text: "Programa"
       href: programa.html
       menu:
@@ -159,27 +159,17 @@ navbar:
           href: [autoavaliacao.html#pesquisa-egresso]
     - text: "Galeria"
       href: galeria.html
-      menu:
-        - text: "Galeria"
-          href: [galeria.html]
-        - text: "Fotos"
-          href: [galeria.html#fotos]
-        - text: "Videos"
-          href: [galeria.html#videos]
     - text: "News"
       href: news.html
-      menu:
-        - text: "News"
-          href: [news.html]
-  right:
-    - text: "21"
-      href: [area21.html]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]
     - text: ""
       icon: "fa-link"
       href: [fontes.html]
+    - text: "21"
+      href: [area21.html]
+  right:
     - text: ""
       icon: "fa-info"
       href: [sobre.html]

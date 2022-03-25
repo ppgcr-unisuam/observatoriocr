@@ -77,8 +77,6 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 </p>
 
 <br>
-<br>
-<br>
 
 ```{r fontes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="85%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")

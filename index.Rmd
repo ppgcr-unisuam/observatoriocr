@@ -336,11 +336,13 @@ projetos.list <- sucupira.list
 
 # list all available years
 anos <-
-  as.numeric(list.dirs(
-    file.path(getwd(), "Sucupira"),
-    recursive = FALSE,
-    full.names = FALSE
-  ))
+  as.numeric(
+    list.dirs(
+      file.path(getwd(), "Sucupira"),
+      full.names = FALSE,
+      recursive = FALSE
+    )
+  )
 
 # get all history of 'linha de pesquisa'
 linhas <-
@@ -355,6 +357,7 @@ concluido.ano <- andamento.ano
 
 # iterate across all Sucupira list elements to search for active and closed projects
 for (i in 1:length(anos)) {
+  # active
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
@@ -363,6 +366,7 @@ for (i in 1:length(anos)) {
     andamento.ano[j, i] <-
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
   }
+  # closed
   projetos <- projetos.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &

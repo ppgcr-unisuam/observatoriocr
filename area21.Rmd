@@ -40,7 +40,7 @@ div.main-container {
 <!--script for inserting LOGO ABOVE THE TOC-->
 <script>
   $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
   });
 </script>
 <style>
@@ -54,7 +54,7 @@ div.main-container {
 
 <!--script for sharing-->
 <p align="right">
-```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
+```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # sorteia participante para relatar no texto
 library(kableExtra)
 library(readxl)

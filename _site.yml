@@ -2,14 +2,16 @@
 title: "Observatório CR"
 date: '`r format(Sys.Date())`'
 name: "observatorio_cr_unisuam"
-author: "Arthur de Sá Ferreira"
+author:
+  - name: Arthur de Sá Ferreira
+  - email: arthur_sf@icloud.com
 repository_url: https://github.com/rehab-tech/observatoriocr/
 source_url: true
 creative_commons: CC BY-NC
 output_dir: "docs"
 include:
   - footer.html
-  - google_translate.html
+  - google-translate.html
   - /CSS
   - /Images
   - /Labs
@@ -26,23 +28,6 @@ navbar:
     - text: ""
       icon: "fa-home"
       href: index.html
-      # menu:
-      #   - text: "Observatório CR"
-      #     href: index.html
-      #   - text: "Coerência do Programa"
-      #     href: [index.html#coerencia-programa]
-      #   - text: "Temas de pesquisa"
-      #     href: [index.html#temas]
-      #   - text: "Projetos de pesquisa"
-      #     href: [index.html#projetos-linhas]
-      #   - text: "Financiamentos"
-      #     href: [index.html#financiadores]
-      #   - text: "Produção bibliográfica"
-      #     href: [index.html#producao]
-      #   - text: "Formação de pessoal"
-      #     href: [index.html#pessoal]
-      #   - text: "Rede de pesquisa"
-      #     href: [index.html#rede]
     - text: "Programa"
       href: programa.html
       menu:
@@ -174,6 +159,9 @@ navbar:
       icon: "fa-info"
       href: [sobre.html]
     - text: ""
+      icon: "fa-at"
+      href: [mailto:arthur_sf@icloud.com]
+    - text: ""
       icon: "fa-github"
       href: [https://github.com/rehab-tech/observatoriocr/]
 
@@ -182,7 +170,7 @@ output:
     theme: flatly
     highlight: textmate
     include:
-      before_body: [google_translate.html]
+      before_body: [google-translate.html]
       after_body: [footer.html]
     css:
       - style.css

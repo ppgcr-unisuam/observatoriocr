@@ -40,7 +40,7 @@ div.main-container {
 <!--script for inserting LOGO ABOVE THE TOC-->
 <script>
   $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
   });
 </script>
 <style>
@@ -190,7 +190,7 @@ if (dim(dois)[1] == 0) {
   dois_list <- as.list(dois$DOI)
   
   # roda o script para obter dados do Altmetric
-  source("scripts/altmetrics_using_doi.R")
+  source("scripts/altmetric-from-dois.R")
   
   # remove duplicate entries
   doi_unique <-
@@ -206,7 +206,7 @@ if (dim(dois)[1] == 0) {
   my_dois_works <- character(0)
 
 # print table of papers with/without badges
-source("scripts/table_with_badges.R")
+source("scripts/papers-with-badges.R")
 }
 ```
 
@@ -288,7 +288,7 @@ if (dim(dois)[1] == 0) {
   dois_list <- as.list(dois$DOI)
   
   # roda o script para obter dados do Altmetric
-  source("scripts/altmetrics_using_doi.R")
+  source("scripts/altmetric-from-dois.R")
   
   # remove duplicate entries
   doi_unique <-
@@ -310,7 +310,7 @@ if (dim(dois)[1] == 0) {
   my_dois_works <- character(0)
 
 # print table of papers with/without badges
-source("scripts/table_with_badges.R")
+source("scripts/papers-with-badges.R")
 }
 ```
 

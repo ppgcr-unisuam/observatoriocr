@@ -6,18 +6,33 @@ output:
     toc: false
 ---
 
-<!--CUSTOM SCRIPTS FOR THIS PAGE ONLY-->
+<!--install and/or load all R packages-->
+
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
+<!--custom CSS scripts for ALL PAGES-->
+
+<!--script for hover effect on table-->
+```{css, echo = FALSE}
+.table-hover > tbody > tr:hover { 
+  background-color: #18BC9C;
+  }
+```
+
+<!--custom CSS scripts for THIS PAGE ONLY-->
 
 <!--script for background color-->
-<style>
+```{css, echo = FALSE}
 body {
   background-color: #2C3E50 !important;
   color: white;
   }
-</style>
+```
 
-<!--script for centering titles in the landing page-->
-<style>
+<!--script for centering titles-->
+```{css, echo = FALSE}
 h1.title {
   text-align: center;
   font-weight: bold;
@@ -34,76 +49,15 @@ h3 {
   text-align: center;
   font-weight: bold;
 }
-</style>
-
-<!--script for hover effect on table-->
-<style>
-.table-hover > tbody > tr:hover { 
-  background-color: #18BC9C;
-  }
-</style>
+```
 
 <!--script for removing background shading of carousel controls-->
-<style>
+```{css, echo = FALSE}
 .carousel-control.left, .carousel-control.right {
    background-image:none !important;
    filter:none !important;
    }
-</style>
-
-```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
-# create a new code chunk and then use the PACKUP add-in to generate this code with all the required libraries for this Rmd
-if (!require(alluvial))
-  install.packages(alluvial) # for alluvial plots
-if (!require(bsplus))
-  install.packages(bsplus) # for carousel outputs
-if (!require(cowplot))
-  install.packages(cowplot) # for mutipannel plots
-if (!require(dplyr))
-  install.packages(dplyr) # for string manipulation
-if (!require(geobr))
-  install.packages(geobr) # for BR geospacial data
-if (!require(ggplot2))
-  install.packages(ggplot2) # for gg_style plotting
-if (!require(ggpubr))
-  install.packages(ggpubr) # for
-if (!require(grid))
-  install.packages(grid) # for mutipannel plots
-if (!require(gridExtra))
-  install.packages(gridExtra) # for mutipannel plots
-if (!require(gtsummary))
-  install.packages(gtsummary) # for summary tables
-if (!require(htmlwidgets))
-  install.packages(htmlwidgets) # for saving HTML as images
-if (!require(igraph))
-  install.packages(igraph) # for network analysis
-if (!require(kableExtra))
-  install.packages(kableExtra) # for printing tables
-if (!require(knitr))
-  install.packages(knitr) # for
-if (!require(magrittr))
-  install.packages(magrittr) # for
-if (!require(RColorBrewer))
-  install.packages(RColorBrewer) # for custom color palettes
-if (!require(readtext))
-  install.packages(readtext) # for reading TXT files
-if (!require(readxl))
-  install.packages(readxl) # for reading Excel files
-if (!require(Rmisc))
-  install.packages(Rmisc) # for
-if (!require(sf))
-  install.packages(sf) # for plotting geospacial data
-if (!require(tm))
-  install.packages(tm) # for text manipulation
-if (!require(vioplot))
-  install.packages(vioplot) # for violin plots
-if (!require(webshot2))
-  install.packages(webshot2) # for saving HTML as images
-if (!require(wordcloud2))
-  install.packages() # for generating wordclouds
 ```
-
-##  {#observatoriocr}
 
 <br>
 
@@ -111,9 +65,7 @@ if (!require(wordcloud2))
 
 <center>
 
-[<img src="Images/coruja.png" align="center"/>](https://www.unisuam.edu.br)
-
-<br>
+<img src="Images/logo-IES.png" align="center"/>
 
 <br>
 
@@ -127,14 +79,12 @@ cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p
 
 <br>
 
-##  {#coerencia-programa}
-
 ```{r sintese-coerencia, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos
 sheet <- "Projetos"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 
 current.sucupira <- sucupira.list[[length(sucupira.list)]]
 
@@ -205,7 +155,7 @@ for (i in 1:length(alluv.data.aggr$LP)) {
 
 # plot area setup
 layout.m <- c(1, 1, 1, 1, 2)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot 1 (fluxo AC -> LP -> PP)
 alluvial(
@@ -247,7 +197,7 @@ legend(
 
 # plot area setup
 layout.m <- matrix(c(1, 2), ncol = 1, byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.coerencia <- c(length(unique(current.AC)),
                     length(unique(current.LP)))
@@ -255,7 +205,7 @@ names(summ.coerencia) <-
   c("Área de Concentração", "Linhas de Pesquisa")
 
 summ.data <- summ.coerencia
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-coerencia-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -275,8 +225,6 @@ bs_carousel(id = "coerencia-carousel",
 
 <br>
 
-##  {#temas}
-
 ```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
@@ -286,24 +234,24 @@ dir.create(dir.path, recursive = TRUE)
 
 # projetos
 sheet <- "Projetos"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
 cloud.title <- "Temas de Projetos"
-source("Scripts/docs_to_wordcloud.R")
+source("Scripts/docs-to-wordcloud.R")
 
 # dissertações e teses
 sheet <- "TCC"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
 cloud.title <- "Dissertações e Teses"
-source("Scripts/docs_to_wordcloud.R")
+source("Scripts/docs-to-wordcloud.R")
 
 # artigos
 sheet <- "Produções"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome da Produção`
 cloud.title <- "Temas de Produção"
-source("Scripts/docs_to_wordcloud.R")
+source("Scripts/docs-to-wordcloud.R")
 ```
 
 ```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -324,14 +272,12 @@ bs_carousel(id = "temas-carouse",
 
 <br>
 
-##  {#projetos-linhas}
-
 ```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 projetos.list <- sucupira.list
 
 # list all available years
@@ -417,7 +363,7 @@ names(summ.table.projetos) <-
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot 1 (total de projetos por linha, por ano)
 barplot(projetos.ano,
@@ -458,10 +404,10 @@ title(main = "Projetos por Linha de Pesquisa",
 layout.m <- matrix(c(1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 7, 8),
                    ncol = 3,
                    byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.data <- summ.table.projetos
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -481,8 +427,6 @@ bs_carousel(id = "projetos-carouse",
 <br>
 
 <br>
-
-##  {#financiadores}
 
 ```{r sintese-financiadores, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -511,7 +455,7 @@ agencias <-
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot 1 (financiadores per agency by year (absolute frequency)
 barplot(N.editais.agencia.ano,
@@ -634,10 +578,10 @@ names(summ.table.financiadores) <-
 # plot area setup
 layout.m <-
   matrix(c(1, 1, 2, 2, 3, 3, 4, 5), ncol = 2, byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.data <- summ.table.financiadores
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -658,8 +602,6 @@ bs_carousel(id = "financiadores-carousel",
 <br>
 
 <br>
-
-##  {#producao}
 
 ```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -828,7 +770,7 @@ names(summ.table.producao) <-
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot 1 (total de produção bilbiográfica, por ano)
 barplot(table.1,
@@ -885,10 +827,10 @@ title(main = "Qualidade da produção (SJR)",
 layout.m <- matrix(c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                    ncol = 3,
                    byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.data <- summ.table.producao
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -910,8 +852,6 @@ bs_carousel(id = "producao-carousel",
 <br>
 
 <br>
-
-##  {#pessoal}
 
 ```{r sintese-pessoal, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.widt = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -945,7 +885,7 @@ states <-
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # generate plot of egressos per year
 table.1 <- table(egressos$Curso, egressos$`Ano Titulação`)
@@ -1245,10 +1185,10 @@ names(summ.table.pessoal) <-
 layout.m <- matrix(c(1, 2, 3, 1, 4, 5, 6, 7, 8),
                    ncol = 3,
                    byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.data <- summ.table.pessoal
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-pessoal-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
@@ -1271,14 +1211,12 @@ bs_carousel(id = "pessoal-carousel",
 
 <br>
 
-##  {#rede}
-
 ```{r sintese-rede, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos
 sheet <- "Projetos - Membros"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 
 # create edge matrix
 proj.id <-
@@ -1327,7 +1265,7 @@ for (i in 1:length(V(network))) {
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot 1
 plot(
@@ -1362,7 +1300,7 @@ dir.create(dir.path, recursive = TRUE)
 
 # IES participantes externos
 sheet <- "Participante Externo"
-source("Scripts/read_sucupira.R")
+source("Scripts/read-xls-sucupira.R")
 sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]
@@ -1404,13 +1342,13 @@ for (i in 1:length(sort(table(siglas), decreasing = FALSE))) {
 }
 data.to.cloud <- ranked.ies
 cloud.title <- "Instituições"
-source("Scripts/docs_to_wordcloud.R")
+source("Scripts/docs-to-wordcloud.R")
 
 # plot 3
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
@@ -1426,7 +1364,7 @@ data.nac <-
 
 # break vector names in 2 lines
 text.2.break <- data.nac$name
-source("Scripts/line_break.R")
+source("Scripts/line-2-break.R")
 data.nac$name <- broken_text
 
 barplot(
@@ -1448,7 +1386,7 @@ title(
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
@@ -1464,7 +1402,7 @@ data.inter <-
 
 # break vector names in 2 lines
 text.2.break <- data.inter$name
-source("Scripts/line_break.R")
+source("Scripts/line-2-break.R")
 data.inter$name <- broken_text
 
 barplot(
@@ -1486,7 +1424,7 @@ title(
 
 # plot area setup
 layout.m <- c(1)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
@@ -1502,7 +1440,7 @@ data.pais <-
 
 # break vector names in 2 lines
 text.2.break <- data.pais$name
-source("Scripts/line_break.R")
+source("Scripts/line-2-break.R")
 data.pais$name <- broken_text
 
 barplot(
@@ -1547,10 +1485,10 @@ names(summ.table.ies) <-
 layout.m <- matrix(c(1, 1, 2, 3, 4, 4, 5, 6),
                    ncol = 2,
                    byrow = TRUE)
-source("Scripts/plot_margins.R")
+source("Scripts/plot-margins.R")
 
 summ.data <- summ.table.ies
-source("Scripts/plot_summ.R")
+source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}

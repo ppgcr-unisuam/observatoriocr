@@ -40,7 +40,7 @@ div.main-container {
 <!--script for inserting LOGO ABOVE THE TOC-->
 <script>
   $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
+    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
   });
 </script>
 <style>
@@ -248,7 +248,7 @@ cat("](http://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.
 #### **CEP-UNISUAM** {#CEP .tabset}
 
 <p align="center">
-[<img align="center" src="Images/CEP-UNISUAM.png">](https://www.unisuam.edu.br/pesquisa-e-inovacao/){target="_blank"}
+[<img align="center" src="Images/logo-cep.png">](https://www.unisuam.edu.br/pesquisa-e-inovacao/){target="_blank"}
 </p>
 
 <br>

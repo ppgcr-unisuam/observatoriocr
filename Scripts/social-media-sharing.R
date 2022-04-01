@@ -1,7 +1,5 @@
 library(fontawesome)
 
-home <- "rehab-tech.github.io/observatoriocr/"
-
 cat("*Compartilhe*")
 cat("&nbsp;&nbsp;&nbsp;")
 

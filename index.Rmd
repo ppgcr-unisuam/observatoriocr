@@ -494,6 +494,11 @@ agencias <-
   na.exclude(rownames(T.editais.agencia.ano))
 
 # plot 2 (financiadores per agency by year (absolute frequency))
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
 barplot(T.editais.agencia.ano,
         ylab = "R$",
         col = brewer.pal(n = length(agencias), name = "Set3"))
@@ -515,7 +520,52 @@ legend(
 professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
-# plot 3 (financiadores per docente by year (absolute frequency))
+# plot 3 (top-10 editais)
+
+editais <- financiadores$Programa
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
+
+top <- min(length(na.omit(unique(editais))), 10)
+data.editais <-
+  na.omit(data.frame(name = names(sort(
+    table(editais), decreasing = TRUE
+  )[1:top]),
+  value = as.numeric(sort(
+    table(editais), decreasing = TRUE
+  )[1:top])))
+
+# break vector names in 2 lines
+text.2.break <- data.editais$name
+source("Scripts/line-2-break.R")
+data.editais$name <- broken_text
+
+barplot(
+  height = rev(data.editais$value),
+  names = rev(data.editais$name),
+  xlab = "N",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(
+  main = paste0("Top-", top, " editais"),
+  outer = TRUE,
+  cex.main = 1.7
+)
+
+# plot 4 (financiadores per docente by year (absolute frequency))
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
 barplot(professores.ano,
         ylab = "N",
         col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
@@ -573,7 +623,7 @@ names(summ.table.financiadores) <-
         "Menor",
         "Maior")
 
-# plot 4 (summary table in plot)
+# plot 5 (summary table in plot)
 
 # plot area setup
 layout.m <-
@@ -594,7 +644,8 @@ bs_carousel(id = "financiadores-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png"))
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**

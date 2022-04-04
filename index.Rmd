@@ -1370,25 +1370,20 @@ IES.inter <-
   na.omit(sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"])
 
 # get initials
-siglas <- c()
-for (i in 1:length(IES)) {
-  IES.abbr <-
-    paste0(substr(strsplit(
-      gsub('\\b\\w{1,2}\\b', '', IES[i]), split = " "
-    )[[1]], 1, 1), collapse = "")
-  siglas <- c(siglas, IES.abbr)
-}
+data.to.abbrev <- IES
+source("Scripts/get-abbrev.R")
+
 ranked.ies <- c()
 rank <- 1
-for (i in 1:length(sort(table(siglas), decreasing = FALSE))) {
+for (i in 1:length(sort(table(abbrev), decreasing = FALSE))) {
   ranked.ies <-
     c(ranked.ies,
       rep(names(sort(table(
-        siglas
+        abbrev
       ))[i]), match(sort(table(
-        siglas
+        abbrev
       ))[i][[1]], unique(sort(
-        table(siglas)
+        table(abbrev)
       )))))
 }
 data.to.cloud <- ranked.ies

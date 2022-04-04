@@ -520,7 +520,20 @@ legend(
 professores.ano <-
   rowSums(table(financiadores$Ano, financiadores$Proponente) != 0)
 
-# plot 3 (top-10 editais)
+# plot 3 (financiadores per docente by year (absolute frequency))
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
+barplot(professores.ano,
+        ylab = "N",
+        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
+title(main = "Docentes com financiamento",
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 4 (top-10 editais)
 
 editais <- financiadores$Programa
 
@@ -560,18 +573,45 @@ title(
   cex.main = 1.7
 )
 
-# plot 4 (financiadores per docente by year (absolute frequency))
+# plot 5 (top-10 agencias)
+
+agencias <- financiadores$Agência
 
 # plot area setup
 layout.m <- c(1)
 source("Scripts/plot-margins.R")
 
-barplot(professores.ano,
-        ylab = "N",
-        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
-title(main = "Docentes com financiamento",
-      outer = TRUE,
-      cex.main = 1.7)
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
+
+top <- min(length(na.omit(unique(agencias))), 10)
+data.agencias <-
+  na.omit(data.frame(name = names(sort(
+    table(agencias), decreasing = TRUE
+  )[1:top]),
+  value = as.numeric(sort(
+    table(agencias), decreasing = TRUE
+  )[1:top])))
+
+# break vector names in 2 lines
+text.2.break <- data.agencias$name
+source("Scripts/line-2-break.R")
+data.agencias$name <- broken_text
+
+barplot(
+  height = rev(data.agencias$value),
+  names = rev(data.agencias$name),
+  xlab = "N",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(
+  main = paste0("Top-", top, " agências"),
+  outer = TRUE,
+  cex.main = 1.7
+)
 
 # calculate summary statistics for financiamentos
 summ.table.financiadores <- matrix(0, nrow = 1, ncol = 5)
@@ -623,7 +663,7 @@ names(summ.table.financiadores) <-
         "Menor",
         "Maior")
 
-# plot 5 (summary table in plot)
+# plot 6 (summary table in plot)
 
 # plot area setup
 layout.m <-
@@ -645,7 +685,8 @@ bs_carousel(id = "financiadores-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-6.png"))
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**

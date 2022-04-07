@@ -23,7 +23,7 @@ cat(
 # start table
 cat(
   "<table style=\"width:100%\">\n    <tr>\n      <th>Artigos (n = ",
-  dim(doi_sort)[1] + ifelse(length(my_dois_works) != 0, dim(my_dois_works)[1],
+  ifelse(length(doi_sort) != 0, dim(doi_sort)[1], 0) + ifelse(length(my_dois_works) != 0, dim(my_dois_works)[1],
                             0),
   ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^) \n\n </th>\n    </tr>",
   sep = ""

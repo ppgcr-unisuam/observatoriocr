@@ -721,7 +721,7 @@ qualis <-
 artigos <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.artigos",
+    sheet = "PI.completos",
     col_types = c("text")
   ))
 
@@ -729,12 +729,20 @@ artigos <-
 resumos <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.tecnica",
+    sheet = "PI.resumos",
     col_types = c("text")
   ))
 
-# bind papers and letters/abstracts (all with DOI)
-artigos <- rbind(artigos[, 1:11], resumos[, 1:11])
+# read data
+eventos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts and events (all with DOI)
+artigos <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
 
 # Data cleaning
 artigos <- artigos[complete.cases(artigos$DOI), ]

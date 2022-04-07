@@ -156,12 +156,32 @@ qualis <-
   ))
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-dois <-
+# read data
+artigos <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.artigos",
+    sheet = "PI.completos",
     col_types = c("text")
   ))
+
+# read data
+resumos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# read data
+eventos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts and events (all with DOI)
+dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
 
 # Data cleaning
 dois <- dois[complete.cases(dois$DOI), ]
@@ -257,7 +277,7 @@ qualis <-
 dois <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.artigos",
+    sheet = "PI.completos",
     col_types = c("text")
   ))
 

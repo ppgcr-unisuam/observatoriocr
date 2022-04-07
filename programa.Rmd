@@ -1531,6 +1531,18 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
+### **Cotas**
+
+<br>
+
+*Em construção*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Portarias**
+
 ```{r bolsas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
@@ -1557,8 +1569,23 @@ turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
 # print table
 datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Agradecimento**
+
+<br>
+
+<iframe src="https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/39729251/do1-2018-09-05-portaria-n-206-de-4-de-setembro-de-2018-39729135" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Diário Oficial da União**](https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/39729251/do1-2018-09-05-portaria-n-206-de-4-de-setembro-de-2018-39729135)
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

@@ -6,6 +6,11 @@ output:
     toc: true
 ---
 
+<!--install and/or load all R packages-->
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
 <!--script for computer/mobile devices-->
 ```{css, echo=FALSE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,19 +113,97 @@ source("Scripts/social-media-sharing.R")
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Artigos (completos) em periódicos** {.tabset}
+### **Artigos completos em periódicos** {.tabset}
+
+#### **Pre-prints**
+
+```{r artigos-preprits, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.preprints",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em == "Aceito", ]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
 
 #### **Aceitos**
 
 ```{r artigos-completos-aceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -178,8 +261,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -204,13 +289,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-completos-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -264,8 +342,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -290,13 +370,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-completos-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -350,8 +423,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -376,13 +451,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-completos-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -436,8 +504,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -462,13 +532,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-completos-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -522,8 +585,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -548,13 +613,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-completos-2010, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -608,8 +666,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -639,19 +699,12 @@ if (dim(dois)[1] == 0) {
 <!--script for generating multiple PLUMX badges-->
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
 
-### **Artigos (resumos) em periódicos** {.tabset}
+### **Artigos resumos em periódicos** {.tabset}
 
 #### **Aceitos**
 
 ```{r artigos-resumos-aceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -709,8 +762,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
     # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
 
   # print table of papers with/without badges
@@ -735,13 +790,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-resumos-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -799,8 +847,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -825,13 +875,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-resumos-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -889,8 +932,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -915,13 +960,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-resumos-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -979,8 +1017,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1005,13 +1045,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-resumos-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1069,8 +1102,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1095,13 +1130,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-resumos-2010, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1159,8 +1187,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1222,107 +1252,10 @@ if (dim(dois)[1] == 0) {
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-#### **Aceitos**
-
-```{r artigos-eventos-aceitos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
-
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2020.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file (download from https://www.scimagojr.com)
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
-
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-dois <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.eventos",
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- dois[complete.cases(dois$DOI), ]
-# Filtra por período
-dois <- dois[dois$Publicado.em == "Aceito", ]
-
-# Verifica se há DOIs no período
-if (dim(dois)[1] == 0) {
-  cat('\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n')
-} else {
-  # Step 5. Convert the doi column in your dataset to a list.
-  dois_list <- as.list(dois$DOI)
-  
-  # cria metadados para rastreio pelo Altmetric
-  dois_2_meta <- dois$DOI
-  source("scripts/altmetric-meta-from-dois.R")
-
-  # roda o script para obter dados do Altmetric
-  source("scripts/altmetric-from-dois.R")
-  
-  # get data of papers without Altmetric from CrossRef
-  if(is_empty(no_altmetric_dois_list)){
-    my_dois_works <- no_altmetric_dois_list
-  } else {
-  my_dois_works <-
-    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-    pluck("data")
-    # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
-  }
-
-  # print table of papers with/without badges
-  source("scripts/papers-with-badges.R")
-}
-```
-
-<br>
-
-*Fontes:*
-^1^ [**Altmetric**](https://www.altmetric.com)
-^2^ [**Dimensions**](https://www.dimensions.ai)
-^3^ [**PlumX**](https://plu.mx)
-^4^ [**SCImago**](https://www.scimagojr.com)
-^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 #### **2024-2021**
 
 ```{r artigos-eventos-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1380,8 +1313,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1406,13 +1341,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-eventos-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1470,8 +1398,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1496,13 +1426,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-eventos-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1560,8 +1483,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1586,13 +1511,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-eventos-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1650,8 +1568,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1676,13 +1596,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r artigos-eventos-2010, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -1740,8 +1653,10 @@ if (dim(dois)[1] == 0) {
     rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
     pluck("data")
   # sort columns by title
-  my_dois_works <-
-    my_dois_works[order(as.vector(my_dois_works$title)), ]
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
   }
   
   # print table of papers with/without badges
@@ -1767,13 +1682,88 @@ if (dim(dois)[1] == 0) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-*Em construção!*
+```{r datasets, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.datasets",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+    # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+}
+```
+
+<br>
+
+*Fontes:* [**Mendeley Data**](https://data.mendeley.com)
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-### **Desenvolvimento de aplicativo** {.tabset}
+### **Desenvolvimento de aplicativos** {.tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -1782,12 +1772,6 @@ if (dim(dois)[1] == 0) {
 
 ```{r softwares-myo, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
 
 # read separate sheets
 softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
@@ -1824,12 +1808,6 @@ th, td {
 ```{r softwares-ebg, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-
 # read separate sheets
 softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteEBG", col_types = c("text"))
 
@@ -1864,12 +1842,6 @@ th, td {
 
 ```{r softwares-tcm, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
 
 # read separate sheets
 softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteTCM", col_types = c("text"))

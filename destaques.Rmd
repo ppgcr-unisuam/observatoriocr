@@ -396,6 +396,8 @@ source("scripts/papers-with-badges.R")
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
+<br>
+
 #### **Revisores**
 
 <br>
@@ -437,3 +439,5 @@ for(id in 1:length(orcids)) {
 <br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>

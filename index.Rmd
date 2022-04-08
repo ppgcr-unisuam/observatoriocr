@@ -7,7 +7,6 @@ output:
 ---
 
 <!--install and/or load all R packages-->
-
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
 source("Scripts/all-required-packages.R")
 ```
@@ -84,7 +83,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos
 sheet <- "Projetos"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 
 current.sucupira <- sucupira.list[[length(sucupira.list)]]
 
@@ -234,21 +233,21 @@ dir.create(dir.path, recursive = TRUE)
 
 # projetos
 sheet <- "Projetos"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
 cloud.title <- "Temas de Projetos"
 source("Scripts/docs-to-wordcloud.R")
 
 # dissertações e teses
 sheet <- "TCC"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
 cloud.title <- "Dissertações e Teses"
 source("Scripts/docs-to-wordcloud.R")
 
 # artigos
 sheet <- "Produções"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 data.to.cloud <- sucupira.raw$`Nome da Produção`
 cloud.title <- "Temas de Produção"
 source("Scripts/docs-to-wordcloud.R")
@@ -277,7 +276,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 projetos.list <- sucupira.list
 
 # list all available years
@@ -414,7 +413,7 @@ source("Scripts/plot-summaries.R")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
-bs_carousel(id = "projetos-carouse",
+bs_carousel(id = "projetos-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
@@ -785,6 +784,105 @@ table.3.median <- t(as.matrix(table.3.median[,-2]))
 table.3.median <- as.numeric(table.3.median[-1, ])
 names(table.3.median) <- names(table.1)
 
+table.4 <- data.frame(artigos$Revista..digite.ou.selecione.na.lista., SJR)
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
+# plot 1 (total de produção bilbiográfica, por ano)
+barplot(table.1,
+        ylab = "N",
+        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.1)))
+title(main = "Produção Bibliográfica",
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 2 (total de produção bilbiográfica, por estrato, por ano)
+barplot(table.2,
+        ylab = "Estrato",
+        col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)))
+title(main = "Qualidade da produção (Qualis)",
+      outer = TRUE,
+      cex.main = 1.7)
+legend(
+  "topleft",
+  legend = estratos,
+  fill = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = FALSE,
+  cex = 1,
+)
+
+# plot 3 (percentual de produção bilbiográfica, por estrato, por ano)
+barplot(
+  scale(
+    as.matrix(table.2),
+    center = FALSE,
+    scale = colSums(as.matrix(table.2))
+  ) * 100,
+  ylab = "%",
+  col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
+  ylim = c(0, 100)
+)
+title(main = "Qualidade da produção (Qualis)",
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 4 (violin plot of SJR por ano)
+vioplot(as.numeric(table.3[, 2]) ~ as.numeric(table.3[, 1]),
+        xlab = NA,
+        ylab = "SJR")
+title(main = "Qualidade da produção (SJR)",
+      outer = TRUE,
+      cex.main = 1.7)
+
+# plot 5 (top-10 journals)
+
+journals.SJR <- unique(table.4)
+
+# plot area setup
+layout.m <- c(1)
+source("Scripts/plot-margins.R")
+
+# plot area setup
+par(mar = c(1.5, 15, 1, 1))
+
+top <- min(dim(na.omit(unique(journals.SJR)))[1], 10)
+data.journals <-
+  na.omit(
+    data.frame(
+      name = journals.SJR$artigos.Revista..digite.ou.selecione.na.lista.[order(journals.SJR$SJR, decreasing = TRUE)][1:top],
+      value = as.numeric(sort(journals.SJR$SJR, decreasing = TRUE)[1:top])
+    )
+  )
+
+# break vector names in 2 lines
+text.2.break <- data.journals$name
+source("Scripts/line-2-break.R")
+data.journals$name <- broken_text
+
+options(digits = 10)
+barplot(
+  height = rev(data.journals$value),
+  names = rev(data.journals$name),
+  xlab = "SJR",
+  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  horiz = T,
+  las = 1,
+  cex.names = 0.7
+)
+title(
+  main = paste0("Top-", top, " periódicos"),
+  outer = TRUE,
+  cex.main = 1.7
+)
+options(digits = 2)
+
+# plot 6 (summary table in plot)
+
 # calculate summary statistics for producao
 summ.table.producao <-
   cbind(
@@ -869,61 +967,6 @@ names(summ.table.producao) <-
   )
 
 # plot area setup
-layout.m <- c(1)
-source("Scripts/plot-margins.R")
-
-# plot 1 (total de produção bilbiográfica, por ano)
-barplot(table.1,
-        ylab = "N",
-        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(table.1)))
-title(main = "Produção Bibliográfica",
-      outer = TRUE,
-      cex.main = 1.7)
-
-# plot 2 (total de produção bilbiográfica, por estrato, por ano)
-barplot(table.2,
-        ylab = "Estrato",
-        col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)))
-title(main = "Qualidade da produção (Qualis)",
-      outer = TRUE,
-      cex.main = 1.7)
-legend(
-  "topleft",
-  legend = estratos,
-  fill = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
-  text.col = "white",
-  box.lwd = 0,
-  bty = "n",
-  horiz = FALSE,
-  cex = 1,
-)
-
-# plot 3 (percentual de produção bilbiográfica, por estrato, por ano)
-barplot(
-  scale(
-    as.matrix(table.2),
-    center = FALSE,
-    scale = colSums(as.matrix(table.2))
-  ) * 100,
-  ylab = "%",
-  col = colorRampPalette(brewer.pal(9, "Blues"))(length(estratos)),
-  ylim = c(0, 100)
-)
-title(main = "Qualidade da produção (Qualis)",
-      outer = TRUE,
-      cex.main = 1.7)
-
-# plot 4 (violin plot of SJR por ano)
-vioplot(as.numeric(table.3[, 2]) ~ as.numeric(table.3[, 1]),
-        xlab = NA,
-        ylab = "SJR")
-title(main = "Qualidade da produção (SJR)",
-      outer = TRUE,
-      cex.main = 1.7)
-
-# plot 5 (summary table in plot)
-
-# plot area setup
 layout.m <- matrix(c(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                    ncol = 3,
                    byrow = TRUE)
@@ -944,7 +987,8 @@ bs_carousel(id = "producao-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-5.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-5.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-6.png"))
 ```
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
@@ -1316,7 +1360,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos
 sheet <- "Projetos - Membros"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 
 # create edge matrix
 proj.id <-
@@ -1400,7 +1444,7 @@ dir.create(dir.path, recursive = TRUE)
 
 # IES participantes externos
 sheet <- "Participante Externo"
-source("Scripts/read-xls-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R")
 sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw), ]
 IES <- sucupira.raw$`Instituição de Origem`
 IES <- IES[!is.na(IES)]

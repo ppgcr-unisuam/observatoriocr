@@ -6,6 +6,11 @@ output:
     toc: true
 ---
 
+<!--install and/or load all R packages-->
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
 <!--script for computer/mobile devices-->
 ```{css, echo=FALSE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,13 +134,6 @@ source("Scripts/social-media-sharing.R")
 ```{r artigos-destaque-visibilidade, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tidyverse)
-
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
   read.csv(
@@ -200,16 +198,16 @@ if (dim(dois)[1] == 0) {
   # roda o script para obter dados do Altmetric
   source("scripts/altmetric-from-dois.R")
   
-  # remove duplicate entries
+  # remove duplicate or NA entries
   doi_unique <-
-    doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
+    doi_reshaped_data[apply(as.data.frame(cbind(!duplicated(doi_reshaped_data$doi), !is.na(doi_reshaped_data$published_on), !is.na(doi_reshaped_data$issn))), 1, all), ]
   
-  # sort columns by citations
+  # sort columns by citations then year
   doi_sort <-
-    doi_unique[order(-as.numeric(doi_unique$score), -doi_unique$published_on), ]
-  
-  # TOP 10 (removing papers with no Altmetric)
-  top <- 20
+    doi_unique[order(-as.numeric(doi_unique$score), -as.numeric(doi_unique$published_on)), ]
+
+  # TOP (removing papers with no Altmetric)
+  top <- min(dim(doi_sort)[1], 20)
   doi_sort <- doi_sort[1:top, ]
   my_dois_works <- character(0)
 
@@ -231,28 +229,10 @@ source("scripts/papers-with-badges.R")
 
 <br>
 
-#### **Influência do periódico^4,5^**
+#### **Prestígio do periódico^4,5^**
 
-```{r artigos-destaque-influencia, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+```{r artigos-destaque-prestigio, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(tools)
-library("usethis")
-library("tidyverse")
-library("anytime")
-library("httpuv")
-library("lubridate")
-library("janitor")
-library("rcrossref")
-library("tools")
-library("dplyr")
-library("hrbrthemes")
-library("gridExtra")
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -274,12 +254,32 @@ qualis <-
   ))
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-dois <-
+# read data
+artigos <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
     sheet = "PI.completos",
     col_types = c("text")
   ))
+
+# read data
+resumos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# read data
+eventos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts and events (all with DOI)
+dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
 
 # Data cleaning
 dois <- dois[complete.cases(dois$DOI), ]
@@ -294,26 +294,29 @@ if (dim(dois)[1] == 0) {
 } else {
   # Step 5. Convert the doi column in your dataset to a list.
   dois_list <- as.list(dois$DOI)
-  
+
   # roda o script para obter dados do Altmetric
   source("scripts/altmetric-from-dois.R")
-  
-  # remove duplicate entries
+
+  # remove duplicate or NA entries
   doi_unique <-
-    doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
-  
-  # TOP 10 (removing papers with no Altmetric)
+    doi_reshaped_data[apply(as.data.frame(cbind(!duplicated(doi_reshaped_data$doi), !is.na(doi_reshaped_data$published_on), !is.na(doi_reshaped_data$issn))), 1, all), ]
+
+  # TOP (removing papers with no SJR)
   SJRs <- c()
-  for(k in 1:length(doi_unique$issn)){
+  for(k in 1:length(doi_unique$doi)){
     SJR.k <- scimago[grep(gsub("-", "", doi_unique$issn[k]), scimago$Issn), 6]
     SJRs <- rbind(SJRs, ifelse(length(SJR.k) == 1, SJR.k, NA))
   }
 
-    # sort columns by SJR
+  doi_unique$SJRs <- SJRs
+  doi_unique <- doi_unique[complete.cases(doi_unique$SJRs), ]
+
+    # sort columns by SJR then year
   doi_sort <-
-    doi_unique[order(-as.numeric(SJRs), -doi_unique$published_on), ]
-  
-  top <- 20
+    doi_unique[order(-as.numeric(doi_unique$SJRs), -as.numeric(doi_unique$published_on)), ]
+
+  top <- min(dim(doi_sort)[1], 20)
   doi_sort <- doi_sort[1:top, ]
   my_dois_works <- character(0)
 
@@ -344,12 +347,14 @@ source("scripts/papers-with-badges.R")
 <!--script for generating multiple PLUMX badges-->
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
 
-## **Representatividade** {.tabset #representatividade}
+## **Representatividade** {#representatividade}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **ABRAPG-Ft** {.tabset}
+### **Associações e entidades** {.tabset}
+
+#### **ABRAPG-Ft**
 
 <iframe src="https://abrapg-ft.org.br/portal/" style="width:100%; height:600px; border:0;"></iframe>
 
@@ -361,7 +366,7 @@ source("scripts/papers-with-badges.R")
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-### *Comitê Gestor do Forum 21** {.tabset}
+#### **Comitê Gestor do Forum 21**
 
 <br>
 
@@ -370,6 +375,64 @@ source("scripts/papers-with-badges.R")
 <br>
 
 *Fontes:* [**UNICAMP**](https://www.fef.unicamp.br/fef/posgraduacao/forumpg21)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+### **Periódicos** {.tabset}
+
+#### **Corpo editorial**
+
+<br>
+
+*Em construção*
+
+<br>
+
+*Fontes:* [**ORCID**](https://orcid.org)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+#### **Revisores**
+
+<br>
+
+```{r revisores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# docentes
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R")
+
+# keep active professors and remove duplicated data
+sucupira <- sucupira.raw[is.na(sucupira.raw$`Data de Desligamento`), ]
+sucupira.unique <- sucupira[!duplicated(sucupira$`Nome Docente`),]
+
+orcids <- gsub("(.{14})(.*)$", "\\1-\\2", gsub("(.{9})(.*)$", "\\1-\\2", gsub("(.{4})(.*)$", "\\1-\\2", sucupira.unique$ORCID)))
+
+for(id in 1:length(orcids)) {
+  reviewer.name <- sucupira.unique$`Nome Docente`[id]
+  my_orcid <- orcids[id]
+  source("Scripts/reviewer-board.R")
+}
+```
+
+<br>
+
+*Fontes:* [**ORCID**](https://orcid.org)
 
 <br>
 

@@ -2,18 +2,6 @@
 # by Markus Wust, Alison Blaine, and Erica Hayes
 # adapted by Arthur de Sá Ferreira
 
-#### Section 1. Setting up Your R Session #####
-
-# Step 1. Install the following packages if not already installed. Otherwise, skip this step.
-require("rAltmetric")
-require("plyr")
-require("tidyverse")
-
-# Step 2. Load the libraries into your R Session.
-library("rAltmetric")
-library("plyr")
-library("tidyverse")
-
 # Step 6. Create a function to test whether the doi leads to an actual article.
 # If no data is returned, assign the value NA.
 getArticleData <- function(x) {

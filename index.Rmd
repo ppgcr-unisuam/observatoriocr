@@ -906,7 +906,8 @@ barplot(
   ylim = c(0, length(unique(qualis.base)) + 3),
   col = brewer.pal(n = 9, name = "Set3")[1],
   sub = "Base",
-  cex.names = 0.7
+  cex.names = 0.7,
+  xaxt='n', ann = FALSE
 )
 barplot(
   rev(qualis.PPG),
@@ -918,8 +919,14 @@ barplot(
   col = brewer.pal(n = 9, name = "Set3")[2],
   sub = "Programa",
   cex.names = 0.7,
+  xaxt='n', ann = FALSE,
   add = TRUE
 )
+axis(1, at = round(c(
+  -max(qualis.base, qualis.PPG), 0, max(qualis.base, qualis.PPG)
+)), labels = round(c(
+  max(qualis.base, qualis.PPG), 0, max(qualis.base, qualis.PPG)
+)))
 title(main = "Distribuição de estratos Qualis e SJR",
       outer = TRUE,
       cex.main = 1.7)
@@ -948,7 +955,8 @@ vioplot(
   ), max(
     as.numeric(SJR.base), as.numeric(SJR.PPG)
   )),
-  ylab = "SJR"
+  ylab = "SJR",
+  xaxt='n', ann = FALSE
 )
 vioplot(
   as.numeric(SJR.PPG),
@@ -961,6 +969,7 @@ vioplot(
     as.numeric(SJR.base), as.numeric(SJR.PPG)
   )),
   ylab = "SJR",
+  xaxt='n', ann = FALSE,
   add = TRUE
 )
 

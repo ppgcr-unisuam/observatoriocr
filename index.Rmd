@@ -716,6 +716,9 @@ qualis <-
     col_types = c("text")
   ))
 
+# estratos Qualis
+estratos <- sort(unique(qualis$ESTRATO))
+
 # read data
 artigos <-
   data.frame(read_excel(
@@ -751,9 +754,6 @@ artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 artigos <-
   artigos[artigos$Publicado.em != "Aceito" &
             artigos$Publicado.em != "Submetido",]
-
-# estratos Qualis
-estratos <- sort(unique(artigos$WebQualis))
 
 # SJR
 SJR <- c()
@@ -881,7 +881,58 @@ title(
 )
 options(digits = 2)
 
-# plot 6 (summary table in plot)
+# plot 6 (barplot of QUALIS e SJR)
+
+# plot area setup
+layout.m <- matrix(c(1, 2),
+                   ncol = 2,
+                   byrow = TRUE)
+source("Scripts/plot-margins.R")
+
+qualis.all <- table(qualis$ESTRATO)/length(qualis$ESTRATO)*100
+qualis.PPG <- table(artigos$WebQualis)/length(artigos$WebQualis)*100
+
+barplot(
+  -rev(qualis.all),
+  horiz = TRUE,
+  xlab = "%",
+  ylab = "Estratos",
+  xlim = c(-max(qualis.all, qualis.PPG), max(qualis.all, qualis.PPG)),
+  ylim = c(0,length(unique(qualis.all))+3),
+  col = brewer.pal(n = 9, name = "Set3")[1],
+  sub = "Base",
+  cex.names = 0.7
+)
+barplot(
+  rev(qualis.PPG),
+  horiz = TRUE,
+  xlab = "%",
+  ylab = "Estratos",
+  xlim = c(-max(qualis.all, qualis.PPG), max(qualis.all, qualis.PPG)),
+  ylim = c(0,length(unique(qualis.all))+3),
+  col = brewer.pal(n = 9, name = "Set3")[2],
+  sub = "Programa",
+  cex.names = 0.7,
+  add = TRUE
+)
+title(main = "Distribuição de estratos Qualis e SJR",
+      outer = TRUE,
+      cex.main = 1.7)
+legend(
+  "topleft",
+  legend = c("Base", "Programa"),
+  fill = brewer.pal(n = 9, name = "Set3")[1:2],
+  text.col = "white",
+  box.lwd = 0,
+  bty = "n",
+  horiz = TRUE,
+  cex = 1
+)
+
+
+
+
+# plot 7 (summary table in plot)
 
 # calculate summary statistics for producao
 summ.table.producao <-

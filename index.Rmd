@@ -875,7 +875,7 @@ barplot(
   cex.names = 0.7
 )
 title(
-  main = paste0("Top-", top, " periódicos"),
+  main = paste0("Top-", top, " periódicos (SJR)"),
   outer = TRUE,
   cex.main = 1.7
 )
@@ -889,16 +889,21 @@ layout.m <- matrix(c(1, 2),
                    byrow = TRUE)
 source("Scripts/plot-margins.R")
 
-qualis.all <- table(qualis$ESTRATO)/length(qualis$ESTRATO)*100
-qualis.PPG <- table(artigos$WebQualis)/length(artigos$WebQualis)*100
+qualis.base <- table(qualis$ESTRATO) / length(qualis$ESTRATO) * 100
+
+qualis.PPG <- c()
+for(i in 1:length(estratos)){
+  qualis.PPG[i] <- sum(artigos$WebQualis == estratos[i])/length(artigos$WebQualis) * 100
+}
+names(qualis.PPG) <- estratos
 
 barplot(
-  -rev(qualis.all),
+  -rev(qualis.base),
   horiz = TRUE,
   xlab = "%",
   ylab = "Estratos",
-  xlim = c(-max(qualis.all, qualis.PPG), max(qualis.all, qualis.PPG)),
-  ylim = c(0,length(unique(qualis.all))+3),
+  xlim = c(-max(qualis.base, qualis.PPG), max(qualis.base, qualis.PPG)),
+  ylim = c(0, length(unique(qualis.base)) + 3),
   col = brewer.pal(n = 9, name = "Set3")[1],
   sub = "Base",
   cex.names = 0.7
@@ -908,8 +913,8 @@ barplot(
   horiz = TRUE,
   xlab = "%",
   ylab = "Estratos",
-  xlim = c(-max(qualis.all, qualis.PPG), max(qualis.all, qualis.PPG)),
-  ylim = c(0,length(unique(qualis.all))+3),
+  xlim = c(-max(qualis.base, qualis.PPG), max(qualis.base, qualis.PPG)),
+  ylim = c(0, length(unique(qualis.base)) + 3),
   col = brewer.pal(n = 9, name = "Set3")[2],
   sub = "Programa",
   cex.names = 0.7,
@@ -929,8 +934,35 @@ legend(
   cex = 1
 )
 
+# hist SJR base e PPG
+SJR.base <- na.omit(scimago$SJR)
+SJR.PPG <- na.omit(SJR)
 
-
+vioplot(
+  as.numeric(SJR.base),
+  col = brewer.pal(n = 9, name = "Set3")[1],
+  xlab = NA,
+  side = "left",
+  ylim = c(min(
+    as.numeric(SJR.base), as.numeric(SJR.PPG)
+  ), max(
+    as.numeric(SJR.base), as.numeric(SJR.PPG)
+  )),
+  ylab = "SJR"
+)
+vioplot(
+  as.numeric(SJR.PPG),
+  col = brewer.pal(n = 9, name = "Set3")[2],
+  xlab = NA,
+  side = "right",
+  ylim = c(min(
+    as.numeric(SJR.base), as.numeric(SJR.PPG)
+  ), max(
+    as.numeric(SJR.base), as.numeric(SJR.PPG)
+  )),
+  ylab = "SJR",
+  add = TRUE
+)
 
 # plot 7 (summary table in plot)
 
@@ -1039,7 +1071,8 @@ bs_carousel(id = "producao-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-5.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-6.png"))
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-6.png")) %>%
+  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-7.png"))
 ```
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**

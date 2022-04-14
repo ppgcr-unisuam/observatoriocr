@@ -113,9 +113,7 @@ source("Scripts/social-media-sharing.R")
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Artigos completos em periódicos** {.tabset}
-
-#### **Pre-prints**
+### **Pre-prints**
 
 ```{r artigos-preprits, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
@@ -198,6 +196,8 @@ if (dim(dois)[1] == 0) {
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
+
+### **Artigos completos em periódicos** {.tabset}
 
 #### **Aceitos**
 

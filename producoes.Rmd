@@ -149,8 +149,6 @@ dois <-
 
 # Data cleaning
 dois <- dois[complete.cases(dois$DOI), ]
-# Filtra por período
-dois <- dois[dois$Publicado.em == "Aceito", ]
 
 # Verifica se há DOIs no período
 if (dim(dois)[1] == 0) {
@@ -184,6 +182,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -269,6 +268,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -350,6 +350,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -431,6 +432,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -512,6 +514,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -593,6 +596,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -674,6 +678,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -770,6 +775,7 @@ if (dim(dois)[1] == 0) {
 
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -855,6 +861,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -940,6 +947,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1025,6 +1033,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1110,6 +1119,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1195,6 +1205,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1213,7 +1224,9 @@ if (dim(dois)[1] == 0) {
 
 ### **Livros e capítulos**  {.tabset}
 
-#### **Deficiência e inclusão pelo esporte no contexto militar**
+#### **On line**  {.tabset}
+
+##### **Deficiência e inclusão pelo esporte no contexto militar**
 
 <iframe src="https://www.editoracrv.com.br/produtos/detalhes/36691-crv" style="width:100%; height:600px; border:0;"></iframe>
 
@@ -1221,7 +1234,7 @@ if (dim(dois)[1] == 0) {
 
 <br>
 
-#### **O Gol de Rodas**
+##### **O Gol de Rodas**
 
 <iframe src="https://ogolderodas.com.br" style="width:100%; height:600px; border:0;"></iframe>
 
@@ -1229,7 +1242,7 @@ if (dim(dois)[1] == 0) {
 
 <br>
 
-#### **Uma Jornada para Entender a Dor**
+##### **Uma Jornada para Entender a Dor**
 
 <iframe src="http://pesquisaemdor.com.br" style="width:100%; height:600px; border:0;"></iframe>
 
@@ -1237,9 +1250,439 @@ if (dim(dois)[1] == 0) {
 
 <br>
 
-#### **Livros do Museu do Esporte**
+##### **Livros do Museu do Esporte**
 
 <iframe src="https://www.emuseudoesporte.com.br/br/home" style="width:100%; height:600px; border:0;"></iframe>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **2024-2021**
+
+```{r livros-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.livros",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em <= 2024 & dois$Publicado.em >= 2021,]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **2020-2017**
+
+```{r livros-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.livros",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em <= 2020 & dois$Publicado.em >= 2017,]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **2016-2013**
+
+```{r livros-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.livros",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em <= 2016 & dois$Publicado.em >= 2013,]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **2012-2010**
+
+```{r livros-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.livros",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em <= 2012 & dois$Publicado.em >= 2010,]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Pré-2010**
+
+```{r livros-2010, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.livros",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em < 2010,]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+  
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("scripts/altmetric-meta-from-dois.R")
+
+  # roda o script para obter dados do Altmetric
+  source("scripts/altmetric-from-dois.R")
+  
+  # get data of papers without Altmetric from CrossRef
+  if(is_empty(no_altmetric_dois_list)){
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+  my_dois_works <-
+    rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+    pluck("data")
+  # sort columns by title
+  if(length(my_dois_works) != 0){
+    my_dois_works <-
+      my_dois_works[order(as.vector(my_dois_works$title)), ]
+    }
+  }
+  
+  # print table of papers with/without badges
+  source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
+}
+```
+
+<br>
+
+*Fontes:*
+^1^ [**Altmetric**](https://www.altmetric.com)
+^2^ [**Dimensions**](https://www.dimensions.ai)
+^3^ [**PlumX**](https://plu.mx)
+^4^ [**SCImago**](https://www.scimagojr.com)
+^5^ [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1321,6 +1764,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1406,6 +1850,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1491,6 +1936,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1576,6 +2022,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1661,6 +2108,7 @@ if (dim(dois)[1] == 0) {
   
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -1747,6 +2195,7 @@ if (dim(dois)[1] == 0) {
 
   # print table of papers with/without badges
   source("scripts/papers-with-badges.R")
+  table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = FALSE, show.Qualis = FALSE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 

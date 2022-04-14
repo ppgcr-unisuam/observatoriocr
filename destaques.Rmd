@@ -213,6 +213,7 @@ if (dim(dois)[1] == 0) {
 
 # print table of papers with/without badges
 source("scripts/papers-with-badges.R")
+table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 
@@ -322,6 +323,7 @@ if (dim(dois)[1] == 0) {
 
 # print table of papers with/without badges
 source("scripts/papers-with-badges.R")
+table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TRUE, show.SJR = TRUE, show.Qualis = TRUE, doi_sort, my_dois_works, scimago, qualis)
 }
 ```
 

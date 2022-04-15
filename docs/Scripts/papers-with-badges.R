@@ -109,7 +109,8 @@ table.with.badges <-
             "<a style=\"border-radius:10%; border-style: solid; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em; text-decoration:none; text-align: center; display:inline-block; float:left; font-size:1.1em; color:black;\"> Qualis <br>",
             sep = ""
           )
-          WebQualis <- qualis[match(doi_sort$issn[i], qualis$ISSN), 3]
+          WebQualis <-
+            qualis[match(doi_sort$issn[i], qualis$ISSN), 3]
           cat(paste0(ifelse(
             identical(WebQualis, numeric(0)) |
               all(is.na(WebQualis)),
@@ -145,9 +146,17 @@ table.with.badges <-
             collapse = ", "
           )
         )
-        cat(paste0("<br>", paste0(
-          format(as.POSIXct(my_dois_works$deposited[i]), format = "%Y"), "&nbsp; - &nbsp;"
-        )))
+        cat(paste0(
+          "<br>",
+          paste0(
+            ifelse(
+              !is.na(my_dois_works$issued[i]),
+              substr(my_dois_works$issued[i], 1, 4),
+              substr(my_dois_works$created[i], 1, 4)
+              ),
+            "&nbsp; - &nbsp;"
+          )
+        ))
         cat(paste0("*", my_dois_works$container.title[i], "*", "<br>"))
         
         # initialize the DIV element for the badges
@@ -172,7 +181,7 @@ table.with.badges <-
         }
         
         # add PlumX badge
-        if(show.PlumX == TRUE){
+        if (show.PlumX == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
             my_dois_works$doi[i],
@@ -182,7 +191,7 @@ table.with.badges <-
         }
         
         # add SJR
-        if(show.SJR == TRUE){
+        if (show.SJR == TRUE) {
           SJR_id <-
             scimago[grep(gsub("-", "", substr(my_dois_works$issn[i], 1, 9)), scimago$Issn), 2]
           cat(
@@ -200,7 +209,7 @@ table.with.badges <-
         }
         
         # add QUALIS
-        if(show.Qualis == TRUE){
+        if (show.Qualis == TRUE) {
           cat(
             "<a style=\"border-radius:10%; border-style: solid; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em; text-decoration:none; text-align: center; display:inline-block; float:left; font-size:1.1em; color:black;\">  Qualis <br>",
             sep = ""

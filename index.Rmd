@@ -279,15 +279,8 @@ sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
 projetos.list <- sucupira.list
 
-# list all available years
-anos <-
-  as.numeric(
-    list.dirs(
-      file.path(getwd(), "Sucupira"),
-      full.names = FALSE,
-      recursive = FALSE
-    )
-  )
+# get years
+source("Scripts/years-sucupira.R")
 
 # get all history of 'linha de pesquisa'
 linhas <-
@@ -295,13 +288,13 @@ linhas <-
 
 # initialize data structure
 andamento.ano <-
-  matrix(NA, nrow = length(linhas), ncol = length(anos))
+  matrix(NA, nrow = length(linhas), ncol = length(projetos.list))
 colnames(andamento.ano) <- anos
 rownames(andamento.ano) <- linhas
 concluido.ano <- andamento.ano
 
 # iterate across all Sucupira list elements to search for active and closed projects
-for (i in 1:length(anos)) {
+for (i in 1:length(projetos.list)) {
   # active
   projetos <- projetos.list[[i]]
   projetos <-

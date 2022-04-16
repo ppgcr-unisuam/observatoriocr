@@ -16,7 +16,7 @@ for (file in 1:length(files.to.read)) {
   sucupira <- read_excel(files.to.read[file], sheet = sheet)
   
   # search for "|" (meaning there are changes within a given year)
-  has.any.change <- grep('\\|', as.character(sucupira[, ]))
+  has.any.change <- grep('\\|', as.character(sucupira[,]))
   
   if (length(has.any.change) != 0) {
     warning(
@@ -36,7 +36,7 @@ for (file in 1:length(files.to.read)) {
         if (length(has.change) != 0) {
           rows.to.change <- c(rows.to.change, i)
           cols.to.change <- c(cols.to.change, j)
-          data.to.change <- rbind(data.to.change, sucupira[i,])
+          data.to.change <- rbind(data.to.change, sucupira[i, ])
         }
       }
     }
@@ -54,12 +54,12 @@ for (file in 1:length(files.to.read)) {
     }
     
     # delete original entries with "|"
-    sucupira <- sucupira[-unique(rows.to.change), ]
+    sucupira <- sucupira[-unique(rows.to.change),]
     
     # append changed data
     sucupira <- rbind(sucupira, data.to.change)
   }
-
+  
   sucupira.raw <-
     rbind(sucupira.raw, sucupira)
   

@@ -171,7 +171,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
 quadrienal2017.raw <-
-  read_excel("Sucupira/Documentos.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "2017-2020 Quadrienal",
              col_types = c("text"))
 
@@ -204,7 +204,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
 quadrienal2013.raw <-
-  read_excel("Sucupira/Documentos.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "2013-2016 Quadrienal",
              col_types = c("text"))
 
@@ -237,7 +237,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
 trienal2010.raw <-
-  read_excel("Sucupira/Documentos.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "2010-2012 Trienal",
              col_types = c("text"))
 
@@ -270,7 +270,7 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
 historico.raw <-
-  read_excel("Sucupira/Documentos.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "2006-2010 APCN",
              col_types = c("text"))
 
@@ -1593,7 +1593,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-turmas.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"
@@ -2546,7 +2546,7 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-turmas.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "Turmas", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Turmas", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"
@@ -2734,7 +2734,7 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-interinstitucional.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "Dinter2019", col_types = c("text"))
+interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Dinter2019", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(interinstitucional.raw)[1]){
@@ -2756,7 +2756,7 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-interinstitucional.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "PCI2021", col_types = c("text"))
+interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PCI2021", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(interinstitucional.raw)[1]){
@@ -2780,7 +2780,7 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-interinstitucional.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "Minter2019", col_types = c("text"))
+interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Minter2019", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(interinstitucional.raw)[1]){

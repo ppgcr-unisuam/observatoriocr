@@ -367,7 +367,7 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 
 <br>
 
-## **Ações durante a pandemia de COVID-19** {#acoes-pandemia}
+## **Ações durante a pandemia** {#acoes-pandemia}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -427,14 +427,36 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 ### **Trabalhos de conclusão de curso**
 
-*Em construção*
-
-<br>
-
 ```{r pandemia-tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+# tcc
+sheet <- "TCC"
+source("Scripts/read-xlsx-sucupira.R")
 
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+periodos <- names(sucupira.list)
+periodo <- as.character(seq(min(periodos), max(periodos)))
+tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
+
+# selecting those with COVID in the title
+tccs <- tcc.all[grep(tolower("COVID"), tolower(tcc.all$`Nome do Trabalho de Conclusão`)), ]
+
+# select data
+table.tcc <- cbind(format((as.Date(gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y")), "%Y"), tccs$`Tipo de Trabalho de Conclusão`, tccs$`Nome do Trabalho de Conclusão`, tccs$`Nome do Autor`, tccs$`Nome do Orientador`)
+table.tcc <- table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]), ]
+
+# print tables
+table.tcc[, 2] <- as.vector(unlist(lapply(table.tcc[, 2], FUN = str_to_title)))
+table.tcc[, 3] <- as.vector(unlist(lapply(table.tcc[, 3], FUN = str_to_title)))
+table.tcc[, 4] <- as.vector(unlist(lapply(table.tcc[, 4], FUN = str_to_title)))
+table.tcc[, 5] <- as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
+
+colnames(table.tcc) <- c("Ano", "Nível", "Título", "Autor", "Orientador")
+datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

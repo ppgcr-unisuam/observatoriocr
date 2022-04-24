@@ -148,7 +148,7 @@ source("Scripts/social-media-sharing.R")
 
 <br>
 
-```{r artigos-preprints, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+```{r preprints, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
@@ -379,7 +379,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r livros, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+```{r livros-capitulos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
@@ -495,7 +495,7 @@ for(ano in 1:length(anos)) {
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r eventos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+```{r resumos-eventos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.

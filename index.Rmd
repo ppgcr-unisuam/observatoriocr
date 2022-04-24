@@ -11,6 +11,28 @@ output:
 source("Scripts/all-required-packages.R")
 ```
 
+<!--read additional files-->
+```{r scimago-qualis, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+```
+
 <!--custom CSS scripts for ALL PAGES-->
 
 <!--script for hover effect on table-->
@@ -85,7 +107,11 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 sheet <- "Projetos"
 source("Scripts/read-xlsx-sucupira.R")
 
-current.sucupira <- sucupira.list[[length(sucupira.list)]]
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+current.sucupira <- sucupira.list[[format(Sys.Date(), "%Y")]]
 
 current.AC <-
   unique(current.sucupira$`Área de Concentração`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
@@ -277,7 +303,6 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
-projetos.list <- sucupira.list
 
 # get years
 source("Scripts/years-sucupira.R")
@@ -288,15 +313,15 @@ linhas <-
 
 # initialize data structure
 andamento.ano <-
-  matrix(NA, nrow = length(linhas), ncol = length(projetos.list))
+  matrix(NA, nrow = length(linhas), ncol = length(anos))
 colnames(andamento.ano) <- anos
 rownames(andamento.ano) <- linhas
 concluido.ano <- andamento.ano
 
 # iterate across all Sucupira list elements to search for active and closed projects
-for (i in 1:length(projetos.list)) {
+for (i in 1:length(anos)) {
   # active
-  projetos <- projetos.list[[i]]
+  projetos <- sucupira.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
                projetos$Situação == "EM ANDAMENTO",]
@@ -305,7 +330,7 @@ for (i in 1:length(projetos.list)) {
       sum(projetos$`Linha de Pesquisa` == linhas[j], na.rm = TRUE)
   }
   # closed
-  projetos <- projetos.list[[i]]
+  projetos <- sucupira.list[[i]]
   projetos <-
     projetos[projetos$`Membro Responsável` == "Sim" &
                projetos$Situação == "CONCLUÍDO",]
@@ -690,25 +715,6 @@ bs_carousel(id = "financiadores-carousel",
 ```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2020.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file (download from https://www.scimagojr.com)
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
-
 # estratos Qualis
 estratos <- sort(unique(qualis$ESTRATO))
 
@@ -743,10 +749,9 @@ artigos <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
 artigos <- artigos[complete.cases(artigos$DOI), ]
 artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 
-# remove os aceitos e submetidos
+# remove os aceitos
 artigos <-
-  artigos[artigos$Publicado.em != "Aceito" &
-            artigos$Publicado.em != "Submetido",]
+  artigos[artigos$Publicado.em != "Aceito",]
 
 # SJR
 SJR <- c()

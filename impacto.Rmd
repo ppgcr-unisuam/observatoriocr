@@ -6,6 +6,33 @@ output:
     toc: true
 ---
 
+<!--install and/or load all R packages-->
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
+<!--read additional files-->
+```{r scimago-qualis, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2020.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file (download from https://www.scimagojr.com)
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+```
+
 <!--script for computer/mobile devices-->
 ```{css, echo=FALSE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +54,15 @@ output:
       transform: translate(-50%, -50%)
     }
 ```
+
+<!--script for generating ALTMETRIC badges-->
+<script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+
+<!--script for generating multiple DIMENSIONS badges-->
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+
+<!--script for generating multiple PLUMX badges-->
+<script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
 
 <!--script for narrow margins-->
 <style type="text/css">
@@ -336,8 +372,305 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-*Em construção!*
+### **Projetos de pesquisa**
+
+```{r pandemia-projetos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# projetos - membros
+sheet <- "Projetos - Membros"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+periodos <- names(sucupira.list)
+periodo <- as.character(seq(min(periodos), max(periodos)))
+projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
+projetos.all <- unique(projetos.all[projetos.all$`Membro Responsável`== "Sim", ])
+
+# selecting those with COVID in the title
+projetos <- projetos.all[grep(tolower("COVID"), tolower(projetos.all$`Nome do Projeto de Pesquisa`)), ]
+
+# select data DOCENTES
+table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
+table.projetos <- table.projetos[order(table.projetos[, 1]), ]
+# print tables
+table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+
+colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
+datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Financiadores**
+
+*Em construção*
+
+<br>
+
+```{r pandemia-financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Trabalhos de conclusão de curso**
+
+*Em construção*
+
+<br>
+
+```{r pandemia-tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Artigos completos** {.tabset}
+
+```{r pandemia-artigos-completos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+all.dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.completos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+all.dois <- all.dois[complete.cases(all.dois$DOI),]
+
+# selecting those with COVID in the title
+all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+
+# get years
+anos <- rev(unique(all.dois$Publicado.em))
+
+for(ano in 1:length(anos)) {
+  # Filtra por período
+  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
+  # print tab header
+  cat('\n\n<!-- -->\n\n')
+  cat("#### **", anos[ano], "**", "\n", sep = "")
+
+  # Verifica se há DOIs no período
+  if (dim(dois)[1] == 0) {
+    cat('\n')
+    cat('*Sem produção para exibir no período*')
+    cat('\n')
+  } else {
+    # Step 5. Convert the doi column in your dataset to a list.
+    dois_list <- as.list(dois$DOI)
+    
+    # cria metadados para rastreio pelo Altmetric
+    dois_2_meta <- dois$DOI
+    source("scripts/altmetric-meta-from-dois.R")
+    
+    # roda o script para obter dados do Altmetric
+    source("scripts/altmetric-from-dois.R")
+    
+    # get data of papers without Altmetric from CrossRef
+    if (is_empty(no_altmetric_dois_list)) {
+      my_dois_works <- no_altmetric_dois_list
+    } else {
+      my_dois_works <-
+        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+        pluck("data")
+      # sort columns by title
+      if (length(my_dois_works) != 0) {
+        my_dois_works <-
+          my_dois_works[order(as.vector(my_dois_works$title)),]
+      }
+    }
+    
+    # print table of papers with/without badges
+    source("scripts/papers-with-badges.R")
+    table.with.badges(
+      show.Altmetric = TRUE,
+      show.Dimensions = TRUE,
+      show.PlumX = TRUE,
+      show.SJR = TRUE,
+      show.Qualis = TRUE,
+      doi_sort,
+      my_dois_works,
+      scimago,
+      qualis
+    )
+  }
+}
+```
+
+<br>
+
+### **Artigos resumos** {.tabset}
+
+```{r pandemia-artigos-resumos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+all.dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+all.dois <- all.dois[complete.cases(all.dois$DOI),]
+
+# selecting those with COVID in the title
+all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+
+# get years
+anos <- rev(unique(all.dois$Publicado.em))
+
+for(ano in 1:length(anos)) {
+  # Filtra por período
+  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
+  # print tab header
+  cat('\n\n<!-- -->\n\n')
+  cat("#### **", anos[ano], "**", "\n", sep = "")
+
+  # Verifica se há DOIs no período
+  if (dim(dois)[1] == 0) {
+    cat('\n')
+    cat('*Sem produção para exibir no período*')
+    cat('\n')
+  } else {
+    # Step 5. Convert the doi column in your dataset to a list.
+    dois_list <- as.list(dois$DOI)
+    
+    # cria metadados para rastreio pelo Altmetric
+    dois_2_meta <- dois$DOI
+    source("scripts/altmetric-meta-from-dois.R")
+    
+    # roda o script para obter dados do Altmetric
+    source("scripts/altmetric-from-dois.R")
+    
+    # get data of papers without Altmetric from CrossRef
+    if (is_empty(no_altmetric_dois_list)) {
+      my_dois_works <- no_altmetric_dois_list
+    } else {
+      my_dois_works <-
+        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+        pluck("data")
+      # sort columns by title
+      if (length(my_dois_works) != 0) {
+        my_dois_works <-
+          my_dois_works[order(as.vector(my_dois_works$title)),]
+      }
+    }
+    
+    # print table of papers with/without badges
+    source("scripts/papers-with-badges.R")
+    table.with.badges(
+      show.Altmetric = TRUE,
+      show.Dimensions = TRUE,
+      show.PlumX = TRUE,
+      show.SJR = TRUE,
+      show.Qualis = TRUE,
+      doi_sort,
+      my_dois_works,
+      scimago,
+      qualis
+    )
+  }
+}
+```
+
+<br>
+
+### **Trabalhos em anais de eventos** {.tabset}
+
+```{r pandemia-resumos-eventos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+all.dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+all.dois <- all.dois[complete.cases(all.dois$DOI),]
+
+# selecting those with COVID in the title
+all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+
+# get years
+anos <- rev(unique(all.dois$Publicado.em))
+
+for(ano in 1:length(anos)) {
+  # Filtra por período
+  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
+  # print tab header
+  cat('\n\n<!-- -->\n\n')
+  cat("#### **", anos[ano], "**", "\n", sep = "")
+
+  # Verifica se há DOIs no período
+  if (dim(dois)[1] == 0) {
+    cat('\n')
+    cat('*Sem produção para exibir no período*')
+    cat('\n')
+  } else {
+    # Step 5. Convert the doi column in your dataset to a list.
+    dois_list <- as.list(dois$DOI)
+    
+    # cria metadados para rastreio pelo Altmetric
+    dois_2_meta <- dois$DOI
+    source("scripts/altmetric-meta-from-dois.R")
+    
+    # roda o script para obter dados do Altmetric
+    source("scripts/altmetric-from-dois.R")
+    
+    # get data of papers without Altmetric from CrossRef
+    if (is_empty(no_altmetric_dois_list)) {
+      my_dois_works <- no_altmetric_dois_list
+    } else {
+      my_dois_works <-
+        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+        pluck("data")
+      # sort columns by title
+      if (length(my_dois_works) != 0) {
+        my_dois_works <-
+          my_dois_works[order(as.vector(my_dois_works$title)),]
+      }
+    }
+    
+    # print table of papers with/without badges
+    source("scripts/papers-with-badges.R")
+    table.with.badges(
+      show.Altmetric = TRUE,
+      show.Dimensions = TRUE,
+      show.PlumX = TRUE,
+      show.SJR = TRUE,
+      show.Qualis = TRUE,
+      doi_sort,
+      my_dois_works,
+      scimago,
+      qualis
+    )
+  }
+}
+```
 
 <br>

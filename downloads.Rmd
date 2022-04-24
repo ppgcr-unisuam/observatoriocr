@@ -74,7 +74,7 @@ library(magrittr)
 library(readxl)
 
 # read separate sheets
-vigentes.raw <- read_excel("../PPGCR Unisuam/Documentos.xlsx", sheet = "Vigentes", col_types = c("text"))
+vigentes.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "Vigentes", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(vigentes.raw)[1]){
@@ -102,7 +102,7 @@ library(magrittr)
 library(readxl)
 
 # read separate sheets
-revogados.raw <- read_excel("../PPGCR Unisuam/Documentos.xlsx", sheet = "Revogados", col_types = c("text"))
+revogados.raw <- read_excel("Sucupira/Documentos.xlsx", sheet = "Revogados", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(revogados.raw)[1]){

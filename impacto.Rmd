@@ -405,6 +405,8 @@ colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -458,6 +460,8 @@ table.tcc[, 5] <- as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
 colnames(table.tcc) <- c("Ano", "Nível", "Título", "Autor", "Orientador")
 datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -539,6 +543,8 @@ for(ano in 1:length(anos)) {
 }
 ```
 
+*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
+
 <br>
 
 ### **Artigos resumos** {.tabset}
@@ -617,6 +623,8 @@ for(ano in 1:length(anos)) {
 }
 ```
 
+*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
+
 <br>
 
 ### **Trabalhos em anais de eventos** {.tabset}
@@ -694,5 +702,7 @@ for(ano in 1:length(anos)) {
   }
 }
 ```
+
+*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
 <br>

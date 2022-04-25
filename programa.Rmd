@@ -160,6 +160,8 @@ print(
 )
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -389,6 +391,8 @@ print(
 )
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -421,6 +425,8 @@ if (dim(areas.inativas)[1] != 0) {
   cat("*Sem dados para exibir*")
 }
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -463,6 +469,8 @@ print(
 )
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -495,6 +503,8 @@ if (dim(linhas.inativas)[1] != 0) {
   cat("*Sem dados para exibir*")
 }
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -584,6 +594,8 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -657,6 +669,8 @@ cat("  \n")
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -691,6 +705,8 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -767,6 +783,8 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -840,6 +858,8 @@ cat("  \n")
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -876,6 +896,8 @@ colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -952,6 +974,8 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1025,6 +1049,8 @@ cat("  \n")
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1061,6 +1087,8 @@ colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1137,6 +1165,8 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1211,6 +1241,8 @@ cat("  \n")
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1247,6 +1279,8 @@ colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1292,12 +1326,12 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(RColorBrewer)
+
+
+
+
+
+
 
 options(scipen = 10)
 
@@ -1353,13 +1387,13 @@ table.1
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(lemon)
-library(DT)
+
+
+
+
+
+
+
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1398,13 +1432,13 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(lemon)
-library(DT)
+
+
+
+
+
+
+
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1443,13 +1477,13 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(lemon)
-library(DT)
+
+
+
+
+
+
+
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1488,13 +1522,13 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(lemon)
-library(DT)
+
+
+
+
+
+
+
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1533,13 +1567,13 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(gtsummary)
-library(lemon)
-library(DT)
+
+
+
+
+
+
+
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1582,6 +1616,10 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 <br>
 
 *Em construção*
+
+<br>
+
+*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1661,6 +1699,8 @@ print(kable(cursos.raw, align = c("l", rep("c", ncol(cursos.raw)-2), "r")) %>% k
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1677,6 +1717,8 @@ creditos.raw <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Créditos"
 print(kable(creditos.raw, align = c("l", rep("c", ncol(creditos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1803,6 +1845,8 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1813,12 +1857,12 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -1913,6 +1957,8 @@ cat("  \n")
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1931,11 +1977,11 @@ cat("  \n")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(DT)
+
+
+
+
+
 
 # read separate sheets
 bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
@@ -1954,12 +2000,12 @@ datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrol
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(stringr)
-library(readxl)
-library(RColorBrewer)
+
+
+
+
+
+
 
 # read separate sheets
 bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
@@ -1985,12 +2031,12 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2048,6 +2094,8 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "F
 print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 
 ```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -2118,6 +2166,8 @@ cat("  \n")
 cat("  \n")
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2130,12 +2180,12 @@ cat("  \n")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2201,6 +2251,8 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2211,12 +2263,12 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2311,6 +2363,8 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2321,12 +2375,12 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2386,6 +2440,8 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2396,12 +2452,12 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2461,6 +2517,8 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2471,12 +2529,12 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
-library(stringr)
+
+
+
+
+
+
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2533,6 +2591,8 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2565,6 +2625,8 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 ```
 
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -2595,11 +2657,11 @@ print(kable(dados.lab, digits = 0, align = c("l", rep("c", ncol(dados.lab)-2), "
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(DT)
+
+
+
+
+
 
 # read data
 labs <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = "Dados", col_types = c("text"))
@@ -2649,7 +2711,7 @@ for(i in 1:dim(labs)[1]){
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
+
 
 knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 
@@ -2699,10 +2761,10 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
+
+
+
+
 
 # read separate sheets
 vigentes.raw <- read_excel("../PPGCR Unisuam/Convênios.xlsx", sheet = "APB", col_types = c("text"))

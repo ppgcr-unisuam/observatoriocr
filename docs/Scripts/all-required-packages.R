@@ -1,5 +1,8 @@
 # all packages required for this R project
 # Create using PACKUP add-in to generate this code with all the required libraries for this Rmd
+# 1. create code chunk
+# 2. library(packup)
+# 3. packup()
 
 packs <-
   c(
@@ -23,8 +26,10 @@ packs <-
     "janitor",
     "kableExtra",
     "knitr",
+    "lemon",
     "lubridate",
     "magrittr",
+    "packup",
     "plyr",
     "rAltmetric",
     "RColorBrewer",

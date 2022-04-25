@@ -29,7 +29,7 @@ navbar:
       icon: "fa-home"
       href: index.html
     - text: "Programa"
-      href: programa.html
+      href: [programa.html]
       menu:
         - text: "Programa"
           href: [programa.html]
@@ -66,7 +66,7 @@ navbar:
         - text: "Cooperação entre instituições"
           href: [programa.html#cooperacao]
     - text: "Pessoas"
-      href: pessoas.html
+      href: [pessoas.html]
       menu:
         - text: "Pessoas"
           href: [pessoas.html]
@@ -91,7 +91,7 @@ navbar:
         - text: "Participantes externos"
           href: [pessoas.html#participantes-externos]
     - text: "Produções"
-      href: producoes.html
+      href: [producoes.html]
       menu:
         - text: "Produções"
           href: [producoes.html]
@@ -115,7 +115,7 @@ navbar:
         - text: "Representatividade"
           href: [destaques.html#representatividade]
     - text: "Impacto"
-      href: impacto.html
+      href: [impacto.html]
       menu:
         - text: "Impacto"
           href: [impacto.html]
@@ -143,9 +143,11 @@ navbar:
         - text: "Pesquisa do egresso"
           href: [autoavaliacao.html#pesquisa-egresso]
     - text: "Galeria"
-      href: galeria.html
+      href: [galeria.html]
     - text: "News"
-      href: news.html
+      href: [news.html]
+    - text: "SSTCC"
+      href: [https://sstcc.unisuam.edu.br/]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]

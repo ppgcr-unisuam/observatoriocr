@@ -1325,14 +1325,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ```{r financiadores-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
 options(scipen = 10)
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
@@ -1377,6 +1369,8 @@ table.1
 
 ```
 
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1385,15 +1379,6 @@ table.1
 
 ```{r historico-financiadores-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1422,6 +1407,8 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```
 
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1430,15 +1417,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```{r historico-financiadores-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1467,6 +1445,8 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```
 
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1475,15 +1455,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```{r historico-financiadores-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1512,6 +1483,8 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```
 
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1520,15 +1493,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```{r historico-financiadores-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1557,6 +1521,8 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```
 
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1565,15 +1531,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 
 ```{r historico-financiadores-2010, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1601,6 +1558,8 @@ financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 
 ```
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1856,14 +1815,6 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 ```{r estrutura-academica-atual-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
 	initials <- c()
@@ -1976,13 +1927,6 @@ cat("  \n")
 ```{r bibliografia, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
 # read separate sheets
 bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
@@ -1998,14 +1942,6 @@ datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrol
 
 ```{r bibliografia-ano, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
 
 # read separate sheets
 bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
@@ -2029,14 +1965,6 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 
 ```{r estrutura-academica-inativa-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2179,14 +2107,6 @@ cat("  \n")
 ```{r turmas-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
 	initials <- c()
@@ -2261,14 +2181,6 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 ```{r estrutura-academica-2024-docentes, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2374,14 +2286,6 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 ```{r turmas-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
 	initials <- c()
@@ -2451,14 +2355,6 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 ```{r turmas-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
 	initials <- c()
@@ -2527,14 +2423,6 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r turmas-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
 
 # function to obtain the first letter of each word in a vector of strings
 initials <- function(names){
@@ -2710,11 +2598,7 @@ for(i in 1:dim(labs)[1]){
 ```{r laboratorios-planta, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
 knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2759,12 +2643,6 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 ```{r documentos-convenios-apb, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
 
 # read separate sheets
 vigentes.raw <- read_excel("../PPGCR Unisuam/Convênios.xlsx", sheet = "APB", col_types = c("text"))

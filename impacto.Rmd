@@ -413,15 +413,59 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 
 ### **Financiadores**
 
-*Em construção*
-
-<br>
-
 ```{r pandemia-financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+financiadores.raw <-
+  read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub), ]
+fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+
+# selecting those with COVID in the title
+financiadores <-
+  financiadores[grep(tolower("COVID"), tolower(financiadores$`Título do projeto`)), ]
+fonte <-
+  fonte[grep(tolower("COVID"), tolower(financiadores$`Título do projeto`)), ]
+
+Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+colnames(Abrir) <- "Abrir"
+# add hyperlinks
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+  }
+}
+
+financiadores <- cbind(financiadores, Abrir)
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+
+datatable(
+  financiadores,
+  rownames = FALSE,
+  options = list(
+    pageLength = 5,
+    scrolX = F,
+    dom = 'ftip',
+    searchHighlight = TRUE
+  ),
+  escape = FALSE
+)
 ```
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

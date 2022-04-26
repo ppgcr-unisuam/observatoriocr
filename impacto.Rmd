@@ -283,10 +283,10 @@ source("Scripts/social-media-sharing.R")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
+
+
+
+
 
 # read separate sheets
 vigentes.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Vigentes", col_types = c("text"))
@@ -311,10 +311,10 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
+
+
+
+
 
 # read separate sheets
 revogados.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Revogados", col_types = c("text"))
@@ -372,6 +372,11 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
+```{r pandemia-termos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+pandemia <- c("2019-nCoV", "2019 Novel Coronavirus", "COVID-19", "COVID 2019", "COVID19", "SARS-CoV-2", "SARSCoV-2", "SARSCoV2", "COVID", "Novo Coronavirus", "long COVID", "COVID longa", "pós-COVID", "post-COVID", "postCOVID", "coronavirus disease 2019", "doença do coronavirus 2019", "severe acute respiratory syndrome coronavirus 2", "nCoV", "19nCoV")
+```
+
 ### **Projetos de pesquisa**
 
 ```{r pandemia-projetos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
@@ -391,18 +396,45 @@ projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos.all <- unique(projetos.all[projetos.all$`Membro Responsável`== "Sim", ])
 
 # selecting those with COVID in the title
-projetos <- projetos.all[grep(tolower("COVID"), tolower(projetos.all$`Nome do Projeto de Pesquisa`)), ]
+projetos <- projetos.all[grep(paste(tolower(pandemia), collapse = "|"), tolower(projetos.all$`Nome do Projeto de Pesquisa`)), ]
 
-# select data DOCENTES
-table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
-table.projetos <- table.projetos[order(table.projetos[, 1]), ]
-# print tables
-table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
-table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
-table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
-
-colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
-datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+if(dim(projetos)[1] != 0){
+  # select data DOCENTES
+  table.projetos <-
+    cbind(
+      projetos$`Nome do Membro do Projeto`,
+      projetos$`Nome do Projeto de Pesquisa`,
+      projetos$`Linha de Pesquisa`
+    )
+  table.projetos <- table.projetos[order(table.projetos[, 1]),]
+  # print tables
+  table.projetos[, 1] <-
+    as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+  table.projetos[, 2] <-
+    as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+  table.projetos[, 3] <-
+    as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+  
+  colnames(table.projetos) <-
+    c("Nome do Membro Responsável",
+      "Nome do Projeto de Pesquisa",
+      "Linha de Pesquisa")
+  datatable(
+    table.projetos,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
+}
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -434,35 +466,41 @@ fonte <- fonte.sub[complete.cases(financiadores.sub), ]
 
 # selecting those with COVID in the title
 financiadores <-
-  financiadores[grep(tolower("COVID"), tolower(financiadores$`Título do projeto`)), ]
+  financiadores[grep(paste(tolower(pandemia), collapse = "|"), tolower(financiadores$`Título do projeto`)), ]
 fonte <-
-  fonte[grep(tolower("COVID"), tolower(financiadores$`Título do projeto`)), ]
+  fonte[grep(paste(tolower(pandemia), collapse = "|"), tolower(financiadores$`Título do projeto`)), ]
 
-Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-colnames(Abrir) <- "Abrir"
-# add hyperlinks
-for (i in 1:dim(fonte)[1]) {
-  if (!is.na(fonte[i, 1])) {
-    Abrir[i] <-
-      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+if(dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1]) {
+    if (!is.na(fonte[i, 1])) {
+      Abrir[i] <-
+        paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+    }
   }
+  
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
+  
+  datatable(
+    financiadores,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
 }
-
-financiadores <- cbind(financiadores, Abrir)
-financiadores <-
-  financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-
-datatable(
-  financiadores,
-  rownames = FALSE,
-  options = list(
-    pageLength = 5,
-    scrolX = F,
-    dom = 'ftip',
-    searchHighlight = TRUE
-  ),
-  escape = FALSE
-)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -489,20 +527,51 @@ periodo <- as.character(seq(min(periodos), max(periodos)))
 tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # selecting those with COVID in the title
-tccs <- tcc.all[grep(tolower("COVID"), tolower(tcc.all$`Nome do Trabalho de Conclusão`)), ]
+tccs <- tcc.all[grep(paste(tolower(pandemia), collapse = "|"), tolower(tcc.all$`Nome do Trabalho de Conclusão`)), ]
 
-# select data
-table.tcc <- cbind(format((as.Date(gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y")), "%Y"), tccs$`Tipo de Trabalho de Conclusão`, tccs$`Nome do Trabalho de Conclusão`, tccs$`Nome do Autor`, tccs$`Nome do Orientador`)
-table.tcc <- table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]), ]
-
-# print tables
-table.tcc[, 2] <- as.vector(unlist(lapply(table.tcc[, 2], FUN = str_to_title)))
-table.tcc[, 3] <- as.vector(unlist(lapply(table.tcc[, 3], FUN = str_to_title)))
-table.tcc[, 4] <- as.vector(unlist(lapply(table.tcc[, 4], FUN = str_to_title)))
-table.tcc[, 5] <- as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
-
-colnames(table.tcc) <- c("Ano", "Nível", "Título", "Autor", "Orientador")
-datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+if(dim(tccs)[1] != 0) {
+  # select data
+  table.tcc <-
+    cbind(
+      format((as.Date(
+        gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y"
+      )), "%Y"),
+      tccs$`Tipo de Trabalho de Conclusão`,
+      tccs$`Nome do Trabalho de Conclusão`,
+      tccs$`Nome do Autor`,
+      tccs$`Nome do Orientador`
+    )
+  table.tcc <-
+    table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]),]
+  
+  # print tables
+  table.tcc[, 2] <-
+    as.vector(unlist(lapply(table.tcc[, 2], FUN = str_to_title)))
+  table.tcc[, 3] <-
+    as.vector(unlist(lapply(table.tcc[, 3], FUN = str_to_title)))
+  table.tcc[, 4] <-
+    as.vector(unlist(lapply(table.tcc[, 4], FUN = str_to_title)))
+  table.tcc[, 5] <-
+    as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
+  
+  colnames(table.tcc) <-
+    c("Ano", "Nível", "Título", "Autor", "Orientador")
+  datatable(
+    table.tcc,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
+}
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -528,62 +597,69 @@ all.dois <-
 all.dois <- all.dois[complete.cases(all.dois$DOI),]
 
 # selecting those with COVID in the title
-all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
 
-# get years
-anos <- rev(unique(all.dois$Publicado.em))
-
-for(ano in 1:length(anos)) {
-  # Filtra por período
-  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
-  # print tab header
-  cat('\n\n<!-- -->\n\n')
-  cat("#### **", anos[ano], "**", "\n", sep = "")
-
-  # Verifica se há DOIs no período
-  if (dim(dois)[1] == 0) {
-    cat('\n')
-    cat('*Sem produção para exibir no período*')
-    cat('\n')
-  } else {
-    # Step 5. Convert the doi column in your dataset to a list.
-    dois_list <- as.list(dois$DOI)
+if (dim(all.dois)[1] != 0) {
+  # get years
+  anos <- rev(unique(all.dois$Publicado.em))
+  
+  for (ano in 1:length(anos)) {
+    # Filtra por período
+    dois <-
+      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
+    # print tab header
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", anos[ano], "**", "\n", sep = "")
     
-    # cria metadados para rastreio pelo Altmetric
-    dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
-    
-    # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
-    
-    # get data of papers without Altmetric from CrossRef
-    if (is_empty(no_altmetric_dois_list)) {
-      my_dois_works <- no_altmetric_dois_list
+    # Verifica se há DOIs no período
+    if (dim(dois)[1] == 0) {
+      cat('\n')
+      cat('*Sem produção para exibir no período*')
+      cat('\n')
     } else {
-      my_dois_works <-
-        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-        pluck("data")
-      # sort columns by title
-      if (length(my_dois_works) != 0) {
+      # Step 5. Convert the doi column in your dataset to a list.
+      dois_list <- as.list(dois$DOI)
+      
+      # cria metadados para rastreio pelo Altmetric
+      dois_2_meta <- dois$DOI
+      source("scripts/altmetric-meta-from-dois.R")
+      
+      # roda o script para obter dados do Altmetric
+      source("scripts/altmetric-from-dois.R")
+      
+      # get data of papers without Altmetric from CrossRef
+      if (is_empty(no_altmetric_dois_list)) {
+        my_dois_works <- no_altmetric_dois_list
+      } else {
         my_dois_works <-
-          my_dois_works[order(as.vector(my_dois_works$title)),]
+          rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+          pluck("data")
+        # sort columns by title
+        if (length(my_dois_works) != 0) {
+          my_dois_works <-
+            my_dois_works[order(as.vector(my_dois_works$title)),]
+        }
       }
+      
+      # print table of papers with/without badges
+      source("scripts/papers-with-badges.R")
+      table.with.badges(
+        show.Altmetric = TRUE,
+        show.Dimensions = TRUE,
+        show.PlumX = TRUE,
+        show.SJR = TRUE,
+        show.Qualis = TRUE,
+        doi_sort,
+        my_dois_works,
+        scimago,
+        qualis
+      )
     }
-    
-    # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.SJR = TRUE,
-      show.Qualis = TRUE,
-      doi_sort,
-      my_dois_works,
-      scimago,
-      qualis
-    )
   }
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
 }
 ```
 
@@ -608,62 +684,69 @@ all.dois <-
 all.dois <- all.dois[complete.cases(all.dois$DOI),]
 
 # selecting those with COVID in the title
-all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
 
-# get years
-anos <- rev(unique(all.dois$Publicado.em))
-
-for(ano in 1:length(anos)) {
-  # Filtra por período
-  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
-  # print tab header
-  cat('\n\n<!-- -->\n\n')
-  cat("#### **", anos[ano], "**", "\n", sep = "")
-
-  # Verifica se há DOIs no período
-  if (dim(dois)[1] == 0) {
-    cat('\n')
-    cat('*Sem produção para exibir no período*')
-    cat('\n')
-  } else {
-    # Step 5. Convert the doi column in your dataset to a list.
-    dois_list <- as.list(dois$DOI)
+if (dim(all.dois)[1] != 0) {
+  # get years
+  anos <- rev(unique(all.dois$Publicado.em))
+  
+  for (ano in 1:length(anos)) {
+    # Filtra por período
+    dois <-
+      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]), ]
+    # print tab header
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", anos[ano], "**", "\n", sep = "")
     
-    # cria metadados para rastreio pelo Altmetric
-    dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
-    
-    # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
-    
-    # get data of papers without Altmetric from CrossRef
-    if (is_empty(no_altmetric_dois_list)) {
-      my_dois_works <- no_altmetric_dois_list
+    # Verifica se há DOIs no período
+    if (dim(dois)[1] == 0) {
+      cat('\n')
+      cat('*Sem produção para exibir no período*')
+      cat('\n')
     } else {
-      my_dois_works <-
-        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-        pluck("data")
-      # sort columns by title
-      if (length(my_dois_works) != 0) {
+      # Step 5. Convert the doi column in your dataset to a list.
+      dois_list <- as.list(dois$DOI)
+      
+      # cria metadados para rastreio pelo Altmetric
+      dois_2_meta <- dois$DOI
+      source("scripts/altmetric-meta-from-dois.R")
+      
+      # roda o script para obter dados do Altmetric
+      source("scripts/altmetric-from-dois.R")
+      
+      # get data of papers without Altmetric from CrossRef
+      if (is_empty(no_altmetric_dois_list)) {
+        my_dois_works <- no_altmetric_dois_list
+      } else {
         my_dois_works <-
-          my_dois_works[order(as.vector(my_dois_works$title)),]
+          rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+          pluck("data")
+        # sort columns by title
+        if (length(my_dois_works) != 0) {
+          my_dois_works <-
+            my_dois_works[order(as.vector(my_dois_works$title)), ]
+        }
       }
+      
+      # print table of papers with/without badges
+      source("scripts/papers-with-badges.R")
+      table.with.badges(
+        show.Altmetric = TRUE,
+        show.Dimensions = TRUE,
+        show.PlumX = TRUE,
+        show.SJR = TRUE,
+        show.Qualis = TRUE,
+        doi_sort,
+        my_dois_works,
+        scimago,
+        qualis
+      )
     }
-    
-    # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.SJR = TRUE,
-      show.Qualis = TRUE,
-      doi_sort,
-      my_dois_works,
-      scimago,
-      qualis
-    )
   }
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
 }
 ```
 
@@ -688,62 +771,69 @@ all.dois <-
 all.dois <- all.dois[complete.cases(all.dois$DOI),]
 
 # selecting those with COVID in the title
-all.dois <- all.dois[grep(tolower("COVID"), tolower(all.dois$Título)), ]
+all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
 
-# get years
-anos <- rev(unique(all.dois$Publicado.em))
-
-for(ano in 1:length(anos)) {
-  # Filtra por período
-  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
-  # print tab header
-  cat('\n\n<!-- -->\n\n')
-  cat("#### **", anos[ano], "**", "\n", sep = "")
-
-  # Verifica se há DOIs no período
-  if (dim(dois)[1] == 0) {
-    cat('\n')
-    cat('*Sem produção para exibir no período*')
-    cat('\n')
-  } else {
-    # Step 5. Convert the doi column in your dataset to a list.
-    dois_list <- as.list(dois$DOI)
+if (dim(all.dois)[1] != 0) {
+  # get years
+  anos <- rev(unique(all.dois$Publicado.em))
+  
+  for (ano in 1:length(anos)) {
+    # Filtra por período
+    dois <-
+      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]), ]
+    # print tab header
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", anos[ano], "**", "\n", sep = "")
     
-    # cria metadados para rastreio pelo Altmetric
-    dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
-    
-    # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
-    
-    # get data of papers without Altmetric from CrossRef
-    if (is_empty(no_altmetric_dois_list)) {
-      my_dois_works <- no_altmetric_dois_list
+    # Verifica se há DOIs no período
+    if (dim(dois)[1] == 0) {
+      cat('\n')
+      cat('*Sem produção para exibir no período*')
+      cat('\n')
     } else {
-      my_dois_works <-
-        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-        pluck("data")
-      # sort columns by title
-      if (length(my_dois_works) != 0) {
+      # Step 5. Convert the doi column in your dataset to a list.
+      dois_list <- as.list(dois$DOI)
+      
+      # cria metadados para rastreio pelo Altmetric
+      dois_2_meta <- dois$DOI
+      source("scripts/altmetric-meta-from-dois.R")
+      
+      # roda o script para obter dados do Altmetric
+      source("scripts/altmetric-from-dois.R")
+      
+      # get data of papers without Altmetric from CrossRef
+      if (is_empty(no_altmetric_dois_list)) {
+        my_dois_works <- no_altmetric_dois_list
+      } else {
         my_dois_works <-
-          my_dois_works[order(as.vector(my_dois_works$title)),]
+          rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+          pluck("data")
+        # sort columns by title
+        if (length(my_dois_works) != 0) {
+          my_dois_works <-
+            my_dois_works[order(as.vector(my_dois_works$title)), ]
+        }
       }
+      
+      # print table of papers with/without badges
+      source("scripts/papers-with-badges.R")
+      table.with.badges(
+        show.Altmetric = TRUE,
+        show.Dimensions = TRUE,
+        show.PlumX = TRUE,
+        show.SJR = TRUE,
+        show.Qualis = TRUE,
+        doi_sort,
+        my_dois_works,
+        scimago,
+        qualis
+      )
     }
-    
-    # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.SJR = TRUE,
-      show.Qualis = TRUE,
-      doi_sort,
-      my_dois_works,
-      scimago,
-      qualis
-    )
   }
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
 }
 ```
 

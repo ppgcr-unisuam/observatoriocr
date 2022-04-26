@@ -6,6 +6,11 @@ output:
     toc: true
 ---
 
+<!--install and/or load all R packages-->
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
 <!--script for computer/mobile devices-->
 ```{css, echo=FALSE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

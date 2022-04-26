@@ -6,6 +6,11 @@ output:
     toc: true
 ---
 
+<!--install and/or load all R packages-->
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+source("Scripts/all-required-packages.R")
+```
+
 <!--script for computer/mobile devices-->
 ```{css, echo=FALSE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,11 +71,11 @@ source("Scripts/social-media-sharing.R")
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read packages
-library(knitr)
-library(kableExtra)
-library(magrittr)
-library(readxl)
-library(RColorBrewer)
+
+
+
+
+
 
 # read separate sheets
 file.path <- "../PPGCR Unisuam/News.xlsx"

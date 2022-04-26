@@ -1711,34 +1711,18 @@ O Eixo Técnico agrupa as disciplinas de caráter especialista, com ementas volt
 ```{r estrutura-academica-atual-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R")
+
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -1769,39 +1753,6 @@ obrigatoria <- unique(disciplinas.raw$`Indicadora de disciplina obrigatória`)
 obrigatoria[which(obrigatoria == "Sim")] <- "Obrigatória"
 obrigatoria[which(obrigatoria == "Não")] <- "Eletiva"
 legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
-
-# # read separate sheets
-# turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
-# # bind all sheets
-# turmas.raw <- turmas.2022
-# # replace full names by initials
-# 
-# # build a cross table DISCIPLINA vs. DOCENTE
-# cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), initials(turmas.raw$`Nome do responsável`)))
-# Responsável <- colSums(cross.table.turmas)
-# Responsável[Responsável > 0] <- "✅"
-# Responsável[Responsável == 0] <- ""
-# turmas.docentes <- rbind(Responsável, cross.table.turmas)
-# turmas.docentes[turmas.docentes > 0] <- "✔"
-# turmas.docentes[turmas.docentes == 0] <- ""
-# kable(turmas.docentes, align = "c")
-# 
-# # line break
-# cat("  \n")
-# cat("  \n")
-# 
-# legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-# legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-# cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-# 
-# # line break
-# cat("  \n")
-# cat("  \n")
-# 
-# legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
-# legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
-# cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1815,34 +1766,18 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 ```{r estrutura-academica-atual-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R")
+
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -1858,54 +1793,6 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "O
 
 # print tables
 print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-# layout(matrix(c(1,2,3), nrow = 1, byrow = TRUE), widths = c(0.4, 0.4, 0.2))
-# par(oma=c(1, 1, 2, 0.1), mar = c(1, 1, 2, 1))
-# # generate plot of total per course
-# pie(table(table.msc[, which(colnames(table.msc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.msc)), name = "Set3"), init.angle = 90, main = "Mestrado")
-# pie(table(table.dsc[, which(colnames(table.dsc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.dsc)), name = "Set3"), init.angle = 90, main = "Doutorado")
-# plot(0, type = 'n', axes = FALSE)
-# obrigatoria <- unique(disciplinas.raw$`Indicadora de disciplina obrigatória`)
-# obrigatoria[which(obrigatoria == "Sim")] <- "Obrigatória"
-# obrigatoria[which(obrigatoria == "Não")] <- "Eletiva"
-# legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
-
-# # read separate sheets
-# turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
-# # bind all sheets
-# turmas.raw <- turmas.2022
-# # replace full names by initials
-# 
-# # build a cross table DISCIPLINA vs. DOCENTE
-# cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), initials(turmas.raw$`Nome do responsável`)))
-# Responsável <- colSums(cross.table.turmas)
-# Responsável[Responsável > 0] <- "✅"
-# Responsável[Responsável == 0] <- ""
-# turmas.docentes <- rbind(Responsável, cross.table.turmas)
-# turmas.docentes[turmas.docentes > 0] <- "✔"
-# turmas.docentes[turmas.docentes == 0] <- ""
-# print(kable(turmas.docentes, align = c("l", rep("c", ncol(turmas.docentes)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-# 
-# # line break
-# cat("  \n")
-# cat("  \n")
-# 
-# legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-# legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-# cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-# 
-# # line break
-# cat("  \n")
-# cat("  \n")
-# 
-# legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
-# legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
-# cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1931,7 +1818,6 @@ options(knitr.kable.NA = '--', knitr.table.format = "html")
 bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -1954,7 +1840,6 @@ par(oma=c(2, 0.1, 2, 0.1), mar = c(5, 4, 2, 2))
 # generate plot of conceitos per year
 hist(bib.ano, xlab = "Ano de publicação", ylab = "Referências (N)", col = brewer.pal(n = 3, name = "Set3")[1], main = NULL)
 title("Referências bibliográficas, por ano de publicação", outer = TRUE)
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -1963,48 +1848,21 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 
 ### **Inativas**
 
-```{r estrutura-academica-inativa-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r estrutura-academica-inativa, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# disciplinas
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# read separate sheets
-disciplinas.raw.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2020 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2019 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2018 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2017 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2017.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2016 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2016.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2015 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2015.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2014 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2013 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw.2012 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx", sheet = "Disciplinas", col_types = c("text"))
-disciplinas.raw <- rbind(disciplinas.raw.2022, disciplinas.raw.2021, disciplinas.raw.2020, disciplinas.raw.2019, disciplinas.raw.2018, disciplinas.raw.2017, disciplinas.raw.2016, disciplinas.raw.2015, disciplinas.raw.2014, disciplinas.raw.2013, disciplinas.raw.2012)
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+disciplinas.raw <- sucupira.raw
 disciplinas.raw <- disciplinas.raw[!is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -2039,16 +1897,11 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 ```{r turmas-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width="100%"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
+# turmas
 sheet <- "Turmas"
-turmas.raw <- c()
-files.to.read <-
-  list.files("../PPGCR Unisuam/Sucupira/",
-             pattern = "xlsx",
-             full.names = TRUE)
-for (i in 1:length(files.to.read)) {
-  turmas.raw <-
-    rbind(turmas.raw, read_excel(files.to.read[i], sheet = sheet))
-}
+source("Scripts/read-xlsx-sucupira.R")
+
+turmas.raw <- sucupira.raw
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw <-
@@ -2104,40 +1957,24 @@ cat("  \n")
 
 #### **Disciplinas**
 
-```{r turmas-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r turmas-disciplinas-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# turmas
+sheet <- "Turmas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# read separate sheets
-turmas.2021 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2021.xlsx", sheet = "Turmas",  col_types = c("text"))
-turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", col_types = c("text"))
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
 # bind all sheets
-turmas.raw <- rbind(turmas.2021, turmas.2022)
+periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
+periodo <- as.character(seq(min(periodos), max(periodos)))
+turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
@@ -2168,7 +2005,6 @@ cat("  \n")
 legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
 legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
 cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2179,37 +2015,25 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 #### **Docentes**
 
-```{r estrutura-academica-2024-docentes, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r turmas-docentes-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# turmas
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# read separate sheets
-disciplinas.raw <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Disciplinas")
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# bind all sheets
+periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
+periodo <- as.character(seq(min(periodos), max(periodos)))
+disciplinas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
+
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
 disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
@@ -2223,29 +2047,16 @@ colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 table <- merge(table.msc, table.dsc, by="Disciplina", all.x = TRUE, all.y = TRUE)
 colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "Obrigatória (DA)", "CR (DA)", "CH (DA)")
 
-# print tables
-# print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+# turmas
+sheet <- "Turmas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# line break
-cat("  \n")
-cat("  \n")
-
-# layout(matrix(c(1,2,3), nrow = 1, byrow = TRUE), widths = c(0.4, 0.4, 0.2))
-# par(oma=c(1, 1, 2, 0.1), mar = c(1, 1, 2, 1))
-# # generate plot of total per course
-# pie(table(table.msc[, which(colnames(table.msc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.msc)), name = "Set3"), init.angle = 90, main = "Mestrado")
-# pie(table(table.dsc[, which(colnames(table.dsc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.dsc)), name = "Set3"), init.angle = 90, main = "Doutorado")
-# plot(0, type = 'n', axes = FALSE)
-# obrigatoria <- unique(disciplinas.raw$`Indicadora de disciplina obrigatória`)
-# obrigatoria[which(obrigatoria == "Sim")] <- "Obrigatória"
-# obrigatoria[which(obrigatoria == "Não")] <- "Eletiva"
-# legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria), name = "Set3"), box.lwd = 0, cex = 1)
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
-turmas.2022 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2022.xlsx", sheet = "Turmas", )
-# bind all sheets
-turmas.raw <- turmas.2022
-# replace full names by initials
+turmas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 
 # build a cross table DISCIPLINA vs. DOCENTE
 cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), initials(turmas.raw$`Nome do responsável`)))
@@ -2286,39 +2097,21 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 ```{r turmas-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# turmas
+sheet <- "Turmas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# read separate sheets
-turmas.2017 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2017.xlsx", sheet = "Turmas",  col_types = c("text"))
-turmas.2018 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2018.xlsx", sheet = "Turmas", col_types = c("text"))
-turmas.2019 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2019.xlsx", sheet = "Turmas", col_types = c("text"))
-turmas.2020 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2020.xlsx", sheet = "Turmas", col_types = c("text"))
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
 # bind all sheets
-turmas.raw <- rbind(turmas.2017, turmas.2018, turmas.2019, turmas.2020)
+periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
+periodo <- as.character(seq(min(periodos), max(periodos)))
+turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
@@ -2341,7 +2134,6 @@ cat("  \n")
 legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
 legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
 cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2354,40 +2146,21 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r turmas-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
+# load custom function
+source("Scripts/get-initials.R")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# turmas
+sheet <- "Turmas"
+source("Scripts/read-xlsx-sucupira.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
 
-# read separate sheets
-turmas.2013 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2013.xlsx", sheet = "Turmas", col_types = c("text"))
-turmas.2014 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2014.xlsx", sheet = "Turmas", col_types = c("text"))
-turmas.2015 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2015.xlsx", sheet = "Turmas", col_types = c("text"))
-turmas.2016 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2016.xlsx", sheet = "Turmas", col_types = c("text"))
 # bind all sheets
-turmas.raw <- rbind(turmas.2013, turmas.2014, turmas.2015, turmas.2016)
+periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
+periodo <- as.character(seq(min(periodos), max(periodos)))
+turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
@@ -2424,36 +2197,21 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 ```{r turmas-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# function to obtain the first letter of each word in a vector of strings
-initials <- function(names){
-	initials <- c()
-	for(j in 1:length(names)){
-	  names[j] <- gsub(" A ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" À ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" E ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NA ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DE ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" NO ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" DOS ", " ", names[j], fixed = TRUE)
-	  names[j] <- gsub(" EM ", " ", names[j], fixed = TRUE)
+# load custom function
+source("Scripts/get-initials.R")
 
-		names.temp <- c(" ", (unlist(strsplit(str_trim(str_trim(names[j], side = c("left")), side = c("right")), split = ""))))
-		initials.temp <- c()
-		for(i in 1:length(names.temp)){
-			if(names.temp[i] == " "){initials.temp <- paste(initials.temp, " ", names.temp[i + 1])}
-		}
-		initials.temp <- gsub(" ", "", initials.temp, fixed = TRUE)
-		initials <- c(initials, initials.temp)
-	}
-	return('initials' = initials)
-}
+# turmas
+sheet <- "Turmas"
+source("Scripts/read-xlsx-sucupira.R")
 
-# read separate sheets
-turmas.2012 <- read_excel("../PPGCR Unisuam/Sucupira/conferencia_programa_2012.xlsx", sheet = "Turmas", col_types = c("text"))
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
 # bind all sheets
-turmas.raw <- rbind(turmas.2012)
+periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
+periodo <- as.character(seq(min(periodos), max(periodos)))
+turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # build a cross table DISCIPLINA vs. ANO
 turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")

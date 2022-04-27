@@ -101,6 +101,8 @@ navbar:
           href: [producoes.html#bibliografica]
         - text: "Produção técnica"
           href: [producoes.html#tecnica]
+        - text: "Registros de protocolos"
+          href: [producoes.html#registros]
     - text: "Destaques"
       href: destaques.html
       menu:

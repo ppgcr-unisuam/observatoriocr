@@ -158,11 +158,11 @@ navbar:
       href: [area21.html]
   right:
     - text: ""
-      icon: "fa-info"
-      href: [sobre.html]
-    - text: ""
       icon: "fa-envelope"
       href: [mailto:arthur_sf@icloud.com]
+    - text: ""
+      icon: "fa-info"
+      href: [sobre.html]
     - text: ""
       icon: "fa-github"
       href: [https://github.com/rehab-tech/observatoriocr/]

@@ -103,6 +103,8 @@ navbar:
           href: [producoes.html#tecnica]
         - text: "Registros de protocolos"
           href: [producoes.html#registros]
+        - text: "Métricas"
+          href: [producoes.html#metricas]
     - text: "Destaques"
       href: destaques.html
       menu:
@@ -131,6 +133,8 @@ navbar:
           href: [impacto.html#impacto-tecnologico]
         - text: "Ações durante a pandemia"
           href: [impacto.html#acoes-pandemia]
+        - text: "Divulgação"
+          href: [impacto.html#divulgacao]
     - text: "Autoavaliação"
       href: autoavaliacao.html
       menu:
@@ -146,16 +150,11 @@ navbar:
           href: [autoavaliacao.html#pesquisa-egresso]
     - text: "Galeria"
       href: [galeria.html]
-    - text: "News"
-      href: [news.html]
     - text: "SSTCC"
       href: [https://sstcc.unisuam.edu.br/]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]
-    - text: ""
-      icon: "fa-link"
-      href: [fontes.html]
     - text: "21"
       href: [area21.html]
   right:

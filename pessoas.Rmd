@@ -97,12 +97,6 @@ source("Scripts/social-media-sharing.R")
 ```{r docentes-atual-perfil, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
 id2 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
@@ -129,6 +123,10 @@ for(i in 1:dim(docentes)[1]){
 
 ```
 
+*Fontes:* [**Publons**](https://publons.com)
+
+<br>
+
 ## **Coordenação** {.tabset #coordenacao}
 
 <!--script for generating HORIZONTAL LINE-->
@@ -138,12 +136,6 @@ for(i in 1:dim(docentes)[1]){
 
 ```{r coordenadores-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
@@ -193,12 +185,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 ```{r coordenadores-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
 id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
@@ -245,12 +231,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 ```{r coordenadores-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"
 id2 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento >= 2013
@@ -296,12 +276,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 ```{r coordenadores-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
@@ -363,13 +337,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 ```{r docentes-2024-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
@@ -443,13 +410,6 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2024-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2024 & docentes.raw$Descredenciamento == "Atual"
@@ -526,13 +486,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 ```{r docentes-2020-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
 id2 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento >= 2017
@@ -605,13 +558,6 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2020-tabela, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2020 & docentes.raw$Descredenciamento == "Atual"
@@ -687,13 +633,6 @@ print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_s
 
 ```{r docentes-2016-grafico, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
 
 docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2016 & docentes.raw$Descredenciamento == "Atual"

@@ -30,7 +30,7 @@ table.with.badges <-
       sep = ""
     )
     
-    # Add badges and links
+    # print table with DOI and Altmetric
     if (!is_empty(doi_sort)) {
       for (i in 1:dim(doi_sort)[1]) {
         # add bibliography info
@@ -122,9 +122,9 @@ table.with.badges <-
         cat("</tr>")
       }
     }
-    # print table with DOI but no Altmetric (== NA) (donut ?)
     
-    if (length(my_dois_works) != 0) {
+    # print table with DOI but no Altmetric (== NA) (donut ?)
+    if (!is_empty(my_dois_works)) {
       for (i in 1:dim(my_dois_works)[1]) {
         # add bibliography info
         cat("<tr><td valign=top>")
@@ -225,6 +225,7 @@ table.with.badges <-
         cat("</td></tr>")
       }
     }
+
     # end table
     cat("</table>")
     cat('\n\n<!-- -->\n\n')

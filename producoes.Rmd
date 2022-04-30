@@ -189,83 +189,6 @@ datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Preprints** {.tabset}
-
-<br>
-
-```{r preprints, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-all.dois <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.preprints",
-    col_types = c("text")
-  ))
-
-# Data cleaning
-all.dois <- all.dois[complete.cases(all.dois$DOI),]
-
-# get years
-anos <- rev(unique(all.dois$Publicado.em))
-
-for(ano in 1:length(anos)) {
-  # Filtra por período
-  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
-  # print tab header
-  cat('\n\n<!-- -->\n\n')
-  cat("#### **", anos[ano], "**", "\n", sep = "")
-
-  # Verifica se há DOIs no período
-  if (dim(dois)[1] == 0) {
-    cat('\n')
-    cat('*Sem produção para exibir no período*')
-    cat('\n')
-  } else {
-    # Step 5. Convert the doi column in your dataset to a list.
-    dois_list <- as.list(dois$DOI)
-    
-    # cria metadados para rastreio pelo Altmetric
-    dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
-    
-    # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
-    
-    # get data of papers without Altmetric from CrossRef
-    if (is_empty(no_altmetric_dois_list)) {
-      my_dois_works <- no_altmetric_dois_list
-    } else {
-      my_dois_works <-
-        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-        pluck("data")
-      # sort columns by title
-      if (length(my_dois_works) != 0) {
-        my_dois_works <-
-          my_dois_works[order(as.vector(my_dois_works$title)),]
-      }
-    }
-    
-    # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.SJR = FALSE,
-      show.Qualis = FALSE,
-      doi_sort,
-      my_dois_works,
-      scimago,
-      qualis
-    )
-  }
-}
-```
-
-<br>
-
 ### **Artigos completos em periódicos** {.tabset}
 
 <br>
@@ -409,6 +332,83 @@ for(ano in 1:length(anos)) {
       show.PlumX = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
+      doi_sort,
+      my_dois_works,
+      scimago,
+      qualis
+    )
+  }
+}
+```
+
+<br>
+
+### **Preprints** {.tabset}
+
+<br>
+
+```{r preprints, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+all.dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.preprints",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+all.dois <- all.dois[complete.cases(all.dois$DOI),]
+
+# get years
+anos <- rev(unique(all.dois$Publicado.em))
+
+for(ano in 1:length(anos)) {
+  # Filtra por período
+  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
+  # print tab header
+  cat('\n\n<!-- -->\n\n')
+  cat("#### **", anos[ano], "**", "\n", sep = "")
+
+  # Verifica se há DOIs no período
+  if (dim(dois)[1] == 0) {
+    cat('\n')
+    cat('*Sem produção para exibir no período*')
+    cat('\n')
+  } else {
+    # Step 5. Convert the doi column in your dataset to a list.
+    dois_list <- as.list(dois$DOI)
+    
+    # cria metadados para rastreio pelo Altmetric
+    dois_2_meta <- dois$DOI
+    source("scripts/altmetric-meta-from-dois.R")
+    
+    # roda o script para obter dados do Altmetric
+    source("scripts/altmetric-from-dois.R")
+    
+    # get data of papers without Altmetric from CrossRef
+    if (is_empty(no_altmetric_dois_list)) {
+      my_dois_works <- no_altmetric_dois_list
+    } else {
+      my_dois_works <-
+        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+        pluck("data")
+      # sort columns by title
+      if (length(my_dois_works) != 0) {
+        my_dois_works <-
+          my_dois_works[order(as.vector(my_dois_works$title)),]
+      }
+    }
+    
+    # print table of papers with/without badges
+    source("scripts/papers-with-badges.R")
+    table.with.badges(
+      show.Altmetric = TRUE,
+      show.Dimensions = TRUE,
+      show.PlumX = TRUE,
+      show.SJR = FALSE,
+      show.Qualis = FALSE,
       doi_sort,
       my_dois_works,
       scimago,
@@ -602,84 +602,6 @@ for(ano in 1:length(anos)) {
       show.PlumX = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_sort,
-      my_dois_works,
-      scimago,
-      qualis
-    )
-  }
-}
-```
-
-<br>
-
-### **Bancos de dados** {.tabset}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-```{r datasets, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-all.dois <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.datasets",
-    col_types = c("text")
-  ))
-
-# Data cleaning
-all.dois <- all.dois[complete.cases(all.dois$DOI),]
-
-# get years
-anos <- rev(unique(all.dois$Publicado.em))
-
-for(ano in 1:length(anos)) {
-  # Filtra por período
-  dois <- all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
-  # print tab header
-  cat('\n\n<!-- -->\n\n')
-  cat("#### **", anos[ano], "**", "\n", sep = "")
-
-  # Verifica se há DOIs no período
-  if (dim(dois)[1] == 0) {
-    cat('\n')
-    cat('*Sem produção para exibir no período*')
-    cat('\n')
-  } else {
-    # Step 5. Convert the doi column in your dataset to a list.
-    dois_list <- as.list(dois$DOI)
-    
-    # cria metadados para rastreio pelo Altmetric
-    dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
-    
-    # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
-    
-    # get data of papers without Altmetric from CrossRef
-    if (is_empty(no_altmetric_dois_list)) {
-      my_dois_works <- no_altmetric_dois_list
-    } else {
-      my_dois_works <-
-        rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-        pluck("data")
-      # sort columns by title
-      if (length(my_dois_works) != 0) {
-        my_dois_works <-
-          my_dois_works[order(as.vector(my_dois_works$title)),]
-      }
-    }
-    
-    # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.SJR = FALSE,
-      show.Qualis = FALSE,
       doi_sort,
       my_dois_works,
       scimago,

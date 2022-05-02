@@ -1815,7 +1815,7 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
+bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE))
 ```
@@ -1830,7 +1830,7 @@ datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrol
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-bibliografia.raw <- read_excel("../PPGCR Unisuam/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
+bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 bib.ano.raw <- bibliografia.raw$Referência
 bib.ano <- as.numeric(na.exclude(str_extract(bib.ano.raw, "[' '][2-2][0-9][0-9][0-9]")))

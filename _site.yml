@@ -118,6 +118,8 @@ navbar:
           href: [destaques.html#produtos-destaque]
         - text: "Representatividade"
           href: [destaques.html#representatividade]
+        - text: "Divulgação"
+          href: [destaques.html#divulgacao]
     - text: "Impacto"
       href: [impacto.html]
       menu:
@@ -133,8 +135,6 @@ navbar:
           href: [impacto.html#impacto-tecnologico]
         - text: "Ações durante a pandemia"
           href: [impacto.html#acoes-pandemia]
-        - text: "Divulgação"
-          href: [impacto.html#divulgacao]
     - text: "Autoavaliação"
       href: autoavaliacao.html
       menu:

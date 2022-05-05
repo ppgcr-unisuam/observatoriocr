@@ -674,6 +674,8 @@ if (dim(all.dois)[1] != 0) {
 }
 ```
 
+<br>
+
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
 <br>
@@ -761,6 +763,8 @@ if (dim(all.dois)[1] != 0) {
 }
 ```
 
+<br>
+
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
 <br>
@@ -847,6 +851,8 @@ if (dim(all.dois)[1] != 0) {
   cat('\n\n')
 }
 ```
+
+<br>
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 

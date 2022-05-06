@@ -4,66 +4,38 @@ title: Destaques
 output:
   html_document:
     toc: true
+    css:
+      - /CSS/logo-above-toc.css
+      - /CSS/narrow-margins.css
+      - /CSS/responsive.css
 ---
 
 <!--install and/or load all R packages-->
-```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = 'center',
+  results = "asis"
+)
 source("Scripts/all-required-packages.R")
 ```
 
-<!--script for computer/mobile devices-->
-```{css, echo=FALSE}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    body .main-container {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-      }
-    body {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-    }
-      section {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%)
-    }
-```
-
-<!--script for narrow margins-->
-<style type="text/css">
-div.main-container {
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-
-<!--script for inserting LOGO ABOVE THE TOC-->
-<script>
-  $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-</script>
-<style>
-#nav_logo {
-  width: 100%;
-  margin-top: 20px;
-}
-</style>
-
-<br>
-
 <!--script for sharing-->
 <p align="right">
-```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r share}
 home <- "rehab-tech.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R")
 ```
 </p>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
+```
 
 <br>
 
@@ -448,7 +420,7 @@ for(id in 1:length(orcids)) {
 
 <br>
 
-## **Divulgação** {#divulgacao}
+## **Divulgação** {.tabset #divulgacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -469,7 +441,7 @@ for(j in 1:length(tabs)){
   news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
   # replace the link by a tag
   for(i in 1:dim(news)[1]){
-    news[i,1] <- paste("## **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
+    news[i,1] <- paste("### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
     news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
   }
   
@@ -492,7 +464,6 @@ for(j in 1:length(tabs)){
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
-
 ```
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+<br>

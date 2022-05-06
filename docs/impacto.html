@@ -74,10 +74,9 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link rel="stylesheet" href="/CSS/responsive.css" type="text/css" />
-<link rel="stylesheet" href="/CSS/narrow-margins.css" type="text/css" />
 <link rel="stylesheet" href="/CSS/logo-above-toc.css" type="text/css" />
+<link rel="stylesheet" href="/CSS/narrow-margins.css" type="text/css" />
+<link rel="stylesheet" href="/CSS/responsive.css" type="text/css" />
 
 
 
@@ -620,59 +619,23 @@ function googleTranslateElementInit() {
 
 
 <!--install and/or load all R packages-->
+<!--script for sharing-->
+<p align="right">
+<em>Compartilhe</em>   <a href="https://twitter.com/share?url=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg></a> <a href="https://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg></a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+</p>
+<!--script for inserting LOGO ABOVE THE TOC-->
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
+</script>
 <!--read additional files-->
-<!--script for computer/mobile devices-->
-<style type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    body .main-container {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-      }
-    body {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-    }
-      section {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%)
-    }
-</style>
 <!--script for generating ALTMETRIC badges-->
 <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 <!--script for generating multiple DIMENSIONS badges-->
 <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
 <!--script for generating multiple PLUMX badges-->
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
-<!--script for narrow margins-->
-<style type="text/css">
-div.main-container {
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<!--script for inserting LOGO ABOVE THE TOC-->
-<script>
-  $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-</script>
-<style>
-#nav_logo {
-  width: 100%;
-  margin-top: 20px;
-}
-</style>
-<p><br></p>
-<!--script for sharing-->
-<p align="right">
-<em>Compartilhe</em>   <a href="https://twitter.com/share?url=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/></svg></a> <a href="https://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg></a> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
-</p>
 <p><br></p>
 <div id="impacto-educacional" class="section level2">
 <h2><strong>Impacto educacional</strong></h2>
@@ -1044,24 +1007,24 @@ Resolução Reitoria N° 005-2005.pdf
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 <div id="projetos-de-pesquisa" class="section level3">
 <h3><strong>Projetos de pesquisa</strong></h3>
-<div id="htmlwidget-cd21abe97e2618d631fa" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd21abe97e2618d631fa">{"x":{"filter":"none","vertical":false,"data":[["AGNALDO JOSE LOPES","LUIS FELIPE DA FONSECA REIS"],["Aspectos funcionais e clínicos imediatos, agudos e crônicos em pessoas com novo coronavírus (covid-19)","Intervenções em pessoas com infecção aguda pelo sars-cov-2 e estratégias reabilitativas nos sobreviventes da covid-19"],["Avaliação Funcional Em Reabilitação","Abordagem Terapêutica Em Reabilitação"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nome do Membro Responsável<\/th>\n      <th>Nome do Projeto de Pesquisa<\/th>\n      <th>Linha de Pesquisa<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a9b886207c71268ba503" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a9b886207c71268ba503">{"x":{"filter":"none","vertical":false,"data":[["AGNALDO JOSE LOPES","LUIS FELIPE DA FONSECA REIS"],["Aspectos funcionais e clínicos imediatos, agudos e crônicos em pessoas com novo coronavírus (covid-19)","Intervenções em pessoas com infecção aguda pelo sars-cov-2 e estratégias reabilitativas nos sobreviventes da covid-19"],["Avaliação Funcional Em Reabilitação","Abordagem Terapêutica Em Reabilitação"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nome do Membro Responsável<\/th>\n      <th>Nome do Projeto de Pesquisa<\/th>\n      <th>Linha de Pesquisa<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p><em>Fontes:</em> <a href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma Sucupira</strong></a></p>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
 <div id="financiadores" class="section level3">
 <h3><strong>Financiadores</strong></h3>
-<div id="htmlwidget-96efceed3ac90957dade" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-96efceed3ac90957dade">{"x":{"filter":"none","vertical":false,"data":[[2021,2021,2021],["FAPERJ","FAPERJ","FAPERJ"],["2021-1","Edital N.º 27","2021-2"],["E-26/202.177/2021","Em processamento","E-26/200.929/2022"],["Avaliação do equilíbrio postural e sua associação com qualidade de vida e funcionalidade em indivíduos pós- período de contaminação pela COVID- 19","Fatores preditivos e autopercepção sobre dor musculoesquelética em indivíduos com alta hospitalar após COVID-19","Uso da oscilometria de impulso e da reabilitação pulmonar domiciliar no acompanhamento dos sobreviventes da COVID-19 na Zona da Leopoldina"],["Bolsa de Iniciação Científica (IC)","Auxílio à Pesquisa (APQ1)","Cientista do Nosso Estado (CNE)"],[null,"<a href=\"http://www.faperj.br/?id=781.3.9\" target=\"_blank\">↗️<\/a>","<a href=\"http://www.faperj.br/?id=1003.3.9\" target=\"_blank\">↗️<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Ano<\/th>\n      <th>Agência<\/th>\n      <th>Edital<\/th>\n      <th>Processo No.<\/th>\n      <th>Título do projeto<\/th>\n      <th>Programa<\/th>\n      <th>Abrir<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4f7df0fd3d61554e7e91" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4f7df0fd3d61554e7e91">{"x":{"filter":"none","vertical":false,"data":[[2021,2021,2021],["FAPERJ","FAPERJ","FAPERJ"],["2021-1","Edital N.º 27","2021-2"],["E-26/202.177/2021","Em processamento","E-26/200.929/2022"],["Avaliação do equilíbrio postural e sua associação com qualidade de vida e funcionalidade em indivíduos pós- período de contaminação pela COVID- 19","Fatores preditivos e autopercepção sobre dor musculoesquelética em indivíduos com alta hospitalar após COVID-19","Uso da oscilometria de impulso e da reabilitação pulmonar domiciliar no acompanhamento dos sobreviventes da COVID-19 na Zona da Leopoldina"],["Bolsa de Iniciação Científica (IC)","Auxílio à Pesquisa (APQ1)","Cientista do Nosso Estado (CNE)"],[null,"<a href=\"http://www.faperj.br/?id=781.3.9\" target=\"_blank\">↗️<\/a>","<a href=\"http://www.faperj.br/?id=1003.3.9\" target=\"_blank\">↗️<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Ano<\/th>\n      <th>Agência<\/th>\n      <th>Edital<\/th>\n      <th>Processo No.<\/th>\n      <th>Título do projeto<\/th>\n      <th>Programa<\/th>\n      <th>Abrir<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p><em>Fontes:</em> <a href="https://www.gov.br/capes/pt-br"><strong>CAPES</strong></a>, <a href="https://www.gov.br/cnpq/pt-br"><strong>CNPq</strong></a>, <a href="http://www.faperj.br"><strong>FAPERJ</strong></a>, <strong>UNISUAM</strong></p>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
 <div id="trabalhos-de-conclusão-de-curso" class="section level3">
 <h3><strong>Trabalhos de conclusão de curso</strong></h3>
-<div id="htmlwidget-11ed3be613e5455dde33" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-11ed3be613e5455dde33">{"x":{"filter":"none","vertical":false,"data":[["2021","2021","2021","2021","2021","2022","2022","2022","2022","2022"],["Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação"],["Associação Entre Características Funcionais Basais E Intervenções Fisioterapêuticas Com Mortalidade Por Covid-19 Em Pacientes Com Doenças Cardiovasculares Internados Em Unidade De Terapia Intensiva","Associações Entre Capacidade De Imaginação Motora E Medo De Cair Em Idosos Confinados Pela Pandemia De Covid-19 - Um Estudo Transversal","Disfunções Musculoesqueléticas Estresse Emocional Em Professores Do Ensino Público Durante A Pandemia De Covid-19","Estado Funcional, Capacidade Funcional E Qualidade De Vida No Pós-Covid-19 Em Adultos Com Doença  Pulmonar Obstrutiva Crônica","Presença De Dor E Avaliação Do Estado De Saúde  Geral Em Sobreviventes Da Covid-19","Aspectos Psicológicos Em Pacientes Pós-Covid-19 Atendidos Em Um Centro De Reabilitação De Campina Grande Do Sul","Avaliação Do Balanço Postural E Sua Associação Com Qualidade De Vida E Funcionalidade Em Indivíduos Pós-Período De Contaminação Pela Covid-19","Caracterização Da Funcionalidade De Indivíduos Com Covid-19 Hospitalizados Em Unidade Semi-Intensiva","Efeito Agudo Da Estimulação Transcraniana Por Corrente Contínua (Etcc) Sobre O Humor Em Indivíduos Com Covid-19: Um Ensaio Clínico Randomizado Controlado","Efeitos De Uma Única Sessão De Estimulação Transcraniana Por Corrente Contínua (Etcc) Na Função Cognitiva De Pacientes Com Covid-19: Um Ensaio Clínico Randomizado"],["Chiara Andrade Silva","Aline Paloma Duarte De Macedo","Vanessa Rodrigues Gomes Meier","Patricia Oliveira Da Silva","Consuelo Presendo Bet","Wander Wilson Campanha","Kennedy Cristian Alves De Sousa","Thiago Moreira Xarles","Erivelton De Aguiar Ferreira","Jacqueline Cunha Inacio"],["Arthur De Sa Ferreira","Thiago Lemos De Carvalho","Renato Santos De Almeida","Arthur De Sa Ferreira","Renato Santos De Almeida","Thiago Lemos De Carvalho","Agnaldo Jose Lopes","Arthur De Sa Ferreira","Thiago Lemos De Carvalho","Thiago Lemos De Carvalho"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Ano<\/th>\n      <th>Nível<\/th>\n      <th>Título<\/th>\n      <th>Autor<\/th>\n      <th>Orientador<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3bfc06ebd6ba9b315cd2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3bfc06ebd6ba9b315cd2">{"x":{"filter":"none","vertical":false,"data":[["2021","2021","2021","2021","2021","2022","2022","2022","2022","2022"],["Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação","Dissertação"],["Associação Entre Características Funcionais Basais E Intervenções Fisioterapêuticas Com Mortalidade Por Covid-19 Em Pacientes Com Doenças Cardiovasculares Internados Em Unidade De Terapia Intensiva","Associações Entre Capacidade De Imaginação Motora E Medo De Cair Em Idosos Confinados Pela Pandemia De Covid-19 - Um Estudo Transversal","Disfunções Musculoesqueléticas Estresse Emocional Em Professores Do Ensino Público Durante A Pandemia De Covid-19","Estado Funcional, Capacidade Funcional E Qualidade De Vida No Pós-Covid-19 Em Adultos Com Doença  Pulmonar Obstrutiva Crônica","Presença De Dor E Avaliação Do Estado De Saúde  Geral Em Sobreviventes Da Covid-19","Aspectos Psicológicos Em Pacientes Pós-Covid-19 Atendidos Em Um Centro De Reabilitação De Campina Grande Do Sul","Avaliação Do Balanço Postural E Sua Associação Com Qualidade De Vida E Funcionalidade Em Indivíduos Pós-Período De Contaminação Pela Covid-19","Caracterização Da Funcionalidade De Indivíduos Com Covid-19 Hospitalizados Em Unidade Semi-Intensiva","Efeito Agudo Da Estimulação Transcraniana Por Corrente Contínua (Etcc) Sobre O Humor Em Indivíduos Com Covid-19: Um Ensaio Clínico Randomizado Controlado","Efeitos De Uma Única Sessão De Estimulação Transcraniana Por Corrente Contínua (Etcc) Na Função Cognitiva De Pacientes Com Covid-19: Um Ensaio Clínico Randomizado"],["Chiara Andrade Silva","Aline Paloma Duarte De Macedo","Vanessa Rodrigues Gomes Meier","Patricia Oliveira Da Silva","Consuelo Presendo Bet","Wander Wilson Campanha","Kennedy Cristian Alves De Sousa","Thiago Moreira Xarles","Erivelton De Aguiar Ferreira","Jacqueline Cunha Inacio"],["Arthur De Sa Ferreira","Thiago Lemos De Carvalho","Renato Santos De Almeida","Arthur De Sa Ferreira","Renato Santos De Almeida","Thiago Lemos De Carvalho","Agnaldo Jose Lopes","Arthur De Sa Ferreira","Thiago Lemos De Carvalho","Thiago Lemos De Carvalho"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Ano<\/th>\n      <th>Nível<\/th>\n      <th>Título<\/th>\n      <th>Autor<\/th>\n      <th>Orientador<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrolX":false,"dom":"ftip","searchHighlight":true,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 <p><em>Fontes:</em> <a href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma Sucupira</strong></a></p>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>

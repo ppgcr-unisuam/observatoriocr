@@ -4,66 +4,38 @@ title: Pessoas
 output:
   html_document:
     toc: true
+    css:
+      - /CSS/logo-above-toc.css
+      - /CSS/narrow-margins.css
+      - /CSS/responsive.css
 ---
 
 <!--install and/or load all R packages-->
-```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = 'center',
+  results = "asis"
+)
 source("Scripts/all-required-packages.R")
 ```
 
-<!--script for computer/mobile devices-->
-```{css, echo=FALSE}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    body .main-container {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-      }
-    body {
-      max-width: 1280px !important;
-      width: 80%;
-      margin: auto;
-    }
-      section {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%)
-    }
-```
-
-<!--script for narrow margins-->
-<style type="text/css">
-div.main-container {
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-
-<!--script for inserting LOGO ABOVE THE TOC-->
-<script>
-  $(document).ready(function() {
-    $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-</script>
-<style>
-#nav_logo {
-  width: 100%;
-  margin-top: 20px;
-}
-</style>
-
-<br>
-
 <!--script for sharing-->
 <p align="right">
-```{r share, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r share}
 home <- "rehab-tech.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R")
 ```
 </p>
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
+```
 
 <br>
 
@@ -1452,19 +1424,6 @@ multiplot(plotlist = maps, cols = dim(periodos)[1])
 ```{r historico-egressos-dsc-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
-
-
-
-
-
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2021 & discentes.raw$`Ano Titulação` <= 2024, ]
@@ -1490,19 +1449,6 @@ if(dim(doutores)[1] != 0){
 
 ```{r historico-egressos-msc-2024, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
-
-
-
-
 
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
@@ -1532,19 +1478,6 @@ if(dim(mestres)[1] != 0){
 ```{r historico-egressos-dsc-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
-
-
-
-
-
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2017 & discentes.raw$`Ano Titulação` <= 2020, ]
@@ -1570,19 +1503,6 @@ if(dim(doutores)[1] != 0){
 
 ```{r historico-egressos-msc-2020, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
-
-
-
-
 
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
@@ -1612,19 +1532,6 @@ if(dim(mestres)[1] != 0){
 ```{r historico-egressos-dsc-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
-
-
-
-
-
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2013 & discentes.raw$`Ano Titulação` <= 2016, ]
@@ -1650,19 +1557,6 @@ if(dim(doutores)[1] != 0){
 
 ```{r historico-egressos-msc-2016, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
-
-
-
-
 
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
@@ -1692,19 +1586,6 @@ if(dim(mestres)[1] != 0){
 ```{r historico-egressos-dsc-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
-
-
-
-
-
-
-
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2010 & discentes.raw$`Ano Titulação` <= 2012, ]
@@ -1730,19 +1611,6 @@ if(dim(doutores)[1] != 0){
 
 ```{r historico-egressos-msc-2012, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
-
-
-
-
-
-
 
 discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
@@ -1779,12 +1647,6 @@ O PPGCR possui 4 grupos de pesquisa cadastrados no Diretório de Grupos de Pesqu
 ```{r grupos-de-pesquisa-ativos, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
 grupos.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
 
 # print tables
@@ -1800,12 +1662,6 @@ print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% k
 
 ```{r grupos-de-pesquisa-membros, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
 
 membros.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "DGP")
 

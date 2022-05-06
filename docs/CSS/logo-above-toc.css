@@ -1,10 +1,4 @@
 <!--script for inserting LOGO ABOVE THE TOC-->
-<script>
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/PPGCR.png"></div>');
-  });
-</script>
-
 #nav_logo {
   width: 100%;
   margin-top: 1.25em;

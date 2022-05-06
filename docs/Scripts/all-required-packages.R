@@ -10,6 +10,7 @@ packs <-
     "anytime",
     "bsplus",
     "cowplot",
+    "details",
     "dplyr",
     "DT",
     "fontawesome",

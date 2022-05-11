@@ -7,12 +7,21 @@ output:
 ---
 
 <!--install and/or load all R packages-->
-```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = 'center',
+  results = "asis",
+  include = TRUE,
+  out.width = "100%"
+)
 source("Scripts/all-required-packages.R")
 ```
 
 <!--read additional files-->
-```{r scimago-qualis, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
+```{r scimago-qualis}
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
   read.csv(
@@ -36,7 +45,7 @@ qualis <-
 <!--custom CSS scripts for ALL PAGES-->
 
 <!--script for hover effect on table-->
-```{css, echo = FALSE}
+```{css}
 .table-hover > tbody > tr:hover { 
   background-color: #18BC9C;
   }
@@ -45,7 +54,7 @@ qualis <-
 <!--custom CSS scripts for THIS PAGE ONLY-->
 
 <!--script for background color-->
-```{css, echo = FALSE}
+```{css}
 body {
   background-color: #2C3E50 !important;
   color: white;
@@ -53,7 +62,7 @@ body {
 ```
 
 <!--script for centering titles-->
-```{css, echo = FALSE}
+```{css}
 h1.title {
   text-align: center;
   font-weight: bold;
@@ -73,7 +82,7 @@ h3 {
 ```
 
 <!--script for removing background shading of carousel controls-->
-```{css, echo = FALSE}
+```{css}
 .carousel-control.left, .carousel-control.right {
    background-image:none !important;
    filter:none !important;
@@ -90,7 +99,7 @@ h3 {
 
 <br>
 
-```{r index-text-1, include = TRUE, echo = FALSE, warning = FALSE, message = TRUE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r index-text-1}
 cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p>')
 ```
 
@@ -100,7 +109,7 @@ cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p
 
 <br>
 
-```{r sintese-coerencia, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-coerencia, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos
@@ -233,7 +242,7 @@ summ.data <- summ.coerencia
 source("Scripts/plot-summaries.R")
 ```
 
-```{r sintese-coerencia-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-coerencia-carousel}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -250,7 +259,7 @@ bs_carousel(id = "coerencia-carousel",
 
 <br>
 
-```{r sintese-temas, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-temas, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # file path to save the wordclouds
@@ -297,7 +306,7 @@ bs_carousel(id = "temas-carouse",
 
 <br>
 
-```{r sintese-projetos, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-projetos, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos - membros
@@ -427,7 +436,7 @@ summ.data <- summ.table.projetos
 source("Scripts/plot-summaries.R")
 ```
 
-```{r sintese-projetos-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-projetos-carousel}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -445,7 +454,7 @@ bs_carousel(id = "projetos-carousel",
 
 <br>
 
-```{r sintese-financiadores, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-financiadores, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 options("scipen" = 100, "digits" = 0)
@@ -691,7 +700,7 @@ summ.data <- summ.table.financiadores
 source("Scripts/plot-summaries.R")
 ```
 
-```{r sintese-financiadores-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-financiadores-carousel}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -712,7 +721,7 @@ bs_carousel(id = "financiadores-carousel",
 
 <br>
 
-```{r sintese-producao, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-producao, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # estratos Qualis
@@ -1066,7 +1075,7 @@ summ.data <- summ.table.producao
 source("Scripts/plot-summaries.R")
 ```
 
-```{r sintese-producao-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-producao-carousel}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -1088,7 +1097,7 @@ bs_carousel(id = "producao-carousel",
 
 <br>
 
-```{r sintese-pessoal, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.widt = "100%"}
+```{r sintese-pessoal, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # reading PPG data
@@ -1426,7 +1435,7 @@ summ.data <- summ.table.pessoal
 source("Scripts/plot-summaries.R")
 ```
 
-```{r sintese-pessoal-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-pessoal-carousel}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # carousel
@@ -1446,7 +1455,7 @@ bs_carousel(id = "pessoal-carousel",
 
 <br>
 
-```{r sintese-rede, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "hide", out.width = "100%"}
+```{r sintese-rede, include = FALSE}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # projetos

@@ -121,7 +121,7 @@ $(document).ready(function() {
 
 #### **Atenção e visibilidade^1,2,3^**
 
-```{r artigos-destaque-visibilidade, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+```{r artigos-destaque-visibilidade}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read SCImago csv file (download from https://www.scimagojr.com)
@@ -215,7 +215,7 @@ table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TR
 
 #### **Prestígio do periódico^4,5^**
 
-```{r artigos-destaque-prestigio, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+```{r artigos-destaque-prestigio}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read SCImago csv file (download from https://www.scimagojr.com)
@@ -325,6 +325,52 @@ table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TR
 <!--script for generating multiple PLUMX badges-->
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
 
+## **Prêmios** {.tabset #premios}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r premios}
+options(knitr.kable.NA = '--', knitr.table.format = "html")
+
+# read separate sheets
+file.path <- "PPG/Prêmios.xlsx"
+tabs <- excel_sheets(file.path)
+topics <- c()
+premios.list <- vector(mode = "list", length = length(tabs))
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  premios <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
+  # replace the link by a tag
+  for(i in 1:dim(premios)[1]){
+    premios[i,1] <- paste("### **", as.character(as.Date(as.numeric(premios[i,1]), origin = "1899-12-30")), "**", sep = "")
+    premios[i,3] <- paste("[↗️](", premios[i,3], '){target="_blank"}', sep = "")
+  }
+  
+  # drop date column
+  premios <- premios[, -1]
+  # store data to print table
+  premios.list[[j]] <- premios
+  
+  # store data to plot wordcloud
+  topics <- rbind(topics, premios[i,1])
+}
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", tabs[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  cat('<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">')
+  print(kable(premios.list[[j]], align = c("l", rep("c", ncol(premios)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
+  cat('\n\n<!-- -->\n\n')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+}
+```
+
+<br>
+
 ## **Representatividade** {#representatividade}
 
 <!--script for generating HORIZONTAL LINE-->
@@ -380,7 +426,7 @@ table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TR
 
 <br>
 
-```{r revisores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r revisores}
 
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
@@ -427,7 +473,7 @@ for(id in 1:length(orcids)) {
 
 <br>
 
-```{r news, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
+```{r news}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets

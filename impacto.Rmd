@@ -318,14 +318,14 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 
 <br>
 
-## **Impacto sociocultural** {#impacto-sociocultural} {.tabset}
+## **Impacto sociocultural** {#impacto-sociocultural .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
 <br>
 
-### **Bolsas**
+### **Cotas de bolsas**
 
 <br>
 
@@ -341,6 +341,29 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 
 <br>
 
+### **Bolsistas**
+
+<br>
+
+*Em construção*
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Dissertações e teses financiadas**
+
+<br>
+
+*Em construção*
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
 
 ### **Minha história junto à CAPES**
 

@@ -97,8 +97,6 @@ O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-06
 ### **Dados cadastrais**
 
 ```{r apresentacao}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 dados.do.programa.raw <-
   read_excel("Sucupira/Dados Cadastrais.xlsx",
@@ -122,7 +120,7 @@ for (i in 1:dim(endereco.raw)[1]) {
 }
 
 # print tables
-table <- unname(rbind(dados.do.programa.raw, endereco.raw))
+table <- rbind(dados.do.programa.raw, endereco.raw)
 
 print(
   kable(table, align = c("l", rep("c", ncol(
@@ -144,8 +142,6 @@ print(
 ### **2020-2017**
 
 ```{r documentos-historicos-2020}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 quadrienal2017.raw <-
   read_excel("PPG/Documentos.xlsx",
@@ -177,8 +173,6 @@ print(
 ### **2016-2013**
 
 ```{r documentos-historicos-2016}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 quadrienal2013.raw <-
   read_excel("PPG/Documentos.xlsx",
@@ -210,8 +204,6 @@ print(
 ### **2012-2010**
 
 ```{r documentos-historicos-2012}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 trienal2010.raw <-
   read_excel("PPG/Documentos.xlsx",
@@ -243,8 +235,6 @@ print(
 ### **Pré-2010**
 
 ```{r documentos-historicos-2010}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 historico.raw <-
   read_excel("PPG/Documentos.xlsx",
@@ -346,8 +336,6 @@ O PPGCR-UNISUAM organiza sua ÁREA DE CONCENTRAÇÃO (AC), LINHAS DE PESQUISA (L
 ### **Atual**
 
 ```{r area-concetracao}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 area.raw <-
   read_excel("Sucupira/Dados Cadastrais.xlsx",
              sheet = "AC",
@@ -375,8 +363,6 @@ print(
 ### **Inativas**
 
 ```{r area-concetracao-inativas}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 areas.raw <-
   read_excel("Sucupira/Dados Cadastrais.xlsx",
              sheet = "AC",
@@ -423,8 +409,6 @@ A partir desta AC são derivadas as 3 LP vigentes: ABORDAGEM TERAPÊUTICA EM REA
 ### **Atual**
 
 ```{r linhas-de-pesquisa-atual}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 linhas.raw <-
   read_excel("Sucupira/Dados Cadastrais.xlsx",
              sheet = "LP",
@@ -453,8 +437,6 @@ print(
 ### **Inativas**
 
 ```{r linhas-de-pesquisa-inativas}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 linhas.raw <-
   read_excel("Sucupira/Dados Cadastrais.xlsx",
              sheet = "LP",
@@ -503,8 +485,6 @@ Os docentes vinculados ao PPGCR são orientados a coordenar até 2 PP institucio
 #### **Figura 4**
 
 ```{r projetos-de-pesquisa-2024-grafico}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -578,8 +558,6 @@ title("Projetos de Pesquisa", outer = TRUE)
 #### **Tabela 2**
 
 ```{r projetos-de-pesquisa-2024-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -655,8 +633,6 @@ cat("  \n")
 <br>
 
 ```{r projetos-de-pesquisa-2024-lista}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -692,8 +668,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 #### **Figura 5**
 
 ```{r projetos-de-pesquisa-2020-grafic}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -767,8 +741,6 @@ title("Projetos de Pesquisa", outer = TRUE)
 #### **Tabela 3**
 
 ```{r projetos-de-pesquisa-2020-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -844,8 +816,6 @@ cat("  \n")
 <br>
 
 ```{r projetos-de-pesquisa-2020-lista}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -883,8 +853,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 #### **Figura 6**
 
 ```{r projetos-de-pesquisa-2016-grafico}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")

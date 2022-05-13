@@ -362,7 +362,6 @@ for(j in 1:length(tabs)){
   cat('\n\n<!-- -->\n\n')
   cat("### **", tabs[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
-  cat('<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">')
   print(kable(premios.list[[j]], align = c("l", rep("c", ncol(premios)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
@@ -466,18 +465,20 @@ for(id in 1:length(orcids)) {
 
 <br>
 
-## **Divulgação** {.tabset #divulgacao}
+## **Divulgação** {#divulgacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
 <br>
 
-```{r news}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
+### **Blog UNISUAM** {.tabset}
 
+<br>
+
+```{r blogs-unisuam}
 # read separate sheets
-file.path <- "../PPGCR Unisuam/News.xlsx"
+file.path <- "../PPGCR Unisuam/Blog_unisuam.xlsx"
 tabs <- excel_sheets(file.path)
 topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))
@@ -487,7 +488,7 @@ for(j in 1:length(tabs)){
   news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
   # replace the link by a tag
   for(i in 1:dim(news)[1]){
-    news[i,1] <- paste("### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
+    news[i,1] <- paste("#### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
     news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
   }
   
@@ -503,13 +504,71 @@ for(j in 1:length(tabs)){
 # iterate across sheets
 for(j in 1:length(tabs)){
   cat('\n\n<!-- -->\n\n')
-  cat("### **", tabs[j], "**", "\n", sep = "")
+  cat("#### **", tabs[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
-  cat('<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">')
   print(kable(news.list[[j]], align = c("l", rep("c", ncol(news)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
+
+<br>
+
+### **Blogs externos** {.tabset}
+
+<br>
+
+```{r blogs-externos}
+# read separate sheets
+file.path <- "../PPGCR Unisuam/Blog_externos.xlsx"
+tabs <- excel_sheets(file.path)
+topics <- c()
+news.list <- vector(mode = "list", length = length(tabs))
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
+  # replace the link by a tag
+  for(i in 1:dim(news)[1]){
+    news[i,1] <- paste("#### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
+    news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
+  }
+  
+  # drop date column
+  news <- news[, -1]
+  # store data to print table
+  news.list[[j]] <- news
+  
+  # store data to plot wordcloud
+  topics <- rbind(topics, news[i,1])
+}
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  cat('\n\n<!-- -->\n\n')
+  cat("#### **", tabs[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  print(kable(news.list[[j]], align = c("l", rep("c", ncol(news)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
+  cat('\n\n<!-- -->\n\n')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+}
+```
+
+<br>
+
+### **Podcasts** {.tabset}
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/khl3Jgfsag8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>

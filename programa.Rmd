@@ -19,7 +19,9 @@ knitr::opts_chunk$set(
   fig.align = 'center',
   results = "asis",
   include = TRUE,
-  out.width = "100%"
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
 ```

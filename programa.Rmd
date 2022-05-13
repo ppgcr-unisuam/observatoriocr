@@ -120,7 +120,7 @@ for (i in 1:dim(endereco.raw)[1]) {
 }
 
 # print tables
-table <- rbind(dados.do.programa.raw, endereco.raw)
+table <- unname(as.data.frame(rbind(dados.do.programa.raw, endereco.raw)))
 
 print(
   kable(table, align = c("l", rep("c", ncol(

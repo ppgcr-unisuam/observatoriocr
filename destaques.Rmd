@@ -478,7 +478,7 @@ for(id in 1:length(orcids)) {
 
 ```{r blogs-unisuam}
 # read separate sheets
-file.path <- "../PPGCR Unisuam/Blog_unisuam.xlsx"
+file.path <- "PPG/Blog_unisuam.xlsx"
 tabs <- excel_sheets(file.path)
 topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))
@@ -520,7 +520,7 @@ for(j in 1:length(tabs)){
 
 ```{r blogs-externos}
 # read separate sheets
-file.path <- "../PPGCR Unisuam/Blog_externos.xlsx"
+file.path <- "PPG/Blog_externos.xlsx"
 tabs <- excel_sheets(file.path)
 topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))

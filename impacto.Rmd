@@ -265,12 +265,6 @@ qualis <-
 ```{r cep-vigentes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
-# read packages
-
-
-
-
-
 # read separate sheets
 vigentes.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Vigentes", col_types = c("text"))
 

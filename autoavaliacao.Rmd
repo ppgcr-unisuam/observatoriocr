@@ -45,13 +45,9 @@ $(document).ready(function() {
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
 ```{r notas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
 # create a new code chunk and then use the PACKUP add-in to generate this code with all the required libraries for this Rmd
-
-
-
 periodos.raw <-
-  read_excel("../PPGCR Unisuam/Autoavaliação/Notas.xlsx", sheet = "Períodos")
+  read_excel("PPG/Notas.xlsx", sheet = "Períodos")
 
 par(
   oma = c(2, 0.1, 2, 0.1),

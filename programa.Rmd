@@ -2286,7 +2286,7 @@ knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-vigentes.raw <- read_excel("../PPGCR Unisuam/Convênios.xlsx", sheet = "CEFAN", col_types = c("text"))
+vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "CEFAN", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(vigentes.raw)[1]){
@@ -2313,7 +2313,7 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 # read separate sheets
-vigentes.raw <- read_excel("../PPGCR Unisuam/Convênios.xlsx", sheet = "APB", col_types = c("text"))
+vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "APB", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(vigentes.raw)[1]){
@@ -2397,9 +2397,49 @@ for(i in 1:dim(interinstitucional.raw)[1]){
 
 # print table
 print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
+
+## **Internacionalização** {.tabset #internacional}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r internacional}
+# read separate sheets
+file.path <- "PPG/Internacionalização.xlsx"
+tabs <- excel_sheets(file.path)
+topics <- c()
+news.list <- vector(mode = "list", length = length(tabs))
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
+  # replace the link by a tag
+  for(i in 1:dim(news)[1]){
+    news[i,1] <- paste("### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
+    news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
+  }
+  
+  # drop date column
+  news <- news[, -1]
+  # store data to print table
+  news.list[[j]] <- news
+  
+  # store data to plot wordcloud
+  topics <- rbind(topics, news[i,1])
+}
+
+# iterate across sheets
+for(j in 1:length(tabs)){
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", tabs[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  print(kable(news.list[[j]], align = c("l", rep("c", ncol(news)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
+  cat('\n\n<!-- -->\n\n')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+}
+```

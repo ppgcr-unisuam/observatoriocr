@@ -22,6 +22,28 @@ knitr::opts_chunk$set(
 source("Scripts/all-required-packages.R")
 ```
 
+<!--read additional files-->
+```{r scimago-qualis}
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2021.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+```
+
 <!--script for sharing-->
 <p align="right">
 ```{r share}
@@ -122,27 +144,6 @@ $(document).ready(function() {
 #### **Atenção e visibilidade^1,2,3^**
 
 ```{r artigos-destaque-visibilidade}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2020.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
-
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 # read data
 artigos <-
@@ -216,27 +217,6 @@ table.with.badges(show.Altmetric = TRUE, show.Dimensions = TRUE, show.PlumX = TR
 #### **Prestígio do periódico^4,5^**
 
 ```{r artigos-destaque-prestigio}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2020.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file (donwload from https://www.scimagojr.com)
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
-
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 # read data
 artigos <-
@@ -426,18 +406,6 @@ for(j in 1:length(tabs)){
 <br>
 
 ```{r revisores}
-
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2020.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R")

@@ -42,7 +42,7 @@ $(document).ready(function() {
 # read SCImago csv file (download from https://www.scimagojr.com)
 scimago <-
   read.csv(
-    "SJR/scimagojr 2020.csv",
+    "SJR/scimagojr 2021.csv",
     header = TRUE,
     sep = ";",
     quote = "\"",
@@ -50,7 +50,7 @@ scimago <-
     fill = TRUE
   )
 
-# read QUALIS xlsx file (download from https://www.scimagojr.com)
+# read QUALIS xlsx file
 qualis <-
   data.frame(read_excel(
     "Qualis/QUALIS Referência 2017-2018.xlsx",

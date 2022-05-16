@@ -41,6 +41,28 @@ $(document).ready(function() {
   });
 ```
 
+<!--read additional files-->
+```{r scimago-qualis}
+# read SCImago csv file (download from https://www.scimagojr.com)
+scimago <-
+  read.csv(
+    "SJR/scimagojr 2021.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "\"",
+    dec = ",",
+    fill = TRUE
+  )
+
+# read QUALIS xlsx file
+qualis <-
+  data.frame(read_excel(
+    "Qualis/QUALIS Referência 2017-2018.xlsx",
+    sheet = 1,
+    col_types = c("text")
+  ))
+```
+
 <br>
 
 ## **Institucional** {#institucional}

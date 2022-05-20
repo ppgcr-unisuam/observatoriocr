@@ -112,8 +112,6 @@ cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p
 <br>
 
 ```{r sintese-coerencia, include = FALSE}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos
 sheet <- "Projetos"
 source("Scripts/read-xlsx-sucupira.R")
@@ -245,8 +243,6 @@ source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-coerencia-carousel}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # carousel
 bs_carousel(id = "coerencia-carousel",
             use_indicators = FALSE,
@@ -262,8 +258,6 @@ bs_carousel(id = "coerencia-carousel",
 <br>
 
 ```{r sintese-temas, include = FALSE}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # file path to save the wordclouds
 dir.path <- file.path(getwd(), "index_files", "figure-html")
 dir.create(dir.path, recursive = TRUE)
@@ -291,8 +285,6 @@ source("Scripts/docs-to-wordcloud.R")
 ```
 
 ```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # carousel of wordclouds
 bs_carousel(id = "temas-carouse",
             use_indicators = FALSE,
@@ -309,8 +301,6 @@ bs_carousel(id = "temas-carouse",
 <br>
 
 ```{r sintese-projetos, include = FALSE}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -439,8 +429,6 @@ source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-projetos-carousel}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # carousel
 bs_carousel(id = "projetos-carousel",
             use_indicators = FALSE,
@@ -457,9 +445,7 @@ bs_carousel(id = "projetos-carousel",
 <br>
 
 ```{r sintese-financiadores, include = FALSE}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-options("scipen" = 100, "digits" = 0)
+options("scipen" = 100)
 
 financiadores.raw <-
   read_excel("../PPGCR Unisuam/financiadores.xlsx", sheet = "financiadores")
@@ -703,8 +689,6 @@ source("Scripts/plot-summaries.R")
 ```
 
 ```{r sintese-financiadores-carousel}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # carousel
 bs_carousel(id = "financiadores-carousel",
             use_indicators = FALSE,

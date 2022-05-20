@@ -641,7 +641,6 @@ cat("  \n")
 # plot(0, type = 'n', axes = FALSE)
 # legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 1)
 # title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -689,7 +688,7 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 
 #### **Figura 5**
 
-```{r projetos-de-pesquisa-2020-grafic}
+```{r projetos-de-pesquisa-2020-grafico}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -751,7 +750,6 @@ if(dim(projetos.posdoc)[1] != 0){
 plot(0, type = 'n', axes = FALSE)
 legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 0.7)
 title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -824,7 +822,6 @@ cat("  \n")
 # plot(0, type = 'n', axes = FALSE)
 # legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 1)
 # title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -861,7 +858,6 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -936,7 +932,6 @@ if(dim(projetos.posdoc)[1] != 0){
 plot(0, type = 'n', axes = FALSE)
 legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 0.7)
 title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -948,8 +943,6 @@ title("Projetos de Pesquisa", outer = TRUE)
 #### **Tabela 4**
 
 ```{r projetos-de-pesquisa-2016-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1011,7 +1004,6 @@ cat("  \n")
 # plot(0, type = 'n', axes = FALSE)
 # legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 1)
 # title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1025,8 +1017,6 @@ cat("  \n")
 <br>
 
 ```{r projetos-de-pesquisa-2016-lista}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1064,8 +1054,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 #### **Figura 7**
 
 ```{r projetos-de-pesquisa-concluidos-2012-grafico}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1127,7 +1115,6 @@ if(dim(projetos.posdoc)[1] != 0){
 plot(0, type = 'n', axes = FALSE)
 legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 0.7)
 title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1139,8 +1126,6 @@ title("Projetos de Pesquisa", outer = TRUE)
 #### **Tabela 5**
 
 ```{r projetos-de-pesquisa-concluidos-2012-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1203,7 +1188,6 @@ cat("  \n")
 # plot(0, type = 'n', axes = FALSE)
 # legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 1)
 # title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1217,8 +1201,6 @@ cat("  \n")
 <br>
 
 ```{r projetos-de-pesquisa-2012-lista}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1242,7 +1224,6 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1288,8 +1269,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ### **Síntese**
 
 ```{r financiadores-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 options(scipen = 10)
 
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
@@ -1317,8 +1296,6 @@ table.1
 ### **2024-2021**
 
 ```{r historico-financiadores-2024}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
@@ -1343,7 +1320,6 @@ financiadores <- cbind(financiadores, Abrir)
 financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1355,8 +1331,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2020-2017**
 
 ```{r historico-financiadores-2020}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
@@ -1381,7 +1355,6 @@ financiadores <- cbind(financiadores, Abrir)
 financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1393,8 +1366,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2016-2013**
 
 ```{r historico-financiadores-2016}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
@@ -1419,7 +1390,6 @@ financiadores <- cbind(financiadores, Abrir)
 financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1431,8 +1401,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2012-2010**
 
 ```{r historico-financiadores-2012}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
@@ -1457,7 +1425,6 @@ financiadores <- cbind(financiadores, Abrir)
 financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1469,8 +1436,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **Pré-2010**
 
 ```{r historico-financiadores-2010}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
@@ -1495,7 +1460,6 @@ financiadores <- cbind(financiadores, Abrir)
 financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 
 datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1526,8 +1490,6 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **Portarias**
 
 ```{r bolsas}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
 
@@ -1587,14 +1549,11 @@ O curso de Doutorado Acadêmico em Ciências da Reabilitação objetiva a forma�
 ### **Níveis**
 
 ```{r cursos}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 cursos.raw <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Cursos", col_types = c("text"))
 
 # print tables
 print(kable(cursos.raw, align = c("l", rep("c", ncol(cursos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1606,14 +1565,11 @@ print(kable(cursos.raw, align = c("l", rep("c", ncol(cursos.raw)-2), "r")) %>% k
 ### **Créditos**
 
 ```{r creditos}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 creditos.raw <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Créditos", col_types = c("text"))
 
 # print tables
 print(kable(creditos.raw, align = c("l", rep("c", ncol(creditos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1648,8 +1604,6 @@ O Eixo Técnico agrupa as disciplinas de caráter especialista, com ementas volt
 #### **Figura 9**
 
 ```{r estrutura-academica-atual-grafico}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -1685,8 +1639,8 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "O
 layout(matrix(c(1,2,3,3), nrow = 2, ncol = 2, byrow = TRUE), heights = c(0.7,0.3))
 par(oma=c(0.1, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
 # generate plot of total per course
-pie(table(table.msc[, which(colnames(table.msc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.msc)), name = "Set3"), init.angle = 90, main = "Mestrado")
-pie(table(table.dsc[, which(colnames(table.dsc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = unique(colnames(table.dsc)), name = "Set3"), init.angle = 90, main = "Doutorado")
+pie(table(table.msc[, which(colnames(table.msc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = min(unique(colnames(table.msc)),3), name = "Set3"), init.angle = 90, main = "Mestrado")
+pie(table(table.dsc[, which(colnames(table.dsc) == "Obrigatória")]), labels = NA, col = brewer.pal(n = min(unique(colnames(table.dsc)),3), name = "Set3"), init.angle = 90, main = "Doutorado")
 plot(0, type = 'n', axes = FALSE)
 obrigatoria <- unique(disciplinas.raw$`Indicadora de disciplina obrigatória`)
 obrigatoria[which(obrigatoria == "Sim")] <- "Obrigatória"
@@ -1703,8 +1657,6 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 #### **Tabela 7**
 
 ```{r estrutura-academica-atual-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -1751,8 +1703,6 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 #### **Bibliografia**
 
 ```{r bibliografia}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
@@ -1766,8 +1716,6 @@ datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrol
 #### **Atualização**
 
 ```{r bibliografia-ano}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
@@ -1788,8 +1736,6 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 ### **Inativas**
 
 ```{r estrutura-academica-inativa}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -1817,7 +1763,6 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "F
 
 # print tables
 print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1834,8 +1779,6 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 ### **Síntese**
 
 ```{r turmas-tabela}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # turmas
 sheet <- "Turmas"
 source("Scripts/read-xlsx-sucupira.R")
@@ -1897,8 +1840,6 @@ cat("  \n")
 #### **Disciplinas**
 
 ```{r turmas-disciplinas-2024}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -1955,8 +1896,6 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 #### **Docentes**
 
 ```{r turmas-docentes-2024}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -2034,8 +1973,6 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 ### **2020-2017**
 
 ```{r turmas-2020}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -2084,7 +2021,6 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 ### **2016-2013**
 
 ```{r turmas-2016}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -2122,7 +2058,6 @@ cat("  \n")
 legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
 legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
 cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2134,8 +2069,6 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 ### **2012-2010**
 
 ```{r turmas-2012}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # load custom function
 source("Scripts/get-initials.R")
 
@@ -2173,7 +2106,6 @@ cat("  \n")
 legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
 legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
 cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2188,8 +2120,6 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
 ```{r calendarios}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Turmas", col_types = c("text"))
 
@@ -2224,14 +2154,11 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 ### **Laboratórios**
 
 ```{r laboratorios-descritivo}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 dados.lab <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = "Dados")
 
 # print tables
 print(kable(dados.lab, digits = 0, align = c("l", rep("c", ncol(dados.lab)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2239,8 +2166,6 @@ print(kable(dados.lab, digits = 0, align = c("l", rep("c", ncol(dados.lab)-2), "
 <br>
 
 ```{r laboratorios-equipamentos}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read data
 labs <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = "Dados", col_types = c("text"))
 
@@ -2278,7 +2203,6 @@ for(i in 1:dim(labs)[1]){
   
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
-
 ```
 
 <br>
@@ -2286,8 +2210,6 @@ for(i in 1:dim(labs)[1]){
 ### **Planta**
 
 ```{r laboratorios-planta}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 ```
 
@@ -2305,8 +2227,6 @@ knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 ### **Centro de Educação Física Almirante Adalberto Nunes (CEFAN), da Marinha do Brasil**
 
 ```{r documentos-convenios-cefan}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "CEFAN", col_types = c("text"))
 
@@ -2317,7 +2237,6 @@ for(i in 1:dim(vigentes.raw)[1]){
 
 # print table
 print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2332,8 +2251,6 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 
 ```{r documentos-convenios-apb}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "APB", col_types = c("text"))
 
@@ -2344,7 +2261,6 @@ for(i in 1:dim(vigentes.raw)[1]){
 
 # print table
 print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2361,8 +2277,6 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 #### **2019-2023 DINTER**
 
 ```{r dinter-andamento}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Dinter2019", col_types = c("text"))
 
@@ -2373,7 +2287,6 @@ for(i in 1:dim(interinstitucional.raw)[1]){
 
 # print table
 print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2383,8 +2296,6 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 #### **2021-2023 PCI**
 
 ```{r minter-andamento}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PCI2021", col_types = c("text"))
 
@@ -2395,7 +2306,6 @@ for(i in 1:dim(interinstitucional.raw)[1]){
 
 # print table
 print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2407,8 +2317,6 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 #### **2019-2021 MINTER**
 
 ```{r minter-concluido}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
 # read separate sheets
 interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Minter2019", col_types = c("text"))
 

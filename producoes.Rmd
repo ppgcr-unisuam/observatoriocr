@@ -163,9 +163,7 @@ datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, 
 
 <br>
 
-```{r artigos-completos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r artigos-completos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(

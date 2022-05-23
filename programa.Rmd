@@ -1266,26 +1266,85 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Síntese**
+### **Agência-Programa**
+
+```{r financiadores-programa-tabela}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & PROGRAMA
+financiadores <-
+  financiadores.raw %>% select("Agência", "Programa")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+
+# generate table (total per edital, per agency)
+table.1 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    statistic = all_categorical() ~ c("{n}"),
+    missing = "no",
+    sort = all_categorical() ~ "frequency"
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+table.1
+```
+
+<br>
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Agência-Ano**
 
 ```{r financiadores-tabela}
 options(scipen = 10)
 
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-# select variables to display, by AGENCIA & PROGRAMA
-financiadores <- financiadores.raw %>% select("Agência", "Total", "Programa")
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Ano", "Agência", "Total")
+
 # drop rows with empty cells
 financiadores <- financiadores[complete.cases(financiadores), ]
-# generate table
-table.1 <- tbl_summary(financiadores, by = "Agência", type = all_continuous() ~ "continuous2", statistic = list(all_continuous() ~ c("R$ {sum}", "R$ {min}", "R$ {max}"), all_categorical() ~ c("{n}")), missing = "no", digits = "Total" ~ 2, sort = all_categorical() ~ "frequency") %>%
-  add_overall(TRUE, "Total") %>%
+
+financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores$Ano <- as.factor(financiadores$Ano)
+
+# generate table (total per year, per agency)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
   modify_header(label = "**Agência**") %>%
   modify_footnote(update = everything() ~ NA) %>%
   bold_labels()
-# print tables
-table.1
+# print table
+table.2
 ```
+
+<br>
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
@@ -1296,7 +1355,7 @@ table.1
 ### **2024-2021**
 
 ```{r historico-financiadores-2024}
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1331,7 +1390,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2020-2017**
 
 ```{r historico-financiadores-2020}
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1366,7 +1425,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2016-2013**
 
 ```{r historico-financiadores-2016}
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1401,7 +1460,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2012-2010**
 
 ```{r historico-financiadores-2012}
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
@@ -1436,7 +1495,7 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **Pré-2010**
 
 ```{r historico-financiadores-2010}
-financiadores.raw <- read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")

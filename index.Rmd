@@ -448,7 +448,7 @@ bs_carousel(id = "projetos-carousel",
 options("scipen" = 100)
 
 financiadores.raw <-
-  read_excel("../PPGCR Unisuam/financiadores.xlsx", sheet = "financiadores")
+  read_excel("PPG/financiadores.xlsx", sheet = "financiadores")
 
 # select variables to display
 financiadores <-

@@ -144,6 +144,56 @@ barplot(
 
 <br>
 
+## **Captação de fomento** {.tabset #captacao-fomento}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Agência-Docente**
+
+```{r financiadores-captacao-docente}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Proponente", "Agência", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+
+financiadores <- financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
+financiadores$Proponente <- as.factor(financiadores$Proponente)
+
+# generate table (total per year, per agency)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+table.2
+```
+
+<br>
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 ## **Qualidade das disciplinas** {.tabset #qualidade-disciplinas}
 
 <!--script for generating HORIZONTAL LINE-->

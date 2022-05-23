@@ -467,7 +467,7 @@ if(dim(projetos)[1] != 0){
 options(knitr.kable.NA = '--', knitr.table.format = "html")
 
 financiadores.raw <-
-  read_excel("../PPGCR Unisuam/Financiadores.xlsx", sheet = "financiadores")
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 financiadores.sub <-
   financiadores.raw %>% select("Ano",

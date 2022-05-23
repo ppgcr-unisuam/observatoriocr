@@ -588,11 +588,9 @@ for(ano in 1:length(anos)) {
 
 #### **SuiteMYO**
 
-```{r softwares-myo, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r softwares-myo}
 # read separate sheets
-softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
+softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(softwares.raw)[1]){
@@ -623,11 +621,9 @@ th, td {
 
 #### **SuiteEBG**
 
-```{r softwares-ebg, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r softwares-ebg}
 # read separate sheets
-softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteEBG", col_types = c("text"))
+softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteEBG", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(softwares.raw)[1]){
@@ -658,11 +654,9 @@ th, td {
 
 #### **SuiteTCM**
 
-```{r softwares-tcm, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r softwares-tcm}
 # read separate sheets
-softwares.raw <- read_excel("../PPGCR Unisuam/Softwares.xlsx", sheet = "SuiteTCM", col_types = c("text"))
+softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteTCM", col_types = c("text"))
 
 # replace the link by a tag
 for(i in 1:dim(softwares.raw)[1]){

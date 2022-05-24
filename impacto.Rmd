@@ -685,6 +685,8 @@ if (dim(all.dois)[1] != 0) {
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
 <br>
 
 ### **Artigos resumos** {.tabset}
@@ -774,6 +776,8 @@ if (dim(all.dois)[1] != 0) {
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
 
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
 <br>
 
 ### **Trabalhos em anais de eventos** {.tabset}
@@ -862,5 +866,72 @@ if (dim(all.dois)[1] != 0) {
 <br>
 
 *Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Prêmios** {.tabset #premios}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r pandemia-premios}
+# read separate sheets
+file.path <- "PPG/Prêmios.xlsx"
+tabs <- excel_sheets(file.path)
+topics <- c()
+premios.list <- vector(mode = "list", length = length(tabs))
+
+# iterate across sheets
+for (j in 1:length(tabs)) {
+  premios <-
+    read_excel(file.path,
+               sheet = tabs[j],
+               col_types = c("text", "text", "text"))
+  
+  # selecting those with COVID in the title
+  premios <-
+    premios[grep(paste(tolower(pandemia), collapse = "|"), tolower(premios$Documento)),]
+  
+  if (dim(premios)[1] > 0) {
+    # replace the link by a tag
+    for (i in 1:dim(premios)[1]) {
+      premios[i, 1] <-
+        paste("#### **", as.character(as.Date(as.numeric(premios[i, 1]), origin = "1899-12-30")), "**", sep = "")
+      premios[i, 3] <-
+        paste("[↗️](", premios[i, 3], '){target="_blank"}', sep = "")
+    }
+    
+    # drop date column
+    premios <- premios[,-1]
+    # store data to print table
+    premios.list[[j]] <- premios
+    
+    # store data to plot wordcloud
+    topics <- rbind(topics, premios[i, 1])
+  }
+}
+
+# iterate across sheets
+for (j in 1:length(tabs)) {
+  if (!is.null(dim(premios.list[[j]])[1])) {
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", tabs[j], "**", "\n", sep = "")
+    cat('\n\n<!-- -->\n\n')
+    print(
+      kable(premios.list[[j]], align = c("l", rep(
+        "c", ncol(premios) - 2
+      ), "r")) %>% kable_styling(
+        bootstrap_options = c("hover", "condensed", "responsive"),
+        full_width = T,
+        position = "center"
+      )
+    )
+    cat('\n\n<!-- -->\n\n')
+    cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+  }
+}
+```
 
 <br>

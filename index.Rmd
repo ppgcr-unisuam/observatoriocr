@@ -178,9 +178,6 @@ nodes <- data.frame(
 links$IDsource <- match(links$source, nodes$name) - 1 
 links$IDtarget <- match(links$target, nodes$name) - 1
 
-# Color links
-
-
 # plot 1 (fluxo AC -> LP)
 dir.path <- file.path(getwd(), "index_files", "figure-html")
 dir.create(dir.path, recursive = TRUE)
@@ -200,6 +197,7 @@ par(
   fg = "white",
   col.main = "white"
 )
+
 # Make the Network
 sn <- sankeyNetwork(Links = links, Nodes = nodes,
               Source = "IDsource", Target = "IDtarget",

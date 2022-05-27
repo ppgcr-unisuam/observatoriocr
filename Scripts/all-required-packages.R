@@ -32,6 +32,7 @@ packs <-
     "lemon",
     "lubridate",
     "magrittr",
+    "networkD3",
     "plyr",
     "rAltmetric",
     "RColorBrewer",

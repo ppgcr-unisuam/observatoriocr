@@ -136,26 +136,13 @@ alluv.data <-
     sucupira.raw$`Linha de Pesquisa`,
     sucupira.raw$`Nome do Projeto de Pesquisa`,
     sucupira.raw$`Data da Situação`,
-    sucupira.raw$Situação
+    sucupira.raw$Situação,
+    sucupira.raw$`Data de Início`
   )
-
-start <- sucupira.raw$`Data de Início`[complete.cases(alluv.data)]
 alluv.data <- alluv.data[complete.cases(alluv.data), ]
 
-alluv.data.aggr <-
-  aggregate(
-    alluv.data,
-    by = list(
-      alluv.data$sucupira.raw..Área.de.Concentração.,
-      alluv.data$sucupira.raw..Linha.de.Pesquisa.,
-      alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.
-    ),
-    FUN = length
-  )
-
-# drop repeated columns
-alluv.data.aggr <- alluv.data.aggr[, 1:4]
-colnames(alluv.data.aggr) <- c("AC", "LP", "PP", "Freq")
+# ordering by start date
+alluv.data <- alluv.data[order(alluv.data$sucupira.raw..Data.de.Início., decreasing = FALSE), ]
 
 # get all history of 'linha de pesquisa'
 linhas <-
@@ -163,69 +150,89 @@ linhas <-
     alluv.data$sucupira.raw..Linha.de.Pesquisa.
   )))
 
-# ordering
-ordering <- c()
-for (i in 1:length(alluv.data.aggr$PP)) {
-  index <- match(alluv.data.aggr$PP[i],
-                 alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.)
-  ordering <- c(ordering, start[index])
-}
-ordering <-
-  as.Date(ordering, format = "%d/%m/%y")
+# code PP names for display
+alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa. <- as.numeric(as.factor(alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.))
 
-# recoding
-alluv.data.aggr$AC <- as.numeric(as.factor(alluv.data.aggr$AC))
-alluv.data.aggr$LP <- as.numeric(as.factor(alluv.data.aggr$LP))
-alluv.data.aggr$PP <- as.numeric(as.factor(alluv.data.aggr$PP))
+summ.AC.LP <- as.data.frame(table(alluv.data$sucupira.raw..Área.de.Concentração., alluv.data$sucupira.raw..Linha.de.Pesquisa.))
+colnames(summ.AC.LP) <- c("source", "target", "value")
 
-# colors
-alluv.colors <- c()
-for (i in 1:length(alluv.data.aggr$LP)) {
-  alluv.colors <- c(alluv.colors,
-                    brewer.pal(n = length(linhas), name = "Set3")[alluv.data.aggr$LP[i]])
-}
+summ.LP.PP <- as.data.frame(table(alluv.data$sucupira.raw..Linha.de.Pesquisa., alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.))
+colnames(summ.LP.PP) <- c("source", "target", "value")
 
-# plot 1
+# count projects only once
+summ.LP.PP$value[summ.LP.PP$value != 0] <- 1
 
-# plot area setup
+# remove zeroed-value data
+summ.AC.LP <- summ.AC.LP[summ.AC.LP$value != 0, ]
+
+# A connection data frame is a list of flows with intensity for each flow
+links <- summ.AC.LP
+
+# From these flows we need to create a node data frame: it lists every entities involved in the flow
+nodes <- data.frame(
+  name = c(as.character(links$source), 
+  as.character(links$target)) %>% unique()
+)
+
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe.. So we need to reformat it.
+links$IDsource <- match(links$source, nodes$name) - 1 
+links$IDtarget <- match(links$target, nodes$name) - 1
+
+# Color links
+
+
+# plot 1 (fluxo AC -> LP)
+dir.path <- file.path(getwd(), "index_files", "figure-html")
+dir.create(dir.path, recursive = TRUE)
+sn.title <- "Área de Concentração - Linha de Pesquisa"
+
+# plot area setup 
 layout.m <- c(1, 1, 1, 1, 2)
 source("Scripts/plot-margins.R")
 
-# plot 1 (fluxo AC -> LP -> PP)
-alluvial(
-  alluv.data.aggr[, 1:3],
-  freq = alluv.data.aggr$Freq,
-  col = alluv.colors,
-  border = alluv.colors,
-  blocks = FALSE,
-  ordering = list(NULL,
-                  NULL,
-                  order(ordering, decreasing = FALSE))
+# set plot area
+par(
+  oma = c(0, 0, 0, 0),
+  mar = c(0, 0, 0, 0),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
 )
-title(main = "Área de Concentração - Linhas de Pesquisa - Projetos de Pesquisa",
-      outer = TRUE,
-      cex.main = 1.8)
+# Make the Network
+sn <- sankeyNetwork(Links = links, Nodes = nodes,
+              Source = "IDsource", Target = "IDtarget",
+              Value = "value", NodeID = "name", fontSize = 14,
+              sinksRight=FALSE) %>%
+  htmlwidgets::prependContent(
+    htmltools::tags$h1(style = "position:absolute; left:50%; transform:translateX(-50%); background-color:#2C3E50; font-size:20px; color:white; line-height:normal;", sn.title)
+  ) %>%
+  htmlwidgets::prependContent(
+    htmltools::tags$body(style = "font-family:'Lato','Helvetica Neue',Helvetica, Arial,sans-serif; background-color:#2C3E50; margin:0; padding:0;")
+  ) %>%
+  htmlwidgets::onRender(
+  'function(el, x) {
+    d3.selectAll(".node text")
+        .style("fill", "white");
+  }'
+)
 
-plot(
-  0,
-  xaxt = 'n',
-  yaxt = 'n',
-  bty = 'n',
-  pch = '',
-  ylab = '',
-  xlab = ''
+# save it in html
+saveWidget(sn, file.path(dir.path, "tmp.html"), selfcontained = F)
+
+# and in png
+webshot(
+  url = file.path(dir.path, "tmp.html"),
+  file = file.path(dir.path, paste0(sheet, ".png")),
+  delay = 5,
+  vwidth = round(1344 * 0.7),
+  vheight = round(960 * 0.7)
 )
-legend(
-  "center",
-  legend = linhas,
-  fill = brewer.pal(n = length(linhas), name = "Set3"),
-  text.col = "white",
-  box.lwd = 0,
-  bty = "n",
-  hor = FALSE,
-  ncol = ceiling(length(linhas) / 2),
-  cex = 0.9
-)
+
+# delete the tmp folder and file
+unlink(file.path(dir.path, "tmp_files"), recursive = TRUE)
+unlink(file.path(dir.path, "tmp.html"))
 
 # plot 2
 

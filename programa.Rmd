@@ -26,6 +26,13 @@ knitr::opts_chunk$set(
 source("Scripts/all-required-packages.R")
 ```
 
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
+```
+
 <!--script for sharing-->
 <p align="right">
 ```{r share}
@@ -34,33 +41,10 @@ source("Scripts/social-media-sharing.R")
 ```
 </p>
 
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
-
 <!--read additional files-->
-```{r scimago-qualis}
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2021.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
+```{r metrics, cache = TRUE}
+source("Scripts/sjr.R")
+source("Scripts/webqualis.R")
 ```
 
 <br>
@@ -1266,92 +1250,6 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Agência-Programa**
-
-```{r financiadores-programa-tabela}
-options(scipen = 10)
-
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & PROGRAMA
-financiadores <-
-  financiadores.raw %>% select("Agência", "Programa")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-# generate table (total per edital, per agency)
-table.1 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    statistic = all_categorical() ~ c("{n}"),
-    missing = "no",
-    sort = all_categorical() ~ "frequency"
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.1
-```
-
-<br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Agência-Ano**
-
-```{r financiadores-tabela}
-options(scipen = 10)
-
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & ANO
-financiadores <-
-  financiadores.raw %>% select("Ano", "Agência", "Total")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-financiadores$Ano <- as.factor(financiadores$Ano)
-
-# generate table (total per year, per agency)
-table.2 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    type = list(all_continuous() ~ "continuous"),
-    statistic = list(all_continuous() ~ c("R$ {sum}")),
-    missing = "no",
-    digits = "Total" ~ 2
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.2
-```
-
-<br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **2024-2021**
 
 ```{r historico-financiadores-2024}
@@ -2020,7 +1918,6 @@ cat("  \n")
 legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
 legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
 cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2196,7 +2093,6 @@ turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
 # print table
 datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

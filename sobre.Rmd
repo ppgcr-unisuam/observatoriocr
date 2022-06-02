@@ -17,9 +17,20 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.align = 'center',
-  results = "asis"
+  results = "asis",
+  include = TRUE,
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
+```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
 ```
 
 <!--script for sharing-->
@@ -29,13 +40,6 @@ home <- "rehab-tech.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R")
 ```
 </p>
-
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
 
 <br>
 
@@ -62,3 +66,5 @@ sessioninfo::session_info()%>%
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>

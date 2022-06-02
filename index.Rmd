@@ -23,25 +23,9 @@ source("Scripts/all-required-packages.R")
 ```
 
 <!--read additional files-->
-```{r scimago-qualis}
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2021.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
+```{r metrics, cache = TRUE}
+source("Scripts/sjr.R")
+source("Scripts/webqualis.R")
 ```
 
 <!--custom CSS scripts for ALL PAGES-->
@@ -183,20 +167,7 @@ dir.path <- file.path(getwd(), "index_files", "figure-html")
 dir.create(dir.path, recursive = TRUE)
 sn.title <- "Área de Concentração - Linha de Pesquisa"
 
-# plot area setup 
-layout.m <- c(1, 1, 1, 1, 2)
-source("Scripts/plot-margins.R")
-
-# set plot area
-par(
-  oma = c(0, 0, 0, 0),
-  mar = c(0, 0, 0, 0),
-  bg = '#2C3E50',
-  col.lab = "white",
-  col.axis = "white",
-  fg = "white",
-  col.main = "white"
-)
+# plot 1
 
 # Make the Network
 sn <- sankeyNetwork(Links = links, Nodes = nodes,

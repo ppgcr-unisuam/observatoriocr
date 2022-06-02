@@ -17,9 +17,20 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.align = 'center',
-  results = "asis"
+  results = "asis",
+  include = TRUE,
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
+```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
 ```
 
 <!--script for sharing-->
@@ -30,13 +41,6 @@ source("Scripts/social-media-sharing.R")
 ```
 </p>
 
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
-
 <br>
 
 ## **Notas do Programa** {.tabset #notas}
@@ -44,7 +48,7 @@ $(document).ready(function() {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r notas, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis", out.width="100%"}
+```{r notas}
 # create a new code chunk and then use the PACKUP add-in to generate this code with all the required libraries for this Rmd
 periodos.raw <-
   read_excel("PPG/Notas.xlsx", sheet = "Períodos")
@@ -149,9 +153,95 @@ barplot(
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
+### **Agência-Programa**
+
+```{r financiadores-programa-tabela}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & PROGRAMA
+financiadores <-
+  financiadores.raw %>% select("Agência", "Programa")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+
+# generate table (total per edital, per agency)
+table.1 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    statistic = all_categorical() ~ c("{n}"),
+    missing = "no",
+    sort = all_categorical() ~ "frequency"
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+table.1
+```
+
+<br>
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Agência-Ano**
+
+```{r financiadores-ano-tabela}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Ano", "Agência", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+
+financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores$Ano <- as.factor(financiadores$Ano)
+
+# generate table (total per year, per agency)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+table.2
+```
+
+<br>
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 ### **Agência-Docente**
 
-```{r financiadores-captacao-docente}
+```{r financiadores-docentes-tabela}
 options(scipen = 10)
 
 financiadores.raw <-

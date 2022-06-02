@@ -17,9 +17,20 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.align = 'center',
-  results = "asis"
+  results = "asis",
+  include = TRUE,
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
+```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
 ```
 
 <!--script for sharing-->
@@ -30,33 +41,10 @@ source("Scripts/social-media-sharing.R")
 ```
 </p>
 
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
-
 <!--read additional files-->
-```{r scimago-qualis, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2021.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
+```{r metrics, cache = TRUE}
+source("Scripts/sjr.R")
+source("Scripts/webqualis.R")
 ```
 
 <!--script for generating ALTMETRIC badges-->
@@ -147,76 +135,6 @@ qualis <-
 
 <br>
 
-#### **Internacionais**
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WmHL5xColOU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dd994Nj-HF4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LCwWYpWo6fs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cS0fTOzBtPg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9NqqtmxrDzs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/g3UPrMRnuWw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ## **Impacto científico** {#impacto-cientifico}
 
 <!--script for generating HORIZONTAL LINE-->
@@ -262,20 +180,31 @@ qualis <-
 
 ##### **Documentos vigentes**
 
-```{r cep-vigentes, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r cep-vigentes}
 # read separate sheets
-vigentes.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Vigentes", col_types = c("text"))
+vigentes.raw <-
+  read_excel(
+    "../PPGCR Unisuam/CEP-UNISUAM.xlsx",
+    sheet = "Vigentes",
+    col_types = c("text")
+  )
 
 # replace the link by a tag
-for(i in 1:dim(vigentes.raw)[1]){
-  vigentes.raw[i,3] <- paste("[↗️](", vigentes.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(vigentes.raw)[1]) {
+  vigentes.raw[i, 3] <-
+    paste("[↗️](", vigentes.raw[i, 3], '){target="_blank"}', sep = "")
 }
 
 # print table
-print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
+print(
+  kable(vigentes.raw, align = c("l", rep(
+    "c", ncol(vigentes.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -284,26 +213,31 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 ##### **Documentos revogados**
 
-```{r cep-revogados, echo = FALSE, warning = FALSE, message = FALSE, fig.align='center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# read packages
-
-
-
-
-
+```{r cep-revogados}
 # read separate sheets
-revogados.raw <- read_excel("../PPGCR Unisuam/CEP-UNISUAM.xlsx", sheet = "Revogados", col_types = c("text"))
+revogados.raw <-
+  read_excel(
+    "../PPGCR Unisuam/CEP-UNISUAM.xlsx",
+    sheet = "Revogados",
+    col_types = c("text")
+  )
 
 # replace the link by a tag
-for(i in 1:dim(revogados.raw)[1]){
-  revogados.raw[i,3] <- paste("[↗️](", revogados.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(revogados.raw)[1]) {
+  revogados.raw[i, 3] <-
+    paste("[↗️](", revogados.raw[i, 3], '){target="_blank"}', sep = "")
 }
 
 # print table
-print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
+print(
+  kable(revogados.raw, align = c("l", rep(
+    "c", ncol(revogados.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <br>
@@ -390,16 +324,35 @@ print(kable(revogados.raw, align = c("l", rep("c", ncol(revogados.raw)-2), "r"))
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r pandemia-termos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-pandemia <- c("2019-nCoV", "2019 Novel Coronavirus", "COVID-19", "COVID 2019", "COVID19", "SARS-CoV-2", "SARSCoV-2", "SARSCoV2", "COVID", "Novo Coronavirus", "long COVID", "COVID longa", "pós-COVID", "post-COVID", "postCOVID", "coronavirus disease 2019", "doença do coronavirus 2019", "severe acute respiratory syndrome coronavirus 2", "nCoV", "19nCoV")
+```{r pandemia-termos}
+pandemia <-
+  c(
+    "2019-nCoV",
+    "2019 Novel Coronavirus",
+    "COVID-19",
+    "COVID 2019",
+    "COVID19",
+    "SARS-CoV-2",
+    "SARSCoV-2",
+    "SARSCoV2",
+    "COVID",
+    "Novo Coronavirus",
+    "long COVID",
+    "COVID longa",
+    "pós-COVID",
+    "post-COVID",
+    "postCOVID",
+    "coronavirus disease 2019",
+    "doença do coronavirus 2019",
+    "severe acute respiratory syndrome coronavirus 2",
+    "nCoV",
+    "19nCoV"
+  )
 ```
 
 ### **Projetos de pesquisa**
 
-```{r pandemia-projetos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r pandemia-projetos}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R")
@@ -411,12 +364,15 @@ names(sucupira.list) <- as.character(anos)
 periodos <- names(sucupira.list)
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos.all <- unique(projetos.all[projetos.all$`Membro Responsável`== "Sim", ])
+projetos.all <-
+  unique(projetos.all[projetos.all$`Membro Responsável` == "Sim",])
 
 # selecting those with COVID in the title
-projetos <- projetos.all[grep(paste(tolower(pandemia), collapse = "|"), tolower(projetos.all$`Nome do Projeto de Pesquisa`)), ]
+projetos <-
+  projetos.all[grep(paste(tolower(pandemia), collapse = "|"),
+                    tolower(projetos.all$`Nome do Projeto de Pesquisa`)),]
 
-if(dim(projetos)[1] != 0){
+if (dim(projetos)[1] != 0) {
   # select data DOCENTES
   table.projetos <-
     cbind(
@@ -424,7 +380,7 @@ if(dim(projetos)[1] != 0){
       projetos$`Nome do Projeto de Pesquisa`,
       projetos$`Linha de Pesquisa`
     )
-  table.projetos <- table.projetos[order(table.projetos[, 1]),]
+  table.projetos <- table.projetos[order(table.projetos[, 1]), ]
   # print tables
   table.projetos[, 1] <-
     as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
@@ -463,9 +419,7 @@ if(dim(projetos)[1] != 0){
 
 ### **Financiadores**
 
-```{r pandemia-financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r pandemia-financiadores}
 financiadores.raw <-
   read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
@@ -479,16 +433,18 @@ financiadores.sub <-
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
 financiadores <-
-  financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
 # selecting those with COVID in the title
 financiadores <-
-  financiadores[grep(paste(tolower(pandemia), collapse = "|"), tolower(financiadores$`Título do projeto`)), ]
+  financiadores[grep(paste(tolower(pandemia), collapse = "|"),
+                     tolower(financiadores$`Título do projeto`)),]
 fonte <-
-  fonte[grep(paste(tolower(pandemia), collapse = "|"), tolower(financiadores$`Título do projeto`)), ]
+  fonte[grep(paste(tolower(pandemia), collapse = "|"),
+             tolower(financiadores$`Título do projeto`)),]
 
-if(dim(financiadores)[1] != 0) {
+if (dim(financiadores)[1] != 0) {
   Abrir <- matrix(NA, nrow = dim(financiadores)[1])
   colnames(Abrir) <- "Abrir"
   # add hyperlinks
@@ -501,7 +457,7 @@ if(dim(financiadores)[1] != 0) {
   
   financiadores <- cbind(financiadores, Abrir)
   financiadores <-
-    financiadores[order(financiadores$Ano, decreasing = TRUE),]
+    financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   
   datatable(
     financiadores,
@@ -529,9 +485,7 @@ if(dim(financiadores)[1] != 0) {
 
 ### **Trabalhos de conclusão de curso**
 
-```{r pandemia-tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r pandemia-tcc}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R")
@@ -545,9 +499,11 @@ periodo <- as.character(seq(min(periodos), max(periodos)))
 tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # selecting those with COVID in the title
-tccs <- tcc.all[grep(paste(tolower(pandemia), collapse = "|"), tolower(tcc.all$`Nome do Trabalho de Conclusão`)), ]
+tccs <-
+  tcc.all[grep(paste(tolower(pandemia), collapse = "|"),
+               tolower(tcc.all$`Nome do Trabalho de Conclusão`)),]
 
-if(dim(tccs)[1] != 0) {
+if (dim(tccs)[1] != 0) {
   # select data
   table.tcc <-
     cbind(
@@ -560,7 +516,7 @@ if(dim(tccs)[1] != 0) {
       tccs$`Nome do Orientador`
     )
   table.tcc <-
-    table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]),]
+    table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]), ]
   
   # print tables
   table.tcc[, 2] <-
@@ -600,9 +556,7 @@ if(dim(tccs)[1] != 0) {
 
 ### **Artigos completos** {.tabset}
 
-```{r pandemia-artigos-completos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r pandemia-artigos-completos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -612,10 +566,101 @@ all.dois <-
   ))
 
 # Data cleaning
-all.dois <- all.dois[complete.cases(all.dois$DOI),]
+all.dois <- all.dois[complete.cases(all.dois$DOI), ]
 
 # selecting those with COVID in the title
-all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
+all.dois <-
+  all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)),]
+
+if (dim(all.dois)[1] != 0) {
+  # get years
+  anos <- rev(unique(all.dois$Publicado.em))
+  
+  for (ano in 1:length(anos)) {
+    # Filtra por período
+    dois <-
+      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]), ]
+    # print tab header
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", anos[ano], "**", "\n", sep = "")
+    
+    # Verifica se há DOIs no período
+    if (dim(dois)[1] == 0) {
+      cat('\n')
+      cat('*Sem produção para exibir no período*')
+      cat('\n')
+    } else {
+      # Step 5. Convert the doi column in your dataset to a list.
+      dois_list <- as.list(dois$DOI)
+      
+      # cria metadados para rastreio pelo Altmetric
+      dois_2_meta <- dois$DOI
+      source("scripts/altmetric-meta-from-dois.R")
+      
+      # roda o script para obter dados do Altmetric
+      source("scripts/altmetric-from-dois.R")
+      
+      # get data of papers without Altmetric from CrossRef
+      if (is_empty(no_altmetric_dois_list)) {
+        my_dois_works <- no_altmetric_dois_list
+      } else {
+        my_dois_works <-
+          rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+          pluck("data")
+        # sort columns by title
+        if (length(my_dois_works) != 0) {
+          my_dois_works <-
+            my_dois_works[order(as.vector(my_dois_works$title)), ]
+        }
+      }
+      
+      # print table of papers with/without badges
+      source("scripts/papers-with-badges.R")
+      table.with.badges(
+        show.Altmetric = TRUE,
+        show.Dimensions = TRUE,
+        show.PlumX = TRUE,
+        show.SJR = TRUE,
+        show.Qualis = TRUE,
+        doi_sort,
+        my_dois_works,
+        scimago,
+        qualis
+      )
+    }
+  }
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
+}
+```
+
+<br>
+
+*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Artigos resumos** {.tabset}
+
+```{r pandemia-artigos-resumos}
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+all.dois <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# Data cleaning
+all.dois <- all.dois[complete.cases(all.dois$DOI), ]
+
+# selecting those with COVID in the title
+all.dois <-
+  all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)),]
 
 if (dim(all.dois)[1] != 0) {
   # get years
@@ -689,102 +734,9 @@ if (dim(all.dois)[1] != 0) {
 
 <br>
 
-### **Artigos resumos** {.tabset}
-
-```{r pandemia-artigos-resumos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
-# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-all.dois <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.resumos",
-    col_types = c("text")
-  ))
-
-# Data cleaning
-all.dois <- all.dois[complete.cases(all.dois$DOI),]
-
-# selecting those with COVID in the title
-all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
-
-if (dim(all.dois)[1] != 0) {
-  # get years
-  anos <- rev(unique(all.dois$Publicado.em))
-  
-  for (ano in 1:length(anos)) {
-    # Filtra por período
-    dois <-
-      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]), ]
-    # print tab header
-    cat('\n\n<!-- -->\n\n')
-    cat("#### **", anos[ano], "**", "\n", sep = "")
-    
-    # Verifica se há DOIs no período
-    if (dim(dois)[1] == 0) {
-      cat('\n')
-      cat('*Sem produção para exibir no período*')
-      cat('\n')
-    } else {
-      # Step 5. Convert the doi column in your dataset to a list.
-      dois_list <- as.list(dois$DOI)
-      
-      # cria metadados para rastreio pelo Altmetric
-      dois_2_meta <- dois$DOI
-      source("scripts/altmetric-meta-from-dois.R")
-      
-      # roda o script para obter dados do Altmetric
-      source("scripts/altmetric-from-dois.R")
-      
-      # get data of papers without Altmetric from CrossRef
-      if (is_empty(no_altmetric_dois_list)) {
-        my_dois_works <- no_altmetric_dois_list
-      } else {
-        my_dois_works <-
-          rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-          pluck("data")
-        # sort columns by title
-        if (length(my_dois_works) != 0) {
-          my_dois_works <-
-            my_dois_works[order(as.vector(my_dois_works$title)), ]
-        }
-      }
-      
-      # print table of papers with/without badges
-      source("scripts/papers-with-badges.R")
-      table.with.badges(
-        show.Altmetric = TRUE,
-        show.Dimensions = TRUE,
-        show.PlumX = TRUE,
-        show.SJR = TRUE,
-        show.Qualis = TRUE,
-        doi_sort,
-        my_dois_works,
-        scimago,
-        qualis
-      )
-    }
-  }
-} else {
-  cat('\n\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n\n')
-}
-```
-
-<br>
-
-*Fontes:* [**SCImago**](https://www.scimagojr.com), [**WebQualis**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf), **UNISUAM**
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r pandemia-resumos-eventos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r pandemia-resumos-eventos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -794,10 +746,11 @@ all.dois <-
   ))
 
 # Data cleaning
-all.dois <- all.dois[complete.cases(all.dois$DOI),]
+all.dois <- all.dois[complete.cases(all.dois$DOI), ]
 
 # selecting those with COVID in the title
-all.dois <- all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)), ]
+all.dois <-
+  all.dois[grep(paste(tolower(pandemia), collapse = "|"), tolower(all.dois$Título)),]
 
 if (dim(all.dois)[1] != 0) {
   # get years
@@ -806,7 +759,7 @@ if (dim(all.dois)[1] != 0) {
   for (ano in 1:length(anos)) {
     # Filtra por período
     dois <-
-      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]), ]
+      all.dois[as.character(all.dois$Publicado.em) == as.character(anos[ano]),]
     # print tab header
     cat('\n\n<!-- -->\n\n')
     cat("#### **", anos[ano], "**", "\n", sep = "")
@@ -837,7 +790,7 @@ if (dim(all.dois)[1] != 0) {
         # sort columns by title
         if (length(my_dois_works) != 0) {
           my_dois_works <-
-            my_dois_works[order(as.vector(my_dois_works$title)), ]
+            my_dois_works[order(as.vector(my_dois_works$title)),]
         }
       }
       
@@ -892,7 +845,7 @@ for (j in 1:length(tabs)) {
   
   # selecting those with COVID in the title
   premios <-
-    premios[grep(paste(tolower(pandemia), collapse = "|"), tolower(premios$Documento)),]
+    premios[grep(paste(tolower(pandemia), collapse = "|"), tolower(premios$Documento)), ]
   
   if (dim(premios)[1] > 0) {
     # replace the link by a tag
@@ -904,7 +857,7 @@ for (j in 1:length(tabs)) {
     }
     
     # drop date column
-    premios <- premios[,-1]
+    premios <- premios[, -1]
     # store data to print table
     premios.list[[j]] <- premios
     

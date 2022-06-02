@@ -1,3 +1,5 @@
+
+
 # all packages required for this R project
 # Create using PACKUP add-in to generate this code with all the required libraries for this Rmd
 # 1. create code chunk
@@ -5,8 +7,7 @@
 # 3. packup()
 
 # most packages work fine if installed from CRAN
-
-packs <-
+packs.cran <-
   c(
     "alluvial",
     "anytime",
@@ -41,6 +42,7 @@ packs <-
     "rmarkdown",
     "Rmisc",
     "rorcid",
+    "sessioninfo",
     "sf",
     "stringr",
     "tidyverse",
@@ -52,12 +54,19 @@ packs <-
     "wordcloud2"
   )
 
-for (i in 1:length(packs)) {
-  if (!require(packs[i], character.only = TRUE, quietly = TRUE))
-    install.packages(packs[i], character.only = TRUE)
+for (i in 1:length(packs.cran)) {
+  if (!require(packs.cran[i], character.only = TRUE, quietly = TRUE))
+    install.packages(packs.cran[i], character.only = TRUE)
 }
 
-# other packages work better if installed from gihtub
+# other packages work better if installed from github
+packs.git <-
+  c(
+    "geobr",
+    "packup",
+    "rAltmetric",
+    "rcrossref"
+  )
 
 if (!require("geobr", character.only = TRUE, quietly = TRUE))
   devtools::install_github("ipeaGIT/geobr", subdir = "r-package")
@@ -65,10 +74,14 @@ if (!require("geobr", character.only = TRUE, quietly = TRUE))
 if (!require("packup", character.only = TRUE, quietly = TRUE))
   devtools::install_github("milesmcbain/packup")
 
+if (!require("rAltmetric", character.only = TRUE, quietly = TRUE))
+  devtools::install_github("ropensci/rAltmetric")
+
 if (!require("rcrossref", character.only = TRUE, quietly = TRUE))
-  remotes::install_github("ropensci/rcrossref")
+  devtools::install_github("ropensci/rcrossref")
 
 # load all libraries
+packs <- c(packs.cran, packs.git)
 
 for (i in 1:length(packs)) {
   library(packs[i], character.only = TRUE)

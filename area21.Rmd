@@ -17,9 +17,20 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.align = 'center',
-  results = "asis"
+  results = "asis",
+  include = TRUE,
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
+```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
 ```
 
 <!--script for sharing-->
@@ -29,13 +40,6 @@ home <- "rehab-tech.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R")
 ```
 </p>
-
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
 
 <br>
 
@@ -50,11 +54,8 @@ $(document).ready(function() {
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-da-vida/ciencias-da-saude/educacao-fisica)
 
-<br>
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-<br>
 <br>
 
 ## **Área 21 - Sucupira** {#sucupira}
@@ -68,11 +69,8 @@ $(document).ready(function() {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml;jsessionid=8UcciF3BwDTfXQbKOZoFT-Xn.sucupira-214?areaAvaliacao=21)
 
-<br>
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-<br>
 <br>
 
 ### **Educação Física** {#EF}
@@ -86,11 +84,8 @@ $(document).ready(function() {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40900002)
 
-<br>
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-<br>
 <br>
 
 ### **Fisioterapia e Terapia ocupacional** {#FT-TO}
@@ -104,11 +99,8 @@ $(document).ready(function() {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40800008)
 
-<br>
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-<br>
 <br>
 
 ### **Fonoaudiologia** {#FO}
@@ -122,11 +114,8 @@ $(document).ready(function() {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoIes.xhtml?areaAvaliacao=21&areaConhecimento=40700003)
 
-<br>
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
-<br>
 <br>
 
 ## **Área 21 - Forum Nacional** {#forum}

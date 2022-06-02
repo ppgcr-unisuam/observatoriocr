@@ -17,9 +17,20 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.align = 'center',
-  results = "asis"
+  results = "asis",
+  include = TRUE,
+  out.width = "100%",
+  knitr.kable.NA = '--',
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
+```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
 ```
 
 <!--script for sharing-->
@@ -30,33 +41,10 @@ source("Scripts/social-media-sharing.R")
 ```
 </p>
 
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
-
 <!--read additional files-->
-```{r scimago-qualis, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE}
-# read SCImago csv file (download from https://www.scimagojr.com)
-scimago <-
-  read.csv(
-    "SJR/scimagojr 2021.csv",
-    header = TRUE,
-    sep = ";",
-    quote = "\"",
-    dec = ",",
-    fill = TRUE
-  )
-
-# read QUALIS xlsx file
-qualis <-
-  data.frame(read_excel(
-    "Qualis/QUALIS Referência 2017-2018.xlsx",
-    sheet = 1,
-    col_types = c("text")
-  ))
+```{r metrics, cache = TRUE}
+source("Scripts/sjr.R")
+source("Scripts/webqualis.R")
 ```
 
 <!--script for generating ALTMETRIC badges-->
@@ -75,9 +63,7 @@ qualis <-
 
 ### **Dissertações e Teses**
 
-```{r tcc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r tcc}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R")
@@ -93,17 +79,42 @@ tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 tccs <- tcc.all
 
 # select data
-table.tcc <- cbind(format((as.Date(gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y")), "%Y"), tccs$`Tipo de Trabalho de Conclusão`, tccs$`Nome do Trabalho de Conclusão`, tccs$`Nome do Autor`, tccs$`Nome do Orientador`)
-table.tcc <- table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]), ]
+table.tcc <-
+  cbind(
+    format((as.Date(
+      gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y"
+    )), "%Y"),
+    tccs$`Tipo de Trabalho de Conclusão`,
+    tccs$`Nome do Trabalho de Conclusão`,
+    tccs$`Nome do Autor`,
+    tccs$`Nome do Orientador`
+  )
+table.tcc <-
+  table.tcc[order(table.tcc[, 1], table.tcc[, 2], table.tcc[, 3]),]
 
 # print tables
-table.tcc[, 2] <- as.vector(unlist(lapply(table.tcc[, 2], FUN = str_to_title)))
-table.tcc[, 3] <- as.vector(unlist(lapply(table.tcc[, 3], FUN = str_to_title)))
-table.tcc[, 4] <- as.vector(unlist(lapply(table.tcc[, 4], FUN = str_to_title)))
-table.tcc[, 5] <- as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
+table.tcc[, 2] <-
+  as.vector(unlist(lapply(table.tcc[, 2], FUN = str_to_title)))
+table.tcc[, 3] <-
+  as.vector(unlist(lapply(table.tcc[, 3], FUN = str_to_title)))
+table.tcc[, 4] <-
+  as.vector(unlist(lapply(table.tcc[, 4], FUN = str_to_title)))
+table.tcc[, 5] <-
+  as.vector(unlist(lapply(table.tcc[, 5], FUN = str_to_title)))
 
-colnames(table.tcc) <- c("Ano", "Nível", "Título", "Autor", "Orientador")
-datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+colnames(table.tcc) <-
+  c("Ano", "Nível", "Título", "Autor", "Orientador")
+datatable(
+  table.tcc,
+  rownames = FALSE,
+  options = list(
+    pageLength = 5,
+    scrolX = F,
+    dom = 'ftip',
+    searchHighlight = TRUE
+  ),
+  escape = FALSE
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -163,7 +174,7 @@ datatable(table.tcc, rownames = FALSE, options=list(pageLength = 5, scrolX = F, 
 
 <br>
 
-```{r artigos-completos}
+```{r artigos-completos, cache = TRUE}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -238,9 +249,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r artigos-resumos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r artigos-resumos, cache = TRUE}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -315,9 +324,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r preprints, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r preprints, cache = TRUE}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -392,9 +399,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r livros-capitulos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r livros-capitulos, cache = TRUE}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -508,9 +513,7 @@ for(ano in 1:length(anos)) {
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r resumos-eventos, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "80%"}
-options(knitr.kable.NA = '--', knitr.table.format = "html")
-
+```{r resumos-eventos, cache = TRUE}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -665,7 +668,6 @@ for(i in 1:dim(softwares.raw)[1]){
 
 # print table
 print(kable(softwares.raw, align = c("l", rep("c", ncol(softwares.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
 ```
 
 <style>

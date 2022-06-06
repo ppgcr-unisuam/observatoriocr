@@ -225,7 +225,7 @@ table.with.badges <-
         cat("</td></tr>")
       }
     }
-
+    
     # end table
     cat("</table>")
     cat('\n\n<!-- -->\n\n')

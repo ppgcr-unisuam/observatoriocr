@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
   knitr.kable.NA = '--',
   knitr.table.format = "html"
 )
-source("Scripts/all-required-packages.R")
+source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
@@ -37,14 +37,14 @@ $(document).ready(function() {
 <p align="right">
 ```{r share}
 home <- "rehab-tech.github.io/observatoriocr/"
-source("Scripts/social-media-sharing.R")
+source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 
 <!--read additional files-->
-```{r metrics, cache = TRUE}
-source("Scripts/sjr.R")
-source("Scripts/webqualis.R")
+```{r metrics}
+source("Scripts/sjr.R", local = knitr::knit_global())
+source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 
 <!--script for generating ALTMETRIC badges-->
@@ -66,10 +66,10 @@ source("Scripts/webqualis.R")
 ```{r tcc}
 # tcc
 sheet <- "TCC"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
@@ -174,7 +174,7 @@ datatable(
 
 <br>
 
-```{r artigos-completos, cache = TRUE}
+```{r artigos-completos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -207,10 +207,10 @@ for(ano in 1:length(anos)) {
     
     # cria metadados para rastreio pelo Altmetric
     dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
+    source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
     
     # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
+    source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
     
     # get data of papers without Altmetric from CrossRef
     if (is_empty(no_altmetric_dois_list)) {
@@ -227,7 +227,7 @@ for(ano in 1:length(anos)) {
     }
     
     # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
     table.with.badges(
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
@@ -249,7 +249,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r artigos-resumos, cache = TRUE}
+```{r artigos-resumos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -282,10 +282,10 @@ for(ano in 1:length(anos)) {
     
     # cria metadados para rastreio pelo Altmetric
     dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
+    source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
     
     # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
+    source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
     
     # get data of papers without Altmetric from CrossRef
     if (is_empty(no_altmetric_dois_list)) {
@@ -302,7 +302,7 @@ for(ano in 1:length(anos)) {
     }
     
     # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
     table.with.badges(
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
@@ -324,7 +324,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r preprints, cache = TRUE}
+```{r preprints}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -357,10 +357,10 @@ for(ano in 1:length(anos)) {
     
     # cria metadados para rastreio pelo Altmetric
     dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
+    source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
     
     # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
+    source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
     
     # get data of papers without Altmetric from CrossRef
     if (is_empty(no_altmetric_dois_list)) {
@@ -377,7 +377,7 @@ for(ano in 1:length(anos)) {
     }
     
     # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
     table.with.badges(
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
@@ -399,7 +399,7 @@ for(ano in 1:length(anos)) {
 
 <br>
 
-```{r livros-capitulos, cache = TRUE}
+```{r livros-capitulos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -432,10 +432,10 @@ for(ano in 1:length(anos)) {
     
     # cria metadados para rastreio pelo Altmetric
     dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
+    source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
     
     # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
+    source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
     
     # get data of papers without Altmetric from CrossRef
     if (is_empty(no_altmetric_dois_list)) {
@@ -452,7 +452,7 @@ for(ano in 1:length(anos)) {
     }
     
     # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
     table.with.badges(
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
@@ -513,7 +513,7 @@ for(ano in 1:length(anos)) {
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r resumos-eventos, cache = TRUE}
+```{r resumos-eventos}
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
 all.dois <-
   data.frame(read_excel(
@@ -546,10 +546,10 @@ for(ano in 1:length(anos)) {
     
     # cria metadados para rastreio pelo Altmetric
     dois_2_meta <- dois$DOI
-    source("scripts/altmetric-meta-from-dois.R")
+    source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
     
     # roda o script para obter dados do Altmetric
-    source("scripts/altmetric-from-dois.R")
+    source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
     
     # get data of papers without Altmetric from CrossRef
     if (is_empty(no_altmetric_dois_list)) {
@@ -566,7 +566,7 @@ for(ano in 1:length(anos)) {
     }
     
     # print table of papers with/without badges
-    source("scripts/papers-with-badges.R")
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
     table.with.badges(
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,

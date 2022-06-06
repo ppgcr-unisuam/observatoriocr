@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
   knitr.kable.NA = '--',
   knitr.table.format = "html"
 )
-source("Scripts/all-required-packages.R")
+source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
@@ -37,7 +37,7 @@ $(document).ready(function() {
 <p align="right">
 ```{r share}
 home <- "rehab-tech.github.io/observatoriocr/"
-source("Scripts/social-media-sharing.R")
+source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 

@@ -5,6 +5,7 @@
 # https://api.altmetric.com
 # https://docs.google.com/spreadsheets/d/1ndVY8Q2LOaZO_P_HDmSQulagjeUrS250mAL2N5V8GvY/edit#gid=0
 
+# select data to grab from Altmetric API
 columns_to_grab <-
   c(
     "title",
@@ -16,17 +17,21 @@ columns_to_grab <-
     "issns1",
     "issns2",
     "published_on",
-    "cited_by_posts_count",
-    "cited_by_tweeters_count",
     "cited_by_fbwalls_count",
-    "cited_by_accounts_count",
-    "cited_by_videos_count",
-    "cited_by_msm_count",
     "cited_by_feeds_count",
+    "cited_by_gplus_count",
+    "cited_by_msm_count",
+    "cited_by_posts_count",
+    "cited_by_rdts_count",
+    "cited_by_tweeters_count",
+    "cited_by_videos_count",
+    "cited_by_accounts_count",
     "cited_by_patents_count",
+    "mendeley",
     "score"
   )
 
+# initialize dataframe
 doi_reshaped_data <-
   data.frame(matrix(
     vector(),
@@ -35,25 +40,19 @@ doi_reshaped_data <-
     dimnames = list(c(), columns_to_grab)
   ))
 
-doi_sort <- c()
-no_altmetric_dois_list <- c()
+no_altmetric_dois_list <- list()
 
+# loop for all DOI in the list
 for (input in 1:length(dois_list)) {
   tryCatch(
     expr = {
-      Sys.sleep(2)
-      
-      raw_data <-
-        read.csv(
-          paste0(
-            "https://api.altmetric.com/v1/doi/",
-            dois_list[[input]],
-            collapse = ""
-          ),
-          sep = ",",
-          check.names = FALSE,
-          strip.white = FALSE
-        )
+      url <- paste0("https://api.altmetric.com/v1/doi/",
+                    dois_list[[input]],
+                    collapse = "")
+      raw_data <- read.csv(url,
+                           sep = ",",
+                           check.names = FALSE,
+                           strip.white = FALSE)
       
       split_data <- strsplit(colnames(raw_data), ":")
       
@@ -64,7 +63,9 @@ for (input in 1:length(dois_list)) {
         # bind label and data
         label <- columns_to_grab[i]
         data <-
-          gsub("\\[|\\]", "", paste(split_data[[match(label, gsub("\\{|\\}", "", split_names))]][2:length(split_data[[match(label, gsub("\\{|\\}", "", split_names))]])], collapse = ":", sep = ""))
+          gsub("\\[|\\]",
+               "",
+               paste(split_data[[match(label, gsub("\\{|\\}", "", split_names))]][2:length(split_data[[match(label, gsub("\\{|\\}", "", split_names))]])], collapse = ":", sep = ""))
         split_data.2 <- rbind(split_data.2, c(label, data))
         
         # add multiple ISSN
@@ -93,7 +94,7 @@ for (input in 1:length(dois_list)) {
       
       # bind rows data
       doi_reshaped_data[input, columns_to_grab] <-
-        t(split_data.2)[2, ]
+        t(split_data.2)[2,]
       doi_reshaped_data$author.names[input] <- author.names
       
       # The Unix epoch is 00:00:00 UTC on 1 January 1970 (an arbitrary date)
@@ -131,17 +132,32 @@ for (input in 1:length(dois_list)) {
       }
       doi_reshaped_data$issn <- issns
       
-      # remove duplicate entries
-      doi_unique <-
-        doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
+      # split and remove NA rows
+      doi_reshaped_data <-
+        doi_reshaped_data[complete.cases(doi_reshaped_data),]
       
-      # sort columns by title
-      doi_sort <-
-        doi_unique[order(doi_unique$title), ]
+      # waiting time for the server
+      Sys.sleep(1)
+      
+      # clean uop the environment
+      rm(raw_data)
     },
     error = function(e) {
-      no_altmetric_dois_list <-
-        c(no_altmetric_dois_list, dois_list[[input]])
+      # waiting time for the server
+    },
+    finally = {
+      Sys.sleep(1)
     }
   )
 }
+
+# remove duplicate entries
+doi_unique <-
+  doi_reshaped_data[!duplicated(doi_reshaped_data$doi),]
+
+# sort columns by title
+doi_sort <-
+  doi_unique[order(doi_unique$title),]
+
+# collect DOIs without altmetric data
+no_altmetric_dois_list <- dois_list[is.na(match(dois_list, doi_reshaped_data$doi))]

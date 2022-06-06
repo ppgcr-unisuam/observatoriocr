@@ -160,6 +160,13 @@ navbar:
           href: [autoavaliacao.html#pesquisa-egresso]
     - text: "Galeria"
       href: [galeria.html]
+      menu:
+        - text: "Videos"
+          href: [galeria.html#videos]
+        - text: "Podcasts"
+          href: [galeria.html#podcasts]
+        - text: "Fotos"
+          href: [galeria.html#fotos]
     - text: "SSTCC"
       href: [https://sstcc.unisuam.edu.br/]
     - text: ""

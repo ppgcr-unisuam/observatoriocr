@@ -42,7 +42,7 @@ source("Scripts/social-media-sharing.R")
 </p>
 
 <!--read additional files-->
-```{r metrics, cache = TRUE}
+```{r metrics}
 source("Scripts/sjr.R")
 source("Scripts/webqualis.R")
 ```

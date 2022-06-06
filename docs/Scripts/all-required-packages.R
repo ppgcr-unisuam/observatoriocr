@@ -64,7 +64,6 @@ packs.git <-
   c(
     "geobr",
     "packup",
-    "rAltmetric",
     "rcrossref"
   )
 
@@ -73,9 +72,6 @@ if (!require("geobr", character.only = TRUE, quietly = TRUE))
 
 if (!require("packup", character.only = TRUE, quietly = TRUE))
   devtools::install_github("milesmcbain/packup")
-
-if (!require("rAltmetric", character.only = TRUE, quietly = TRUE))
-  devtools::install_github("ropensci/rAltmetric")
 
 if (!require("rcrossref", character.only = TRUE, quietly = TRUE))
   devtools::install_github("ropensci/rcrossref")

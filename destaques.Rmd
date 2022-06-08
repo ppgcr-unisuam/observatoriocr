@@ -141,231 +141,231 @@ source("Scripts/webqualis.R", local = knitr::knit_global())
 #### **Atenção e visibilidade^1,2,3^**
 
 ```{r artigos-destaque-visibilidade}
-# # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-# # read data
-# artigos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.completos",
-#     col_types = c("text")
-#   ))
-# 
-# # read data
-# resumos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.resumos",
-#     col_types = c("text")
-#   ))
-# 
-# # read data
-# eventos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.eventos",
-#     col_types = c("text")
-#   ))
-# 
-# # bind papers and letters/abstracts and events (all with DOI)
-# dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
-# 
-# # Data cleaning
-# dois <- dois[complete.cases(dois$DOI), ]
-# # Filtra por período
-# dois <- dois[dois$Publicado.em != "", ]
-# 
-# # Verifica se há DOIs no período
-# if (dim(dois)[1] == 0) {
-#   cat('\n')
-#   cat('*Sem produção para exibir no período*')
-#   cat('\n')
-# } else {
-#   # Step 5. Convert the doi column in your dataset to a list.
-#   dois_list <- as.list(dois$DOI)
-#   
-#   # cria metadados para rastreio pelo Altmetric
-#   dois_2_meta <- dois$DOI
-#   source("Scripts/altmetric-meta-from-dois.R",
-#          local = knitr::knit_global())
-#   
-#   # roda o script para obter dados do Altmetric
-#   source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
-#   
-#   # get data of papers without Altmetric from CrossRef
-#   if (is_empty(no_altmetric_dois_list)) {
-#     my_dois_works <- no_altmetric_dois_list
-#   } else {
-#     my_dois_works <-
-#       rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-#       pluck("data")
-#     # sort columns by title
-#     if (length(my_dois_works) != 0) {
-#       my_dois_works <-
-#         my_dois_works[order(as.vector(my_dois_works$title)),]
-#     }
-#   }
-#   
-#   # remove duplicate or NA entries
-#   doi_unique <-
-#     doi_reshaped_data[apply(as.data.frame(cbind(
-#       !duplicated(doi_reshaped_data$doi),!is.na(doi_reshaped_data$published_on),!is.na(doi_reshaped_data$issn)
-#     )), 1, all), ]
-#   
-#   # sort columns by citations then year
-#   doi_sort <-
-#     doi_unique[order(-as.numeric(doi_unique$score),-as.numeric(doi_unique$published_on)), ]
-#   
-#   # TOP (removing papers with no Altmetric)
-#   top <- min(dim(doi_sort)[1], 20)
-#   doi_sort <- doi_sort[1:top, ]
-#   my_dois_works <- character(0)
-#   
-#   # print table of papers with/without badges
-#   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
-#   table.with.badges(
-#     show.Altmetric = TRUE,
-#     show.Dimensions = TRUE,
-#     show.PlumX = TRUE,
-#     show.SJR = TRUE,
-#     show.Qualis = TRUE,
-#     doi_sort,
-#     my_dois_works,
-#     scimago,
-#     qualis
-#   )
-# }
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+# read data
+artigos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.completos",
+    col_types = c("text")
+  ))
+
+# read data
+resumos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# read data
+eventos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts and events (all with DOI)
+dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI), ]
+# Filtra por período
+dois <- dois[dois$Publicado.em != "", ]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("Scripts/altmetric-meta-from-dois.R",
+         local = knitr::knit_global())
+
+  # roda o script para obter dados do Altmetric
+  source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
+
+  # get data of papers without Altmetric from CrossRef
+  if (is_empty(no_altmetric_dois_list)) {
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+    my_dois_works <-
+      rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+      pluck("data")
+    # sort columns by title
+    if (length(my_dois_works) != 0) {
+      my_dois_works <-
+        my_dois_works[order(as.vector(my_dois_works$title)),]
+    }
+  }
+
+  # remove duplicate or NA entries
+  doi_unique <-
+    doi_reshaped_data[apply(as.data.frame(cbind(
+      !duplicated(doi_reshaped_data$doi),!is.na(doi_reshaped_data$published_on),!is.na(doi_reshaped_data$issn)
+    )), 1, all), ]
+
+  # sort columns by citations then year
+  doi_sort <-
+    doi_unique[order(-as.numeric(doi_unique$score),-as.numeric(doi_unique$published_on)), ]
+
+  # TOP (removing papers with no Altmetric)
+  top <- min(dim(doi_sort)[1], 20)
+  doi_sort <- doi_sort[1:top, ]
+  my_dois_works <- character(0)
+
+  # print table of papers with/without badges
+  source("Scripts/papers-with-badges.R", local = knitr::knit_global())
+  table.with.badges(
+    show.Altmetric = TRUE,
+    show.Dimensions = TRUE,
+    show.PlumX = TRUE,
+    show.SJR = TRUE,
+    show.Qualis = TRUE,
+    doi_sort,
+    my_dois_works,
+    scimago,
+    qualis
+  )
+}
 ```
 
 #### **Prestígio do periódico^4,5^**
 
 ```{r artigos-destaque-prestigio}
-# # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
-# # read data
-# artigos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.completos",
-#     col_types = c("text")
-#   ))
-# 
-# # read data
-# resumos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.resumos",
-#     col_types = c("text")
-#   ))
-# 
-# # read data
-# eventos <-
-#   data.frame(read_excel(
-#     "../PPGCR Unisuam/Produção.xlsx",
-#     sheet = "PI.eventos",
-#     col_types = c("text")
-#   ))
-# 
-# # bind papers and letters/abstracts and events (all with DOI)
-# dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
-# 
-# # Data cleaning
-# dois <- dois[complete.cases(dois$DOI),]
-# # Filtra por período
-# dois <- dois[dois$Publicado.em != "",]
-# 
-# # Verifica se há DOIs no período
-# if (dim(dois)[1] == 0) {
-#   cat('\n')
-#   cat('*Sem produção para exibir no período*')
-#   cat('\n')
-# } else {
-#   # Step 5. Convert the doi column in your dataset to a list.
-#   dois_list <- as.list(dois$DOI)
-#   
-#   # cria metadados para rastreio pelo Altmetric
-#   dois_2_meta <- dois$DOI
-#   source("Scripts/altmetric-meta-from-dois.R",
-#          local = knitr::knit_global())
-#   
-#   # roda o script para obter dados do Altmetric
-#   source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
-#   
-#   # get data of papers without Altmetric from CrossRef
-#   if (is_empty(no_altmetric_dois_list)) {
-#     my_dois_works <- no_altmetric_dois_list
-#   } else {
-#     my_dois_works <-
-#       rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-#       pluck("data")
-#     # sort columns by title
-#     if (length(my_dois_works) != 0) {
-#       my_dois_works <-
-#         my_dois_works[order(as.vector(my_dois_works$title)),]
-#     }
-#   }
-#   
-#   # remove duplicate or NA entries
-#   doi_unique <-
-#     doi_reshaped_data[apply(as.data.frame(cbind(
-#       !duplicated(doi_reshaped_data$doi),
-#       !is.na(doi_reshaped_data$published_on),
-#       !is.na(doi_reshaped_data$issn)
-#     )), 1, all),]
-#   
-#   # sort columns by citations then year
-#   doi_sort <-
-#     doi_unique[order(-as.numeric(doi_unique$score),
-#                      -as.numeric(doi_unique$published_on)),]
-#   
-#   # TOP (removing papers with no Altmetric)
-#   top <- min(dim(doi_sort)[1], 20)
-#   doi_sort <- doi_sort[1:top,]
-#   my_dois_works <- character(0)
-#   
-#   # print table of papers with/without badges
-#   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
-#   
-#   # remove duplicate or NA entries
-#   doi_unique <-
-#     doi_reshaped_data[apply(as.data.frame(cbind(
-#       !duplicated(doi_reshaped_data$doi),
-#       !is.na(doi_reshaped_data$published_on),
-#       !is.na(doi_reshaped_data$issn)
-#     )), 1, all),]
-#   
-#   # TOP (removing papers with no SJR)
-#   SJRs <- c()
-#   for (k in 1:length(doi_unique$doi)) {
-#     SJR.k <-
-#       scimago[grep(gsub("-", "", doi_unique$issn[k]), scimago$Issn), 6]
-#     SJRs <- rbind(SJRs, ifelse(length(SJR.k) == 1, SJR.k, NA))
-#   }
-#   
-#   doi_unique$SJRs <- SJRs
-#   doi_unique <- doi_unique[complete.cases(doi_unique$SJRs),]
-#   
-#   # sort columns by SJR then year
-#   doi_sort <-
-#     doi_unique[order(-as.numeric(doi_unique$SJRs),
-#                      -as.numeric(doi_unique$published_on)),]
-#   
-#   top <- min(dim(doi_sort)[1], 20)
-#   doi_sort <- doi_sort[1:top,]
-#   my_dois_works <- character(0)
-#   
-#   # print table of papers with/without badges
-#   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
-#   table.with.badges(
-#     show.Altmetric = TRUE,
-#     show.Dimensions = TRUE,
-#     show.PlumX = TRUE,
-#     show.SJR = TRUE,
-#     show.Qualis = TRUE,
-#     doi_sort,
-#     my_dois_works,
-#     scimago,
-#     qualis
-#   )
-# }
+# Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column.
+# read data
+artigos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.completos",
+    col_types = c("text")
+  ))
+
+# read data
+resumos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.resumos",
+    col_types = c("text")
+  ))
+
+# read data
+eventos <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = "PI.eventos",
+    col_types = c("text")
+  ))
+
+# bind papers and letters/abstracts and events (all with DOI)
+dois <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
+
+# Data cleaning
+dois <- dois[complete.cases(dois$DOI),]
+# Filtra por período
+dois <- dois[dois$Publicado.em != "",]
+
+# Verifica se há DOIs no período
+if (dim(dois)[1] == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n')
+} else {
+  # Step 5. Convert the doi column in your dataset to a list.
+  dois_list <- as.list(dois$DOI)
+
+  # cria metadados para rastreio pelo Altmetric
+  dois_2_meta <- dois$DOI
+  source("Scripts/altmetric-meta-from-dois.R",
+         local = knitr::knit_global())
+
+  # roda o script para obter dados do Altmetric
+  source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
+
+  # get data of papers without Altmetric from CrossRef
+  if (is_empty(no_altmetric_dois_list)) {
+    my_dois_works <- no_altmetric_dois_list
+  } else {
+    my_dois_works <-
+      rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
+      pluck("data")
+    # sort columns by title
+    if (length(my_dois_works) != 0) {
+      my_dois_works <-
+        my_dois_works[order(as.vector(my_dois_works$title)),]
+    }
+  }
+
+  # remove duplicate or NA entries
+  doi_unique <-
+    doi_reshaped_data[apply(as.data.frame(cbind(
+      !duplicated(doi_reshaped_data$doi),
+      !is.na(doi_reshaped_data$published_on),
+      !is.na(doi_reshaped_data$issn)
+    )), 1, all),]
+
+  # sort columns by citations then year
+  doi_sort <-
+    doi_unique[order(-as.numeric(doi_unique$score),
+                     -as.numeric(doi_unique$published_on)),]
+
+  # TOP (removing papers with no Altmetric)
+  top <- min(dim(doi_sort)[1], 20)
+  doi_sort <- doi_sort[1:top,]
+  my_dois_works <- character(0)
+
+  # print table of papers with/without badges
+  source("Scripts/papers-with-badges.R", local = knitr::knit_global())
+
+  # remove duplicate or NA entries
+  doi_unique <-
+    doi_reshaped_data[apply(as.data.frame(cbind(
+      !duplicated(doi_reshaped_data$doi),
+      !is.na(doi_reshaped_data$published_on),
+      !is.na(doi_reshaped_data$issn)
+    )), 1, all),]
+
+  # TOP (removing papers with no SJR)
+  SJRs <- c()
+  for (k in 1:length(doi_unique$doi)) {
+    SJR.k <-
+      scimago[grep(gsub("-", "", doi_unique$issn[k]), scimago$Issn), 6]
+    SJRs <- rbind(SJRs, ifelse(length(SJR.k) == 1, SJR.k, NA))
+  }
+
+  doi_unique$SJRs <- SJRs
+  doi_unique <- doi_unique[complete.cases(doi_unique$SJRs),]
+
+  # sort columns by SJR then year
+  doi_sort <-
+    doi_unique[order(-as.numeric(doi_unique$SJRs),
+                     -as.numeric(doi_unique$published_on)),]
+
+  top <- min(dim(doi_sort)[1], 20)
+  doi_sort <- doi_sort[1:top,]
+  my_dois_works <- character(0)
+
+  # print table of papers with/without badges
+  source("Scripts/papers-with-badges.R", local = knitr::knit_global())
+  table.with.badges(
+    show.Altmetric = TRUE,
+    show.Dimensions = TRUE,
+    show.PlumX = TRUE,
+    show.SJR = TRUE,
+    show.Qualis = TRUE,
+    doi_sort,
+    my_dois_works,
+    scimago,
+    qualis
+  )
+}
 ```
 
 ## **Prêmios** {.tabset #premios}

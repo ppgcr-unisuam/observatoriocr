@@ -146,8 +146,8 @@ doi_reshaped_data$published_on <- as.character(year_publ)
 doi_reshaped_data$score <-
   ceiling(as.numeric(doi_reshaped_data$score))
 
-# replace empty values by 0
-split_data.2[split_data.2 == ""] <- 0
+# replace empty "count_" values by 0
+doi_reshaped_data[doi_reshaped_data == ""] <- 0
 
 # split and remove NA rows
 doi_reshaped_data <-
@@ -158,7 +158,7 @@ doi_unique <-
   doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
 
 # sort columns by title
-doi_sort <-
+doi_unique <-
   doi_unique[order(doi_unique$title), ]
 
 # collect DOIs without altmetric data

@@ -93,7 +93,7 @@ for (input in 1:length(dois_list)) {
         
         # bind rows data
         doi_reshaped_data[input, columns_to_grab] <-
-          t(split_data.2)[2, ]
+          t(split_data.2)[2,]
         doi_reshaped_data$author.names[input] <- author.names
         
         # merge at least one ISSN to each journal to search for in the CSV provided by SCImago
@@ -147,19 +147,38 @@ doi_reshaped_data$score <-
   ceiling(as.numeric(doi_reshaped_data$score))
 
 # replace empty "count_" values by 0
-doi_reshaped_data[doi_reshaped_data == ""] <- 0
+doi_reshaped_data$cited_by_fbwalls_count[doi_reshaped_data$cited_by_fbwalls_count == ""] <-
+  0
+doi_reshaped_data$cited_by_feeds_count[doi_reshaped_data$cited_by_feeds_count == ""] <-
+  0
+doi_reshaped_data$cited_by_gplus_count[doi_reshaped_data$cited_by_gplus_count == ""] <-
+  0
+doi_reshaped_data$cited_by_msm_count[doi_reshaped_data$cited_by_msm_count == ""] <-
+  0
+doi_reshaped_data$cited_by_posts_count[doi_reshaped_data$cited_by_posts_count == ""] <-
+  0
+doi_reshaped_data$cited_by_rdts_count[doi_reshaped_data$cited_by_rdts_count == ""] <-
+  0
+doi_reshaped_data$cited_by_tweeters_count[doi_reshaped_data$cited_by_tweeters_count == ""] <-
+  0
+doi_reshaped_data$cited_by_videos_count[doi_reshaped_data$cited_by_videos_count == ""] <-
+  0
+doi_reshaped_data$cited_by_accounts_count[doi_reshaped_data$cited_by_accounts_count == ""] <-
+  0
+doi_reshaped_data$cited_by_patents_count[doi_reshaped_data$cited_by_patents_count == ""] <-
+  0
 
 # split and remove NA rows
 doi_reshaped_data <-
-  doi_reshaped_data[complete.cases(doi_reshaped_data), ]
+  doi_reshaped_data[complete.cases(doi_reshaped_data),]
 
 # remove duplicate entries
 doi_unique <-
-  doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
+  doi_reshaped_data[!duplicated(doi_reshaped_data$doi),]
 
 # sort columns by title
 doi_unique <-
-  doi_unique[order(doi_unique$title), ]
+  doi_unique[order(doi_unique$title),]
 
 # collect DOIs without altmetric data
 no_altmetric_dois_list <-

@@ -49,194 +49,132 @@ source("Scripts/webqualis.R", local = knitr::knit_global())
 
 ```{r artigos-metrics, cache = TRUE}
 # read data
-artigos <-
+sheet.ix <- "PI.completos"
+data.sheet <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.completos",
+    sheet = sheet.ix,
     col_types = c("text")
   ))
-dois <- artigos[, 1:11]
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI),]
-# Filtra por período
-dois <- dois[dois$Publicado.em != "",]
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
 dois_artigos <- dois
-
-# Verifica se há DOIs
-if (dim(dois)[1] == 0) {
-  cat('\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n')
-} else {
-  dois_list <- as.list(dois$DOI)
-  
-  # cria metadados para rastreio pelo Altmetric
-  dois_2_meta <- dois$DOI
-  source("Scripts/altmetric-meta-from-dois.R",
-         local = knitr::knit_global())
-  
-  # roda o script para obter dados do Altmetric
-  source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
-  
-  # remove duplicate or NA entries
-  doi_unique <-
-    doi_reshaped_data[apply(as.data.frame(cbind(
-      !duplicated(doi_reshaped_data$doi),
-      !is.na(doi_reshaped_data$published_on),
-      !is.na(doi_reshaped_data$issn)
-    )), 1, all),]
-
-  # get data of papers without Altmetric from CrossRef
-  if (is_empty(no_altmetric_dois_list)) {
-    my_dois_works <- no_altmetric_dois_list
-  } else {
-    my_dois_works <-
-      rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-      pluck("data")
-    # sort columns by title
-    if (length(my_dois_works) != 0) {
-      my_dois_works <-
-        my_dois_works[order(as.vector(my_dois_works$title)), ]
-    }
-  }
-  my_dois_works$published_on <- format(as.Date(my_dois_works$published.online), format = "%Y")
-
-  # remove duplicate or NA entries
-  my_dois_works <- na.omit(my_dois_works)
-  
-  # store data for use downstream
-  doi_unique_artigos <- doi_unique
-  my_dois_works_artigos <- my_dois_works
-}
+doi_unique_artigos <- doi_unique
+my_dois_works_artigos <- my_dois_works
 ```
 
 ```{r resumos-metrics, cache = TRUE}
 # read data
-resumos <-
+sheet.ix <- "PI.resumos"
+data.sheet <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.resumos",
+    sheet = sheet.ix,
     col_types = c("text")
   ))
-dois <- resumos[, 1:11]
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI),]
-# Filtra por período
-dois <- dois[dois$Publicado.em != "",]
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
 dois_resumos <- dois
+doi_unique_resumos <- doi_unique
+my_dois_works_resumos <- my_dois_works
+```
 
-# Verifica se há DOIs
-if (dim(dois)[1] == 0) {
-  cat('\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n')
-} else {
-  dois_list <- as.list(dois$DOI)
-  
-  # cria metadados para rastreio pelo Altmetric
-  dois_2_meta <- dois$DOI
-  source("Scripts/altmetric-meta-from-dois.R",
-         local = knitr::knit_global())
-  
-  # roda o script para obter dados do Altmetric
-  source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
-  
-  # remove duplicate or NA entries
-  doi_unique <-
-    doi_reshaped_data[apply(as.data.frame(cbind(
-      !duplicated(doi_reshaped_data$doi),
-      !is.na(doi_reshaped_data$published_on),
-      !is.na(doi_reshaped_data$issn)
-    )), 1, all),]
+```{r preprints-metrics, cache = TRUE}
+# read data
+sheet.ix <- "PI.preprints"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
 
-  # get data of papers without Altmetric from CrossRef
-  if (is_empty(no_altmetric_dois_list)) {
-    my_dois_works <- no_altmetric_dois_list
-  } else {
-    my_dois_works <-
-      rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-      pluck("data")
-    # sort columns by title
-    if (length(my_dois_works) != 0) {
-      my_dois_works <-
-        my_dois_works[order(as.vector(my_dois_works$title)), ]
-    }
-  }
-  my_dois_works$published_on <- format(as.Date(my_dois_works$published.online), format = "%Y")
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
 
-  # remove duplicate or NA entries
-  my_dois_works <- na.omit(my_dois_works)
-  
-  # store data for use downstream
-  doi_unique_resumos <- doi_unique
-  my_dois_works_resumos <- my_dois_works
-}
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_preprints <- dois
+doi_unique_preprints <- doi_unique
+my_dois_works_preprints <- my_dois_works
+```
+
+```{r livros-capitulos-metrics, cache = TRUE}
+# read data
+sheet.ix <- "PI.livros"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_livros_capitulos <- dois
+doi_unique_livros_capitulos <- doi_unique
+my_dois_works_livros_capitulos <- my_dois_works
 ```
 
 ```{r eventos-metrics, cache = TRUE}
 # read data
-eventos <-
+sheet.ix <- "PI.eventos"
+data.sheet <-
   data.frame(read_excel(
     "../PPGCR Unisuam/Produção.xlsx",
-    sheet = "PI.eventos",
+    sheet = sheet.ix,
     col_types = c("text")
   ))
-dois <- eventos[, 1:11]
 
 # Data cleaning
-dois <- dois[complete.cases(dois$DOI),]
-# Filtra por período
-dois <- dois[dois$Publicado.em != "",]
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
 dois_eventos <- dois
-
-# Verifica se há DOIs
-if (dim(dois)[1] == 0) {
-  cat('\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n')
-} else {
-  dois_list <- as.list(dois$DOI)
-  
-  # cria metadados para rastreio pelo Altmetric
-  dois_2_meta <- dois$DOI
-  source("Scripts/altmetric-meta-from-dois.R",
-         local = knitr::knit_global())
-  
-  # roda o script para obter dados do Altmetric
-  source("Scripts/altmetric-from-dois.R", local = knitr::knit_global())
-  
-  # remove duplicate or NA entries
-  doi_unique <-
-    doi_reshaped_data[apply(as.data.frame(cbind(
-      !duplicated(doi_reshaped_data$doi),
-      !is.na(doi_reshaped_data$published_on),
-      !is.na(doi_reshaped_data$issn)
-    )), 1, all),]
-
-  # get data of papers without Altmetric from CrossRef
-  if (is_empty(no_altmetric_dois_list)) {
-    my_dois_works <- no_altmetric_dois_list
-  } else {
-    my_dois_works <-
-      rcrossref::cr_works(dois = unlist(no_altmetric_dois_list)) %>%
-      pluck("data")
-    # sort columns by title
-    if (length(my_dois_works) != 0) {
-      my_dois_works <-
-        my_dois_works[order(as.vector(my_dois_works$title)), ]
-    }
-  }
-  my_dois_works$published_on <- format(as.Date(my_dois_works$published.online), format = "%Y")
-
-  # remove duplicate or NA entries
-  my_dois_works <- na.omit(my_dois_works)
-  
-  # store data for use downstream
-  doi_unique_eventos <- doi_unique
-  my_dois_works_eventos <- my_dois_works
-}
+doi_unique_eventos <- doi_unique
+my_dois_works_eventos <- my_dois_works
 ```
 
 <!--script for generating ALTMETRIC badges-->
@@ -321,21 +259,14 @@ if (dim(dois)[1] == 0) {
 
 <br>
 
-## **Produções de destaque** {#produtos-destaque}
+## **Produções de destaque (Top-20)** {#produtos-destaque  .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Artigos em periódicos (Top-20)** {.tabset}
+### **Atenção e visibilidade^1,2,3^**
 
-<br>
-
-#### **Atenção e visibilidade^1,2,3^**
-
-```{r artigos-destaque-visibilidade}
-# bind papers and letters/abstracts and events (all with DOI)
-dois <-
-  bind_rows(dois_artigos[, 1:11], dois_resumos[, 1:11], dois_eventos[, 1:11])
+```{r destaque-visibilidade}
 # bind sources
 doi_unique <-
   bind_rows(doi_unique_artigos,
@@ -355,7 +286,7 @@ doi_unique <- doi_unique[ordering,]
 # TOP (removing papers with no Altmetric)
 top <- min(dim(doi_unique)[1], 20)
 doi_unique <- doi_unique[1:top,]
-my_dois_works <- character(0)
+my_dois_works <- list()
 
 # Verifica se há DOIs
 if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
@@ -363,7 +294,20 @@ if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
   cat('*Sem produção para exibir*')
   cat('\n')
 } else {
+  # section header
+  cat('<br>')
+  cat(
+    paste(
+      "*Produtos (n = ",
+      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^)* \n\n",
+      sep = ""
+    )
+  )
+  cat('<br>')
+  
   # print table of papers with/without badges
+  # print tab header
   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
   table.with.badges(
     show.Altmetric = TRUE,
@@ -371,15 +315,16 @@ if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
     show.PlumX = TRUE,
     show.SJR = TRUE,
     show.Qualis = TRUE,
-    tryCatch(doi_unique,
+    doi_unique = tryCatch(
+      doi_unique,
       error = function(e) {
-        
+        return(doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0)))
       }
     ),
-    tryCatch(
+    my_dois_works = tryCatch(
       my_dois_works,
       error = function(e) {
-        
+        return(my_dois_works <- list())
       }
     ),
     scimago,
@@ -388,12 +333,9 @@ if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
 }
 ```
 
-#### **Prestígio do periódico^4,5^**
+### **Prestígio do periódico^4,5^**
 
-```{r artigos-destaque-prestigio}
-# bind papers and letters/abstracts and events (all with DOI)
-dois <-
-  bind_rows(dois_artigos[, 1:11], dois_resumos[, 1:11], dois_eventos[, 1:11])
+```{r destaque-prestigio}
 # bind sources
 doi_unique <-
   bind_rows(doi_unique_artigos,
@@ -423,13 +365,27 @@ doi_unique <-
 top <- min(dim(doi_unique)[1], 20)
 doi_unique <- doi_unique[1:top,]
 my_dois_works <- character(0)
+
 # Verifica se há DOIs
 if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
 } else {
+  # section header
+  cat('<br>')
+  cat(
+    paste(
+      "*Produtos (n = ",
+      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^)* \n\n",
+      sep = ""
+    )
+  )
+  cat('<br>')
+  
   # print table of papers with/without badges
+  # print tab header
   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
   table.with.badges(
     show.Altmetric = TRUE,
@@ -437,16 +393,16 @@ if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
     show.PlumX = TRUE,
     show.SJR = TRUE,
     show.Qualis = TRUE,
-    tryCatch(
+    doi_unique = tryCatch(
       doi_unique,
       error = function(e) {
-        
+        return(doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0)))
       }
     ),
-    tryCatch(
+    my_dois_works = tryCatch(
       my_dois_works,
       error = function(e) {
-        
+        return(my_dois_works <- list())
       }
     ),
     scimago,

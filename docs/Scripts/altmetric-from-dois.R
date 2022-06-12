@@ -93,7 +93,7 @@ for (input in 1:length(dois_list)) {
         
         # bind rows data
         doi_reshaped_data[input, columns_to_grab] <-
-          t(split_data.2)[2,]
+          t(split_data.2)[2, ]
         doi_reshaped_data$author.names[input] <- author.names
         
         # merge at least one ISSN to each journal to search for in the CSV provided by SCImago
@@ -170,15 +170,15 @@ doi_reshaped_data$cited_by_patents_count[doi_reshaped_data$cited_by_patents_coun
 
 # split and remove NA rows
 doi_reshaped_data <-
-  doi_reshaped_data[complete.cases(doi_reshaped_data),]
-
-# remove duplicate entries
-doi_unique <-
-  doi_reshaped_data[!duplicated(doi_reshaped_data$doi),]
+  doi_reshaped_data[complete.cases(doi_reshaped_data), ]
 
 # sort columns by title
-doi_unique <-
-  doi_unique[order(doi_unique$title),]
+doi_reshaped_data <-
+  doi_reshaped_data[order(doi_reshaped_data$title), ]
+
+# remove duplicate entries
+doi_reshaped_data <-
+  doi_reshaped_data[!duplicated(doi_reshaped_data$doi), ]
 
 # collect DOIs without altmetric data
 no_altmetric_dois_list <-

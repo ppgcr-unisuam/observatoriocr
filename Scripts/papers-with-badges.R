@@ -25,32 +25,32 @@ table.with.badges <-
     cat(
       "<table style=\"width:100%\">\n    <tr>\n      <th>Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^) \n </th>    </tr>",
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^) </th>\n    </tr>",
       sep = ""
     )
     
     # print table with DOI and Altmetric
     if (max(dim(doi_unique)[1], 0) != 0) {
-      for (i in 1:dim(doi_unique)[1]) {
+      for (ix in 1:dim(doi_unique)[1]) {
         # add bibliography info
         cat("<tr><td valign=top>")
         cat("<br>")
         cat(
           paste0(
             "[**",
-            doi_unique$title[i],
+            doi_unique$title[ix],
             "**](",
-            doi_unique$url[i],
+            doi_unique$url[ix],
             "){target=\"_blank\"}",
             "<br>"
           )
         )
-        cat(doi_unique$author.names[i])
+        cat(doi_unique$author.names[ix])
         cat(paste0(
           "<br>",
-          paste0(doi_unique$published_on[i], "&nbsp; - &nbsp;")
+          paste0(doi_unique$published_on[ix], "&nbsp; - &nbsp;")
         ))
-        cat(paste0("*", doi_unique$journal[i], "*", "<br>"))
+        cat(paste0("*", doi_unique$journal[ix], "*", "<br>"))
         # initialize the DIV element for the badges
         cat("<div style=\"vertical-align: middle; display: inline-block;\">")
         
@@ -58,7 +58,7 @@ table.with.badges <-
         if (show.Altmetric == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" class=\"altmetric-embed\" data-badge-type=\"donut\" data-badge-popover=\"right\" data-doi=\"",
-            doi_unique$doi[i],
+            doi_unique$doi[ix],
             "\"></a>",
             sep = ""
           )
@@ -68,7 +68,7 @@ table.with.badges <-
         if (show.Dimensions == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" data-legend=\"hover-right\" class=\"__dimensions_badge_embed__\" data-doi=\"",
-            doi_unique$doi[i],
+            doi_unique$doi[ix],
             "\" data-style=\"small_circle\"></a>",
             sep = ""
           )
@@ -78,7 +78,7 @@ table.with.badges <-
         if (show.PlumX == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
-            doi_unique$doi[i],
+            doi_unique$doi[ix],
             "\" data-popup=\"right\" data-size=\"medium\" data-site=\"plum\"></a>",
             sep = ""
           )
@@ -87,9 +87,9 @@ table.with.badges <-
         # add SJR
         if (show.SJR == TRUE) {
           SJR_id <-
-            scimago[grep(gsub("-", "", doi_unique$issn[i]), scimago$Issn), 2][1]
+            scimago[grep(gsub("-", "", doi_unique$issn[ix]), scimago$Issn), 2][1]
           SJR <-
-            scimago[grep(gsub("-", "", doi_unique$issn[i]), scimago$Issn), 6][1]
+            scimago[grep(gsub("-", "", doi_unique$issn[ix]), scimago$Issn), 6][1]
           cat(
             "<a target=\"_blank\" href=\"https://www.scimagojr.com/journalsearch.php?q=",
             SJR_id,
@@ -109,7 +109,7 @@ table.with.badges <-
             sep = ""
           )
           WebQualis <-
-            qualis[match(doi_unique$issn[i], qualis$ISSN), 3]
+            qualis[match(doi_unique$issn[ix], qualis$ISSN), 3]
           cat(paste0(ifelse(
             identical(WebQualis, numeric(0)) |
               all(is.na(WebQualis)),
@@ -122,39 +122,39 @@ table.with.badges <-
       }
     }
     
-    # print table with DOI but no Altmetric (== NA) (donut ?)
+    # print table with DOI but no Altmetric (== NA; donut ?)
     if (max(dim(my_dois_works)[1], 0) != 0) {
-      for (i in 1:dim(my_dois_works)[1]) {
+      for (ix in 1:dim(my_dois_works)[1]) {
         # add bibliography info
         cat("<tr><td valign=top>")
         cat("<br>")
         cat(
           paste0(
             "[**",
-            my_dois_works$title[i],
+            my_dois_works$title[ix],
             "**](https://doi.org/",
-            my_dois_works$doi[i],
+            my_dois_works$doi[ix],
             "){target=\"_blank\"}",
             "<br>"
           )
         )
         cat(
           paste(
-            my_dois_works$author[[i]]$given,
-            my_dois_works$author[[i]]$family,
+            my_dois_works$author[[ix]]$given,
+            my_dois_works$author[[ix]]$family,
             collapse = ", "
           )
         )
         cat(paste0("<br>",
                    paste0(
                      ifelse(
-                       !is.na(my_dois_works$issued[i]),
-                       substr(my_dois_works$issued[i], 1, 4),
-                       substr(my_dois_works$created[i], 1, 4)
+                       !is.na(my_dois_works$issued[ix]),
+                       substr(my_dois_works$issued[ix], 1, 4),
+                       substr(my_dois_works$created[ix], 1, 4)
                      ),
                      "&nbsp; - &nbsp;"
                    )))
-        cat(paste0("*", my_dois_works$container.title[i], "*", "<br>"))
+        cat(paste0("*", my_dois_works$container.title[ix], "*", "<br>"))
         
         # initialize the DIV element for the badges
         cat("<div style=\"vertical-align: middle; display: inline-block;\">")
@@ -171,7 +171,7 @@ table.with.badges <-
         if (show.Dimensions == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em;\" data-legend=\"hover-right\" class=\"__dimensions_badge_embed__\" data-doi=\"",
-            my_dois_works$doi[i],
+            my_dois_works$doi[ix],
             "\" data-style=\"small_circle\"></a>",
             sep = ""
           )
@@ -181,7 +181,7 @@ table.with.badges <-
         if (show.PlumX == TRUE) {
           cat(
             "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.4em 0.3em 0.4em 0.3em;\" class=\"plumx-plum-print-popup\" href=\"https://plu.mx/plum/a/?doi=",
-            my_dois_works$doi[i],
+            my_dois_works$doi[ix],
             "\" data-popup=\"right\" data-size=\"medium\" data-site=\"plum\"></a>",
             sep = ""
           )
@@ -190,9 +190,9 @@ table.with.badges <-
         # add SJR
         if (show.SJR == TRUE) {
           SJR_id <-
-            scimago[grep(gsub("-", "", substr(my_dois_works$issn[i], 1, 9)), scimago$Issn), 2][1]
+            scimago[grep(gsub("-", "", substr(my_dois_works$issn[ix], 1, 9)), scimago$Issn), 2][1]
           SJR <-
-            scimago[grep(gsub("-", "", substr(my_dois_works$issn[i], 1, 9)), scimago$Issn), 6][1]
+            scimago[grep(gsub("-", "", substr(my_dois_works$issn[ix], 1, 9)), scimago$Issn), 6][1]
           cat(
             "<a target=\"_blank\" href=\"https://www.scimagojr.com/journalsearch.php?q=",
             SJR_id,
@@ -212,7 +212,7 @@ table.with.badges <-
             sep = ""
           )
           WebQualis <-
-            qualis$ESTRATO[match(my_dois_works$issn[i], qualis$ISSN)]
+            qualis$ESTRATO[match(my_dois_works$issn[ix], qualis$ISSN)]
           cat(paste0(ifelse(
             identical(WebQualis, numeric(0)) |
               all(is.na(WebQualis)),

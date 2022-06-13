@@ -259,12 +259,12 @@ my_dois_works_eventos <- my_dois_works
 
 <br>
 
-## **Produções de destaque (Top-20)** {#produtos-destaque  .tabset}
+## **Produções de destaque** {#produtos-destaque  .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Atenção e visibilidade^1,2,3^**
+### **Atenção e visibilidade^1,2,3^ (Top-20)**
 
 ```{r destaque-visibilidade}
 # bind sources
@@ -289,7 +289,7 @@ doi_unique <- doi_unique[1:top,]
 my_dois_works <- list()
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -333,7 +333,7 @@ if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
 }
 ```
 
-### **Prestígio do periódico^4,5^**
+### **Prestígio do periódico^4,5^ (Top-20)**
 
 ```{r destaque-prestigio}
 # bind sources
@@ -367,7 +367,7 @@ doi_unique <- doi_unique[1:top,]
 my_dois_works <- character(0)
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')

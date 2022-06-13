@@ -311,7 +311,7 @@ my_dois_works <- my_dois_works_artigos
 years <- na.omit(sort(unique(c(doi_unique$published_on, my_dois_works$published_on)), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -370,7 +370,7 @@ my_dois_works <- my_dois_works_resumos
 years <- na.omit(sort(unique(c(doi_unique$published_on, my_dois_works$published_on)), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -429,7 +429,7 @@ my_dois_works <- my_dois_works_preprints
 years <- na.omit(sort(unique(c(doi_unique$published_on, my_dois_works$published_on)), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -488,7 +488,7 @@ my_dois_works <- my_dois_works_livros_capitulos
 years <- na.omit(sort(unique(c(doi_unique$published_on, my_dois_works$published_on)), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -586,7 +586,7 @@ my_dois_works <- my_dois_works_eventos
 years <- na.omit(sort(unique(c(doi_unique$published_on, my_dois_works$published_on)), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (is.null(dim(doi_unique)[1]) & is.null(dim(my_dois_works)[1])) {
+if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')

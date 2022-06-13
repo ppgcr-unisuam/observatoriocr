@@ -228,6 +228,7 @@ table.with.badges <-
     # end table
     cat("</table>")
     cat('\n\n<!-- -->\n\n')
+    cat('\n\n<!-- -->\n\n')
     cat('*Fontes:*', sep = "")
     cat('^1^ [**Altmetric**](https://www.altmetric.com)', ', ', sep = "")
     cat('^2^ [**Dimensions**](https://www.dimensions.ai)',

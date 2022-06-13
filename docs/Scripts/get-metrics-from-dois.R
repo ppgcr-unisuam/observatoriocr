@@ -23,8 +23,14 @@ if (is_empty(dois)) {
     }
   }
   tryCatch(
-    my_dois_works$published_on <-
-      str_sub(as.character(my_dois_works$issued), 1, 4),
+    expr = {
+      # get year from issued
+      my_dois_works$published_on <-
+      str_sub(as.character(my_dois_works$issued), 1, 4)
+      # get year from created if not issued
+      my_dois_works$published_on[is.na(my_dois_works$published_on)] <-
+      str_sub(as.character(my_dois_works$created[is.na(my_dois_works$published_on)]), 1, 4)
+    },
     error = function(e) {
     }
   )

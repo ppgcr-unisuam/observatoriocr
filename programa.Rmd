@@ -2077,7 +2077,7 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r calendarios}
 # read separate sheets
-turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Turmas", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Turmas.xlsx", sheet = "Turmas", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"
@@ -2110,10 +2110,18 @@ datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom
 
 ```{r laboratorios-descritivo}
 # read separate sheets
-dados.lab <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = "Dados")
+dados.lab <- read_excel("PPG/Laboratórios.xlsx", sheet = "Dados")
 
 # print tables
-print(kable(dados.lab, digits = 0, align = c("l", rep("c", ncol(dados.lab)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(dados.lab, digits = 0, align = c("l", rep(
+    "c", ncol(dados.lab) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2122,16 +2130,21 @@ print(kable(dados.lab, digits = 0, align = c("l", rep("c", ncol(dados.lab)-2), "
 
 ```{r laboratorios-equipamentos}
 # read data
-labs <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = "Dados", col_types = c("text"))
+labs <-
+  read_excel("PPG/Laboratórios.xlsx",
+             sheet = "Dados",
+             col_types = c("text"))
 
-for(i in 1:dim(labs)[1]){
-  lab <- read_excel("../PPGCR Unisuam/Laboratórios.xlsx", sheet = paste("Lab", i, sep = ""))
+for (i in 1:dim(labs)[1]) {
+  lab <-
+    read_excel("PPG/Laboratórios.xlsx",
+               sheet = paste("Lab", i, sep = ""))
   name <- names(lab[1])
-
+  
   cat('\n\n<!-- -->\n\n')
   name <- names(lab[1])
-  colnames(lab) <- lab[1,]
-
+  colnames(lab) <- lab[1, ]
+  
   cat('\n\n<!-- -->\n\n')
   cat("### **", paste("Lab. ", i, sep = ""), "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
@@ -2139,11 +2152,11 @@ for(i in 1:dim(labs)[1]){
   cat("**", name, "**", sep = "")
   cat('\n\n<!-- -->\n\n')
   cat('\n</center>')
-
+  
   cat('<div class = "row"><div class = "col-md-6">')
   cat('<center>\n')
   cat('\n\n<!-- -->\n\n')
-  lab <- lab[-1, ]
+  lab <- lab[-1,]
   cat(paste0("![](", getwd(), "/Labs/Lab-", i, ".jpg)"), "\n")
   cat('\n\n<!-- -->\n\n')
   cat('\n</center>')
@@ -2152,7 +2165,15 @@ for(i in 1:dim(labs)[1]){
   cat('<div class = "col-md-6">')
   cat('<center>\n')
   cat('\n\n<!-- -->\n\n')
-  print(kable(lab, digits = 0, align = c("l", rep("c", ncol(lab)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center")  %>% scroll_box(width = "100%", height = "250px"))
+  print(
+    kable(lab, digits = 0, align = c("l", rep("c", ncol(
+      lab
+    ) - 2), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )  %>% scroll_box(width = "100%", height = "250px")
+  )
   cat('\n</center>')
   cat('</div></div>')
   
@@ -2183,15 +2204,27 @@ knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
 
 ```{r documentos-convenios-cefan}
 # read separate sheets
-vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "CEFAN", col_types = c("text"))
+vigentes.raw <-
+  read_excel("PPG/Convênios.xlsx",
+             sheet = "CEFAN",
+             col_types = c("text"))
 
 # replace the link by a tag
-for(i in 1:dim(vigentes.raw)[1]){
-  vigentes.raw[i,3] <- paste("[↗️](", vigentes.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(vigentes.raw)[1]) {
+  vigentes.raw[i, 3] <-
+    paste("[↗️](", vigentes.raw[i, 3], '){target="_blank"}', sep = "")
 }
 
 # print table
-print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(vigentes.raw, align = c("l", rep(
+    "c", ncol(vigentes.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2207,15 +2240,27 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 ```{r documentos-convenios-apb}
 # read separate sheets
-vigentes.raw <- read_excel("PPG/Convênios.xlsx", sheet = "APB", col_types = c("text"))
+vigentes.raw <-
+  read_excel("PPG/Convênios.xlsx",
+             sheet = "APB",
+             col_types = c("text"))
 
 # replace the link by a tag
-for(i in 1:dim(vigentes.raw)[1]){
-  vigentes.raw[i,3] <- paste("[↗️](", vigentes.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(vigentes.raw)[1]) {
+  vigentes.raw[i, 3] <-
+    paste("[↗️](", vigentes.raw[i, 3], '){target="_blank"}', sep = "")
 }
 
 # print table
-print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(vigentes.raw, align = c("l", rep(
+    "c", ncol(vigentes.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2233,15 +2278,30 @@ print(kable(vigentes.raw, align = c("l", rep("c", ncol(vigentes.raw)-2), "r")) %
 
 ```{r dinter-andamento}
 # read separate sheets
-interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Dinter2019", col_types = c("text"))
+interinstitucional.raw <-
+  read_excel("PPG/Documentos.xlsx",
+             sheet = "Dinter2019",
+             col_types = c("text"))
 
 # replace the link by a tag
-for(i in 1:dim(interinstitucional.raw)[1]){
-  interinstitucional.raw[i,3] <- paste("[↗️](", interinstitucional.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(interinstitucional.raw)[1]) {
+  interinstitucional.raw[i, 3] <-
+    paste("[↗️](",
+          interinstitucional.raw[i, 3],
+          '){target="_blank"}',
+          sep = "")
 }
 
 # print table
-print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(interinstitucional.raw, align = c("l", rep(
+    "c", ncol(interinstitucional.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2252,15 +2312,30 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 
 ```{r minter-andamento}
 # read separate sheets
-interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PCI2021", col_types = c("text"))
+interinstitucional.raw <-
+  read_excel("PPG/Documentos.xlsx",
+             sheet = "PCI2021",
+             col_types = c("text"))
 
 # replace the link by a tag
-for(i in 1:dim(interinstitucional.raw)[1]){
-  interinstitucional.raw[i,3] <- paste("[↗️](", interinstitucional.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(interinstitucional.raw)[1]) {
+  interinstitucional.raw[i, 3] <-
+    paste("[↗️](",
+          interinstitucional.raw[i, 3],
+          '){target="_blank"}',
+          sep = "")
 }
 
 # print table
-print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(interinstitucional.raw, align = c("l", rep(
+    "c", ncol(interinstitucional.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2273,15 +2348,30 @@ print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucio
 
 ```{r minter-concluido}
 # read separate sheets
-interinstitucional.raw <- read_excel("PPG/Documentos.xlsx", sheet = "Minter2019", col_types = c("text"))
+interinstitucional.raw <-
+  read_excel("PPG/Documentos.xlsx",
+             sheet = "Minter2019",
+             col_types = c("text"))
 
 # replace the link by a tag
-for(i in 1:dim(interinstitucional.raw)[1]){
-  interinstitucional.raw[i,3] <- paste("[↗️](", interinstitucional.raw[i,3], '){target="_blank"}', sep = "")
+for (i in 1:dim(interinstitucional.raw)[1]) {
+  interinstitucional.raw[i, 3] <-
+    paste("[↗️](",
+          interinstitucional.raw[i, 3],
+          '){target="_blank"}',
+          sep = "")
 }
 
 # print table
-print(kable(interinstitucional.raw, align = c("l", rep("c", ncol(interinstitucional.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(
+  kable(interinstitucional.raw, align = c("l", rep(
+    "c", ncol(interinstitucional.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2301,29 +2391,42 @@ topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))
 
 # iterate across sheets
-for(j in 1:length(tabs)){
-  news <- read_excel(file.path, sheet = tabs[j], col_types = c("text", "text", "text"))
+for (j in 1:length(tabs)) {
+  news <-
+    read_excel(file.path,
+               sheet = tabs[j],
+               col_types = c("text", "text", "text"))
   # replace the link by a tag
-  for(i in 1:dim(news)[1]){
-    news[i,1] <- paste("### **", as.character(as.Date(as.numeric(news[i,1]), origin = "1899-12-30")), "**", sep = "")
-    news[i,3] <- paste("[↗️](", news[i,3], '){target="_blank"}', sep = "")
+  for (i in 1:dim(news)[1]) {
+    news[i, 1] <-
+      paste("### **", as.character(as.Date(as.numeric(news[i, 1]), origin = "1899-12-30")), "**", sep = "")
+    news[i, 3] <-
+      paste("[↗️](", news[i, 3], '){target="_blank"}', sep = "")
   }
   
   # drop date column
-  news <- news[, -1]
+  news <- news[,-1]
   # store data to print table
   news.list[[j]] <- news
   
   # store data to plot wordcloud
-  topics <- rbind(topics, news[i,1])
+  topics <- rbind(topics, news[i, 1])
 }
 
 # iterate across sheets
-for(j in 1:length(tabs)){
+for (j in 1:length(tabs)) {
   cat('\n\n<!-- -->\n\n')
   cat("### **", tabs[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
-  print(kable(news.list[[j]], align = c("l", rep("c", ncol(news)-2), "r")) %>% kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), full_width = T, position = "center"))
+  print(
+    kable(news.list[[j]], align = c("l", rep("c", ncol(
+      news
+    ) - 2), "r")) %>% kable_styling(
+      bootstrap_options = c("hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }

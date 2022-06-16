@@ -79,12 +79,12 @@ id1 <-
 id2 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
-docentes <- docentes.raw[id1 | id2,]
+docentes <- docentes.raw[id1 | id2, ]
 # remove duplicates between docs and postdocs
-docentes <- docentes[!duplicated(docentes$Nome), ]
+docentes <- docentes[!duplicated(docentes$Nome),]
 
 ids <- seq(1:dim(docentes)[1])
-docentes <- docentes[order(docentes$Nome),]
+docentes <- docentes[order(docentes$Nome), ]
 
 for (i in 1:dim(docentes)[1]) {
   cat('\n\n<!-- -->\n\n')
@@ -127,13 +127,13 @@ id1 <-
 id2 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento >= format(Sys.Date(), "%Y")
-docentes <- docentes.raw[id1 | id2,]
+docentes <- docentes.raw[id1 | id2, ]
 
 ids <- seq(1:dim(docentes)[1])
 if (length(ids) != 0) {
-  docentes <- docentes[ids,]
+  docentes <- docentes[ids, ]
 }
-docentes <- docentes[order(docentes$Nome),]
+docentes <- docentes[order(docentes$Nome), ]
 
 table.2 <- matrix(NA, nrow = 0, ncol = 7)
 for (i in 1:dim(docentes)[1]) {
@@ -253,13 +253,13 @@ id1 <-
 id2 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento >= 2017
-docentes <- docentes.raw[id1 | id2,]
+docentes <- docentes.raw[id1 | id2, ]
 
 ids <- seq(1:dim(docentes)[1])
 if (length(ids) != 0) {
-  docentes <- docentes[ids,]
+  docentes <- docentes[ids, ]
 }
-docentes <- docentes[order(docentes$Nome),]
+docentes <- docentes[order(docentes$Nome), ]
 
 table.2 <- matrix(NA, nrow = 0, ncol = 7)
 for (i in 1:dim(docentes)[1]) {
@@ -377,13 +377,13 @@ id1 <-
 id2 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento >= 2013
-docentes <- docentes.raw[id1 | id2,]
+docentes <- docentes.raw[id1 | id2, ]
 
 ids <- seq(1:dim(docentes)[1])
 if (length(ids) != 0) {
-  docentes <- docentes[ids,]
+  docentes <- docentes[ids, ]
 }
-docentes <- docentes[order(docentes$Nome),]
+docentes <- docentes[order(docentes$Nome), ]
 
 table.2 <- matrix(NA, nrow = 0, ncol = 7)
 for (i in 1:dim(docentes)[1]) {
@@ -501,13 +501,13 @@ id1 <-
 id2 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento >= 2010
-docentes <- docentes.raw[id1 | id2,]
+docentes <- docentes.raw[id1 | id2, ]
 
 ids <- seq(1:dim(docentes)[1])
 if (length(ids) != 0) {
-  docentes <- docentes[ids,]
+  docentes <- docentes[ids, ]
 }
-docentes <- docentes[order(docentes$Nome),]
+docentes <- docentes[order(docentes$Nome), ]
 
 table.2 <- matrix(NA, nrow = 0, ncol = 7)
 for (i in 1:dim(docentes)[1]) {
@@ -2616,35 +2616,68 @@ if(length(new.ids) != 0) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Síntese** {.tabset}
-
-#### **Por Orientador**
-
-*Em construção!*
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **Doutorado**
 
-```{r historico-discentes-dsc-atual}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" | discentes.raw$`Status SAGA` == "Pré-inscrito" , ]
+```{r discentes-dsc}
+# select level
+course.level <- "Doutorado"
 
-discentes <- discentes %>% select("Ano Matrícula", "Curso", "Nome", "Orientador")
-doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Matrícula", "Nome", "Orientador")
-if(dim(doutores)[1] != 0){
-  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
-  ids <- order(doutores$`Ano Matrícula`, decreasing = TRUE)
-  table <- doutores[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
+# load custom function
+source("Scripts/get-initials.R")
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+discentes <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level, ]
+
+# select active students
+discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
+
+# remove duplicates
+discentes <- unique(discentes)
+
+# get years
+discentes$'Ano de Matrícula' <- substr(as.Date(discentes$`Data Matrícula`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+discentes$`Nome Discente` <- toTitleCase(tolower(discentes$`Nome Discente`))
+discentes$`Nome do Orientador` <- toTitleCase(tolower(discentes$`Nome do Orientador`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do Orientador")
+
+if (dim(discentes)[1] != 0) {
+  ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
+  table <- discentes[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
 }
 ```
 
 <br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -2652,23 +2685,66 @@ if(dim(doutores)[1] != 0){
 
 ### **Mestrado**
 
-```{r historico-discentes-msc-atual}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" | discentes.raw$`Status SAGA` == "Pré-inscrito" , ]
+```{r discentes-msc}
+# select level
+course.level <- "Mestrado"
 
-discentes <- discentes %>% select("Ano Matrícula", "Curso", "Nome", "Orientador")
-mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Matrícula", "Nome", "Orientador")
-if(dim(mestres)[1] != 0){
-  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
-  ids <- order(mestres$`Ano Matrícula`, decreasing = TRUE)
-  table <- mestres[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
+# load custom function
+source("Scripts/get-initials.R")
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+discentes <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level, ]
+
+# select active students
+discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
+
+# remove duplicates
+discentes <- unique(discentes)
+
+# get years
+discentes$'Ano de Matrícula' <- substr(as.Date(discentes$`Data Matrícula`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+discentes$`Nome Discente` <- toTitleCase(tolower(discentes$`Nome Discente`))
+discentes$`Nome do Orientador` <- toTitleCase(tolower(discentes$`Nome do Orientador`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do Orientador")
+
+if (dim(discentes)[1] != 0) {
+  ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
+  table <- discentes[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
 }
 ```
 
 <br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -2676,20 +2752,66 @@ if(dim(mestres)[1] != 0){
 
 ### **Iniciação científica**
 
-*Em construção!*
+```{r discentes-ic}
+# select level
+course.level <- "Bacharelado"
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+# load custom function
+source("Scripts/get-initials.R")
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+discentes <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level, ]
+
+# select active students
+discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+# discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
+
+# remove duplicates
+discentes <- unique(discentes)
+
+# get years
+discentes$'Ano de Matrícula' <- substr(as.Date(discentes$`Data Matrícula`, format = "%d/%m/%Y"), 1, 4)
+
+# format names (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes$`Nome Discente` <- toTitleCase(tolower(discentes$`Nome Discente`))
+# discentes$`Nome do Orientador` <- toTitleCase(tolower(discentes$`Nome do Orientador`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente")
+
+if (dim(discentes)[1] != 0) {
+  ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
+  table <- discentes[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
-## **Bolsistas** {.tabset #bolsistas}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-<br>
-
-*Em construção!*
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

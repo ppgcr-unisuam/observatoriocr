@@ -188,70 +188,217 @@ my_dois_works_eventos <- my_dois_works
 
 <br>
 
-## **Impacto educacional** {#impacto-educacional}
+## **Impacto educacional** {#impacto-educacional .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Organização de eventos** {.tabset}
+### **Cotas de bolsas**
 
 <br>
 
-#### **Semana de Pesquisa, Extensão e Inovação** {.tabset}
-
-##### **2021**  {.tabset}
-
-##### **Programação**
+*Em construção*
 
 <br>
 
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://hotsite.unisuam.edu.br/xviiispe/index.php" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
+*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-##### **Apresentação**
+### **Bolsistas** {.tabset}
+
+#### **Doutorado**
+
+```{r bolsistas-dsc}
+# select level
+course.level <- "TESE"
+
+# load custom function
+source("Scripts/get-initials.R")
+
+# bolsistas
+sheet <- "TCC - Financiadores"
+source("Scripts/read-xlsx-sucupira.R")
+bolsistas <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+bolsistas <- bolsistas[bolsistas$`Tipo de Trabalho de Conclusão` == course.level, ]
+
+# get years
+bolsistas$'Ano de Defesa' <- substr(as.Date(bolsistas$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+bolsistas$`Nome do Autor` <- toTitleCase(tolower(bolsistas$`Nome do Autor`))
+bolsistas$`Nome do Orientador` <- toTitleCase(tolower(bolsistas$`Nome do Orientador`))
+
+# drop columns
+bolsistas <- bolsistas %>% select("Ano de Defesa", "Nome do Autor", "Nome do Orientador", "Nome do Financiador", "Quantidade de Meses")
+
+# drop NA values in "Quantidade de Meses"
+bolsistas <- bolsistas[complete.cases(bolsistas), ]
+
+if (dim(bolsistas)[1] != 0) {
+  ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
+  table <- bolsistas[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sBn1gOF8Atg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-#### **Simpósio Paradesportivo Carioca**
+#### **Mestrado**
+
+```{r bolsistas-msc}
+# select level
+course.level <- "DISSERTAÇÃO"
+
+# load custom function
+source("Scripts/get-initials.R")
+
+# bolsistas
+sheet <- "TCC - Financiadores"
+source("Scripts/read-xlsx-sucupira.R")
+bolsistas <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+bolsistas <- bolsistas[bolsistas$`Tipo de Trabalho de Conclusão` == course.level, ]
+
+# get years
+bolsistas$'Ano de Defesa' <- substr(as.Date(bolsistas$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+bolsistas$`Nome do Autor` <- toTitleCase(tolower(bolsistas$`Nome do Autor`))
+bolsistas$`Nome do Orientador` <- toTitleCase(tolower(bolsistas$`Nome do Orientador`))
+
+# drop columns
+bolsistas <- bolsistas %>% select("Ano de Defesa", "Nome do Autor", "Nome do Orientador", "Nome do Financiador", "Quantidade de Meses")
+
+# drop NA values in "Quantidade de Meses"
+bolsistas <- bolsistas[complete.cases(bolsistas), ]
+
+if (dim(bolsistas)[1] != 0) {
+  ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
+  table <- bolsistas[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1O_S0kEW9Rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
+### **Dissertações e teses financiadas**
+
+```{r tcc-financiados}
+# load custom function
+source("Scripts/get-initials.R")
+
+# bolsistas
+sheet <- "TCC - Financiadores"
+source("Scripts/read-xlsx-sucupira.R")
+bolsistas.tcc <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get years
+bolsistas.tcc$'Ano de Defesa' <- substr(as.Date(bolsistas.tcc$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+bolsistas.tcc$`Nome do Autor` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
+bolsistas.tcc$`Nome do Orientador` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
+bolsistas.tcc$`Nome do Trabalho de Conclusão` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
+
+# drop columns
+bolsistas.tcc <- bolsistas.tcc %>% select("Ano de Defesa", "Tipo de Trabalho de Conclusão", "Nome do Autor", "Nome do Trabalho de Conclusão", "Nome do Financiador")
+
+# drop NA values in "Quantidade de Meses"
+bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
+
+if (dim(bolsistas.tcc)[1] != 0) {
+  ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Tipo de Trabalho de Conclusão', decreasing = TRUE)
+  table <- bolsistas.tcc[ids,]
+  datatable(
+    table,
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrolX = F,
+      dom = 'ftip',
+      searchHighlight = TRUE
+    ),
+    escape = FALSE
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Minha história junto à CAPES**
+
 <div class="sizer" text-align:"center">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/i_PZ-Bgy1dE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/76131bUiBxs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>
   </div>
 </div>
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -368,63 +515,70 @@ print(
 
 <br>
 
-## **Impacto sociocultural** {#impacto-sociocultural .tabset}
+## **Impacto sociocultural** {#impacto-sociocultural}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-<br>
-
-### **Cotas de bolsas**
+### **Organização de eventos** {.tabset}
 
 <br>
 
-*Em construção*
+#### **Semana de Pesquisa, Extensão e Inovação** {.tabset}
+
+##### **2021**  {.tabset}
+
+##### **Programação**
 
 <br>
-
-*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Bolsistas**
-
-<br>
-
-*Em construção*
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Dissertações e teses financiadas**
-
-<br>
-
-*Em construção*
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Minha história junto à CAPES**
 
 <div class="sizer" text-align:"center">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/76131bUiBxs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    <iframe class="embed-responsive-item" src="https://hotsite.unisuam.edu.br/xviiispe/index.php" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>
   </div>
 </div>
 
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
 <br>
+
+##### **Apresentação**
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sBn1gOF8Atg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Simpósio Paradesportivo Carioca**
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1O_S0kEW9Rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+<div class="sizer" text-align:"center">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/i_PZ-Bgy1dE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

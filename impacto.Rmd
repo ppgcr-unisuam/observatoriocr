@@ -218,15 +218,15 @@ my_dois_works_eventos <- my_dois_works
 course.level <- "TESE"
 
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # bolsistas
 sheet <- "TCC - Financiadores"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 bolsistas <- sucupira.raw
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # filter students
@@ -279,15 +279,15 @@ if (dim(bolsistas)[1] != 0) {
 course.level <- "DISSERTAÇÃO"
 
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # bolsistas
 sheet <- "TCC - Financiadores"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 bolsistas <- sucupira.raw
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # filter students
@@ -337,15 +337,15 @@ if (dim(bolsistas)[1] != 0) {
 
 ```{r tcc-financiados}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # bolsistas
 sheet <- "TCC - Financiadores"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 bolsistas.tcc <- sucupira.raw
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # get years

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
   knitr.kable.NA = '--',
   knitr.table.format = "html"
 )
-source("Scripts/all-required-packages.R")
+source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
@@ -37,14 +37,14 @@ $(document).ready(function() {
 <p align="right">
 ```{r share}
 home <- "rehab-tech.github.io/observatoriocr/"
-source("Scripts/social-media-sharing.R")
+source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 
 <!--read additional files-->
 ```{r metrics}
 source("Scripts/sjr.R")
-source("Scripts/webqualis.R")
+source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 
 <br>
@@ -493,10 +493,10 @@ Os docentes vinculados ao PPGCR são orientados a coordenar até 2 PP institucio
 ```{r projetos-de-pesquisa-2024-grafico}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
@@ -566,10 +566,10 @@ title("Projetos de Pesquisa", outer = TRUE)
 ```{r projetos-de-pesquisa-2024-tabela}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
@@ -640,10 +640,10 @@ cat("  \n")
 ```{r projetos-de-pesquisa-2024-lista}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
@@ -659,7 +659,9 @@ table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to
 table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
-datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(table.projetos)
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -675,10 +677,10 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ```{r projetos-de-pesquisa-2020-grafico}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
@@ -747,10 +749,10 @@ title("Projetos de Pesquisa", outer = TRUE)
 ```{r projetos-de-pesquisa-2020-tabela}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
@@ -821,10 +823,10 @@ cat("  \n")
 ```{r projetos-de-pesquisa-2020-lista}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
@@ -841,7 +843,9 @@ table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to
 table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
-datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(table.projetos)
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -857,10 +861,10 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ```{r projetos-de-pesquisa-2016-grafico}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
@@ -929,10 +933,10 @@ title("Projetos de Pesquisa", outer = TRUE)
 ```{r projetos-de-pesquisa-2016-tabela}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
@@ -1003,10 +1007,10 @@ cat("  \n")
 ```{r projetos-de-pesquisa-2016-lista}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
@@ -1023,8 +1027,9 @@ table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to
 table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
-datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
 
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(table.projetos)
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1040,10 +1045,10 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ```{r projetos-de-pesquisa-concluidos-2012-grafico}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
@@ -1112,10 +1117,10 @@ title("Projetos de Pesquisa", outer = TRUE)
 ```{r projetos-de-pesquisa-concluidos-2012-tabela}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
@@ -1187,10 +1192,10 @@ cat("  \n")
 ```{r projetos-de-pesquisa-2012-lista}
 # projetos - membros
 sheet <- "Projetos - Membros"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
@@ -1207,7 +1212,9 @@ table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to
 table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
-datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(table.projetos)
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1253,30 +1260,44 @@ datatable(table.projetos, rownames = FALSE, options=list(pageLength = 5, scrolX 
 ### **2024-2021**
 
 ```{r historico-financiadores-2024}
-financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
-financiadores <- financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
-fonte <- fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
-financiadores <- financiadores[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
+fonte <-
+  fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2021 &
+                  financiadores$Ano <= 2024,]
 
 Abrir <- matrix(NA, nrow = dim(financiadores)[1])
 colnames(Abrir) <- "Abrir"
 # add hyperlinks
-for(i in 1:dim(fonte)[1]){
-  if(!is.na(fonte[i,1])){
-    Abrir[i] <- paste0('<a href="', fonte[i,1], '" target="_blank"', '>', '↗️' ,'</a>')
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
   }
 }
 
 financiadores <- cbind(financiadores, Abrir)
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
-datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(financiadores)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1288,30 +1309,44 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2020-2017**
 
 ```{r historico-financiadores-2020}
-financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
-financiadores <- financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
-fonte <- fonte[financiadores$Ano >= 2017 & financiadores$Ano <= 2020, ]
-financiadores <- financiadores[financiadores$Ano >= 2017 & financiadores$Ano <= 2020, ]
+fonte <-
+  fonte[financiadores$Ano >= 2017 & financiadores$Ano <= 2020,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2017 &
+                  financiadores$Ano <= 2020,]
 
 Abrir <- matrix(NA, nrow = dim(financiadores)[1])
 colnames(Abrir) <- "Abrir"
 # add hyperlinks
-for(i in 1:dim(fonte)[1]){
-  if(!is.na(fonte[i,1])){
-    Abrir[i] <- paste0('<a href="', fonte[i,1], '" target="_blank"', '>', '↗️' ,'</a>')
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
   }
 }
 
 financiadores <- cbind(financiadores, Abrir)
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
-datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(financiadores)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1323,30 +1358,44 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2016-2013**
 
 ```{r historico-financiadores-2016}
-financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
-financiadores <- financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
-fonte <- fonte[financiadores$Ano >= 2013 & financiadores$Ano <= 2016, ]
-financiadores <- financiadores[financiadores$Ano >= 2013 & financiadores$Ano <= 2016, ]
+fonte <-
+  fonte[financiadores$Ano >= 2013 & financiadores$Ano <= 2016,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2013 &
+                  financiadores$Ano <= 2016,]
 
 Abrir <- matrix(NA, nrow = dim(financiadores)[1])
 colnames(Abrir) <- "Abrir"
 # add hyperlinks
-for(i in 1:dim(fonte)[1]){
-  if(!is.na(fonte[i,1])){
-    Abrir[i] <- paste0('<a href="', fonte[i,1], '" target="_blank"', '>', '↗️' ,'</a>')
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
   }
 }
 
 financiadores <- cbind(financiadores, Abrir)
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
-datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(financiadores)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1358,30 +1407,44 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **2012-2010**
 
 ```{r historico-financiadores-2012}
-financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
-financiadores <- financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
-fonte <- fonte[financiadores$Ano >= 2010 & financiadores$Ano <= 2012, ]
-financiadores <- financiadores[financiadores$Ano >= 2010 & financiadores$Ano <= 2012, ]
+fonte <-
+  fonte[financiadores$Ano >= 2010 & financiadores$Ano <= 2012,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2010 &
+                  financiadores$Ano <= 2012,]
 
 Abrir <- matrix(NA, nrow = dim(financiadores)[1])
 colnames(Abrir) <- "Abrir"
 # add hyperlinks
-for(i in 1:dim(fonte)[1]){
-  if(!is.na(fonte[i,1])){
-    Abrir[i] <- paste0('<a href="', fonte[i,1], '" target="_blank"', '>', '↗️' ,'</a>')
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
   }
 }
 
 financiadores <- cbind(financiadores, Abrir)
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
-datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(financiadores)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1393,30 +1456,43 @@ datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX =
 ### **Pré-2010**
 
 ```{r historico-financiadores-2010}
-financiadores.raw <- read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-financiadores.sub <- financiadores.raw %>% select("Ano", "Agência", "Edital", "Processo No.", "Título do projeto", "Programa")
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
 fonte.sub <- financiadores.raw %>% select("Fonte")
 
-financiadores <- financiadores.sub[complete.cases(financiadores.sub), ]
-fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
 
-fonte <- fonte[financiadores$Ano < 2010, ]
-financiadores <- financiadores[financiadores$Ano < 2010, ]
+fonte <-
+  fonte[financiadores$Ano < 2010,]
+financiadores <-
+  financiadores[financiadores$Ano < 2010,]
 
 Abrir <- matrix(NA, nrow = dim(financiadores)[1])
 colnames(Abrir) <- "Abrir"
 # add hyperlinks
-for(i in 1:dim(fonte)[1]){
-  if(!is.na(fonte[i,1])){
-    Abrir[i] <- paste0('<a href="', fonte[i,1], '" target="_blank"', '>', '↗️' ,'</a>')
+for (i in 1:dim(fonte)[1]) {
+  if (!is.na(fonte[i, 1])) {
+    Abrir[i] <-
+      paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
   }
 }
 
 financiadores <- cbind(financiadores, Abrir)
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
-datatable(financiadores, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(financiadores)
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1462,8 +1538,8 @@ for(i in 1:dim(turmas.raw)[1]){
 turmas <- cbind(turmas.raw[,-3], Abrir)
 turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
-# print table
-datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(turmas)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -1562,13 +1638,13 @@ O Eixo Técnico agrupa as disciplinas de caráter especialista, com ementas volt
 
 ```{r estrutura-academica-atual-grafico}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # projetos
 sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
@@ -1615,13 +1691,13 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 
 ```{r estrutura-academica-atual-tabela}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # projetos
 sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
@@ -1663,7 +1739,8 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 # read separate sheets
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
-datatable(bibliografia.raw, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE))
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(bibliografia.raw)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -1694,14 +1771,14 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 
 ```{r estrutura-academica-inativa}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # disciplinas
 sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 disciplinas.raw <- sucupira.raw
@@ -1738,7 +1815,7 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 ```{r turmas-tabela}
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 turmas.raw <- sucupira.raw
 
@@ -1798,14 +1875,14 @@ cat("  \n")
 
 ```{r turmas-disciplinas-2024}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
@@ -1854,14 +1931,14 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 ```{r turmas-docentes-2024}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # turmas
 sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
@@ -1884,10 +1961,10 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "O
 
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
@@ -1930,14 +2007,14 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 
 ```{r turmas-2020}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
@@ -1978,14 +2055,14 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r turmas-2016}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
@@ -2026,14 +2103,14 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r turmas-2012}
 # load custom function
-source("Scripts/get-initials.R")
+source("Scripts/get-initials.R", local = knitr::knit_global())
 
 # turmas
 sheet <- "Turmas"
-source("Scripts/read-xlsx-sucupira.R")
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
@@ -2092,7 +2169,8 @@ turmas <- cbind(turmas.raw[,-3], Abrir)
 turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
 # print table
-datatable(turmas, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(turmas)
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

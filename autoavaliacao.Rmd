@@ -170,7 +170,7 @@ barplot(
 
 ### **Agência-Programa**
 
-```{r financiadores-programa-tabela}
+```{r financiadores-agencia-programa}
 options(scipen = 10)
 
 financiadores.raw <-
@@ -211,7 +211,7 @@ table.1
 
 ### **Agência-Ano**
 
-```{r financiadores-ano-tabela}
+```{r financiadores-agencia-ano}
 options(scipen = 10)
 
 financiadores.raw <-
@@ -256,7 +256,7 @@ table.2
 
 ### **Agência-Docente**
 
-```{r financiadores-docentes-tabela}
+```{r financiadores-agencia-docentes}
 options(scipen = 10)
 
 financiadores.raw <-
@@ -285,6 +285,51 @@ table.2 <-
   add_overall(last = TRUE,
               col_label = "Total") %>%
   modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+table.2
+```
+
+<br>
+
+*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Docente-Ano**
+
+```{r financiadores-docente-ano}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Proponente", "Ano", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores), ]
+
+financiadores <- financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
+financiadores$Proponente <- as.factor(financiadores$Proponente)
+
+# generate table (total per year, per docente)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Ano",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Ano**") %>%
   modify_footnote(update = everything() ~ NA) %>%
   bold_labels()
 # print table

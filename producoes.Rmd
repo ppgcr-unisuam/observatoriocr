@@ -234,17 +234,8 @@ table.tcc[, 5] <-
 
 colnames(table.tcc) <-
   c("Ano", "Nível", "Título", "Autor", "Orientador")
-datatable(
-  table.tcc,
-  rownames = FALSE,
-  options = list(
-    pageLength = 5,
-    scrolX = F,
-    dom = 'ftip',
-    searchHighlight = TRUE
-  ),
-  escape = FALSE
-)
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table.tcc)
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

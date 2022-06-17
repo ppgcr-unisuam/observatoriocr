@@ -234,17 +234,8 @@ bolsistas <- bolsistas[complete.cases(bolsistas), ]
 if (dim(bolsistas)[1] != 0) {
   ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
   table <- bolsistas[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -295,17 +286,8 @@ bolsistas <- bolsistas[complete.cases(bolsistas), ]
 if (dim(bolsistas)[1] != 0) {
   ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
   table <- bolsistas[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -351,17 +333,8 @@ bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
 if (dim(bolsistas.tcc)[1] != 0) {
   ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Tipo de Trabalho de Conclusão', decreasing = TRUE)
   table <- bolsistas.tcc[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -375,7 +348,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 <br>
 
-#### **Cotas anuais**
+#### **Concessão de cotas**
 
 <br>
 
@@ -410,8 +383,6 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-<br>
 
 ### **Periódicos institucionais**
 
@@ -693,17 +664,8 @@ if (dim(projetos)[1] != 0) {
     c("Nome do Membro Responsável",
       "Nome do Projeto de Pesquisa",
       "Linha de Pesquisa")
-  datatable(
-    table.projetos,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table.projetos)
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')
@@ -759,17 +721,8 @@ if (dim(financiadores)[1] != 0) {
   financiadores <-
     financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   
-  datatable(
-    financiadores,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(financiadores)
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')
@@ -830,17 +783,8 @@ if (dim(tccs)[1] != 0) {
   
   colnames(table.tcc) <-
     c("Ano", "Nível", "Título", "Autor", "Orientador")
-  datatable(
-    table.tcc,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table.tcc)
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')

@@ -188,30 +188,16 @@ my_dois_works_eventos <- my_dois_works
 
 <br>
 
-## **Impacto educacional** {#impacto-educacional .tabset}
+## **Impacto educacional** {#impacto-educacional}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Cotas de bolsas**
+### **Bolsas** {.tabset}
 
-<br>
+#### **Bolsistas** {.tabset}
 
-*Em construção*
-
-<br>
-
-*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Bolsistas** {.tabset}
-
-#### **Doutorado**
+##### **Doutorado**
 
 ```{r bolsistas-dsc}
 # select level
@@ -272,7 +258,7 @@ if (dim(bolsistas)[1] != 0) {
 
 <br>
 
-#### **Mestrado**
+##### **Mestrado**
 
 ```{r bolsistas-msc}
 # select level
@@ -333,7 +319,7 @@ if (dim(bolsistas)[1] != 0) {
 
 <br>
 
-### **Dissertações e teses financiadas**
+#### **Dissertações e teses financiadas**
 
 ```{r tcc-financiados}
 # load custom function
@@ -389,7 +375,23 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 <br>
 
-### **Minha história junto à CAPES**
+#### **Cotas anuais**
+
+<br>
+
+*Em construção*
+
+<br>
+
+*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Minha história junto à CAPES**
 
 <div class="sizer" text-align:"center">
   <div class="embed-responsive embed-responsive-16by9">

@@ -4,7 +4,7 @@ create_dt <- function(x) {
     rownames = FALSE,
     extensions = 'Buttons',
     options = list(
-      pageLength = 3,
+      pageLength = 4,
       scrolX = F,
       dom = 'Bftip',
       searchHighlight = TRUE,

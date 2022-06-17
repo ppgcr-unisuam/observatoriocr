@@ -2659,17 +2659,8 @@ discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do
 if (dim(discentes)[1] != 0) {
   ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
   table <- discentes[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -2726,17 +2717,8 @@ discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do
 if (dim(discentes)[1] != 0) {
   ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
   table <- discentes[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -2793,17 +2775,8 @@ discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente")
 if (dim(discentes)[1] != 0) {
   ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
   table <- discentes[ids,]
-  datatable(
-    table,
-    rownames = FALSE,
-    options = list(
-      pageLength = 5,
-      scrolX = F,
-      dom = 'ftip',
-      searchHighlight = TRUE
-    ),
-    escape = FALSE
-  )
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -2872,20 +2845,29 @@ multiplot(plotlist = maps, cols = dim(periodos)[1])
 #### **Doutores**
 
 ```{r historico-egressos-dsc-2024}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2021 & discentes.raw$`Ano Titulação` <= 2024, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
+                  discentes.raw$`Ano Titulação` <= 2024,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(doutores)[1] != 0){
-  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <-
+  discentes[discentes$Curso == "Doutorado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(doutores)[1] != 0) {
+  doutores$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         doutores$Orientador)
   ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
-  table <- doutores[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- doutores[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2895,20 +2877,29 @@ if(dim(doutores)[1] != 0){
 #### **Mestres**
 
 ```{r historico-egressos-msc-2024}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2021 & discentes.raw$`Ano Titulação` <= 2024, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
+                  discentes.raw$`Ano Titulação` <= 2024,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(mestres)[1] != 0){
-  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <-
+  discentes[discentes$Curso == "Mestrado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(mestres)[1] != 0) {
+  mestres$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         mestres$Orientador)
   ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
-  table <- mestres[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- mestres[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2920,20 +2911,29 @@ if(dim(mestres)[1] != 0){
 #### **Doutores**
 
 ```{r historico-egressos-dsc-2020}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2017 & discentes.raw$`Ano Titulação` <= 2020, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
+                  discentes.raw$`Ano Titulação` <= 2020,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(doutores)[1] != 0){
-  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <-
+  discentes[discentes$Curso == "Doutorado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(doutores)[1] != 0) {
+  doutores$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         doutores$Orientador)
   ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
-  table <- doutores[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- doutores[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2943,20 +2943,29 @@ if(dim(doutores)[1] != 0){
 #### **Mestres**
 
 ```{r historico-egressos-msc-2020}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2017 & discentes.raw$`Ano Titulação` <= 2020, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
+                  discentes.raw$`Ano Titulação` <= 2020,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(mestres)[1] != 0){
-  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <-
+  discentes[discentes$Curso == "Mestrado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(mestres)[1] != 0) {
+  mestres$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         mestres$Orientador)
   ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
-  table <- mestres[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- mestres[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2968,20 +2977,29 @@ if(dim(mestres)[1] != 0){
 #### **Doutores**
 
 ```{r historico-egressos-dsc-2016}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2013 & discentes.raw$`Ano Titulação` <= 2016, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
+                  discentes.raw$`Ano Titulação` <= 2016,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(doutores)[1] != 0){
-  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <-
+  discentes[discentes$Curso == "Doutorado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(doutores)[1] != 0) {
+  doutores$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         doutores$Orientador)
   ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
-  table <- doutores[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- doutores[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2991,20 +3009,29 @@ if(dim(doutores)[1] != 0){
 #### **Mestres**
 
 ```{r historico-egressos-msc-2016}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2013 & discentes.raw$`Ano Titulação` <= 2016, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
+                  discentes.raw$`Ano Titulação` <= 2016,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(mestres)[1] != 0){
-  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <-
+  discentes[discentes$Curso == "Mestrado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(mestres)[1] != 0) {
+  mestres$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         mestres$Orientador)
   ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
-  table <- mestres[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- mestres[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -3016,20 +3043,29 @@ if(dim(mestres)[1] != 0){
 #### **Doutores**
 
 ```{r historico-egressos-dsc-2012}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2010 & discentes.raw$`Ano Titulação` <= 2012, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &
+                  discentes.raw$`Ano Titulação` <= 2012,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-doutores <- discentes[discentes$Curso == "Doutorado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(doutores)[1] != 0){
-  doutores$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", doutores$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+doutores <-
+  discentes[discentes$Curso == "Doutorado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(doutores)[1] != 0) {
+  doutores$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         doutores$Orientador)
   ids <- order(doutores$`Ano Titulação`, decreasing = TRUE)
-  table <- doutores[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- doutores[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -3039,20 +3075,29 @@ if(dim(doutores)[1] != 0){
 #### **Mestres**
 
 ```{r historico-egressos-msc-2012}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` >= 2010 & discentes.raw$`Ano Titulação` <= 2012, ]
+discentes.raw <-
+  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+discentes <-
+  discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &
+                  discentes.raw$`Ano Titulação` <= 2012,]
 
-discentes <- discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
-mestres <- discentes[discentes$Curso == "Mestrado", ] %>% select("Ano Titulação", "Nome", "Orientador")
-if(dim(mestres)[1] != 0){
-  mestres$Orientador <- gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )", "", mestres$Orientador)
+discentes <-
+  discentes %>% select("Ano Titulação", "Curso", "Nome", "Orientador")
+mestres <-
+  discentes[discentes$Curso == "Mestrado",] %>% select("Ano Titulação", "Nome", "Orientador")
+if (dim(mestres)[1] != 0) {
+  mestres$Orientador <-
+    gsub("([A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9] - )",
+         "",
+         mestres$Orientador)
   ids <- order(mestres$`Ano Titulação`, decreasing = TRUE)
-  table <- mestres[ids, ]
-  datatable(table, rownames = FALSE, options=list(pageLength = 5, scrolX = F, dom = 'ftip', searchHighlight = TRUE), escape = FALSE)
-  } else {
-    cat("*Sem dados para exibir*")
-  }
+  table <- mestres[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

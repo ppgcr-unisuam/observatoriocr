@@ -10,6 +10,7 @@ output:
       - /CSS/responsive.css
 ---
 
+
 <!--install and/or load all R packages-->
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
 knitr::opts_chunk$set(
@@ -21,25 +22,11 @@ knitr::opts_chunk$set(
   include = TRUE,
   out.width = "100%",
   knitr.kable.NA = '--',
-  knitr.table.format = "html"
+  knitr.table.format = "html",
+  cache.path = file.path("cache", "all_metrics")
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
-
-<!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
-$(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
-  });
-```
-
-<!--script for sharing-->
-<p align="right">
-```{r share}
-home <- "rehab-tech.github.io/observatoriocr/"
-source("Scripts/social-media-sharing.R", local = knitr::knit_global())
-```
-</p>
 
 <!--read additional files-->
 ```{r metrics}
@@ -47,7 +34,7 @@ source("Scripts/sjr.R", local = knitr::knit_global())
 source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 
-```{r artigos-metrics, cache = TRUE}
+```{r metrics-artigos, cache = TRUE}
 # read data
 sheet.ix <- "PI.completos"
 data.sheet <-
@@ -73,7 +60,7 @@ doi_unique_artigos <- doi_unique
 my_dois_works_artigos <- my_dois_works
 ```
 
-```{r resumos-metrics, cache = TRUE}
+```{r metrics-resumos, cache = TRUE}
 # read data
 sheet.ix <- "PI.resumos"
 data.sheet <-
@@ -99,7 +86,7 @@ doi_unique_resumos <- doi_unique
 my_dois_works_resumos <- my_dois_works
 ```
 
-```{r preprints-metrics, cache = TRUE}
+```{r metrics-preprints, cache = TRUE}
 # read data
 sheet.ix <- "PI.preprints"
 data.sheet <-
@@ -125,7 +112,7 @@ doi_unique_preprints <- doi_unique
 my_dois_works_preprints <- my_dois_works
 ```
 
-```{r livros-capitulos-metrics, cache = TRUE}
+```{r metrics-livros-capitulos, cache = TRUE}
 # read data
 sheet.ix <- "PI.livros"
 data.sheet <-
@@ -151,7 +138,7 @@ doi_unique_livros_capitulos <- doi_unique
 my_dois_works_livros_capitulos <- my_dois_works
 ```
 
-```{r eventos-metrics, cache = TRUE}
+```{r metrics-eventos, cache = TRUE}
 # read data
 sheet.ix <- "PI.eventos"
 data.sheet <-
@@ -176,6 +163,21 @@ dois_eventos <- dois
 doi_unique_eventos <- doi_unique
 my_dois_works_eventos <- my_dois_works
 ```
+
+<!--script for inserting LOGO ABOVE THE TOC-->
+```{js}
+$(document).ready(function() {
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  });
+```
+
+<!--script for sharing-->
+<p align="right">
+```{r share}
+home <- "rehab-tech.github.io/observatoriocr/"
+source("Scripts/social-media-sharing.R", local = knitr::knit_global())
+```
+</p>
 
 <!--script for generating ALTMETRIC badges-->
 <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>

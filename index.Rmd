@@ -17,7 +17,8 @@ knitr::opts_chunk$set(
   include = TRUE,
   out.width = "100%",
   knitr.kable.NA = '--',
-  knitr.table.format = "html"
+  knitr.table.format = "html",
+  cache.path = file.path("cache", "all_metrics")
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
@@ -26,6 +27,136 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```{r metrics}
 source("Scripts/sjr.R", local = knitr::knit_global())
 source("Scripts/webqualis.R", local = knitr::knit_global())
+```
+
+```{r metrics-artigos, cache = TRUE}
+# read data
+sheet.ix <- "PI.completos"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_artigos <- dois
+doi_unique_artigos <- doi_unique
+my_dois_works_artigos <- my_dois_works
+```
+
+```{r metrics-resumos, cache = TRUE}
+# read data
+sheet.ix <- "PI.resumos"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_resumos <- dois
+doi_unique_resumos <- doi_unique
+my_dois_works_resumos <- my_dois_works
+```
+
+```{r metrics-preprints, cache = TRUE}
+# read data
+sheet.ix <- "PI.preprints"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_preprints <- dois
+doi_unique_preprints <- doi_unique
+my_dois_works_preprints <- my_dois_works
+```
+
+```{r metrics-livros-capitulos, cache = TRUE}
+# read data
+sheet.ix <- "PI.livros"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_livros_capitulos <- dois
+doi_unique_livros_capitulos <- doi_unique
+my_dois_works_livros_capitulos <- my_dois_works
+```
+
+```{r metrics-eventos, cache = TRUE}
+# read data
+sheet.ix <- "PI.eventos"
+data.sheet <-
+  data.frame(read_excel(
+    "../PPGCR Unisuam/Produção.xlsx",
+    sheet = sheet.ix,
+    col_types = c("text")
+  ))
+
+# Data cleaning
+dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
+colnames(dois) <- "DOI"
+
+# cria metadados para rastreio pelo Altmetric
+source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
+    
+# get metrics from Altmetric and CrossRef
+source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
+
+# store to use downstream
+dois_eventos <- dois
+doi_unique_eventos <- doi_unique
+my_dois_works_eventos <- my_dois_works
 ```
 
 <!--custom CSS scripts for ALL PAGES-->

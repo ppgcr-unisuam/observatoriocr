@@ -121,18 +121,18 @@ table.with.badges <-
         }
         
         # add OPEN ACESS badge
-        # if (!is.null(doi_unique$is_oa)) {
-        #   if (as.logical(toupper(doi_unique$is_oa[ix]))) {
-        #     cat(
-        #       "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" href=\"",
-        #       doi_unique$url[ix],
-        #       ";\" target=\"_blank\">",
-        #       "<img height=\"120px;\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Open_Access_logo_PLoS_white.svg/256px-Open_Access_logo_PLoS_white.svg.png;\">",
-        #       "</a>",
-        #       sep = ""
-        #     )
-        #   }
-        # }
+        if (!is.null(doi_unique$is_oa)) {
+          if (as.logical(toupper(doi_unique$is_oa[ix]))) {
+            cat(
+              "<a style=\"display: inline-block; float: left; margin:0.1em 0.3em 0.1em 0.3em; padding:0.5em 0.3em 0.5em 0.3em;\" href=\"",
+              doi_unique$url[ix],
+              ";\" target=\"_blank\">",
+              "<img height=\"120px;\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Open_Access_logo_PLoS_white.svg/256px-Open_Access_logo_PLoS_white.svg.png;\">",
+              "</a>",
+              sep = ""
+            )
+          }
+        }
         
       }
     }

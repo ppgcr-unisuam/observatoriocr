@@ -21,8 +21,7 @@ knitr::opts_chunk$set(
   include = TRUE,
   out.width = "100%",
   knitr.kable.NA = '--',
-  knitr.table.format = "html",
-  cache.path = file.path("cache", "all_metrics")
+  knitr.table.format = "html"
 )
 source("Scripts/all-required-packages.R")
 ```

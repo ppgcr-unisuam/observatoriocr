@@ -41,6 +41,7 @@ packs.cran <-
     "readxl",
     "rmarkdown",
     "Rmisc",
+    "roadoi",
     "rorcid",
     "sessioninfo",
     "sf",

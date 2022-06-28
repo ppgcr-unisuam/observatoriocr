@@ -10,7 +10,6 @@ output:
       - /CSS/responsive.css
 ---
 
-
 <!--install and/or load all R packages-->
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
 knitr::opts_chunk$set(
@@ -57,6 +56,21 @@ source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
 dois_artigos <- dois
 doi_unique_artigos <- doi_unique
 my_dois_works_artigos <- my_dois_works
+
+# obtain formatted references
+formatted_citations <-
+  rcrossref::cr_cn(
+    c(doi_unique$doi, my_dois_works$doi),
+    format = "text",
+    raw = TRUE,
+    style = "american-medical-association"
+  )
+formatted_citations <- substring(formatted_citations, 3)
+formatted_citations <-
+  cbind(seq(1, length(formatted_citations)), formatted_citations)
+colnames(formatted_citations) <- c("ID", "Reference")
+
+references_artigos <- formatted_citations
 ```
 
 ```{r metrics-resumos, cache = TRUE}
@@ -83,6 +97,21 @@ source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
 dois_resumos <- dois
 doi_unique_resumos <- doi_unique
 my_dois_works_resumos <- my_dois_works
+
+# obtain formatted references
+formatted_citations <-
+  rcrossref::cr_cn(
+    c(doi_unique$doi, my_dois_works$doi),
+    format = "text",
+    raw = TRUE,
+    style = "american-medical-association"
+  )
+formatted_citations <- substring(formatted_citations, 3)
+formatted_citations <-
+  cbind(seq(1, length(formatted_citations)), formatted_citations)
+colnames(formatted_citations) <- c("ID", "Reference")
+
+references_resumos <- formatted_citations
 ```
 
 ```{r metrics-preprints, cache = TRUE}
@@ -109,6 +138,21 @@ source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
 dois_preprints <- dois
 doi_unique_preprints <- doi_unique
 my_dois_works_preprints <- my_dois_works
+
+# obtain formatted references
+formatted_citations <-
+  rcrossref::cr_cn(
+    c(doi_unique$doi, my_dois_works$doi),
+    format = "text",
+    raw = TRUE,
+    style = "american-medical-association"
+  )
+formatted_citations <- substring(formatted_citations, 3)
+formatted_citations <-
+  cbind(seq(1, length(formatted_citations)), formatted_citations)
+colnames(formatted_citations) <- c("ID", "Reference")
+
+references_preprints <- formatted_citations
 ```
 
 ```{r metrics-livros-capitulos, cache = TRUE}
@@ -135,6 +179,21 @@ source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
 dois_livros_capitulos <- dois
 doi_unique_livros_capitulos <- doi_unique
 my_dois_works_livros_capitulos <- my_dois_works
+
+# obtain formatted references
+formatted_citations <-
+  rcrossref::cr_cn(
+    c(doi_unique$doi, my_dois_works$doi),
+    format = "text",
+    raw = TRUE,
+    style = "american-medical-association"
+  )
+formatted_citations <- substring(formatted_citations, 3)
+formatted_citations <-
+  cbind(seq(1, length(formatted_citations)), formatted_citations)
+colnames(formatted_citations) <- c("ID", "Reference")
+
+references_livros_capitulos <- formatted_citations
 ```
 
 ```{r metrics-eventos, cache = TRUE}
@@ -161,6 +220,21 @@ source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
 dois_eventos <- dois
 doi_unique_eventos <- doi_unique
 my_dois_works_eventos <- my_dois_works
+
+# obtain formatted references
+formatted_citations <-
+  rcrossref::cr_cn(
+    c(doi_unique$doi, my_dois_works$doi),
+    format = "text",
+    raw = TRUE,
+    style = "american-medical-association"
+  )
+formatted_citations <- substring(formatted_citations, 3)
+formatted_citations <-
+  cbind(seq(1, length(formatted_citations)), formatted_citations)
+colnames(formatted_citations) <- c("ID", "Reference")
+
+references_eventos <- formatted_citations
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
@@ -260,7 +334,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-## **Produções de destaque** {#produtos-destaque  .tabset}
+## **Produções de destaque** {#produtos-destaque}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -272,43 +346,67 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 doi_unique <-
   bind_rows(doi_unique_artigos,
             doi_unique_resumos,
+            doi_unique_preprints,
+            doi_unique_livros_capitulos,
             doi_unique_eventos)
 my_dois_works <-
   bind_rows(my_dois_works_artigos,
             my_dois_works_resumos,
+            my_dois_works_preprints,
+            my_dois_works_livros_capitulos,
             my_dois_works_eventos)
+references <-
+  rbind(references_artigos,
+            references_resumos,
+            references_preprints,
+            references_livros_capitulos,
+            references_eventos)
 
 # sort columns by Altmetric then year
 ordering <-
-  order(-as.numeric(doi_unique$score),
-        -as.numeric(doi_unique$published_on))
-doi_unique <- doi_unique[ordering,]
+  order(-as.numeric(doi_unique$score),-as.numeric(doi_unique$published_on))
+doi_unique <- doi_unique[ordering, ]
+references <- references[ordering, ]
 
 # TOP (removing papers with no Altmetric)
 top <- min(dim(doi_unique)[1], 20)
-doi_unique <- doi_unique[1:top,]
+doi_unique <- doi_unique[1:top, ]
 my_dois_works <- list()
+references <- references[1:top, ]
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_unique)[1], 0) == 0 &
+    max(dim(my_dois_works)[1], 0) == 0) {
+  cat('\n')
+} else {
+  # print export buttons
+  source("Scripts/print-only-buttons.R", local = knitr::knit_global())
+  print_buttons_dt(references)
+}
+
+# Verifica se há DOIs
+if (max(dim(doi_unique)[1], 0) == 0 &
+    max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
 } else {
   # section header
-  cat('<br>')
+  cat('\n\n<!-- -->\n\n')
   cat(
     paste(
       "*Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^)* \n\n",
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^, Open Access^6^)* \n\n",
       sep = ""
     )
   )
   cat('<br>')
   
-  # print table of papers with/without badges
   # print tab header
+  cat('\n\n<!-- -->\n\n')
+  
+  # print table of papers with/without badges
   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
   table.with.badges(
     show.Altmetric = TRUE,
@@ -346,6 +444,10 @@ my_dois_works <-
   bind_rows(my_dois_works_artigos,
             my_dois_works_resumos,
             my_dois_works_eventos)
+references <-
+  rbind(references_artigos,
+            references_resumos,
+            references_eventos)
 
 # TOP (removing papers with no SJR)
 SJRs <- c()
@@ -358,35 +460,40 @@ for (k in 1:length(doi_unique$doi)) {
 doi_unique$SJRs <- SJRs
 doi_unique <- doi_unique[complete.cases(doi_unique$SJRs),]
 
-# sort columns by SJR then year
-doi_unique <-
-  doi_unique[order(-as.numeric(doi_unique$SJRs),
-                   -as.numeric(doi_unique$published_on)),]
+# sort columns by Altmetric then year
+ordering <- order(-as.numeric(doi_unique$SJRs),
+                   -as.numeric(doi_unique$published_on))
+doi_unique <- doi_unique[ordering,]
+references <- references[ordering,]
 
 top <- min(dim(doi_unique)[1], 20)
 doi_unique <- doi_unique[1:top,]
-my_dois_works <- character(0)
+my_dois_works <- list()
+references <- references[1:top,]
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 & max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_unique)[1], 0) == 0 &
+    max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
 } else {
   # section header
-  cat('<br>')
+  cat('\n\n<!-- -->\n\n')
   cat(
     paste(
       "*Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^)* \n\n",
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^, Open Access^6^)* \n\n",
       sep = ""
     )
   )
   cat('<br>')
   
-  # print table of papers with/without badges
   # print tab header
+  cat('\n\n<!-- -->\n\n')
+  
+  # print table of papers with/without badges
   source("Scripts/papers-with-badges.R", local = knitr::knit_global())
   table.with.badges(
     show.Altmetric = TRUE,

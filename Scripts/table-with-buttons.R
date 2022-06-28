@@ -10,6 +10,6 @@ create_dt <- function(x) {
       searchHighlight = TRUE,
       buttons = c('copy', 'csv', 'pdf')
     ),
-  escape = FALSE
+    escape = FALSE
   )
 }

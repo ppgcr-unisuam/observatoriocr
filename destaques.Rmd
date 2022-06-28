@@ -339,7 +339,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Atenção e visibilidade^1,2,3^ (Top-20)**
+### **Atenção e visibilidade^1,2,3^ (Top-20)** {.tabset}
 
 ```{r destaque-visibilidade}
 # bind sources
@@ -458,7 +458,6 @@ for (k in 1:length(doi_unique$doi)) {
 }
 
 doi_unique$SJRs <- SJRs
-doi_unique <- doi_unique[complete.cases(doi_unique$SJRs),]
 
 # sort columns by Altmetric then year
 ordering <- order(-as.numeric(doi_unique$SJRs),
@@ -470,6 +469,16 @@ top <- min(dim(doi_unique)[1], 20)
 doi_unique <- doi_unique[1:top,]
 my_dois_works <- list()
 references <- references[1:top,]
+
+# Verifica se há DOIs
+if (max(dim(doi_unique)[1], 0) == 0 &
+    max(dim(my_dois_works)[1], 0) == 0) {
+  cat('\n')
+} else {
+  # print export buttons
+  source("Scripts/print-only-buttons.R", local = knitr::knit_global())
+  print_buttons_dt(references)
+}
 
 # Verifica se há DOIs
 if (max(dim(doi_unique)[1], 0) == 0 &

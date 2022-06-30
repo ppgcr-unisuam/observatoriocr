@@ -30,6 +30,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 <!--read additional files-->
 ```{r metrics}
 source("Scripts/sjr.R", local = knitr::knit_global())
+source("Scripts/citescore.R", local = knitr::knit_global())
 source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 
@@ -924,7 +925,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
     paste(
       "*Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^, Open Access^6^)* \n\n",
+    ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
   )
@@ -941,6 +942,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
       show.PlumX = TRUE,
+      show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
       doi_unique = tryCatch(
@@ -955,8 +957,9 @@ if (max(dim(doi_unique)[1], 0) == 0 &
           return(my_dois_works <- list())
         }
       ),
-      scimago,
-      qualis
+      citescore = citescore,
+      scimago = scimago,
+      qualis = qualis
     )
   }
 }
@@ -1001,7 +1004,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
     paste(
       "*Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^, Open Access^6^)* \n\n",
+    ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
   )
@@ -1018,6 +1021,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
       show.PlumX = TRUE,
+      show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
       doi_unique = tryCatch(
@@ -1032,8 +1036,9 @@ if (max(dim(doi_unique)[1], 0) == 0 &
           return(my_dois_works <- list())
         }
       ),
-      scimago,
-      qualis
+      citescore = citescore,
+      scimago = scimago,
+      qualis = qualis
     )
   }
 }
@@ -1078,7 +1083,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
     paste(
       "*Produtos (n = ",
       max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, SJR^4^, Qualis^5^, Open Access^6^)* \n\n",
+    ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
   )
@@ -1095,6 +1100,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.Altmetric = TRUE,
       show.Dimensions = TRUE,
       show.PlumX = TRUE,
+      show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
       doi_unique = tryCatch(
@@ -1109,8 +1115,9 @@ if (max(dim(doi_unique)[1], 0) == 0 &
           return(my_dois_works <- list())
         }
       ),
-      scimago,
-      qualis
+      citescore = citescore,
+      scimago = scimago,
+      qualis = qualis
     )
   }
 }

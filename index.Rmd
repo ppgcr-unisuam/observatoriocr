@@ -25,6 +25,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 <!--read additional files-->
 ```{r metrics}
 source("Scripts/sjr.R", local = knitr::knit_global())
+source("Scripts/citescore.R", local = knitr::knit_global())
 source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 

@@ -35,7 +35,7 @@ table.with.badges <-
     if (max(dim(doi_unique)[1], 0) != 0) {
       for (ix in 1:dim(doi_unique)[1]) {
         # add bibliography info
-        cat("<tr><td valign=top>")
+        cat("<tr><td valign=top;>")
         cat("<br>")
         cat(
           paste0(
@@ -56,6 +56,9 @@ table.with.badges <-
         
         # initialize the DIV element for the badges
         cat("<div style=\"vertical-align: middle; display: inline-block;\">")
+
+        # initialize the NOBR element for the badges
+        cat("<nobr>")
         
         # add Altmetric badge
         if (show.Altmetric == TRUE) {
@@ -194,6 +197,8 @@ table.with.badges <-
           }
         )
         
+        # close the NOBR element for the badges
+        cat("</nobr>")
         cat("</div>")
         cat("</tr>")
       }
@@ -203,7 +208,7 @@ table.with.badges <-
     if (max(dim(my_dois_works)[1], 0) != 0) {
       for (ix in 1:dim(my_dois_works)[1]) {
         # add bibliography info
-        cat("<tr><td valign=top>")
+        cat("<tr><td valign=top;>")
         cat("<br>")
         cat(
           paste0(
@@ -235,6 +240,9 @@ table.with.badges <-
         
         # initialize the DIV element for the badges
         cat("<div style=\"vertical-align: middle; display: inline-block;\">")
+        
+        # initialize the NOBR element for the badges
+        cat("<nobr>")
         
         # add Altmetric badge
         if (show.Altmetric == TRUE) {
@@ -371,6 +379,8 @@ table.with.badges <-
           }
         )
         
+        # close the NOBR element for the badges
+        cat("</nobr>")
         cat("</div>")
         cat("</td></tr>")
       }

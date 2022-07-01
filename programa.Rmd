@@ -94,7 +94,7 @@ O PROGRAMA DE PÓS-GRADUAÇÃO EM CIÊNCIAS DA REABILITAÇÃO DA UNISUAM (PPGCR-
 
 <br>
 
-O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-060. O PPGCR-UNISUAM insere-se na [Grande Área de Conhecimento de Ciências da Saúde (40000001), na Área Básica de Educação Física (40900002), Subárea de Fisioterapia e Terapia Ocupacional (40800008)](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml?areaAvaliacao=21). O PPGCR-UNISUAM oferece as titulações de Mestre em Ciências da Reabilitação e Doutor em Ciências da Reabilitação, além do Estágio Pós-Doutoral em Ciências da Reabilitação.
+O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-060. O PPGCR-UNISUAM insere-se na [Grande Área de Conhecimento de Ciências da Saúde (40000001), na Área Básica de Educação Física (40900002), Subárea de Fisioterapia e Terapia Ocupacional (40800008)](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml?areaAvaliacao=21){target:"_blank}. O PPGCR-UNISUAM oferece as titulações de Mestre em Ciências da Reabilitação e Doutor em Ciências da Reabilitação, além do Estágio Pós-Doutoral em Ciências da Reabilitação.
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -150,7 +150,7 @@ print(
 ```{r documentos-historicos-2020}
 # read separate sheets
 quadrienal2017.raw <-
-  read_excel("PPG/Documentos.xlsx",
+  read_excel("PPG/Apresentação.xlsx",
              sheet = "2017-2020 Quadrienal",
              col_types = c("text"))
 
@@ -181,7 +181,7 @@ print(
 ```{r documentos-historicos-2016}
 # read separate sheets
 quadrienal2013.raw <-
-  read_excel("PPG/Documentos.xlsx",
+  read_excel("PPG/Apresentação.xlsx",
              sheet = "2013-2016 Quadrienal",
              col_types = c("text"))
 
@@ -212,7 +212,7 @@ print(
 ```{r documentos-historicos-2012}
 # read separate sheets
 trienal2010.raw <-
-  read_excel("PPG/Documentos.xlsx",
+  read_excel("PPG/Apresentação.xlsx",
              sheet = "2010-2012 Trienal",
              col_types = c("text"))
 
@@ -243,7 +243,7 @@ print(
 ```{r documentos-historicos-2010}
 # read separate sheets
 historico.raw <-
-  read_excel("PPG/Documentos.xlsx",
+  read_excel("PPG/Apresentação.xlsx",
              sheet = "2006-2010 APCN",
              col_types = c("text"))
 
@@ -488,7 +488,7 @@ Os docentes vinculados ao PPGCR são orientados a coordenar até 2 PP institucio
 
 ### **2024-2021** {.tabset}
 
-#### **Figura 4**
+#### **Figura**
 
 ```{r projetos-de-pesquisa-2024-grafico}
 # projetos - membros
@@ -561,7 +561,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 <br>
 
-#### **Tabela 2**
+#### **Tabela**
 
 ```{r projetos-de-pesquisa-2024-tabela}
 # projetos - membros
@@ -633,7 +633,7 @@ cat("  \n")
 
 <br>
 
-#### **Lista 1**
+#### **Lista**
 
 <br>
 
@@ -672,7 +672,7 @@ create_dt(table.projetos)
 
 ### **2020-2017** {.tabset}
 
-#### **Figura 5**
+#### **Figura**
 
 ```{r projetos-de-pesquisa-2020-grafico}
 # projetos - membros
@@ -744,7 +744,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 <br>
 
-#### **Tabela 3**
+#### **Tabela**
 
 ```{r projetos-de-pesquisa-2020-tabela}
 # projetos - membros
@@ -816,7 +816,7 @@ cat("  \n")
 
 <br>
 
-#### **Lista 2**
+#### **Lista**
 
 <br>
 
@@ -856,7 +856,7 @@ create_dt(table.projetos)
 
 ### **2016-2013** {.tabset}
 
-#### **Figura 6**
+#### **Figura**
 
 ```{r projetos-de-pesquisa-2016-grafico}
 # projetos - membros
@@ -928,7 +928,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 <br>
 
-#### **Tabela 4**
+#### **Tabela**
 
 ```{r projetos-de-pesquisa-2016-tabela}
 # projetos - membros
@@ -1000,7 +1000,7 @@ cat("  \n")
 
 <br>
 
-#### **Lista 3**
+#### **Lista**
 
 <br>
 
@@ -1040,7 +1040,7 @@ create_dt(table.projetos)
 
 ### **2012-2010** {.tabset}
 
-#### **Figura 7**
+#### **Figura**
 
 ```{r projetos-de-pesquisa-concluidos-2012-grafico}
 # projetos - membros
@@ -1112,7 +1112,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 <br>
 
-#### **Tabela 5**
+#### **Tabela**
 
 ```{r projetos-de-pesquisa-concluidos-2012-tabela}
 # projetos - membros
@@ -1185,7 +1185,7 @@ cat("  \n")
 
 <br>
 
-#### **Lista 4**
+#### **Lista**
 
 <br>
 
@@ -1231,14 +1231,6 @@ create_dt(table.projetos)
 ### **MS**
 
 <iframe src="https://bvsms.saude.gov.br/bvs/publicacoes/agenda_prioridades_pesquisa_ms.pdf" style="width:100%; height:500px; border:0;"></iframe>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **MCTIC**
-
-<iframe src="https://antigo.mctic.gov.br/mctic/export/sites/institucional/ciencia/SEPED/Arquivos/PlanosDeAcao/PACTI_Saude_Web.pdf" style="width:100%; height:500px; border:0;"></iframe>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1524,7 +1516,7 @@ create_dt(financiadores)
 
 ```{r bolsas}
 # read separate sheets
-turmas.raw <- read_excel("PPG/Documentos.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Bolsas.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"
@@ -1634,7 +1626,7 @@ O Eixo Técnico agrupa as disciplinas de caráter especialista, com ementas volt
 
 ### **Atual** {.tabset}
 
-#### **Figura 9**
+#### **Figura**
 
 ```{r estrutura-academica-atual-grafico}
 # load custom function
@@ -1687,7 +1679,7 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 
 <br>
 
-#### **Tabela 7**
+#### **Tabela**
 
 ```{r estrutura-academica-atual-tabela}
 # load custom function
@@ -1727,7 +1719,13 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 
 #### **Ementas**
 
-<iframe src="https://drive.google.com/file/d/1x-G6Acxgq658ILKLx5DCow9nhLQGHIBg/preview" style="width:100%; height:500px; border:0;"></iframe>
+```{r ementas}
+# read separate sheets
+bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Ementas", col_types = c("text"))
+link_ementas <- bibliografia.raw[,3]
+```
+
+<iframe src="`r link_ementas`" style="width:100%; height:500px; border:0;"></iframe>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -2154,7 +2152,7 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 ```{r calendarios}
 # read separate sheets
-turmas.raw <- read_excel("PPG/Turmas.xlsx", sheet = "Turmas", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Calendários", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"

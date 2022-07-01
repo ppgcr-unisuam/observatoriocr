@@ -303,21 +303,31 @@ cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p
 
 ```{r sintese-coerencia, include = FALSE}
 # projetos
-sheet <- "Projetos"
+sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-current.sucupira <- sucupira.list[[format(Sys.Date(), "%Y")]]
+# remove duplicated lines across years
+sucupira.raw <- unique(sucupira.raw)
 
-current.AC <-
-  unique(current.sucupira$`Área de Concentração`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
-current.LP <-
-  unique(current.sucupira$`Linha de Pesquisa`[current.sucupira$Situação == "EM ANDAMENTO"], na.rm = TRUE)
-current.AC <- current.AC[!is.na(current.AC)]
-current.LP <- current.LP[!is.na(current.LP)]
+# remove duplicated projects ("EM ANDAMENTO" vs. "CONCLUÍDO" -> keep "CONCLUÍDO")
+projetos.id <- unique(sucupira.raw$`Identificador do Projeto`)
+sucupira <- c()
+for(i in 1:length(projetos.id)){
+  matches <- sucupira.raw[sucupira.raw$`Identificador do Projeto` == projetos.id[i], ]
+  if(dim(matches)[1] == 1){
+    sucupira <- bind_rows(sucupira, matches)
+  } else {
+    keep <- matches[matches$Situação == "CONCLUÍDO" | !is.na(matches$`Data de Fim da Linha`), ]
+    sucupira <- bind_rows(sucupira, keep)
+  }
+}
+
+# update base data
+sucupira.raw <- sucupira
 
 # structure the alluvial plot
 alluv.data <-
@@ -325,35 +335,114 @@ alluv.data <-
     sucupira.raw$`Área de Concentração`,
     sucupira.raw$`Linha de Pesquisa`,
     sucupira.raw$`Nome do Projeto de Pesquisa`,
-    sucupira.raw$`Data da Situação`,
-    sucupira.raw$Situação,
-    sucupira.raw$`Data de Início`
+    sucupira.raw$`Data de Início da Linha`,
+    sucupira.raw$`Data de Fim da Linha`
   )
-alluv.data <- alluv.data[complete.cases(alluv.data), ]
 
-# ordering by start date
-alluv.data <- alluv.data[order(alluv.data$sucupira.raw..Data.de.Início., decreasing = FALSE), ]
+# replace full date by year only
+alluv.data$sucupira.raw..Data.de.Início.da.Linha. <-
+  format(as.Date(
+    alluv.data$sucupira.raw..Data.de.Início.da.Linha.,
+    "%d/%m/%Y"
+  ),
+  format = "%Y")
+alluv.data$sucupira.raw..Data.de.Fim.da.Linha. <-
+  format(as.Date(alluv.data$sucupira.raw..Data.de.Fim.da.Linha., "%d/%m/%Y"),
+         format = "%Y")
 
-# get all history of 'linha de pesquisa'
+# replace NA values by current year
+alluv.data$sucupira.raw..Data.de.Fim.da.Linha.[is.na(alluv.data$sucupira.raw..Data.de.Fim.da.Linha.)] <-
+  format(Sys.Date(), format = "%Y")
+
+# remove data without AC or LP
+alluv.data <- alluv.data[!is.na(alluv.data$sucupira.raw..Área.de.Concentração.) & !is.na(alluv.data$sucupira.raw..Linha.de.Pesquisa.), ]
+
+# ordering by dates
+alluv.data <-
+  alluv.data[order(
+    alluv.data$sucupira.raw..Data.de.Início.,
+    alluv.data$sucupira.raw..Data.de.Fim.da.Linha.,
+    alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.,
+    decreasing = FALSE
+  ),]
+
+# summary data for plot table
+current.AC <-
+  unique(alluv.data$sucupira.raw..Área.de.Concentração.[alluv.data$sucupira.raw..Data.de.Fim.da.Linha. == format(Sys.Date(), format = "%Y")])
+
+old.AC <-
+  unique(alluv.data$sucupira.raw..Área.de.Concentração.[alluv.data$sucupira.raw..Data.de.Fim.da.Linha. == format(Sys.Date(), format = "%Y")])
+old.AC <- old.AC[!old.AC %in% c(current.AC, NA)]
+
+old.LP <-
+  unique(alluv.data$sucupira.raw..Linha.de.Pesquisa.[alluv.data$sucupira.raw..Data.de.Fim.da.Linha. != format(Sys.Date(), format = "%Y")])
+
+current.LP <-
+  unique(alluv.data$sucupira.raw..Linha.de.Pesquisa.)
+current.LP <- current.LP[!current.LP %in% c(old.LP, NA)]
+
+# get all history
+areas <- 
+  sort(c(current.AC, old.AC))
+
 linhas <-
-  as.character(na.exclude(unique(
-    alluv.data$sucupira.raw..Linha.de.Pesquisa.
-  )))
+  sort(c(current.LP, old.LP))
+
+# remove data from inactive LP
+alluv.data <-
+  alluv.data[!(alluv.data$sucupira.raw..Linha.de.Pesquisa. == old.LP &
+               alluv.data$sucupira.raw..Data.de.Fim.da.Linha. == format(Sys.Date(), format = "%Y")), ]
+
+summ.AC.LP <-
+  as.data.frame(
+    table(
+      alluv.data$sucupira.raw..Área.de.Concentração.,
+      alluv.data$sucupira.raw..Linha.de.Pesquisa.,
+      alluv.data$sucupira.raw..Data.de.Início.da.Linha.,
+      alluv.data$sucupira.raw..Data.de.Fim.da.Linha.
+    )
+  )
+
+# drop freq = 0 values
+summ.AC.LP <- summ.AC.LP[summ.AC.LP$Freq != 0, ]
+
+colnames(summ.AC.LP) <- c("AC", "LP", "Inicio", "Fim", "Freq")
+
+# insert data from later LP
+extra <- c()
+for(i in 1:dim(summ.AC.LP)[1]){
+  if(as.character(summ.AC.LP$Inicio[i]) > min(as.character(summ.AC.LP$Inicio))){
+    extra <- rbind(extra, c(as.character(summ.AC.LP$AC[i]), as.character(summ.AC.LP$LP[i]), min(as.character(summ.AC.LP$Inicio)), as.character(summ.AC.LP$Inicio[i]), as.character(summ.AC.LP$Freq[i])))
+  }
+}
+extra <- as.data.frame(extra)
+colnames(extra) <- c("AC", "LP", "Inicio", "Fim", "Freq")
+
+summ.AC.LP <- rbind(summ.AC.LP, extra)
 
 # code PP names for display
 alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa. <- as.numeric(as.factor(alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.))
 
-summ.AC.LP <- as.data.frame(table(alluv.data$sucupira.raw..Área.de.Concentração., alluv.data$sucupira.raw..Linha.de.Pesquisa.))
+# drop names columns
+summ.AC.LP <- summ.AC.LP[, -(1:2)]
+
+# rename cols
 colnames(summ.AC.LP) <- c("source", "target", "value")
 
-summ.LP.PP <- as.data.frame(table(alluv.data$sucupira.raw..Linha.de.Pesquisa., alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.))
+summ.LP.PP <-
+  as.data.frame(
+    table(
+      alluv.data$sucupira.raw..Linha.de.Pesquisa.,
+      alluv.data$sucupira.raw..Nome.do.Projeto.de.Pesquisa.
+    )
+  )
 colnames(summ.LP.PP) <- c("source", "target", "value")
 
 # count projects only once
 summ.LP.PP$value[summ.LP.PP$value != 0] <- 1
 
 # remove zeroed-value data
-summ.AC.LP <- summ.AC.LP[summ.AC.LP$value != 0, ]
+summ.AC.LP <- summ.AC.LP[summ.AC.LP$value != 0,]
 
 # A connection data frame is a list of flows with intensity for each flow
 links <- summ.AC.LP
@@ -412,15 +501,20 @@ unlink(file.path(dir.path, "tmp.html"))
 # plot 2
 
 # plot area setup
-layout.m <- matrix(c(1, 2), ncol = 1, byrow = TRUE)
+layout.m <- matrix(c(1, 2, 3, 4), ncol = 2, byrow = FALSE)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 
-summ.coerencia <- c(length(unique(current.AC)),
+summ.coerencia.1 <- c(length(unique(current.AC)),
                     length(unique(current.LP)))
-names(summ.coerencia) <-
-  c("Área de Concentração", "Linhas de Pesquisa")
+names(summ.coerencia.1) <-
+  c("Área de Concentração \n (ativas)", "Linhas de Pesquisa \n (ativas)")
 
-summ.data <- summ.coerencia
+summ.coerencia.2 <- c(length(unique(old.AC)),
+                    length(unique(old.LP)))
+names(summ.coerencia.2) <-
+  c("Área de Concentração \n (inativas)", "Linhas de Pesquisa \n (inativas)")
+
+summ.data <- c(summ.coerencia.1, summ.coerencia.2)
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 

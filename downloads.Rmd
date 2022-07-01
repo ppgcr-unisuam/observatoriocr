@@ -48,7 +48,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```{r documentos-vigentes}
 # read separate sheets
 vigentes.raw <-
-  read_excel("PPG/Vigentes.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "Vigentes",
              col_types = c("text"))
 
@@ -81,7 +81,7 @@ print(
 ```{r documentos-revogados}
 # read separate sheets
 revogados.raw <-
-  read_excel("PPG/Revogados.xlsx",
+  read_excel("PPG/Documentos.xlsx",
              sheet = "Revogados",
              col_types = c("text"))
 

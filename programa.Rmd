@@ -1721,11 +1721,20 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 
 ```{r ementas}
 # read separate sheets
-bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Ementas", col_types = c("text"))
-link_ementas <- bibliografia.raw[,3]
+bibliografia.raw <-
+  read_excel("PPG/Bibliografia.xlsx",
+             sheet = "Ementas",
+             col_types = c("text"))
+link_ementas <- bibliografia.raw[, 3]
+
+cat(
+  "<iframe src=\"",
+  as.character(link_ementas),
+  "\" style=\"width:100%; height:500px; border:0;\"></iframe>",
+  sep = ""
+)
 ```
 
-<iframe src="`r link_ementas`" style="width:100%; height:500px; border:0;"></iframe>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

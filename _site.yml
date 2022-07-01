@@ -3,9 +3,9 @@ title: "Observatório CR"
 date: '`r format(Sys.Date())`'
 name: "observatorio_cr_unisuam"
 author:
-  - name: Arthur de Sá Ferreira
-  - email: arthur_sf@icloud.com
-repository_url: https://github.com/rehab-tech/observatoriocr/
+  - name: PPGCR-UNISUAM
+  - email: cienciasdareabilitacao@souunisuam.com.br
+repository_url: https://github.com/ppgcr-unisuam/observatoriocr/
 source_url: true
 creative_commons: CC BY-NC
 output_dir: "docs"
@@ -175,7 +175,7 @@ navbar:
   right:
     - text: ""
       icon: "fa-envelope"
-      href: [mailto:arthur_sf@icloud.com]
+      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
     - text: ""
       icon: "fa-info"
       href: [sobre.html]

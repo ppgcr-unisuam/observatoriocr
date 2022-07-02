@@ -10,8 +10,9 @@ source_url: true
 creative_commons: CC BY-NC
 output_dir: "docs"
 include:
-  - footer.html
+  - header.html
   - google-translate.html
+  - footer.html
   - /CSS
   - /Images
   - /Labs
@@ -159,6 +160,8 @@ navbar:
     - text: "Galeria"
       href: [galeria.html]
       menu:
+        - text: "Galeria"
+          href: [galeria.html]
         - text: "Videos"
           href: [galeria.html#videos]
         - text: "Podcasts"
@@ -188,6 +191,7 @@ output:
     theme: flatly
     highlight: textmate
     include:
+      in_header: [header.html]
       before_body: [google-translate.html]
       after_body: [footer.html]
     css:

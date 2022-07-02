@@ -61,7 +61,7 @@ source("Scripts/social-media-sharing.R")
 sessioninfo::session_info()%>%
   details::details(
     summary = 'Current session info',
-    open = TRUE
+    open = FALSE
   )
 ```
 

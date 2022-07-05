@@ -39,6 +39,7 @@ packs.cran <-
     "RColorBrewer",
     "readtext",
     "readxl",
+    "readr",
     "rmarkdown",
     "Rmisc",
     "roadoi",

@@ -19,12 +19,13 @@ for (i in 1:length(dirs)) {
 }
 
 # initialize vectors and lists
-sucupira <- c()
 sucupira.raw <- c()
 sucupira.list <- list()
 
 for (file in 1:length(files.to.read)) {
-  sucupira <- read_excel(files.to.read[file], sheet = sheet)
+  sucupira <-
+    as.data.frame(read_excel(files.to.read[file], sheet = sheet)) %>%
+    dplyr::mutate(across(everything(), as.character))
   
   # search for "|" (meaning there are changes within a given year)
   has.any.change <- grep('\\|', as.character(sucupira[,]))
@@ -58,21 +59,30 @@ for (file in 1:length(files.to.read)) {
       for (j in cols.to.change[rows.to.change == i]) {
         split.data <-
           unlist(strsplit(as.character(sucupira[i, j]), " \\| "))
+        split.data
         data.to.change[(index:(index + length(split.data) - 1)), j] <-
-          split.data
+          data.to.change %>%
+          dplyr::mutate(across(everything(), as.character))
       }
       index <- index + length(split.data)
     }
     
     # delete original entries with "|"
     sucupira <- sucupira[-unique(rows.to.change),]
+    sucupira  %>%
+      dplyr::mutate_all(as.character())
     
     # append changed data
-    sucupira <- rbind(sucupira, data.to.change)
+    colnames(data.to.change) <- colnames(sucupira)
+    data.to.change %>%
+      dplyr::mutate_all(as.character())
+    sucupira <- bind_rows(sucupira, data.to.change)
   }
   
   sucupira.raw <-
-    rbind(sucupira.raw, sucupira)
+    bind_rows(sucupira.raw, sucupira)
+  readr::type_convert(sucupira.raw)
+  readr::type_convert(sucupira)
   
   sucupira.list[[file]] <- sucupira
 }

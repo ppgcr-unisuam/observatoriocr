@@ -322,6 +322,16 @@ colnames(table.tcc) <-
 
 #### **Institucional** {.tabset}
 
+```{r repositorios-mestrado}
+# read separate sheets
+dados.lab <- read_excel("PPG/Repositórios.xlsx", sheet = "Dissertações")
+```
+
+```{r repositorios-doutorado}
+# read separate sheets
+dados.lab <- read_excel("PPG/Repositórios.xlsx", sheet = "Teses")
+```
+
 ##### **Dissertações**
 
 <iframe src="https://drive.google.com/embeddedfolderview?id=1na3a8kF7BEkmcdMhTaLkUI5G_bimqd1G#list" style="width:100%; height:600px; border:0;"></iframe>

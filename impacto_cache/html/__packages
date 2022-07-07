@@ -28,6 +28,7 @@ plyr
 RColorBrewer
 readtext
 readxl
+readr
 rmarkdown
 lattice
 Rmisc
@@ -39,7 +40,6 @@ stringr
 tidyverse
 tibble
 tidyr
-readr
 purrr
 forcats
 NLP

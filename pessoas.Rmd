@@ -2622,9 +2622,6 @@ if(length(new.ids) != 0) {
 # select level
 course.level <- "Doutorado"
 
-# load custom function
-source("Scripts/get-initials.R")
-
 # discentes
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R")
@@ -2680,9 +2677,6 @@ if (dim(discentes)[1] != 0) {
 # select level
 course.level <- "Mestrado"
 
-# load custom function
-source("Scripts/get-initials.R")
-
 # discentes
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R")
@@ -2737,9 +2731,6 @@ if (dim(discentes)[1] != 0) {
 ```{r discentes-ic}
 # select level
 course.level <- "Bacharelado"
-
-# load custom function
-source("Scripts/get-initials.R")
 
 # discentes
 sheet <- "Discentes - Orientadores"
@@ -3204,9 +3195,6 @@ print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>%
 ### **Nacionais**
 
 ```{r externos-nacionais}
-# load custom function
-source("Scripts/get-initials.R")
-
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R")
@@ -3231,7 +3219,6 @@ externos <- externos[complete.cases(externos), ]
 # format names
 externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
 externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
-externos$`Instituição de Origem` <- initials(externos$`Instituição de Origem`)
 
 if (dim(externos)[1] != 0) {
   ids <- order(externos$'Nome do Participante', decreasing = FALSE)
@@ -3253,9 +3240,6 @@ if (dim(externos)[1] != 0) {
 
 ### **Internacionais**
 ```{r externos-internacionais}
-# load custom function
-source("Scripts/get-initials.R")
-
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R")
@@ -3280,7 +3264,6 @@ externos <- externos[complete.cases(externos), ]
 # format names
 externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
 externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
-externos$`Instituição de Origem` <- initials(externos$`Instituição de Origem`)
 
 if (dim(externos)[1] != 0) {
   ids <- order(externos$'Nome do Participante', decreasing = FALSE)

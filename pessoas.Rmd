@@ -629,7 +629,7 @@ print(
 
 ### **2024-2021** {.tabset}
 
-#### **Figura 1**
+#### **Figura**
 
 ```{r docentes-2024-grafico}
 docentes.raw <-
@@ -824,7 +824,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 <br>
 
-#### **Tabela 1**
+#### **Tabela**
 
 ```{r docentes-2024-tabela}
 docentes.raw <-
@@ -977,7 +977,7 @@ print(
 
 ### **2020-2017** {.tabset}
 
-#### **Figura 2**
+#### **Figura**
 
 ```{r docentes-2020-grafico}
 docentes.raw <-
@@ -1172,7 +1172,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 <br>
 
-#### **Tabela 2**
+#### **Tabela**
 
 ```{r docentes-2020-tabela}
 docentes.raw <-
@@ -1325,7 +1325,7 @@ print(
 
 ### **2016-2013** {.tabset}
 
-#### **Figura 3**
+#### **Figura**
 
 ```{r docentes-2016-grafico}
 docentes.raw <-
@@ -1520,7 +1520,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 <br>
 
-#### **Tabela 3**
+#### **Tabela**
 
 ```{r docentes-2016-tabela}
 docentes.raw <-
@@ -1673,7 +1673,7 @@ print(
 
 ### **2012-2010** {.tabset}
 
-#### **Figura 4**
+#### **Figura**
 
 ```{r docentes-2012-grafico}
 docentes.raw <-
@@ -1868,7 +1868,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 <br>
 
-#### **Tabela 4**
+#### **Tabela**
 
 ```{r docentes-2012-tabela}
 docentes.raw <-
@@ -3201,32 +3201,101 @@ print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>%
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Síntese**
+### **Nacionais**
 
-*Em construção!*
+```{r externos-nacionais}
+# load custom function
+source("Scripts/get-initials.R")
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+# participantes externos
+sheet <- "Participante Externo"
+source("Scripts/read-xlsx-sucupira.R")
+externos <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+externos <- externos[externos$`País` == "Brasil", ]
+
+# remove duplicates
+externos <- unique(externos)
+
+# drop columns
+externos <- externos %>% select("Nome do Participante", "Tipos de Participação", "Instituição de Origem", "País")
+
+# complete cases only
+externos <- externos[complete.cases(externos), ]
+
+# format names
+externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
+externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
+externos$`Instituição de Origem` <- initials(externos$`Instituição de Origem`)
+
+if (dim(externos)[1] != 0) {
+  ids <- order(externos$'Nome do Participante', decreasing = FALSE)
+  table <- externos[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
-### **Nacionais**
-
-*Em construção!*
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
 ### **Internacionais**
+```{r externos-internacionais}
+# load custom function
+source("Scripts/get-initials.R")
 
-*Em construção!*
+# participantes externos
+sheet <- "Participante Externo"
+source("Scripts/read-xlsx-sucupira.R")
+externos <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# filter students
+externos <- externos[externos$`País` != "Brasil", ]
+
+# remove duplicates
+externos <- unique(externos)
+
+# drop columns
+externos <- externos %>% select("Nome do Participante", "Tipos de Participação", "Instituição de Origem", "País")
+
+# complete cases only
+externos <- externos[complete.cases(externos), ]
+
+# format names
+externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
+externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
+externos$`Instituição de Origem` <- initials(externos$`Instituição de Origem`)
+
+if (dim(externos)[1] != 0) {
+  ids <- order(externos$'Nome do Participante', decreasing = FALSE)
+  table <- externos[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table)
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
-
-### **Inativos**
-
-*Em construção!*
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

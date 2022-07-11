@@ -3219,6 +3219,7 @@ externos <- externos[complete.cases(externos), ]
 # format names
 externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
 externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
+externos$`Instituição de Origem` <- toupper(externos$`Instituição de Origem`)
 
 if (dim(externos)[1] != 0) {
   ids <- order(externos$'Nome do Participante', decreasing = FALSE)
@@ -3264,6 +3265,7 @@ externos <- externos[complete.cases(externos), ]
 # format names
 externos$`Nome do Participante` <- toTitleCase(tolower(externos$`Nome do Participante`))
 externos$`Tipos de Participação` <- toTitleCase(tolower(externos$`Tipos de Participação`))
+externos$`Instituição de Origem` <- toupper(externos$`Instituição de Origem`)
 
 if (dim(externos)[1] != 0) {
   ids <- order(externos$'Nome do Participante', decreasing = FALSE)

@@ -661,7 +661,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos)
+create_dt(table.projetos, title = "Projetos de Pesquisa 2024-2021")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -845,7 +845,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos)
+create_dt(table.projetos, title = "Projetos de Pesquisa 2020-2017")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1029,7 +1029,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos)
+create_dt(table.projetos, title = "Projetos de Pesquisa 2016-2013")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1214,7 +1214,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos)
+create_dt(table.projetos, title = "Projetos de Pesquisa 2012-2010")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1289,7 +1289,7 @@ financiadores <-
   financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores)
+create_dt(financiadores, title = "Financiadores 2024-2021")
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1338,7 +1338,7 @@ financiadores <-
   financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores)
+create_dt(financiadores, title = "Financiadores 2020-2017")
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1387,7 +1387,7 @@ financiadores <-
   financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores)
+create_dt(financiadores, title = "Financiadores 2016-2013")
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1436,7 +1436,7 @@ financiadores <-
   financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores)
+create_dt(financiadores, title = "Financiadores 2012-2010")
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1484,7 +1484,7 @@ financiadores <-
   financiadores[order(financiadores$Ano, decreasing = TRUE),]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores)
+create_dt(financiadores, title = "Financiadores 2010-pré")
 ```
 
 *Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
@@ -1531,7 +1531,7 @@ turmas <- cbind(turmas.raw[,-3], Abrir)
 turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(turmas)
+create_dt(turmas, title = "Portarias Bolsas CAPES")
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -1747,7 +1747,7 @@ cat(
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(bibliografia.raw)
+create_dt(bibliografia.raw, title = "Bibliografia")
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -2177,7 +2177,7 @@ turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
 
 # print table
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(turmas)
+create_dt(turmas, title = "Calendários")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

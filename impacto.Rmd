@@ -312,7 +312,7 @@ if (dim(bolsistas)[1] != 0) {
   ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
   table <- bolsistas[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table)
+  create_dt(table, title = "Bolsistas - Doutorado")
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -364,7 +364,7 @@ if (dim(bolsistas)[1] != 0) {
   ids <- order(bolsistas$'Ano de Defesa', decreasing = TRUE)
   table <- bolsistas[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table)
+  create_dt(table, title = "Bolsistas - Mestrado")
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -411,7 +411,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
   ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Tipo de Trabalho de Conclusão', decreasing = TRUE)
   table <- bolsistas.tcc[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table)
+  create_dt(table, title = "Dissertações e Teses - Bolsistas")
 } else {
   cat("*Sem dados para exibir*")
 }
@@ -755,7 +755,7 @@ if (dim(projetos)[1] != 0) {
       "Nome do Projeto de Pesquisa",
       "Linha de Pesquisa")
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table.projetos)
+  create_dt(table.projetos, title = "Ações durante a Pandemia - Projetos de Pesquisa")
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')
@@ -812,7 +812,7 @@ if (dim(financiadores)[1] != 0) {
     financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(financiadores)
+  create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores")
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')
@@ -874,7 +874,7 @@ if (dim(tccs)[1] != 0) {
   colnames(table.tcc) <-
     c("Ano", "Nível", "Título", "Autor", "Orientador")
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table.tcc)
+  create_dt(table.tcc, title = "Ações durante a Pandemia - Trabalhos de conclusào de curso")
 } else {
   cat('\n\n')
   cat('*Sem produção para exibir no período*')
@@ -909,7 +909,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos completos")
 }
 
 # Verifica se há DOIs
@@ -988,7 +988,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos resumos")
 }
 
 # Verifica se há DOIs
@@ -1067,7 +1067,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Trabalhos em eventos")
 }
 
 # Verifica se há DOIs

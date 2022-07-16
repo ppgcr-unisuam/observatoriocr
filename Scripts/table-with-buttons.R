@@ -1,4 +1,4 @@
-create_dt <- function(x) {
+create_dt <- function(x, title) {
   DT::datatable(
     x,
     rownames = FALSE,
@@ -8,7 +8,13 @@ create_dt <- function(x) {
       scrolX = F,
       dom = 'Bftip',
       searchHighlight = TRUE,
-      buttons = c('copy', 'csv', 'pdf')
+      buttons = list(
+        list(extend = "copy"),
+        list(extend = "csv"),
+        list(extend = 'pdf',
+             title = title,
+             filename = title)
+      )
     ),
     escape = FALSE
   )

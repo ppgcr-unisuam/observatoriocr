@@ -382,7 +382,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Produçào de destaque - Atençào e visibilidade")
 }
 
 # Verifica se há DOIs
@@ -480,7 +480,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Produçào de destaque - Prestígio do periódico")
 }
 
 # Verifica se há DOIs

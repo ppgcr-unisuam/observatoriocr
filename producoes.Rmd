@@ -311,7 +311,7 @@ table.tcc[, 5] <-
 colnames(table.tcc) <-
   c("Ano", "Nível", "Título", "Autor", "Orientador")
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table.tcc)
+  create_dt(table.tcc, title = "Dissertações e Teses")
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
@@ -398,7 +398,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Artigos completos em periódicos")
 }
 
 # Verifica se há DOIs
@@ -477,7 +477,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Artigos resumos em periódicos")
 }
 
 # Verifica se há DOIs
@@ -556,7 +556,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Artigos preprints")
 }
 
 # Verifica se há DOIs
@@ -635,7 +635,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Livros e capítulos")
 }
 
 # Verifica se há DOIs
@@ -753,7 +753,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references)
+  print_buttons_dt(references, title = "Trabalhos em anais de eventos científicos")
 }
 
 # Verifica se há DOIs

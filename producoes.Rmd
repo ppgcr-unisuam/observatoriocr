@@ -33,7 +33,7 @@ source("Scripts/citescore.R", local = knitr::knit_global())
 source("Scripts/webqualis.R", local = knitr::knit_global())
 ```
 
-```{r metrics-artigos, cache = TRUE}
+```{r metrics-artigos, cache = TRUE, cache.path = "cache/artigos/"}
 # read data
 sheet.ix <- "PI.completos"
 data.sheet <-
@@ -74,7 +74,7 @@ colnames(formatted_citations) <- c("ID", "Reference")
 references_artigos <- formatted_citations
 ```
 
-```{r metrics-resumos, cache = TRUE}
+```{r metrics-resumos, cache = TRUE, cache.path = "cache/resumos/"}
 # read data
 sheet.ix <- "PI.resumos"
 data.sheet <-
@@ -115,7 +115,7 @@ colnames(formatted_citations) <- c("ID", "Reference")
 references_resumos <- formatted_citations
 ```
 
-```{r metrics-preprints, cache = TRUE}
+```{r metrics-preprints, cache = TRUE, cache.path = "cache/preprints/"}
 # read data
 sheet.ix <- "PI.preprints"
 data.sheet <-
@@ -156,7 +156,7 @@ colnames(formatted_citations) <- c("ID", "Reference")
 references_preprints <- formatted_citations
 ```
 
-```{r metrics-livros-capitulos, cache = TRUE}
+```{r metrics-livros-capitulos, cache = TRUE, cache.path = "cache/livros_capitulos/"}
 # read data
 sheet.ix <- "PI.livros"
 data.sheet <-
@@ -197,7 +197,7 @@ colnames(formatted_citations) <- c("ID", "Reference")
 references_livros_capitulos <- formatted_citations
 ```
 
-```{r metrics-eventos, cache = TRUE}
+```{r metrics-eventos, cache = TRUE, cache.path = "cache/eventos/"}
 # read data
 sheet.ix <- "PI.eventos"
 data.sheet <-

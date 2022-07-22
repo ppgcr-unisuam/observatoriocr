@@ -1,5 +1,3 @@
-
-
 # all packages required for this R project
 # Create using PACKUP add-in to generate this code with all the required libraries for this Rmd
 # 1. create code chunk

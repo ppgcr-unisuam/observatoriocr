@@ -941,36 +941,11 @@ th, td {
 
 ### **ClinicalTrials.gov**
 
-```{r protocolos-clinicaltrials}
-# read separate sheets
-protocolos.raw <-
-  as.data.frame(read.csv("PPG/UNISUAM_filtered_records.csv"))
+<br>
 
-# drop columns
-protocolos.raw <- protocolos.raw[, c(2, 3, 4, 5)]
+<iframe src="https://clinicaltrials.gov/ct2/results?term=UNISUAM+OR+%22Centro+Universitário+Augusto+Motta%22" style="width:100%; height:600px; border:0;"></iframe>
 
-# replace the link by a tag
-for (i in 1:dim(protocolos.raw)[1]) {
-  protocolos.raw[i, 1] <-
-    paste0(
-      '<a href="',
-      'https://clinicaltrials.gov/ct2/show/',
-      trimws(protocolos.raw[i, 1], which = "both"),
-      '" target="_blank">',
-      trimws(protocolos.raw[i, 1], which = "both"),
-      '</a>'
-    )
-}
-
-# print table
-colnames(protocolos.raw) <-
-  c("ClinicalTrials.gov ID",
-    "Brief Title",
-    "Record Status",
-    "Last Update")
-source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(protocolos.raw, title = "Registros de protocolos - ClinicalTrials.gov")
-```
+<br>
 
 *Fontes:* [**ClinicalTrials.gov**](https://clinicaltrials.gov)
 
@@ -1049,27 +1024,11 @@ create_dt(protocolos.raw, title = "Registros de protocolos - ClinicalTrials.gov"
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **CAPES**
-
-<br>
-
-<iframe src="https://www-periodicos-capes-gov-br.ezl.periodicos.capes.gov.br" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**Periódicos CAPES**](http://www.periodicos.capes.gov.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **SciELO**
 
 <br>
 
-<iframe src="https://scielo.org" style="width:100%; height:600px; border:0;"></iframe>
+<iframe src="https://search.scielo.org/?q=au%3ARicciardi%2C+Gualtiero&lang=pt&count=15&from=0&output=site&sort=&format=summary&fb=&page=1&q=%28aff_institution%3AUNISUAM%29+OR+%28aff_institution%3A%22Centro+Universitário+Augusto+Motta%22%29&lang=pt&page=1" style="width:100%; height:600px; border:0;"></iframe>
 
 <br>
 
@@ -1081,15 +1040,15 @@ create_dt(protocolos.raw, title = "Registros de protocolos - ClinicalTrials.gov"
 
 <br>
 
-### **EBSCO**
+### **PubMed**
 
 <br>
 
-<iframe src="https://www.ebsco.com/find-my-organization" style="width:100%; height:600px; border:0;"></iframe>
+<iframe src="https://pubmed.ncbi.nlm.nih.gov/?term=%22UNISUAM%22+OR+%22centro+universitário+augusto+motta%22+OR+%22Centro+Universitario+Augusto+Motta%22&sort=relevance" style="width:100%; height:600px; border:0;"></iframe>
 
 <br>
 
-*Fontes:* [**EBSCOhost**](https://www.ebsco.com/find-my-organization)
+*Fontes:* [**PubMed**](https://pubmed.ncbi.nlm.nih.gov)
 
 <br>
 

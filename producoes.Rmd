@@ -941,13 +941,38 @@ th, td {
 
 ### **ClinicalTrials.gov**
 
-<br>
+```{r protocolos-clinicaltrials}
+# read separate sheets
+protocolos.raw <-
+  as.data.frame(read.csv("PPG/UNISUAM_filtered_records.csv"))
 
-<iframe src="https://clinicaltrials.gov" style="width:100%; height:600px; border:0;"></iframe>
+# drop columns
+protocolos.raw <- protocolos.raw[, c(2, 3, 4, 5)]
 
-<br>
+# replace the link by a tag
+for (i in 1:dim(protocolos.raw)[1]) {
+  protocolos.raw[i, 1] <-
+    paste0(
+      '<a href="',
+      'https://clinicaltrials.gov/ct2/show/',
+      trimws(protocolos.raw[i, 1], which = "both"),
+      '" target="_blank">',
+      trimws(protocolos.raw[i, 1], which = "both"),
+      '</a>'
+    )
+}
 
-*Fontes:* [**Fundação Oswaldo Cruz)**](https://clinicaltrials.gov)
+# print table
+colnames(protocolos.raw) <-
+  c("ClinicalTrials.gov ID",
+    "Brief Title",
+    "Record Status",
+    "Last Update")
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(protocolos.raw, title = "Registros de protocolos - ClinicalTrials.gov")
+```
+
+*Fontes:* [**ClinicalTrials.gov**](https://clinicaltrials.gov)
 
 <br>
 

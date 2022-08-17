@@ -3240,6 +3240,7 @@ if (dim(externos)[1] != 0) {
 <br>
 
 ### **Internacionais**
+
 ```{r externos-internacionais}
 # participantes externos
 sheet <- "Participante Externo"
@@ -3272,6 +3273,46 @@ if (dim(externos)[1] != 0) {
   table <- externos[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
   create_dt(table, title = "Participantes externos - Internacionais")
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+<br>
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Instituições e países**
+
+```{r externos-ies-paises}
+# participantes externos
+sheet <- "Participante Externo"
+source("Scripts/read-xlsx-sucupira.R")
+externos <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# drop columns and remove duplicated entries
+externos <- externos %>% select("Instituição de Origem", "País")
+externos <- unique(externos)
+
+# complete cases only
+externos <- externos[complete.cases(externos), ]
+
+# format names
+externos$`Instituição de Origem` <- toupper(externos$`Instituição de Origem`)
+
+if (dim(externos)[1] != 0) {
+  ids <- order(externos$'Instituição de Origem', decreasing = FALSE)
+  table <- externos[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Participantes externos - Instituições")
 } else {
   cat("*Sem dados para exibir*")
 }

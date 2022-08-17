@@ -816,39 +816,6 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-#### **SuiteMYO**
-
-```{r softwares-myo}
-# read separate sheets
-softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
-
-# replace the link by a tag
-for(i in 1:dim(softwares.raw)[1]){
-  softwares.raw[i,3] <- paste("[↗️](", softwares.raw[i,3], '){target="_blank"}', sep = "")
-}
-
-# print table
-print(kable(softwares.raw, align = c("l", rep("c", ncol(softwares.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-```
-
-<style>
-th, td {
-  padding: 10px;
-}
-</style>
-<table class="center">
-  <tr>
-    <td>
-      [<img align="center" src="Softwares/SuiteMYO.png">](https://drive.google.com/file/d/1SbGREXOSVq0KxWEPxJQP1-t_2A6j57-c/view?usp=sharing){target="_blank"}
-    </td>
-  </tr>
-</table>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 #### **SuiteEBG**
 
 ```{r softwares-ebg}
@@ -873,7 +840,40 @@ th, td {
 <table class="center">
   <tr>
     <td>
-      [<img align="center" src="Softwares/SuiteEBG.png">](https://drive.google.com/file/d/1TSzz64zTI7-6C-38k4hO_CMqSGOrbe-I/view?usp=sharing){target="_blank"}
+      [<img align="center" src="Softwares/SuiteEBG.png">](https://drive.google.com/drive/folders/1UGyANs87k2S_8utHrkzPzxsUP_ZM-VoH?usp=sharing){target="_blank"}
+    </td>
+  </tr>
+</table>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **SuiteMYO**
+
+```{r softwares-myo}
+# read separate sheets
+softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
+
+# replace the link by a tag
+for(i in 1:dim(softwares.raw)[1]){
+  softwares.raw[i,3] <- paste("[↗️](", softwares.raw[i,3], '){target="_blank"}', sep = "")
+}
+
+# print table
+print(kable(softwares.raw, align = c("l", rep("c", ncol(softwares.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
+```
+
+<style>
+th, td {
+  padding: 10px;
+}
+</style>
+<table class="center">
+  <tr>
+    <td>
+      [<img align="center" src="Softwares/SuiteMYO.png">](https://drive.google.com/drive/folders/1UGyANs87k2S_8utHrkzPzxsUP_ZM-VoH?usp=sharing){target="_blank"}
     </td>
   </tr>
 </table>
@@ -905,7 +905,39 @@ th, td {
 <table class="center">
   <tr>
     <td>
-      [<img align="center" src="Softwares/SuiteTCM.png">](https://drive.google.com/file/d/18-LCadmw-phwueqSrrIBsfgtirX6SYHW/view?usp=sharing){target="_blank"}
+      [<img align="center" src="Softwares/SuiteTCM.png">](https://drive.google.com/drive/folders/1UGyANs87k2S_8utHrkzPzxsUP_ZM-VoH?usp=sharing){target="_blank"}
+    </td>
+  </tr>
+</table>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **wiiVIEW**
+
+```{r softwares-wbb}
+# read separate sheets
+softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "wiiVIEW", col_types = c("text"))
+
+# replace the link by a tag
+for(i in 1:dim(softwares.raw)[1]){
+  softwares.raw[i,3] <- paste("[↗️](", softwares.raw[i,3], '){target="_blank"}', sep = "")
+}
+
+# print table
+print(kable(softwares.raw, align = c("l", rep("c", ncol(softwares.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+```
+
+<style>
+th, td {
+  padding: 10px;
+}
+</style>
+<table class="center">
+  <tr>
+    <td>
+      [<img align="center" src="Softwares/wiiVIEW.png">](https://drive.google.com/drive/folders/1UGyANs87k2S_8utHrkzPzxsUP_ZM-VoH?usp=sharing){target="_blank"}
     </td>
   </tr>
 </table>

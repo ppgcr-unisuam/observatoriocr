@@ -1,14 +1,12 @@
 ---
-title: "Observatório CR"
+title: Observatório CR
 date: '`r format(Sys.Date())`'
-name: "observatorio_cr_unisuam"
 author:
-  - name: "PPGCR-UNISUAM"
+  - name: PPGCR-UNISUAM
   - email: "cienciasdareabilitacao@souunisuam.com.br"
-repository_url: "https://github.com/ppgcr-unisuam/observatoriocr/"
-source_url: true
+repository_url: https://github.com/ppgcr-unisuam/observatoriocr/
 creative_commons: CC BY-NC
-output_dir: "docs"
+output_dir: docs
 include:
   - header.html
   - google-translate.html

@@ -321,27 +321,73 @@ colnames(table.tcc) <-
 
 #### **Institucional** {.tabset}
 
-```{r repositorios-mestrado}
+##### **Sede** {.tabset}
+
+```{r repositorios-mestrado-sede}
 # read separate sheets
-dados.lab <- read_excel("PPG/Repositórios.xlsx", sheet = "Dissertações")
+repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
+
+cat(paste('###### **', repositorio[1,2], '**', sep = ""))
+
+cat('\n\n')
+
+cat(paste('<iframe src="https://drive.google.com/embeddedfolderview?id=', repositorio[1,3], '#list" style="width:100%; height:600px; border:0;"></iframe>', sep = ""))
+
+cat('\n\n')
 ```
-
-```{r repositorios-doutorado}
-# read separate sheets
-dados.lab <- read_excel("PPG/Repositórios.xlsx", sheet = "Teses")
-```
-
-##### **Dissertações**
-
-<iframe src="https://drive.google.com/embeddedfolderview?id=1na3a8kF7BEkmcdMhTaLkUI5G_bimqd1G#list" style="width:100%; height:600px; border:0;"></iframe>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-##### **Teses**
+```{r repositorios-doutorado-sede}
+# read separate sheets
+repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
-<iframe src="https://drive.google.com/embeddedfolderview?id=1pP_7A0gWvmMleVgngGtda2NqnGkmxDe5#list" style="width:100%; height:600px; border:0;"></iframe>
+cat(paste('###### **', repositorio[2,2], '**', sep = ""))
+
+cat('\n\n')
+
+cat(paste('<iframe src="https://drive.google.com/embeddedfolderview?id=', repositorio[2,3], '#list" style="width:100%; height:600px; border:0;"></iframe>', sep = ""))
+
+cat('\n\n')
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+##### **Cooperação Interinstitucional** {.tabset}
+
+```{r repositorios-mestrado-cooperacao}
+# read separate sheets
+repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
+
+cat(paste('###### **', repositorio[1,2], '**', sep = ""))
+
+cat('\n\n')
+
+cat(paste('<iframe src="https://drive.google.com/embeddedfolderview?id=', repositorio[1,3], '#list" style="width:100%; height:600px; border:0;"></iframe>', sep = ""))
+
+cat('\n\n')
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+```{r repositorios-doutorado-cooperacao}
+# read separate sheets
+repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
+
+cat(paste('###### **', repositorio[2,2], '**', sep = ""))
+
+cat('\n\n')
+
+cat(paste('<iframe src="https://drive.google.com/embeddedfolderview?id=', repositorio[2,3], '#list" style="width:100%; height:600px; border:0;"></iframe>', sep = ""))
+
+cat('\n\n')
+```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

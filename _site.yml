@@ -170,6 +170,9 @@ navbar:
     - text: "SSTCC"
       href: [https://sstcc.unisuam.edu.br/]
     - text: ""
+      icon: "fa-user"
+      href: [recursos.html]
+    - text: ""
       icon: "fa-download"
       href: [downloads.html]
     - text: "21"

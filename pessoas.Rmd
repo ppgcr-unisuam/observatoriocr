@@ -2639,9 +2639,6 @@ discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
 # select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
 discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
 
-# remove duplicates
-discentes <- unique(discentes)
-
 # get years
 discentes$'Ano de Matrícula' <- substr(as.Date(discentes$`Data Matrícula`, format = "%d/%m/%Y"), 1, 4)
 
@@ -2651,6 +2648,9 @@ discentes$`Nome do Orientador` <- toTitleCase(tolower(discentes$`Nome do Orienta
 
 # drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
 discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do Orientador")
+
+# remove duplicates
+discentes <- unique(discentes)
 
 if (dim(discentes)[1] != 0) {
   ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)
@@ -2694,9 +2694,6 @@ discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
 # select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
 discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
 
-# remove duplicates
-discentes <- unique(discentes)
-
 # get years
 discentes$'Ano de Matrícula' <- substr(as.Date(discentes$`Data Matrícula`, format = "%d/%m/%Y"), 1, 4)
 
@@ -2706,6 +2703,9 @@ discentes$`Nome do Orientador` <- toTitleCase(tolower(discentes$`Nome do Orienta
 
 # drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
 discentes <- discentes %>% select("Ano de Matrícula", "Nome Discente", "Nome do Orientador")
+
+# remove duplicates
+discentes <- unique(discentes)
 
 if (dim(discentes)[1] != 0) {
   ids <- order(discentes$'Ano de Matrícula', decreasing = TRUE)

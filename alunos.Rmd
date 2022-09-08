@@ -43,7 +43,7 @@ source("Scripts/social-media-sharing.R")
 
 <br>
 
-## **Calculadora de créditos** {#calculadora-creditos .tabset}
+## **Calculadora de créditos** {#calculadora-creditos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
@@ -277,10 +277,142 @@ cat('</table></form>')
 
 <br>
 
-## **Tempo de curso** {#tempo-de-curso}
+## **Datas e prazos** {#datas-prazos}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Mestrado**
+
+```{r discentes-msc-prazos}
+# select level
+course.level <- "Mestrado"
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level,]
+
+# select active students
+discentes <-
+  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
+
+# format names
+discentes$`Nome Discente` <-
+  toTitleCase(tolower(discentes$`Nome Discente`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
+
+# calculate hard deadlines
+discentes$'Tempo em curso' <-
+  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
+discentes$'Defesa até' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2,
+         format = "%d/%m/%Y")
+discentes$'Jubilação a partir de' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2.5,
+         format = "%d/%m/%Y")
+
+# remove duplicates
+discentes <- unique(discentes)
+
+if (dim(discentes)[1] != 0) {
+  ids <-
+    order(discentes$'Tempo em curso',
+          discentes$'Nome Discente',
+          decreasing = FALSE)
+  table <- discentes[ids, ]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Datas e Prazos - Mestrado")
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Doutorado**
+
+```{r discentes-dsc-prazos}
+# select level
+course.level <- "Doutorado"
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level,]
+
+# select active students
+discentes <-
+  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
+
+# format names
+discentes$`Nome Discente` <-
+  toTitleCase(tolower(discentes$`Nome Discente`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
+
+# calculate hard deadlines
+discentes$'Tempo em curso' <-
+  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
+discentes$'Defesa até' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           4,
+         format = "%d/%m/%Y")
+discentes$'Jubilação a partir de' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           4.5,
+         format = "%d/%m/%Y")
+
+# remove duplicates
+discentes <- unique(discentes)
+
+if (dim(discentes)[1] != 0) {
+  ids <-
+    order(discentes$'Tempo em curso',
+          discentes$'Nome Discente',
+          decreasing = FALSE)
+  table <- discentes[ids, ]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Datas e Prazos - Mestrado")
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

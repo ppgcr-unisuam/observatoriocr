@@ -43,16 +43,241 @@ source("Scripts/social-media-sharing.R")
 
 <br>
 
-## **Tempo de curso** {#tempo-de-curso}
+## **Calculadora de créditos** {#calculadora-creditos .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r creditos}
+dados.do.programa.raw <-
+  read_excel("Sucupira/Dados Cadastrais.xlsx",
+             sheet = "Créditos",
+             col_types = c("text"))
+colnames(dados.do.programa.raw) <-
+  seq(1:dim(dados.do.programa.raw)[2])
+```
+
+### **Mestrado** {.tabset}
+
+<center>
+  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,2]` CR**
+  <br>
+  Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRMSC></strong>
+  <br>
+  Créditos ELETIVOS marcados: <strong id=msgELEMSC></strong>
+</center>
+
+#### **Obrigatórios**
+
+<!--script for generating CALCULATOR FORM-->
+```{js OBRMSC}
+function chkcontrol1(j) {
+var sumOBRMSC=0;
+for(var i=0; i < document.formOBRMSC.ckb.length; i++){
+  if(document.formOBRMSC.ckb[i].checked){
+    sumOBRMSC = sumOBRMSC + parseInt(document.formOBRMSC.ckb[i].value);
+    }
+  document.getElementById("msgOBRMSC").innerHTML= sumOBRMSC + " CR";
+  }
+}
+```
+
+```{r calculadora-mestrado-obrigatorias}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+
+disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
+colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+
+# filtra e exibe apenas as obrigatórias
+table.msc <- table.msc[table.msc[, 2] == "Sim", ]
+table.msc <- table.msc[complete.cases(table.msc), ]
+table.msc <- table.msc[, -2]
+
+cat('<form name=formOBRMSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.msc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol1(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
+}
+cat('</table></form>')
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-## **Calculadora de créditos** {#calculadora-creditos}
+#### **Eletivos**
+
+<!--script for generating CALCULATOR FORM-->
+```{js ELEMSC}
+function chkcontrol2(j) {
+var sumELEMSC=0;
+for(var i=0; i < document.formELEMSC.ckb.length; i++){
+  if(document.formELEMSC.ckb[i].checked){
+    sumELEMSC = sumELEMSC + parseInt(document.formELEMSC.ckb[i].value);
+    }
+  document.getElementById("msgELEMSC").innerHTML= sumELEMSC + " CR";
+  }
+}
+```
+
+```{r calculadora-mestrado-eletivas}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+
+disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
+colnames(table.msc) <- c("Disciplina", "Eletiva", "CR", "CH")
+
+# filtra e exibe apenas as obrigatórias
+table.msc <- table.msc[table.msc[, 2] == "Não", ]
+table.msc <- table.msc[complete.cases(table.msc), ]
+table.msc <- table.msc[, -2]
+
+cat('<form name=formELEMSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.msc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol2(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
+}
+cat('</table></form>')
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Doutorado** {.tabset}
+
+<center>
+  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,3]` CR**
+  <br>
+  Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRDSC></strong>
+  <br>
+  Créditos ELETIVOS marcados: <strong id=msgELEDSC></strong>
+</center>
+
+#### **Obrigatórios**
+
+<!--script for generating CALCULATOR FORM-->
+```{js OBRDSC}
+function chkcontrol3(j) {
+var sumOBRDSC=0;
+for(var i=0; i < document.formOBRDSC.ckb.length; i++){
+  if(document.formOBRDSC.ckb[i].checked){
+    sumOBRDSC = sumOBRDSC + parseInt(document.formOBRDSC.ckb[i].value);
+    }
+  document.getElementById("msgOBRDSC").innerHTML= sumOBRDSC + " CR";
+  }
+}
+```
+
+```{r calculadora-doutorado-obrigatorias}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+
+disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
+table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
+colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+
+# filtra e exibe apenas as obrigatórias
+table.dsc <- table.dsc[table.dsc[, 2] == "Sim", ]
+table.dsc <- table.dsc[complete.cases(table.dsc), ]
+table.dsc <- table.dsc[, -2]
+
+cat('<form name=formOBRDSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.dsc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.dsc[i,2], '\" onclick=\"chkcontrol3(', i - 1, ')\">', paste0(table.dsc[i,1], ' (', table.dsc[i,2], ' CR) (', table.dsc[i,3]), ' CH)', '</input></td></tr>')
+}
+cat('</table></form>')
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Eletivos**
+
+<!--script for generating CALCULATOR FORM-->
+```{js ELEDSC}
+function chkcontrol4(j) {
+var sumELEDSC=0;
+for(var i=0; i < document.formELEDSC.ckb.length; i++){
+  if(document.formELEDSC.ckb[i].checked){
+    sumELEDSC = sumELEDSC + parseInt(document.formELEDSC.ckb[i].value);
+    }
+  document.getElementById("msgELEDSC").innerHTML= sumELEDSC + " CR";
+  }
+}
+```
+
+```{r calculadora-doutorado-eletivas}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+
+disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
+table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
+colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+
+# filtra e exibe apenas as obrigatórias
+table.dsc <- table.dsc[table.dsc[, 2] == "Não", ]
+table.dsc <- table.dsc[complete.cases(table.dsc), ]
+table.dsc <- table.dsc[, -2]
+
+cat('<form name=formELEDSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.dsc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.dsc[i,2], '\" onclick=\"chkcontrol4(', i - 1, ')\">', paste0(table.dsc[i,1], ' (', table.dsc[i,2], ' CR) (', table.dsc[i,3]), ' CH)', '</input></td></tr>')
+}
+cat('</table></form>')
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Tempo de curso** {#tempo-de-curso}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

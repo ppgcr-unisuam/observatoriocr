@@ -28,8 +28,6 @@ navbar:
     - text: ""
       icon: "fa-home"
       href: index.html
-    - text: "21"
-      href: [area21.html]
     - text: "Programa"
       href: [programa.html]
       menu:
@@ -169,14 +167,14 @@ navbar:
           href: [galeria.html#podcasts]
         - text: "Fotos"
           href: [galeria.html#fotos]
-    - text: "SSTCC"
-      href: [https://sstcc.unisuam.edu.br/]
-    - text: ""
-      icon: "fa-user"
-      href: [alunos.html]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]
+    - text: ""
+      icon: "fa-user"
+      href: [alunos.html]
+    - text: "21"
+      href: [area21.html]
   right:
     - text: ""
       icon: "fa-envelope"

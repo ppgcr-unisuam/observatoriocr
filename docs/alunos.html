@@ -582,18 +582,15 @@ div.tocify {
   </ul>
 </li>
 <li>
-  <a href="https://sstcc.unisuam.edu.br/">SSTCC</a>
-</li>
-<li>
-  <a href="alunos.html">
-    <span class="fa fa-user"></span>
+  <a href="downloads.html">
+    <span class="fa fa-download"></span>
      
     
   </a>
 </li>
 <li>
-  <a href="downloads.html">
-    <span class="fa fa-download"></span>
+  <a href="alunos.html">
+    <span class="fa fa-user"></span>
      
     
   </a>
@@ -669,15 +666,483 @@ href="https://www.facebook.com/sharer.php?u=rehab-tech.github.io/observatoriocr/
 href="https://www.linkedin.com/shareArticle?mini=true&amp;url=rehab-tech.github.io/observatoriocr/"><svg preserveAspectRatio="none" aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:0.2em;margin-right:0.2em;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
 </p>
 <p><br></p>
-<div id="tempo-de-curso" class="section level2">
-<h2><strong>Tempo de curso</strong></h2>
+<div id="calculadora-creditos" class="section level2 tabset">
+<h2 class="tabset"><strong>Calculadora de créditos</strong></h2>
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<div id="mestrado" class="section level3 tabset">
+<h3 class="tabset"><strong>Mestrado</strong></h3>
+<center>
+<strong>TOTAL REQUERIDO: 24 CR</strong> <br> Créditos OBRIGATÓRIOS
+marcados: <strong id=msgOBRMSC></strong> <br> Créditos ELETIVOS
+marcados: <strong id=msgELEMSC></strong>
+</center>
+<div id="obrigatórios" class="section level4">
+<h4><strong>Obrigatórios</strong></h4>
+<!--script for generating CALCULATOR FORM-->
+<script type="text/javascript">
+function chkcontrol1(j) {
+var sumOBRMSC=0;
+for(var i=0; i < document.formOBRMSC.ckb.length; i++){
+  if(document.formOBRMSC.ckb[i].checked){
+    sumOBRMSC = sumOBRMSC + parseInt(document.formOBRMSC.ckb[i].value);
+    }
+  document.getElementById("msgOBRMSC").innerHTML= sumOBRMSC + " CR";
+  }
+}
+</script>
+<form name="formOBRMSC" method="post" action="check.php">
+<table class="table table-striped">
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol1( 0 )">
+BIOESTATÍSTICA I (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 1 )">
+BIOÉTICA NA PESQUISA COM SERES HUMANOS (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 2 )">
+DIDÁTICA E PRÁTICA DO ENSINO SUPERIOR (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol1( 3 )">
+ELABORAÇÃO DE PROJETOS DE PESQUISA NA ÁREA DA REABILITAÇÃO (4 CR) (60
+CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol1( 4 )">
+EPIDEMIOLOGIA EM REABILITAÇÃO I (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 5 )">
+FILOSOFIA DA CIÊNCIA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 6 )">
+ORIENTAÇÃO PARA DISSERTAÇÃO I (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 7 )">
+ORIENTAÇÃO PARA DISSERTAÇÃO II (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 8 )">
+ORIENTAÇÃO PARA DISSERTAÇÃO III (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol1( 9 )">
+ORIENTAÇÃO PARA DISSERTAÇÃO IV (2 CR) (30 CH) </input>
+</td>
+</tr>
+</table>
+</form>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a></p>
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
 <p><br></p>
 </div>
-<div id="calculadora-creditos" class="section level2">
-<h2><strong>Calculadora de créditos</strong></h2>
+<div id="eletivos" class="section level4">
+<h4><strong>Eletivos</strong></h4>
+<!--script for generating CALCULATOR FORM-->
+<script type="text/javascript">
+function chkcontrol2(j) {
+var sumELEMSC=0;
+for(var i=0; i < document.formELEMSC.ckb.length; i++){
+  if(document.formELEMSC.ckb[i].checked){
+    sumELEMSC = sumELEMSC + parseInt(document.formELEMSC.ckb[i].value);
+    }
+  document.getElementById("msgELEMSC").innerHTML= sumELEMSC + " CR";
+  }
+}
+</script>
+<form name="formELEMSC" method="post" action="check.php">
+<table class="table table-striped">
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 0 )">
+ATIVIDADES ACADÊMICAS (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 1 )">
+AVALIAÇÃO DOS SISTEMAS CARDIOVASCULAR E RESPIRATÓRIO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 2 )">
+AVALIAÇÃO E DIAGNÓSTICO NEUROFUNCIONAL (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 3 )">
+AVALIAÇÃO FUNCIONAL DO SISTEMA MÚSCULO-ESQUELÉTICO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol2( 4 )">
+BIOESTATÍSTICA II (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 5 )">
+ENSAIO CLÍNICO EM REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol2( 6 )">
+EPIDEMIOLOGIA EM REABILITAÇÃO II (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 7 )">
+ESTUDO DO MOVIMENTO HUMANO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 8 )">
+FISIOLOGIA DO EXERCÍCIO CLÍNICO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 9 )">
+INTRODUÇÃO À INSTRUMENTAÇÃO E ANÁLISE DE SINAIS BIOMÉDICOS (2 CR) (30
+CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 10 )">
+NEUROCIÊNCIA APLICADA À REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 0 " onclick="chkcontrol2( 11 )">
+ORIENTAÇÃO PARA DISSERTAÇÃO V (0 CR) (0 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 12 )">
+REABILITAÇÃO CARDIOVASCULAR E RESPIRATÓRIA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 13 )">
+REABILITAÇÃO MUSCULOESQUELÉTICA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 14 )">
+REDAÇÃO DE ARTIGOS CIENTÍFICOS NA ÁREA DA REABILITAÇÃO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 15 )">
+SEMINARS IN REHABILITATION SCIENCES (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol2( 16 )">
+TÓPICOS ESPECIAIS EM REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+</table>
+</form>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+<div id="doutorado" class="section level3 tabset">
+<h3 class="tabset"><strong>Doutorado</strong></h3>
+<center>
+<strong>TOTAL REQUERIDO: 38 CR</strong> <br> Créditos OBRIGATÓRIOS
+marcados: <strong id=msgOBRDSC></strong> <br> Créditos ELETIVOS
+marcados: <strong id=msgELEDSC></strong>
+</center>
+<div id="obrigatórios-1" class="section level4">
+<h4><strong>Obrigatórios</strong></h4>
+<!--script for generating CALCULATOR FORM-->
+<script type="text/javascript">
+function chkcontrol3(j) {
+var sumOBRDSC=0;
+for(var i=0; i < document.formOBRDSC.ckb.length; i++){
+  if(document.formOBRDSC.ckb[i].checked){
+    sumOBRDSC = sumOBRDSC + parseInt(document.formOBRDSC.ckb[i].value);
+    }
+  document.getElementById("msgOBRDSC").innerHTML= sumOBRDSC + " CR";
+  }
+}
+</script>
+<form name="formOBRDSC" method="post" action="check.php">
+<table class="table table-striped">
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol3( 0 )">
+BIOESTATÍSTICA I (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol3( 1 )">
+BIOESTATÍSTICA II (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 2 )">
+BIOÉTICA NA PESQUISA COM SERES HUMANOS (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 3 )">
+DIDÁTICA E PRÁTICA DO ENSINO SUPERIOR (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol3( 4 )">
+ELABORAÇÃO DE PROJETOS DE PESQUISA NA ÁREA DA REABILITAÇÃO (4 CR) (60
+CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 5 )">
+ENSAIO CLÍNICO EM REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol3( 6 )">
+EPIDEMIOLOGIA EM REABILITAÇÃO I (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 4 " onclick="chkcontrol3( 7 )">
+EPIDEMIOLOGIA EM REABILITAÇÃO II (4 CR) (60 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 8 )">
+FILOSOFIA DA CIÊNCIA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 9 )">
+FISIOLOGIA DO EXERCÍCIO CLÍNICO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 10 )">
+ORIENTAÇÃO PARA TESE I (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 11 )">
+ORIENTAÇÃO PARA TESE II (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 12 )">
+ORIENTAÇÃO PARA TESE III (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 13 )">
+ORIENTAÇÃO PARA TESE IV (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 14 )">
+ORIENTAÇÃO PARA TESE V (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 15 )">
+ORIENTAÇÃO PARA TESE VI (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 16 )">
+ORIENTAÇÃO PARA TESE VII (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 17 )">
+ORIENTAÇÃO PARA TESE VIII (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 18 )">
+REDAÇÃO DE ARTIGOS CIENTÍFICOS NA ÁREA DA REABILITAÇÃO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol3( 19 )">
+SEMINARS IN REHABILITATION SCIENCES (2 CR) (30 CH) </input>
+</td>
+</tr>
+</table>
+</form>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+<div id="eletivos-1" class="section level4">
+<h4><strong>Eletivos</strong></h4>
+<!--script for generating CALCULATOR FORM-->
+<script type="text/javascript">
+function chkcontrol4(j) {
+var sumELEDSC=0;
+for(var i=0; i < document.formELEDSC.ckb.length; i++){
+  if(document.formELEDSC.ckb[i].checked){
+    sumELEDSC = sumELEDSC + parseInt(document.formELEDSC.ckb[i].value);
+    }
+  document.getElementById("msgELEDSC").innerHTML= sumELEDSC + " CR";
+  }
+}
+</script>
+<form name="formELEDSC" method="post" action="check.php">
+<table class="table table-striped">
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 0 )">
+ATIVIDADES ACADÊMICAS (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 1 )">
+AVALIAÇÃO DOS SISTEMAS CARDIOVASCULAR E RESPIRATÓRIO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 2 )">
+AVALIAÇÃO E DIAGNÓSTICO NEUROFUNCIONAL (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 3 )">
+AVALIAÇÃO FUNCIONAL DO SISTEMA MÚSCULO-ESQUELÉTICO (2 CR) (30 CH)
+</input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 4 )">
+ESTUDO DO MOVIMENTO HUMANO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 5 )">
+INTRODUÇÃO À INSTRUMENTAÇÃO E ANÁLISE DE SINAIS BIOMÉDICOS (2 CR) (30
+CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 6 )">
+NEUROCIÊNCIA APLICADA À REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 0 " onclick="chkcontrol4( 7 )">
+ORIENTAÇÃO PARA TESE XI (0 CR) (0 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 8 )">
+REABILITAÇÃO CARDIOVASCULAR E RESPIRATÓRIA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 9 )">
+REABILITAÇÃO MUSCULOESQUELÉTICA (2 CR) (30 CH) </input>
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="ckb" value=" 2 " onclick="chkcontrol4( 10 )">
+TÓPICOS ESPECIAIS EM REABILITAÇÃO (2 CR) (30 CH) </input>
+</td>
+</tr>
+</table>
+</form>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a></p>
+<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="tempo-de-curso" class="section level2">
+<h2><strong>Tempo de curso</strong></h2>
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 <p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>

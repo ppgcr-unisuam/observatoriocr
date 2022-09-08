@@ -93,7 +93,7 @@ O PROGRAMA DE PÓS-GRADUAÇÃO EM CIÊNCIAS DA REABILITAÇÃO DA UNISUAM (PPGCR-
 
 <br>
 
-O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-060. O PPGCR-UNISUAM insere-se na [Grande Área de Conhecimento de Ciências da Saúde (40000001), na Área Básica de Educação Física (40900002), Subárea de Fisioterapia e Terapia Ocupacional (40800008)](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml?areaAvaliacao=21){target:"_blank}. O PPGCR-UNISUAM oferece as titulações de Mestre em Ciências da Reabilitação e Doutor em Ciências da Reabilitação, além do Estágio Pós-Doutoral em Ciências da Reabilitação.
+O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-060. O PPGCR-UNISUAM insere-se na [Grande Área de Conhecimento de Ciências da Saúde (40000001), na Área Básica de Educação Física (40900002), Subárea de Fisioterapia e Terapia Ocupacional (40800008)](https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/quantitativos/quantitativoAreaConhecimento.xhtml?areaAvaliacao=21). O PPGCR-UNISUAM oferece as titulações de Mestre em Ciências da Reabilitação e Doutor em Ciências da Reabilitação, além do Estágio Pós-Doutoral em Ciências da Reabilitação.
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -1734,7 +1734,6 @@ cat(
 )
 ```
 
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -1769,144 +1768,6 @@ colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "O
 
 # print tables
 print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Calculadora de CR** {.tabset}
-
-#### **Mestrado** {.tabset}
-
-##### **Obrigatórias**
-
-```{r estrutura-academica-atual-mestrado-obrigatorias}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Sim", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-# print tables
-print(kable(table.msc, align = c("l", rep("c", ncol(table.msc)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-##### **Eletivas**
-
-```{r estrutura-academica-atual-mestrado-eletivas}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Não", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-# print tables
-print(kable(table.msc, align = c("l", rep("c", ncol(table.msc)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Doutorado** {.tabset}
-
-##### **Obrigatórias**
-
-```{r estrutura-academica-atual-doutorado-obrigatorias}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Sim", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-# print tables
-print(kable(table.msc, align = c("l", rep("c", ncol(table.msc)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-##### **Eletivas**
-
-```{r estrutura-academica-atual-doutorado-eletivas}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Não", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-# print tables
-print(kable(table.msc, align = c("l", rep("c", ncol(table.msc)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

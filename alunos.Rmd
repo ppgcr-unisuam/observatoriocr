@@ -354,6 +354,16 @@ if (dim(discentes)[1] != 0) {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
+<table width="100%" border="0">
+  <tr>
+    <td style="text-align:center" bgcolor="white">Prazo regular</td>
+    <td style="text-align:center" bgcolor="lightyellow">Prazo extendido</td>
+    <td style="text-align:center" bgcolor="#ffcccb">Prazos ultrapassados</td>
+  </tr>
+</table>
+
+<br>
+
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
@@ -430,15 +440,14 @@ if (dim(discentes)[1] != 0) {
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+<table width="100%" border="0">
+  <tr>
+    <td style="text-align:center" bgcolor="white">Prazo regular</td>
+    <td style="text-align:center" bgcolor="lightyellow">Prazo extendido</td>
+    <td style="text-align:center" bgcolor="#ffcccb">Prazos ultrapassados</td>
+  </tr>
+</table>
 
 <br>
 
-## **Sobre os orientadores** {#sobre-orientador}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>

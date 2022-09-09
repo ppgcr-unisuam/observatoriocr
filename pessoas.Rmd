@@ -2624,11 +2624,13 @@ course.level <- "Doutorado"
 # discentes
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R")
-discentes <- sucupira.raw
 
 # get years
 source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
 
 # filter students
 discentes <- discentes[discentes$`Nível Discente` == course.level, ]
@@ -2679,11 +2681,13 @@ course.level <- "Mestrado"
 # discentes
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R")
-discentes <- sucupira.raw
 
 # get years
 source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
 
 # filter students
 discentes <- discentes[discentes$`Nível Discente` == course.level, ]

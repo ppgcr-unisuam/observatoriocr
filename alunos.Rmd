@@ -57,116 +57,6 @@ colnames(dados.do.programa.raw) <-
   seq(1:dim(dados.do.programa.raw)[2])
 ```
 
-### **Mestrado** {.tabset}
-
-<center>
-  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,2]` CR**
-  <br>
-  Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRMSC></strong>
-  <br>
-  Créditos ELETIVOS marcados: <strong id=msgELEMSC></strong>
-</center>
-
-#### **Obrigatórios**
-
-<!--script for generating CALCULATOR FORM-->
-```{js OBRMSC}
-function chkcontrol1(j) {
-var sumOBRMSC=0;
-for(var i=0; i < document.formOBRMSC.ckb.length; i++){
-  if(document.formOBRMSC.ckb[i].checked){
-    sumOBRMSC = sumOBRMSC + parseInt(document.formOBRMSC.ckb[i].value);
-    }
-  document.getElementById("msgOBRMSC").innerHTML= sumOBRMSC + " CR";
-  }
-}
-```
-
-```{r calculadora-mestrado-obrigatorias}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Sim", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-cat('<form name=formOBRMSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.msc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol1(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
-}
-cat('</table></form>')
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Eletivos**
-
-<!--script for generating CALCULATOR FORM-->
-```{js ELEMSC}
-function chkcontrol2(j) {
-var sumELEMSC=0;
-for(var i=0; i < document.formELEMSC.ckb.length; i++){
-  if(document.formELEMSC.ckb[i].checked){
-    sumELEMSC = sumELEMSC + parseInt(document.formELEMSC.ckb[i].value);
-    }
-  document.getElementById("msgELEMSC").innerHTML= sumELEMSC + " CR";
-  }
-}
-```
-
-```{r calculadora-mestrado-eletivas}
-# projetos
-sheet <- "Disciplinas"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-# read separate sheets
-disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Eletiva", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Não", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-cat('<form name=formELEMSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.msc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol2(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
-}
-cat('</table></form>')
-```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **Doutorado** {.tabset}
 
 <center>
@@ -277,71 +167,58 @@ cat('</table></form>')
 
 <br>
 
-## **Datas e prazos** {#datas-prazos}
+### **Mestrado** {.tabset}
 
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<center>
+  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,2]` CR**
+  <br>
+  Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRMSC></strong>
+  <br>
+  Créditos ELETIVOS marcados: <strong id=msgELEMSC></strong>
+</center>
 
-### **Mestrado**
+#### **Obrigatórios**
 
-```{r discentes-msc-prazos}
-# select level
-course.level <- "Mestrado"
+<!--script for generating CALCULATOR FORM-->
+```{js OBRMSC}
+function chkcontrol1(j) {
+var sumOBRMSC=0;
+for(var i=0; i < document.formOBRMSC.ckb.length; i++){
+  if(document.formOBRMSC.ckb[i].checked){
+    sumOBRMSC = sumOBRMSC + parseInt(document.formOBRMSC.ckb[i].value);
+    }
+  document.getElementById("msgOBRMSC").innerHTML= sumOBRMSC + " CR";
+  }
+}
+```
 
-# discentes
-sheet <- "Discentes - Orientadores"
-source("Scripts/read-xlsx-sucupira.R")
+```{r calculadora-mestrado-obrigatorias}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-# get years
-source("Scripts/years-sucupira.R")
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get only last data available
-discentes <- sucupira.list[[length(anos)]]
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
-# filter students
-discentes <- discentes[discentes$`Nível Discente` == course.level,]
+disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
+colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 
-# select active students
-discentes <-
-  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+# filtra e exibe apenas as obrigatórias
+table.msc <- table.msc[table.msc[, 2] == "Sim", ]
+table.msc <- table.msc[complete.cases(table.msc), ]
+table.msc <- table.msc[, -2]
 
-# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
-discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
-
-# format names
-discentes$`Nome Discente` <-
-  toTitleCase(tolower(discentes$`Nome Discente`))
-
-# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
-discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
-
-# calculate hard deadlines
-discentes$'Tempo em curso' <-
-  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
-discentes$'Defesa até' <-
-  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
-           2,
-         format = "%d/%m/%Y")
-discentes$'Jubilação a partir de' <-
-  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
-           2.5,
-         format = "%d/%m/%Y")
-
-# remove duplicates
-discentes <- unique(discentes)
-
-if (dim(discentes)[1] != 0) {
-  ids <-
-    order(discentes$'Tempo em curso',
-          discentes$'Nome Discente',
-          decreasing = FALSE)
-  table <- discentes[ids, ]
-  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table, title = "Datas e Prazos - Mestrado")
-} else {
-  cat("*Sem dados para exibir*")
+cat('<form name=formOBRMSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.msc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol1(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
 }
+cat('</table></form>')
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -349,6 +226,61 @@ if (dim(discentes)[1] != 0) {
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
+
+#### **Eletivos**
+
+<!--script for generating CALCULATOR FORM-->
+```{js ELEMSC}
+function chkcontrol2(j) {
+var sumELEMSC=0;
+for(var i=0; i < document.formELEMSC.ckb.length; i++){
+  if(document.formELEMSC.ckb[i].checked){
+    sumELEMSC = sumELEMSC + parseInt(document.formELEMSC.ckb[i].value);
+    }
+  document.getElementById("msgELEMSC").innerHTML= sumELEMSC + " CR";
+  }
+}
+```
+
+```{r calculadora-mestrado-eletivas}
+# projetos
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# read separate sheets
+disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
+disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+
+disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
+colnames(table.msc) <- c("Disciplina", "Eletiva", "CR", "CH")
+
+# filtra e exibe apenas as obrigatórias
+table.msc <- table.msc[table.msc[, 2] == "Não", ]
+table.msc <- table.msc[complete.cases(table.msc), ]
+table.msc <- table.msc[, -2]
+
+cat('<form name=formELEMSC method=post action=check.php>')
+cat('<table class=\"table table-striped\">')
+for(i in 1:dim(table.msc)[1]){
+  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol2(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
+}
+cat('</table></form>')
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Datas e prazos** {#datas-prazos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
 ### **Doutorado**
 
@@ -404,9 +336,93 @@ if (dim(discentes)[1] != 0) {
     order(discentes$'Tempo em curso',
           discentes$'Nome Discente',
           decreasing = FALSE)
-  table <- discentes[ids, ]
+  table <- discentes[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table, title = "Datas e Prazos - Mestrado")
+  create_dt(table, title = "Datas e Prazos - Doutorado") %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(49:54, rep('lightyellow', length(49:54)))
+                )  %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(55:1000, rep('#ffcccb', length(55:1000)))
+                )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Mestrado**
+
+```{r discentes-msc-prazos}
+# select level
+course.level <- "Mestrado"
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level,]
+
+# select active students
+discentes <-
+  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
+
+# format names
+discentes$`Nome Discente` <-
+  toTitleCase(tolower(discentes$`Nome Discente`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
+
+# calculate hard deadlines
+discentes$'Tempo em curso' <-
+  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
+discentes$'Defesa até' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2,
+         format = "%d/%m/%Y")
+discentes$'Jubilação a partir de' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2.5,
+         format = "%d/%m/%Y")
+
+# remove duplicates
+discentes <- unique(discentes)
+
+if (dim(discentes)[1] != 0) {
+  ids <-
+    order(discentes$'Tempo em curso',
+          discentes$'Nome Discente',
+          decreasing = FALSE)
+  table <- discentes[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Datas e Prazos - Mestrado") %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(25:30, rep('lightyellow', length(25:30)))
+                )  %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(31:1000, rep('#ffcccb', length(31:1000)))
+                )
 } else {
   cat("*Sem dados para exibir*")
 }

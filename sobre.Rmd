@@ -43,6 +43,36 @@ source("Scripts/social-media-sharing.R")
 
 <br>
 
+## **Dados** {#dados}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<br>
+
+```{r count-data}
+# get amount of data from Sucupira XLSX files
+source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
+sheets <- sucupira.sheets
+
+data.sucupira <- 0
+for(i in 1:length(sheets)){
+    sheet <- sheets[i]
+    source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+    data.sucupira <- sum(data.sucupira, !is.na(sucupira.raw))
+  }
+cat(paste0('Quantidade de dados brutos da Plataforma Sucupira: ', data.sucupira))
+cat('<br>')
+
+# get amount of data from PPG XLSX files
+
+cat(paste0('Quantidade de dados brutos da Instituição: ', 0))
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 ## **Informações da sessão** {#sessioninfo}
 
 <!--script for generating HORIZONTAL LINE-->
@@ -64,6 +94,8 @@ sessioninfo::session_info()%>%
     open = FALSE
   )
 ```
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

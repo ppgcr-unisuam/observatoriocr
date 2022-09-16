@@ -9,7 +9,6 @@ output:
       - /CSS/responsive.css
 ---
 
-
 <!--install and/or load all R packages-->
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
 knitr::opts_chunk$set(
@@ -248,7 +247,7 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "rehab-tech.github.io/observatoriocr/"
+home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>

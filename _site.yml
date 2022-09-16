@@ -99,6 +99,8 @@ navbar:
           href: [producoes.html]
         - text: "Trabalhos de conclusão"
           href: [producoes.html#TCC]
+        - text: "Repositórios"
+          href: [producoes.html#repositorios]
         - text: "Produção bibliográfica"
           href: [producoes.html#bibliografica]
         - text: "Produção técnica"

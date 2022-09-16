@@ -35,7 +35,7 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "rehab-tech.github.io/observatoriocr/"
+home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
 source("Scripts/social-media-sharing.R")
 ```
 </p>

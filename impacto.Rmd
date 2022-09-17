@@ -268,7 +268,23 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Bolsas** {.tabset}
+### **Formação discente** {.tabset}
+
+#### **Cotas de bolsas de estudo**
+
+<br>
+
+*Em construção*
+
+<br>
+
+*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
 
 #### **Bolsistas** {.tabset}
 
@@ -376,9 +392,11 @@ if (dim(bolsistas)[1] != 0) {
 
 <br>
 
-#### **Dissertações e teses financiadas**
+### **Produção acadêmica** {.tabset}
 
-```{r tcc-financiados}
+#### **Teses**
+
+```{r tcc-financiados-teses}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -399,14 +417,16 @@ bolsistas.tcc$`Nome do Autor` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Auto
 bolsistas.tcc$`Nome do Orientador` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
 bolsistas.tcc$`Nome do Trabalho de Conclusão` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
 
+bolsistas.tcc <- bolsistas.tcc[bolsistas.tcc$`Tipo de Trabalho de Conclusão` == "TESE", ]
+
 # drop columns
-bolsistas.tcc <- bolsistas.tcc %>% select("Ano de Defesa", "Tipo de Trabalho de Conclusão", "Nome do Autor", "Nome do Trabalho de Conclusão", "Nome do Financiador")
+bolsistas.tcc <- bolsistas.tcc %>% select("Ano de Defesa", "Linha de Pesquisa", "Nome do Autor", "Nome do Trabalho de Conclusão", "Nome do Financiador")
 
 # drop NA values in "Quantidade de Meses"
 bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
 
 if (dim(bolsistas.tcc)[1] != 0) {
-  ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Tipo de Trabalho de Conclusão', decreasing = TRUE)
+  ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Linha de Pesquisa', decreasing = TRUE)
   table <- bolsistas.tcc[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
   create_dt(table, title = "Dissertações e Teses - Bolsistas")
@@ -423,32 +443,50 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 <br>
 
-#### **Concessão de cotas**
+#### **Dissertações**
+
+```{r tcc-financiados-dissertacoes}
+# load custom function
+source("Scripts/get-initials.R", local = knitr::knit_global())
+
+# bolsistas
+sheet <- "TCC - Financiadores"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+bolsistas.tcc <- sucupira.raw
+
+# get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# get years
+bolsistas.tcc$'Ano de Defesa' <- substr(as.Date(bolsistas.tcc$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
+
+# format names
+bolsistas.tcc$`Nome do Autor` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
+bolsistas.tcc$`Nome do Orientador` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
+bolsistas.tcc$`Nome do Trabalho de Conclusão` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
+
+bolsistas.tcc <- bolsistas.tcc[bolsistas.tcc$`Tipo de Trabalho de Conclusão` == "DISSERTAÇÃO", ]
+
+# drop columns
+bolsistas.tcc <- bolsistas.tcc %>% select("Ano de Defesa", "Linha de Pesquisa", "Nome do Autor", "Nome do Trabalho de Conclusão", "Nome do Financiador")
+
+# drop NA values in "Quantidade de Meses"
+bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
+
+if (dim(bolsistas.tcc)[1] != 0) {
+  ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Linha de Pesquisa', decreasing = TRUE)
+  table <- bolsistas.tcc[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Dissertações e Teses - Bolsistas")
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
-*Em construção*
-
-<br>
-
-*Fontes:* [**Transparência CAPES**](http://transparencia.capes.gov.br/transparencia/xhtml/index.faces), [**SCBA**](https://scba.capes.gov.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Minha história junto à CAPES**
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/76131bUiBxs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<br>
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

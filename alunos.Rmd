@@ -450,3 +450,105 @@ if (dim(discentes)[1] != 0) {
 <br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Perfil do orientador** {.tabset #datas-prazos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+```{r orientador-perfil}
+# docentes
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get unique DOCENTES names
+ids <- unique(sucupira.raw$`Identificador da Pessoa`)
+
+# prepare table of results
+row.labels <- c(
+  "Disciplinas que ministra",
+  "Egressos de mestrado",
+  "Egressos de doutorado",
+  "Dissertações orientadas",
+  "Teses orientadas",
+  "Artigos completos em periódicos",
+  "Artigos resumos em periódicos",
+  "Artigos em pre-prints",
+  "Resumos em anais de eventos",
+  "Editor de perídocos",
+  "Revisor de periódicos"
+)
+
+perfil.data <-
+  t(
+    unique(
+      data.frame(
+        sucupira.raw$`Identificador da Pessoa`, #1
+        toTitleCase(sucupira.raw$`Nome Docente`), #2
+        sucupira.raw$`Data de Admissão`, #3
+        sucupira.raw$Categoria, #4
+        sucupira.raw$`Tipo de Bolsa CNPq`, #5
+        sucupira.raw$`Modalidade da Bolsa CNPq`, #6
+        sucupira.raw$`Categoria da Bolsa CNPq`, #7
+        sucupira.raw$Nacionalidade, #8
+        sucupira.raw$`E-mail`, #9
+        paste0('https://orcid.org/', sucupira.raw$ORCID), #10
+        sucupira.raw$`IES Sigla da Titulação`, #11
+        sucupira.raw$`Ano Titulação`, #12
+        sucupira.raw$`País da IES da Titulação`, #13
+        sucupira.raw$`Orientações de Doutorado`, #14
+        sucupira.raw$`Orientações Externas de Doutorado`, #15
+        sucupira.raw$`Coorientações de Doutorado`, #16
+        sucupira.raw$`Coorientações Externas de Doutorado`, #17
+        sucupira.raw$`Orientações de Mestrado`, #18
+        sucupira.raw$`Orientações Externas de Mestrado`, #19
+        sucupira.raw$`Coorientações de Mestrado`, #20
+        sucupira.raw$`Coorientações Externas de Mestrado`, #21
+        sucupira.raw$`Orientações de Monografia`, #22
+        sucupira.raw$`Orientações de Tutoria`, #23
+        sucupira.raw$`Orientações de Iniciação Científica`, #24
+        sucupira.raw$`Número de Disciplinas da Graduação`, #25
+        sucupira.raw$`Área de Conhecimento Titulação`#26
+      )
+    )
+  )
+
+# aggregate data from same DOCENTE
+keep <- c()
+for (i in 1:length(unique(perfil.data[1,]))) {
+  id <- unique(perfil.data[1,])[i]
+  matches <- grep(id, perfil.data[1,])
+  keep <- c(keep, matches[1])
+  for(j in 14:24){
+    perfil.data[j, matches[1]] <-
+      as.character(round(mean(as.numeric(perfil.data[j, matches]))))
+  }
+}
+
+# remove ID row
+perfil.data <- perfil.data[-1, keep]
+colnames(perfil.data) <- rep(NA, dim(perfil.data)[2])
+
+# iterate for each DOCENTE
+for(i in 1:dim(perfil.data)[2]){
+  cat('\n\n')
+  cat(paste0('### **', perfil.data[1,i], '**'))
+  cat('\n\n')
+  # print tables
+  print(
+    kable(perfil.data[, i], align = c("r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  cat('\n\n')
+}
+```
+

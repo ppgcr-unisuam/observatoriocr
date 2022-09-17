@@ -186,7 +186,7 @@ navbar:
       href: [sobre.html]
     - text: ""
       icon: "fa-github"
-      href: [https://github.com/rehab-tech/observatoriocr/]
+      href: [https://github.com/ppgcr-unisuam/observatoriocr]
 
 output:
   html_document:

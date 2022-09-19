@@ -151,8 +151,12 @@ navbar:
           href: [autoavaliacao.html#planejamento]
         - text: "Metodologia"
           href: [autoavaliacao.html#metodologia]
-        - text: "Ficha da Área"
+        - text: "Fichas de avaliação"
           href: [autoavaliacao.html#ficha]
+        - text: "Fontes de dados"
+          href: [autoavaliacao.html#dados]
+        - text: "Autoavaliação"
+          href: [autoavaliacao.html#autoavaliacao]
         - text: "1. Programa"
           href: [autoavaliacao.html#programa]
         - text: "2. Formação"
@@ -178,18 +182,14 @@ navbar:
     - text: ""
       icon: "fa-user"
       href: [alunos.html]
-    - text: ""
-      icon: "fa-info"
-      href: [sobre.html]
-    - text: ""
-      icon: "fa-envelope"
-      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
-    - text: "|"
   right:
     - text: "Forum"
       href: [https://www.fef.unicamp.br/fef/posgraduacao/forumpg21]
     - text: "21"
       href: [https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-da-vida/ciencias-da-saude/educacao-fisica]
+    - text: ""
+      icon: "fa-envelope"
+      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
     - text: ""
       icon: "fa-github"
       href: [https://github.com/ppgcr-unisuam/observatoriocr]

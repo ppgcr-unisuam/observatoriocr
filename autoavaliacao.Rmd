@@ -42,10 +42,20 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-## **Planejamento estratégico** {#planejamento}
+## **Planejamento estratégico** {#planejamento.tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Programa (PPG)** {#planejanemto-ppg}
+
+*Em construção*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Institucional (PDI)** {#planejanemto-pdi}
 
 *Em construção*
 
@@ -150,10 +160,12 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-## **Ficha de avaliação** {#ficha}
+## **Fichas de avaliação** {#ficha .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **2020-2017**
 
 <iframe src="https://drive.google.com/file/d/13WnDGV8SNLWL9tUnYHVnomGDtTqNHVKe/preview" style="width:100%; height:500px; border:0;"></iframe>
 
@@ -163,12 +175,107 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-## **1. Programa** {#programa}
+## **Fontes de dados** {#dados}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **1.1.1 Estrutura Acadêmica do Programa**
+<!--script for generating STACKED HORIZONTAL BAR CHART-->
+
+```{css}
+.row {
+  display: flex;
+  align-items: stretch;
+  margin: 0 0;
+}
+
+.row .label {
+  flex: 0 0 auto;
+}
+
+.row .bar-container {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.row .bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.val-a { background: #18BC9C }
+.val-b { background: #F39C12 }
+```
+
+```{r barchart-data}
+# get amount of data from Sucupira XLSX files
+source("Scripts/get-sucupira-sheets-names.R",
+       local = knitr::knit_global())
+sheets <- sucupira.sheets
+
+data.sucupira <- 0
+for (i in 1:length(sheets)) {
+  sheet <- sheets[i]
+  source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+  data.sucupira <- sum(data.sucupira,!is.na(sucupira.raw))
+}
+
+# get amount of data from PPG XLSX files
+source("Scripts/get-ppg-xlsx-data.R", local = knitr::knit_global())
+
+data.ppg <- 0
+for (i in 1:length(files.to.read)) {
+  abas <- excel_sheets(files.to.read[i])
+  for (j in 1:length(abas)) {
+    sheet <- sheets[j]
+    ppg.file <- read_excel(files.to.read[i], sheet = abas[j])
+    data.ppg <- sum(data.ppg,!is.na(ppg.file))
+  }
+}
+
+# total data
+total <- data.sucupira + data.ppg
+
+# print stacked horizontal bar chart
+cat('<div class="row">')
+cat('<div class="bar-container">')
+cat(
+  paste0(
+    '<div class="bar val-a" style="color:white; font-weight:bold; flex-basis:',
+    data.sucupira / total * 100,
+    '%">Plataforma Sucupira</div>'
+  )
+)
+cat(
+  paste0(
+    '<div class="bar val-b" style="color:white; font-weight:bold; flex-basis:',
+    data.ppg / total * 100,
+    '%">Endógenos</div>'
+  )
+)
+cat('</div>')
+cat('</div>')
+```
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+## **Autoavaliação** {#autoavaliacao}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+## **1. Programa** {#programa .tabset}
+
+### **1.1.1**
+
+#### **Estrutura Acadêmica do Programa**
 
 *Em construção*
 
@@ -176,7 +283,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.1.2 Proposta Curricular do Programa**
+### **1.1.2**
+
+#### **Proposta Curricular do Programa**
 
 *Em construção*
 
@@ -184,7 +293,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.1.3 Infraestrutura**
+### **1.1.3**
+
+#### **Infraestrutura**
 
 *Em construção*
 
@@ -192,7 +303,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.2.1 Dimensão do corpo Docente Permanente**
+### **1.2.1**
+
+#### **Dimensão do corpo Docente Permanente**
 
 *Em construção*
 
@@ -200,7 +313,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.2.2 Coerência acadêmica do Corpo Docente à proposta do PPG**
+### **1.2.2**
+
+#### **Coerência acadêmica do Corpo Docente à proposta do PPG**
 
 *Em construção*
 
@@ -208,7 +323,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.2.3 Estabilidade do corpo docente permanente**
+### **1.2.3**
+
+#### **Estabilidade do corpo docente permanente**
 
 *Em construção*
 
@@ -216,7 +333,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.2.4 Percentual de docentes permanentes com dedicação exclusiva ao PPG**
+### **1.2.4**
+
+#### **Percentual de docentes permanentes com dedicação exclusiva ao PPG**
 
 *Em construção*
 
@@ -224,9 +343,11 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **1.2.5 Capacidade de captação de recursos** {.tabset}
+### **1.2.5**
 
-#### **Agência-Programa**
+#### **Capacidade de captação de recursos** {.tabset}
+
+##### **Agência-Programa**
 
 ```{r auto-financiadores-agencia-programa}
 options(scipen = 10)
@@ -267,7 +388,7 @@ table.1
 
 <br>
 
-#### **Agência-Ano**
+##### **Agência-Ano**
 
 ```{r auto-financiadores-agencia-ano}
 options(scipen = 10)
@@ -312,7 +433,7 @@ table.2
 
 <br>
 
-#### **Agência-Docente**
+##### **Agência-Docente**
 
 ```{r auto-financiadores-agencia-docentes}
 options(scipen = 10)
@@ -357,7 +478,7 @@ table.2
 
 <br>
 
-#### **Docente-Ano**
+##### **Docente-Ano**
 
 ```{r auto-financiadores-docente-ano}
 options(scipen = 10)
@@ -402,7 +523,9 @@ table.2
 
 <br>
 
-### **1.3.1 Adequação da proposta ao Plano Institucional da IES.**
+### **1.3.1**
+
+#### **Adequação da proposta ao Plano Institucional da IES**
 
 *Em construção*
 
@@ -410,7 +533,9 @@ table.2
 
 <br>
 
-### **1.3.2 Adequação do planejamento.**
+### **1.3.2**
+
+#### **Adequação do planejamento**
 
 *Em construção*
 
@@ -418,7 +543,9 @@ table.2
 
 <br>
 
-### **1.4.1 Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa**
+### **1.4.1**
+
+#### **Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa**
 
 *Em construção*
 
@@ -426,20 +553,11 @@ table.2
 
 <br>
 
-## **2. Formação** {#formacao}
+## **2. Formação** {#formacao .tabset}
 
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+### **2.1.1**
 
-### **2.1.1 Coerência do produto final**
-
-*Em construção*
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **2.1.2 Qualidade do produto final**
+#### **Coerência do produto final**
 
 *Em construção*
 
@@ -447,7 +565,9 @@ table.2
 
 <br>
 
-### **2.2.1 Produção do corpo discente em eventos científicos**
+### **2.1.2**
+
+#### **Qualidade do produto final**
 
 *Em construção*
 
@@ -455,7 +575,9 @@ table.2
 
 <br>
 
-### **2.2.2 Produção bibliográfica dos discentes/egressos – Acadêmico**
+### **2.2.1**
+
+#### **Produção do corpo discente em eventos científicos**
 
 *Em construção*
 
@@ -463,7 +585,9 @@ table.2
 
 <br>
 
-### **2.3.1 Atuação dos Egressos**
+### **2.2.2**
+
+#### **Produção bibliográfica dos discentes/egressos – Acadêmico**
 
 *Em construção*
 
@@ -471,7 +595,9 @@ table.2
 
 <br>
 
-### **2.3.2 Egressos de destaque na sociedade**
+### **2.3.1**
+
+#### **Atuação dos Egressos**
 
 *Em construção*
 
@@ -479,7 +605,9 @@ table.2
 
 <br>
 
-### **2.4.1 Produção bibliográfica total do Programa – Acadêmico**
+### **2.3.2**
+
+#### **Egressos de destaque na sociedade**
 
 *Em construção*
 
@@ -487,7 +615,9 @@ table.2
 
 <br>
 
-### **2.5.1 Atividades de ensino nas disciplinas do PPG**
+### **2.4.1**
+
+#### **Produção bibliográfica total do Programa – Acadêmico**
 
 *Em construção*
 
@@ -495,7 +625,9 @@ table.2
 
 <br>
 
-### **2.5.2 Responsabilidade por PP/PTT**
+### **2.5.1**
+
+#### **Atividades de ensino nas disciplinas do PPG**
 
 *Em construção*
 
@@ -503,7 +635,9 @@ table.2
 
 <br>
 
-### **2.5.3 Orientação no PPG**
+### **2.5.2**
+
+#### **Responsabilidade por PP/PTT**
 
 *Em construção*
 
@@ -511,7 +645,9 @@ table.2
 
 <br>
 
-### **2.5.4 Titulação no PPG**
+### **2.5.3**
+
+#### **Orientação no PPG**
 
 *Em construção*
 
@@ -519,7 +655,9 @@ table.2
 
 <br>
 
-### **2.5.5 Orientação na graduação**
+### **2.5.4**
+
+#### **Titulação no PPG**
 
 *Em construção*
 
@@ -527,12 +665,9 @@ table.2
 
 <br>
 
-## **3. Impacto na sociedade** {#impacto}
+### **2.5.5**
 
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-### **3.1.1 Produção bibliográfica indicada dos DP – Acadêmico**
+#### **Orientação na graduação**
 
 *Em construção*
 
@@ -540,7 +675,11 @@ table.2
 
 <br>
 
-### **3.1.2 Produção do Programa**
+## **3. Impacto na sociedade** {#impacto .tabset}
+
+### **3.1.1**
+
+#### **Produção bibliográfica indicada dos DP – Acadêmico**
 
 *Em construção*
 
@@ -548,7 +687,9 @@ table.2
 
 <br>
 
-### **3.2.1 Avaliação quantitativa dos impactos do PPG**
+### **3.1.2**
+
+#### **Produção do Programa**
 
 *Em construção*
 
@@ -556,7 +697,9 @@ table.2
 
 <br>
 
-### **3.2.2 Avaliação qualitativa dos impactos do PPG**
+### **3.2.1**
+
+#### **Avaliação quantitativa dos impactos do PPG**
 
 *Em construção*
 
@@ -564,7 +707,9 @@ table.2
 
 <br>
 
-### **3.3.1 Visibilidade**
+### **3.2.2**
+
+#### **Avaliação qualitativa dos impactos do PPG**
 
 *Em construção*
 
@@ -572,7 +717,19 @@ table.2
 
 <br>
 
-### **3.3.2 Internacionalização e Inserção**
+### **3.3.1**
+
+#### **Visibilidade**
+
+*Em construção*
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **3.3.2**
+
+#### **Internacionalização e Inserção**
 
 *Em construção*
 

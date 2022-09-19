@@ -2,7 +2,7 @@
 title: Sobre
 output:
   html_document:
-    toc: true
+    toc: false
     css:
       - /CSS/logo-above-toc.css
       - /CSS/narrow-margins.css

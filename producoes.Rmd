@@ -375,13 +375,13 @@ colnames(table.tcc) <-
 
 ### **Institucional** {.tabset}
 
-#### **Sede**
+#### **Sede** {.tabset}
 
 ```{r repositorios-mestrado-sede}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
-cat(paste('###### **', repositorio[1,2], '**', sep = ""))
+cat(paste('##### **', repositorio[1,2], '**', sep = ""))
 
 cat('\n\n')
 
@@ -398,7 +398,7 @@ cat('\n\n')
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
-cat(paste('###### **', repositorio[2,2], '**', sep = ""))
+cat(paste('##### **', repositorio[2,2], '**', sep = ""))
 
 cat('\n\n')
 
@@ -411,13 +411,13 @@ cat('\n\n')
 
 <br>
 
-#### **Cooperação Interinstitucional**
+#### **Cooperação Interinstitucional** {.tabset}
 
 ```{r repositorios-mestrado-cooperacao}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
-cat(paste('###### **', repositorio[1,2], '**', sep = ""))
+cat(paste('##### **', repositorio[1,2], '**', sep = ""))
 
 cat('\n\n')
 
@@ -434,7 +434,7 @@ cat('\n\n')
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
-cat(paste('###### **', repositorio[2,2], '**', sep = ""))
+cat(paste('##### **', repositorio[2,2], '**', sep = ""))
 
 cat('\n\n')
 

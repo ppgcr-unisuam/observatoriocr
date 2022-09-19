@@ -15,7 +15,6 @@ include:
   - /Images
   - /Labs
   - /Softwares
-  - /favicon_io
 exclude:
   - /docs/CiteScore
   - /docs/Sucupira
@@ -148,16 +147,20 @@ navbar:
       menu:
         - text: "Autoavaliação"
           href: [autoavaliacao.html]
-        - text: "Notas do Programa"
-          href: [autoavaliacao.html#notas]
-        - text: "Grupos de trabalho"
-          href: [autoavaliacao.html#grupos-trabalho]
-        - text: "Captação de fomento"
-          href: [autoavaliacao.html#captacao-fomento]
-        - text: "Qualidade das disciplinas"
-          href: [autoavaliacao.html#qualidade-disciplinas]
-        - text: "Pesquisa do egresso"
-          href: [autoavaliacao.html#pesquisa-egresso]
+        - text: "Planejamento estratégico"
+          href: [autoavaliacao.html#planejamento]
+        - text: "Metodologia"
+          href: [autoavaliacao.html#metodologia]
+        - text: "Ficha da Área"
+          href: [autoavaliacao.html#ficha]
+        - text: "1. Programa"
+          href: [autoavaliacao.html#programa]
+        - text: "2. Formação"
+          href: [autoavaliacao.html#formacao]
+        - text: "3. Impacto na sociedade"
+          href: [autoavaliacao.html#impacto]
+        - text: "Resultados"
+          href: [autoavaliacao.html#resultados]
     - text: "Galeria"
       href: [galeria.html]
       menu:
@@ -175,15 +178,18 @@ navbar:
     - text: ""
       icon: "fa-user"
       href: [alunos.html]
-    - text: "21"
-      href: [area21.html]
-  right:
-    - text: ""
-      icon: "fa-envelope"
-      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
     - text: ""
       icon: "fa-info"
       href: [sobre.html]
+    - text: ""
+      icon: "fa-envelope"
+      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
+    - text: "|"
+  right:
+    - text: "Forum"
+      href: [https://www.fef.unicamp.br/fef/posgraduacao/forumpg21]
+    - text: "21"
+      href: [https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-da-vida/ciencias-da-saude/educacao-fisica]
     - text: ""
       icon: "fa-github"
       href: [https://github.com/ppgcr-unisuam/observatoriocr]

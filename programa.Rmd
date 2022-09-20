@@ -2180,14 +2180,16 @@ cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title
 
 <br>
 
-## **Calendários** {.tabset #calendarios}
+## **Calendários** {#calendarios}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r calendarios}
+### **Sede**
+
+```{r calendarios-sede}
 # read separate sheets
-turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Calendários", col_types = c("text"))
+turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Sede", col_types = c("text"))
 
 Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
 colnames(Abrir) <- "Abrir"
@@ -2206,7 +2208,36 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(turmas, title = "Calendários")
 ```
 
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Cooperação Interinstitucional**
+
+```{r calendarios-cooperacao}
+# read separate sheets
+turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Cooperação", col_types = c("text"))
+
+Abrir <- matrix(NA, nrow = dim(turmas.raw)[1])
+colnames(Abrir) <- "Abrir"
+# add hyperlinks
+for(i in 1:dim(turmas.raw)[1]){
+  if(!is.na(turmas.raw[i,3])){
+    Abrir[i] <- paste0('<a href="', turmas.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>", sep = "")
+  }
+}
+
+turmas <- cbind(turmas.raw[,-3], Abrir)
+turmas <- turmas[order(turmas$Publicação, decreasing = TRUE), ]
+
+# print table
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(turmas, title = "Calendários")
+```
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -2378,7 +2409,7 @@ print(
 
 <br>
 
-## **Cooperação entre instituições** {.tabset #cooperacao}
+## **Cooperação entre instituições** {#cooperacao}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">

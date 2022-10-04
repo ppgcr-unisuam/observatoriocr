@@ -291,7 +291,7 @@ h3 {
 <br>
 
 ```{r index-text-1}
-cat('<p style="font-size:1.5em">', readtext("Texts/index-text-1.txt")$text, '</p>')
+cat('<p style="font-size:1.5em">', readtext("PPG/Texts/index-text-1.txt")$text, '</p>')
 ```
 
 </center>

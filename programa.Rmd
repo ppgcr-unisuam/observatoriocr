@@ -28,7 +28,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 <!--script for inserting LOGO ABOVE THE TOC-->
 ```{js}
 $(document).ready(function() {
-  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="Images/logo-programa.png"></div>');
+  $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="PPG/Images/logo-programa.png"></div>');
   });
 ```
 
@@ -2299,7 +2299,7 @@ for (i in 1:dim(labs)[1]) {
   cat('<center>\n')
   cat('\n\n<!-- -->\n\n')
   lab <- lab[-1,]
-  cat(paste0("![](", getwd(), "/Labs/Lab-", i, ".jpg)"), "\n")
+  cat(paste0("![](", getwd(), "/PPG/Labs/Lab-", i, ".jpg)"), "\n")
   cat('\n\n<!-- -->\n\n')
   cat('\n</center>')
   cat('</div>')
@@ -2328,7 +2328,7 @@ for (i in 1:dim(labs)[1]) {
 ### **Planta**
 
 ```{r laboratorios-planta}
-knitr::include_graphics(file.path(getwd(), "Labs", "Planta.png"))
+knitr::include_graphics(file.path(getwd(), "PPG", "Labs", "Planta.png"))
 ```
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>

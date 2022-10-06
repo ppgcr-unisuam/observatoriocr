@@ -12,15 +12,11 @@ include:
   - google-translate.html
   - footer.html
   - /CSS
-  - /Images
-  - /Labs
-  - /Softwares
-exclude:
-  - /docs/CiteScore
-  - /docs/Sucupira
-  - /docs/Qualis
-  - /docs/Scripts
-  - /docs/SJR
+  - /Metrics
+  - /PPG
+  - /Scripts
+  - /Sucupira
+  - /Texts
 search: true
 navbar:
   left:

@@ -25,218 +25,6 @@ knitr::opts_chunk$set(
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
-<!--read additional files-->
-```{r metrics}
-source("Scripts/sjr.R", local = knitr::knit_global())
-source("Scripts/citescore.R", local = knitr::knit_global())
-source("Scripts/webqualis.R", local = knitr::knit_global())
-```
-
-```{r metrics-artigos, cache = TRUE, cache.path = "cache/artigos/"}
-# read data
-sheet.ix <- "PI.completos"
-data.sheet <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = sheet.ix,
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
-colnames(dois) <- "DOI"
-
-# cria metadados para rastreio pelo Altmetric
-source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
-    
-# get metrics from Altmetric and CrossRef
-source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
-
-# store to use downstream
-dois_artigos <- dois
-doi_unique_artigos <- doi_unique
-my_dois_works_artigos <- my_dois_works
-
-# obtain formatted references
-formatted_citations <-
-  rcrossref::cr_cn(
-    c(doi_unique$doi, my_dois_works$doi),
-    format = "text",
-    raw = TRUE,
-    style = "american-medical-association"
-  )
-formatted_citations <- substring(formatted_citations, 3)
-formatted_citations <-
-  cbind(seq(1, length(formatted_citations)), formatted_citations)
-colnames(formatted_citations) <- c("ID", "Reference")
-
-references_artigos <- formatted_citations
-```
-
-```{r metrics-resumos, cache = TRUE, cache.path = "cache/resumos/"}
-# read data
-sheet.ix <- "PI.resumos"
-data.sheet <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = sheet.ix,
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
-colnames(dois) <- "DOI"
-
-# cria metadados para rastreio pelo Altmetric
-source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
-    
-# get metrics from Altmetric and CrossRef
-source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
-
-# store to use downstream
-dois_resumos <- dois
-doi_unique_resumos <- doi_unique
-my_dois_works_resumos <- my_dois_works
-
-# obtain formatted references
-formatted_citations <-
-  rcrossref::cr_cn(
-    c(doi_unique$doi, my_dois_works$doi),
-    format = "text",
-    raw = TRUE,
-    style = "american-medical-association"
-  )
-formatted_citations <- substring(formatted_citations, 3)
-formatted_citations <-
-  cbind(seq(1, length(formatted_citations)), formatted_citations)
-colnames(formatted_citations) <- c("ID", "Reference")
-
-references_resumos <- formatted_citations
-```
-
-```{r metrics-preprints, cache = TRUE, cache.path = "cache/preprints/"}
-# read data
-sheet.ix <- "PI.preprints"
-data.sheet <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = sheet.ix,
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
-colnames(dois) <- "DOI"
-
-# cria metadados para rastreio pelo Altmetric
-source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
-    
-# get metrics from Altmetric and CrossRef
-source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
-
-# store to use downstream
-dois_preprints <- dois
-doi_unique_preprints <- doi_unique
-my_dois_works_preprints <- my_dois_works
-
-# obtain formatted references
-formatted_citations <-
-  rcrossref::cr_cn(
-    c(doi_unique$doi, my_dois_works$doi),
-    format = "text",
-    raw = TRUE,
-    style = "american-medical-association"
-  )
-formatted_citations <- substring(formatted_citations, 3)
-formatted_citations <-
-  cbind(seq(1, length(formatted_citations)), formatted_citations)
-colnames(formatted_citations) <- c("ID", "Reference")
-
-references_preprints <- formatted_citations
-```
-
-```{r metrics-livros-capitulos, cache = TRUE, cache.path = "cache/livros_capitulos/"}
-# read data
-sheet.ix <- "PI.livros"
-data.sheet <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = sheet.ix,
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
-colnames(dois) <- "DOI"
-
-# cria metadados para rastreio pelo Altmetric
-source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
-    
-# get metrics from Altmetric and CrossRef
-source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
-
-# store to use downstream
-dois_livros_capitulos <- dois
-doi_unique_livros_capitulos <- doi_unique
-my_dois_works_livros_capitulos <- my_dois_works
-
-# obtain formatted references
-formatted_citations <-
-  rcrossref::cr_cn(
-    c(doi_unique$doi, my_dois_works$doi),
-    format = "text",
-    raw = TRUE,
-    style = "american-medical-association"
-  )
-formatted_citations <- substring(formatted_citations, 3)
-formatted_citations <-
-  cbind(seq(1, length(formatted_citations)), formatted_citations)
-colnames(formatted_citations) <- c("ID", "Reference")
-
-references_livros_capitulos <- formatted_citations
-```
-
-```{r metrics-eventos, cache = TRUE, cache.path = "cache/eventos/"}
-# read data
-sheet.ix <- "PI.eventos"
-data.sheet <-
-  data.frame(read_excel(
-    "../PPGCR Unisuam/Produção.xlsx",
-    sheet = sheet.ix,
-    col_types = c("text")
-  ))
-
-# Data cleaning
-dois <- as.data.frame(na.omit(data.sheet[, match("DOI", colnames(data.sheet))]))
-colnames(dois) <- "DOI"
-
-# cria metadados para rastreio pelo Altmetric
-source("Scripts/altmetric-meta-from-dois.R", local = knitr::knit_global())
-    
-# get metrics from Altmetric and CrossRef
-source("Scripts/get-metrics-from-dois.R", local = knitr::knit_global())
-
-# store to use downstream
-dois_eventos <- dois
-doi_unique_eventos <- doi_unique
-my_dois_works_eventos <- my_dois_works
-
-# obtain formatted references
-formatted_citations <-
-  rcrossref::cr_cn(
-    c(doi_unique$doi, my_dois_works$doi),
-    format = "text",
-    raw = TRUE,
-    style = "american-medical-association"
-  )
-formatted_citations <- substring(formatted_citations, 3)
-formatted_citations <-
-  cbind(seq(1, length(formatted_citations)), formatted_citations)
-colnames(formatted_citations) <- c("ID", "Reference")
-
-references_eventos <- formatted_citations
-```
-
 <!--script for inserting LOGO ABOVE THE TOC-->
 ```{js}
 $(document).ready(function() {
@@ -742,31 +530,32 @@ pandemia <-
     "pandemic",
     "pandemia"
   )
+```
 
+```{r pandemia-filtro}
 # selecting those with COVID in the title
-doi_unique_artigos <-
+doi_unique_artigos_impacto <-
   doi_unique_artigos[grep(paste(tolower(pandemia), collapse = "|"), tolower(doi_unique_artigos$title)),]
-my_dois_works_artigos <-
+my_dois_works_artigos_impacto <-
   my_dois_works_artigos[grep(paste(tolower(pandemia), collapse = "|"), tolower(my_dois_works_artigos$title)),]
-references_artigos <-
+references_artigos_impacto <-
   references_artigos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_artigos[,2])),]
 
 # selecting those with COVID in the title
-doi_unique_resumos <-
+doi_unique_resumos_impacto <-
   doi_unique_resumos[grep(paste(tolower(pandemia), collapse = "|"), tolower(doi_unique_resumos$title)),]
-my_dois_works_resumos <-
+my_dois_works_resumos_impacto <-
   my_dois_works_resumos[grep(paste(tolower(pandemia), collapse = "|"), tolower(my_dois_works_resumos$title)),]
-references_resumos <-
+references_resumos_impacto <-
   references_resumos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_resumos)[,2]),]
 
 # selecting those with COVID in the title
-doi_unique_eventos <-
+doi_unique_eventos_impacto <-
   doi_unique_eventos[grep(paste(tolower(pandemia), collapse = "|"), tolower(doi_unique_eventos$title)),]
-my_dois_works_eventos <-
+my_dois_works_eventos_impacto <-
   my_dois_works_eventos[grep(paste(tolower(pandemia), collapse = "|"), tolower(my_dois_works_eventos$title)),]
-references_eventos <-
+references_eventos_impacto <-
   references_eventos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_eventos)[,2]),]
-
 ```
 
 ### **Projetos de pesquisa**
@@ -950,9 +739,9 @@ if (dim(tccs)[1] != 0) {
 
 ```{r artigos-completos}
 # bind sources
-doi_unique <- doi_unique_artigos
-my_dois_works <- my_dois_works_artigos
-references <- references_artigos
+doi_unique <- doi_unique_artigos_impacto
+my_dois_works <- my_dois_works_artigos_impacto
+references <- references_artigos_impacto
 
 # available years of publication
 years <-
@@ -1029,9 +818,9 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ```{r artigos-resumos}
 # bind sources
-doi_unique <- doi_unique_resumos
-my_dois_works <- my_dois_works_resumos
-references <- references_resumos
+doi_unique <- doi_unique_resumos_impacto
+my_dois_works <- my_dois_works_resumos_impacto
+references <- references_resumos_impacto
 
 # available years of publication
 years <-
@@ -1108,9 +897,9 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ```{r resumos-eventos}
 # bind sources
-doi_unique <- doi_unique_eventos
-my_dois_works <- my_dois_works_eventos
-references <- references_eventos
+doi_unique <- doi_unique_eventos_impacto
+my_dois_works <- my_dois_works_eventos_impacto
+references <- references_eventos_impacto
 
 # available years of publication
 years <-

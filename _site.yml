@@ -8,6 +8,7 @@ repository_url: https://github.com/ppgcr-unisuam/observatoriocr/
 creative_commons: CC BY-NC
 output_dir: docs
 include:
+  - a.html
   - header.html
   - google-translate.html
   - footer.html
@@ -183,6 +184,9 @@ navbar:
       href: [https://www.fef.unicamp.br/fef/posgraduacao/forumpg21]
     - text: "21"
       href: [https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/avaliacao/sobre-a-avaliacao/areas-avaliacao/sobre-as-areas-de-avaliacao/colegio-de-ciencias-da-vida/ciencias-da-saude/educacao-fisica]
+    - text: ""
+      icon: "fa-bug"
+      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
     - text: ""
       icon: "fa-envelope"
       href: [mailto:cienciasdareabilitacao@souunisuam.com.br]

@@ -1,3 +1,10 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
 alluvial
 anytime
 bsplus
@@ -10,6 +17,7 @@ DT
 fontawesome
 ggplot2
 ggpubr
+grid
 gridExtra
 gtsummary
 hrbrthemes
@@ -44,6 +52,7 @@ purrr
 forcats
 NLP
 tm
+tools
 sm
 zoo
 vioplot

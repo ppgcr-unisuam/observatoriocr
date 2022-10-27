@@ -1731,9 +1731,9 @@ bibliografia.raw <-
 link_ementas <- bibliografia.raw[, 3]
 
 cat(
-  "<iframe src=\"",
+  '<iframe src=\"',
   as.character(link_ementas),
-  "\" style=\"width:100%; height:500px; border:0;\"></iframe>",
+  '/preview" style=\"width:100%; height:500px; border:0;\"></iframe>',
   sep = ""
 )
 ```

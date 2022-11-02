@@ -2451,6 +2451,39 @@ print(
 
 <br>
 
+### **Universidade Federal de Minas Gerais**
+
+<br>
+
+```{r documentos-convenios-ufmg}
+# read separate sheets
+vigentes.raw <-
+  read_excel("PPG/Convênios.xlsx",
+             sheet = "UFMG",
+             col_types = c("text"))
+
+# replace the link by a tag
+for (i in 1:dim(vigentes.raw)[1]) {
+  vigentes.raw[i, 3] <-
+    paste("[↗️](", vigentes.raw[i, 3], '){target="_blank"}', sep = "")
+}
+
+# print table
+print(
+  kable(vigentes.raw, align = c("l", rep(
+    "c", ncol(vigentes.raw) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  )
+)
+```
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 ### **Pontifícia Universidade Católica - Rio de Janeiro**
 
 <br>

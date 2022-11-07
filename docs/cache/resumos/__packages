@@ -12,6 +12,7 @@ cowplot
 details
 usethis
 devtools
+plyr
 dplyr
 DT
 fontawesome
@@ -28,11 +29,11 @@ janitor
 kableExtra
 knitr
 lemon
+timechange
 lubridate
 magrittr
 networkD3
 parallelly
-plyr
 RColorBrewer
 readtext
 readxl

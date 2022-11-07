@@ -13,6 +13,7 @@ packs.cran <-
     "cowplot",
     "details",
     "devtools",
+    "plyr", # plyr first, then dplyr
     "dplyr",
     "DT",
     "fontawesome",
@@ -33,7 +34,6 @@ packs.cran <-
     "magrittr",
     "networkD3",
     "parallelly",
-    "plyr",
     "RColorBrewer",
     "readtext",
     "readxl",

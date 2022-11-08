@@ -175,9 +175,6 @@ navbar:
           href: [autoavaliacao.html#resultados]
     - text: "Downloads"
       href: [downloads.html]
-    - text: ""
-      icon: "fa-envelope"
-      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
   right:
     - text: ""
       icon: "fa-link"
@@ -194,6 +191,9 @@ navbar:
           href: [https://www.gov.br/capes/pt-br/assuntos/editais-capes]
         - text: "CNPq"
           href: [https://www.gov.br/cnpq/pt-br]
+    - text: ""
+      icon: "fa-envelope"
+      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
     - text: ""
       icon: "fa-instagram"
       href: [https://www.instagram.com/ppgcr_unisuam/]

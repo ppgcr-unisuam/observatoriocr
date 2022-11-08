@@ -50,13 +50,13 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <table>
   <tr>
     <td>
-      [<img align="center" src="Images/logo-mestrado.png">](https://www.unisuam.edu.br/mestrado/mestrado-academico-em-ciencias-da-reabilitacao){target="_blank"}
+      [<img align="center" src="PPG/Images/logo-mestrado.png">](https://www.unisuam.edu.br/mestrado/mestrado-academico-em-ciencias-da-reabilitacao){target="_blank"}
       </td>
     <td>
-      [<img align="center" src="Images/logo-doutorado.png">](https://www.unisuam.edu.br/doutorado-academico-em-ciencias-da-reabilitacao){target="_blank"}
+      [<img align="center" src="PPG/Images/logo-doutorado.png">](https://www.unisuam.edu.br/doutorado-academico-em-ciencias-da-reabilitacao){target="_blank"}
     </td>
     <td>
-      [<img align="center" src="Images/logo-posdoc.png">](https://www.unisuam.edu.br/pos-doutorado-academico-em-ciencias-da-reabilitacao){target="_blank"}
+      [<img align="center" src="PPG/Images/logo-posdoc.png">](https://www.unisuam.edu.br/pos-doutorado-academico-em-ciencias-da-reabilitacao){target="_blank"}
     </td>
   </tr>
 </table>

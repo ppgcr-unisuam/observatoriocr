@@ -42,7 +42,12 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-### **Documentos vigentes** {#vigentes}
+## **Documentos** {.tabset}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **Vigentes**
 
 ```{r documentos-vigentes}
 # read separate sheets
@@ -75,7 +80,7 @@ print(
 
 <br>
 
-### **Documentos revogados** {#revogados}
+### **Revogados**
 
 ```{r documentos-revogados}
 # read separate sheets

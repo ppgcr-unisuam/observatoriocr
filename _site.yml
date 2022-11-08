@@ -173,12 +173,8 @@ navbar:
           href: [autoavaliacao.html#impacto]
         - text: "Resultados"
           href: [autoavaliacao.html#resultados]
-    - text: ""
-      icon: "fa-download"
+    - text: "Downloads"
       href: [downloads.html]
-    - text: ""
-      icon: "fa-user"
-      href: [alunos.html]
     - text: ""
       icon: "fa-envelope"
       href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
@@ -198,6 +194,12 @@ navbar:
           href: [https://www.gov.br/capes/pt-br/assuntos/editais-capes]
         - text: "CNPq"
           href: [https://www.gov.br/cnpq/pt-br]
+    - text: ""
+      icon: "fa-instagram"
+      href: [https://www.instagram.com/ppgcr_unisuam/]
+    - text: ""
+      icon: "fa-facebook"
+      href: [https://www.facebook.com/people/Ciências-da-Reabilitação/100010029900421/]
     - text: ""
       icon: "fa-github"
       href: [https://github.com/ppgcr-unisuam/observatoriocr]

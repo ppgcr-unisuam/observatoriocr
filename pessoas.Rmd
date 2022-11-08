@@ -2689,12 +2689,14 @@ if(length(new.ids) != 0) {
 
 <br>
 
-## **Discentes** {.tabset #discentes}
+## **Discentes** {#discentes}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-### **Doutorado**
+### **Inscritos** {.tabset #inscritos}
+
+#### **Doutorado**
 
 ```{r discentes-dsc}
 # select level
@@ -2751,7 +2753,7 @@ if (dim(discentes)[1] != 0) {
 
 <br>
 
-### **Mestrado**
+#### **Mestrado**
 
 ```{r discentes-msc}
 # select level
@@ -2808,7 +2810,7 @@ if (dim(discentes)[1] != 0) {
 
 <br>
 
-### **Iniciação científica**
+#### **Iniciação científica**
 
 ```{r discentes-ic}
 # select level
@@ -2858,6 +2860,183 @@ if (dim(discentes)[1] != 0) {
 <br>
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **Datas e prazos** {.tabset #datas-prazos}
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+#### **Doutorado**
+
+```{r discentes-dsc-prazos}
+# select level
+course.level <- "Doutorado"
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level,]
+
+# select active students
+discentes <-
+  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
+
+# format names
+discentes$`Nome Discente` <-
+  toTitleCase(tolower(discentes$`Nome Discente`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
+
+# calculate hard deadlines
+discentes$'Tempo em curso' <-
+  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
+discentes$'Defesa até' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           4,
+         format = "%d/%m/%Y")
+discentes$'Jubilação a partir de' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           4.5,
+         format = "%d/%m/%Y")
+
+# remove duplicates
+discentes <- unique(discentes)
+
+if (dim(discentes)[1] != 0) {
+  ids <-
+    order(discentes$'Tempo em curso',
+          discentes$'Nome Discente',
+          decreasing = FALSE)
+  table <- discentes[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Datas e Prazos - Doutorado") %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(49:54, rep('lightyellow', length(49:54)))
+                )  %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(55:1000, rep('#ffcccb', length(55:1000)))
+                )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<table width="100%" border="0">
+  <tr>
+    <td style="text-align:center" bgcolor="white">Prazo regular</td>
+    <td style="text-align:center" bgcolor="lightyellow">Prazo extendido</td>
+    <td style="text-align:center" bgcolor="#ffcccb">Prazos ultrapassados</td>
+  </tr>
+</table>
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+#### **Mestrado**
+
+```{r discentes-msc-prazos}
+# select level
+course.level <- "Mestrado"
+
+# discentes
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R")
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get only last data available
+discentes <- sucupira.list[[length(anos)]]
+
+# filter students
+discentes <- discentes[discentes$`Nível Discente` == course.level,]
+
+# select active students
+discentes <-
+  discentes[discentes$`Situação Discente` == "MATRICULADO",]
+
+# select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
+discentes <- discentes[discentes$`Orientador Principal?` == "Sim",]
+
+# format names
+discentes$`Nome Discente` <-
+  toTitleCase(tolower(discentes$`Nome Discente`))
+
+# drop columns (NO SUPERVISOR FOR UNDERGRAD STUDENTS)
+discentes <- discentes %>% select("Nome Discente", "Data Matrícula")
+
+# calculate hard deadlines
+discentes$'Tempo em curso' <-
+  interval(start = dmy(gsub("/", "", discentes$'Data Matrícula')), end = today()) %/% months(1)
+discentes$'Defesa até' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2,
+         format = "%d/%m/%Y")
+discentes$'Jubilação a partir de' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y") + 365 *
+           2.5,
+         format = "%d/%m/%Y")
+
+# remove duplicates
+discentes <- unique(discentes)
+
+if (dim(discentes)[1] != 0) {
+  ids <-
+    order(discentes$'Tempo em curso',
+          discentes$'Nome Discente',
+          decreasing = FALSE)
+  table <- discentes[ids,]
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table, title = "Datas e Prazos - Mestrado") %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(25:30, rep('lightyellow', length(25:30)))
+                )  %>%
+    formatStyle('Tempo em curso',
+                target = 'row',
+                backgroundColor = styleEqual(31:1000, rep('#ffcccb', length(31:1000)))
+                )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
+
+*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+
+<table width="100%" border="0">
+  <tr>
+    <td style="text-align:center" bgcolor="white">Prazo regular</td>
+    <td style="text-align:center" bgcolor="lightyellow">Prazo extendido</td>
+    <td style="text-align:center" bgcolor="#ffcccb">Prazos ultrapassados</td>
+  </tr>
+</table>
+
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

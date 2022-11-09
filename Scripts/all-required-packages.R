@@ -13,7 +13,8 @@ packs.cran <-
     "cowplot",
     "details",
     "devtools",
-    "plyr", # plyr first, then dplyr
+    # plyr first, then dplyr
+    "plyr",
     "dplyr",
     "DT",
     "fontawesome",
@@ -61,11 +62,9 @@ for (i in 1:length(packs.cran)) {
 
 # other packages work better if installed from github
 packs.git <-
-  c(
-    "geobr",
+  c("geobr",
     "packup",
-    "rcrossref"
-  )
+    "rcrossref")
 
 if (!require("geobr", character.only = TRUE, quietly = TRUE))
   devtools::install_github("ipeaGIT/geobr", subdir = "r-package")

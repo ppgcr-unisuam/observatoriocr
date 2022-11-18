@@ -506,6 +506,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -579,6 +580,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -653,6 +655,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`== "Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
+projetos <- unique(projetos)
 
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
@@ -690,6 +693,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -762,6 +766,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -836,6 +841,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
@@ -874,6 +880,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -946,6 +953,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -1020,6 +1028,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
@@ -1058,6 +1067,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -1130,6 +1140,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 # select data DOCENTES
 projetos.doc <- projetos[projetos$`Categoria do Membro do Projeto` =="Docente", ]
@@ -1205,6 +1216,7 @@ periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <- unique(projetos)
 
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]

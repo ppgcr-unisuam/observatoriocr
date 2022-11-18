@@ -174,9 +174,13 @@ linhas <-
   sort(c(current.LP, old.LP))
 
 # remove data from inactive LP
-alluv.data <-
-  alluv.data[!(alluv.data$sucupira.raw..Linha.de.Pesquisa. == old.LP &
-               alluv.data$sucupira.raw..Data.de.Fim.da.Linha. == format(Sys.Date(), format = "%Y")), ]
+if(length(old.LP) != 0) {
+  alluv.data <-
+    alluv.data[!(
+      alluv.data$sucupira.raw..Linha.de.Pesquisa. == old.LP &
+        alluv.data$sucupira.raw..Data.de.Fim.da.Linha. == format(Sys.Date(), format = "%Y")
+    ),]
+}
 
 summ.AC.LP <-
   as.data.frame(

@@ -737,7 +737,7 @@ if (dim(tccs)[1] != 0) {
 
 ### **Artigos completos** {.tabset}
 
-```{r artigos-completos}
+```{r pandemia-artigos-completos}
 # bind sources
 doi_unique <- doi_unique_artigos_impacto
 my_dois_works <- my_dois_works_artigos_impacto
@@ -816,7 +816,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Artigos resumos** {.tabset}
 
-```{r artigos-resumos}
+```{r pandemia-artigos-resumos}
 # bind sources
 doi_unique <- doi_unique_resumos_impacto
 my_dois_works <- my_dois_works_resumos_impacto
@@ -895,7 +895,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r resumos-eventos}
+```{r pandemia-resumos-eventos}
 # bind sources
 doi_unique <- doi_unique_eventos_impacto
 my_dois_works <- my_dois_works_eventos_impacto

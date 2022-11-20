@@ -522,7 +522,6 @@ if(dim(projetos.posdoc)[1] != 0){
 plot(0, type = 'n', axes = FALSE)
 legend("top", inset = 0, legend = levels, fill = brewer.pal(n = length(levels), name = "Set3"), box.lwd = 0, cex = 0.7)
 title("Projetos de Pesquisa", outer = TRUE)
-
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -558,7 +557,7 @@ colnames(table.doc) <- c(head(colnames(table.doc), -1), "N")
 table.doc <- rbind(table.doc, colSums(table.doc))
 rownames(table.doc) <- c(head(rownames(table.doc), -1), "N")
 # print tables
-print(kable(table.doc, align = c("c", rep("c", ncol(table.doc)-2), "r"), captio = "Docentes") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(kable(table.doc, align = c("c", rep("c", ncol(table.doc)-2), "r"), caption = "Docentes") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 
 # line break
 cat("  \n")
@@ -576,12 +575,13 @@ if(dim(projetos.posdoc)[1] != 0){
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
   print(kable(table.posdoc, align = c("c", rep("c", ncol(table.posdoc)-2), "r"), caption = "Pós-Doutorandos") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
 }
 
 # line break
 cat("  \n")
 cat("  \n")
-
+  
 # proporção de projetos por linha de pesquisa
 # layout(matrix(c(1,2,3,3), nrow = 2, ncol = 2, byrow = TRUE), heights = c(0.7,0.3))
 # par(oma=c(0.1, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
@@ -620,11 +620,12 @@ names(sucupira.list) <- as.character(anos)
 periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos <- projetos.all[projetos.all$`Membro Responsável`== "Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
+projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
 projetos <- unique(projetos)
 
 table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
+labels <- colnames(table.projetos)
 # print tables
 table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
 table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
@@ -633,7 +634,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos, title = "Projetos de Pesquisa 2024-2021")
+create_dt(table.projetos, title = "Projetos de Pesquisa 2021-2024")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -762,6 +763,7 @@ if(dim(projetos.posdoc)[1] != 0){
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
   print(kable(table.posdoc, align = c("c", rep("c", ncol(table.posdoc)-2), "r"), caption = "Pós-Doutorandos") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
 }
 
 # line break
@@ -949,6 +951,7 @@ if(dim(projetos.posdoc)[1] != 0){
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
   print(kable(table.posdoc, align = c("c", rep("c", ncol(table.posdoc)-2), "r"), caption = "Pós-Doutorandos") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+
 }
 
 # line break
@@ -1007,7 +1010,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos, title = "Projetos de Pesquisa 2016-2013")
+create_dt(table.projetos, title = "Projetos de Pesquisa 2013-2016")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1195,7 +1198,7 @@ table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to
 colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos, title = "Projetos de Pesquisa 2012-2010")
+create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

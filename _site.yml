@@ -29,8 +29,6 @@ navbar:
       menu:
         - text: "Programa"
           href: [programa.html]
-        - text: "Institucional"
-          href: [programa.html#institucional]
         - text: "Apresentação"
           href: [programa.html#apresentacao]
         - text: "Breve histórico"

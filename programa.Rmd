@@ -491,8 +491,9 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
-if(dim(projetos.posdoc)[1] != 0){
+if(length(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
   # add row totals
   table.posdoc <- cbind(table.posdoc, rowSums(table.posdoc))
@@ -564,6 +565,7 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
 if(dim(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
@@ -679,6 +681,7 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
 if(dim(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
@@ -752,6 +755,7 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
 if(dim(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
@@ -867,6 +871,7 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
 if(dim(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
@@ -940,6 +945,7 @@ cat("  \n")
 cat("  \n")
 
 # select data POS-DOC
+table.posdoc <- NULL
 projetos.posdoc <- projetos[projetos$`Categoria do Membro do Projeto` =="Pós-Doc", ]
 if(dim(projetos.posdoc)[1] != 0){
   table.posdoc <- table(projetos.posdoc$`Nome do Membro do Projeto`, projetos.posdoc$`Linha de Pesquisa`)
@@ -1664,7 +1670,7 @@ for(var i=0; i < document.formOBRDSC.ckb.length; i++){
 ```
 
 ```{r calculadora-doutorado-obrigatorias}
-# projetos
+# disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -1673,23 +1679,42 @@ names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+disciplinas.raw <-
+  disciplinas.raw[is.na(disciplinas.raw$`Data de fim`),]
+disciplinas.dsc <-
+  disciplinas.raw[which(`dim<-`(grepl('Doutorado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
-table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
-colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.dsc <- table.dsc[table.dsc[, 2] == "Sim", ]
-table.dsc <- table.dsc[complete.cases(table.dsc), ]
-table.dsc <- table.dsc[, -2]
-
-cat('<form name=formOBRDSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.dsc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.dsc[i,2], '\" onclick=\"chkcontrol3(', i - 1, ')\">', paste0(table.dsc[i,1], ' (', table.dsc[i,2], ' CR) (', table.dsc[i,3]), ' CH)', '</input></td></tr>')
+if (length(disciplinas.dsc) != 0) {
+  table.dsc <-
+    cbind(
+      disciplinas.dsc$`Nome da Disciplina`,
+      disciplinas.dsc$`Indicadora de disciplina obrigatória`,
+      disciplinas.dsc$`Quantidade de créditos`,
+      disciplinas.dsc$`Carga Horária`
+    )
+  colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+  
+  # filtra e exibe apenas as obrigatórias
+  table.dsc <- table.dsc[table.dsc[, 2] == "Sim",]
+  table.dsc <- table.dsc[complete.cases(table.dsc),]
+  table.dsc <- table.dsc[,-2]
+  
+  cat('<form name=formOBRDSC method=post action=check.php>')
+  cat('<table class=\"table table-striped\">')
+  for (i in 1:dim(table.dsc)[1]) {
+    cat(
+      '<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"',
+      table.dsc[i, 2],
+      '\" onclick=\"chkcontrol3(',
+      i - 1,
+      ')\">',
+      paste0(table.dsc[i, 1], ' (', table.dsc[i, 2], ' CR) (', table.dsc[i, 3]),
+      ' CH)',
+      '</input></td></tr>'
+    )
+  }
+  cat('</table></form>')
 }
-cat('</table></form>')
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1714,7 +1739,7 @@ for(var i=0; i < document.formELEDSC.ckb.length; i++){
 ```
 
 ```{r calculadora-doutorado-eletivas}
-# projetos
+# disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -1723,23 +1748,42 @@ names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+disciplinas.raw <-
+  disciplinas.raw[is.na(disciplinas.raw$`Data de fim`),]
+disciplinas.dsc <-
+  disciplinas.raw[which(`dim<-`(grepl('Doutorado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
-table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
-colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.dsc <- table.dsc[table.dsc[, 2] == "Não", ]
-table.dsc <- table.dsc[complete.cases(table.dsc), ]
-table.dsc <- table.dsc[, -2]
-
-cat('<form name=formELEDSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.dsc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.dsc[i,2], '\" onclick=\"chkcontrol4(', i - 1, ')\">', paste0(table.dsc[i,1], ' (', table.dsc[i,2], ' CR) (', table.dsc[i,3]), ' CH)', '</input></td></tr>')
+if (length(disciplinas.dsc) != 0) {
+  table.dsc <-
+    cbind(
+      disciplinas.dsc$`Nome da Disciplina`,
+      disciplinas.dsc$`Indicadora de disciplina obrigatória`,
+      disciplinas.dsc$`Quantidade de créditos`,
+      disciplinas.dsc$`Carga Horária`
+    )
+  colnames(table.dsc) <- c("Disciplina", "Eletiva", "CR", "CH")
+  
+  # filtra e exibe apenas as obrigatórias
+  table.dsc <- table.dsc[table.dsc[, 2] == "Não",]
+  table.dsc <- table.dsc[complete.cases(table.dsc),]
+  table.dsc <- table.dsc[,-2]
+  
+  cat('<form name=formELEDSC method=post action=check.php>')
+  cat('<table class=\"table table-striped\">')
+  for (i in 1:dim(table.dsc)[1]) {
+    cat(
+      '<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"',
+      table.dsc[i, 2],
+      '\" onclick=\"chkcontrol4(',
+      i - 1,
+      ')\">',
+      paste0(table.dsc[i, 1], ' (', table.dsc[i, 2], ' CR) (', table.dsc[i, 3]),
+      ' CH)',
+      '</input></td></tr>'
+    )
+  }
+  cat('</table></form>')
 }
-cat('</table></form>')
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1774,7 +1818,7 @@ for(var i=0; i < document.formOBRMSC.ckb.length; i++){
 ```
 
 ```{r calculadora-mestrado-obrigatorias}
-# projetos
+# disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -1783,23 +1827,42 @@ names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+disciplinas.raw <-
+  disciplinas.raw[is.na(disciplinas.raw$`Data de fim`),]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Mestrado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Sim", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-cat('<form name=formOBRMSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.msc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol1(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
+if (length(disciplinas.msc) != 0) {
+  table.msc <-
+    cbind(
+      disciplinas.msc$`Nome da Disciplina`,
+      disciplinas.msc$`Indicadora de disciplina obrigatória`,
+      disciplinas.msc$`Quantidade de créditos`,
+      disciplinas.msc$`Carga Horária`
+    )
+  colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+  
+  # filtra e exibe apenas as obrigatórias
+  table.msc <- table.msc[table.msc[, 2] == "Sim",]
+  table.msc <- table.msc[complete.cases(table.msc),]
+  table.msc <- table.msc[,-2]
+  
+  cat('<form name=formOBRMSC method=post action=check.php>')
+  cat('<table class=\"table table-striped\">')
+  for (i in 1:dim(table.msc)[1]) {
+    cat(
+      '<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"',
+      table.msc[i, 2],
+      '\" onclick=\"chkcontrol1(',
+      i - 1,
+      ')\">',
+      paste0(table.msc[i, 1], ' (', table.msc[i, 2], ' CR) (', table.msc[i, 3]),
+      ' CH)',
+      '</input></td></tr>'
+    )
+  }
+  cat('</table></form>')
 }
-cat('</table></form>')
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1833,23 +1896,42 @@ names(sucupira.list) <- as.character(anos)
 
 # read separate sheets
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
+disciplinas.raw <-
+  disciplinas.raw[is.na(disciplinas.raw$`Data de fim`),]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Mestrado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Eletiva", "CR", "CH")
-
-# filtra e exibe apenas as obrigatórias
-table.msc <- table.msc[table.msc[, 2] == "Não", ]
-table.msc <- table.msc[complete.cases(table.msc), ]
-table.msc <- table.msc[, -2]
-
-cat('<form name=formELEMSC method=post action=check.php>')
-cat('<table class=\"table table-striped\">')
-for(i in 1:dim(table.msc)[1]){
-  cat('<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"', table.msc[i,2], '\" onclick=\"chkcontrol2(', i - 1, ')\">', paste0(table.msc[i,1], ' (', table.msc[i,2], ' CR) (', table.msc[i,3]), ' CH)', '</input></td></tr>')
+if (length(disciplinas.msc) != 0) {
+  table.msc <-
+    cbind(
+      disciplinas.msc$`Nome da Disciplina`,
+      disciplinas.msc$`Indicadora de disciplina obrigatória`,
+      disciplinas.msc$`Quantidade de créditos`,
+      disciplinas.msc$`Carga Horária`
+    )
+  colnames(table.msc) <- c("Disciplina", "Eletiva", "CR", "CH")
+  
+  # filtra e exibe apenas as obrigatórias
+  table.msc <- table.msc[table.msc[, 2] == "Não",]
+  table.msc <- table.msc[complete.cases(table.msc),]
+  table.msc <- table.msc[,-2]
+  
+  cat('<form name=formELEMSC method=post action=check.php>')
+  cat('<table class=\"table table-striped\">')
+  for (i in 1:dim(table.msc)[1]) {
+    cat(
+      '<tr><td><input type=\"checkbox\" name=\"ckb\" value=\"',
+      table.msc[i, 2],
+      '\" onclick=\"chkcontrol2(',
+      i - 1,
+      ')\">',
+      paste0(table.msc[i, 1], ' (', table.msc[i, 2], ' CR) (', table.msc[i, 3]),
+      ' CH)',
+      '</input></td></tr>'
+    )
+  }
+  cat('</table></form>')
 }
-cat('</table></form>')
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -1896,11 +1978,13 @@ names(sucupira.list) <- as.character(anos)
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Mestrado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
 colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Doutorado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
 colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 
@@ -1971,11 +2055,13 @@ names(sucupira.list) <- as.character(anos)
 disciplinas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
 
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Mestrado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
 colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
+disciplinas.dsc <-
+  disciplinas.raw[which(`dim<-`(grepl('Doutorado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
 colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
 
@@ -2039,11 +2125,13 @@ names(sucupira.list) <- as.character(anos)
 disciplinas.raw <- sucupira.raw
 disciplinas.raw <- disciplinas.raw[!is.na(disciplinas.raw$`Data de fim`), ]
 
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
+disciplinas.msc <-
+  disciplinas.raw[which(`dim<-`(grepl('Mestrado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`, disciplinas.msc$`Data de fim`)
 colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH", "Fim")
 
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
+disciplinas.dsc <-
+  disciplinas.raw[which(`dim<-`(grepl('Doutorado', disciplinas.raw$`Nível do Curso`), dim(disciplinas.raw$`Nível do Curso`)), arr.ind = TRUE),]
 table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`, disciplinas.dsc$`Data de fim`)
 colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH", "Fim")
 
@@ -2141,39 +2229,84 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
-periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
-# build a cross table DISCIPLINA vs. ANO
-turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
-cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Período/Ano`))
-Oferecida <- colSums(cross.table.turmas)
-Oferecida[Oferecida > 0] <- "✅"
-Oferecida[Oferecida == 0] <- ""
-turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
-turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
-turmas.oferecidas[turmas.oferecidas == 0] <- ""
-if(length(colnames(turmas.oferecidas)) > 1){
-  turmas.oferecidas <- turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+if (dim(turmas.raw)[1] != 0) {
+  # build a cross table DISCIPLINA vs. ANO
+  turmas.raw$`Período/Ano` <-
+    paste(
+      sub(".*/", "", turmas.raw$`Período/Ano`),
+      sub("/.*", "", turmas.raw$`Período/Ano`),
+      sep = "/"
+    )
+  cross.table.turmas <-
+    as.matrix(table(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Período/Ano`
+    ))
+  Oferecida <- colSums(cross.table.turmas)
+  Oferecida[Oferecida > 0] <- "✅"
+  Oferecida[Oferecida == 0] <- ""
+  turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
+  turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
+  turmas.oferecidas[turmas.oferecidas == 0] <- ""
+  if (length(colnames(turmas.oferecidas)) > 1) {
+    turmas.oferecidas <-
+      turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+  }
+  print(
+    kable(turmas.oferecidas, align = c("l", rep(
+      "c",  max(0, ncol(turmas.oferecidas) - 2)
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.turma <-
+    unique(cbind(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Nome da Disciplina`
+    ))
+  legenda.turma <- legenda.turma[order(legenda.turma[, 1]),]
+  cat(paste(
+    "*",
+    legenda.turma[, 1],
+    ": ",
+    lapply(legenda.turma[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.doc <-
+    unique(cbind(
+      initials(turmas.raw$`Nome do responsável`),
+      turmas.raw$`Nome do responsável`
+    ))
+  legenda.doc <- legenda.doc[order(legenda.doc[, 1]),]
+  cat(paste(
+    "*",
+    legenda.doc[, 1],
+    ": ",
+    lapply(legenda.doc[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
 }
-print(kable(turmas.oferecidas, align = c("l", rep("c",  max(0, ncol(turmas.oferecidas)-2)), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
-legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
-cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2188,7 +2321,7 @@ cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
-# turmas
+# disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -2197,22 +2330,13 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
-periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
-disciplinas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
-
-disciplinas.raw <- disciplinas.raw[is.na(disciplinas.raw$`Data de fim`), ]
-
-disciplinas.msc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Mestrado", ]
-table.msc <- cbind(disciplinas.msc$`Nome da Disciplina`, disciplinas.msc$`Indicadora de disciplina obrigatória`, disciplinas.msc$`Quantidade de créditos`, disciplinas.msc$`Carga Horária`)
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-disciplinas.dsc <- disciplinas.raw[disciplinas.raw$`Nível do Curso`=="Doutorado", ]
-table.dsc <- cbind(disciplinas.dsc$`Nome da Disciplina`, disciplinas.dsc$`Indicadora de disciplina obrigatória`, disciplinas.dsc$`Quantidade de créditos`, disciplinas.dsc$`Carga Horária`)
-colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
-
-table <- merge(table.msc, table.dsc, by="Disciplina", all.x = TRUE, all.y = TRUE)
-colnames(table) <- c("Disciplina", "Obrigatória (MA)", "CR (MA)", "CH (MA)", "Obrigatória (DA)", "CR (DA)", "CH (DA)")
+disciplinas.raw <-
+  do.call(rbind.data.frame, sucupira.list[periodos])
+disciplinas.raw <-
+  disciplinas.raw[is.na(disciplinas.raw$`Data de fim`),]
 
 # turmas
 sheet <- "Turmas"
@@ -2225,31 +2349,116 @@ names(sucupira.list) <- as.character(anos)
 # read separate sheets
 turmas.raw <- sucupira.list[[format(Sys.Date(), "%Y")]]
 
-# build a cross table DISCIPLINA vs. DOCENTE
-cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), initials(turmas.raw$`Nome do responsável`)))
-Responsável <- colSums(cross.table.turmas)
-Responsável[Responsável > 0] <- "✅"
-Responsável[Responsável == 0] <- ""
-turmas.docentes <- rbind(Responsável, cross.table.turmas)
-turmas.docentes[turmas.docentes > 0] <- "✔"
-turmas.docentes[turmas.docentes == 0] <- ""
-print(kable(turmas.docentes, align = c("l", rep("c", ncol(turmas.docentes)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.doc <- unique(cbind(initials(turmas.raw$`Nome do responsável`), turmas.raw$`Nome do responsável`))
-legenda.doc <- legenda.doc[order(legenda.doc[,1]), ]
-cat(paste("*", legenda.doc[, 1], ": ", lapply(legenda.doc[, 2], str_to_title), "*", sep = "", collapse = "; "))
+if (dim(disciplinas.raw)[1] != 0) {
+  disciplinas.msc <-
+    disciplinas.raw[which(`dim<-`(
+      grepl('Mestrado', disciplinas.raw$`Nível do Curso`),
+      dim(disciplinas.raw$`Nível do Curso`)
+    ), arr.ind = TRUE), ]
+  table.msc <-
+    cbind(
+      disciplinas.msc$`Nome da Disciplina`,
+      disciplinas.msc$`Indicadora de disciplina obrigatória`,
+      disciplinas.msc$`Quantidade de créditos`,
+      disciplinas.msc$`Carga Horária`
+    )
+  colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+  
+  disciplinas.dsc <-
+    disciplinas.raw[which(`dim<-`(
+      grepl('Doutorado', disciplinas.raw$`Nível do Curso`),
+      dim(disciplinas.raw$`Nível do Curso`)
+    ), arr.ind = TRUE), ]
+  table.dsc <-
+    cbind(
+      disciplinas.dsc$`Nome da Disciplina`,
+      disciplinas.dsc$`Indicadora de disciplina obrigatória`,
+      disciplinas.dsc$`Quantidade de créditos`,
+      disciplinas.dsc$`Carga Horária`
+    )
+  colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+  
+  table <-
+    merge(
+      table.msc,
+      table.dsc,
+      by = "Disciplina",
+      all.x = TRUE,
+      all.y = TRUE
+    )
+  colnames(table) <-
+    c(
+      "Disciplina",
+      "Obrigatória (MA)",
+      "CR (MA)",
+      "CH (MA)",
+      "Obrigatória (DA)",
+      "CR (DA)",
+      "CH (DA)"
+    )
+  
+  # build a cross table DISCIPLINA vs. DOCENTE
+  cross.table.turmas <-
+    as.matrix(table(
+      initials(turmas.raw$`Nome da Disciplina`),
+      initials(turmas.raw$`Nome do responsável`)
+    ))
+  Responsável <- colSums(cross.table.turmas)
+  Responsável[Responsável > 0] <- "✅"
+  Responsável[Responsável == 0] <- ""
+  turmas.docentes <- rbind(Responsável, cross.table.turmas)
+  turmas.docentes[turmas.docentes > 0] <- "✔"
+  turmas.docentes[turmas.docentes == 0] <- ""
+  print(
+    kable(turmas.docentes, align = c("l", rep(
+      "c", ncol(turmas.docentes) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.turma <-
+    unique(cbind(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Nome da Disciplina`
+    ))
+  legenda.turma <- legenda.turma[order(legenda.turma[, 1]),]
+  cat(paste(
+    "*",
+    legenda.turma[, 1],
+    ": ",
+    lapply(legenda.turma[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.doc <-
+    unique(cbind(
+      initials(turmas.raw$`Nome do responsável`),
+      turmas.raw$`Nome do responsável`
+    ))
+  legenda.doc <- legenda.doc[order(legenda.doc[, 1]),]
+  cat(paste(
+    "*",
+    legenda.doc[, 1],
+    ": ",
+    lapply(legenda.doc[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
+}
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2273,31 +2482,64 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
-periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
-# build a cross table DISCIPLINA vs. ANO
-turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
-cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Período/Ano`))
-Oferecida <- colSums(cross.table.turmas)
-Oferecida[Oferecida > 0] <- "✅"
-Oferecida[Oferecida == 0] <- ""
-turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
-turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
-turmas.oferecidas[turmas.oferecidas == 0] <- ""
-if(length(colnames(turmas.oferecidas)) > 1){
-  turmas.oferecidas <- turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+if (dim(turmas.raw)[1] != 0) {
+  # build a cross table DISCIPLINA vs. ANO
+  turmas.raw$`Período/Ano` <-
+    paste(
+      sub(".*/", "", turmas.raw$`Período/Ano`),
+      sub("/.*", "", turmas.raw$`Período/Ano`),
+      sep = "/"
+    )
+  cross.table.turmas <-
+    as.matrix(table(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Período/Ano`
+    ))
+  Oferecida <- colSums(cross.table.turmas)
+  Oferecida[Oferecida > 0] <- "✅"
+  Oferecida[Oferecida == 0] <- ""
+  turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
+  turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
+  turmas.oferecidas[turmas.oferecidas == 0] <- ""
+  if (length(colnames(turmas.oferecidas)) > 1) {
+    turmas.oferecidas <-
+      turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+  }
+  print(
+    kable(turmas.oferecidas, align = c("l", rep(
+      "c", ncol(turmas.oferecidas) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.turma <-
+    unique(cbind(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Nome da Disciplina`
+    ))
+  legenda.turma <- legenda.turma[order(legenda.turma[, 1]),]
+  cat(paste(
+    "*",
+    legenda.turma[, 1],
+    ": ",
+    lapply(legenda.turma[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
 }
-print(kable(turmas.oferecidas, align = c("l", rep("c", ncol(turmas.oferecidas)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2321,31 +2563,64 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
-periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
-# build a cross table DISCIPLINA vs. ANO
-turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
-cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Período/Ano`))
-Oferecida <- colSums(cross.table.turmas)
-Oferecida[Oferecida > 0] <- "✅"
-Oferecida[Oferecida == 0] <- ""
-turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
-turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
-turmas.oferecidas[turmas.oferecidas == 0] <- ""
-if(length(colnames(turmas.oferecidas)) > 1){
-  turmas.oferecidas <- turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+if (dim(turmas.raw)[1] != 0) {
+  # build a cross table DISCIPLINA vs. ANO
+  turmas.raw$`Período/Ano` <-
+    paste(
+      sub(".*/", "", turmas.raw$`Período/Ano`),
+      sub("/.*", "", turmas.raw$`Período/Ano`),
+      sep = "/"
+    )
+  cross.table.turmas <-
+    as.matrix(table(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Período/Ano`
+    ))
+  Oferecida <- colSums(cross.table.turmas)
+  Oferecida[Oferecida > 0] <- "✅"
+  Oferecida[Oferecida == 0] <- ""
+  turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
+  turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
+  turmas.oferecidas[turmas.oferecidas == 0] <- ""
+  if (length(colnames(turmas.oferecidas)) > 1) {
+    turmas.oferecidas <-
+      turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+  }
+  print(
+    kable(turmas.oferecidas, align = c("l", rep(
+      "c", ncol(turmas.oferecidas) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.turma <-
+    unique(cbind(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Nome da Disciplina`
+    ))
+  legenda.turma <- legenda.turma[order(legenda.turma[, 1]),]
+  cat(paste(
+    "*",
+    legenda.turma[, 1],
+    ": ",
+    lapply(legenda.turma[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
 }
-print(kable(turmas.oferecidas, align = c("l", rep("c", ncol(turmas.oferecidas)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
@@ -2369,31 +2644,64 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 # bind all sheets
-periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
-# build a cross table DISCIPLINA vs. ANO
-turmas.raw$`Período/Ano` <- paste(sub(".*/", "", turmas.raw$`Período/Ano`), sub("/.*", "", turmas.raw$`Período/Ano`), sep = "/")
-cross.table.turmas <- as.matrix(table(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Período/Ano`))
-Oferecida <- colSums(cross.table.turmas)
-Oferecida[Oferecida > 0] <- "✅"
-Oferecida[Oferecida == 0] <- ""
-turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
-turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
-turmas.oferecidas[turmas.oferecidas == 0] <- ""
-if(length(colnames(turmas.oferecidas)) > 1){
-  turmas.oferecidas <- turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+if (dim(turmas.raw)[1] != 0) {
+  # build a cross table DISCIPLINA vs. ANO
+  turmas.raw$`Período/Ano` <-
+    paste(
+      sub(".*/", "", turmas.raw$`Período/Ano`),
+      sub("/.*", "", turmas.raw$`Período/Ano`),
+      sep = "/"
+    )
+  cross.table.turmas <-
+    as.matrix(table(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Período/Ano`
+    ))
+  Oferecida <- colSums(cross.table.turmas)
+  Oferecida[Oferecida > 0] <- "✅"
+  Oferecida[Oferecida == 0] <- ""
+  turmas.oferecidas <- rbind(Oferecida, cross.table.turmas)
+  turmas.oferecidas[turmas.oferecidas > 0] <- "✔"
+  turmas.oferecidas[turmas.oferecidas == 0] <- ""
+  if (length(colnames(turmas.oferecidas)) > 1) {
+    turmas.oferecidas <-
+      turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
+  }
+  print(
+    kable(turmas.oferecidas, align = c("l", rep(
+      "c", ncol(turmas.oferecidas) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  
+  # line break
+  cat("  \n")
+  cat("  \n")
+  
+  legenda.turma <-
+    unique(cbind(
+      initials(turmas.raw$`Nome da Disciplina`),
+      turmas.raw$`Nome da Disciplina`
+    ))
+  legenda.turma <- legenda.turma[order(legenda.turma[, 1]),]
+  cat(paste(
+    "*",
+    legenda.turma[, 1],
+    ": ",
+    lapply(legenda.turma[, 2], str_to_title),
+    "*",
+    sep = "",
+    collapse = "; "
+  ))
 }
-print(kable(turmas.oferecidas, align = c("l", rep("c", ncol(turmas.oferecidas)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
-
-# line break
-cat("  \n")
-cat("  \n")
-
-legenda.turma <- unique(cbind(initials(turmas.raw$`Nome da Disciplina`), turmas.raw$`Nome da Disciplina`))
-legenda.turma <- legenda.turma[order(legenda.turma[,1]), ]
-cat(paste("*", legenda.turma[, 1], ": ", lapply(legenda.turma[, 2], str_to_title), "*", sep = "", collapse = "; "))
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)

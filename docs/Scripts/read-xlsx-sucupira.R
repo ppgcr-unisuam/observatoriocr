@@ -19,6 +19,7 @@ for (i in 1:length(dirs)) {
 }
 
 # initialize vectors and lists
+sucupira <- c()
 sucupira.raw <- c()
 sucupira.list <- list()
 
@@ -28,12 +29,14 @@ for (file in 1:length(files.to.read)) {
     dplyr::mutate(across(everything(), as.character))
   
   # search for "|" (meaning there are changes within a given year)
-  has.any.change <- grep('\\|', as.character(sucupira[, ]))
+  has.any.change <-
+    which(`dim<-`(grepl(' \\| ', as.matrix(sucupira)), dim(sucupira)), arr.ind =
+            TRUE)
   
   if (length(has.any.change) != 0) {
     warning(
       paste(
-        "Resolving duplicated entryes marked with '|' in Sucupira data of ",
+        "Resolving duplicated entryes marked with ' | ' in Sucupira data of ",
         files.to.read[file]
       ),
       sep = ""
@@ -44,31 +47,30 @@ for (file in 1:length(files.to.read)) {
     for (i in 1:dim(sucupira)[1]) {
       for (j in 1:dim(sucupira)[2]) {
         # duplicate entries based on "|"
-        has.change <- grep('\\|', as.character(sucupira[i, j]))
+        has.change <- grep(' \\| ', as.character(sucupira[i, j]))
         if (length(has.change) != 0) {
           rows.to.change <- c(rows.to.change, i)
           cols.to.change <- c(cols.to.change, j)
-          data.to.change <- rbind(data.to.change, sucupira[i,])
+          data.to.change <- rbind(data.to.change, sucupira[i, ])
         }
       }
     }
-    
+
     # replace values
     index <- 1
+    split.data <- c()
     for (i in unique(rows.to.change)) {
       for (j in cols.to.change[rows.to.change == i]) {
         split.data <-
           unlist(strsplit(as.character(sucupira[i, j]), " \\| "))
-        split.data
         data.to.change[(index:(index + length(split.data) - 1)), j] <-
-          data.to.change %>%
-          dplyr::mutate(across(everything(), as.character))
+          split.data
       }
       index <- index + length(split.data)
     }
     
     # delete original entries with "|"
-    sucupira <- sucupira[-unique(rows.to.change), ]
+    sucupira <- sucupira[-unique(rows.to.change),]
     sucupira  %>%
       dplyr::mutate_all(as.character())
     

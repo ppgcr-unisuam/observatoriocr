@@ -12,10 +12,4 @@ qualis <-
 
 # estratos Qualis
 estratos <- sort(unique(qualis$Estrato))
-
 qualis.base <- table(qualis$Estrato) / length(qualis$Estrato) * 100
-qualis.PPG <- c()
-for(i in 1:length(estratos)){
-  qualis.PPG[i] <- sum(artigos$WebQualis == estratos[i])/length(artigos$WebQualis) * 100
-}
-names(qualis.PPG) <- estratos

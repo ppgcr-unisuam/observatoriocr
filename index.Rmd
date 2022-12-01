@@ -808,6 +808,13 @@ artigos$WebQualis[artigos$WebQualis == "Sem WebQualis"] <- "NA"
 artigos <-
   artigos[artigos$Publicado.em != "Aceito",]
 
+# Qualis
+qualis.PPG <- c()
+for(i in 1:length(estratos)){
+  qualis.PPG[i] <- sum(artigos$WebQualis == estratos[i])/length(artigos$WebQualis) * 100
+}
+names(qualis.PPG) <- estratos
+
 # SJR
 SJR <- c()
 for (i in 1:dim(artigos)[1]) {

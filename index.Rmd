@@ -773,9 +773,6 @@ bs_carousel(id = "financiadores-carousel",
 <br>
 
 ```{r sintese-producao, include = FALSE}
-# estratos Qualis
-estratos <- sort(unique(qualis$Estrato))
-
 # read data
 artigos <-
   data.frame(read_excel(
@@ -944,14 +941,6 @@ layout.m <- matrix(c(1, 2),
                    ncol = 2,
                    byrow = TRUE)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
-
-qualis.base <- table(qualis$ESTRATO) / length(qualis$ESTRATO) * 100
-
-qualis.PPG <- c()
-for(i in 1:length(estratos)){
-  qualis.PPG[i] <- sum(artigos$WebQualis == estratos[i])/length(artigos$WebQualis) * 100
-}
-names(qualis.PPG) <- estratos
 
 barplot(
   -rev(qualis.base),

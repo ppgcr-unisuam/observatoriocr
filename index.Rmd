@@ -774,7 +774,7 @@ bs_carousel(id = "financiadores-carousel",
 
 ```{r sintese-producao, include = FALSE}
 # estratos Qualis
-estratos <- sort(unique(qualis$ESTRATO))
+estratos <- sort(unique(qualis$Estrato))
 
 # read data
 artigos <-

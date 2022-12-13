@@ -328,11 +328,9 @@ if (dim(bolsistas.tcc)[1] != 0) {
 ```{r cep-vigentes}
 # read separate sheets
 vigentes.raw <-
-  read_excel(
-    "../PPGCR Unisuam/CEP-UNISUAM.xlsx",
-    sheet = "Vigentes",
-    col_types = c("text")
-  )
+  read_excel("PPG/CEP-UNISUAM.xlsx",
+             sheet = "Vigentes",
+             col_types = c("text"))
 
 # replace the link by a tag
 for (i in 1:dim(vigentes.raw)[1]) {
@@ -361,11 +359,9 @@ print(
 ```{r cep-revogados}
 # read separate sheets
 revogados.raw <-
-  read_excel(
-    "../PPGCR Unisuam/CEP-UNISUAM.xlsx",
-    sheet = "Revogados",
-    col_types = c("text")
-  )
+  read_excel("PPG/CEP-UNISUAM.xlsx",
+             sheet = "Revogados",
+             col_types = c("text"))
 
 # replace the link by a tag
 for (i in 1:dim(revogados.raw)[1]) {

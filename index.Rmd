@@ -23,9 +23,14 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 
 ```{r}
 # get initials from the PPG data
-source("Scripts/get-initials.R")
 nome.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2]
-sigla.PPG <- initials(read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2])
+
+nome.PPG.split <- str_split_1(as.character(nome.PPG)[[1]], " ")
+match.stopwords <- match(str_split_1(as.character(nome.PPG)[[1]], " "), stopwords("portuguese"))
+nome.PPG.no.stopwords <- paste(nome.PPG.split[is.na(match.stopwords)], collapse = " ")
+source("Scripts/get-initials.R")
+sigla.PPG <- initials(nome.PPG.no.stopwords)
+
 site.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Endereço", col_types = c("text"))[7,2]
 
 # qualquer planilha para obter os dados da IES
@@ -94,7 +99,7 @@ h3 {
 
 <br>
 
-<p style="font-size:1.5em"> O **Observatório `r toupper(sigla.PPG)`** é uma iniciativa do **Programa de Pós-graduação em `r nome.PPG`** do [`r toTitleCase(nome.IES)`](`r site.PPG`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
+<p style="font-size:1.5em"> O **Observatório `r toupper(sigla.PPG)`** é uma iniciativa do **Programa de Pós-graduação em `r nome.PPG`** do [`r toTitleCase(as.character(nome.IES))`](`r site.PPG`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
 
 </center>
 

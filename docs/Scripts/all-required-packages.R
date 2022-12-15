@@ -46,6 +46,7 @@ packs.cran <-
     "sessioninfo",
     "sf",
     "stringr",
+    "tau",
     "tidyverse",
     "tm",
     "tools",

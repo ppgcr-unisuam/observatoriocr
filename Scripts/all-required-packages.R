@@ -9,6 +9,7 @@ packs.cran <-
   c(
     "alluvial",
     "anytime",
+    "BBmisc",
     "bsplus",
     "cowplot",
     "details",

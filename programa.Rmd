@@ -1266,60 +1266,60 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")
 ### **2024-2021**
 
 ```{r historico-financiadores-2024}
-# this chunk requires additional data that may nnot be available
-tryCatch(
-  expr = {
-    financiadores.raw <-
-      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-    
-    financiadores.sub <-
-      financiadores.raw %>% select("Ano",
-                                   "Agência",
-                                   "Edital",
-                                   "Processo No.",
-                                   "Título do projeto",
-                                   "Programa")
-    fonte.sub <- financiadores.raw %>% select("Fonte")
-    
-    financiadores <-
-      financiadores.sub[complete.cases(financiadores.sub), ]
-    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-    
-    fonte <-
-      fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
-    financiadores <-
-      financiadores[financiadores$Ano >= 2021 &
-                      financiadores$Ano <= 2024, ]
-    
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1]) {
-      if (!is.na(fonte[i, 1])) {
-        Abrir[i] <-
-          paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
-      }
+# this chunk requires additional data that may  be available
+has.file <-
+  !is.error(try(financiadores.raw <-
+                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
+                silent = TRUE))
+
+if (has.file) {
+  financiadores.sub <-
+    financiadores.raw %>% select("Ano",
+                                 "Agência",
+                                 "Edital",
+                                 "Processo No.",
+                                 "Título do projeto",
+                                 "Programa")
+  fonte.sub <- financiadores.raw %>% select("Fonte")
+  
+  financiadores <-
+    financiadores.sub[complete.cases(financiadores.sub),]
+  fonte <- fonte.sub[complete.cases(financiadores.sub),]
+  
+  fonte <-
+    fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024,]
+  financiadores <-
+    financiadores[financiadores$Ano >= 2021 &
+                    financiadores$Ano <= 2024,]
+  
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1]) {
+    if (!is.na(fonte[i, 1])) {
+      Abrir[i] <-
+        paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
     }
-    
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-    
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    create_dt(financiadores, title = "Financiadores 2024-2021")
-    
-    cat('\n\n')
-    
-    cat(
-      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-    )
-  },
-  error = function(e) {
-    cat('\n')
-    cat('*Sem dados para exibir*')
-    cat('\n')
   }
-)
+  
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
+  
+} else {
+  cat('\n\n')
+  cat('*Sem dados para exibir*')
+  cat('\n\n')
+}
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
+    silent = TRUE)
+
+if (has.file) {
+  cat(
+    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+  )
+}
 ```
 
 <br>
@@ -1331,12 +1331,13 @@ tryCatch(
 ### **2020-2017**
 
 ```{r historico-financiadores-2020}
-# this chunk requires additional data that may nnot be available
-tryCatch(
-  expr = {
-    financiadores.raw <-
-      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-    
+# this chunk requires additional data that may  be available
+has.file <-
+  !is.error(try(financiadores.raw <-
+                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
+                silent = TRUE))
+
+if (has.file) {
     financiadores.sub <-
       financiadores.raw %>% select("Ano",
                                    "Agência",
@@ -1369,22 +1370,20 @@ tryCatch(
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-    
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    create_dt(financiadores, title = "Financiadores 2020-2017")
-    
-    cat('\n\n')
-    
-    cat(
-      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-    )
-  },
-  error = function(e) {
-    cat('\n')
-    cat('*Sem dados para exibir*')
-    cat('\n')
-  }
-)
+} else {
+  cat('\n\n')
+  cat('*Sem dados para exibir*')
+  cat('\n\n')
+}
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
+    silent = TRUE)
+
+if (has.file) {
+  cat(
+    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+  )
+}
 ```
 
 <br>
@@ -1396,12 +1395,13 @@ tryCatch(
 ### **2016-2013**
 
 ```{r historico-financiadores-2016}
-# this chunk requires additional data that may nnot be available
-tryCatch(
-  expr = {
-    financiadores.raw <-
-      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-    
+# this chunk requires additional data that may  be available
+has.file <-
+  !is.error(try(financiadores.raw <-
+                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
+                silent = TRUE))
+
+if (has.file) {
     financiadores.sub <-
       financiadores.raw %>% select("Ano",
                                    "Agência",
@@ -1434,22 +1434,20 @@ tryCatch(
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-    
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    create_dt(financiadores, title = "Financiadores 2016-2013")
-    
-    cat('\n\n')
-    
-    cat(
-      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-    )
-  },
-  error = function(e) {
-    cat('\n')
-    cat('*Sem dados para exibir*')
-    cat('\n')
-  }
-)
+} else {
+  cat('\n\n')
+  cat('*Sem dados para exibir*')
+  cat('\n\n')
+}
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
+    silent = TRUE)
+
+if (has.file) {
+  cat(
+    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+  )
+}
 ```
 
 <br>
@@ -1461,12 +1459,13 @@ tryCatch(
 ### **2012-2010**
 
 ```{r historico-financiadores-2012}
-# this chunk requires additional data that may nnot be available
-tryCatch(
-  expr = {
-    financiadores.raw <-
-      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-    
+# this chunk requires additional data that may  be available
+has.file <-
+  !is.error(try(financiadores.raw <-
+                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
+                silent = TRUE))
+
+if (has.file) {
     financiadores.sub <-
       financiadores.raw %>% select("Ano",
                                    "Agência",
@@ -1499,22 +1498,20 @@ tryCatch(
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-    
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    create_dt(financiadores, title = "Financiadores 2012-2010")
-    
-    cat('\n\n')
-    
-    cat(
-      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-    )
-  },
-  error = function(e) {
-    cat('\n')
-    cat('*Sem dados para exibir*')
-    cat('\n')
-  }
-)
+} else {
+  cat('\n\n')
+  cat('*Sem dados para exibir*')
+  cat('\n\n')
+}
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
+    silent = TRUE)
+
+if (has.file) {
+  cat(
+    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+  )
+}
 ```
 
 <br>
@@ -1526,12 +1523,13 @@ tryCatch(
 ### **Pré-2010**
 
 ```{r historico-financiadores-2010}
-# this chunk requires additional data that may nnot be available
-tryCatch(
-  expr = {
-    financiadores.raw <-
-      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-    
+# this chunk requires additional data that may  be available
+has.file <-
+  !is.error(try(financiadores.raw <-
+                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
+                silent = TRUE))
+
+if (has.file) {
     financiadores.sub <-
       financiadores.raw %>% select("Ano",
                                    "Agência",
@@ -1563,22 +1561,20 @@ tryCatch(
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-    
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    create_dt(financiadores, title = "Financiadores 2010-pré")
-    
-    cat('\n\n')
-    
-    cat(
-      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-    )
-  },
-  error = function(e) {
-    cat('\n')
-    cat('*Sem dados para exibir*')
-    cat('\n')
-  }
-)
+} else {
+  cat('\n\n')
+  cat('*Sem dados para exibir*')
+  cat('\n\n')
+}
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
+    silent = TRUE)
+
+if (has.file) {
+  cat(
+    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+  )
+}
 ```
 
 <br>

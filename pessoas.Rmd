@@ -2916,8 +2916,9 @@ discentes$'Jubilação a partir de' <-
            4.5,
          format = "%d/%m/%Y")
 
-# remove duplicates
+# remove duplicates and empty rows
 discentes <- unique(discentes)
+discentes <- discentes[complete.cases(discentes), ]
 
 if (dim(discentes)[1] != 0) {
   ids <-
@@ -2949,6 +2950,34 @@ if (dim(discentes)[1] != 0) {
     <td style="text-align:center" bgcolor="#ffcccb">Prazos ultrapassados</td>
   </tr>
 </table>
+
+<br>
+
+<br>
+
+```{r discentes-dsc-prazos-sintese}
+discentes$'Ano de matrícula' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y"), format = "%Y")
+
+if (dim(discentes)[1] != 0) {
+  summ.table <- table(discentes$'Ano de matrícula',
+                      discentes$'Tempo em curso')
+  summ.table[summ.table == 0] <- ""
+  # print table
+  print(
+    kable(summ.table, align = c("l", rep(
+      "c", ncol(summ.table) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    ) %>%
+  add_header_above(c(" ", "Meses de curso" = dim(summ.table)[2]))
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 <br>
 
@@ -3002,8 +3031,9 @@ discentes$'Jubilação a partir de' <-
            2.5,
          format = "%d/%m/%Y")
 
-# remove duplicates
+# remove duplicates and empty rows
 discentes <- unique(discentes)
+discentes <- discentes[complete.cases(discentes), ]
 
 if (dim(discentes)[1] != 0) {
   ids <-
@@ -3038,9 +3068,31 @@ if (dim(discentes)[1] != 0) {
 
 <br>
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
 <br>
+
+```{r discentes-msc-prazos-sintese}
+discentes$'Ano de matrícula' <-
+  format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y"), format = "%Y")
+
+if (dim(discentes)[1] != 0) {
+  summ.table <- table(discentes$'Ano de matrícula',
+                      discentes$'Tempo em curso')
+  summ.table[summ.table == 0] <- ""
+  # print table
+  print(
+    kable(summ.table, align = c("l", rep(
+      "c", ncol(summ.table) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    ) %>%
+  add_header_above(c(" ", "Meses de curso" = dim(summ.table)[2]))
+  )
+} else {
+  cat("*Sem dados para exibir*")
+}
+```
 
 ## **Egressos** {.tabset #egressos}
 

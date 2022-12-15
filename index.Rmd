@@ -1,5 +1,5 @@
 ---
-title: Observatório CR
+title: "OBSERVATÓRIO"
 output:
   html_document:
     toc: false
@@ -20,6 +20,24 @@ knitr::opts_chunk$set(
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
+
+```{r}
+# get initials from the PPG data
+source("Scripts/get-initials.R")
+nome.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2]
+sigla.PPG <- initials(read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2])
+site.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Endereço", col_types = c("text"))[7,2]
+
+# qualquer planilha para obter os dados da IES
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+nome.IES <- unique(sucupira.raw$`IES Nome`)
+sigla.IES <- unique(sucupira.raw$`IES Sigla`)
+```
+
+---
+title: "OBSERVATÓRIO `r sigla.PPG`"
+---
 
 <!--script for hover effect on table-->
 ```{css}
@@ -76,9 +94,7 @@ h3 {
 
 <br>
 
-```{r index-text-1}
-cat('<p style="font-size:1.5em">', readtext("PPG/Texts/index-text-1.txt")$text, '</p>')
-```
+<p style="font-size:1.5em"> O **Observatório `r toupper(sigla.PPG)`** é uma iniciativa do **Programa de Pós-graduação em `r nome.PPG`** do [`r toTitleCase(nome.IES)`](`r site.PPG`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
 
 </center>
 

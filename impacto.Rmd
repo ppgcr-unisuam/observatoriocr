@@ -615,55 +615,76 @@ if (dim(projetos)[1] != 0) {
 ### **Financiadores**
 
 ```{r pandemia-financiadores}
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-financiadores.sub <-
-  financiadores.raw %>% select("Ano",
-                               "Agência",
-                               "Edital",
-                               "Processo No.",
-                               "Título do projeto",
-                               "Programa")
-fonte.sub <- financiadores.raw %>% select("Fonte")
-
-financiadores <-
-  financiadores.sub[complete.cases(financiadores.sub),]
-fonte <- fonte.sub[complete.cases(financiadores.sub),]
-
-# selecting those with COVID in the title
-financiadores <-
-  financiadores[grep(paste(tolower(pandemia), collapse = "|"),
-                     tolower(financiadores$`Título do projeto`)),]
-fonte <-
-  fonte[grep(paste(tolower(pandemia), collapse = "|"),
-             tolower(financiadores$`Título do projeto`)),]
-
-if (dim(financiadores)[1] != 0) {
-  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-  colnames(Abrir) <- "Abrir"
-  # add hyperlinks
-  for (i in 1:dim(fonte)[1]) {
-    if (!is.na(fonte[i, 1])) {
-      Abrir[i] <-
-        paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+# this chunk requires additional data that may nnot be available
+tryCatch(
+  expr = {
+    financiadores.raw <-
+      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+    
+    financiadores.sub <-
+      financiadores.raw %>% select("Ano",
+                                   "Agência",
+                                   "Edital",
+                                   "Processo No.",
+                                   "Título do projeto",
+                                   "Programa")
+    fonte.sub <- financiadores.raw %>% select("Fonte")
+    
+    financiadores <-
+      financiadores.sub[complete.cases(financiadores.sub), ]
+    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+    
+    # selecting those with COVID in the title
+    financiadores <-
+      financiadores[grep(paste(tolower(pandemia), collapse = "|"),
+                         tolower(financiadores$`Título do projeto`)), ]
+    fonte <-
+      fonte[grep(paste(tolower(pandemia), collapse = "|"),
+                 tolower(financiadores$`Título do projeto`)), ]
+    
+    if (dim(financiadores)[1] != 0) {
+      Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+      colnames(Abrir) <- "Abrir"
+      # add hyperlinks
+      for (i in 1:dim(fonte)[1]) {
+        if (!is.na(fonte[i, 1])) {
+          Abrir[i] <-
+            paste0('<a href="',
+                   fonte[i, 1],
+                   '" target="_blank"',
+                   '>',
+                   '↗️' ,
+                   '</a>')
+        }
+      }
+      
+      financiadores <- cbind(financiadores, Abrir)
+      financiadores <-
+        financiadores[order(financiadores$Ano, decreasing = TRUE),]
+      
+      source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+      create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores")
+    } else {
+      cat('\n\n')
+      cat('*Sem produção para exibir no período*')
+      cat('\n\n')
     }
+    
+    cat('\n\n')
+    
+    cat(
+      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+    )
+  },
+  error = function(e) {
+    cat('\n')
+    cat('*Sem dados para exibir*')
+    cat('\n')
   }
-  
-  financiadores <- cbind(financiadores, Abrir)
-  financiadores <-
-    financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-  
-  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores")
-} else {
-  cat('\n\n')
-  cat('*Sem produção para exibir no período*')
-  cat('\n\n')
-}
+)
 ```
 
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
+<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

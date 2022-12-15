@@ -356,37 +356,51 @@ cat('</div>')
 ```{r auto-financiadores-agencia-programa}
 options(scipen = 10)
 
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & PROGRAMA
-financiadores <-
-  financiadores.raw %>% select("Agência", "Programa")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-# generate table (total per edital, per agency)
-table.1 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    statistic = all_categorical() ~ c("{n}"),
-    missing = "no",
-    sort = all_categorical() ~ "frequency"
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.1
+# this chunk requires additional data that may nnot be available
+tryCatch(
+  expr = {
+    financiadores.raw <-
+      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+    
+    # select variables to display, by AGENCIA & PROGRAMA
+    financiadores <-
+      financiadores.raw %>% select("Agência", "Programa")
+    
+    # drop rows with empty cells
+    financiadores <- financiadores[complete.cases(financiadores),]
+    
+    # generate table (total per edital, per agency)
+    table.1 <-
+      tbl_summary(
+        financiadores,
+        by = "Agência",
+        statistic = all_categorical() ~ c("{n}"),
+        missing = "no",
+        sort = all_categorical() ~ "frequency"
+      ) %>%
+      add_overall(last = TRUE,
+                  col_label = "Total") %>%
+      modify_header(label = "**Agência**") %>%
+      modify_footnote(update = everything() ~ NA) %>%
+      bold_labels()
+    # print table
+    table.1
+    
+    cat('\n\n')
+    
+    cat(
+      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+    )
+  },
+  error = function(e) {
+    cat('\n')
+    cat('*Sem dados para exibir*')
+    cat('\n')
+  }
+)
 ```
 
 <br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -397,41 +411,56 @@ table.1
 ```{r auto-financiadores-agencia-ano}
 options(scipen = 10)
 
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & ANO
-financiadores <-
-  financiadores.raw %>% select("Ano", "Agência", "Total")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-financiadores <- financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-financiadores$Ano <- as.factor(financiadores$Ano)
-
-# generate table (total per year, per agency)
-table.2 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    type = list(all_continuous() ~ "continuous"),
-    statistic = list(all_continuous() ~ c("R$ {sum}")),
-    missing = "no",
-    digits = "Total" ~ 2
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.2
+# this chunk requires additional data that may nnot be available
+tryCatch(
+  expr = {
+    financiadores.raw <-
+      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+    
+    # select variables to display, by AGENCIA & ANO
+    financiadores <-
+      financiadores.raw %>% select("Ano", "Agência", "Total")
+    
+    # drop rows with empty cells
+    financiadores <- financiadores[complete.cases(financiadores),]
+    
+    financiadores <-
+      financiadores[order(financiadores$Ano, decreasing = TRUE),]
+    financiadores$Ano <- as.factor(financiadores$Ano)
+    
+    # generate table (total per year, per agency)
+    table.2 <-
+      tbl_summary(
+        financiadores,
+        by = "Agência",
+        type = list(all_continuous() ~ "continuous"),
+        statistic = list(all_continuous() ~ c("R$ {sum}")),
+        missing = "no",
+        digits = "Total" ~ 2
+      ) %>%
+      add_overall(last = TRUE,
+                  col_label = "Total") %>%
+      modify_header(label = "**Agência**") %>%
+      modify_footnote(update = everything() ~ NA) %>%
+      bold_labels()
+    # print table
+    table.2
+    
+    cat('\n\n')
+    
+    cat(
+      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+    )
+  },
+  error = function(e) {
+    cat('\n')
+    cat('*Sem dados para exibir*')
+    cat('\n')
+  }
+)
 ```
 
 <br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -442,41 +471,56 @@ table.2
 ```{r auto-financiadores-agencia-docentes}
 options(scipen = 10)
 
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & ANO
-financiadores <-
-  financiadores.raw %>% select("Proponente", "Agência", "Total")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-financiadores <- financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
-financiadores$Proponente <- as.factor(financiadores$Proponente)
-
-# generate table (total per year, per agency)
-table.2 <-
-  tbl_summary(
-    financiadores,
-    by = "Agência",
-    type = list(all_continuous() ~ "continuous"),
-    statistic = list(all_continuous() ~ c("R$ {sum}")),
-    missing = "no",
-    digits = "Total" ~ 2
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Agência**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.2
+# this chunk requires additional data that may nnot be available
+tryCatch(
+  expr = {
+    financiadores.raw <-
+      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+    
+    # select variables to display, by AGENCIA & ANO
+    financiadores <-
+      financiadores.raw %>% select("Proponente", "Agência", "Total")
+    
+    # drop rows with empty cells
+    financiadores <- financiadores[complete.cases(financiadores),]
+    
+    financiadores <-
+      financiadores[order(financiadores$Proponente, decreasing = TRUE),]
+    financiadores$Proponente <- as.factor(financiadores$Proponente)
+    
+    # generate table (total per year, per agency)
+    table.2 <-
+      tbl_summary(
+        financiadores,
+        by = "Agência",
+        type = list(all_continuous() ~ "continuous"),
+        statistic = list(all_continuous() ~ c("R$ {sum}")),
+        missing = "no",
+        digits = "Total" ~ 2
+      ) %>%
+      add_overall(last = TRUE,
+                  col_label = "Total") %>%
+      modify_header(label = "**Agência**") %>%
+      modify_footnote(update = everything() ~ NA) %>%
+      bold_labels()
+    # print table
+    table.2
+    
+    cat('\n\n')
+    
+    cat(
+      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+    )
+  },
+  error = function(e) {
+    cat('\n')
+    cat('*Sem dados para exibir*')
+    cat('\n')
+  }
+)
 ```
 
 <br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -487,41 +531,56 @@ table.2
 ```{r auto-financiadores-docente-ano}
 options(scipen = 10)
 
-financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
-# select variables to display, by AGENCIA & ANO
-financiadores <-
-  financiadores.raw %>% select("Proponente", "Ano", "Total")
-
-# drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores), ]
-
-financiadores <- financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
-financiadores$Proponente <- as.factor(financiadores$Proponente)
-
-# generate table (total per year, per docente)
-table.2 <-
-  tbl_summary(
-    financiadores,
-    by = "Ano",
-    type = list(all_continuous() ~ "continuous"),
-    statistic = list(all_continuous() ~ c("R$ {sum}")),
-    missing = "no",
-    digits = "Total" ~ 2
-  ) %>%
-  add_overall(last = TRUE,
-              col_label = "Total") %>%
-  modify_header(label = "**Ano**") %>%
-  modify_footnote(update = everything() ~ NA) %>%
-  bold_labels()
-# print table
-table.2
+# this chunk requires additional data that may nnot be available
+tryCatch(
+  expr = {
+    financiadores.raw <-
+      read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+    
+    # select variables to display, by AGENCIA & ANO
+    financiadores <-
+      financiadores.raw %>% select("Proponente", "Ano", "Total")
+    
+    # drop rows with empty cells
+    financiadores <- financiadores[complete.cases(financiadores),]
+    
+    financiadores <-
+      financiadores[order(financiadores$Proponente, decreasing = TRUE),]
+    financiadores$Proponente <- as.factor(financiadores$Proponente)
+    
+    # generate table (total per year, per docente)
+    table.2 <-
+      tbl_summary(
+        financiadores,
+        by = "Ano",
+        type = list(all_continuous() ~ "continuous"),
+        statistic = list(all_continuous() ~ c("R$ {sum}")),
+        missing = "no",
+        digits = "Total" ~ 2
+      ) %>%
+      add_overall(last = TRUE,
+                  col_label = "Total") %>%
+      modify_header(label = "**Ano**") %>%
+      modify_footnote(update = everything() ~ NA) %>%
+      bold_labels()
+    # print table
+    table.2
+    
+    cat('\n\n')
+    
+    cat(
+      "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+    )
+  },
+  error = function(e) {
+    cat('\n')
+    cat('*Sem dados para exibir*')
+    cat('\n')
+  }
+)
 ```
 
 <br>
-
-*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 

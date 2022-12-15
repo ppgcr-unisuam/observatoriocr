@@ -784,7 +784,7 @@ if (has.file) {
 }
 ```
 
-```{r sintese-financiadores-carousel}
+```{r sintese-financiadores-carousel, eval = has.file}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-

@@ -789,20 +789,40 @@ if (has.file) {
 has.file <-
   !is.error(try(financiadores.raw <-
                   read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+                silent = TRUE)
+  )
 
 try(bs_carousel(id = "financiadores-carousel",
                 use_indicators = FALSE,
                 use_controls = TRUE) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png")) %>%
-      bs_append(id = "financiadores-carousel", content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-6.png")),
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")
+      ) %>%
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")
+      ) %>%
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")
+      ) %>%
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")
+      ) %>%
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png")
+      ) %>%
+      bs_append(
+        id = "financiadores-carousel",
+        content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-6.png")
+      ),
     silent = TRUE)
 
-if (has.file) {
+if (has.file)
+{
   cat('\n\n')
   cat(
     "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"

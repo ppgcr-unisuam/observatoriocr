@@ -1270,9 +1270,11 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")
 has.file <-
   !is.error(try(financiadores.raw <-
                   read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+                silent = TRUE)
+  )
 
-if (has.file) {
+if (has.file)
+{
   financiadores.sub <-
     financiadores.raw %>% select("Ano",
                                  "Agência",
@@ -1283,29 +1285,36 @@ if (has.file) {
   fonte.sub <- financiadores.raw %>% select("Fonte")
   
   financiadores <-
-    financiadores.sub[complete.cases(financiadores.sub),]
-  fonte <- fonte.sub[complete.cases(financiadores.sub),]
+    financiadores.sub[complete.cases(financiadores.sub), ]
+  fonte <- fonte.sub[complete.cases(financiadores.sub), ]
   
   fonte <-
-    fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024,]
+    fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
   financiadores <-
     financiadores[financiadores$Ano >= 2021 &
-                    financiadores$Ano <= 2024,]
+                    financiadores$Ano <= 2024, ]
   
-  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-  colnames(Abrir) <- "Abrir"
-  # add hyperlinks
-  for (i in 1:dim(fonte)[1]) {
-    if (!is.na(fonte[i, 1])) {
-      Abrir[i] <-
-        paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+  if (dim(financiadores)[1] != 0) {
+    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+    colnames(Abrir) <- "Abrir"
+    # add hyperlinks
+    for (i in 1:dim(fonte)[1])
+    {
+      if (!is.na(fonte[i, 1]))
+      {
+        Abrir[i] <-
+          paste0('<a href="',
+                 fonte[i, 1],
+                 '" target="_blank"',
+                 '>',
+                 '↗️' ,
+                 '</a>')
+      }
     }
+    financiadores <- cbind(financiadores, Abrir)
+    financiadores <-
+      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
-  
-  financiadores <- cbind(financiadores, Abrir)
-  financiadores <-
-    financiadores[order(financiadores$Ano, decreasing = TRUE),]
-  
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1357,19 +1366,27 @@ if (has.file) {
       financiadores[financiadores$Ano >= 2017 &
                       financiadores$Ano <= 2020, ]
     
+  if (dim(financiadores)[1] != 0) {
     Abrir <- matrix(NA, nrow = dim(financiadores)[1])
     colnames(Abrir) <- "Abrir"
     # add hyperlinks
-    for (i in 1:dim(fonte)[1]) {
-      if (!is.na(fonte[i, 1])) {
+    for (i in 1:dim(fonte)[1])
+    {
+      if (!is.na(fonte[i, 1]))
+      {
         Abrir[i] <-
-          paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+          paste0('<a href="',
+                 fonte[i, 1],
+                 '" target="_blank"',
+                 '>',
+                 '↗️' ,
+                 '</a>')
       }
     }
-    
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+  }
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1421,19 +1438,27 @@ if (has.file) {
       financiadores[financiadores$Ano >= 2013 &
                       financiadores$Ano <= 2016, ]
     
+  if (dim(financiadores)[1] != 0) {
     Abrir <- matrix(NA, nrow = dim(financiadores)[1])
     colnames(Abrir) <- "Abrir"
     # add hyperlinks
-    for (i in 1:dim(fonte)[1]) {
-      if (!is.na(fonte[i, 1])) {
+    for (i in 1:dim(fonte)[1])
+    {
+      if (!is.na(fonte[i, 1]))
+      {
         Abrir[i] <-
-          paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+          paste0('<a href="',
+                 fonte[i, 1],
+                 '" target="_blank"',
+                 '>',
+                 '↗️' ,
+                 '</a>')
       }
     }
-    
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+  }
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1485,19 +1510,27 @@ if (has.file) {
       financiadores[financiadores$Ano >= 2010 &
                       financiadores$Ano <= 2012, ]
     
+  if (dim(financiadores)[1] != 0) {
     Abrir <- matrix(NA, nrow = dim(financiadores)[1])
     colnames(Abrir) <- "Abrir"
     # add hyperlinks
-    for (i in 1:dim(fonte)[1]) {
-      if (!is.na(fonte[i, 1])) {
+    for (i in 1:dim(fonte)[1])
+    {
+      if (!is.na(fonte[i, 1]))
+      {
         Abrir[i] <-
-          paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+          paste0('<a href="',
+                 fonte[i, 1],
+                 '" target="_blank"',
+                 '>',
+                 '↗️' ,
+                 '</a>')
       }
     }
-    
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+  }
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1548,19 +1581,27 @@ if (has.file) {
     financiadores <-
       financiadores[financiadores$Ano < 2010, ]
     
+  if (dim(financiadores)[1] != 0) {
     Abrir <- matrix(NA, nrow = dim(financiadores)[1])
     colnames(Abrir) <- "Abrir"
     # add hyperlinks
-    for (i in 1:dim(fonte)[1]) {
-      if (!is.na(fonte[i, 1])) {
+    for (i in 1:dim(fonte)[1])
+    {
+      if (!is.na(fonte[i, 1]))
+      {
         Abrir[i] <-
-          paste0('<a href="', fonte[i, 1], '" target="_blank"', '>', '↗️' , '</a>')
+          paste0('<a href="',
+                 fonte[i, 1],
+                 '" target="_blank"',
+                 '>',
+                 '↗️' ,
+                 '</a>')
       }
     }
-    
     financiadores <- cbind(financiadores, Abrir)
     financiadores <-
       financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+  }
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')

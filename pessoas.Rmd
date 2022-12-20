@@ -3420,7 +3420,7 @@ O PPGCR possui 4 grupos de pesquisa cadastrados no Diretório de Grupos de Pesqu
 <br>
 
 ```{r grupos-de-pesquisa-ativos}
-grupos.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
+grupos.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
 
 # print tables
 print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -3433,7 +3433,7 @@ print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% k
 ### **Membros**
 
 ```{r grupos-de-pesquisa-membros}
-membros.raw <- read_excel("../PPGCR Unisuam/Grupos de Pesquisa.xlsx", sheet = "DGP")
+membros.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "DGP")
 
 # print tables
 print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))

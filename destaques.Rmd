@@ -524,13 +524,13 @@ for (id in 1:length(orcids)) {
 
 <br>
 
-### **Blog UNISUAM** {.tabset}
+### **Blog institucional** {.tabset}
 
 <br>
 
-```{r blogs-unisuam}
+```{r blogs-ies}
 # read separate sheets
-file.path <- "PPG/Blog_unisuam.xlsx"
+file.path <- "PPG/Blog_IES.xlsx"
 tabs <- excel_sheets(file.path)
 topics <- c()
 news.list <- vector(mode = "list", length = length(tabs))

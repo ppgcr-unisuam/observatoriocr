@@ -21,6 +21,26 @@ source(file.path("Scripts", "citescore.R"), local = knitr::knit_global())
 source(file.path("Scripts", "webqualis.R"), local = knitr::knit_global())
 ```
 
+
+```{r ppg-data}
+# get initials from the PPG data
+nome.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2]
+
+nome.PPG.split <- str_split_1(as.character(nome.PPG)[[1]], " ")
+match.stopwords <- match(str_split_1(as.character(nome.PPG)[[1]], " "), stopwords("portuguese"))
+nome.PPG.no.stopwords <- paste(nome.PPG.split[is.na(match.stopwords)], collapse = " ")
+source("Scripts/get-initials.R")
+sigla.PPG <- initials(nome.PPG.no.stopwords)
+
+site.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Endereço", col_types = c("text"))[7,2]
+
+# qualquer planilha para obter os dados da IES
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+nome.IES <- unique(sucupira.raw$`IES Nome`)
+sigla.IES <- unique(sucupira.raw$`IES Sigla`)
+```
+
 <!--get data-->
 ```{r metrics-artigos, cache = TRUE, cache.path = "cache/artigos/"}
 # read data
@@ -229,4 +249,158 @@ formatted_citations <-
 colnames(formatted_citations) <- c("ID", "Reference")
 
 references_eventos <- formatted_citations
+```
+
+<!--check available files in PPG folder-->
+```{r try-apresentacao}
+has.apresentacao <-
+  !is.error(try(read_excel(paste0("PPG/Apresentação.xlsx"), sheet = 1),
+                silent = TRUE)
+  )
+```
+
+```{r try-autoavaliacoes}
+has.autoavaliacoes <-
+  !is.error(try(read_excel(paste0("PPG/Autoavaliações.xlsx"), sheet = 1),
+                silent = TRUE)
+  )
+```
+
+```{r try-bibliografia}
+has.bibliografia <-
+  !is.error(try(read_excel(paste0("PPG/Bibliografia.xlsx"), sheet = 1),
+                silent = TRUE)
+  )
+```
+
+```{r try-blog-externos}
+has.blog.externos <-
+  !is.error(try(read_excel(paste0("PPG/Blog_externos.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-blog-ies}
+has.blog.ies <-
+  !is.error(try(read_excel(paste0("PPG/Blog_IES.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-bolsas}
+has.bolsas <-
+  !is.error(try(read_excel(paste0("PPG/Bolsas.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-calendarios}
+has.calendarios <-
+  !is.error(try(read_excel(paste0("PPG/Calendários.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-cep}
+has.cep <-
+  !is.error(try(read_excel(paste0("PPG/CEP.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-convenios}
+has.convenios <-
+  !is.error(try(read_excel(paste0("PPG/Convênios.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-cooperacoes}
+has.cooperacoes <-
+  !is.error(try(read_excel(paste0("PPG/Cooperações.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-destaques}
+has.destaques <-
+  !is.error(try(read_excel(paste0("PPG/Destaques.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-donwloads}
+has.downloads <-
+  !is.error(try(read_excel(paste0("PPG/Donwloads.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-financiadores}
+has.financiadores <-
+  !is.error(try(read_excel("PPG/Financiadores.xlsx", sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-grupos-pesquisa}
+has.grupos.pesquisa <-
+  !is.error(try(read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-internacionalizacao}
+has.internacionalizacao <-
+  !is.error(try(read_excel(paste0("PPG/Internacionalização.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-laboratorios}
+has.laboratorios <-
+  !is.error(try(read_excel(paste0("PPG/Laboratórios.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-notas}
+has.notas <-
+  !is.error(try(read_excel(paste0("PPG/Notas.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-premios}
+has.premios <-
+  !is.error(try(read_excel(paste0("PPG/Prêmios.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-repositorios}
+has.repositorios <-
+  !is.error(try(read_excel(paste0("PPG/Repositórios.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-softwares}
+has.softwares <-
+  !is.error(try(read_excel(paste0("PPG/Softwares.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+
+<!--check available files in OTHER folder-->
+
+```{r ppg-folder}
+PPG.folder <- "PPGCR UNISUAM"
+```
+
+```{r try-discentes}
+has.discentes <-
+  !is.error(try(read_excel(paste0("../", PPG.folder, "/Discentes.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-docentes-posdocs}
+has.docentes.posdocs <-
+  !is.error(try(read_excel(paste0("../", PPG.folder, "/Docentes e Pós-Docs.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-inventario}
+has.inventario <-
+  !is.error(try(read_excel(paste0("../", PPG.folder, "/Inventário.xlsx"), sheet = 1),
+                silent = TRUE))
+```
+
+```{r try-producao}
+has.producao <-
+  !is.error(try(read_excel(paste0("../", PPG.folder, "/Produção.xlsx"), sheet = "1"), silent = TRUE))
 ```

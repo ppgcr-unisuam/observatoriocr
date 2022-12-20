@@ -315,7 +315,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 <br>
 
-#### **CEP-UNISUAM** {#CEP .tabset}
+#### **Comitê de Ética em Pesquisa** {#CEP .tabset}
 
 <p align="center">
 [<img align="center" src="Images/logo-cep.png">](https://www.unisuam.edu.br/pesquisa-e-inovacao/){target="_blank"}
@@ -328,7 +328,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 ```{r cep-vigentes}
 # read separate sheets
 vigentes.raw <-
-  read_excel("PPG/CEP-UNISUAM.xlsx",
+  read_excel("PPG/CEP.xlsx",
              sheet = "Vigentes",
              col_types = c("text"))
 
@@ -359,7 +359,7 @@ print(
 ```{r cep-revogados}
 # read separate sheets
 revogados.raw <-
-  read_excel("PPG/CEP-UNISUAM.xlsx",
+  read_excel("PPG/CEP.xlsx",
              sheet = "Revogados",
              col_types = c("text"))
 

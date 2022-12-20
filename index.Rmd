@@ -21,32 +21,9 @@ knitr::opts_chunk$set(
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
-```{r}
-# get initials from the PPG data
-nome.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Dados do programa", col_types = c("text"))[2,2]
-
-nome.PPG.split <- str_split_1(as.character(nome.PPG)[[1]], " ")
-match.stopwords <- match(str_split_1(as.character(nome.PPG)[[1]], " "), stopwords("portuguese"))
-nome.PPG.no.stopwords <- paste(nome.PPG.split[is.na(match.stopwords)], collapse = " ")
-source("Scripts/get-initials.R")
-sigla.PPG <- initials(nome.PPG.no.stopwords)
-
-site.PPG <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Endereço", col_types = c("text"))[7,2]
-
-# qualquer planilha para obter os dados da IES
-sheet <- "Docentes"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-nome.IES <- unique(sucupira.raw$`IES Nome`)
-sigla.IES <- unique(sucupira.raw$`IES Sigla`)
-```
-
 ---
 title: "OBSERVATÓRIO `r sigla.PPG`"
 ---
-
-```{r ppg-folder}
-PPG.folder <- "PPGCR UNISUAM"
-```
 
 <!--script for hover effect on table-->
 ```{css}
@@ -534,13 +511,6 @@ bs_carousel(id = "projetos-carousel",
 
 <br>
 
-```{r try-financiadores}
-has.financiadores <-
-  !is.error(try(read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
-```
-
 ```{r sintese-financiadores, include = FALSE, eval = has.financiadores}
 # this chunk requires additional data that may be available
 
@@ -829,11 +799,6 @@ cat(
 <br>
 
 <br>
-
-```{r try-producao}
-has.producao <-
-  !is.error(try(read_excel(paste0("../", PPG.folder, "/Produção.xlsx"), sheet = "PI.completos"), silent = TRUE))
-```
 
 ```{r sintese-producao, include = FALSE, eval = has.producao}
 # this chunk requires additional data that may be available
@@ -1209,12 +1174,6 @@ cat(
 <br>
 
 <br>
-
-```{r try-discentes}
-has.discentes <-
-  !is.error(try(read_excel(paste0("../", PPG.folder, "/Discentes.xlsx"), sheet = "DATA.discentes"),
-                silent = TRUE))
-```
 
 ```{r sintese-pessoal, include = FALSE, eval = has.discentes}
 # this chunk requires additional data that may be available

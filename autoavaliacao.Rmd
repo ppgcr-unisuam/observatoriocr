@@ -211,7 +211,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 .val-b { background: #F39C12 }
 ```
 
-```{r barchart-data}
+```{r barchart-data, eval = has.sucupira & has.PPG.files}
 # get amount of data from Sucupira XLSX files
 source("Scripts/get-sucupira-sheets-names.R",
        local = knitr::knit_global())

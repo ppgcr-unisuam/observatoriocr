@@ -57,7 +57,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 ### **Teses**
 
-```{r tcc-dsc}
+```{r tcc-dsc, eval = has.sucupira}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -108,7 +108,7 @@ colnames(table.tcc) <-
 
 ### **Dissertações**
 
-```{r tcc-msc}
+```{r tcc-msc, eval = has.sucupira}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())

@@ -79,7 +79,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 ##### **Doutorado**
 
-```{r bolsistas-dsc}
+```{r bolsistas-dsc, eval = has.sucupira}
 # select level
 course.level <- "TESE"
 
@@ -131,7 +131,7 @@ if (dim(bolsistas)[1] != 0) {
 
 ##### **Mestrado**
 
-```{r bolsistas-msc}
+```{r bolsistas-msc, eval = has.sucupira}
 # select level
 course.level <- "DISSERTAÇÃO"
 
@@ -185,7 +185,7 @@ if (dim(bolsistas)[1] != 0) {
 
 #### **Teses**
 
-```{r tcc-dsc-financiados}
+```{r tcc-dsc-financiados, eval = has.sucupira}
 # bolsistas
 sheet <- "TCC - Financiadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -231,7 +231,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 #### **Dissertações**
 
-```{r tcc-msc-financiados}
+```{r tcc-msc-financiados, eval = has.sucupira}
 # bolsistas
 sheet <- "TCC - Financiadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -557,7 +557,7 @@ references_eventos_impacto <-
 
 ### **Projetos de pesquisa**
 
-```{r pandemia-projetos}
+```{r pandemia-projetos, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -696,7 +696,7 @@ if (has.file){
 
 ### **Trabalhos de conclusão de curso**
 
-```{r pandemia-tcc}
+```{r pandemia-tcc, eval = has.sucupira}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())

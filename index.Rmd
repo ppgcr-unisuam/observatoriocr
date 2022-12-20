@@ -22,7 +22,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 ---
-title: "OBSERVATÓRIO `r sigla.PPG`"
+title: "OBSERVATÓRIO `r ifelse(has.dados.cadastrais, sigla.PPG, "")`"
 ---
 
 <!--script for hover effect on table-->
@@ -74,13 +74,17 @@ h3 {
 
 <br>
 
+```{r landingpage-logo}
+has.logo.ies <- file.exists("PPG/Images/logo-IES.png")
+```
+
 <center>
 
-<img src="PPG/Images/logo-IES.png" align="center"/>
+`r if(has.logo.ies){cat('<img src=\"PPG/Images/logo-IES.png\" align=\"center\"/>')}`
 
 <br>
 
-<p style="font-size:1.5em"> O **Observatório `r toupper(sigla.PPG)`** é uma iniciativa do **Programa de Pós-graduação em `r nome.PPG`** do [`r toTitleCase(as.character(nome.IES))`](`r site.PPG`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
+<p style="font-size:1.5em"> O **Observatório `r ifelse(has.dados.cadastrais, toupper(sigla.PPG), "")`** é uma iniciativa do **Programa de Pós-graduação em `r ifelse(has.dados.cadastrais, nome.PPG, "")`** do [`r ifelse(has.dados.cadastrais, toTitleCase(as.character(nome.IES)), "")`](`r ifelse(has.sucupira, site.PPG, "")`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade.</p>
 
 </center>
 
@@ -88,7 +92,7 @@ h3 {
 
 <br>
 
-```{r sintese-coerencia, include = FALSE}
+```{r sintese-coerencia, include = FALSE, eval = has.sucupira}
 # projetos
 sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -309,22 +313,25 @@ summ.data <- c(summ.coerencia.1, summ.coerencia.2)
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-coerencia-carousel}
+```{r sintese-coerencia-carousel, eval = has.sucupira}
 # carousel
 bs_carousel(id = "coerencia-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-2.png"))
+
+cat('\n\n')
+cat(
+  "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)"
+)
 ```
 
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
 <br>
 
 <br>
 
-```{r sintese-temas, include = FALSE}
+```{r sintese-temas, include = FALSE, eval = has.sucupira}
 # file path to save the wordclouds
 dir.path <- file.path(getwd(), "index_files", "figure-html")
 dir.create(dir.path, recursive = TRUE)
@@ -351,7 +358,7 @@ cloud.title <- "Temas de Produção"
 source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
 ```
 
-```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira}
 # carousel of wordclouds
 bs_carousel(id = "temas-carouse",
             use_indicators = FALSE,
@@ -359,15 +366,18 @@ bs_carousel(id = "temas-carouse",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/TCC.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/Produções.png"))
+
+cat('\n\n')
+cat(
+  "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)"
+)
 ```
 
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
 <br>
 
 <br>
 
-```{r sintese-projetos, include = FALSE}
+```{r sintese-projetos, include = FALSE, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -495,7 +505,7 @@ summ.data <- summ.table.projetos
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-projetos-carousel}
+```{r sintese-projetos-carousel, eval = has.sucupira}
 # carousel
 bs_carousel(id = "projetos-carousel",
             use_indicators = FALSE,
@@ -503,9 +513,12 @@ bs_carousel(id = "projetos-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-3.png"))
-```
 
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+cat('\n\n')
+cat(
+  "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)"
+)
+```
 
 <br>
 
@@ -755,6 +768,8 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 summ.data <- summ.table.financiadores
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
+
+cat('\n\n')
 cat(
   "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **PPG**"
 )
@@ -1533,7 +1548,7 @@ cat(
 
 <br>
 
-```{r sintese-rede, include = FALSE}
+```{r sintese-rede, include = FALSE, eval = has.sucupira}
 # projetos
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1806,7 +1821,7 @@ summ.data <- summ.table.ies
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%"}
+```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira}
 # carousel
 bs_carousel(id = "rede-carousel",
             use_indicators = FALSE,
@@ -1817,9 +1832,12 @@ bs_carousel(id = "rede-carousel",
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png")) %>%
   bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-5.png"))
-```
 
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
+cat('\n\n')
+cat(
+  "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)"
+)
+```
 
 <br>
 

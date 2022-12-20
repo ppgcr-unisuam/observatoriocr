@@ -460,7 +460,7 @@ Os docentes vinculados ao PPGCR são orientados a coordenar até 2 PP institucio
 
 #### **Figura**
 
-```{r projetos-de-pesquisa-2024-grafico}
+```{r projetos-de-pesquisa-2024-grafico, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -534,7 +534,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 #### **Tabela**
 
-```{r projetos-de-pesquisa-2024-tabela}
+```{r projetos-de-pesquisa-2024-tabela, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -611,7 +611,7 @@ cat("  \n")
 
 <br>
 
-```{r projetos-de-pesquisa-2024-lista}
+```{r projetos-de-pesquisa-2024-lista, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -650,7 +650,7 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2021-2024")
 
 #### **Figura**
 
-```{r projetos-de-pesquisa-2020-grafico}
+```{r projetos-de-pesquisa-2020-grafico, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -724,7 +724,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 #### **Tabela**
 
-```{r projetos-de-pesquisa-2020-tabela}
+```{r projetos-de-pesquisa-2020-tabela, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -801,7 +801,7 @@ cat("  \n")
 
 <br>
 
-```{r projetos-de-pesquisa-2020-lista}
+```{r projetos-de-pesquisa-2020-lista, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -840,7 +840,7 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2020-2017")
 
 #### **Figura**
 
-```{r projetos-de-pesquisa-2016-grafico}
+```{r projetos-de-pesquisa-2016-grafico, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -914,7 +914,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 #### **Tabela**
 
-```{r projetos-de-pesquisa-2016-tabela}
+```{r projetos-de-pesquisa-2016-tabela, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -991,7 +991,7 @@ cat("  \n")
 
 <br>
 
-```{r projetos-de-pesquisa-2016-lista}
+```{r projetos-de-pesquisa-2016-lista, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1030,7 +1030,7 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2013-2016")
 
 #### **Figura**
 
-```{r projetos-de-pesquisa-concluidos-2012-grafico}
+```{r projetos-de-pesquisa-concluidos-2012-grafico, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1103,7 +1103,7 @@ title("Projetos de Pesquisa", outer = TRUE)
 
 #### **Tabela**
 
-```{r projetos-de-pesquisa-concluidos-2012-tabela}
+```{r projetos-de-pesquisa-concluidos-2012-tabela, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1179,7 +1179,7 @@ cat("  \n")
 
 <br>
 
-```{r projetos-de-pesquisa-2012-lista}
+```{r projetos-de-pesquisa-2012-lista, eval = has.sucupira}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1268,54 +1268,48 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")
 
 ```{r historico-financiadores-2024, eval = has.financiadores}
 # this chunk requires additional data that may  be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file)
-{
-  financiadores.sub <-
-    financiadores.raw %>% select("Ano",
-                                 "Agência",
-                                 "Edital",
-                                 "Processo No.",
-                                 "Título do projeto",
-                                 "Programa")
-  fonte.sub <- financiadores.raw %>% select("Fonte")
-  
-  financiadores <-
-    financiadores.sub[complete.cases(financiadores.sub), ]
-  fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-  
-  fonte <-
-    fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
-  financiadores <-
-    financiadores[financiadores$Ano >= 2021 &
-                    financiadores$Ano <= 2024, ]
-  
-  if (dim(financiadores)[1] != 0) {
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1])
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub), ]
+fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+
+fonte <-
+  fonte[financiadores$Ano >= 2021 & financiadores$Ano <= 2024, ]
+financiadores <-
+  financiadores[financiadores$Ano >= 2021 &
+                  financiadores$Ano <= 2024, ]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
     {
-      if (!is.na(fonte[i, 1]))
-      {
-        Abrir[i] <-
-          paste0('<a href="',
-                 fonte[i, 1],
-                 '" target="_blank"',
-                 '>',
-                 '↗️' ,
-                 '</a>')
-      }
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               '↗️' ,
+               '</a>')
     }
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1325,11 +1319,10 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
-if (has.file) {
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-}
+cat('\n\n')
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -1342,52 +1335,48 @@ if (has.file) {
 
 ```{r historico-financiadores-2020, eval = has.financiadores}
 # this chunk requires additional data that may  be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-    financiadores.sub <-
-      financiadores.raw %>% select("Ano",
-                                   "Agência",
-                                   "Edital",
-                                   "Processo No.",
-                                   "Título do projeto",
-                                   "Programa")
-    fonte.sub <- financiadores.raw %>% select("Fonte")
-    
-    financiadores <-
-      financiadores.sub[complete.cases(financiadores.sub), ]
-    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-    
-    fonte <-
-      fonte[financiadores$Ano >= 2017 & financiadores$Ano <= 2020, ]
-    financiadores <-
-      financiadores[financiadores$Ano >= 2017 &
-                      financiadores$Ano <= 2020, ]
-    
-  if (dim(financiadores)[1] != 0) {
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1])
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
+
+fonte <-
+  fonte[financiadores$Ano >= 2017 & financiadores$Ano <= 2020,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2017 &
+                  financiadores$Ano <= 2020,]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
     {
-      if (!is.na(fonte[i, 1]))
-      {
-        Abrir[i] <-
-          paste0('<a href="',
-                 fonte[i, 1],
-                 '" target="_blank"',
-                 '>',
-                 '↗️' ,
-                 '</a>')
-      }
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               '↗️' ,
+               '</a>')
     }
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1397,11 +1386,10 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
-if (has.file) {
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-}
+cat('\n\n')
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -1414,52 +1402,48 @@ if (has.file) {
 
 ```{r historico-financiadores-2016, eval = has.financiadores}
 # this chunk requires additional data that may  be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-    financiadores.sub <-
-      financiadores.raw %>% select("Ano",
-                                   "Agência",
-                                   "Edital",
-                                   "Processo No.",
-                                   "Título do projeto",
-                                   "Programa")
-    fonte.sub <- financiadores.raw %>% select("Fonte")
-    
-    financiadores <-
-      financiadores.sub[complete.cases(financiadores.sub), ]
-    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-    
-    fonte <-
-      fonte[financiadores$Ano >= 2013 & financiadores$Ano <= 2016, ]
-    financiadores <-
-      financiadores[financiadores$Ano >= 2013 &
-                      financiadores$Ano <= 2016, ]
-    
-  if (dim(financiadores)[1] != 0) {
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1])
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
+
+fonte <-
+  fonte[financiadores$Ano >= 2013 & financiadores$Ano <= 2016,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2013 &
+                  financiadores$Ano <= 2016,]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
     {
-      if (!is.na(fonte[i, 1]))
-      {
-        Abrir[i] <-
-          paste0('<a href="',
-                 fonte[i, 1],
-                 '" target="_blank"',
-                 '>',
-                 '↗️' ,
-                 '</a>')
-      }
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               '↗️' ,
+               '</a>')
     }
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1469,11 +1453,10 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
-if (has.file) {
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-}
+cat('\n\n')
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -1486,52 +1469,48 @@ if (has.file) {
 
 ```{r historico-financiadores-2012, eval = has.financiadores}
 # this chunk requires additional data that may  be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-    financiadores.sub <-
-      financiadores.raw %>% select("Ano",
-                                   "Agência",
-                                   "Edital",
-                                   "Processo No.",
-                                   "Título do projeto",
-                                   "Programa")
-    fonte.sub <- financiadores.raw %>% select("Fonte")
-    
-    financiadores <-
-      financiadores.sub[complete.cases(financiadores.sub), ]
-    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-    
-    fonte <-
-      fonte[financiadores$Ano >= 2010 & financiadores$Ano <= 2012, ]
-    financiadores <-
-      financiadores[financiadores$Ano >= 2010 &
-                      financiadores$Ano <= 2012, ]
-    
-  if (dim(financiadores)[1] != 0) {
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1])
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
+
+fonte <-
+  fonte[financiadores$Ano >= 2010 & financiadores$Ano <= 2012,]
+financiadores <-
+  financiadores[financiadores$Ano >= 2010 &
+                  financiadores$Ano <= 2012,]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
     {
-      if (!is.na(fonte[i, 1]))
-      {
-        Abrir[i] <-
-          paste0('<a href="',
-                 fonte[i, 1],
-                 '" target="_blank"',
-                 '>',
-                 '↗️' ,
-                 '</a>')
-      }
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               '↗️' ,
+               '</a>')
     }
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1541,11 +1520,10 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
-if (has.file) {
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-}
+cat('\n\n')
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -1558,51 +1536,47 @@ if (has.file) {
 
 ```{r historico-financiadores-2010, eval = has.financiadores}
 # this chunk requires additional data that may  be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE))
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-    financiadores.sub <-
-      financiadores.raw %>% select("Ano",
-                                   "Agência",
-                                   "Edital",
-                                   "Processo No.",
-                                   "Título do projeto",
-                                   "Programa")
-    fonte.sub <- financiadores.raw %>% select("Fonte")
-    
-    financiadores <-
-      financiadores.sub[complete.cases(financiadores.sub), ]
-    fonte <- fonte.sub[complete.cases(financiadores.sub), ]
-    
-    fonte <-
-      fonte[financiadores$Ano < 2010, ]
-    financiadores <-
-      financiadores[financiadores$Ano < 2010, ]
-    
-  if (dim(financiadores)[1] != 0) {
-    Abrir <- matrix(NA, nrow = dim(financiadores)[1])
-    colnames(Abrir) <- "Abrir"
-    # add hyperlinks
-    for (i in 1:dim(fonte)[1])
+financiadores.sub <-
+  financiadores.raw %>% select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Programa")
+fonte.sub <- financiadores.raw %>% select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub),]
+fonte <- fonte.sub[complete.cases(financiadores.sub),]
+
+fonte <-
+  fonte[financiadores$Ano < 2010,]
+financiadores <-
+  financiadores[financiadores$Ano < 2010,]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
     {
-      if (!is.na(fonte[i, 1]))
-      {
-        Abrir[i] <-
-          paste0('<a href="',
-                 fonte[i, 1],
-                 '" target="_blank"',
-                 '>',
-                 '↗️' ,
-                 '</a>')
-      }
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               '↗️' ,
+               '</a>')
     }
-    financiadores <- cbind(financiadores, Abrir)
-    financiadores <-
-      financiadores[order(financiadores$Ano, decreasing = TRUE), ]
   }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE),]
 } else {
   cat('\n\n')
   cat('*Sem dados para exibir*')
@@ -1612,11 +1586,10 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
-if (has.file) {
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-}
+cat('\n\n')
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -1765,7 +1738,7 @@ colnames(dados.do.programa.raw) <-
 #### **Doutorado** {.tabset}
 
 <center>
-  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,3]` CR**
+  **TOTAL REQUERIDO: ```{r eval = has.dados.cadastrais} dados.do.programa.raw[1,3]``` CR**
   <br>
   Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRDSC></strong>
   <br>
@@ -1787,7 +1760,7 @@ for(var i=0; i < document.formOBRDSC.ckb.length; i++){
 }
 ```
 
-```{r calculadora-doutorado-obrigatorias}
+```{r calculadora-doutorado-obrigatorias, eval = has.sucupira}
 # disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1856,7 +1829,7 @@ for(var i=0; i < document.formELEDSC.ckb.length; i++){
 }
 ```
 
-```{r calculadora-doutorado-eletivas}
+```{r calculadora-doutorado-eletivas, eval = has.sucupira}
 # disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1913,7 +1886,7 @@ if (length(disciplinas.dsc) != 0) {
 #### **Mestrado** {.tabset}
 
 <center>
-  **TOTAL REQUERIDO: `r dados.do.programa.raw[1,2]` CR**
+  **TOTAL REQUERIDO: ```{r eval = has.dados.cadastrais} dados.do.programa.raw[1,2]``` CR**
   <br>
   Créditos OBRIGATÓRIOS marcados: <strong id=msgOBRMSC></strong>
   <br>
@@ -1935,7 +1908,7 @@ for(var i=0; i < document.formOBRMSC.ckb.length; i++){
 }
 ```
 
-```{r calculadora-mestrado-obrigatorias}
+```{r calculadora-mestrado-obrigatorias, eval = has.sucupira}
 # disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2004,7 +1977,7 @@ for(var i=0; i < document.formELEMSC.ckb.length; i++){
 }
 ```
 
-```{r calculadora-mestrado-eletivas}
+```{r calculadora-mestrado-eletivas, eval = has.sucupira}
 # projetos
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2081,7 +2054,7 @@ O Eixo Técnico agrupa as disciplinas de caráter especialista, com ementas volt
 
 ### **Síntese**
 
-```{r estrutura-academica-atual-grafico}
+```{r estrutura-academica-atual-grafico, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2158,7 +2131,7 @@ cat(
 
 ### **Disciplinas**
 
-```{r estrutura-academica-atual-tabela}
+```{r estrutura-academica-atual-tabela, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2228,7 +2201,7 @@ title("Referências bibliográficas, por ano de publicação", outer = TRUE)
 
 ### **Inativas**
 
-```{r estrutura-academica-inativa}
+```{r estrutura-academica-inativa, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2273,7 +2246,7 @@ print(kable(unique(table), row.names = FALSE, align = c("l", rep("c", ncol(table
 
 ### **Síntese**
 
-```{r turmas-tabela}
+```{r turmas-tabela, eval = has.sucupira}
 # turmas
 sheet <- "Turmas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2334,7 +2307,7 @@ cat("  \n")
 
 #### **Disciplinas**
 
-```{r turmas-disciplinas-2024}
+```{r turmas-disciplinas-2024, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2435,7 +2408,7 @@ if (dim(turmas.raw)[1] != 0) {
 
 #### **Docentes**
 
-```{r turmas-docentes-2024}
+```{r turmas-docentes-2024, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2587,7 +2560,7 @@ if (dim(disciplinas.raw)[1] != 0) {
 
 ### **2020-2017**
 
-```{r turmas-2020}
+```{r turmas-2020, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2668,7 +2641,7 @@ if (dim(turmas.raw)[1] != 0) {
 
 ### **2016-2013**
 
-```{r turmas-2016}
+```{r turmas-2016, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2749,7 +2722,7 @@ if (dim(turmas.raw)[1] != 0) {
 
 ### **2012-2010**
 
-```{r turmas-2012}
+```{r turmas-2012, eval = has.sucupira}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 

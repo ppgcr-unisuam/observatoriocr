@@ -4,7 +4,7 @@ date: '`r format(Sys.Date())`'
 author:
   - name: PPGCR-UNISUAM
   - email: "cienciasdareabilitacao@souunisuam.com.br"
-repository_url: https://github.com/ppgcr-unisuam/observatoriocr/
+repository_url: https://ppgcr-unisuam.github.io/observatoriocr/
 creative_commons: CC BY-NC
 output_dir: docs
 include:

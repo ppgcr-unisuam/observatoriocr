@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -56,7 +57,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r egressos-destaque}
+```{r egressos-destaque, eval = has.destaques}
 # read separate sheets
 file.path <- "PPG/Destaques.xlsx"
 tabs <- excel_sheets(file.path)
@@ -179,7 +180,7 @@ for (j in 1:length(tabs)) {
 
 ### **Atenção e visibilidade^1,2,3^ (Top-20)** {.tabset}
 
-```{r destaque-visibilidade}
+```{r destaque-visibilidade, eval = has.producao}
 # bind sources
 doi_unique <-
   bind_rows(doi_unique_artigos,
@@ -274,7 +275,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Prestígio do periódico^4,5^ (Top-20)**
 
-```{r destaque-prestigio}
+```{r destaque-prestigio, eval = has.producao}
 # bind sources
 doi_unique <-
   bind_rows(doi_unique_artigos,
@@ -375,7 +376,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r premios}
+```{r premios, eval = has.premios}
 # read separate sheets
 file.path <- "PPG/Prêmios.xlsx"
 tabs <- excel_sheets(file.path)
@@ -528,7 +529,7 @@ for (id in 1:length(orcids)) {
 
 <br>
 
-```{r blogs-ies}
+```{r blogs-ies, eval = has.blog.ies}
 # read separate sheets
 file.path <- "PPG/Blog_IES.xlsx"
 tabs <- excel_sheets(file.path)
@@ -583,7 +584,7 @@ for (j in 1:length(tabs)) {
 
 <br>
 
-```{r blogs-externos}
+```{r blogs-externos, eval = has.blog.externos}
 # read separate sheets
 file.path <- "PPG/Blog_externos.xlsx"
 tabs <- excel_sheets(file.path)

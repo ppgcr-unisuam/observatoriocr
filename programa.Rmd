@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -61,17 +62,17 @@ O PPGCR-UNISUAM tem sua sede na Rua Dona Isabel 94, Bonsucesso, RJ, CEP 21032-06
 
 ### **Dados cadastrais**
 
-```{r apresentacao}
+```{r apresentacao, eval = has.dados.cadastrais}
 # read separate sheets
 dados.do.programa.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "Dados do programa",
              col_types = c("text"))
 colnames(dados.do.programa.raw) <-
   seq(1:dim(dados.do.programa.raw)[2])
 
 endereco.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "Endereço",
              col_types = c("text"))
 colnames(endereco.raw) <- seq(1:dim(endereco.raw)[2])
@@ -116,7 +117,7 @@ print(
 
 ### **2020-2017**
 
-```{r documentos-historicos-2020}
+```{r documentos-historicos-2020, eval = has.apresentacao}
 # read separate sheets
 quadrienal2017.raw <-
   read_excel("PPG/Apresentação.xlsx",
@@ -147,7 +148,7 @@ print(
 
 ### **2016-2013**
 
-```{r documentos-historicos-2016}
+```{r documentos-historicos-2016, eval = has.apresentacao}
 # read separate sheets
 quadrienal2013.raw <-
   read_excel("PPG/Apresentação.xlsx",
@@ -178,7 +179,7 @@ print(
 
 ### **2012-2010**
 
-```{r documentos-historicos-2012}
+```{r documentos-historicos-2012, eval = has.apresentacao}
 # read separate sheets
 trienal2010.raw <-
   read_excel("PPG/Apresentação.xlsx",
@@ -209,7 +210,7 @@ print(
 
 ### **Pré-2010**
 
-```{r documentos-historicos-2010}
+```{r documentos-historicos-2010, eval = has.apresentacao}
 # read separate sheets
 historico.raw <-
   read_excel("PPG/Apresentação.xlsx",
@@ -310,9 +311,9 @@ O PPGCR-UNISUAM organiza sua ÁREA DE CONCENTRAÇÃO (AC), LINHAS DE PESQUISA (L
 
 ### **Atual**
 
-```{r area-concetracao}
+```{r area-concetracao, eval = has.dados.cadastrais}
 area.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "AC",
              col_types = c("text"))
 area.raw$Fim <- NULL
@@ -337,9 +338,9 @@ print(
 
 ### **Inativas**
 
-```{r area-concetracao-inativas}
+```{r area-concetracao-inativas, eval = has.dados.cadastrais}
 areas.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "AC",
              col_types = c("text"))
 areas.inativas <- areas.raw[!is.na(areas.raw$Fim),]
@@ -383,9 +384,9 @@ A partir desta AC são derivadas as 3 LP vigentes: ABORDAGEM TERAPÊUTICA EM REA
 
 ### **Atual**
 
-```{r linhas-de-pesquisa-atual}
+```{r linhas-de-pesquisa-atual, eval = has.dados.cadastrais}
 linhas.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "LP",
              col_types = c("text"))
 linhas.atual <- linhas.raw[is.na(linhas.raw$Fim),]
@@ -411,9 +412,9 @@ print(
 
 ### **Inativas**
 
-```{r linhas-de-pesquisa-inativas}
+```{r linhas-de-pesquisa-inativas, eval = has.dados.cadastrais}
 linhas.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "LP",
              col_types = c("text"))
 linhas.inativas <- linhas.raw[!is.na(linhas.raw$Fim),]
@@ -1265,7 +1266,7 @@ create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")
 
 ### **2024-2021**
 
-```{r historico-financiadores-2024}
+```{r historico-financiadores-2024, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -1339,7 +1340,7 @@ if (has.file) {
 
 ### **2020-2017**
 
-```{r historico-financiadores-2020}
+```{r historico-financiadores-2020, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -1411,7 +1412,7 @@ if (has.file) {
 
 ### **2016-2013**
 
-```{r historico-financiadores-2016}
+```{r historico-financiadores-2016, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -1483,7 +1484,7 @@ if (has.file) {
 
 ### **2012-2010**
 
-```{r historico-financiadores-2012}
+```{r historico-financiadores-2012, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -1555,7 +1556,7 @@ if (has.file) {
 
 ### **Pré-2010**
 
-```{r historico-financiadores-2010}
+```{r historico-financiadores-2010, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -1661,7 +1662,7 @@ if (has.file) {
 
 ### **Portarias**
 
-```{r bolsas}
+```{r bolsas, eval = has.bolsas}
 # read separate sheets
 turmas.raw <- read_excel("PPG/Bolsas.xlsx", sheet = "PortariaBolsas", col_types = c("text"))
 
@@ -1708,9 +1709,9 @@ create_dt(turmas, title = "Portarias Bolsas CAPES")
 
 ### **Níveis**
 
-```{r cursos}
+```{r cursos, eval = has.dados.cadastrais}
 # read separate sheets
-cursos.raw <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Cursos", col_types = c("text"))
+cursos.raw <- read_excel("PPG/Dados Cadastrais.xlsx", sheet = "Cursos", col_types = c("text"))
 
 # print tables
 print(kable(cursos.raw, align = c("l", rep("c", ncol(cursos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -1736,9 +1737,9 @@ O curso de Doutorado Acadêmico em Ciências da Reabilitação objetiva a forma�
 
 ### **Créditos**
 
-```{r creditos}
+```{r creditos, eval = has.dados.cadastrais}
 # read separate sheets
-creditos.raw <- read_excel("Sucupira/Dados Cadastrais.xlsx", sheet = "Créditos", col_types = c("text"))
+creditos.raw <- read_excel("PPG/Dados Cadastrais.xlsx", sheet = "Créditos", col_types = c("text"))
 
 # print tables
 print(kable(creditos.raw, align = c("l", rep("c", ncol(creditos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -1752,9 +1753,9 @@ print(kable(creditos.raw, align = c("l", rep("c", ncol(creditos.raw)-2), "r")) %
 
 ### **Calculadora de créditos** {#calculadora-creditos}
 
-```{r calculadora-creditos}
+```{r calculadora-creditos, eval = has.dados.cadastrais}
 dados.do.programa.raw <-
-  read_excel("Sucupira/Dados Cadastrais.xlsx",
+  read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "Créditos",
              col_types = c("text"))
 colnames(dados.do.programa.raw) <-
@@ -2135,7 +2136,7 @@ legend("center", legend = obrigatoria, fill = brewer.pal(n = length(obrigatoria)
 
 ### **Ementas**
 
-```{r ementas}
+```{r ementas, eval = has.bibliografia}
 # read separate sheets
 bibliografia.raw <-
   read_excel("PPG/Bibliografia.xlsx",
@@ -2197,7 +2198,7 @@ print(kable(table, align = c("l", rep("c", ncol(table)-2), "r")) %>% kable_styli
 
 ### **Bibliografia**
 
-```{r bibliografia}
+```{r bibliografia, eval = has.bibliografia}
 # read separate sheets
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
@@ -2207,7 +2208,7 @@ create_dt(bibliografia.raw, title = "Bibliografia")
 
 <br>
 
-```{r bibliografia-ano}
+```{r bibliografia-ano, eval = has.bibliografia}
 # read separate sheets
 bibliografia.raw <- read_excel("PPG/Bibliografia.xlsx", sheet = "Bibliografia", col_types = c("text"))
 
@@ -2834,7 +2835,7 @@ if (dim(turmas.raw)[1] != 0) {
 
 ### **Sede**
 
-```{r calendarios-sede}
+```{r calendarios-sede, eval = has.calendarios}
 # read separate sheets
 turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Sede", col_types = c("text"))
 
@@ -2863,7 +2864,7 @@ create_dt(turmas, title = "Calendários")
 
 ### **Cooperação Interinstitucional**
 
-```{r calendarios-cooperacao}
+```{r calendarios-cooperacao, eval = has.calendarios}
 # read separate sheets
 turmas.raw <- read_excel("PPG/Calendários.xlsx", sheet = "Cooperação", col_types = c("text"))
 
@@ -2897,7 +2898,7 @@ create_dt(turmas, title = "Calendários")
 
 ### **Laboratórios**
 
-```{r laboratorios-descritivo}
+```{r laboratorios-descritivo, eval = has.laboratorios}
 # read separate sheets
 dados.lab <- read_excel("PPG/Laboratórios.xlsx", sheet = "Dados")
 
@@ -2917,7 +2918,7 @@ print(
 
 <br>
 
-```{r laboratorios-equipamentos}
+```{r laboratorios-equipamentos, eval = has.laboratorios}
 # read data
 labs <-
   read_excel("PPG/Laboratórios.xlsx",
@@ -2974,7 +2975,7 @@ for (i in 1:dim(labs)[1]) {
 
 ### **Planta**
 
-```{r laboratorios-planta}
+```{r laboratorios-planta, eval = has.laboratorios}
 knitr::include_graphics(file.path(getwd(), "PPG", "Labs", "Planta.png"))
 ```
 
@@ -2993,7 +2994,7 @@ knitr::include_graphics(file.path(getwd(), "PPG", "Labs", "Planta.png"))
 
 <br>
 
-```{r documentos-convenios-cefan}
+```{r documentos-convenios-cefan, eval = has.convenios}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Convênios.xlsx",
@@ -3026,7 +3027,7 @@ print(
 
 <br>
 
-```{r documentos-convenios-apb}
+```{r documentos-convenios-apb, eval = has.convenios}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Convênios.xlsx",
@@ -3059,7 +3060,7 @@ print(
 
 <br>
 
-```{r documentos-convenios-ufrj}
+```{r documentos-convenios-ufrj, eval = has.convenios}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Convênios.xlsx",
@@ -3092,7 +3093,7 @@ print(
 
 <br>
 
-```{r documentos-convenios-ufmg}
+```{r documentos-convenios-ufmg, eval = has.convenios}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Convênios.xlsx",
@@ -3125,7 +3126,7 @@ print(
 
 <br>
 
-```{r documentos-convenios-puc-rj}
+```{r documentos-convenios-puc-rj, eval = has.convenios}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Convênios.xlsx",
@@ -3163,7 +3164,7 @@ print(
 
 #### **2019-2023 DINTER**
 
-```{r dinter-andamento}
+```{r dinter-andamento, eval = has.cooperacoes}
 # read separate sheets
 interinstitucional.raw <-
   read_excel("PPG/Cooperações.xlsx",
@@ -3197,7 +3198,7 @@ print(
 
 #### **2021-2023 PCI**
 
-```{r minter-andamento}
+```{r minter-andamento, eval = has.cooperacoes}
 # read separate sheets
 interinstitucional.raw <-
   read_excel("PPG/Cooperações.xlsx",
@@ -3233,7 +3234,7 @@ print(
 
 #### **2019-2021 MINTER**
 
-```{r minter-concluido}
+```{r minter-concluido, eval = has.cooperacoes}
 # read separate sheets
 interinstitucional.raw <-
   read_excel("PPG/Cooperações.xlsx",
@@ -3270,7 +3271,7 @@ print(
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r internacional}
+```{r internacional, eval = has.internacionalizacao}
 # read separate sheets
 file.path <- "PPG/Internacionalização.xlsx"
 tabs <- excel_sheets(file.path)

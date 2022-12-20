@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -325,7 +326,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 ##### **Documentos vigentes**
 
-```{r cep-vigentes}
+```{r cep-vigentes, eval = has.cep}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/CEP.xlsx",
@@ -356,7 +357,7 @@ print(
 
 ##### **Documentos revogados**
 
-```{r cep-revogados}
+```{r cep-revogados, eval = has.cep}
 # read separate sheets
 revogados.raw <-
   read_excel("PPG/CEP.xlsx",
@@ -528,7 +529,7 @@ pandemia <-
   )
 ```
 
-```{r pandemia-filtro}
+```{r pandemia-filtro, eval = has.producao}
 # selecting those with COVID in the title
 doi_unique_artigos_impacto <-
   doi_unique_artigos[grep(paste(tolower(pandemia), collapse = "|"), tolower(doi_unique_artigos$title)),]
@@ -614,7 +615,7 @@ if (dim(projetos)[1] != 0) {
 
 ### **Financiadores**
 
-```{r pandemia-financiadores}
+```{r pandemia-financiadores, eval = has.financiadores}
 # this chunk requires additional data that may  be available
 has.file <-
   !is.error(try(financiadores.raw <-
@@ -757,7 +758,7 @@ if (dim(tccs)[1] != 0) {
 
 ### **Artigos completos** {.tabset}
 
-```{r pandemia-artigos-completos}
+```{r pandemia-artigos-completos, eval = has.artigos.completos}
 # bind sources
 doi_unique <- doi_unique_artigos_impacto
 my_dois_works <- my_dois_works_artigos_impacto
@@ -836,7 +837,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Artigos resumos** {.tabset}
 
-```{r pandemia-artigos-resumos}
+```{r pandemia-artigos-resumos, eval = has.artigos.resumos}
 # bind sources
 doi_unique <- doi_unique_resumos_impacto
 my_dois_works <- my_dois_works_resumos_impacto
@@ -915,7 +916,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r pandemia-resumos-eventos}
+```{r pandemia-resumos-eventos, eval = has.eventos}
 # bind sources
 doi_unique <- doi_unique_eventos_impacto
 my_dois_works <- my_dois_works_eventos_impacto
@@ -997,7 +998,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 
-```{r pandemia-premios}
+```{r pandemia-premios, eval = has.premios}
 # read separate sheets
 file.path <- "PPG/Prêmios.xlsx"
 tabs <- excel_sheets(file.path)

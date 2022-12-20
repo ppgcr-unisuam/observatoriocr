@@ -804,31 +804,31 @@ cat(
 # this chunk requires additional data that may be available
 
 # read data
-artigos <-
-  data.frame(read_excel(
-    paste0("../", PPG.folder, "/Produção.xlsx"),
-    sheet = "PI.completos",
-    col_types = c("text")
-  ))
+try(artigos <-
+      data.frame(read_excel(
+        paste0("PPG/Produção.xlsx"),
+        sheet = "PI.completos",
+        col_types = c("text")
+      )))
 
 # read data
-resumos <-
-  data.frame(read_excel(
-    paste0("../", PPG.folder, "/Produção.xlsx"),
-    sheet = "PI.resumos",
-    col_types = c("text")
-  ))
+try(resumos <-
+      data.frame(read_excel(
+        paste0("PPG/Produção.xlsx"),
+        sheet = "PI.resumos",
+        col_types = c("text")
+      )))
 
 # read data
-eventos <-
-  data.frame(read_excel(
-    paste0("../", PPG.folder, "/Produção.xlsx"),
-    sheet = "PI.eventos",
-    col_types = c("text")
-  ))
+try(eventos <-
+      data.frame(read_excel(
+        paste0("PPG/Produção.xlsx"),
+        sheet = "PI.eventos",
+        col_types = c("text")
+      )))
 
 # bind papers and letters/abstracts and events (all with DOI)
-artigos <- rbind(artigos[, 1:11], resumos[, 1:11], eventos[, 1:11])
+artigos <- rbind(artigos[, 1:11], resumos[, 1:11],  eventos[, 1:11])
 
 # Data cleaning
 artigos <- artigos[complete.cases(artigos$DOI), ]
@@ -1179,7 +1179,7 @@ cat(
 # this chunk requires additional data that may be available
 
 discentes.raw <-
-  read_excel(paste0("../", PPG.folder, "/Discentes.xlsx"), sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 
 # separating egressos (master and doctoral) and current canditates
 discentes <-

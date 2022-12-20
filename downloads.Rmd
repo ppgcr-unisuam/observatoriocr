@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -49,7 +50,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 ### **Vigentes**
 
-```{r documentos-vigentes}
+```{r documentos-vigentes, eval = has.downloads}
 # read separate sheets
 vigentes.raw <-
   read_excel("PPG/Downloads.xlsx",
@@ -82,7 +83,7 @@ print(
 
 ### **Revogados**
 
-```{r documentos-revogados}
+```{r documentos-revogados, eval = has.downloads}
 # read separate sheets
 revogados.raw <-
   read_excel("PPG/Downloads.xlsx",

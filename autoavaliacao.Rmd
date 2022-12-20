@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -231,7 +232,7 @@ for (i in 1:length(files.to.read)) {
   abas <- excel_sheets(files.to.read[i])
   for (j in 1:length(abas)) {
     sheet <- sheets[j]
-    ppg.file <- read_excel(files.to.read[i], sheet = abas[j])
+    try(ppg.file <- read_excel(files.to.read[i], sheet = abas[j]), silent = TRUE)
     data.ppg <- sum(data.ppg,!is.na(ppg.file))
   }
 }
@@ -253,7 +254,7 @@ cat(
   paste0(
     '<div class="bar val-b" style="color:white; font-weight:bold; flex-basis:',
     data.ppg / total * 100,
-    '%">Endógenos</div>'
+    '%">Institucionais</div>'
   )
 )
 cat('</div>')
@@ -353,52 +354,43 @@ cat('</div>')
 
 ##### **Agência-Programa**
 
-```{r auto-financiadores-agencia-programa}
+```{r auto-financiadores-agencia-programa, eval = has.financiadores}
 # this chunk requires additional data that may not be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-  options(scipen = 10)
-  
-  # select variables to display, by AGENCIA & PROGRAMA
-  financiadores <-
-    financiadores.raw %>% select("Agência", "Programa")
-  
-  # drop rows with empty cells
-  financiadores <-
-    financiadores[complete.cases(financiadores), ]
-  
-  # generate table (total per edital, per agency)
-  table.1 <-
-    tbl_summary(
-      financiadores,
-      by = "Agência",
-      statistic = all_categorical() ~ c("{n}"),
-      missing = "no",
-      sort = all_categorical() ~ "frequency"
-    ) %>%
-    add_overall(last = TRUE,
-                col_label = "Total") %>%
-    modify_header(label = "**Agência**") %>%
-    modify_footnote(update = everything() ~ NA) %>%
-    bold_labels()
-  # print table
-  print(table.1)
-  
-  cat('\n\n')
-  
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-} else {
-  cat('\n')
-  cat('*Sem dados para exibir*')
-  cat('\n')
-}
+options(scipen = 10)
+
+# select variables to display, by AGENCIA & PROGRAMA
+financiadores <-
+  financiadores.raw %>% select("Agência", "Programa")
+
+# drop rows with empty cells
+financiadores <-
+  financiadores[complete.cases(financiadores),]
+
+# generate table (total per edital, per agency)
+table.1 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    statistic = all_categorical() ~ c("{n}"),
+    missing = "no",
+    sort = all_categorical() ~ "frequency"
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+print(table.1)
+
+cat('\n\n')
+
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -409,59 +401,50 @@ if (has.file) {
 
 ##### **Agência-Ano**
 
-```{r auto-financiadores-agencia-ano}
+```{r auto-financiadores-agencia-ano, eval = has.financiadores}
 # this chunk requires additional data that may not be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-  options(scipen = 10)
-  
-  financiadores.raw <-
-    read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-  
-  # select variables to display, by AGENCIA & ANO
-  financiadores <-
-    financiadores.raw %>% select("Ano", "Agência", "Total")
-  
-  # drop rows with empty cells
-  financiadores <- financiadores[complete.cases(financiadores), ]
-  
-  financiadores <-
-    financiadores[order(financiadores$Ano, decreasing = TRUE), ]
-  financiadores$Ano <- as.factor(financiadores$Ano)
-  
-  # generate table (total per year, per agency)
-  table.2 <-
-    tbl_summary(
-      financiadores,
-      by = "Agência",
-      type = list(all_continuous() ~ "continuous"),
-      statistic = list(all_continuous() ~ c("R$ {sum}")),
-      missing = "no",
-      digits = "Total" ~ 2
-    ) %>%
-    add_overall(last = TRUE,
-                col_label = "Total") %>%
-    modify_header(label = "**Agência**") %>%
-    modify_footnote(update = everything() ~ NA) %>%
-    bold_labels()
-  # print table
-  print(table.2)
-  
-  cat('\n\n')
-  
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-} else {
-  cat('\n')
-  cat('*Sem dados para exibir*')
-  cat('\n')
-}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Ano", "Agência", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores),]
+
+financiadores <-
+  financiadores[order(financiadores$Ano, decreasing = TRUE),]
+financiadores$Ano <- as.factor(financiadores$Ano)
+
+# generate table (total per year, per agency)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+print(table.2)
+
+cat('\n\n')
+
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -472,59 +455,50 @@ if (has.file) {
 
 ##### **Agência-Docente**
 
-```{r auto-financiadores-agencia-docentes}
+```{r auto-financiadores-agencia-docentes, eval = has.financiadores}
 # this chunk requires additional data that may not be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-  options(scipen = 10)
-  
-  financiadores.raw <-
-    read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-  
-  # select variables to display, by AGENCIA & ANO
-  financiadores <-
-    financiadores.raw %>% select("Proponente", "Agência", "Total")
-  
-  # drop rows with empty cells
-  financiadores <- financiadores[complete.cases(financiadores), ]
-  
-  financiadores <-
-    financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
-  financiadores$Proponente <- as.factor(financiadores$Proponente)
-  
-  # generate table (total per year, per agency)
-  table.2 <-
-    tbl_summary(
-      financiadores,
-      by = "Agência",
-      type = list(all_continuous() ~ "continuous"),
-      statistic = list(all_continuous() ~ c("R$ {sum}")),
-      missing = "no",
-      digits = "Total" ~ 2
-    ) %>%
-    add_overall(last = TRUE,
-                col_label = "Total") %>%
-    modify_header(label = "**Agência**") %>%
-    modify_footnote(update = everything() ~ NA) %>%
-    bold_labels()
-  # print table
-  print(table.2)
-  
-  cat('\n\n')
-  
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-} else {
-  cat('\n')
-  cat('*Sem dados para exibir*')
-  cat('\n')
-}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Proponente", "Agência", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores),]
+
+financiadores <-
+  financiadores[order(financiadores$Proponente, decreasing = TRUE),]
+financiadores$Proponente <- as.factor(financiadores$Proponente)
+
+# generate table (total per year, per agency)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Agência",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Agência**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+print(table.2)
+
+cat('\n\n')
+
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -535,59 +509,50 @@ if (has.file) {
 
 ##### **Docente-Ano**
 
-```{r auto-financiadores-docente-ano}
+```{r auto-financiadores-docente-ano, eval = has.financiadores}
 # this chunk requires additional data that may not be available
-has.file <-
-  !is.error(try(financiadores.raw <-
-                  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores"),
-                silent = TRUE)
-  )
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
-if (has.file) {
-  options(scipen = 10)
-  
-  financiadores.raw <-
-    read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-  
-  # select variables to display, by AGENCIA & ANO
-  financiadores <-
-    financiadores.raw %>% select("Proponente", "Ano", "Total")
-  
-  # drop rows with empty cells
-  financiadores <- financiadores[complete.cases(financiadores), ]
-  
-  financiadores <-
-    financiadores[order(financiadores$Proponente, decreasing = TRUE), ]
-  financiadores$Proponente <- as.factor(financiadores$Proponente)
-  
-  # generate table (total per year, per docente)
-  table.2 <-
-    tbl_summary(
-      financiadores,
-      by = "Ano",
-      type = list(all_continuous() ~ "continuous"),
-      statistic = list(all_continuous() ~ c("R$ {sum}")),
-      missing = "no",
-      digits = "Total" ~ 2
-    ) %>%
-    add_overall(last = TRUE,
-                col_label = "Total") %>%
-    modify_header(label = "**Ano**") %>%
-    modify_footnote(update = everything() ~ NA) %>%
-    bold_labels()
-  # print table
-  print(table.2)
-  
-  cat('\n\n')
-  
-  cat(
-    "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-  )
-} else {
-  cat('\n')
-  cat('*Sem dados para exibir*')
-  cat('\n')
-}
+options(scipen = 10)
+
+financiadores.raw <-
+  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+# select variables to display, by AGENCIA & ANO
+financiadores <-
+  financiadores.raw %>% select("Proponente", "Ano", "Total")
+
+# drop rows with empty cells
+financiadores <- financiadores[complete.cases(financiadores),]
+
+financiadores <-
+  financiadores[order(financiadores$Proponente, decreasing = TRUE),]
+financiadores$Proponente <- as.factor(financiadores$Proponente)
+
+# generate table (total per year, per docente)
+table.2 <-
+  tbl_summary(
+    financiadores,
+    by = "Ano",
+    type = list(all_continuous() ~ "continuous"),
+    statistic = list(all_continuous() ~ c("R$ {sum}")),
+    missing = "no",
+    digits = "Total" ~ 2
+  ) %>%
+  add_overall(last = TRUE,
+              col_label = "Total") %>%
+  modify_header(label = "**Ano**") %>%
+  modify_footnote(update = everything() ~ NA) %>%
+  bold_labels()
+# print table
+print(table.2)
+
+cat('\n\n')
+
+cat(
+  "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
+)
 ```
 
 <br>
@@ -821,13 +786,22 @@ if (has.file) {
 
 ### **Notas do Programa** {#notas}
 
-```{r auto-notas}
+```{r auto-notas, eval = has.notas}
 # read separate sheets
 notas <- read_excel("PPG/Notas.xlsx", sheet = "Notas")
 
-cat(paste('<iframe src="', notas[1], '" style="width:100%; height:600px; border:0;"></iframe>', sep = ""))
+cat(
+  paste(
+    '<iframe src="',
+    notas[1],
+    '" style="width:100%; height:600px; border:0;"></iframe>',
+    sep = ""
+  )
+)
 
 cat('\n\n')
+
+cat("*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br)")
 ```
 
 *Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/public/consultas/avaliacao/viewPreenchimentoFicha.xhtml?idFicha=6566&popup=true)

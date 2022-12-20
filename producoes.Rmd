@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
@@ -165,7 +166,7 @@ colnames(table.tcc) <-
 
 #### **Sede** {.tabset}
 
-```{r repositorios-mestrado-sede}
+```{r repositorios-mestrado-sede, eval = has.repositorios}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
@@ -182,7 +183,7 @@ cat('\n\n')
 
 <br>
 
-```{r repositorios-doutorado-sede}
+```{r repositorios-doutorado-sede, eval = has.repositorios}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
@@ -201,7 +202,7 @@ cat('\n\n')
 
 #### **Cooperação Interinstitucional** {.tabset}
 
-```{r repositorios-mestrado-cooperacao}
+```{r repositorios-mestrado-cooperacao, eval = has.repositorios}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
@@ -218,7 +219,7 @@ cat('\n\n')
 
 <br>
 
-```{r repositorios-doutorado-cooperacao}
+```{r repositorios-doutorado-cooperacao, eval = has.repositorios}
 # read separate sheets
 repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
@@ -275,7 +276,7 @@ cat('\n\n')
 
 ### **Artigos completos em periódicos** {.tabset}
 
-```{r artigos-completos}
+```{r artigos-completos, eval = has.artigos.completos}
 # bind sources
 doi_unique <- doi_unique_artigos
 my_dois_works <- my_dois_works_artigos
@@ -354,7 +355,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Artigos resumos em periódicos** {.tabset}
 
-```{r artigos-resumos}
+```{r artigos-resumos, eval = has.artigos.resumos}
 # bind sources
 doi_unique <- doi_unique_resumos
 my_dois_works <- my_dois_works_resumos
@@ -433,7 +434,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Preprints** {.tabset}
 
-```{r preprints}
+```{r preprints, eval = has.preprints}
 # bind sources
 doi_unique <- doi_unique_preprints
 my_dois_works <- my_dois_works_preprints
@@ -512,7 +513,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Livros e capítulos**  {.tabset}
 
-```{r livros-capitulos}
+```{r livros-capitulos, eval = has.capitulos}
 # bind sources
 doi_unique <- doi_unique_livros_capitulos
 my_dois_works <- my_dois_works_livros_capitulos
@@ -671,7 +672,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Trabalhos em anais de eventos** {.tabset}
 
-```{r resumos-eventos}
+```{r resumos-eventos, eval = has.eventos}
 # bind sources
 doi_unique <- doi_unique_eventos
 my_dois_works <- my_dois_works_eventos
@@ -755,7 +756,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 #### **SuiteEBG**
 
-```{r softwares-ebg}
+```{r softwares-ebg, eval = has.softwares}
 # read separate sheets
 softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteEBG", col_types = c("text"))
 
@@ -788,7 +789,7 @@ th, td {
 
 #### **SuiteMYO**
 
-```{r softwares-myo}
+```{r softwares-myo, eval = has.softwares}
 # read separate sheets
 softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteMYO", col_types = c("text"))
 
@@ -821,7 +822,7 @@ th, td {
 
 #### **SuiteTCM**
 
-```{r softwares-tcm}
+```{r softwares-tcm, eval = has.softwares}
 # read separate sheets
 softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "SuiteTCM", col_types = c("text"))
 
@@ -853,7 +854,7 @@ th, td {
 
 #### **wiiVIEW**
 
-```{r softwares-wbb}
+```{r softwares-wbb, eval = has.softwares}
 # read separate sheets
 softwares.raw <- read_excel("PPG/Softwares.xlsx", sheet = "wiiVIEW", col_types = c("text"))
 

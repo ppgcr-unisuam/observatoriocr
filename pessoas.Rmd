@@ -35,7 +35,8 @@ $(document).ready(function() {
 <!--script for sharing-->
 <p align="right">
 ```{r share}
-home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+# home <- "https://ppgcr-unisuam.github.io/observatoriocr/"
+home <- metadata$repository_url
 source("Scripts/social-media-sharing.R")
 ```
 </p>
@@ -71,7 +72,7 @@ source("Scripts/social-media-sharing.R")
 
 ```{r docentes-atual-perfil}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -119,7 +120,7 @@ for (i in 1:dim(docentes)[1]) {
 
 ```{r coordenadores-2024}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -245,7 +246,7 @@ print(
 
 ```{r coordenadores-2020}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -369,7 +370,7 @@ print(
 
 ```{r coordenadores-2016}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -493,7 +494,7 @@ print(
 
 ```{r coordenadores-2012}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.coordenadores")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -711,7 +712,7 @@ for(i in 1:dim(perfil.data)[2]){
 
 ```{r docentes-2024-grafico}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -906,7 +907,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2024-tabela}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1059,7 +1060,7 @@ print(
 
 ```{r docentes-2020-grafico}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1254,7 +1255,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2020-tabela}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1407,7 +1408,7 @@ print(
 
 ```{r docentes-2016-grafico}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1602,7 +1603,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2016-tabela}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1755,7 +1756,7 @@ print(
 
 ```{r docentes-2012-grafico}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1950,7 +1951,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2012-tabela}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2114,7 +2115,7 @@ print(
 
 ```{r pos-doc-2024}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2284,7 +2285,7 @@ if (length(new.ids) != 0) {
 
 ```{r pos-doc-2020}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2454,7 +2455,7 @@ if (length(new.ids) != 0) {
 
 ```{r pos-doc-2016}
 docentes.raw <-
-  read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+  read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2623,7 +2624,7 @@ if (length(new.ids) != 0) {
 ### **2010-2012**
 
 ```{r pos-doc-2012}
-docentes.raw <- read_excel("../PPGCR Unisuam/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
+docentes.raw <- read_excel("PPG/Docentes e Pós-Docs.xlsx", sheet = "DATA.colegiado")
 id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
 id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
 docentes <- docentes.raw[id1 | id2, ]
@@ -3102,7 +3103,7 @@ if (dim(discentes)[1] != 0) {
 ### **Síntese** {.tabset}
 
 ```{r egressos-periodo}
-discentes.raw <- read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+discentes.raw <- read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
 mestres <- discentes[discentes$Curso == "Mestrado", ]
 doutores <- discentes[discentes$Curso == "Doutorado", ]
@@ -3150,7 +3151,7 @@ multiplot(plotlist = maps, cols = dim(periodos)[1])
 
 ```{r historico-egressos-dsc-2024}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
@@ -3182,7 +3183,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2024}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
@@ -3216,7 +3217,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2020}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
@@ -3248,7 +3249,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2020}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
@@ -3282,7 +3283,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2016}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
@@ -3314,7 +3315,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2016}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
@@ -3348,7 +3349,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2012}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &
@@ -3380,7 +3381,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2012}
 discentes.raw <-
-  read_excel("../PPGCR Unisuam/Discentes.xlsx", sheet = "DATA.discentes")
+  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &

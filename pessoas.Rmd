@@ -2889,7 +2889,7 @@ names(sucupira.list) <- as.character(anos)
 discentes <- sucupira.list[[length(anos)]]
 
 # filter students
-discentes <- discentes[discentes$`Nível Discente` == course.level,]
+discentes <- discentes[which(!x*(!(grepl(course.level, discentes$`Nível Discente`))), arr.ind=TRUE), ]
 
 # select active students
 discentes <-
@@ -3004,7 +3004,7 @@ names(sucupira.list) <- as.character(anos)
 discentes <- sucupira.list[[length(anos)]]
 
 # filter students
-discentes <- discentes[discentes$`Nível Discente` == course.level,]
+discentes <- discentes[which(!x*(!(grepl(course.level, discentes$`Nível Discente`))), arr.ind=TRUE), ]
 
 # select active students
 discentes <-

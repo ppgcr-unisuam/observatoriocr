@@ -875,8 +875,9 @@ for (i in 1:dim(artigos)[1]) {
 table.1 <- table(artigos$Publicado.em)
 
 table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
-table.2 <- apply(table.2, 2, rev)
 table.2 <- table.2[order(rownames(table.2)),]
+rownames(table.2)[rownames(table.2) == "NA"] <- "Sem qualis"
+# table.2 <- apply(table.2, 2, rev)
 
 table.3 <- data.frame(artigos$Publicado.em, SJR)
 table.3.median <-
@@ -898,7 +899,7 @@ layout.m <- c(1)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 # Define the number of colors you want
-nb.cols <- length(unique(estratos))
+nb.cols <- length(rownames(table.2))
 mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 1 (total de produção bilbiográfica, por ano)
@@ -910,19 +911,19 @@ title(main = "Produção Bibliográfica",
       cex.main = 1.7)
 
 # Define the number of colors you want
-nb.cols <- length(unique(estratos))
+nb.cols <- length(rownames(table.2))
 mycolors <- colorRampPalette(brewer.pal(9, "Blues"))(nb.cols)
 
 # plot 2 (total de produção bilbiográfica, por estrato, por ano)
 barplot(table.2,
         ylab = "Estrato",
-        col = mycolors)
+        col = rev(mycolors))
 title(main = "Qualidade da produção (Qualis)",
       outer = TRUE,
       cex.main = 1.7)
 legend(
   "topleft",
-  legend = estratos,
+  legend = rownames(table.2),
   fill = mycolors,
   text.col = "white",
   box.lwd = 0,
@@ -939,7 +940,7 @@ barplot(
     scale = colSums(as.matrix(table.2))
   ) * 100,
   ylab = "%",
-  col = mycolors,
+  col = rev(mycolors),
   ylim = c(0, 100)
 )
 title(main = "Qualidade da produção (Qualis)",
@@ -980,7 +981,7 @@ source("Scripts/line-2-break.R", local = knitr::knit_global())
 data.journals$name <- broken_text
 
 # Define the number of colors you want
-nb.cols <- length(unique(estratos))
+nb.cols <- length(rownames(table.2))
 mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
 
 options(digits = 10)

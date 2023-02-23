@@ -1,46 +1,46 @@
 <!--script for color-->
 div {
   background-color: white !important;
-  color: #2C3E50;
+  color: black;
 }
 
 navbar navbar-expand-lg navbar-dark bg-primary {
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white;
 }
 navbar navbar-default navbar-fixed-top {
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white;
 }
 #navbar {
-  background: #2C3E50 !important;
-  background-color: #2C3E50 !important;
+  background: black !important;
+  background-color: black !important;
   color: white !important;
 }
 .navbar-default{
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white !important;
 }
 
 #navbar > ul:nth-child(1) > li.active > a {
-  background-color: darkgrey !important;
-  color: white !important;
+  background-color: white !important;
+  color: #2C3E50 !important;
 }
 #navbar > ul:nth-child(1) > li.dropdown.open > a {
-  background-color: darkgrey !important;
-  color: white !important;
+  background-color: white !important;
+  color: #2C3E50 !important;
 }
 #navbar > ul:nth-child(1) > li.dropdown.open > ul > li:nth-child(1) > a {
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white !important;
 }
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white !important;
   text-decoration: none;
 }
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-  background-color: #2C3E50 !important;
+  background-color: black !important;
   color: white !important;
   text-decoration: none;
   outline: 0;
@@ -51,21 +51,21 @@ navbar navbar-default navbar-fixed-top {
     background: transparent;
 }
 h1, #TOC ul>li {
-  color: #2C3E50 !important;
+  color: black !important;
 }
 h2, #TOC ul>li {
-  color: #2C3E50 !important;
+  color: black !important;
 }
 h3, #TOC ul>li {
-  color: #2C3E50 !important;
+  color: black !important;
 }
 
 #TOC .active {
-  background: #2C3E50 !important;
+  background: black !important;
   color: white !important;
 }
 
 <!--script for hover effect on table-->
 .table-hover > tbody > tr:hover { 
-  background-color: lightgrey;
+  background-color: #2C3E50;
   }

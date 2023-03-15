@@ -466,21 +466,39 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-periodos <- names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "EM ANDAMENTO", ]
+projetos <-
+  projetos.all[projetos.all$`Membro Responsável` == "Sim" &
+                 projetos.all$Situação == "EM ANDAMENTO", ]
 projetos <- unique(projetos)
 
-table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
+table.projetos <-
+  cbind(
+    projetos$`Área de Concentração`,
+    projetos$`Linha de Pesquisa`,
+    projetos$`Nome do Projeto de Pesquisa`,
+    projetos$`Nome do Membro do Projeto`
+  )
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
 labels <- colnames(table.projetos)
 # print tables
-table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
-table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
-table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+table.projetos[, 1] <-
+  as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+table.projetos[, 2] <-
+  as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+table.projetos[, 3] <-
+  as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
-colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
+colnames(table.projetos) <-
+  c(
+    "Área de Concentração",
+    "Linha de Pesquisa",
+    "Projeto de Pesquisa",
+    "Membro Responsável"
+  )
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(table.projetos, title = "Projetos de Pesquisa 2021-2024")
@@ -677,24 +695,42 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-periodos <- names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2017:2020), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <-
+  projetos.all[projetos.all$`Membro Responsável` == "Sim" &
+                 projetos.all$Situação == "EM ANDAMENTO", ]
 projetos <- unique(projetos)
 
-table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
+table.projetos <-
+  cbind(
+    projetos$`Área de Concentração`,
+    projetos$`Linha de Pesquisa`,
+    projetos$`Nome do Projeto de Pesquisa`,
+    projetos$`Nome do Membro do Projeto`
+  )
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
 labels <- colnames(table.projetos)
 # print tables
-table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
-table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
-table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+table.projetos[, 1] <-
+  as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+table.projetos[, 2] <-
+  as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+table.projetos[, 3] <-
+  as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
-colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
+colnames(table.projetos) <-
+  c(
+    "Área de Concentração",
+    "Linha de Pesquisa",
+    "Projeto de Pesquisa",
+    "Membro Responsável"
+  )
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.projetos, title = "Projetos de Pesquisa 2020-2017")
+create_dt(table.projetos, title = "Projetos de Pesquisa 2017-2020")
 
 cat('\n\n')
 cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
@@ -888,21 +924,39 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-periodos <- names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2013:2016), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <-
+  projetos.all[projetos.all$`Membro Responsável` == "Sim" &
+                 projetos.all$Situação == "EM ANDAMENTO", ]
 projetos <- unique(projetos)
 
-table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
+table.projetos <-
+  cbind(
+    projetos$`Área de Concentração`,
+    projetos$`Linha de Pesquisa`,
+    projetos$`Nome do Projeto de Pesquisa`,
+    projetos$`Nome do Membro do Projeto`
+  )
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
 labels <- colnames(table.projetos)
 # print tables
-table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
-table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
-table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+table.projetos[, 1] <-
+  as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+table.projetos[, 2] <-
+  as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+table.projetos[, 3] <-
+  as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
-colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
+colnames(table.projetos) <-
+  c(
+    "Área de Concentração",
+    "Linha de Pesquisa",
+    "Projeto de Pesquisa",
+    "Membro Responsável"
+  )
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(table.projetos, title = "Projetos de Pesquisa 2013-2016")
@@ -1097,21 +1151,39 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-periodos <- names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
+periodos <-
+  names(sucupira.list)[na.omit(match(c(2010:2012), names(sucupira.list)))]
 periodo <- as.character(seq(min(periodos), max(periodos)))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
-projetos <- projetos.all[projetos.all$`Membro Responsável`=="Sim" & projetos.all$Situação == "CONCLUÍDO", ]
+projetos <-
+  projetos.all[projetos.all$`Membro Responsável` == "Sim" &
+                 projetos.all$Situação == "EM ANDAMENTO", ]
 projetos <- unique(projetos)
 
-table.projetos <- cbind(projetos$`Nome do Membro do Projeto`, projetos$`Nome do Projeto de Pesquisa`, projetos$`Linha de Pesquisa`)
+table.projetos <-
+  cbind(
+    projetos$`Área de Concentração`,
+    projetos$`Linha de Pesquisa`,
+    projetos$`Nome do Projeto de Pesquisa`,
+    projetos$`Nome do Membro do Projeto`
+  )
 table.projetos <- table.projetos[order(table.projetos[, 1]), ]
 labels <- colnames(table.projetos)
 # print tables
-table.projetos[, 1] <- as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
-table.projetos[, 2] <- as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
-table.projetos[, 3] <- as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+table.projetos[, 1] <-
+  as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+table.projetos[, 2] <-
+  as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+table.projetos[, 3] <-
+  as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
 
-colnames(table.projetos) <- c("Nome do Membro Responsável", "Nome do Projeto de Pesquisa", "Linha de Pesquisa")
+colnames(table.projetos) <-
+  c(
+    "Área de Concentração",
+    "Linha de Pesquisa",
+    "Projeto de Pesquisa",
+    "Membro Responsável"
+  )
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(table.projetos, title = "Projetos de Pesquisa 2010-2012")

@@ -886,7 +886,7 @@ cat('\n\n')
 
 <br>
 
-```{r retratacoes, eval = has.retratacoes}
+```{r retratacoes, eval = has.producao}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 # bind sources
@@ -913,7 +913,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 if (max(dim(doi_unique)[1], 0) == 0 &
     max(dim(my_dois_works)[1], 0) == 0) {
   cat('\n')
-  cat('*Sem produção para exibir*')
+  cat('*Sem retratações para exibir*')
   cat('\n')
 } else {
   # section header

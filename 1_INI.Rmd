@@ -668,8 +668,4 @@ for (i in 1:dim(my_dois_works)[1]) {
       rbind(my_dois_works_retracted, my_dois_works[i, ])
   }
 }
-
-has.retratacoes <-
-  !is_empty(dois_unique_retracted) |
-  !is_empty(my_dois_works_retracted)
 ```

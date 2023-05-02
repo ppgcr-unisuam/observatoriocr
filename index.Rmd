@@ -1270,6 +1270,7 @@ doi_unique <-
             doi_unique_livros,
             doi_unique_capitulos,
             doi_unique_eventos)
+
 table.1 <- 
   table.1 <- data.frame(doi_unique$published_on, doi_unique$score)
 
@@ -1363,11 +1364,10 @@ if(sum(c(doi_unique$citations, my_dois_works$citations)) == 0){
   table.3 <- table.3[order(rownames(table.3)),]
   table.3 <- colSums(table.3)
 }
-rownames(table.3) <- c("Citações")
 
 # Define the number of colors you want
-nb.cols <- length(rownames(table.3))
-mycolors <- colorRampPalette(brewer.pal(9, "Blues"))(nb.cols)
+nb.cols <- length(table.3)
+mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 3 (CITATIONS in plot)
 layout.m <- c(1)
@@ -1436,7 +1436,7 @@ bs_carousel(id = "visibilidade-carousel",
 
 cat('\n\n')
 cat(
-  "[**Altmetric**](https://www.altmetric.com), [**CrossRef**](https://www.crossref.org), **PPG**"
+  "*Fontes:* [**Altmetric**](https://www.altmetric.com), [**CrossRef**](https://www.crossref.org), **PPG**"
 )
 cat('^[Produções com DOI apenas; a produção pode estar subsestimada pois produtos sem DOI não estão apresentados.]')
 cat('\n')

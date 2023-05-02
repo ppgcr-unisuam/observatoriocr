@@ -11,13 +11,15 @@ if (sjmisc::is_empty(dois)) {
   
   # add citation counts
   doi_unique$citations <- rep(0, dim(doi_unique)[1])
-  # for (doi in 1:dim(doi_unique)[1]) {
-  #   try(
-  #     {citations <- rcrossref::cr_citation_count(doi = as.character(doi_unique$doi), key = "cienciasdareabilitacao@souunisuam.com.br")
-  #     doi_unique$citations[doi] <- citations$count},
-  #     silent = TRUE)
-  # }
-
+  for (i in 1:dim(doi_unique)[1]) {
+    try({
+      citations <-
+        rcrossref::cr_citation_count(doi = as.character(doi_unique$doi[i]), key = "cienciasdareabilitacao@souunisuam.com.br")
+      doi_unique$citations[i] <- citations$count
+    },
+    silent = TRUE)
+  }
+  
   # get data of papers without Altmetric from CrossRef
   if (sjmisc::is_empty(no_altmetric_dois_list)) {
     my_dois_works <- list()
@@ -28,7 +30,7 @@ if (sjmisc::is_empty(dois)) {
     if (length(my_dois_works) != 0) {
       # sort columns by title
       my_dois_works <-
-        my_dois_works[order(as.vector(my_dois_works$title)),]
+        my_dois_works[order(as.vector(my_dois_works$title)), ]
       # replace is_oa from Crossref
       for (i in 1:length(my_dois_works$doi)) {
         my_doi_oa <-
@@ -40,12 +42,15 @@ if (sjmisc::is_empty(dois)) {
       }
       # add citation counts
       my_dois_works$citations <- rep(0, dim(my_dois_works)[1])
-      # for (doi in 1:dim(my_dois_works)[1]) {
-      #   try (
-      #     {my_dois_works$citations[doi] <-
-      #       rcrossref::cr_citation_count(doi = as.character(my_dois_works$doi), key = "cienciasdareabilitacao@souunisuam.com.br")$count},
-      #     silent = TRUE)
-      # }
+      for (i in 1:dim(my_dois_works)[1]) {
+        try ({
+          citations <-
+            rcrossref::cr_citation_count(doi = as.character(my_dois_works$doi[i]),
+                                         key = "cienciasdareabilitacao@souunisuam.com.br")
+          my_dois_works$citations[i] <- citations$count
+        },
+        silent = TRUE)
+      }
       # add issued (created) year of publication
       tryCatch(
         expr = {

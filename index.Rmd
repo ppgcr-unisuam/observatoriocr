@@ -1322,7 +1322,7 @@ rownames(table.2) <- c("Open acess", "Paywall")
 
 # Define the number of colors you want
 nb.cols <- length(rownames(table.2))
-mycolors <- colorRampPalette(brewer.pal(9, "Blues"))(nb.cols)
+mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 2 (IS_OA in plot)
 layout.m <- c(1)

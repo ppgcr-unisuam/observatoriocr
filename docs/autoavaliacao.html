@@ -35,6 +35,28 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/pdfmake-1.12.1/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.12.1/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
+<link href="site_libs/dt-ext-colreorder-1.12.1/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-colreorder-1.12.1/js/dataTables.colReorder.min.js"></script>
+<link href="site_libs/dt-ext-responsive-1.12.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-responsive-1.12.1/js/dataTables.responsive.min.js"></script>
+<link href="site_libs/dt-plugin-searchhighlight-1.12.1/source.css" rel="stylesheet" />
+<script src="site_libs/dt-plugin-searchhighlight-1.12.1/jquery.highlight.js"></script>
+<script src="site_libs/dt-plugin-searchhighlight-1.12.1/source.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -592,6 +614,9 @@ div.tocify {
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resultados</a>
       <ul class="dropdown-menu" role="menu">
         <li>
+          <a href="autoavaliacao.html#sintese-dados">Síntese dos dados</a>
+        </li>
+        <li>
           <a href="autoavaliacao.html#nota">Nota</a>
         </li>
         <li>
@@ -742,53 +767,6 @@ href="https://www.linkedin.com/shareArticle?mini=true&amp;url="><svg preserveAsp
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 <p><br></p>
-<div id="coleta-dados-ppg" class="section level3">
-<h3><strong>Coleta e dados do Programa</strong></h3>
-<!--script for generating STACKED HORIZONTAL BAR CHART-->
-<style type="text/css">
-.row {
-  display: flex;
-  align-items: stretch;
-  margin: 0 0;
-}
-
-.row .label {
-  flex: 0 0 auto;
-}
-
-.row .bar-container {
-  flex: 1;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-.row .bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.val-a { background: #18BC9C }
-.val-b { background: #F39C12 }
-</style>
-<p><br></p>
-<div class="row">
-<div class="bar-container">
-<div class="bar val-a"
-style="color:white; font-weight:bold; flex-basis:98.2307077632987%">
-Plataforma Sucupira
-</div>
-<div class="bar val-b"
-style="color:white; font-weight:bold; flex-basis:1.76929223670131%">
-Institucionais
-</div>
-</div>
-</div>
-<p><br></p>
-<p><a style="float:right" href="#top"><b>Início  </b>⬆️</a></p>
-<p><br></p>
-</div>
 <div id="formularios" class="section level3 tabset">
 <h3 class="tabset"><strong>Formulários</strong></h3>
 <div id="qualidade-das-disciplinas" class="section level4">
@@ -881,13 +859,75 @@ target="_blank"><img align="center" src="PPG/Images/pesquisadoegresso.png"></a>
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
 <p><br></p>
+<div id="sintese-dados" class="section level3 tabset">
+<h3 class="tabset"><strong>Síntese dos dados</strong></h3>
+<div id="dados-completos" class="section level4">
+<h4><strong>Dados completos</strong></h4>
+<!--script for generating STACKED HORIZONTAL BAR CHART-->
+<style type="text/css">
+.row {
+  display: flex;
+  align-items: stretch;
+  margin: 0 0;
+}
+
+.row .label {
+  flex: 0 0 auto;
+}
+
+.row .bar-container {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.row .bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.val-a { background: #18BC9C }
+.val-b { background: #F39C12 }
+</style>
+<p><br></p>
+<div class="row">
+<div class="bar-container">
+<div class="bar val-a"
+style="color:white; font-weight:bold; flex-basis:98.2450913591554%">
+Plataforma Sucupira
+</div>
+<div class="bar val-b"
+style="color:white; font-weight:bold; flex-basis:1.75490864084464%">
+Institucionais
+</div>
+</div>
+</div>
+<p><br></p>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a><br><a style="float:right" href="#top"><b>Início
+ </b>⬆️</a><br></p>
+</div>
+<div id="dados-perdidos" class="section level4">
+<h4><strong>Dados perdidos</strong></h4>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e0c14647ee73d6c9fae9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e0c14647ee73d6c9fae9">{"x":{"filter":"none","vertical":false,"extensions":["Buttons","ColReorder","Responsive"],"data":[["2012","2012","2012","2012","2012","2012","2012","2012","2012","2013","2013","2013","2013","2013","2013","2013","2013","2013","2014","2014","2014","2014","2014","2014","2014","2014","2014","2015","2015","2015","2015","2015","2015","2015","2015","2015","2016","2016","2016","2016","2016","2016","2016","2016","2016","2017","2017","2017","2017","2017","2017","2017","2017","2017","2018","2018","2018","2018","2018","2018","2018","2018","2018","2019","2019","2019","2019","2019","2019","2019","2019","2019","2020","2020","2020","2020","2020","2020","2020","2020","2021","2021","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2022","2022","2022","2023","2023","2023","2023","2023","2023","2023","2023","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2023","2012","2012","2012","2012","2012","2012","2012","2012","2013","2013","2013","2013","2013","2013","2013","2013","2014","2014","2014","2014","2014","2014","2014","2014","2015","2015","2015","2015","2015","2015","2015","2015","2016","2016","2016","2016","2016","2016","2016","2016","2017","2017","2017","2017","2017","2017","2017","2017","2018","2018","2018","2018","2018","2018","2018","2018","2019","2019","2019","2019","2019","2019","2019","2019","2020","2020","2020","2020","2020","2020","2020","2020","2021","2021","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2022","2022","2022","2023","2023","2023","2023","2023","2023","2023","2023","2023","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2012","2012","2013","2013","2014","2014","2019","2020","2021","2021","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2022","2022","2022","2023","2023","2023","2023","2023","2023","2023","2023","2012","2012","2012","2013","2013","2013","2014","2014","2014","2015","2015","2015","2016","2016","2016","2017","2017","2017","2018","2018","2018","2019","2019","2019","2020","2020","2020","2020","2020","2020","2020","2020","2021","2021","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2022","2022","2022","2023","2023","2023","2023","2023","2023","2023","2023","2019","2020","2021","2022","2023","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2017","2018","2019","2012","2013","2014","2015","2016","2017","2017","2018","2018","2019","2019","2020","2021","2022","2023","2013","2014","2015","2016","2017","2017","2018","2018","2019","2019","2020","2021","2022","2023","2019","2012","2013","2014","2015","2016","2017","2017","2017","2018","2018","2018","2019","2019","2019","2019","2020","2020","2020","2021","2021","2021","2022","2022","2022","2023","2012","2012","2012","2012","2012","2012","2013","2013","2013","2013","2013","2013","2014","2014","2014","2014","2014","2014","2015","2015","2015","2015","2015","2015","2016","2016","2016","2016","2016","2016","2017","2017","2017","2017","2017","2017","2017","2017","2018","2018","2018","2018","2018","2018","2018","2018","2019","2019","2019","2019","2019","2019","2019","2019","2019","2020","2020","2020","2020","2020","2020","2020","2020","2021","2021","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2022","2022","2022","2023","2023","2023","2023","2023","2023","2013","2013","2013","2013","2013","2013","2014","2014","2014","2014","2014","2014","2015","2015","2015","2015","2015","2015","2016","2016","2016","2016","2017","2017","2017","2017","2017","2018","2018","2018","2019","2019","2019","2019","2019","2020","2020","2020","2020","2020","2020","2021","2021","2021","2021","2021","2021","2022","2022","2022","2022","2022","2013","2013","2013","2014","2014","2014","2015","2015","2015","2016","2017","2017","2019","2019","2020","2020","2020","2021","2021","2021","2022","2022","2013","2013","2013","2013","2014","2014","2014","2014","2015","2015","2015","2015","2016","2016","2017","2017","2017","2018","2019","2019","2019","2020","2020","2020","2020","2021","2021","2021","2021","2022","2022","2022","2012","2013","2014","2015","2016","2017","2017","2018","2018","2019","2019","2020","2021","2022","2023","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"],["Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Docentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Discentes - Orientadores","Egressos","Egressos","Egressos","Egressos","Egressos","Egressos","Egressos","Egressos","Egressos","Egressos","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Pós-Doc","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Participante Externo","Turmas","Turmas","Turmas","Turmas","Turmas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Disciplinas","Projetos","Projetos","Projetos","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Membros","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","Projetos - Financiadores","TCC","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Banca","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","TCC - Financiadores","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Autores","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Produções - Detalhes","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Projetos","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - Produções","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC","Linhas de Pesquisa - TCC"],["Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","ORCID","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","Data de Desligamento","Fim da Categoria","Tipo de Bolsa CNPq","Modalidade da Bolsa CNPq","Categoria da Bolsa CNPq","Último Afastamento Motivo","Último Afastamento Início","Último Afastamento Fim","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","Raça/Cor","ORCID","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","Raça/Cor","ORCID","Identificador do Orientador","Nome do Orientador","Tipo de Orientador","Início da Orientação","Fim da Orientação","Orientador Principal?","Categoria do Orientador","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","ORCID","Origem IES Sigla","Origem IES Nome","Origem IES Sigla","Origem IES Nome","Origem IES Sigla","Origem IES Nome","ORCID","ORCID","ORCID","Vínculo Fim","Titulação Nível","Titulação Ano","Titulação Área","Titulação IES Sigla","Titulação IES Nome","Titulação País","ORCID","Vínculo Fim","Titulação Nível","Titulação Ano","Titulação Área","Titulação IES Sigla","Titulação IES Nome","Titulação País","ORCID","Vínculo Fim","Titulação Nível","Titulação Ano","Titulação Área","Titulação IES Sigla","Titulação IES Nome","Titulação País","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","ORCID","País da Instituição de Origem","Instituição de Origem","Nível Titulação","Área de Conhecimento Titulação","Nome IES Titulação","Ano Titulação","País Titulação","ORCID","País da Instituição de Origem","Instituição de Origem","Nível Titulação","Área de Conhecimento Titulação","Nome IES Titulação","Ano Titulação","País Titulação","ORCID","País da Instituição de Origem","Instituição de Origem","Nível Titulação","Área de Conhecimento Titulação","Nome IES Titulação","Ano Titulação","País Titulação","ORCID","País da Instituição de Origem","Instituição de Origem","Nível Titulação","Área de Conhecimento Titulação","Nome IES Titulação","Ano Titulação","País Titulação","Nome da Turma","Nome da Turma","Nome da Turma","Nome da Turma","Nome da Turma","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Data de fim","Área de Concentração","Área de Concentração","Área de Concentração","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Área de Concentração","Data Fim do Membro","Área de Concentração","Data Fim do Membro","Área de Concentração","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Data Fim do Membro","Data Fim Financiador","Data Fim Financiador","Data Fim Financiador","Data Fim Financiador","Área de Concentração","Data Fim Financiador","Área de Concentração","Data Fim Financiador","Área de Concentração","Data Fim Financiador","Data Fim Financiador","Data Fim Financiador","Data Fim Financiador","Data Fim Financiador","Categoria do Orientador","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria do Orientador","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Categoria da Pessoa da Banca","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria do Orientador","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Sigla da IES da Pessoa da Banca","Nome da IES da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","Categoria da Pessoa da Banca","Tipo de Documento do Financiador","Número do Documento do Financiador","Nome do Financiador","Nome do Programa de Fomento","Quantidade de Meses","ISSN","Título","Estrato","Área de Concentração","Linha de Pesquisa","Projeto","ISSN","Título","Estrato","Área de Concentração","Linha de Pesquisa","Projeto","ISSN","Título","Estrato","Área de Concentração","Linha de Pesquisa","Projeto","ISSN","Título","Estrato","Área de Concentração","ISSN","Título","Estrato","Área de Concentração","Projeto","ISSN","Título","Estrato","ISSN","Título","Estrato","Área de Concentração","Projeto","ISSN","Título","Estrato","Área de Concentração","Linha de Pesquisa","Projeto","ISSN","Título","Estrato","Área de Concentração","Linha de Pesquisa","Projeto","ISSN","Título","Estrato","Linha de Pesquisa","Projeto","Área de Concentração","Linha de Pesquisa","Projeto","Área de Concentração","Linha de Pesquisa","Projeto","Área de Concentração","Linha de Pesquisa","Projeto","Área de Concentração","Área de Concentração","Projeto","Área de Concentração","Projeto","Área de Concentração","Linha de Pesquisa","Projeto","Área de Concentração","Linha de Pesquisa","Projeto","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Área de Concentração","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Área de Concentração","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Área de Concentração","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Área de Concentração","Valor do Item de Detalhamento","Área de Concentração","Projeto","Valor do Item de Detalhamento","Valor do Item de Detalhamento","Área de Concentração","Projeto","Valor do Item de Detalhamento","Área de Concentração","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Área de Concentração","Linha de Pesquisa","Projeto","Valor do Item de Detalhamento","Linha de Pesquisa","Projeto","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Área de Concentração","Data de Fim da Linha","Área de Concentração","Data de Fim da Linha","Área de Concentração","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha","Data de Fim da Linha"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Aba<\/th>\n      <th>Ano<\/th>\n      <th>Coluna<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"colReorder":true,"pageLength":4,"scrolX":false,"dom":"Bftip","searchHighlight":true,"buttons":[{"extend":"copy"},{"extend":"csv"},{"extend":"pdf","title":"Dados perdidos na Sucupira","filename":"Dados perdidos na Sucupira"}],"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"responsive":true,"lengthMenu":[4,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<p><em>Fontes:</em> <a
+href="https://sucupira.capes.gov.br/sucupira/"><strong>Plataforma
+Sucupira</strong></a><br><a style="float:right" href="#top"><b>Início
+ </b>⬆️</a><br></p>
+</div>
+</div>
 <div id="nota" class="section level3">
 <h3><strong>Nota</strong></h3>
 <iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/avaliacao/viewPreenchimentoFicha.xhtml?idFicha=6566&amp;popup=true" style="width:100%; height:600px; border:0;">
 </iframe>
 <p><em>Fontes:</em> <a
 href="https://sucupira.capes.gov.br/sucupira/public/consultas/avaliacao/viewPreenchimentoFicha.xhtml?idFicha=6566&amp;popup=true"><strong>Plataforma
-Sucupira</strong></a></p>
+Sucupira</strong></a><br><a style="float:right" href="#top"><b>Início
+ </b>⬆️</a><br></p>
 </div>
 <div id="documentos" class="section level3 tabset">
 <h3 class="tabset"><strong>Documentos CAPES</strong></h3>
@@ -1342,24 +1382,24 @@ class="section level4 tabset">
 recursos</strong></h4>
 <div id="agência-programa" class="section level5">
 <h5><strong>Agência-Programa</strong></h5>
-<div id="sledmtbonb"
+<div id="abghotwjjw"
 style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sledmtbonb table {
+<style>#abghotwjjw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sledmtbonb thead, #sledmtbonb tbody, #sledmtbonb tfoot, #sledmtbonb tr, #sledmtbonb td, #sledmtbonb th {
+#abghotwjjw thead, #abghotwjjw tbody, #abghotwjjw tfoot, #abghotwjjw tr, #abghotwjjw td, #abghotwjjw th {
   border-style: none;
 }
 
-#sledmtbonb p {
+#abghotwjjw p {
   margin: 0;
   padding: 0;
 }
 
-#sledmtbonb .gt_table {
+#abghotwjjw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1385,12 +1425,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-left-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_caption {
+#abghotwjjw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sledmtbonb .gt_title {
+#abghotwjjw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1402,7 +1442,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-width: 0;
 }
 
-#sledmtbonb .gt_subtitle {
+#abghotwjjw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1414,7 +1454,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-width: 0;
 }
 
-#sledmtbonb .gt_heading {
+#abghotwjjw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1426,13 +1466,13 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_bottom_border {
+#abghotwjjw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_col_headings {
+#abghotwjjw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1447,7 +1487,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_col_heading {
+#abghotwjjw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1467,7 +1507,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#sledmtbonb .gt_column_spanner_outer {
+#abghotwjjw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1479,15 +1519,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 4px;
 }
 
-#sledmtbonb .gt_column_spanner_outer:first-child {
+#abghotwjjw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sledmtbonb .gt_column_spanner_outer:last-child {
+#abghotwjjw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sledmtbonb .gt_column_spanner {
+#abghotwjjw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1499,11 +1539,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   width: 100%;
 }
 
-#sledmtbonb .gt_spanner_row {
+#abghotwjjw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sledmtbonb .gt_group_heading {
+#abghotwjjw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1529,7 +1569,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   text-align: left;
 }
 
-#sledmtbonb .gt_empty_group_heading {
+#abghotwjjw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1544,15 +1584,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: middle;
 }
 
-#sledmtbonb .gt_from_md > :first-child {
+#abghotwjjw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sledmtbonb .gt_from_md > :last-child {
+#abghotwjjw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sledmtbonb .gt_row {
+#abghotwjjw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1571,7 +1611,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#sledmtbonb .gt_stub {
+#abghotwjjw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,7 +1624,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#sledmtbonb .gt_stub_row_group {
+#abghotwjjw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1598,15 +1638,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: top;
 }
 
-#sledmtbonb .gt_row_group_first td {
+#abghotwjjw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sledmtbonb .gt_row_group_first th {
+#abghotwjjw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sledmtbonb .gt_summary_row {
+#abghotwjjw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1616,16 +1656,16 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#sledmtbonb .gt_first_summary_row {
+#abghotwjjw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_first_summary_row.thick {
+#abghotwjjw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sledmtbonb .gt_last_summary_row {
+#abghotwjjw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1635,7 +1675,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_grand_summary_row {
+#abghotwjjw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1645,7 +1685,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#sledmtbonb .gt_first_grand_summary_row {
+#abghotwjjw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1655,7 +1695,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_last_grand_summary_row_top {
+#abghotwjjw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1665,11 +1705,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_striped {
+#abghotwjjw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sledmtbonb .gt_table_body {
+#abghotwjjw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1678,7 +1718,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_footnotes {
+#abghotwjjw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1692,7 +1732,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_footnote {
+#abghotwjjw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1701,7 +1741,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#sledmtbonb .gt_sourcenotes {
+#abghotwjjw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1715,7 +1755,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#sledmtbonb .gt_sourcenote {
+#abghotwjjw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1723,63 +1763,63 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#sledmtbonb .gt_left {
+#abghotwjjw .gt_left {
   text-align: left;
 }
 
-#sledmtbonb .gt_center {
+#abghotwjjw .gt_center {
   text-align: center;
 }
 
-#sledmtbonb .gt_right {
+#abghotwjjw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sledmtbonb .gt_font_normal {
+#abghotwjjw .gt_font_normal {
   font-weight: normal;
 }
 
-#sledmtbonb .gt_font_bold {
+#abghotwjjw .gt_font_bold {
   font-weight: bold;
 }
 
-#sledmtbonb .gt_font_italic {
+#abghotwjjw .gt_font_italic {
   font-style: italic;
 }
 
-#sledmtbonb .gt_super {
+#abghotwjjw .gt_super {
   font-size: 65%;
 }
 
-#sledmtbonb .gt_footnote_marks {
+#abghotwjjw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sledmtbonb .gt_asterisk {
+#abghotwjjw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sledmtbonb .gt_indent_1 {
+#abghotwjjw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sledmtbonb .gt_indent_2 {
+#abghotwjjw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sledmtbonb .gt_indent_3 {
+#abghotwjjw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sledmtbonb .gt_indent_4 {
+#abghotwjjw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sledmtbonb .gt_indent_5 {
+#abghotwjjw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2321,24 +2361,24 @@ href="http://www.faperj.br"><strong>FAPERJ</strong></a>,
 </div>
 <div id="agência-ano" class="section level5">
 <h5><strong>Agência-Ano</strong></h5>
-<div id="bdlzbciajg"
+<div id="bzcbzktlgi"
 style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bdlzbciajg table {
+<style>#bzcbzktlgi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bdlzbciajg thead, #bdlzbciajg tbody, #bdlzbciajg tfoot, #bdlzbciajg tr, #bdlzbciajg td, #bdlzbciajg th {
+#bzcbzktlgi thead, #bzcbzktlgi tbody, #bzcbzktlgi tfoot, #bzcbzktlgi tr, #bzcbzktlgi td, #bzcbzktlgi th {
   border-style: none;
 }
 
-#bdlzbciajg p {
+#bzcbzktlgi p {
   margin: 0;
   padding: 0;
 }
 
-#bdlzbciajg .gt_table {
+#bzcbzktlgi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2364,12 +2404,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-left-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_caption {
+#bzcbzktlgi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bdlzbciajg .gt_title {
+#bzcbzktlgi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2381,7 +2421,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-width: 0;
 }
 
-#bdlzbciajg .gt_subtitle {
+#bzcbzktlgi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2393,7 +2433,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-width: 0;
 }
 
-#bdlzbciajg .gt_heading {
+#bzcbzktlgi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2405,13 +2445,13 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_bottom_border {
+#bzcbzktlgi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_col_headings {
+#bzcbzktlgi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2426,7 +2466,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_col_heading {
+#bzcbzktlgi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2446,7 +2486,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#bdlzbciajg .gt_column_spanner_outer {
+#bzcbzktlgi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2458,15 +2498,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 4px;
 }
 
-#bdlzbciajg .gt_column_spanner_outer:first-child {
+#bzcbzktlgi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bdlzbciajg .gt_column_spanner_outer:last-child {
+#bzcbzktlgi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bdlzbciajg .gt_column_spanner {
+#bzcbzktlgi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2478,11 +2518,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   width: 100%;
 }
 
-#bdlzbciajg .gt_spanner_row {
+#bzcbzktlgi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bdlzbciajg .gt_group_heading {
+#bzcbzktlgi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2508,7 +2548,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   text-align: left;
 }
 
-#bdlzbciajg .gt_empty_group_heading {
+#bzcbzktlgi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2523,15 +2563,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: middle;
 }
 
-#bdlzbciajg .gt_from_md > :first-child {
+#bzcbzktlgi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bdlzbciajg .gt_from_md > :last-child {
+#bzcbzktlgi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bdlzbciajg .gt_row {
+#bzcbzktlgi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2550,7 +2590,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#bdlzbciajg .gt_stub {
+#bzcbzktlgi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2563,7 +2603,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#bdlzbciajg .gt_stub_row_group {
+#bzcbzktlgi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2577,15 +2617,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: top;
 }
 
-#bdlzbciajg .gt_row_group_first td {
+#bzcbzktlgi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bdlzbciajg .gt_row_group_first th {
+#bzcbzktlgi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bdlzbciajg .gt_summary_row {
+#bzcbzktlgi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2595,16 +2635,16 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#bdlzbciajg .gt_first_summary_row {
+#bzcbzktlgi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_first_summary_row.thick {
+#bzcbzktlgi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bdlzbciajg .gt_last_summary_row {
+#bzcbzktlgi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2614,7 +2654,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_grand_summary_row {
+#bzcbzktlgi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2624,7 +2664,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#bdlzbciajg .gt_first_grand_summary_row {
+#bzcbzktlgi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2634,7 +2674,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_last_grand_summary_row_top {
+#bzcbzktlgi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2644,11 +2684,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_striped {
+#bzcbzktlgi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bdlzbciajg .gt_table_body {
+#bzcbzktlgi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2657,7 +2697,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_footnotes {
+#bzcbzktlgi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2671,7 +2711,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_footnote {
+#bzcbzktlgi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2680,7 +2720,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#bdlzbciajg .gt_sourcenotes {
+#bzcbzktlgi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2694,7 +2734,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#bdlzbciajg .gt_sourcenote {
+#bzcbzktlgi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2702,63 +2742,63 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#bdlzbciajg .gt_left {
+#bzcbzktlgi .gt_left {
   text-align: left;
 }
 
-#bdlzbciajg .gt_center {
+#bzcbzktlgi .gt_center {
   text-align: center;
 }
 
-#bdlzbciajg .gt_right {
+#bzcbzktlgi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bdlzbciajg .gt_font_normal {
+#bzcbzktlgi .gt_font_normal {
   font-weight: normal;
 }
 
-#bdlzbciajg .gt_font_bold {
+#bzcbzktlgi .gt_font_bold {
   font-weight: bold;
 }
 
-#bdlzbciajg .gt_font_italic {
+#bzcbzktlgi .gt_font_italic {
   font-style: italic;
 }
 
-#bdlzbciajg .gt_super {
+#bzcbzktlgi .gt_super {
   font-size: 65%;
 }
 
-#bdlzbciajg .gt_footnote_marks {
+#bzcbzktlgi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bdlzbciajg .gt_asterisk {
+#bzcbzktlgi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bdlzbciajg .gt_indent_1 {
+#bzcbzktlgi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bdlzbciajg .gt_indent_2 {
+#bzcbzktlgi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bdlzbciajg .gt_indent_3 {
+#bzcbzktlgi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bdlzbciajg .gt_indent_4 {
+#bzcbzktlgi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bdlzbciajg .gt_indent_5 {
+#bzcbzktlgi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3195,24 +3235,24 @@ href="http://www.faperj.br"><strong>FAPERJ</strong></a>,
 </div>
 <div id="agência-docente" class="section level5">
 <h5><strong>Agência-Docente</strong></h5>
-<div id="jlbourkwej"
+<div id="hwhrduwlbj"
 style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jlbourkwej table {
+<style>#hwhrduwlbj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jlbourkwej thead, #jlbourkwej tbody, #jlbourkwej tfoot, #jlbourkwej tr, #jlbourkwej td, #jlbourkwej th {
+#hwhrduwlbj thead, #hwhrduwlbj tbody, #hwhrduwlbj tfoot, #hwhrduwlbj tr, #hwhrduwlbj td, #hwhrduwlbj th {
   border-style: none;
 }
 
-#jlbourkwej p {
+#hwhrduwlbj p {
   margin: 0;
   padding: 0;
 }
 
-#jlbourkwej .gt_table {
+#hwhrduwlbj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3238,12 +3278,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-left-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_caption {
+#hwhrduwlbj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jlbourkwej .gt_title {
+#hwhrduwlbj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3255,7 +3295,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-width: 0;
 }
 
-#jlbourkwej .gt_subtitle {
+#hwhrduwlbj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3267,7 +3307,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-width: 0;
 }
 
-#jlbourkwej .gt_heading {
+#hwhrduwlbj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3279,13 +3319,13 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_bottom_border {
+#hwhrduwlbj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_col_headings {
+#hwhrduwlbj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3300,7 +3340,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_col_heading {
+#hwhrduwlbj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3320,7 +3360,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#jlbourkwej .gt_column_spanner_outer {
+#hwhrduwlbj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3332,15 +3372,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 4px;
 }
 
-#jlbourkwej .gt_column_spanner_outer:first-child {
+#hwhrduwlbj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jlbourkwej .gt_column_spanner_outer:last-child {
+#hwhrduwlbj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jlbourkwej .gt_column_spanner {
+#hwhrduwlbj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3352,11 +3392,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   width: 100%;
 }
 
-#jlbourkwej .gt_spanner_row {
+#hwhrduwlbj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jlbourkwej .gt_group_heading {
+#hwhrduwlbj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3382,7 +3422,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   text-align: left;
 }
 
-#jlbourkwej .gt_empty_group_heading {
+#hwhrduwlbj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3397,15 +3437,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: middle;
 }
 
-#jlbourkwej .gt_from_md > :first-child {
+#hwhrduwlbj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jlbourkwej .gt_from_md > :last-child {
+#hwhrduwlbj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jlbourkwej .gt_row {
+#hwhrduwlbj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3424,7 +3464,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#jlbourkwej .gt_stub {
+#hwhrduwlbj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3437,7 +3477,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#jlbourkwej .gt_stub_row_group {
+#hwhrduwlbj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3451,15 +3491,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: top;
 }
 
-#jlbourkwej .gt_row_group_first td {
+#hwhrduwlbj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jlbourkwej .gt_row_group_first th {
+#hwhrduwlbj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jlbourkwej .gt_summary_row {
+#hwhrduwlbj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3469,16 +3509,16 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#jlbourkwej .gt_first_summary_row {
+#hwhrduwlbj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_first_summary_row.thick {
+#hwhrduwlbj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jlbourkwej .gt_last_summary_row {
+#hwhrduwlbj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3488,7 +3528,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_grand_summary_row {
+#hwhrduwlbj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3498,7 +3538,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#jlbourkwej .gt_first_grand_summary_row {
+#hwhrduwlbj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3508,7 +3548,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_last_grand_summary_row_top {
+#hwhrduwlbj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3518,11 +3558,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_striped {
+#hwhrduwlbj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jlbourkwej .gt_table_body {
+#hwhrduwlbj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3531,7 +3571,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_footnotes {
+#hwhrduwlbj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3545,7 +3585,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_footnote {
+#hwhrduwlbj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3554,7 +3594,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#jlbourkwej .gt_sourcenotes {
+#hwhrduwlbj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3568,7 +3608,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#jlbourkwej .gt_sourcenote {
+#hwhrduwlbj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3576,63 +3616,63 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#jlbourkwej .gt_left {
+#hwhrduwlbj .gt_left {
   text-align: left;
 }
 
-#jlbourkwej .gt_center {
+#hwhrduwlbj .gt_center {
   text-align: center;
 }
 
-#jlbourkwej .gt_right {
+#hwhrduwlbj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jlbourkwej .gt_font_normal {
+#hwhrduwlbj .gt_font_normal {
   font-weight: normal;
 }
 
-#jlbourkwej .gt_font_bold {
+#hwhrduwlbj .gt_font_bold {
   font-weight: bold;
 }
 
-#jlbourkwej .gt_font_italic {
+#hwhrduwlbj .gt_font_italic {
   font-style: italic;
 }
 
-#jlbourkwej .gt_super {
+#hwhrduwlbj .gt_super {
   font-size: 65%;
 }
 
-#jlbourkwej .gt_footnote_marks {
+#hwhrduwlbj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jlbourkwej .gt_asterisk {
+#hwhrduwlbj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jlbourkwej .gt_indent_1 {
+#hwhrduwlbj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jlbourkwej .gt_indent_2 {
+#hwhrduwlbj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jlbourkwej .gt_indent_3 {
+#hwhrduwlbj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jlbourkwej .gt_indent_4 {
+#hwhrduwlbj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jlbourkwej .gt_indent_5 {
+#hwhrduwlbj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4129,24 +4169,24 @@ href="http://www.faperj.br"><strong>FAPERJ</strong></a>,
 </div>
 <div id="docente-ano" class="section level5">
 <h5><strong>Docente-Ano</strong></h5>
-<div id="ulqcxozhxz"
+<div id="noosgyvvmm"
 style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ulqcxozhxz table {
+<style>#noosgyvvmm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ulqcxozhxz thead, #ulqcxozhxz tbody, #ulqcxozhxz tfoot, #ulqcxozhxz tr, #ulqcxozhxz td, #ulqcxozhxz th {
+#noosgyvvmm thead, #noosgyvvmm tbody, #noosgyvvmm tfoot, #noosgyvvmm tr, #noosgyvvmm td, #noosgyvvmm th {
   border-style: none;
 }
 
-#ulqcxozhxz p {
+#noosgyvvmm p {
   margin: 0;
   padding: 0;
 }
 
-#ulqcxozhxz .gt_table {
+#noosgyvvmm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4172,12 +4212,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-left-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_caption {
+#noosgyvvmm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ulqcxozhxz .gt_title {
+#noosgyvvmm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4189,7 +4229,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-width: 0;
 }
 
-#ulqcxozhxz .gt_subtitle {
+#noosgyvvmm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4201,7 +4241,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-width: 0;
 }
 
-#ulqcxozhxz .gt_heading {
+#noosgyvvmm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4213,13 +4253,13 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_bottom_border {
+#noosgyvvmm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_col_headings {
+#noosgyvvmm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4234,7 +4274,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_col_heading {
+#noosgyvvmm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4254,7 +4294,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#ulqcxozhxz .gt_column_spanner_outer {
+#noosgyvvmm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4266,15 +4306,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 4px;
 }
 
-#ulqcxozhxz .gt_column_spanner_outer:first-child {
+#noosgyvvmm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ulqcxozhxz .gt_column_spanner_outer:last-child {
+#noosgyvvmm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ulqcxozhxz .gt_column_spanner {
+#noosgyvvmm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4286,11 +4326,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   width: 100%;
 }
 
-#ulqcxozhxz .gt_spanner_row {
+#noosgyvvmm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ulqcxozhxz .gt_group_heading {
+#noosgyvvmm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4316,7 +4356,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   text-align: left;
 }
 
-#ulqcxozhxz .gt_empty_group_heading {
+#noosgyvvmm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4331,15 +4371,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: middle;
 }
 
-#ulqcxozhxz .gt_from_md > :first-child {
+#noosgyvvmm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ulqcxozhxz .gt_from_md > :last-child {
+#noosgyvvmm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ulqcxozhxz .gt_row {
+#noosgyvvmm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4358,7 +4398,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#ulqcxozhxz .gt_stub {
+#noosgyvvmm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4371,7 +4411,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ulqcxozhxz .gt_stub_row_group {
+#noosgyvvmm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4385,15 +4425,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: top;
 }
 
-#ulqcxozhxz .gt_row_group_first td {
+#noosgyvvmm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ulqcxozhxz .gt_row_group_first th {
+#noosgyvvmm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ulqcxozhxz .gt_summary_row {
+#noosgyvvmm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4403,16 +4443,16 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ulqcxozhxz .gt_first_summary_row {
+#noosgyvvmm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_first_summary_row.thick {
+#noosgyvvmm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ulqcxozhxz .gt_last_summary_row {
+#noosgyvvmm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4422,7 +4462,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_grand_summary_row {
+#noosgyvvmm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4432,7 +4472,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ulqcxozhxz .gt_first_grand_summary_row {
+#noosgyvvmm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4442,7 +4482,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_last_grand_summary_row_top {
+#noosgyvvmm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4452,11 +4492,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_striped {
+#noosgyvvmm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ulqcxozhxz .gt_table_body {
+#noosgyvvmm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4465,7 +4505,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_footnotes {
+#noosgyvvmm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4479,7 +4519,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_footnote {
+#noosgyvvmm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4488,7 +4528,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ulqcxozhxz .gt_sourcenotes {
+#noosgyvvmm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4502,7 +4542,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ulqcxozhxz .gt_sourcenote {
+#noosgyvvmm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4510,63 +4550,63 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ulqcxozhxz .gt_left {
+#noosgyvvmm .gt_left {
   text-align: left;
 }
 
-#ulqcxozhxz .gt_center {
+#noosgyvvmm .gt_center {
   text-align: center;
 }
 
-#ulqcxozhxz .gt_right {
+#noosgyvvmm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ulqcxozhxz .gt_font_normal {
+#noosgyvvmm .gt_font_normal {
   font-weight: normal;
 }
 
-#ulqcxozhxz .gt_font_bold {
+#noosgyvvmm .gt_font_bold {
   font-weight: bold;
 }
 
-#ulqcxozhxz .gt_font_italic {
+#noosgyvvmm .gt_font_italic {
   font-style: italic;
 }
 
-#ulqcxozhxz .gt_super {
+#noosgyvvmm .gt_super {
   font-size: 65%;
 }
 
-#ulqcxozhxz .gt_footnote_marks {
+#noosgyvvmm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ulqcxozhxz .gt_asterisk {
+#noosgyvvmm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ulqcxozhxz .gt_indent_1 {
+#noosgyvvmm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ulqcxozhxz .gt_indent_2 {
+#noosgyvvmm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ulqcxozhxz .gt_indent_3 {
+#noosgyvvmm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ulqcxozhxz .gt_indent_4 {
+#noosgyvvmm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ulqcxozhxz .gt_indent_5 {
+#noosgyvvmm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -6057,24 +6097,24 @@ href="http://www.faperj.br"><strong>FAPERJ</strong></a>,
 </div>
 <div id="docente-programa" class="section level5">
 <h5><strong>Docente-Programa</strong></h5>
-<div id="ehgjyrayao"
+<div id="nejtcvqbjd"
 style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ehgjyrayao table {
+<style>#nejtcvqbjd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ehgjyrayao thead, #ehgjyrayao tbody, #ehgjyrayao tfoot, #ehgjyrayao tr, #ehgjyrayao td, #ehgjyrayao th {
+#nejtcvqbjd thead, #nejtcvqbjd tbody, #nejtcvqbjd tfoot, #nejtcvqbjd tr, #nejtcvqbjd td, #nejtcvqbjd th {
   border-style: none;
 }
 
-#ehgjyrayao p {
+#nejtcvqbjd p {
   margin: 0;
   padding: 0;
 }
 
-#ehgjyrayao .gt_table {
+#nejtcvqbjd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6100,12 +6140,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-left-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_caption {
+#nejtcvqbjd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ehgjyrayao .gt_title {
+#nejtcvqbjd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6117,7 +6157,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-width: 0;
 }
 
-#ehgjyrayao .gt_subtitle {
+#nejtcvqbjd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6129,7 +6169,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-width: 0;
 }
 
-#ehgjyrayao .gt_heading {
+#nejtcvqbjd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6141,13 +6181,13 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_bottom_border {
+#nejtcvqbjd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_col_headings {
+#nejtcvqbjd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6162,7 +6202,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_col_heading {
+#nejtcvqbjd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6182,7 +6222,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#ehgjyrayao .gt_column_spanner_outer {
+#nejtcvqbjd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6194,15 +6234,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 4px;
 }
 
-#ehgjyrayao .gt_column_spanner_outer:first-child {
+#nejtcvqbjd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ehgjyrayao .gt_column_spanner_outer:last-child {
+#nejtcvqbjd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ehgjyrayao .gt_column_spanner {
+#nejtcvqbjd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6214,11 +6254,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   width: 100%;
 }
 
-#ehgjyrayao .gt_spanner_row {
+#nejtcvqbjd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ehgjyrayao .gt_group_heading {
+#nejtcvqbjd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6244,7 +6284,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   text-align: left;
 }
 
-#ehgjyrayao .gt_empty_group_heading {
+#nejtcvqbjd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6259,15 +6299,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: middle;
 }
 
-#ehgjyrayao .gt_from_md > :first-child {
+#nejtcvqbjd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ehgjyrayao .gt_from_md > :last-child {
+#nejtcvqbjd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ehgjyrayao .gt_row {
+#nejtcvqbjd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6286,7 +6326,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   overflow-x: hidden;
 }
 
-#ehgjyrayao .gt_stub {
+#nejtcvqbjd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6299,7 +6339,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ehgjyrayao .gt_stub_row_group {
+#nejtcvqbjd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6313,15 +6353,15 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   vertical-align: top;
 }
 
-#ehgjyrayao .gt_row_group_first td {
+#nejtcvqbjd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ehgjyrayao .gt_row_group_first th {
+#nejtcvqbjd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ehgjyrayao .gt_summary_row {
+#nejtcvqbjd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6331,16 +6371,16 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ehgjyrayao .gt_first_summary_row {
+#nejtcvqbjd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_first_summary_row.thick {
+#nejtcvqbjd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ehgjyrayao .gt_last_summary_row {
+#nejtcvqbjd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6350,7 +6390,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_grand_summary_row {
+#nejtcvqbjd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6360,7 +6400,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ehgjyrayao .gt_first_grand_summary_row {
+#nejtcvqbjd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6370,7 +6410,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-top-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_last_grand_summary_row_top {
+#nejtcvqbjd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6380,11 +6420,11 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_striped {
+#nejtcvqbjd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ehgjyrayao .gt_table_body {
+#nejtcvqbjd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6393,7 +6433,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-bottom-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_footnotes {
+#nejtcvqbjd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6407,7 +6447,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_footnote {
+#nejtcvqbjd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6416,7 +6456,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ehgjyrayao .gt_sourcenotes {
+#nejtcvqbjd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6430,7 +6470,7 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   border-right-color: #D3D3D3;
 }
 
-#ehgjyrayao .gt_sourcenote {
+#nejtcvqbjd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6438,63 +6478,63 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
   padding-right: 5px;
 }
 
-#ehgjyrayao .gt_left {
+#nejtcvqbjd .gt_left {
   text-align: left;
 }
 
-#ehgjyrayao .gt_center {
+#nejtcvqbjd .gt_center {
   text-align: center;
 }
 
-#ehgjyrayao .gt_right {
+#nejtcvqbjd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ehgjyrayao .gt_font_normal {
+#nejtcvqbjd .gt_font_normal {
   font-weight: normal;
 }
 
-#ehgjyrayao .gt_font_bold {
+#nejtcvqbjd .gt_font_bold {
   font-weight: bold;
 }
 
-#ehgjyrayao .gt_font_italic {
+#nejtcvqbjd .gt_font_italic {
   font-style: italic;
 }
 
-#ehgjyrayao .gt_super {
+#nejtcvqbjd .gt_super {
   font-size: 65%;
 }
 
-#ehgjyrayao .gt_footnote_marks {
+#nejtcvqbjd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ehgjyrayao .gt_asterisk {
+#nejtcvqbjd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ehgjyrayao .gt_indent_1 {
+#nejtcvqbjd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ehgjyrayao .gt_indent_2 {
+#nejtcvqbjd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ehgjyrayao .gt_indent_3 {
+#nejtcvqbjd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ehgjyrayao .gt_indent_4 {
+#nejtcvqbjd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ehgjyrayao .gt_indent_5 {
+#nejtcvqbjd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

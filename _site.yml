@@ -173,6 +173,8 @@ navbar:
         - text: "Resultados"
           href: [autoavaliacao.html#resultados]
           menu:
+            - text: "Síntese dos dados"
+              href: [autoavaliacao.html#sintese-dados]
             - text: "Nota"
               href: [autoavaliacao.html#nota]
             - text: "Documentos"

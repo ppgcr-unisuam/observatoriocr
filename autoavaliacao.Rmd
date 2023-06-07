@@ -28,7 +28,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
-```{js}
+```{js table-of-contents}
 $(document).ready(function() {
   $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="PPG/Images/logo-programa.png"></div>');
   });
@@ -177,7 +177,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <!--script for generating STACKED HORIZONTAL BAR CHART-->
 
-```{css}
+```{css barchart-css}
 .row {
   display: flex;
   align-items: stretch;
@@ -207,9 +207,9 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-```{r barchart-data, eval = any(has.sucupira, has.PPG.files)}
+```{r barchart-data, eval = any(has.sucupira.files, has.ppg.files)}
 data.sucupira <- 0
-if (has.sucupira) {
+if (has.sucupira.files) {
   # get amount of data from Sucupira XLSX files
   source("Scripts/get-sucupira-sheets-names.R",
          local = knitr::knit_global())
@@ -223,16 +223,16 @@ if (has.sucupira) {
 }
 
 data.ppg <- 0
-if (has.PPG.files) {
+if (has.ppg.files) {
   # get amount of data from PPG XLSX files
   source("Scripts/get-ppg-xlsx-data.R", local = knitr::knit_global())
   if (length(files.to.read) != 0) {
     for (i in 1:length(files.to.read)) {
-      abas <- excel_sheets(files.to.read[i])
-      for (j in 1:length(abas)) {
+      sheets <- excel_sheets(files.to.read[i])
+      for (j in 1:length(sheets)) {
         sheet <- sheets[j]
         try(ppg.file <-
-              read_excel(files.to.read[i], sheet = abas[j]),
+              readxl::read_excel(files.to.read[i], sheet = sheets[j]),
             silent = TRUE)
         data.ppg <- sum(data.ppg, !is.na(ppg.file))
       }
@@ -272,7 +272,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Dados perdidos**
 
-```{r missing-data-sucupira, eval = has.sucupira}
+```{r missing-data-sucupira, eval = has.sucupira.files}
 # initialize data
 missing.data <- c()
 
@@ -333,7 +333,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 ```{r auto-notas, eval = has.notas}
 # read separate sheets
-notas <- read_excel("PPG/Notas.xlsx", sheet = "Notas")
+notas <- readxl::read_excel("PPG/Notas.xlsx", sheet = "Notas")
 
 cat(
   paste(
@@ -366,7 +366,7 @@ for (i in 1:length(abas)) {
   cat(paste0('#### **', abas[i], '**'))
   cat('\n\n<!-- -->\n\n')
   periodo.raw <-
-    read_excel("PPG/Avaliação.xlsx",
+    readxl::read_excel("PPG/Avaliação.xlsx",
                sheet = abas[i],
                col_types = c("text"))
   
@@ -522,7 +522,7 @@ cat("*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br")
 ```{r auto-financiadores-agencia-programa, eval = has.financiadores}
 # this chunk requires additional data that may not be available
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 options(scipen = 10)
 
@@ -569,12 +569,12 @@ cat(
 ```{r auto-financiadores-agencia-ano, eval = has.financiadores}
 # this chunk requires additional data that may not be available
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 options(scipen = 10)
 
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 # dplyr::select variables to display, by AGENCIA & ANO
 financiadores <-
@@ -624,12 +624,12 @@ cat(
 ```{r auto-financiadores-agencia-docentes, eval = has.financiadores}
 # this chunk requires additional data that may not be available
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 options(scipen = 10)
 
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 # dplyr::select variables to display, by AGENCIA & ANO
 financiadores <-
@@ -679,12 +679,12 @@ cat(
 ```{r auto-financiadores-docente-ano, eval = has.financiadores}
 # this chunk requires additional data that may not be available
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 options(scipen = 10)
 
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 # dplyr::select variables to display, by AGENCIA & ANO
 financiadores <-
@@ -734,12 +734,12 @@ cat(
 ```{r auto-financiadores-docente-programa, eval = has.financiadores}
 # this chunk requires additional data that may not be available
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 options(scipen = 10)
 
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 # dplyr::select variables to display, by AGENCIA & ANO
 financiadores <-
@@ -892,7 +892,7 @@ cat(
 
 #### **Atividades de ensino nas disciplinas do PPG**
 
-```{r turmas-docentes-2024, eval = has.sucupira}
+```{r turmas-docentes-2024, eval = has.sucupira.files}
 # load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -907,7 +907,7 @@ names(sucupira.list) <- as.character(anos)
 # bind all sheets
 periodos <-
   names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 disciplinas.raw <-
   do.call(rbind.data.frame, sucupira.list[periodos])
 disciplinas.raw <-
@@ -924,7 +924,7 @@ names(sucupira.list) <- as.character(anos)
 # bind all sheets
 periodos <-
   names(sucupira.list)[na.omit(match(c(2021:2024), names(sucupira.list)))]
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 turmas.raw <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 if (dim(disciplinas.raw)[1] != 0) {

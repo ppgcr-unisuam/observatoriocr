@@ -1,5 +1,5 @@
 ---
-title: "OBSERVATÓRIO"
+title: OBSERVATÓRIO
 output:
   html_document:
     toc: false
@@ -25,24 +25,38 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 ---
-title: "OBSERVATÓRIO `r ifelse(has.dados.cadastrais, sigla.PPG, "")`"
+title: "OBSERVATÓRIO `r ifelse(and(has.dados.cadastrais, has.sucupira.files), sigla.PPG, "")`"
 ---
 
 <br>
 
 <br>
 
-```{r landingpage-logo}
-has.logo.ies <- file.exists("PPG/Images/logo-IES.png")
-```
-
 <center>
 
-`r if(has.logo.ies){cat('<img src=\"PPG/Images/logo-IES.png\" align=\"center\"/>')}`
+```{r logo-ies}
+if(file.exists("PPG/Images/logo-IES.png")) {
+  cat('<img src=\"PPG/Images/logo-IES.png\" align=\"center\"/>')
+}
+```
 
 <br>
 
-<p style="font-size:1.5em"> O **Observatório `r ifelse(has.dados.cadastrais, toupper(sigla.PPG), "")`** é uma iniciativa `r ifelse(has.dados.cadastrais, paste0("do **Programa de Pós-graduação em ", nome.PPG, "** do "), "")` [`r ifelse(has.dados.cadastrais, toTitleCase(as.character(nome.IES)), "")`](`r try(ifelse(has.sucupira, site.PPG, ""), silent = TRUE)`) que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade</p>
+<p style="font-size:1.5em">
+```{r intro, results = "asis"}
+if(and(has.dados.cadastrais, has.sucupira.files)){
+cat(
+  'O **Observatório ', toupper(as.character(sigla.PPG)),
+  '** é uma iniciativa do **Programa de Pós-graduação em ', as.character(nome.PPG), '** - [', toTitleCase(as.character(nome.IES)), '](', as.character(site.PPG),') ',
+  'que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade',
+   sep = "")
+} else {
+cat(
+  'O **Observatório** é uma iniciativa que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade',
+   sep = "")
+}
+```
+</p>
 
 </center>
 
@@ -50,7 +64,7 @@ has.logo.ies <- file.exists("PPG/Images/logo-IES.png")
 
 <br>
 
-```{r sintese-coerencia, include = FALSE, eval = has.sucupira}
+```{r sintese-coerencia, include = FALSE, eval = has.sucupira.files}
 # projetos
 sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -176,7 +190,7 @@ for (i in 1:dim(summ.AC.LP)[1]) {
   }
 }
 extra <- as.data.frame(extra)
-colnames(extra) <- c("AC", "LP", "Inicio", "Fim", "Freq")
+try(colnames(extra) <- c("AC", "LP", "Inicio", "Fim", "Freq"), silent = TRUE)
 
 summ.AC.LP <- rbind(summ.AC.LP, extra)
 
@@ -212,7 +226,7 @@ links <- summ.AC.LP
 nodes <- data.frame(name = c(as.character(links$source),
                              as.character(links$target)) %>% unique())
 
-# We need a data frame giving a hierarchical structure. Let's consider the flare dataset:
+# We need a data frame giving a hierarchical structure. Let's consider the flare dataset
 edges1 <-
   aggregate(
     alluv.data$sucupira.raw..Linha.de.Pesquisa.,
@@ -223,7 +237,7 @@ edges1 <-
     FUN = length
   )
 
-# Usually we associate another dataset that give information about each node of the dataset:
+# Usually we associate another dataset that give information about each node of the dataset
 vertices <- NULL
 
 # Then we have to make a 'graph' object using the igraph library:
@@ -243,7 +257,7 @@ par(
 # Make the plot
 ggraph(mygraph, layout = 'circlepack', weight = c(0, edges1[, 3])) +
   geom_node_circle(aes(fill = as.factor(depth))) +
-  scale_colour_brewer(brewer.pal(n = 9, name = "Set3")) +
+  scale_colour_brewer(RColorBrewer::brewer.pal(n = 9, name = "Set3")) +
   scale_fill_discrete(labels = c("Áreas de concentração", "Linhas de pesquisa")) +
   theme_void() +
   theme(
@@ -285,13 +299,13 @@ summ.data <- c(summ.coerencia.1)
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-coerencia-carousel, eval = has.sucupira}
+```{r sintese-coerencia-carousel, eval = has.sucupira.files}
 # carousel
-bs_carousel(id = "coerencia-carousel",
+bsplus::bs_carousel(id = "coerencia-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-2.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-coerencia-2.png"))
 
 cat('\n\n')
 cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")
@@ -305,7 +319,7 @@ cat('^[Áreas internas correspondem à quantidade de projetos na respectiva linh
 
 <br>
 
-```{r sintese-temas, include = FALSE, eval = has.sucupira}
+```{r sintese-temas, include = FALSE, eval = has.sucupira.files}
 # file path to save the wordclouds
 dir.path <- file.path(getwd(), "index_files", "figure-html")
 dir.create(dir.path, recursive = TRUE)
@@ -332,14 +346,14 @@ cloud.title <- "Temas de Produção"
 source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
 ```
 
-```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira}
+```{r sintese-temas-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira.files}
 # carousel of wordclouds
-bs_carousel(id = "temas-carouse",
+bsplus::bs_carousel(id = "temas-carouse",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/TCC.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Produções.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/Projetos.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/TCC.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/Produções.png"))
 
 cat('\n\n')
 cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")
@@ -350,7 +364,7 @@ cat('^[Termos nas nuvens correspondem àqueles encontrados nos títulos dos proj
 
 <br>
 
-```{r sintese-projetos, include = FALSE, eval = has.sucupira}
+```{r sintese-projetos, include = FALSE, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -436,14 +450,14 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot 1 (total de projetos por linha, por ano)
 barplot(projetos.ano,
         ylab = "N",
-        col = brewer.pal(n = length(linhas), name = "Set3"))
+        col = RColorBrewer::brewer.pal(n = length(linhas), name = "Set3"))
 title(main = "Projetos por Linha de Pesquisa",
       outer = TRUE,
       cex.main = 1.7)
 legend(
   "topright",
   legend = linhas,
-  fill = brewer.pal(n = length(linhas), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(linhas), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
@@ -459,7 +473,7 @@ barplot(
     scale = colSums(as.matrix(projetos.ano))
   ) * 100,
   ylab = "%",
-  col = brewer.pal(n = length(linhas), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(linhas), name = "Set3"),
   ylim = c(0, 100)
 )
 title(main = "Projetos por Linha de Pesquisa",
@@ -478,14 +492,14 @@ summ.data <- summ.table.projetos
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-projetos-carousel, eval = has.sucupira}
+```{r sintese-projetos-carousel, eval = has.sucupira.files}
 # carousel
-bs_carousel(id = "projetos-carousel",
+bsplus::bs_carousel(id = "projetos-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-projetos-3.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-projetos-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-projetos-2.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-projetos-3.png"))
 
 cat('\n\n')
 cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")
@@ -500,7 +514,7 @@ cat('^[Quantidades referem-se ao número de projetos de pesquisa ativos no ano.]
 options("scipen" = 100)
 
 financiadores.raw <-
-  read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
 # dplyr::select variables to display
 financiadores <-
@@ -526,14 +540,14 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot 1 (financiadores per agency by year (absolute frequency)
 barplot(N.editais.agencia.ano,
         ylab = "N",
-        col = brewer.pal(n = length(agencias), name = "Set3"))
+        col = RColorBrewer::brewer.pal(n = length(agencias), name = "Set3"))
 title(main = "Editais financiados por agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
   "topleft",
   legend = agencias,
-  fill = brewer.pal(n = length(agencias), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(agencias), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
@@ -567,14 +581,14 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 barplot(T.editais.agencia.ano,
         ylab = "R$",
-        col = brewer.pal(n = length(agencias), name = "Set3"))
+        col = RColorBrewer::brewer.pal(n = length(agencias), name = "Set3"))
 title(main = "Valores financiados por agência",
       outer = TRUE,
       cex.main = 1.7)
 legend(
   "topleft",
   legend = agencias,
-  fill = brewer.pal(n = length(agencias), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(agencias), name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
@@ -594,7 +608,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 barplot(professores.ano,
         ylab = "N",
-        col = rep(brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
+        col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(professores.ano)))
 title(main = "Docentes com financiamento",
       outer = TRUE,
       cex.main = 1.7)
@@ -610,7 +624,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(length(na.omit(unique(editais))), 10)
+top <- min(length(do::unique_no.NA(editais)), 10)
 data.editais <-
   na.omit(data.frame(name = names(sort(
     table(editais), decreasing = TRUE
@@ -628,7 +642,7 @@ barplot(
   height = rev(data.editais$value),
   names = rev(data.editais$name),
   xlab = "N",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
   horiz = T,
   las = 1,
   cex.names = 0.7
@@ -650,7 +664,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(length(na.omit(unique(agencias))), 10)
+top <- min(length(do::unique_no.NA(agencias)), 10)
 data.agencias <-
   na.omit(data.frame(name = names(sort(
     table(agencias), decreasing = TRUE
@@ -668,7 +682,7 @@ barplot(
   height = rev(data.agencias$value),
   names = rev(data.agencias$name),
   xlab = "N",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
   horiz = T,
   las = 1,
   cex.names = 0.7
@@ -742,32 +756,32 @@ source("Scripts/plot-summaries.R", local = knitr::knit_global())
 
 ```{r sintese-financiadores-carousel, eval = has.financiadores}
 # carousel
-bs_carousel(id = "financiadores-carousel",
+bsplus::bs_carousel(id = "financiadores-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-1.png")
   ) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-2.png")
   ) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-3.png")
   ) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-4.png")
   ) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-5.png")
   ) %>%
-  bs_append(
+  bsplus::bs_append(
     id = "financiadores-carousel",
-    content = bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-6.png")
+    content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-financiadores-6.png")
   )
 
 cat('\n\n')
@@ -780,112 +794,36 @@ cat(
 
 <br>
 
-```{r sintese-producao, include = FALSE, eval = has.producao}
-# read data
-try(artigos <-
-      data.frame(read_excel(
-        paste0("PPG/Produção.xlsx"),
-        sheet = "PI.completos",
-        col_types = c("text")
-      )))
-
-# read data
-try(resumos <-
-      data.frame(read_excel(
-        paste0("PPG/Produção.xlsx"),
-        sheet = "PI.resumos",
-        col_types = c("text")
-      )))
-
-# read data
-try(eventos <-
-      data.frame(read_excel(
-        paste0("PPG/Produção.xlsx"),
-        sheet = "PI.eventos",
-        col_types = c("text")
-      )))
-
-# bind papers and letters/abstracts and events (all with DOI)
-artigos <-
-  rbind(
-    dplyr::select(artigos,
-           "Publicado.em",
-           "DOI",
-           "ISSN"),
-    dplyr::select(resumos,
-           "Publicado.em",
-           "DOI",
-           "ISSN"),
-    dplyr::select(eventos,
-           "Publicado.em",
-           "DOI",
-           "ISSN")
-  )
-
-# remove os artigos sem DOI
-artigos <- artigos[complete.cases(artigos$DOI), ]
-
-# remove os aceitos, se existentes
-artigos <-
-  artigos[artigos$Publicado.em != "Aceito",]
-
-# adding Webqualis column data
-artigos$WebQualis <-
-  rep("Sem Qualis", times  = length(dim(artigos)[1]))
-for (i in 1:dim(artigos)[1]) {
-  try(artigos$WebQualis[i] <-
-        qualis$Estrato[match(artigos$ISSN[i], qualis$ISSN)])
-}
-# adding Journal Name column data
-artigos$Título <-
-  rep("Sem Qualis", times  = length(dim(artigos)[1]))
-for (i in 1:dim(artigos)[1]) {
-  try(artigos$Título[i] <-
-        qualis$Título[match(artigos$ISSN[i], qualis$ISSN)])
-}
-
+```{r sintese-producao, include = FALSE, eval = any(has.producao.ppg, has.producao.sucupira)}
 # Qualis
 qualis.PPG <- c()
 for (i in 1:length(estratos)) {
   qualis.PPG[i] <-
-    sum(artigos$WebQualis == estratos[i], na.rm = TRUE) / length(artigos$WebQualis) * 100
+    sum(doi_all$WebQualis == estratos[i], na.rm = TRUE) / length(doi_all$WebQualis) * 100
 }
 names(qualis.PPG) <- estratos
 
-# SJR
-SJR <- c()
-for (i in 1:dim(artigos)[1]) {
-  SJR.i <-
-    as.numeric(scimago[grep(gsub("-", "", artigos$ISSN[i]), scimago$Issn), 6])
-  SJR <-
-    c(SJR, ifelse(identical(SJR.i, numeric(0)) |
-                    all(is.na(SJR.i)), NA, SJR.i))
-}
-
-# CiteScore
-c.score <- c()
-for (i in 1:dim(artigos)[1]) {
-  c.score.i <-
-    as.numeric(citescore$x2021_cite_score[grep(gsub("-", "", artigos$ISSN[i]), citescore$print_issn)])
-  if (is_empty(c.score.i)) {
-    as.numeric(citescore$x2021_cite_score[grep(gsub("-", "", artigos$ISSN[i]), citescore$e_issn)])
-  }
-  c.score <-
-    c(c.score, ifelse(identical(c.score.i, numeric(0)) |
-                        all(is.na(c.score.i)), NA, c.score.i))
-}
+qualis.PPG.up <- names(qualis.PPG[1])
+qualis.PPG.lr <- names(qualis.PPG[length(qualis.PPG)])
 
 # generate cross tables of artigos per year
-table.1 <- table(artigos$Publicado.em)
+table.1 <- table(doi_all$published_on)
 
-table.2 <- t(table(artigos$Publicado.em, artigos$WebQualis))
-table.2 <- table.2[order(rownames(table.2)), ]
+table.2 <-
+  matrix(0, ncol = length(unique(doi_all$published_on)), nrow = length(estratos))
+colnames(table.2) <- sort(unique(doi_all$published_on))
+rownames(table.2) <- estratos
 
-table.3 <- data.frame(artigos$Publicado.em, SJR)
+for (i in 1:length(doi_all$WebQualis)) {
+    table.2[match(doi_all$WebQualis[i], rownames(table.2)), match(doi_all$published_on[i], colnames(table.2))] <-
+      table.2[match(doi_all$WebQualis[i], rownames(table.2)), match(doi_all$published_on[i], colnames(table.2))] + 1
+}
+
+table.3 <- data.frame(doi_all$published_on, doi_all$SJR)
 table.3.median <-
   aggregate(
     table.3,
-    by = list(table.3$artigos.Publicado.em),
+    by = list(table.3$doi_all.published_on),
     FUN = median,
     na.rm = TRUE
   )
@@ -893,11 +831,11 @@ table.3.median <- t(as.matrix(table.3.median[, -2]))
 table.3.median <- as.numeric(table.3.median[-1, ])
 names(table.3.median) <- names(table.1)
 
-table.4 <- data.frame(artigos$Publicado.em, c.score)
+table.4 <- data.frame(doi_all$published_on, doi_all$CiteScore)
 table.4.median <-
   aggregate(
     table.4,
-    by = list(table.4$artigos.Publicado.em),
+    by = list(table.4$doi_all.published_on),
     FUN = median,
     na.rm = TRUE
   )
@@ -906,7 +844,7 @@ table.4.median <- as.numeric(table.4.median[-1, ])
 names(table.4.median) <- names(table.1)
 
 table.5 <-
-  data.frame(artigos$Título, SJR)
+  data.frame(doi_all$journal, doi_all$SJR)
 
 # plot area setup
 layout.m <- c(1)
@@ -914,7 +852,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 # Define the number of colors you want
 nb.cols <- length(rownames(table.2))
-mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
+mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 1 (total de produção bilbiográfica, por ano)
 barplot(table.1,
@@ -926,7 +864,7 @@ title(main = "Produção Bibliográfica",
 
 # Define the number of colors you want
 nb.cols <- length(rownames(table.2))
-mycolors <- colorRampPalette(brewer.pal(9, "Blues"))(nb.cols)
+mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Blues"))(nb.cols)
 
 # plot 2 (total de produção bilbiográfica, por estrato, por ano)
 barplot(table.2,
@@ -962,7 +900,7 @@ legend(
 #       cex.main = 1.7)
 
 # plot 4 (violin plot of SJR por ano)
-vioplot(as.numeric(table.3[, 2]) ~ as.numeric(table.3[, 1]),
+vioplot::vioplot(as.numeric(table.3[, 2]) ~ as.numeric(table.3[, 1]),
         xlab = NA,
         ylab = "SJR")
 title(main = "Qualidade da produção (SJR)",
@@ -970,7 +908,7 @@ title(main = "Qualidade da produção (SJR)",
       cex.main = 1.7)
 
 # plot 5 (violin plot of CiteScore por ano)
-vioplot(as.numeric(table.4[, 2]) ~ as.numeric(table.4[, 1]),
+vioplot::vioplot(as.numeric(table.4[, 2]) ~ as.numeric(table.4[, 1]),
         xlab = NA,
         ylab = "CiteScore")
 title(main = "Qualidade da produção (CiteScore)",
@@ -987,12 +925,13 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(dim(na.omit(unique(journals.SJR)))[1], 10)
+top <- min((as.numeric(journals.SJR$SJR)), 10)
 data.journals <-
-  na.omit(data.frame(name = journals.SJR$artigos.Título[order(journals.SJR$SJR, decreasing = TRUE)][1:top],
-                     value = as.numeric(
-                       sort(journals.SJR$SJR, decreasing = TRUE)[1:top]
-                     )))
+  data.frame(
+    name = journals.SJR$doi_all.journal[order(as.numeric(journals.SJR$doi_all.SJR), decreasing = TRUE)][1:top],
+    value = as.numeric(sort(as.numeric(journals.SJR$doi_all.SJR), decreasing = TRUE
+             )[1:top])
+    )
 
 # break vector names in 2 lines
 text.2.break <- data.journals$name
@@ -1001,7 +940,7 @@ data.journals$name <- broken_text
 
 # Define the number of colors you want
 nb.cols <- length(rownames(table.2))
-mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
+mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set3"))(nb.cols)
 
 options(digits = 10)
 barplot(
@@ -1075,10 +1014,10 @@ legend(
 )
 
 # hist SJR base e PPG
-SJR.base <- na.omit(scimago$SJR)
-SJR.PPG <- na.omit(SJR)
+SJR.base <- scimago$SJR[!is.na(scimago$SJR)]
+SJR.PPG <- doi_all$SJR[!is.na(doi_all$SJR)]
 
-vioplot(
+vioplot::vioplot(
   as.numeric(SJR.base),
   col = mycolors[1],
   xlab = NA,
@@ -1092,7 +1031,7 @@ vioplot(
   xaxt = 'n',
   ann = FALSE
 )
-vioplot(
+vioplot::vioplot(
   as.numeric(SJR.PPG),
   col = mycolors[2],
   xlab = NA,
@@ -1109,10 +1048,10 @@ vioplot(
 )
 
 # hist CiteScore base e PPG
-CITESCORE.base <- na.omit(citescore$x2021_cite_score)
-CITESCORE.PPG <- na.omit(c.score)
+CITESCORE.base <- citescore$x2021_cite_score[!is.na(citescore$x2021_cite_score)]
+CITESCORE.PPG <- doi_all$CiteScore[!is.na(doi_all$CiteScore)]
 
-vioplot(
+vioplot::vioplot(
   as.numeric(CITESCORE.base),
   col = mycolors[1],
   xlab = NA,
@@ -1126,7 +1065,7 @@ vioplot(
   xaxt = 'n',
   ann = FALSE
 )
-vioplot(
+vioplot::vioplot(
   as.numeric(CITESCORE.PPG),
   col = mycolors[2],
   xlab = NA,
@@ -1167,19 +1106,19 @@ summ.table.producao <-
       big.mark = "."
     ),
     formatC(
-      min(SJR, na.rm = TRUE),
+      min(doi_all$SJR, na.rm = TRUE),
       format = "f",
       digits = 3,
       big.mark = "."
     ),
     formatC(
-      median(SJR, na.rm = TRUE),
+      median(doi_all$SJR, na.rm = TRUE),
       format = "f",
       digits = 3,
       big.mark = "."
     ),
     formatC(
-      max(SJR, na.rm = TRUE),
+      max(doi_all$SJR, na.rm = TRUE),
       format = "f",
       digits = 3,
       big.mark = "."
@@ -1237,18 +1176,18 @@ summ.data <- summ.table.producao
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-producao-carousel, eval = has.producao}
+```{r sintese-producao-carousel, eval = any(has.producao.ppg, has.producao.sucupira)}
 # carousel
-bs_carousel(id = "producao-carousel",
+bsplus::bs_carousel(id = "producao-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-5.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-6.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-producao-7.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-2.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-3.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-4.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-5.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-6.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-producao-7.png"))
 
 cat('\n\n')
 cat(
@@ -1261,28 +1200,19 @@ cat('^[Produções com DOI apenas; a produção pode estar subsestimada pois pro
 
 <br>
 
-```{r sintese-visibilidade, include = FALSE, eval = has.producao}
+```{r sintese-visibilidade, include = FALSE, eval = any(has.producao.ppg, has.producao.sucupira)}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
-# bind sources
-doi_unique <-
-  bind_rows(doi_unique_artigos,
-            doi_unique_resumos,
-            doi_unique_preprints,
-            doi_unique_livros,
-            doi_unique_capitulos,
-            doi_unique_eventos)
-
 table.1 <- 
-  table.1 <- data.frame(doi_unique$published_on, doi_unique$score)
+  table.1 <- data.frame(doi_all$published_on, doi_all$altmetric_score)
 
 # plot area setup
 layout.m <- c(1)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 # plot 1 (violin plot of Altmetric por ano)
-vioplot(as.numeric(table.1[, 2]) ~ as.numeric(table.1[, 1]),
+vioplot::vioplot(as.numeric(table.1[, 2]) ~ as.numeric(table.1[, 1]),
         xlab = NA,
         ylab = "Altmetric")
 title(main = "Atenção e visibilidade (Altmetric)",
@@ -1310,15 +1240,15 @@ rasterImage(
 text(
   x = (x1 + x2) / 2,
   y = (y1 + y2) / 2,
-  labels = as.character(sum(table.1[, 2])),
+  labels = as.character(sum(na.omit(as.numeric(table.1[, 2])))),
   adj = 0.5
 )
 
 # generate cross tables of IS_OA artigos per year
 table.2 <-
   t(table(
-    c(doi_unique$published_on, my_dois_works$published_on),
-    as.logical(c(doi_unique$is_oa, my_dois_works$is_oa))
+    doi_all$published_on,
+    as.logical(doi_all$is_oa)
   ))
 table.2 <- table.2[order(rownames(table.2)), ]
 rownames(table.2) <- c("Open access", "Paywall")
@@ -1327,7 +1257,7 @@ table.2 <- table.2[seq_len(nrow(table.2)) + c(1,-1),]
 
 # Define the number of colors you want
 nb.cols <- length(rownames(table.2))
-mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
+mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 2 (IS_OA in plot)
 layout.m <- c(1)
@@ -1357,14 +1287,14 @@ legend(
   cex = 1,
 )
 
-if(sum(c(doi_unique$citations, my_dois_works$citations)) == 0){
+if(sum(doi_all$citations) == 0){
   table.3 <- as.matrix(rep(0, length(max(anos) - min(anos) + 1)))
 } else {
   # generate cross tables of citations per year
   table.3 <-
     t(table(
-      c(doi_unique$published_on, my_dois_works$published_on),
-      c(doi_unique$citations, my_dois_works$citations)
+      doi_all$published_on,
+      doi_all$citations
     ))
   table.3 <- table.3[order(rownames(table.3)),]
   table.3 <- colSums(table.3)
@@ -1372,7 +1302,7 @@ if(sum(c(doi_unique$citations, my_dois_works$citations)) == 0){
 
 # Define the number of colors you want
 nb.cols <- length(table.3)
-mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
+mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set3"))(nb.cols)
 
 # plot 3 (CITATIONS in plot)
 layout.m <- c(1)
@@ -1390,7 +1320,7 @@ title(main = "Total de citações",
 # calculate summary statistics for visibilidade
 summ.table.visibilidade <-
   cbind(
-    sum(table.1[, 2]),
+    sum(na.omit(as.numeric(table.1[, 2]))),
     formatC(
       min(table.1[, 2], na.rm = TRUE),
       format = "d",
@@ -1429,15 +1359,15 @@ summ.data <- summ.table.visibilidade
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-visibilidade-carousel, eval = has.producao}
+```{r sintese-visibilidade-carousel, eval = any(has.producao.ppg, has.producao.sucupira)}
 # carousel
-bs_carousel(id = "visibilidade-carousel",
+bsplus::bs_carousel(id = "visibilidade-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-4.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-2.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-3.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-visibilidade-4.png"))
 
 cat('\n\n')
 cat(
@@ -1456,9 +1386,9 @@ cat('^[Dados sobre retratação são obtidos de PubMed API e CrossRef API.]')
 
 ```{r sintese-pessoal, include = FALSE, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 
-# separating egressos (master and doctoral) and current canditates
+# separating egressos (master and doctoral) and current candidates
 discentes <-
   discentes.raw[discentes.raw$`Status SAGA` == "Matriculado" |
                   discentes.raw$`Status SAGA` == "Pré-inscrito", ]
@@ -1470,7 +1400,7 @@ doutores <- egressos[egressos$Curso == "Doutorado", ]
 cursos <- levels(as.factor(c(discentes$Curso, egressos$Curso)))
 
 # reading BR geospatial data from IPEA
-datasets <- list_geobr()$years[3]
+datasets <- geobr::list_geobr()$years[3]
 last.update <-
   as.numeric(strsplit(datasets, ", ")[[1]][length(strsplit(datasets, ", ")[[1]]) - 1])
 states <-
@@ -1491,14 +1421,14 @@ table.1 <- table(egressos$Curso, egressos$`Ano Titulação`)
 # plot 1 (egressos titulados)
 barplot(as.matrix(table.1),
         ylab = "Egressos",
-        col = brewer.pal(n = 9, name = "Set3"))
+        col = RColorBrewer::brewer.pal(n = 9, name = "Set3"))
 title(main = "Formação de pessoal de nível superior",
       outer = TRUE,
       cex.main = 1.7)
 legend(
   "topleft",
   legend = cursos,
-  fill = brewer.pal(n = 9, name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = 9, name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
@@ -1515,9 +1445,9 @@ table.2.dsc <-
              as.numeric(doutores$`Tempo de Curso (meses)`))
 
 # plot 2 (violin plot of tempo para titulação por ano)
-vioplot(
+vioplot::vioplot(
   as.numeric(table.2.msc[, 2]) ~ as.numeric(table.2.msc[, 1]),
-  col = brewer.pal(n = 9, name = "Set3")[2],
+  col = RColorBrewer::brewer.pal(n = 9, name = "Set3")[2],
   xlab = NA,
   side = "left",
   at = sort(unique(as.numeric(table.2.msc[, 1]))),
@@ -1528,9 +1458,9 @@ vioplot(
   )),
   ylab = "Meses"
 )
-vioplot(
+vioplot::vioplot(
   as.numeric(table.2.dsc[, 2]) ~ as.numeric(table.2.dsc[, 1]),
-  col = brewer.pal(n = 9, name = "Set3")[1],
+  col = RColorBrewer::brewer.pal(n = 9, name = "Set3")[1],
   xlab = NA,
   side = "right",
   ylab = "Meses",
@@ -1548,7 +1478,7 @@ title(main = "Tempo para titulação",
 legend(
   "topleft",
   legend = cursos,
-  fill = brewer.pal(n = 9, name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = 9, name = "Set3"),
   text.col = "white",
   box.lwd = 0,
   bty = "n",
@@ -1634,7 +1564,7 @@ p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
   )
 
 g <-
-  arrangeGrob(p1,
+  gridExtra::arrangeGrob(p1,
               p2,
               p3,
               layout_matrix = rbind(c(1, 2), c(1, 3)),
@@ -1723,7 +1653,7 @@ p3 <- ggplot(data, aes(x = "", y = N, fill = Cursos)) +
   )
 
 g <-
-  arrangeGrob(p1,
+  gridExtra::arrangeGrob(p1,
               p2,
               p3,
               layout_matrix = rbind(c(1, 2), c(1, 3)),
@@ -1799,14 +1729,14 @@ source("Scripts/plot-summaries.R", local = knitr::knit_global())
 
 ```{r sintese-pessoal-carousel, eval = has.discentes}
 # carousel
-bs_carousel(id = "pessoal-carousel",
+bsplus::bs_carousel(id = "pessoal-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-5.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-2.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-3.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-4.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-pessoal-5.png"))
 
 cat('\n\n')
 cat(
@@ -1818,7 +1748,7 @@ cat(
 
 <br>
 
-```{r sintese-rede, include = FALSE, eval = has.sucupira}
+```{r sintese-rede, include = FALSE, eval = has.sucupira.files}
 # projetos
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1855,10 +1785,10 @@ for (i in 1:n.proj) {
 }
 
 # build the graph object
-network <- graph_from_edgelist(edge.matrix, directed = FALSE)
+network <- igraph::graph_from_edgelist(edge.matrix, directed = FALSE)
 
 # set member category and color
-colrs <- brewer.pal(n = n.categ, name = "Set3")
+colrs <- RColorBrewer::brewer.pal(n = n.categ, name = "Set3")
 for (i in 1:length(V(network))) {
   categ.id <-
     match(V(network)[[i]]$name, sucupira.raw$`Nome do Membro do Projeto`)
@@ -1953,7 +1883,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(length(na.omit(unique(IES.nac))), 10)
+top <- min(length(IES.nac), 10)
 data.nac <-
   na.omit(data.frame(name = names(sort(
     table(IES.nac), decreasing = TRUE
@@ -1971,7 +1901,7 @@ barplot(
   height = rev(data.nac$value),
   names = rev(data.nac$name),
   xlab = "N",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
   horiz = T,
   las = 1,
   cex.names = 0.7
@@ -1991,7 +1921,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(length(na.omit(unique(IES.inter))), 10)
+top <- min(length(IES.inter), 10)
 data.inter <-
   na.omit(data.frame(name = names(sort(
     table(IES.inter), decreasing = TRUE
@@ -2009,7 +1939,7 @@ barplot(
   height = rev(data.inter$value),
   names = rev(data.inter$name),
   xlab = "N",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
   horiz = T,
   las = 1,
   cex.names = 0.7
@@ -2029,7 +1959,7 @@ source("Scripts/plot-margins.R", local = knitr::knit_global())
 # plot area setup
 par(mar = c(1.5, 15, 1, 1))
 
-top <- min(length(na.omit(unique(mundo))), 10)
+top <- min(length(mundo), 10)
 data.pais <-
   na.omit(data.frame(name = names(sort(
     table(mundo), decreasing = TRUE
@@ -2047,7 +1977,7 @@ barplot(
   height = rev(data.pais$value),
   names = rev(data.pais$name),
   xlab = "N",
-  col = rep(brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
+  col = rep(RColorBrewer::brewer.pal(n = 9, name = "Set3")[1], length(1:top)),
   horiz = T,
   las = 1,
   cex.names = 0.7
@@ -2091,17 +2021,17 @@ summ.data <- summ.table.ies
 source("Scripts/plot-summaries.R", local = knitr::knit_global())
 ```
 
-```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira}
+```{r sintese-rede-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis", out.width = "100%", eval = has.sucupira.files}
 # carousel
-bs_carousel(id = "rede-carousel",
+bsplus::bs_carousel(id = "rede-carousel",
             use_indicators = FALSE,
             use_controls = TRUE) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/Participante Externo.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-2.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png")) %>%
-  bs_append(content = bs_carousel_image(src = "index_files/figure-html/sintese-rede-5.png"))
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-1.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/Participante Externo.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-2.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-3.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-4.png")) %>%
+  bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-5.png"))
 
 cat('\n\n')
 cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")

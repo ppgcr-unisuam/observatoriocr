@@ -65,7 +65,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 #### **Turmas oferecidas**
 
-```{r turmas-tabela, eval = has.sucupira}
+```{r turmas-tabela, eval = has.sucupira.files}
 # turmas
 sheet <- "Turmas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -118,7 +118,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 ##### **Doutorado**
 
-```{r bolsistas-dsc, eval = has.sucupira}
+```{r bolsistas-dsc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "TESE"
 
@@ -168,7 +168,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 ##### **Mestrado**
 
-```{r bolsistas-msc, eval = has.sucupira}
+```{r bolsistas-msc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "DISSERTAÇÃO"
 
@@ -218,7 +218,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Cotas de bolsas** {.tabset}
 
-```{r cotas, eval = has.sucupira}
+```{r cotas, eval = has.sucupira.files}
 # discentes
 sheet <- "TCC - Financiadores"
 source("Scripts/read-xlsx-sucupira.R")
@@ -272,7 +272,7 @@ if (dim(bolsistas)[1] != 0) {
     }
   }
   cotas <- t(data.frame(cotas))
-  cotas <- cbind(anos, cotas)
+  cotas <- data.frame(anos, cotas)
   rownames(cotas) <- anos
   colnames(cotas) <- c("Ano", "Bolsistas")
   cotas <- data.frame(cotas)
@@ -308,7 +308,7 @@ if (dim(bolsistas)[1] != 0) {
   # plot 1 (total de bolsistas, por ano)
   # Define the number of colors you want
   nb.cols <- 1
-  mycolors <- colorRampPalette(brewer.pal(9, "Set3"))(nb.cols)
+  mycolors <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set3"))(nb.cols)
   
   # generate plot of turmas per year
   par(oma = c(2, 0.1, 2, 0.1),
@@ -342,7 +342,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Teses**
 
-```{r tcc-dsc-financiados, eval = has.sucupira}
+```{r tcc-dsc-financiados, eval = has.sucupira.files}
 # bolsistas
 sheet <- "TCC - Financiadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -388,7 +388,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 
 #### **Dissertações**
 
-```{r tcc-msc-financiados, eval = has.sucupira}
+```{r tcc-msc-financiados, eval = has.sucupira.files}
 # bolsistas
 sheet <- "TCC - Financiadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -488,7 +488,7 @@ if (dim(bolsistas.tcc)[1] != 0) {
 ```{r cep-vigentes, eval = has.cep}
 # read separate sheets
 cep.vigentes.raw <-
-  read_excel("PPG/CEP.xlsx",
+  readxl::read_excel("PPG/CEP.xlsx",
              sheet = "Vigentes",
              col_types = c("text"))
 
@@ -519,7 +519,7 @@ print(
 ```{r cep-revogados, eval = has.cep}
 # read separate sheets
 cep.revogados.raw <-
-  read_excel("PPG/CEP.xlsx",
+  readxl::read_excel("PPG/CEP.xlsx",
              sheet = "Revogados",
              col_types = c("text"))
 
@@ -700,28 +700,28 @@ pandemia <-
   )
 ```
 
-```{r pandemia-filtro-completos, eval = has.artigos.completos}
+```{r pandemia-filtro-completos, eval = any(has.artigos.completos.ppg, has.artigos.completos.sucupira)}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_artigos_impacto <-
-      doi_unique_artigos[grep(paste(tolower(pandemia), collapse = "|"),
-                              tolower(doi_unique_artigos$title)), ], silent = TRUE)
-try(my_dois_works_artigos_impacto <-
-      my_dois_works_artigos[grep(paste(tolower(pandemia), collapse = "|"),
-                                 tolower(my_dois_works_artigos$title)), ],
+try(doi_with_altmetric_artigos_impacto <-
+      doi_with_altmetric_artigos[grep(paste(tolower(pandemia), collapse = "|"),
+                              tolower(doi_with_altmetric_artigos$title)), ], silent = TRUE)
+try(doi_without_altmetric_artigos_impacto <-
+      doi_without_altmetric_artigos[grep(paste(tolower(pandemia), collapse = "|"),
+                                 tolower(doi_without_altmetric_artigos$title)), ],
     silent = TRUE)
 try(references_artigos_impacto <-
       references_artigos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_artigos[, 2])), ], silent = TRUE
 )
 ```
 
-```{r pandemia-filtro-resumos, eval = has.artigos.resumos}
+```{r pandemia-filtro-resumos, eval = any(has.artigos.resumos.ppg, has.artigos.resumos.sucupira)}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_resumos_impacto <-
-      doi_unique_resumos[grep(paste(tolower(pandemia), collapse = "|"),
-                              tolower(doi_unique_resumos$title)),], silent = TRUE)
-try(my_dois_works_resumos_impacto <-
-      my_dois_works_resumos[grep(paste(tolower(pandemia), collapse = "|"),
-                                 tolower(my_dois_works_resumos$title)),],
+try(doi_with_altmetric_resumos_impacto <-
+      doi_with_altmetric_resumos[grep(paste(tolower(pandemia), collapse = "|"),
+                              tolower(doi_with_altmetric_resumos$title)),], silent = TRUE)
+try(doi_without_altmetric_resumos_impacto <-
+      doi_without_altmetric_resumos[grep(paste(tolower(pandemia), collapse = "|"),
+                                 tolower(doi_without_altmetric_resumos$title)),],
     silent = TRUE)
 try(references_resumos_impacto <-
       references_resumos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_resumos)[, 2]),]
@@ -729,15 +729,15 @@ try(references_resumos_impacto <-
 )
 ```
 
-```{r pandemia-filtro-preprints, eval = has.preprints}
+```{r pandemia-filtro-preprints, eval = has.preprints.ppg}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_preprints_impacto <-
-      doi_unique_preprints[grep(paste(tolower(pandemia), collapse = "|"),
-                                tolower(doi_unique_preprints$title)),],
+try(doi_with_altmetric_preprints_impacto <-
+      doi_with_altmetric_preprints[grep(paste(tolower(pandemia), collapse = "|"),
+                                tolower(doi_with_altmetric_preprints$title)),],
     silent = TRUE)
-try(my_dois_works_preprints_impacto <-
-      my_dois_works_preprints[grep(paste(tolower(pandemia), collapse = "|"),
-                                   tolower(my_dois_works_preprints$title)),],
+try(doi_without_altmetric_preprints_impacto <-
+      doi_without_altmetric_preprints[grep(paste(tolower(pandemia), collapse = "|"),
+                                   tolower(doi_without_altmetric_preprints$title)),],
     silent = TRUE)
 try(references_preprints_impacto <-
       references_preprints[grep(paste(tolower(pandemia), collapse = "|"),
@@ -746,29 +746,29 @@ try(references_preprints_impacto <-
 )
 ```
 
-```{r pandemia-filtro-livros, eval = has.livros}
+```{r pandemia-filtro-livros, eval = has.livros.ppg}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_livros_impacto <-
-      doi_unique_livros[grep(paste(tolower(pandemia), collapse = "|"),
-                             tolower(doi_unique_livros$title)), ], silent = TRUE)
-try(my_dois_works_livros_impacto <-
-      my_dois_works_livros[grep(paste(tolower(pandemia), collapse = "|"),
-                                tolower(my_dois_works_livros$title)), ],
+try(doi_with_altmetric_livros_impacto <-
+      doi_with_altmetric_livros[grep(paste(tolower(pandemia), collapse = "|"),
+                             tolower(doi_with_altmetric_livros$title)), ], silent = TRUE)
+try(doi_without_altmetric_livros_impacto <-
+      doi_without_altmetric_livros[grep(paste(tolower(pandemia), collapse = "|"),
+                                tolower(doi_without_altmetric_livros$title)), ],
     silent = TRUE)
 try(references_livros_impacto <-
       references_livros[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_livros)[, 2]), ], silent = TRUE
 )
 ```
 
-```{r pandemia-filtro-capitulos, eval = has.capitulos}
+```{r pandemia-filtro-capitulos, eval = has.capitulos.ppg}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_capitulos_impacto <-
-      doi_unique_capitulos[grep(paste(tolower(pandemia), collapse = "|"),
-                                tolower(doi_unique_capitulos$title)), ],
+try(doi_with_altmetric_capitulos_impacto <-
+      doi_with_altmetric_capitulos[grep(paste(tolower(pandemia), collapse = "|"),
+                                tolower(doi_with_altmetric_capitulos$title)), ],
     silent = TRUE)
-try(my_dois_works_capitulos_impacto <-
-      my_dois_works_capitulos[grep(paste(tolower(pandemia), collapse = "|"),
-                                   tolower(my_dois_works_capitulos$title)), ],
+try(doi_without_altmetric_capitulos_impacto <-
+      doi_without_altmetric_capitulos[grep(paste(tolower(pandemia), collapse = "|"),
+                                   tolower(doi_without_altmetric_capitulos$title)), ],
     silent = TRUE)
 try(references_capitulos_impacto <-
       references_capitulos[grep(paste(tolower(pandemia), collapse = "|"),
@@ -777,14 +777,14 @@ try(references_capitulos_impacto <-
 )
 ```
 
-```{r pandemia-filtro-eventos, eval = has.eventos}
+```{r pandemia-filtro-eventos, eval = has.eventos.ppg}
 # dplyr::selecting those with COVID in the title
-try(doi_unique_eventos_impacto <-
-      doi_unique_eventos[grep(paste(tolower(pandemia), collapse = "|"),
-                              tolower(doi_unique_eventos$title)), ], silent = TRUE)
-try(my_dois_works_eventos_impacto <-
-      my_dois_works_eventos[grep(paste(tolower(pandemia), collapse = "|"),
-                                 tolower(my_dois_works_eventos$title)), ],
+try(doi_with_altmetric_eventos_impacto <-
+      doi_with_altmetric_eventos[grep(paste(tolower(pandemia), collapse = "|"),
+                              tolower(doi_with_altmetric_eventos$title)), ], silent = TRUE)
+try(doi_without_altmetric_eventos_impacto <-
+      doi_without_altmetric_eventos[grep(paste(tolower(pandemia), collapse = "|"),
+                                 tolower(doi_without_altmetric_eventos$title)), ],
     silent = TRUE)
 try(references_eventos_impacto <-
       references_eventos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_eventos)[, 2]), ], silent = TRUE
@@ -793,7 +793,7 @@ try(references_eventos_impacto <-
 
 ### **Projetos de pesquisa**
 
-```{r pandemia-projetos, eval = has.sucupira}
+```{r pandemia-projetos, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -803,7 +803,7 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 projetos.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 projetos.all <-
   unique(projetos.all[projetos.all$`Membro Responsável` == "Sim",])
@@ -816,7 +816,7 @@ projetos <-
 if (dim(projetos)[1] != 0) {
   # dplyr::select data DOCENTES
   table.projetos <-
-    cbind(
+    data.frame(
       projetos$`Nome do Membro do Projeto`,
       projetos$`Nome do Projeto de Pesquisa`,
       projetos$`Linha de Pesquisa`
@@ -841,11 +841,12 @@ if (dim(projetos)[1] != 0) {
   cat('*Sem produção para exibir no período*')
   cat('\n\n')
 }
+
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -892,7 +893,7 @@ if (dim(financiadores)[1] != 0)
     }
   }
   
-  financiadores <- cbind(financiadores, Abrir)
+  financiadores <- data.frame(financiadores, Abrir)
   financiadores <-
     financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 } else {
@@ -906,20 +907,19 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 try(create_dt(financiadores, title = "Ações durante a Pandemia - Financiadores"),
     silent = TRUE)
 
+cat('\n\n')
 cat(
   "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
 )
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
 ### **Trabalhos de conclusão de curso**
 
-```{r pandemia-tcc, eval = has.sucupira}
+```{r pandemia-tcc, eval = has.sucupira.files}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -929,7 +929,7 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 # dplyr::selecting those with COVID in the title
@@ -940,7 +940,7 @@ tccs <-
 if (dim(tccs)[1] != 0) {
   # dplyr::select data
   table.tcc <-
-    cbind(
+    data.frame(
       format((as.Date(
         gsub("/", "-", tccs$'Data da Defesa'), "%d-%d-%Y"
       )), "%Y"),
@@ -971,31 +971,32 @@ if (dim(tccs)[1] != 0) {
   cat('*Sem produção para exibir no período*')
   cat('\n\n')
 }
+
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
 ### **Artigos completos** {.tabset}
 
-```{r pandemia-artigos-completos, eval = has.artigos.completos}
+```{r pandemia-artigos-completos, eval = any(has.artigos.completos.ppg, has.artigos.completos.sucupira)}
 # bind sources
-try(doi_unique <- doi_unique_artigos_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_artigos_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_artigos_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_artigos_impacto, silent = TRUE)
 try(references <- references_artigos_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -1004,8 +1005,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1015,7 +1016,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1036,16 +1037,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1060,21 +1061,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Artigos resumos** {.tabset}
 
-```{r pandemia-artigos-resumos, eval = has.artigos.resumos}
+```{r pandemia-artigos-resumos, eval = any(has.artigos.resumos.ppg, has.artigos.resumos.sucupira)}
 # bind sources
-try(doi_unique <- doi_unique_resumos_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_resumos_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_resumos_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_resumos_impacto, silent = TRUE)
 try(references <- references_resumos_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -1083,8 +1084,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1094,7 +1095,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1115,16 +1116,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1139,21 +1140,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Preprints** {.tabset}
 
-```{r pandemia-preprints, eval = has.preprints}
+```{r pandemia-preprints, eval = has.preprints.ppg}
 # bind sources
-try(doi_unique <- doi_unique_preprints_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_preprints_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_preprints_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_preprints_impacto, silent = TRUE)
 try(references <- references_preprints_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -1162,8 +1163,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1173,7 +1174,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1194,16 +1195,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1218,21 +1219,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Livros** {.tabset}
 
-```{r pandemia-Livros, eval = has.livros}
+```{r pandemia-Livros, eval = has.livros.ppg}
 # bind sources
-try(doi_unique <- doi_unique_livros_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_livros_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_livros_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_livros_impacto, silent = TRUE)
 try(references <- references_livros_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -1241,8 +1242,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1252,7 +1253,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1273,16 +1274,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1297,21 +1298,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Capítulos** {.tabset}
 
-```{r pandemia-capitulos, eval = has.capitulos}
+```{r pandemia-capitulos, eval = has.capitulos.ppg}
 # bind sources
-try(doi_unique <- doi_unique_capitulos_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_capitulos_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_capitulos_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_capitulos_impacto, silent = TRUE)
 try(references <- references_capitulos_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -1320,8 +1321,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1331,7 +1332,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1352,16 +1353,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1374,33 +1375,33 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 <br>
 
-### **Trabalhos em anais de eventos** {.tabset}
+### **Trabalhos em anais** {.tabset}
 
-```{r pandemia-resumos-eventos, eval = has.eventos}
+```{r pandemia-resumos-eventos, eval = has.eventos.ppg}
 # bind sources
-try(doi_unique <- doi_unique_eventos_impacto, silent = TRUE)
-try(my_dois_works <- my_dois_works_eventos_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_eventos_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_eventos_impacto, silent = TRUE)
 try(references <- references_eventos_impacto, silent = TRUE)
 
 # available years of publication
-years <-
+try(years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE)), silent = TRUE)
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references, title = "Ações durante a Pandemia - Trabalhos em eventos")
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Trabalhos em anais")
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -1410,7 +1411,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -1431,16 +1432,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -1468,7 +1469,7 @@ premios.list <- vector(mode = "list", length = length(tabs))
 # iterate across sheets
 for (j in 1:length(tabs)) {
   premios <-
-    read_excel(file.path,
+    readxl::read_excel(file.path,
                sheet = tabs[j],
                col_types = c("text", "text", "text"))
   

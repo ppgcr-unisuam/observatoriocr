@@ -13,7 +13,7 @@
 
 <title>OBSERVATÓRIO CR</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.22/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -391,13 +391,7 @@ $(document).ready(function () {
       <a href="producoes.html#retratacoes">Retratações</a>
     </li>
     <li>
-      <a href="producoes.html#registros">Registros de protocolos</a>
-    </li>
-    <li>
-      <a href="producoes.html#portais">Portais de periódicos</a>
-    </li>
-    <li>
-      <a href="producoes.html#metricas">Métricas</a>
+      <a href="producoes.html#metricas">Sobre as métricas</a>
     </li>
   </ul>
 </li>
@@ -632,10 +626,11 @@ function googleTranslateElementInit() {
 <p><br></p>
 <p><br></p>
 <center>
+<p><img src="PPG/Images/logo-IES.png" align="center"/></p>
 <p><br></p>
 <p style="font-size:1.5em">
 O <strong>Observatório CR</strong> é uma iniciativa do <strong>Programa
-de Pós-graduação em Ciências da Reabilitação</strong> do <a
+de Pós-graduação em Ciências da Reabilitação</strong> - <a
 href="https://www.unisuam.edu.br/programa-pos-graduacao-ciencias-da-reabilitacao">CENTRO
 UNIVERSITÁRIO AUGUSTO MOTTA</a> que envolve o registro, o acompanhamento
 e a análise agregada e estruturada de dados para divulgação transparente
@@ -919,7 +914,7 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
 <span title="Click to Expand"> Current session info </span>
 </summary>
 <pre class="r"><code>
-─ Session info ──────────────────────────────
+─ Session info ─────────────────────────────────
  setting  value
  version  R version 4.3.0 (2023-04-21)
  os       macOS Ventura 13.4
@@ -929,16 +924,18 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Sao_Paulo
- date     2023-05-26
+ date     2023-06-07
  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
-─ Packages ──────────────────────────────────
+─ Packages ─────────────────────────────────────
  package           * version   date (UTC) lib source
  abind               1.4-5     2016-07-21 [1] CRAN (R 4.3.0)
  alluvial          * 0.1-2     2016-09-09 [1] CRAN (R 4.3.0)
  anytime           * 0.3.9     2020-08-27 [1] CRAN (R 4.3.0)
+ audio               0.1-10    2021-11-25 [1] CRAN (R 4.3.0)
  backports           1.4.1     2021-12-13 [1] CRAN (R 4.3.0)
  BBmisc            * 1.13      2022-09-29 [1] CRAN (R 4.3.0)
+ beepr             * 1.3       2018-06-04 [1] CRAN (R 4.3.0)
  broom               1.0.4     2023-03-11 [1] CRAN (R 4.3.0)
  broom.helpers       1.13.0    2023-03-28 [1] CRAN (R 4.3.0)
  bslib               0.4.2     2022-12-16 [1] CRAN (R 4.3.0)
@@ -962,7 +959,7 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  crosstalk           1.2.0     2021-11-04 [1] CRAN (R 4.3.0)
  crul                1.4.0     2023-05-17 [1] CRAN (R 4.3.0)
  cssparser         * 0.1.1     2023-04-24 [1] Github (coolbutuseless/cssparser@a5a3765)
- curl                5.0.0     2023-01-12 [1] CRAN (R 4.3.0)
+ curl              * 5.0.0     2023-01-12 [1] CRAN (R 4.3.0)
  data.table          1.14.8    2023-02-17 [1] CRAN (R 4.3.0)
  data.tree         * 1.0.0     2020-08-03 [1] CRAN (R 4.3.0)
  DBI                 1.1.3     2022-06-18 [1] CRAN (R 4.3.0)
@@ -971,6 +968,7 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  details           * 0.3.0     2022-03-27 [1] CRAN (R 4.3.0)
  devtools          * 2.4.5     2022-10-11 [1] CRAN (R 4.3.0)
  digest              0.6.31    2022-12-11 [1] CRAN (R 4.3.0)
+ do                * 2.0.0.0   2021-08-03 [1] CRAN (R 4.3.0)
  dplyr             * 1.1.2     2023-04-20 [1] CRAN (R 4.3.0)
  DT                * 0.28      2023-05-18 [1] CRAN (R 4.3.0)
  e1071               1.7-13    2023-02-01 [1] CRAN (R 4.3.0)
@@ -1011,8 +1009,9 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  htmlwidgets       * 1.6.2     2023-03-17 [1] CRAN (R 4.3.0)
  httpcode            0.3.0     2020-04-10 [1] CRAN (R 4.3.0)
  httpuv            * 1.6.11    2023-05-11 [1] CRAN (R 4.3.0)
- httr                1.4.6     2023-05-08 [1] CRAN (R 4.3.0)
+ httr              * 1.4.6     2023-05-08 [1] CRAN (R 4.3.0)
  igraph            * 1.4.3     2023-05-22 [1] CRAN (R 4.3.0)
+ insight             0.19.2    2023-05-23 [1] CRAN (R 4.3.0)
  interp              1.1-4     2023-03-31 [1] CRAN (R 4.3.0)
  janitor           * 2.2.0     2023-02-02 [1] CRAN (R 4.3.0)
  jpeg                0.1-10    2022-11-29 [1] CRAN (R 4.3.0)
@@ -1041,7 +1040,7 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  NLP               * 0.2-1     2020-10-14 [1] CRAN (R 4.3.0)
  packup            * 0.0.2     2023-04-24 [1] Github (milesmcbain/packup@14f9ecf)
  pacman            * 0.5.1     2019-03-11 [1] CRAN (R 4.3.0)
- parallelly        * 1.35.0    2023-03-23 [1] CRAN (R 4.3.0)
+ parallelly        * 1.36.0    2023-05-26 [1] CRAN (R 4.3.0)
  pillar              1.9.0     2023-03-22 [1] CRAN (R 4.3.0)
  pkgbuild            1.4.0     2022-11-27 [1] CRAN (R 4.3.0)
  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.3.0)
@@ -1062,13 +1061,14 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  Rcpp              * 1.0.10    2023-01-22 [1] CRAN (R 4.3.0)
  rcrossref         * 1.2.0     2022-11-11 [1] CRAN (R 4.3.0)
  readr             * 2.1.4     2023-02-10 [1] CRAN (R 4.3.0)
- readtext          * 0.82      2023-04-06 [1] CRAN (R 4.3.0)
+ readtext          * 0.90      2023-06-03 [1] CRAN (R 4.3.0)
  readxl            * 1.4.2     2023-02-09 [1] CRAN (R 4.3.0)
  remote            * 1.2.1     2016-09-17 [1] CRAN (R 4.3.0)
  remotes           * 2.4.2     2021-11-30 [1] CRAN (R 4.3.0)
+ reshape2            1.4.4     2020-04-09 [1] CRAN (R 4.3.0)
  retractcheck      * 1.0.0     2023-05-02 [1] Github (libscie/retractcheck@23f1e5c)
  rlang               1.1.1     2023-04-28 [1] CRAN (R 4.3.0)
- rmarkdown         * 2.21      2023-03-26 [1] CRAN (R 4.3.0)
+ rmarkdown         * 2.22      2023-06-01 [1] CRAN (R 4.3.0)
  Rmisc             * 1.5.1     2022-05-02 [1] CRAN (R 4.3.0)
  roadoi            * 0.7.2     2022-03-04 [1] CRAN (R 4.3.0)
  rorcid            * 0.7.0     2021-01-20 [1] CRAN (R 4.3.0)
@@ -1083,10 +1083,12 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
  sessioninfo       * 1.2.2     2021-12-06 [1] CRAN (R 4.3.0)
  sf                * 1.0-13    2023-05-24 [1] CRAN (R 4.3.0)
  shiny               1.7.4     2022-12-15 [1] CRAN (R 4.3.0)
+ sjlabelled          1.2.0     2022-04-10 [1] CRAN (R 4.3.0)
+ sjmisc              2.8.9     2021-12-03 [1] CRAN (R 4.3.0)
  slam                0.1-50    2022-01-08 [1] CRAN (R 4.3.0)
  sm                * 2.2-5.7.1 2022-07-04 [1] CRAN (R 4.3.0)
  snakecase           0.11.0    2019-05-25 [1] CRAN (R 4.3.0)
- sp                * 1.6-0     2023-01-19 [1] CRAN (R 4.3.0)
+ sp                * 1.6-1     2023-05-31 [1] CRAN (R 4.3.0)
  stringi             1.7.12    2023-01-11 [1] CRAN (R 4.3.0)
  stringr           * 1.5.0     2022-12-02 [1] CRAN (R 4.3.0)
  svglite             2.1.1     2023-01-10 [1] CRAN (R 4.3.0)
@@ -1125,7 +1127,7 @@ href="https://rmarkdown.rstudio.com"><strong>R markdown</strong></a>
 
  [1] /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library
 
-─────────────────────────────────────────────
+────────────────────────────────────────────────
 </code></pre>
 </details>
 <p><br></p>
@@ -1185,12 +1187,11 @@ CrossRef API.<a href="#fnref8" class="footnote-back">↩︎</a></p></li>
 <br>
 
 <!--CREATIVE COMMONTS BADGE-->
-<div style="text-align: center">
-  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Observatório </span> de <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Arthur de Sa Ferreira</span> está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.
-</div>
+<div style="text-align: center; font-size:14px">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/FerreiraAS/observatorio">Observatório</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/FerreiraAS">Arthur de Sá Ferreira</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"></a></p></div>
 
 <div style="text-align: center; font-size:14px">
-  <p>Copyright &copy; 2021 Arthur de Sá Ferreira, DSc. Todos os direitos reservados. Última atualização em <span id="datetime"></span><script>var dt = new Date().toLocaleDateString(); document.getElementById("datetime").innerHTML=dt.toLocaleString();</script> </div>
+  <p>Última atualização em <span id="datetime"></span><script>var dt = new Date().toLocaleDateString(); document.getElementById("datetime").innerHTML=dt.toLocaleString();</script> </div>
 
 <br>
 

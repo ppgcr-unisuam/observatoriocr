@@ -55,7 +55,7 @@ source("Scripts/social-media-sharing.R")
 ```{r dados-cadastrais-endereco, eval = has.dados.cadastrais}
 # read separate sheets
 endereco.raw <-
-  read_excel("PPG/Dados Cadastrais.xlsx",
+  readxl::read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "Endereço",
              col_types = c("text"))
 colnames(endereco.raw) <- seq(1:dim(endereco.raw)[2])
@@ -97,7 +97,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
-```{r docentes-atual-perfil, eval = has.sucupira}
+```{r docentes-atual-perfil, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -161,7 +161,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 ```{r coordenadores-2024, eval = has.coordenacao}
 docentes.raw <-
-  read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
+  readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -285,7 +285,7 @@ print(
 
 ```{r coordenadores-2020, eval = has.coordenacao}
 docentes.raw <-
-  read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
+  readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -409,7 +409,7 @@ print(
 
 ```{r coordenadores-2016, eval = has.coordenacao}
 docentes.raw <-
-  read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
+  readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -533,7 +533,7 @@ print(
 
 ```{r coordenadores-2012, eval = has.coordenacao}
 docentes.raw <-
-  read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
+  readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -660,7 +660,7 @@ print(
 
 ### **Síntese** {.tabset}
 
-```{r auto-corpo-docente, eval = has.sucupira}
+```{r auto-corpo-docente, eval = has.sucupira.files}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R")
@@ -751,7 +751,7 @@ for(i in 1:dim(perfil.data)[2]){
 
 ```{r docentes-2024-grafico, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -871,14 +871,14 @@ total.categoria <- table(docentes$Categoria)
 pie(
   total.categoria,
   labels = NA,
-  col = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Categoria)
 )
 legend(
   "topleft",
   legend = names(total.categoria),
-  fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -888,14 +888,14 @@ total.regime <- table(docentes$`Regime de trabalho`)
 pie(
   total.regime,
   labels = NA,
-  col = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$`Regime de trabalho`)
 )
 legend(
   "topleft",
   legend = names(total.regime),
-  fill = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -905,14 +905,14 @@ total.dedicação <- table(docentes$Dedicação)
 pie(
   total.dedicação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Dedicação)
 )
 legend(
   "topleft",
   legend = names(total.dedicação),
-  fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -922,14 +922,14 @@ total.graduação <- table(docentes$Graduação)
 pie(
   total.graduação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Graduação)
 )
 legend(
   "topleft",
   legend = names(total.graduação),
-  fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1071,20 +1071,20 @@ print(
 # par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
 #
 # total.categoria <- table(docentes$Categoria)
-# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
-# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.categoria, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.regime <- table(docentes$`Regime de trabalho`)
-# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
-# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.regime, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.dedicação <- table(docentes$Dedicação)
-# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
-# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.dedicação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.graduação <- table(docentes$Graduação)
-# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
-# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.graduação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # title("Descrição do Corpo Docente", outer = TRUE)
 ```
@@ -1099,7 +1099,7 @@ print(
 
 ```{r docentes-2020-grafico, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1219,14 +1219,14 @@ total.categoria <- table(docentes$Categoria)
 pie(
   total.categoria,
   labels = NA,
-  col = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Categoria)
 )
 legend(
   "topleft",
   legend = names(total.categoria),
-  fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1236,14 +1236,14 @@ total.regime <- table(docentes$`Regime de trabalho`)
 pie(
   total.regime,
   labels = NA,
-  col = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$`Regime de trabalho`)
 )
 legend(
   "topleft",
   legend = names(total.regime),
-  fill = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1253,14 +1253,14 @@ total.dedicação <- table(docentes$Dedicação)
 pie(
   total.dedicação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Dedicação)
 )
 legend(
   "topleft",
   legend = names(total.dedicação),
-  fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1270,14 +1270,14 @@ total.graduação <- table(docentes$Graduação)
 pie(
   total.graduação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Graduação)
 )
 legend(
   "topleft",
   legend = names(total.graduação),
-  fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1294,7 +1294,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2020-tabela, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1419,20 +1419,20 @@ print(
 # par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
 #
 # total.categoria <- table(docentes$Categoria)
-# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
-# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.categoria, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.regime <- table(docentes$`Regime de trabalho`)
-# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
-# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.regime, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.dedicação <- table(docentes$Dedicação)
-# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
-# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.dedicação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.graduação <- table(docentes$Graduação)
-# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
-# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.graduação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # title("Descrição do Corpo Docente", outer = TRUE)
 ```
@@ -1447,7 +1447,7 @@ print(
 
 ```{r docentes-2016-grafico, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1567,14 +1567,14 @@ total.categoria <- table(docentes$Categoria)
 pie(
   total.categoria,
   labels = NA,
-  col = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Categoria)
 )
 legend(
   "topleft",
   legend = names(total.categoria),
-  fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1584,14 +1584,14 @@ total.regime <- table(docentes$`Regime de trabalho`)
 pie(
   total.regime,
   labels = NA,
-  col = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$`Regime de trabalho`)
 )
 legend(
   "topleft",
   legend = names(total.regime),
-  fill = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1601,14 +1601,14 @@ total.dedicação <- table(docentes$Dedicação)
 pie(
   total.dedicação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Dedicação)
 )
 legend(
   "topleft",
   legend = names(total.dedicação),
-  fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1618,14 +1618,14 @@ total.graduação <- table(docentes$Graduação)
 pie(
   total.graduação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Graduação)
 )
 legend(
   "topleft",
   legend = names(total.graduação),
-  fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1642,7 +1642,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2016-tabela, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1767,20 +1767,20 @@ print(
 # par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
 #
 # total.categoria <- table(docentes$Categoria)
-# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
-# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.categoria, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.regime <- table(docentes$`Regime de trabalho`)
-# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
-# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.regime, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.dedicação <- table(docentes$Dedicação)
-# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
-# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.dedicação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.graduação <- table(docentes$Graduação)
-# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
-# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.graduação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # title("Descrição do Corpo Docente", outer = TRUE)
 ```
@@ -1795,7 +1795,7 @@ print(
 
 ```{r docentes-2012-grafico, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -1915,14 +1915,14 @@ total.categoria <- table(docentes$Categoria)
 pie(
   total.categoria,
   labels = NA,
-  col = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Categoria)
 )
 legend(
   "topleft",
   legend = names(total.categoria),
-  fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1932,14 +1932,14 @@ total.regime <- table(docentes$`Regime de trabalho`)
 pie(
   total.regime,
   labels = NA,
-  col = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$`Regime de trabalho`)
 )
 legend(
   "topleft",
   legend = names(total.regime),
-  fill = brewer.pal(n = length(names(total.regime)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1949,14 +1949,14 @@ total.dedicação <- table(docentes$Dedicação)
 pie(
   total.dedicação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Dedicação)
 )
 legend(
   "topleft",
   legend = names(total.dedicação),
-  fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1966,14 +1966,14 @@ total.graduação <- table(docentes$Graduação)
 pie(
   total.graduação,
   labels = NA,
-  col = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   init.angle = 90,
   main = names(docentes$Graduação)
 )
 legend(
   "topleft",
   legend = names(total.graduação),
-  fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"),
+  fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"),
   box.lwd = 0,
   cex = 1,
   bg = NA
@@ -1990,7 +1990,7 @@ title("Descrição do Corpo Docente", outer = TRUE)
 
 ```{r docentes-2012-tabela, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2012 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2115,20 +2115,20 @@ print(
 # par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
 #
 # total.categoria <- table(docentes$Categoria)
-# pie(total.categoria, labels = NA, col = brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
-# legend("topleft", legend = names(total.categoria), fill = brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.categoria, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), init.angle = 90, main = names(docentes$Categoria))
+# legend("topleft", legend = names(total.categoria), fill = RColorBrewer::brewer.pal(n = length(names(total.categoria)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.regime <- table(docentes$`Regime de trabalho`)
-# pie(total.regime, labels = NA, col = brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
-# legend("topleft", legend = names(total.regime), fill = brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.regime, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+# legend("topleft", legend = names(total.regime), fill = RColorBrewer::brewer.pal(n = length(names(total.regime)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.dedicação <- table(docentes$Dedicação)
-# pie(total.dedicação, labels = NA, col = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
-# legend("topleft", legend = names(total.dedicação), fill = brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.dedicação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), init.angle = 90, main = names(docentes$Dedicação))
+# legend("topleft", legend = names(total.dedicação), fill = RColorBrewer::brewer.pal(n = length(names(total.dedicação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # total.graduação <- table(docentes$Graduação)
-# pie(total.graduação, labels = NA, col = brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
-# legend("topleft", legend = names(total.graduação), fill = brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
+# pie(total.graduação, labels = NA, col = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), init.angle = 90, main = names(docentes$Graduação))
+# legend("topleft", legend = names(total.graduação), fill = RColorBrewer::brewer.pal(n = length(names(total.graduação)), name = "Set3"), box.lwd = 0, cex = 1, bg = NA)
 #
 # title("Descrição do Corpo Docente", outer = TRUE)
 ```
@@ -2154,7 +2154,7 @@ print(
 
 ```{r pos-doc-2024, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2024 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2324,7 +2324,7 @@ if (length(new.ids) != 0) {
 
 ```{r pos-doc-2020, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2020 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2494,7 +2494,7 @@ if (length(new.ids) != 0) {
 
 ```{r pos-doc-2016, eval = has.colegiado}
 docentes.raw <-
-  read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
 id1 <-
   docentes.raw$Credenciamento <= 2016 &
   docentes.raw$Descredenciamento == "Atual"
@@ -2663,43 +2663,124 @@ if (length(new.ids) != 0) {
 ### **2010-2012**
 
 ```{r pos-doc-2012, eval = has.colegiado}
-docentes.raw <- read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
-id1 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento == "Atual"
-id2 <- docentes.raw$Credenciamento <= 2012 & docentes.raw$Descredenciamento >= 2010
-docentes <- docentes.raw[id1 | id2, ]
+docentes.raw <-
+  readxl::read_excel("PPG/Colegiado.xlsx", sheet = "Colegiado")
+id1 <-
+  docentes.raw$Credenciamento <= 2012 &
+  docentes.raw$Descredenciamento == "Atual"
+id2 <-
+  docentes.raw$Credenciamento <= 2012 &
+  docentes.raw$Descredenciamento >= 2010
+docentes <- docentes.raw[id1 | id2,]
 
 ids <- seq(1:dim(docentes)[1])
 new.ids <- ids[grep("Pós-Doc", docentes$Categoria)]
-if(length(new.ids) == 0) {cat("*Sem dados para exibir*")}
-if(length(new.ids) != 0) {
-  docentes <- docentes[new.ids, ]
-  docentes <- docentes[order(docentes$Nome), ]
+if (length(new.ids) == 0) {
+  print("*Sem dados para exibir*")
+}
+if (length(new.ids) != 0) {
+  docentes <- docentes[new.ids,]
+  docentes <- docentes[order(docentes$Nome),]
   
-  table.2 <- matrix(NA, nrow=0, ncol = 7)
-  for(i in 1:dim(docentes)[1]){
+  table.2 <- matrix(NA, nrow = 0, ncol = 7)
+  for (i in 1:dim(docentes)[1]) {
     table <- cbind(
       docentes$Bandeira[i],
-      paste("[**", docentes$Nome[i], "**](mailto:", docentes$"E-mail"[i], ')', sep = ""),
-      paste(docentes$Categoria[i], " (", docentes$Credenciamento[i], "-", docentes$Descredenciamento[i], ")", sep = ""),
-      ifelse(!is.na(docentes$Lattes[i]),
-             paste("[", gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]), "](", docentes$Lattes[i], '){target="_blank"}', sep = ""),
-             docentes$Lattes[i]),
-      ifelse(!is.na(docentes$ORCID[i]),
-             paste("[", gsub("https://orcid.org/", "", docentes$ORCID[i]), "](", docentes$ORCID[i], '){target="_blank"}', sep = ""),
-             docentes$ORCID[i]),
-      ifelse(!is.na(docentes$Scopus[i]),
-             paste("[", gsub("https://www.scopus.com/authid/detail.uri\\?authorId=", "", docentes$Scopus[i]), "](", docentes$Scopus[i], '){target="_blank"}', sep = ""),
-             docentes$Scopus[i]),
-      ifelse(!is.na(docentes$ResearcherID[i]),
-             paste("[", gsub("https://publons.com/researcher/", "", docentes$ResearcherID[i]), "](", docentes$ResearcherID[i], '){target="_blank"}', sep = ""),
-             docentes$ResearcherID[i])
+      paste(
+        "[**",
+        docentes$Nome[i],
+        "**](mailto:",
+        docentes$"E-mail"[i],
+        ')',
+        sep = ""
+      ),
+      paste(
+        docentes$Categoria[i],
+        " (",
+        docentes$Credenciamento[i],
+        "-",
+        docentes$Descredenciamento[i],
+        ")",
+        sep = ""
+      ),
+      ifelse(
+        !is.na(docentes$Lattes[i]),
+        paste(
+          "[",
+          gsub("http://lattes.cnpq.br/", "", docentes$Lattes[i]),
+          "](",
+          docentes$Lattes[i],
+          '){target="_blank"}',
+          sep = ""
+        ),
+        docentes$Lattes[i]
+      ),
+      ifelse(
+        !is.na(docentes$ORCID[i]),
+        paste(
+          "[",
+          gsub("https://orcid.org/", "", docentes$ORCID[i]),
+          "](",
+          docentes$ORCID[i],
+          '){target="_blank"}',
+          sep = ""
+        ),
+        docentes$ORCID[i]
+      ),
+      ifelse(
+        !is.na(docentes$Scopus[i]),
+        paste(
+          "[",
+          gsub(
+            "https://www.scopus.com/authid/detail.uri\\?authorId=",
+            "",
+            docentes$Scopus[i]
+          ),
+          "](",
+          docentes$Scopus[i],
+          '){target="_blank"}',
+          sep = ""
+        ),
+        docentes$Scopus[i]
+      ),
+      ifelse(
+        !is.na(docentes$ResearcherID[i]),
+        paste(
+          "[",
+          gsub(
+            "https://publons.com/researcher/",
+            "",
+            docentes$ResearcherID[i]
+          ),
+          "](",
+          docentes$ResearcherID[i],
+          '){target="_blank"}',
+          sep = ""
+        ),
+        docentes$ResearcherID[i]
+      )
     )
     table.2 <- rbind(table.2, table)
   }
-  colnames(table.2) <- c("País", "Nome", "Credenciamento", "Lattes ID", "ORCID", "Scopus ID", "ResearcherID")
+  colnames(table.2) <-
+    c("País",
+      "Nome",
+      "Credenciamento",
+      "Lattes ID",
+      "ORCID",
+      "Scopus ID",
+      "ResearcherID")
   
   # print tables
-  print(kable(table.2, align = c("l", rep("c", ncol(table.2)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+  print(
+    kable(table.2, align = c("l", rep(
+      "c", ncol(table.2) - 2
+    ), "r")) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
   
   # line break
   cat("  \n")
@@ -2707,19 +2788,39 @@ if(length(new.ids) != 0) {
   
   # generate plot of docentes per information
   layout(matrix(seq(1:4), ncol = 2, byrow = TRUE))
-  par(oma=c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
+  par(oma = c(2, 0.1, 2, 0.1), mar = c(1, 1, 1, 1))
   
   total.categoria <- table(docentes$Categoria)
-  pie(total.categoria, labels = names(total.categoria), init.angle = 90, main = names(docentes$Categoria))
+  pie(
+    total.categoria,
+    labels = names(total.categoria),
+    init.angle = 90,
+    main = names(docentes$Categoria)
+  )
   
   total.regime <- table(docentes$`Regime de trabalho`)
-  pie(total.regime, labels = names(total.regime), init.angle = 90, main = names(docentes$`Regime de trabalho`))
+  pie(
+    total.regime,
+    labels = names(total.regime),
+    init.angle = 90,
+    main = names(docentes$`Regime de trabalho`)
+  )
   
   total.dedicação <- table(docentes$Dedicação)
-  pie(total.dedicação, labels = names(total.dedicação), init.angle = 90, main = names(docentes$Dedicação))
+  pie(
+    total.dedicação,
+    labels = names(total.dedicação),
+    init.angle = 90,
+    main = names(docentes$Dedicação)
+  )
   
   total.graduação <- table(docentes$Graduação)
-  pie(total.graduação, labels = names(total.graduação), init.angle = 90, main = names(docentes$Graduação))
+  pie(
+    total.graduação,
+    labels = names(total.graduação),
+    init.angle = 90,
+    main = names(docentes$Graduação)
+  )
   
   title("Descrição do Corpo Docente", outer = TRUE)
 }
@@ -2738,7 +2839,7 @@ if(length(new.ids) != 0) {
 
 #### **Doutorado**
 
-```{r discentes-dsc, eval = has.sucupira}
+```{r discentes-dsc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "Doutorado"
 
@@ -2795,7 +2896,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Mestrado**
 
-```{r discentes-msc, eval = has.sucupira}
+```{r discentes-msc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "Mestrado"
 
@@ -2851,7 +2952,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Iniciação científica**
 
-```{r discentes-ic, eval = has.sucupira}
+```{r discentes-ic, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "Bacharelado"
 
@@ -2907,7 +3008,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Doutorado**
 
-```{r discentes-dsc-prazos, eval = has.sucupira}
+```{r discentes-dsc-prazos, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "Doutorado"
 
@@ -2986,7 +3087,7 @@ if (dim(discentes)[1] != 0) {
   </tr>
 </table>
 
-```{r discentes-dsc-prazos-sintese, eval = has.sucupira}
+```{r discentes-dsc-prazos-sintese, eval = has.sucupira.files}
 discentes$'Ano de matrícula' <-
   format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y"), format = "%Y")
 
@@ -3019,7 +3120,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Mestrado**
 
-```{r discentes-msc-prazos, eval = has.sucupira}
+```{r discentes-msc-prazos, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "Mestrado"
 
@@ -3098,7 +3199,7 @@ if (dim(discentes)[1] != 0) {
   </tr>
 </table>
 
-```{r discentes-msc-prazos-sintese, eval = has.sucupira}
+```{r discentes-msc-prazos-sintese, eval = has.sucupira.files}
 discentes$'Ano de matrícula' <-
   format(as.Date(discentes$'Data Matrícula', format = "%d/%m/%Y"), format = "%Y")
 
@@ -3137,16 +3238,17 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 ### **Síntese** {.tabset}
 
 ```{r egressos-periodo, eval = has.discentes}
-discentes.raw <- read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
-discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-mestres <- discentes[discentes$Curso == "Mestrado", ]
-doutores <- discentes[discentes$Curso == "Doutorado", ]
+discentes.raw <-
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+mestres <- discentes[discentes$Curso == "Mestrado",]
+doutores <- discentes[discentes$Curso == "Doutorado",]
 
-states <- read_state(year=2019, showProgress = FALSE)
+states <- read_state(year = 2019, showProgress = FALSE)
 states$discentes <- rep(NA, dim(states)[1])
 UF <- as.data.frame(table(discentes$UF))
-for (i in 1:length(UF$Var1)){
-    states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
+for (i in 1:length(UF$Var1)) {
+  states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
 }
 
 # plot Brazil states per period
@@ -3154,22 +3256,43 @@ periodos <- rbind(cbind(2010, 2012), c(2013, 2016), c(2017, 2020))
 colnames(periodos) <- c("Início", "Fim")
 rownames(periodos) <- c("Trienal", "Quadrienal", "Quadrienal")
 
-par(oma=c(0, 0, 0, 0), mar = c(5.1, 4.1, 4.1, 2.1), bg = '#2C3E50', col.lab = "white", col.axis = "white", fg = "white", col.main = "white")
+par(
+  oma = c(0, 0, 0, 0),
+  mar = c(5.1, 4.1, 4.1, 2.1),
+  bg = '#2C3E50',
+  col.lab = "white",
+  col.axis = "white",
+  fg = "white",
+  col.main = "white"
+)
 layout(matrix(seq(1:dim(periodos)[1]), ncol = dim(periodos)[1], byrow = TRUE))
 maps <- list()
-for(j in 1:dim(periodos)[1]){
-  discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*", ]
-  discentes <- discentes[discentes$`Ano Titulação` >= periodos[j,1] & discentes$`Ano Titulação` <= periodos[j,2], ]
+for (j in 1:dim(periodos)[1]) {
+  discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
+  discentes <-
+    discentes[discentes$`Ano Titulação` >= periodos[j, 1] &
+                discentes$`Ano Titulação` <= periodos[j, 2],]
   states$discentes <- rep(NA, dim(states)[1])
   UF <- as.data.frame(table(discentes$UF))
-  for (i in 1:length(UF$Var1)){
+  for (i in 1:length(UF$Var1)) {
     states$discentes[states$abbrev_state == UF$Var1[i]] <- UF$Freq[i]
   }
   maps[[j]] <- ggplot() +
-    geom_sf(data=states, aes(fill=discentes), color= NA, size=.15) +
-    labs(subtitle=paste(periodos[j,1], "-", periodos[j,2], sep = ""), size=12) +
-    scale_fill_distiller(palette = "Spectral", name="Egressos, n", limits = c(min(0, UF$Freq), max(UF$Freq)), na.value = "grey") +
-    guides(fill=FALSE) + 
+    geom_sf(
+      data = states,
+      aes(fill = discentes),
+      color = NA,
+      size = .15
+    ) +
+    labs(subtitle = paste(periodos[j, 1], "-", periodos[j, 2], sep = ""),
+         size = 12) +
+    scale_fill_distiller(
+      palette = "Spectral",
+      name = "Egressos, n",
+      limits = c(min(0, UF$Freq), max(UF$Freq)),
+      na.value = "grey"
+    ) +
+    guides(fill = FALSE) +
     theme_minimal()
 }
 multiplot(plotlist = maps, cols = dim(periodos)[1])
@@ -3185,7 +3308,7 @@ multiplot(plotlist = maps, cols = dim(periodos)[1])
 
 ```{r historico-egressos-dsc-2024, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
@@ -3217,7 +3340,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2024, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2021 &
@@ -3251,7 +3374,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2020, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
@@ -3283,7 +3406,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2020, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2017 &
@@ -3317,7 +3440,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2016, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
@@ -3349,7 +3472,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2016, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2013 &
@@ -3383,7 +3506,7 @@ if (dim(mestres)[1] != 0) {
 
 ```{r historico-egressos-dsc-2012, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &
@@ -3415,7 +3538,7 @@ if (dim(doutores)[1] != 0) {
 
 ```{r historico-egressos-msc-2012, eval = has.discentes}
 discentes.raw <-
-  read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
+  readxl::read_excel("PPG/Discentes.xlsx", sheet = "DATA.discentes")
 discentes <- discentes.raw[discentes.raw$`Ano Titulação` != "*",]
 discentes <-
   discentes.raw[discentes.raw$`Ano Titulação` >= 2010 &
@@ -3450,7 +3573,7 @@ if (dim(mestres)[1] != 0) {
 
 ### **Doutorado**
 
-```{r bolsistas-dsc, eval = has.sucupira}
+```{r bolsistas-dsc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "TESE"
 
@@ -3504,7 +3627,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 ### **Mestrado**
 
-```{r bolsistas-msc, eval = has.sucupira}
+```{r bolsistas-msc, eval = has.sucupira.files}
 # dplyr::select level
 course.level <- "DISSERTAÇÃO"
 
@@ -3564,7 +3687,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 ### **Membros**
 
 ```{r grupos-de-pesquisa-membros, eval = has.grupos.pesquisa}
-membros.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "Membros")
+membros.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "Membros")
 
 # print tables
 print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -3577,7 +3700,7 @@ print(kable(membros.raw, align = c("l", rep("c", ncol(membros.raw)-2), "r")) %>%
 ### **Grupos ativos** {.tabset}
 
 ```{r grupos-de-pesquisa-ativos, eval = has.grupos.pesquisa}
-grupos.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
+grupos.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.ativos")
 
 # print tables
 print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -3590,7 +3713,7 @@ print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% k
 ### **Grupos inativos** {.tabset}
 
 ```{r grupos-de-pesquisa-inativos, eval = has.grupos.pesquisa}
-grupos.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.inativos")
+grupos.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.inativos")
 
 # print tables
 print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -3603,7 +3726,7 @@ print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% k
 ### **Grupos de pesquisa externos** {.tabset #grupos-externos}
 
 ```{r grupos-de-pesquisa-externos, eval = has.grupos.pesquisa}
-grupos.raw <- read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.externos")
+grupos.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.externos")
 
 # print tables
 print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
@@ -3620,7 +3743,7 @@ print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% k
 
 ### **Nacionais**
 
-```{r externos-nacionais, eval = has.sucupira}
+```{r externos-nacionais, eval = has.sucupira.files}
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R")
@@ -3667,7 +3790,7 @@ if (dim(externos)[1] != 0) {
 
 ### **Internacionais**
 
-```{r externos-internacionais, eval = has.sucupira}
+```{r externos-internacionais, eval = has.sucupira.files}
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R")
@@ -3714,7 +3837,7 @@ if (dim(externos)[1] != 0) {
 
 ### **Instituições e países**
 
-```{r externos-ies-paises, eval = has.sucupira}
+```{r externos-ies-paises, eval = has.sucupira.files}
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R")

@@ -63,7 +63,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 ### **Teses**
 
-```{r tcc-dsc, eval = has.sucupira}
+```{r tcc-dsc, eval = has.sucupira.files}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -73,7 +73,7 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 tccs <- tcc.all[tcc.all$`Tipo de Trabalho de Conclusão` == "TESE", ]
@@ -114,7 +114,7 @@ colnames(table.tcc) <-
 
 ### **Dissertações**
 
-```{r tcc-msc, eval = has.sucupira}
+```{r tcc-msc, eval = has.sucupira.files}
 # tcc
 sheet <- "TCC"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -124,7 +124,7 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos)))
+periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 tcc.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 
 tccs <- tcc.all[tcc.all$`Tipo de Trabalho de Conclusão` == "DISSERTAÇÃO", ]
@@ -172,11 +172,26 @@ colnames(table.tcc) <-
 
 ### **Institucional** {.tabset}
 
+#### **Sistema de Submissão de TCC**
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+<iframe src="https://sstcc.unisuam.edu.br/" style="width:100%; height:600px; border:0;"></iframe>
+
+*Fontes:* [**SSTCC**](https://sstcc.unisuam.edu.br/)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
 #### **Sede** {.tabset}
 
 ```{r repositorios-mestrado-sede, eval = has.repositorios.sede}
 # read separate sheets
-repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
+repositorio <- readxl::read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
 cat(paste('##### **', repositorio[1,2], '**', sep = ""))
 
@@ -193,7 +208,7 @@ cat('\n\n')
 
 ```{r repositorios-doutorado-sede, eval = has.repositorios.sede}
 # read separate sheets
-repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
+repositorio <- readxl::read_excel("PPG/Repositórios.xlsx", sheet = "Sede")
 
 cat(paste('##### **', repositorio[2,2], '**', sep = ""))
 
@@ -212,7 +227,7 @@ cat('\n\n')
 
 ```{r repositorios-mestrado-cooperacao, eval = has.repositorios.cooperacao}
 # read separate sheets
-repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
+repositorio <- readxl::read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
 cat(paste('##### **', repositorio[1,2], '**', sep = ""))
 
@@ -229,7 +244,7 @@ cat('\n\n')
 
 ```{r repositorios-doutorado-cooperacao, eval = has.repositorios.cooperacao}
 # read separate sheets
-repositorio <- read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
+repositorio <- readxl::read_excel("PPG/Repositórios.xlsx", sheet = "Cooperação")
 
 cat(paste('##### **', repositorio[2,2], '**', sep = ""))
 
@@ -246,9 +261,9 @@ cat('\n\n')
 
 ### **Externos** {.tabset}
 
-#### **Deposita IBICT**
+#### **Sucupira**
 
-<iframe src="https://deposita.ibict.br" style="width:100%; height:600px; border:0;"></iframe>
+<iframe src="https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/trabalhoConclusao/listaTrabalhoConclusao.xhtml" style="width:100%; height:600px; border:0;"></iframe>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -257,21 +272,6 @@ cat('\n\n')
 #### **Catálogo CAPES**
 
 <iframe src="https://catalogodeteses.capes.gov.br/catalogo-teses" style="width:100%; height:600px; border:0;"></iframe>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-## **Sistema de Submissão de TCC**
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-<iframe src="https://sstcc.unisuam.edu.br/" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**SSTCC**](https://sstcc.unisuam.edu.br/)
-
-<br>
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -286,21 +286,21 @@ cat('\n\n')
 
 ### **Artigos completos em periódicos** {.tabset}
 
-```{r artigos-completos, eval = has.artigos.completos}
+```{r artigos-completos, eval = any(has.artigos.completos.ppg, has.artigos.completos.sucupira)}
 # bind sources
-doi_unique <- doi_unique_artigos
-my_dois_works <- my_dois_works_artigos
+doi_with_altmetric <- doi_with_altmetric_artigos
+doi_without_altmetric <- doi_without_altmetric_artigos
 references <- references_artigos
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -309,8 +309,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -320,7 +320,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -341,16 +341,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -365,21 +365,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Artigos resumos em periódicos** {.tabset}
 
-```{r artigos-resumos, eval = has.artigos.resumos}
+```{r artigos-resumos, eval = any(has.artigos.resumos.ppg, has.artigos.resumos.sucupira)}
 # bind sources
-doi_unique <- doi_unique_resumos
-my_dois_works <- my_dois_works_resumos
+doi_with_altmetric <- doi_with_altmetric_resumos
+doi_without_altmetric <- doi_without_altmetric_resumos
 references <- references_resumos
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -388,8 +388,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -399,7 +399,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -420,16 +420,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -444,21 +444,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Preprints** {.tabset}
 
-```{r preprints, eval = has.preprints}
+```{r preprints, eval = has.preprints.ppg}
 # bind sources
-doi_unique <- doi_unique_preprints
-my_dois_works <- my_dois_works_preprints
+doi_with_altmetric <- doi_with_altmetric_preprints
+doi_without_altmetric <- doi_without_altmetric_preprints
 references <- references_preprints
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -467,8 +467,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -478,7 +478,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -499,16 +499,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -523,21 +523,21 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 ### **Livros**  {.tabset}
 
-```{r livros, eval = has.livros}
+```{r livros, eval = has.livros.ppg}
 # bind sources
-doi_unique <- doi_unique_livros
-my_dois_works <- my_dois_works_livros
+doi_with_altmetric <- doi_with_altmetric_livros
+doi_without_altmetric <- doi_without_altmetric_livros
 references <- references_livros
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -546,8 +546,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -557,7 +557,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -578,16 +578,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -600,95 +600,23 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 <br>
 
-#### **Medidas de Desempenho Físico e Funcional de Pessoas Idosas**
-
-<iframe src="https://www.medbookeditora.com.br/product-page/medidas-de-desempenho-f%C3%ADsico-e-funcional-de-idosos" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**Medbook Editora**](https://www.medbookeditora.com.br/product-page/medidas-de-desempenho-f%C3%ADsico-e-funcional-de-idosos)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Ciência Aplicada ao Exercício Físico e ao Esporte**
-
-<iframe src="https://www.editoraappris.com.br/produto/6220-cincia-aplicada-ao-exerccio-fsico-e-ao-esporte" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**Appris Editora**](https://www.editoraappris.com.br/produto/6220-cincia-aplicada-ao-exerccio-fsico-e-ao-esporte)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Deficiência e inclusão pelo esporte no contexto militar**
-
-<iframe src="https://www.editoracrv.com.br/produtos/detalhes/36691-crv" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**CRV Editora**](https://www.editoracrv.com.br/produtos/detalhes/36691-crv)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **O Gol de Rodas**
-
-<iframe src="https://ogolderodas.com.br" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**Construtores de Memórias**](https://construtoresdememorias.com)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Uma Jornada para Entender a Dor**
-
-<iframe src="http://pesquisaemdor.com.br" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**Pesquisa em Dor**](http://pesquisaemdor.com.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Livros do Museu do Esporte**
-
-<iframe src="https://www.emuseudoesporte.com.br/br/home" style="width:100%; height:600px; border:0;"></iframe>
-
-*Fontes:* [**eMuseu do Esporte**]https://www.emuseudoesporte.com.br/br/home)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ### **Capítulos**  {.tabset}
 
-```{r livros-capitulos, eval = has.capitulos}
+```{r livros-capitulos, eval = has.capitulos.ppg}
 # bind sources
-doi_unique <- doi_unique_capitulos
-my_dois_works <- my_dois_works_capitulos
+doi_with_altmetric <- doi_with_altmetric_capitulos
+doi_without_altmetric <- doi_without_altmetric_capitulos
 references <- references_capitulos
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -697,8 +625,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem produção para exibir*')
   cat('\n')
@@ -708,7 +636,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -729,16 +657,95 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = FALSE,
       show.SJR = FALSE,
       show.Qualis = FALSE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
+        }
+      ),
+      citescore = citescore,
+      scimago = scimago,
+      qualis = qualis
+    )
+  }
+}
+```
+
+<br>
+
+### **Trabalhos em anais** {.tabset}
+
+```{r resumos-eventos, eval = has.eventos.ppg}
+# bind sources
+doi_with_altmetric <- doi_with_altmetric_eventos
+doi_without_altmetric <- doi_without_altmetric_eventos
+references <- references_eventos
+
+# available years of publication
+years <-
+  na.omit(sort(unique(
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
+  ), decreasing = TRUE))
+
+# Verifica se há DOIs
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
+  cat('\n')
+} else {
+  # print export buttons
+  source("Scripts/print-only-buttons.R", local = knitr::knit_global())
+  print_buttons_dt(references, title = "Trabalhos em anais de eventos científicos")
+}
+
+# Verifica se há DOIs
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
+  cat('\n')
+  cat('*Sem produção para exibir*')
+  cat('\n')
+} else {
+  # section header
+  cat('\n\n<!-- -->\n\n')
+  cat(
+    paste(
+      "*Produtos (n = ",
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
+    ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
+      sep = ""
+    )
+  )
+  cat('<br>')
+  
+  for (year in 1:length(years)) {
+    # print tab header
+    cat('\n\n<!-- -->\n\n')
+    cat("#### **", as.character(years[year]), "**", "\n", sep = "")
+    
+    # print table of papers with/without badges
+    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
+    table.with.badges(
+      show.Altmetric = TRUE,
+      show.Dimensions = TRUE,
+      show.PlumX = TRUE,
+      show.CiteScore = TRUE,
+      show.SJR = TRUE,
+      show.Qualis = TRUE,
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
+        error = function(e) {
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
+        }
+      ),
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
+        error = function(e) {
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -758,85 +765,6 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 
 <br>
 
-### **Trabalhos em anais de eventos** {.tabset}
-
-```{r resumos-eventos, eval = has.eventos}
-# bind sources
-doi_unique <- doi_unique_eventos
-my_dois_works <- my_dois_works_eventos
-references <- references_eventos
-
-# available years of publication
-years <-
-  na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
-  ), decreasing = TRUE))
-
-# Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
-  cat('\n')
-} else {
-  # print export buttons
-  source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references, title = "Trabalhos em anais de eventos científicos")
-}
-
-# Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
-  cat('\n')
-  cat('*Sem produção para exibir*')
-  cat('\n')
-} else {
-  # section header
-  cat('\n\n<!-- -->\n\n')
-  cat(
-    paste(
-      "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
-    ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
-      sep = ""
-    )
-  )
-  cat('<br>')
-  
-  for (year in 1:length(years)) {
-    # print tab header
-    cat('\n\n<!-- -->\n\n')
-    cat("#### **", as.character(years[year]), "**", "\n", sep = "")
-    
-    # print table of papers with/without badges
-    source("Scripts/papers-with-badges.R", local = knitr::knit_global())
-    table.with.badges(
-      show.Altmetric = TRUE,
-      show.Dimensions = TRUE,
-      show.PlumX = TRUE,
-      show.CiteScore = TRUE,
-      show.SJR = TRUE,
-      show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
-        error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
-        }
-      ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
-        error = function(e) {
-          my_dois_works <- list()
-        }
-      ),
-      citescore = citescore,
-      scimago = scimago,
-      qualis = qualis
-    )
-  }
-}
-```
-
-<br>
-
 ### **Desenvolvimento de aplicativos** {.tabset}
 
 ```{r softwares, eval = has.softwares}
@@ -849,7 +777,7 @@ for (i in 1:length(abas)) {
   cat(paste0('#### **', abas[i], '**'))
   cat('\n\n<!-- -->\n\n')
   software.raw <-
-    read_excel("PPG/Softwares.xlsx",
+    readxl::read_excel("PPG/Softwares.xlsx",
                sheet = abas[i],
                col_types = c("text"))
   
@@ -886,22 +814,22 @@ cat('\n\n')
 
 <br>
 
-```{r retratacoes, eval = has.producao}
+```{r retratacoes, eval = has.producao.ppg}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 # bind sources
-doi_unique <- dois_unique_retracted
-my_dois_works <- my_dois_works_retracted
+doi_with_altmetric <- doi_with_altmetric_retracted
+doi_without_altmetric <- doi_without_altmetric_retracted
 
 # available years of publication
 years <-
   na.omit(sort(unique(
-    c(doi_unique$published_on, my_dois_works$published_on)
+    c(doi_with_altmetric$published_on, doi_without_altmetric$published_on)
   ), decreasing = TRUE))
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
 } else {
   # print export buttons
@@ -910,8 +838,8 @@ if (max(dim(doi_unique)[1], 0) == 0 &
 }
 
 # Verifica se há DOIs
-if (max(dim(doi_unique)[1], 0) == 0 &
-    max(dim(my_dois_works)[1], 0) == 0) {
+if (max(dim(doi_with_altmetric)[1], 0) == 0 &
+    max(dim(doi_without_altmetric)[1], 0) == 0) {
   cat('\n')
   cat('*Sem retratações para exibir*')
   cat('\n')
@@ -921,7 +849,7 @@ if (max(dim(doi_unique)[1], 0) == 0 &
   cat(
     paste(
       "*Produtos (n = ",
-      max(dim(doi_unique)[1], 0) + max(dim(my_dois_works)[1], 0),
+      max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
     ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)* \n\n",
       sep = ""
     )
@@ -942,16 +870,16 @@ if (max(dim(doi_unique)[1], 0) == 0 &
       show.CiteScore = TRUE,
       show.SJR = TRUE,
       show.Qualis = TRUE,
-      doi_unique = tryCatch(
-        doi_unique[doi_unique$published_on == years[year], ],
+      doi_with_altmetric = tryCatch(
+        doi_with_altmetric[doi_with_altmetric$published_on == years[year], ],
         error = function(e) {
-          doi_unique <- as.data.frame(matrix(nrow = 0, ncol = 0))
+          doi_with_altmetric <- as.data.frame(matrix(nrow = 0, ncol = 0))
         }
       ),
-      my_dois_works = tryCatch(
-        my_dois_works[my_dois_works$published_on == years[year], ],
+      doi_without_altmetric = tryCatch(
+        doi_without_altmetric[doi_without_altmetric$published_on == years[year], ],
         error = function(e) {
-          my_dois_works <- list()
+          doi_without_altmetric <- list()
         }
       ),
       citescore = citescore,
@@ -968,148 +896,26 @@ cat('\n\n')
 
 <br>
 
-## **Registros de protocolos** {#registros .tabset}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-### **WHO ICTRP**
-
-<br>
-
-<iframe src="https://trialsearch.who.int/Default.aspx" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**WHOv**](https://trialsearch.who.int/Default.aspx)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **ClinicalTrials.gov**
-
-<br>
-
-<iframe src="https://clinicaltrials.gov/ct2/results?term=UNISUAM+OR+%22Centro+Universitário+Augusto+Motta%22" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**ClinicalTrials.gov**](https://clinicaltrials.gov)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **ReBEC**
-
-<br>
-
-<iframe src="https://ensaiosclinicos.gov.br" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**Fundação Oswaldo Cruz)**](https://ensaiosclinicos.gov.br)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **PROSPERO**
-
-<br>
-
-<iframe src="https://www.crd.york.ac.uk/prospero/#loginpage" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**National Institute for Health Research**](https://www.crd.york.ac.uk/prospero/#loginpage)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **PRECIS-2**
-
-<br>
-
-<iframe src="https://www.precis-2.org" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**Health Informatics Centre (University of Dundee)**](https://www.precis-2.org)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **WHO UTN**
-
-<br>
-
-<iframe src="https://www.who.int/clinical-trials-registry-platform/unambiguous-trial-identification/the-universal-trial-number-(utn)" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**World Health Organization**](https://www.who.int/clinical-trials-registry-platform/unambiguous-trial-identification/the-universal-trial-number-(utn))
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-## **Portais de Periódicos** {#portais .tabset}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
-
-### **SciELO**
-
-<br>
-
-<iframe src="https://search.scielo.org/?q=au%3ARicciardi%2C+Gualtiero&lang=pt&count=15&from=0&output=site&sort=&format=summary&fb=&page=1&q=%28aff_institution%3AUNISUAM%29+OR+%28aff_institution%3A%22Centro+Universitário+Augusto+Motta%22%29&lang=pt&page=1" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**Scientific Electronic Library Online**](https://scielo.org)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **PubMed**
-
-<br>
-
-<iframe src="https://pubmed.ncbi.nlm.nih.gov/?term=%22UNISUAM%22+OR+%22centro+universitário+augusto+motta%22+OR+%22Centro+Universitario+Augusto+Motta%22&sort=relevance" style="width:100%; height:600px; border:0;"></iframe>
-
-<br>
-
-*Fontes:* [**PubMed**](https://pubmed.ncbi.nlm.nih.gov)
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
 ## **Sobre as Métricas** {#metricas .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+
+### **DORA**
+
+<br>
+
+<iframe src="https://sfdora.org" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**DORA**](https://sfdora.org)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
 
 ### **Metrics Toolkit**
 
@@ -1168,6 +974,22 @@ cat('\n\n')
 <br>
 
 *Fontes:* [**Elsevier**](https://plu.mx)
+
+<br>
+
+<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+### **CitesScore**
+
+<br>
+
+<iframe src="https://www.scopus.com/sources" style="width:100%; height:600px; border:0;"></iframe>
+
+<br>
+
+*Fontes:* [**Scopus**](https://www.scopus.com/sources)
 
 <br>
 

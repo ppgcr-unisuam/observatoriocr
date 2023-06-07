@@ -103,11 +103,7 @@ navbar:
           href: [producoes.html#tecnica]
         - text: "Retratações"
           href: [producoes.html#retratacoes]
-        - text: "Registros de protocolos"
-          href: [producoes.html#registros]
-        - text: "Portais de periódicos"
-          href: [producoes.html#portais]
-        - text: "Métricas"
+        - text: "Sobre as métricas"
           href: [producoes.html#metricas]
     - text: "Destaques"
       href: [destaques.html]

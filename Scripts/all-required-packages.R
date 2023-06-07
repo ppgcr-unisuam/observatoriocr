@@ -7,17 +7,23 @@
 # set default directory
 options(repos = structure(c(CRAN = "http://cran.r-project.org")))
 
+# set timeout to donwload packages, in seconds
+options(timeout = 360)
+
 # most packages work fine if installed from CRAN
 packs.cran <-
   c(
     "alluvial",
     "anytime",
     "BBmisc",
+    "beepr",
     "bsplus",
     "cowplot",
+    "curl",
     "data.tree",
     "details",
     "devtools",
+    "do",
     # plyr first, then dplyr
     "plyr",
     "dplyr",
@@ -32,6 +38,7 @@ packs.cran <-
     "hrbrthemes",
     "htmlwidgets",
     "httpuv",
+    "httr",
     "igraph",
     "janitor",
     "kableExtra",

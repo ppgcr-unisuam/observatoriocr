@@ -775,21 +775,6 @@ references_eventos <- formatted_citations %>%
 ```
 
 ```{r bind-all, results = "hide", cache = TRUE, cache.path = "cache/bind-all/", eval = any(has.producao.sucupira, has.producao.ppg)}
-
-write.table(doi_with_altmetric_artigos, "doi_with_altmetric_artigos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_with_altmetric_resumos, "doi_with_altmetric_resumos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_with_altmetric_preprints, "doi_with_altmetric_preprints.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_with_altmetric_livros, "doi_with_altmetric_livros.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_with_altmetric_capitulos, "doi_with_altmetric_capitulos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_with_altmetric_eventos, "doi_with_altmetric_eventos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-
-write.table(doi_without_altmetric_artigos, "doi_without_altmetric_artigos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_without_altmetric_resumos, "doi_without_altmetric_resumos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_without_altmetric_preprints, "doi_without_altmetric_preprints.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_without_altmetric_livros, "doi_without_altmetric_livros.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_without_altmetric_capitulos, "doi_without_altmetric_capitulos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-write.table(doi_without_altmetric_eventos, "doi_without_altmetric_eventos.tsv", quote = FALSE, row.names = FALSE, col.names = TRUE, sep = "\t", dec = ",")
-
 # bind sources
 doi_with_altmetric_all <-
   dplyr::bind_rows(

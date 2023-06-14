@@ -47,7 +47,7 @@ if(file.exists("PPG/Images/logo-IES.png")) {
 if(and(has.dados.cadastrais, has.sucupira.files)){
 cat(
   'O **Observatório ', toupper(as.character(sigla.PPG)),
-  '** é uma iniciativa do **Programa de Pós-graduação em ', as.character(nome.PPG), '** - [', toTitleCase(as.character(nome.IES)), '](', as.character(site.PPG),') ',
+  '** é uma iniciativa do **Programa de Pós-graduação em ', as.character(nome.PPG), '** - [', tools::toTitleCase(as.character(nome.IES)), '](', as.character(site.PPG),') ',
   'que envolve o registro, o acompanhamento e a análise agregada e estruturada de dados para divulgação transparente de suas atividades, planejamentos, ações e impactos, tornando-os acessíveis à sociedade',
    sep = "")
 } else {
@@ -1287,7 +1287,7 @@ legend(
   cex = 1,
 )
 
-if(sum(doi_all$citations) == 0){
+if(sjmisc::is_empty(doi_all$citations)){
   table.3 <- as.matrix(rep(0, length(max(anos) - min(anos) + 1)))
 } else {
   # generate cross tables of citations per year

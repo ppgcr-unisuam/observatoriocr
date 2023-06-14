@@ -142,8 +142,8 @@ bolsistas$'Matrícula' <- substr(as.Date(bolsistas$`Data início da orientação
 bolsistas$'Titulação' <- substr(as.Date(bolsistas$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
 
 # format names
-bolsistas$`Nome do Autor` <- toTitleCase(tolower(bolsistas$`Nome do Autor`))
-bolsistas$`Nome do Orientador` <- toTitleCase(tolower(bolsistas$`Nome do Orientador`))
+bolsistas$`Nome do Autor` <- tools::toTitleCase(tolower(bolsistas$`Nome do Autor`))
+bolsistas$`Nome do Orientador` <- tools::toTitleCase(tolower(bolsistas$`Nome do Orientador`))
 
 bolsistas <- dplyr::select(bolsistas, c("Nome do Autor", "Nome do Orientador", "Matrícula", "Titulação"))
 
@@ -192,8 +192,8 @@ bolsistas$'Matrícula' <- substr(as.Date(bolsistas$`Data início da orientação
 bolsistas$'Titulação' <- substr(as.Date(bolsistas$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
 
 # format names
-bolsistas$`Nome do Autor` <- toTitleCase(tolower(bolsistas$`Nome do Autor`))
-bolsistas$`Nome do Orientador` <- toTitleCase(tolower(bolsistas$`Nome do Orientador`))
+bolsistas$`Nome do Autor` <- tools::toTitleCase(tolower(bolsistas$`Nome do Autor`))
+bolsistas$`Nome do Orientador` <- tools::toTitleCase(tolower(bolsistas$`Nome do Orientador`))
 
 bolsistas <- dplyr::select(bolsistas, c("Nome do Autor", "Nome do Orientador", "Matrícula", "Titulação"))
 
@@ -242,9 +242,9 @@ bolsistas$'Titulação' <-
 
 # format names
 bolsistas$`Nome do Autor` <-
-  toTitleCase(tolower(bolsistas$`Nome do Autor`))
+  tools::toTitleCase(tolower(bolsistas$`Nome do Autor`))
 bolsistas$`Nome do Orientador` <-
-  toTitleCase(tolower(bolsistas$`Nome do Orientador`))
+  tools::toTitleCase(tolower(bolsistas$`Nome do Orientador`))
 
 bolsistas <-
   dplyr::select(bolsistas,
@@ -356,9 +356,9 @@ names(sucupira.list) <- as.character(anos)
 bolsistas.tcc$'Ano de Defesa' <- substr(as.Date(bolsistas.tcc$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
 
 # format names
-bolsistas.tcc$`Nome do Autor` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
-bolsistas.tcc$`Nome do Orientador` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
-bolsistas.tcc$`Nome do Trabalho de Conclusão` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
+bolsistas.tcc$`Nome do Autor` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
+bolsistas.tcc$`Nome do Orientador` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
+bolsistas.tcc$`Nome do Trabalho de Conclusão` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
 
 bolsistas.tcc <- bolsistas.tcc[bolsistas.tcc$`Tipo de Trabalho de Conclusão` == "TESE", ]
 
@@ -402,9 +402,9 @@ names(sucupira.list) <- as.character(anos)
 bolsistas.tcc$'Ano de Defesa' <- substr(as.Date(bolsistas.tcc$`Data da Defesa`, format = "%d/%m/%Y"), 1, 4)
 
 # format names
-bolsistas.tcc$`Nome do Autor` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
-bolsistas.tcc$`Nome do Orientador` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
-bolsistas.tcc$`Nome do Trabalho de Conclusão` <- toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
+bolsistas.tcc$`Nome do Autor` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Autor`))
+bolsistas.tcc$`Nome do Orientador` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Orientador`))
+bolsistas.tcc$`Nome do Trabalho de Conclusão` <- tools::toTitleCase(tolower(bolsistas.tcc$`Nome do Trabalho de Conclusão`))
 
 bolsistas.tcc <- bolsistas.tcc[bolsistas.tcc$`Tipo de Trabalho de Conclusão` == "DISSERTAÇÃO", ]
 
@@ -777,17 +777,17 @@ try(references_capitulos_impacto <-
 )
 ```
 
-```{r pandemia-filtro-eventos, eval = has.eventos.ppg}
+```{r pandemia-filtro-anais, eval = has.anais.ppg}
 # dplyr::selecting those with COVID in the title
-try(doi_with_altmetric_eventos_impacto <-
-      doi_with_altmetric_eventos[grep(paste(tolower(pandemia), collapse = "|"),
-                              tolower(doi_with_altmetric_eventos$title)), ], silent = TRUE)
-try(doi_without_altmetric_eventos_impacto <-
-      doi_without_altmetric_eventos[grep(paste(tolower(pandemia), collapse = "|"),
-                                 tolower(doi_without_altmetric_eventos$title)), ],
+try(doi_with_altmetric_anais_impacto <-
+      doi_with_altmetric_anais[grep(paste(tolower(pandemia), collapse = "|"),
+                              tolower(doi_with_altmetric_anais$title)), ], silent = TRUE)
+try(doi_without_altmetric_anais_impacto <-
+      doi_without_altmetric_anais[grep(paste(tolower(pandemia), collapse = "|"),
+                                 tolower(doi_without_altmetric_anais$title)), ],
     silent = TRUE)
-try(references_eventos_impacto <-
-      references_eventos[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_eventos)[, 2]), ], silent = TRUE
+try(references_anais_impacto <-
+      references_anais[grep(paste(tolower(pandemia), collapse = "|"), tolower(references_anais)[, 2]), ], silent = TRUE
 )
 ```
 
@@ -1377,11 +1377,11 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 
 ### **Trabalhos em anais** {.tabset}
 
-```{r pandemia-resumos-eventos, eval = has.eventos.ppg}
+```{r pandemia-resumos-anais, eval = has.anais.ppg}
 # bind sources
-try(doi_with_altmetric <- doi_with_altmetric_eventos_impacto, silent = TRUE)
-try(doi_without_altmetric <- doi_without_altmetric_eventos_impacto, silent = TRUE)
-try(references <- references_eventos_impacto, silent = TRUE)
+try(doi_with_altmetric <- doi_with_altmetric_anais_impacto, silent = TRUE)
+try(doi_without_altmetric <- doi_without_altmetric_anais_impacto, silent = TRUE)
+try(references <- references_anais_impacto, silent = TRUE)
 
 # available years of publication
 try(years <-

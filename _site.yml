@@ -105,8 +105,6 @@ navbar:
           href: [producoes.html#tecnica]
         - text: "Retratações"
           href: [producoes.html#retratacoes]
-        - text: "Sobre as métricas"
-          href: [producoes.html#metricas]
     - text: "Destaques"
       href: [destaques.html]
       menu:
@@ -193,6 +191,11 @@ navbar:
     - text: ""
       icon: "fa-toolbox"
       href: [toolbox.html]
+      menu:
+        - text: "Toolbox"
+          href: [toolbox.html]
+        - text: "Sobre as métricas"
+          href: [toolbox.html#metricas]
     - text: ""
       icon: "fa-download"
       href: [downloads.html]

@@ -48,7 +48,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ## **Videos** {#videos}
 
 <!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 <br>
 
@@ -130,17 +130,6 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <br>
 
 #### **Pesquisa Pós-Doutoral**
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6p8YpA6a4UQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -288,7 +277,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ## **Podcasts** {#podcasts}
 
 <!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 <br>
 
@@ -319,7 +308,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ## **Fotos** {#fotos}
 
 <!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:#2C3E50;background-color:#2C3E50">
+<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 <br>
 

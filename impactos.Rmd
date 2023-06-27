@@ -59,8 +59,6 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-<br>
-
 ### **Formação discente** {.tabset}
 
 #### **Turmas oferecidas**
@@ -216,6 +214,8 @@ cat('\n\n')
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
 
+<br>
+
 #### **Cotas de bolsas** {.tabset}
 
 ```{r cotas, eval = has.sucupira.files}
@@ -338,6 +338,8 @@ cat('\n\n')
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
 
+<br>
+
 ### **Produção acadêmica** {.tabset}
 
 #### **Teses**
@@ -367,6 +369,7 @@ bolsistas.tcc <- bolsistas.tcc %>% dplyr::select("Ano de Defesa", "Linha de Pesq
 
 # drop NA values in "Quantidade de Meses"
 bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
+bolsistas.tcc <- bolsistas.tcc[!duplicated(bolsistas.tcc), ]
 
 if (dim(bolsistas.tcc)[1] != 0) {
   ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Linha de Pesquisa', decreasing = TRUE)
@@ -376,13 +379,12 @@ if (dim(bolsistas.tcc)[1] != 0) {
 } else {
   cat("*Sem dados para exibir*")
 }
+
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-<br>
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -413,6 +415,7 @@ bolsistas.tcc <- bolsistas.tcc %>% dplyr::select("Ano de Defesa", "Linha de Pesq
 
 # drop NA values in "Quantidade de Meses"
 bolsistas.tcc <- bolsistas.tcc[complete.cases(bolsistas.tcc), ]
+bolsistas.tcc <- bolsistas.tcc[!duplicated(bolsistas.tcc), ]
 
 if (dim(bolsistas.tcc)[1] != 0) {
   ids <- order(bolsistas.tcc$'Ano de Defesa', bolsistas.tcc$'Linha de Pesquisa', decreasing = TRUE)
@@ -422,13 +425,12 @@ if (dim(bolsistas.tcc)[1] != 0) {
 } else {
   cat("*Sem dados para exibir*")
 }
+
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-<br>
-
-*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -437,53 +439,52 @@ if (dim(bolsistas.tcc)[1] != 0) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-<br>
-
 ### **Periódicos institucionais**
 
-<iframe src="https://revistas.unisuam.edu.br" style="width:100%; height:600px; border:0;"></iframe>
+```{r periodicos-insrtitucionais, eval = has.calendarios}
+# read separate sheets
+periodicos.raw <- readxl::read_excel("PPG/Periódicos institucionais.xlsx", sheet = "Periódicos", col_types = c("text"))
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+Abrir <- matrix(NA, nrow = dim(periodicos.raw)[1])
+colnames(Abrir) <- "Abrir"
+# add hyperlinks
+for(i in 1:dim(periodicos.raw)[1]){
+  if(!is.na(periodicos.raw[i,3])){
+    Abrir[i] <- paste0('<a href="', periodicos.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>", sep = "")
+  }
+}
 
-<br>
+periodicos <- cbind(periodicos.raw[,-3], Abrir)
 
-### **Anuário de patentes**
+# print table
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(periodicos, title = "Períódicos institucionais")
 
-<iframe src="https://revistas.unisuam.edu.br/index.php/patentes" style="width:100%; height:600px; border:0;"></iframe>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-### **Comitê de ética em pesquisa** {.tabset}
-
-<br>
-
-#### **Resoluções e normativas CNS**
-
-<iframe src="http://conselho.saude.gov.br/o-que-e-rss/92-comissoes/conep/normativas-conep/642-lista-de-resolucoes-conep" style="width:100%; height:600px; border:0;"></iframe>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Plataforma Brasil CONEP**
-
-<iframe src="https://plataformabrasil.saude.gov.br/login.jsf" style="width:100%; height:600px; border:0;"></iframe>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+```
 
 <br>
 
-#### **Comitê de Ética em Pesquisa** {#CEP .tabset}
+### **Comitê de Ética em Pesquisa** {#cep .tabset}
 
 <p align="center">
-[<img align="center" src="PPG/Images/logo-cep.png">](https://www.unisuam.edu.br/pesquisa-e-inovacao/){target="_blank"}
+```{r logo-ies, eval = has.cep}
+if(file.exists("PPG/Images/logo-cep.png") &
+   has.cep) {
+  # read separate sheets
+  link <-
+    readxl::read_excel("PPG/CEP.xlsx",
+                       sheet = "CEP",
+                       col_types = c("text"))[[1]]
+  cat('[<img src=\"PPG/Images/logo-cep.png\" align=\"center\"/>](', link, ')')
+}
+```
 </p>
 
 <br>
 
-##### **Documentos vigentes**
+#### **Documentos vigentes**
 
 ```{r cep-vigentes, eval = has.cep}
 # read separate sheets
@@ -495,26 +496,26 @@ cep.vigentes.raw <-
 # replace the link by a tag
 for (i in 1:dim(cep.vigentes.raw)[1]) {
   cep.vigentes.raw[i, 3] <-
-    paste("[↗️](", cep.vigentes.raw[i, 3], '){target="_blank"}', sep = "")
+    paste0('<a href="', cep.vigentes.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
 }
 
 # print table
 print(
   kable(cep.vigentes.raw, align = c("l", rep(
     "c", ncol(cep.vigentes.raw) - 2
-  ), "r")) %>% kable_styling(
+  ), "r"), escape = TRUE) %>% kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
   )
 )
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
-##### **Documentos revogados**
+#### **Documentos revogados**
 
 ```{r cep-revogados, eval = has.cep}
 # read separate sheets
@@ -526,24 +527,22 @@ cep.revogados.raw <-
 # replace the link by a tag
 for (i in 1:dim(cep.revogados.raw)[1]) {
   cep.revogados.raw[i, 3] <-
-    paste("[↗️](", cep.revogados.raw[i, 3], '){target="_blank"}', sep = "")
+    paste0('<a href="', cep.revogados.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
 }
 
 # print table
 print(
   kable(cep.revogados.raw, align = c("l", rep(
     "c", ncol(cep.revogados.raw) - 2
-  ), "r")) %>% kable_styling(
+  ), "r"), escape = TRUE) %>% kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
   )
 )
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
-
-<br>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -554,63 +553,7 @@ print(
 
 <br>
 
-### **Organização de eventos** {.tabset}
-
-<br>
-
-#### **Semana de Pesquisa, Extensão e Inovação** {.tabset}
-
-##### **Programação**
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://hotsite.unisuam.edu.br/xviiispe/index.php" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-##### **Apresentações**
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sBn1gOF8Atg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-#### **Simpósio Paradesportivo Carioca**
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1O_S0kEW9Rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
-
-<br>
-
-<div class="sizer" text-align:"center">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/i_PZ-Bgy1dE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
+*Em construção!*
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
@@ -633,8 +576,6 @@ print(
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
-
-<br>
 
 ```{r pandemia-termos}
 pandemia <-
@@ -1001,7 +942,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos completos")
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos completos em periódicos")
 }
 
 # Verifica se há DOIs
@@ -1080,7 +1021,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos resumos")
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Artigos resumos em periódicos")
 }
 
 # Verifica se há DOIs
@@ -1396,7 +1337,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 } else {
   # print export buttons
   source("Scripts/print-only-buttons.R", local = knitr::knit_global())
-  print_buttons_dt(references, title = "Ações durante a Pandemia - Trabalhos em anais")
+  print_buttons_dt(references, title = "Ações durante a Pandemia - Trabalhos em anais de eventos científicos")
 }
 
 # Verifica se há DOIs
@@ -1454,11 +1395,11 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 
 <br>
 
-### **Prêmios** {.tabset #premios}
+### **Prêmios** {#premios .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
-  
+
 ```{r pandemia-premios, eval = has.premios}
 # read separate sheets
 file.path <- "PPG/Prêmios.xlsx"
@@ -1483,7 +1424,7 @@ for (j in 1:length(tabs)) {
       premios[i, 1] <-
         paste("#### **", as.character(as.Date(as.numeric(premios[i, 1]), origin = "1899-12-30")), "**", sep = "")
       premios[i, 3] <-
-        paste("[↗️](", premios[i, 3], '){target="_blank"}', sep = "")
+        paste0('<a href="', premios[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
     }
     
     # drop date column
@@ -1505,7 +1446,7 @@ for (j in 1:length(tabs)) {
     print(
       kable(premios.list[[j]], align = c("l", rep(
         "c", ncol(premios) - 2
-      ), "r")) %>% kable_styling(
+      ), "r"), escape = TRUE) %>% kable_styling(
         bootstrap_options = c("hover", "condensed", "responsive"),
         full_width = T,
         position = "center"

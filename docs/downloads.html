@@ -35,28 +35,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="site_libs/datatables-binding-0.28/datatables.js"></script>
-<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="site_libs/pdfmake-1.13.4/pdfmake.js"></script>
-<script src="site_libs/pdfmake-1.13.4/vfs_fonts.js"></script>
-<link href="site_libs/dt-ext-buttons-1.13.4/css/buttons.dataTables.min.css" rel="stylesheet" />
-<script src="site_libs/dt-ext-buttons-1.13.4/js/dataTables.buttons.min.js"></script>
-<script src="site_libs/dt-ext-buttons-1.13.4/js/buttons.html5.min.js"></script>
-<script src="site_libs/dt-ext-buttons-1.13.4/js/buttons.colVis.min.js"></script>
-<script src="site_libs/dt-ext-buttons-1.13.4/js/buttons.print.min.js"></script>
-<link href="site_libs/dt-ext-colreorder-1.13.4/css/colReorder.dataTables.min.css" rel="stylesheet" />
-<script src="site_libs/dt-ext-colreorder-1.13.4/js/dataTables.colReorder.min.js"></script>
-<link href="site_libs/dt-ext-responsive-1.13.4/css/responsive.dataTables.min.css" rel="stylesheet" />
-<script src="site_libs/dt-ext-responsive-1.13.4/js/dataTables.responsive.min.js"></script>
-<link href="site_libs/dt-plugin-searchhighlight-1.13.4/source.css" rel="stylesheet" />
-<script src="site_libs/dt-plugin-searchhighlight-1.13.4/jquery.highlight.js"></script>
-<script src="site_libs/dt-plugin-searchhighlight-1.13.4/source.min.js"></script>
-<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -483,10 +461,25 @@ div.tocify {
       <a href="producoes.html#repositorios">Repositórios</a>
     </li>
     <li>
-      <a href="producoes.html#bibliografica">Produção bibliográfica</a>
+      <a href="producoes.html#artigos-completos">Artigos completos</a>
     </li>
     <li>
-      <a href="producoes.html#tecnica">Produção técnica</a>
+      <a href="producoes.html#artigos-resumos">Artigos resumos</a>
+    </li>
+    <li>
+      <a href="producoes.html#preprints">Preprints</a>
+    </li>
+    <li>
+      <a href="producoes.html#livros">Livros</a>
+    </li>
+    <li>
+      <a href="producoes.html#capitulos">Capítulos</a>
+    </li>
+    <li>
+      <a href="producoes.html#trabalhos-em-anais">Trabalhos em anais de eventos</a>
+    </li>
+    <li>
+      <a href="producoes.html#aplicativos">Desenvolvimento de aplicativos</a>
     </li>
     <li>
       <a href="producoes.html#retratacoes">Retratações</a>
@@ -510,7 +503,10 @@ div.tocify {
       <a href="destaques.html#TCC-destaque">Dissertações/Teses</a>
     </li>
     <li>
-      <a href="destaques.html#produtos-destaque">Produções</a>
+      <a href="destaques.html#destaque-visibilidade">Produções em destaque - Visibilidade</a>
+    </li>
+    <li>
+      <a href="destaques.html#destaque-prestigio">Produções em destaque - Prestígio</a>
     </li>
     <li>
       <a href="destaques.html#premios">Prêmios</a>
@@ -631,27 +627,12 @@ div.tocify {
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Downloads
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="downloads.html">Donwloads</a>
-    </li>
-    <li>
-      <a href="downloads.html#vigentes">Vigentes</a>
-    </li>
-    <li>
-      <a href="downloads.html#revogados">Revogados</a>
-    </li>
-  </ul>
+<li>
+  <a href="downloads.html">Downloads</a>
 </li>
 <li>
   <a href="info.html">
-    <span class="fa fa-circle-info"></span>
+    <span class="fa fa-globe"></span>
      
     
   </a>
@@ -735,17 +716,387 @@ href="https://www.linkedin.com/shareArticle?mini=true&amp;url="><svg preserveAsp
 <h2 class="tabset"><strong>Documentos</strong></h2>
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
+<!-- -->
 <div id="vigentes" class="section level3">
 <h3><strong>Vigentes</strong></h3>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a534ffc0affda834d082" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a534ffc0affda834d082">{"x":{"filter":"none","vertical":false,"extensions":["Buttons","ColReorder","Responsive"],"data":[["2023-1","2023-1","2023","2022","2022","2022","2021-2","2021-1","2021-1","2021-1","2018-1","2018-1","2018-1","2018","2017-2021"],["Documento modelo PPGCR.docx","Manual do Aluno PPGCR.pdf","FAQ PPGCR.pdf","Boas Práticas em Pesquisa","Ferramenta Zoom para aulas","Disciplinas PPGCR.pdf","Regulamento PPGCR.pdf","Orientações à Banca Examinadora.pdf","Cronograma modelo PPGCR","Normas de Trabalhos PPGCR.pdf","Slides Doutorado.ppt","Slides Mestrado.ppt","Slides Pós-Doutorado.ppt","Politica Intercâmbio Docente UNISUAM.pdf","PDI UNISUAM.pdf"],["<a href=\"https://docs.google.com/document/d/1cHFSHanzIirew7nrod5Cm7Gd-ACUcpHk/edit?usp=share_link&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1WTSfUj2og9ZLKGxSl3UrQnROOdqv-TPS\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1PUaiihYUCtDlogSbQOHomT0hXGy_15t4\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/16vdyXRk0gsnwu_-07qC8nZqM7UyzHTp1\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1QJz9v3vc-1dUYcw68gx1PlYZRz_l1Pwr/view\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1aqO9Pc2rAvlEGo86O6EVBAJL2CMBS_Eq\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1b3LFCydeYp0eMphBKfUAv5_deEa1emrD\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1c5yDivSLHxEA0W1mLz56_pWjRDQKHNL8\" target=\"_blank\">↗️<\/a>","<a href=\"https://docs.google.com/spreadsheets/d/1cBhKXh8TbSvUz-6Y1xbhh7nDFOcUkUIB/edit?usp=sharing&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1bv0xmRRxxWi1yNkXw_v_rAy3eGhkwJt_\" target=\"_blank\">↗️<\/a>","<a href=\"https://docs.google.com/presentation/d/1c-YSz4hj60MdujW-MK78XFGnzpBV3ltR/edit?usp=sharing&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://docs.google.com/presentation/d/1bo2TWbdpxuCQL4UzRMR9LTyI42nTux10/edit?usp=sharing&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://docs.google.com/presentation/d/1axmS_29dUTuGde6-mfvaMVx81z4AHOHf/edit?usp=sharing&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1Sd-U4TjJLUQRKZIawO5Bb3fwCDPA2iuF\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1b0pO2PTjOviC91wbLkRmDwSNdjn_b9ia\" target=\"_blank\">↗️<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Publicação<\/th>\n      <th>Documento<\/th>\n      <th>Abrir<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"colReorder":true,"pageLength":4,"scrolX":false,"dom":"Bftip","searchHighlight":true,"buttons":[{"extend":"copy"},{"extend":"csv"},{"extend":"pdf","title":"Documentos vigentes","filename":"Documentos vigentes"}],"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"responsive":true,"lengthMenu":[4,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<!-- -->
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+2023-1
+</td>
+<td style="text-align:left;">
+Documento modelo PPGCR.docx
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/document/d/1cHFSHanzIirew7nrod5Cm7Gd-ACUcpHk/edit?usp=share_link&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-1
+</td>
+<td style="text-align:left;">
+Manual do Aluno PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1WTSfUj2og9ZLKGxSl3UrQnROOdqv-TPS" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023
+</td>
+<td style="text-align:left;">
+FAQ PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1PUaiihYUCtDlogSbQOHomT0hXGy_15t4" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022
+</td>
+<td style="text-align:left;">
+Boas Práticas em Pesquisa
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/16vdyXRk0gsnwu_-07qC8nZqM7UyzHTp1" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022
+</td>
+<td style="text-align:left;">
+Ferramenta Zoom para aulas
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1QJz9v3vc-1dUYcw68gx1PlYZRz_l1Pwr/view" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022
+</td>
+<td style="text-align:left;">
+Disciplinas PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1aqO9Pc2rAvlEGo86O6EVBAJL2CMBS_Eq" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-2
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1b3LFCydeYp0eMphBKfUAv5_deEa1emrD" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-1
+</td>
+<td style="text-align:left;">
+Orientações à Banca Examinadora.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1c5yDivSLHxEA0W1mLz56_pWjRDQKHNL8" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-1
+</td>
+<td style="text-align:left;">
+Cronograma modelo PPGCR
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/spreadsheets/d/1cBhKXh8TbSvUz-6Y1xbhh7nDFOcUkUIB/edit?usp=sharing&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-1
+</td>
+<td style="text-align:left;">
+Normas de Trabalhos PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1bv0xmRRxxWi1yNkXw_v_rAy3eGhkwJt_" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-1
+</td>
+<td style="text-align:left;">
+Slides Doutorado.ppt
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/presentation/d/1c-YSz4hj60MdujW-MK78XFGnzpBV3ltR/edit?usp=sharing&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-1
+</td>
+<td style="text-align:left;">
+Slides Mestrado.ppt
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/presentation/d/1bo2TWbdpxuCQL4UzRMR9LTyI42nTux10/edit?usp=sharing&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-1
+</td>
+<td style="text-align:left;">
+Slides Pós-Doutorado.ppt
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/presentation/d/1axmS_29dUTuGde6-mfvaMVx81z4AHOHf/edit?usp=sharing&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018
+</td>
+<td style="text-align:left;">
+Politica Intercâmbio Docente UNISUAM.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1Sd-U4TjJLUQRKZIawO5Bb3fwCDPA2iuF" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-2021
+</td>
+<td style="text-align:left;">
+PDI UNISUAM.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1b0pO2PTjOviC91wbLkRmDwSNdjn_b9ia" target="_blank">↗️</a>
+</td>
+</tr>
+</tbody>
+</table>
 <p><br><a style="float:right" href="#top"><b>Início  </b>⬆️</a><br></p>
-<p><br></p>
+<!-- -->
 </div>
 <div id="revogados" class="section level3">
 <h3><strong>Revogados</strong></h3>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-470b409b07c40fb1c320" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-470b409b07c40fb1c320">{"x":{"filter":"none","vertical":false,"extensions":["Buttons","ColReorder","Responsive"],"data":[["2022","2021-2","2021-1","2021-2","2021","2021-1","2020-2","2019-1","2018-2","2018-2","2017-1","2014-2","2013-1","2012-2016","2012-1","2011-1","2010","2009"],["FAQ PPGCR.pdf","Manual do Aluno PPGCR.pdf","Documento modelo PPGCR.docx","Regulamento PPGCR.pdf","Disciplinas PPGCR.pdf","Manual do Aluno PPGCR.pdf","Regulamento PPGCR.pdf","Manual do Aluno PPGCR.pdf","Disciplinas PPGCR.pdf","Regulamento PPGCR.pdf","Regulamento PPGCR.pdf","Regulamento PGGCR.pdf","Normas de Trabalhos PPGCR.pdf","PDI UNISUAM.pdf","Regulamento PPGCR.pdf","Normas de Trabalhos PPGCR.pdf","Regulamento PG-UNISUAM.pdf","Regulamento PPGCR.pdf"],["<a href=\"https://drive.google.com/file/d/1c0rk9Txd3Y8t-YLmnntPl-irpKTKHFsp\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1b2cLR221IBu6jhKyNz58PC6yeAs0zrny\" target=\"_blank\">↗️<\/a>","<a href=\"https://docs.google.com/document/d/1bvpW9lrnivhMf-tongR9qIMJ-pFTGXT5/edit?usp=share_link&ouid=111502605498008190927&rtpof=true&sd=true\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iedfQXZ8WyazZiHBl4OeRVBcnRss8zav\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iYLmH2-aT2xDXK6G8HbTazYKSm7PQQ0Q\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iX20FI0TPNa4_ScoPKnTpHk7ukIidFMY\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1jDNHvd1w4LHQxD3ILppubNwwCCOPvcaU\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1jDu6vWh71I_raBgMUrQTU4K0z_bIg5NJ\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iR6WwEUEtZMgbsBZxmU2eyrNiDUiKvjP\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iLV37LTbsR2E3xRTUULzorfEXjLZCx8Z\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iLJ5xpRxtIp5GLUzs_1ewik-r5QoXiER\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1iaxSaLrAsv88GA4-C2YINgR3hHoekGkT\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1j-edLjBYuI92I2BuG5V82-TEpBiMs5ca\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1i_FdjhuIY7pgd77X8Q-YifH7ypKLLffF\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1j1hHs8X5DG0ZnzbMIUyJPrTQd-CIw05y\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1j7ljkP2LctLqj8TBTwhpgfLMsDoNhsE9\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1SZq0tFUH9dl3CDrO9Z2tp_jjiEHz77p5\" target=\"_blank\">↗️<\/a>","<a href=\"https://drive.google.com/file/d/1j303hhQX--CXNgHfuoBoVOjd3sYbZfKt\" target=\"_blank\">↗️<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Publicação<\/th>\n      <th>Documento<\/th>\n      <th>Abrir<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"colReorder":true,"pageLength":4,"scrolX":false,"dom":"Bftip","searchHighlight":true,"buttons":[{"extend":"copy"},{"extend":"csv"},{"extend":"pdf","title":"Documentos revogados","filename":"Documentos revogados"}],"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"responsive":true,"lengthMenu":[4,10,25,50,100]},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<!-- -->
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+2022
+</td>
+<td style="text-align:left;">
+FAQ PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1c0rk9Txd3Y8t-YLmnntPl-irpKTKHFsp" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-2
+</td>
+<td style="text-align:left;">
+Manual do Aluno PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1b2cLR221IBu6jhKyNz58PC6yeAs0zrny" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-1
+</td>
+<td style="text-align:left;">
+Documento modelo PPGCR.docx
+</td>
+<td style="text-align:left;">
+<a href="https://docs.google.com/document/d/1bvpW9lrnivhMf-tongR9qIMJ-pFTGXT5/edit?usp=share_link&amp;ouid=111502605498008190927&amp;rtpof=true&amp;sd=true" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-2
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iedfQXZ8WyazZiHBl4OeRVBcnRss8zav" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021
+</td>
+<td style="text-align:left;">
+Disciplinas PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iYLmH2-aT2xDXK6G8HbTazYKSm7PQQ0Q" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-1
+</td>
+<td style="text-align:left;">
+Manual do Aluno PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iX20FI0TPNa4_ScoPKnTpHk7ukIidFMY" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-2
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1jDNHvd1w4LHQxD3ILppubNwwCCOPvcaU" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-1
+</td>
+<td style="text-align:left;">
+Manual do Aluno PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1jDu6vWh71I_raBgMUrQTU4K0z_bIg5NJ" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-2
+</td>
+<td style="text-align:left;">
+Disciplinas PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iR6WwEUEtZMgbsBZxmU2eyrNiDUiKvjP" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-2
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iLV37LTbsR2E3xRTUULzorfEXjLZCx8Z" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-1
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iLJ5xpRxtIp5GLUzs_1ewik-r5QoXiER" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-2
+</td>
+<td style="text-align:left;">
+Regulamento PGGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1iaxSaLrAsv88GA4-C2YINgR3hHoekGkT" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-1
+</td>
+<td style="text-align:left;">
+Normas de Trabalhos PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1j-edLjBYuI92I2BuG5V82-TEpBiMs5ca" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-2016
+</td>
+<td style="text-align:left;">
+PDI UNISUAM.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1i_FdjhuIY7pgd77X8Q-YifH7ypKLLffF" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-1
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1j1hHs8X5DG0ZnzbMIUyJPrTQd-CIw05y" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-1
+</td>
+<td style="text-align:left;">
+Normas de Trabalhos PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1j7ljkP2LctLqj8TBTwhpgfLMsDoNhsE9" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010
+</td>
+<td style="text-align:left;">
+Regulamento PG-UNISUAM.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1SZq0tFUH9dl3CDrO9Z2tp_jjiEHz77p5" target="_blank">↗️</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009
+</td>
+<td style="text-align:left;">
+Regulamento PPGCR.pdf
+</td>
+<td style="text-align:left;">
+<a href="https://drive.google.com/file/d/1j303hhQX--CXNgHfuoBoVOjd3sYbZfKt" target="_blank">↗️</a>
+</td>
+</tr>
+</tbody>
+</table>
 <p><br><a style="float:right" href="#top"><b>Início  </b>⬆️</a><br></p>
 <p><br></p>
 </div>

@@ -755,7 +755,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r softwares, eval = has.softwares}
+```{r softwares, eval = has.softwares.ppg}
 # initialize all sheets
 abas <- excel_sheets("PPG/Softwares.xlsx")
 

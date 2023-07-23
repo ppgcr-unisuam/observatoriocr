@@ -70,7 +70,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r mtodologia, eval = has.metodologia}
+```{r metodologia, eval = has.metodologia}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 
@@ -456,7 +456,7 @@ cat("*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br")
 
 #### **Estrutura Acadêmica do Programa**
 
-#### *Qualitativa*
+##### *Qualitativa*
 
 <br>
 
@@ -466,7 +466,7 @@ cat("*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br")
 
 <br>
 
-#### *Quantitativa*
+##### *Quantitativa*
 
 ```{r 1-1-1-quanti, eval = has.sucupira.files}
 # read each tab content
@@ -500,7 +500,7 @@ síntese.ano <- síntese.ano %>%
     ))
 
 # generate table (total by year)
-table.1 <-
+table.1.1.1 <-
   gtsummary::tbl_summary(
     síntese.ano,
     by = "Ano",
@@ -510,7 +510,8 @@ table.1 <-
       "Projetos de pesquisa" ~ "continuous"),
     statistic = list(
       all_continuous() ~ c("{max}")),
-    missing = "no") %>%
+    missing = "no",
+    digits = list(everything() ~ 0)) %>%
   gtsummary::modify_header(
 #    label = "**Ano**",
     all_stat_cols() ~ "**{level}**") %>%
@@ -519,7 +520,7 @@ table.1 <-
   gtsummary::bold_labels()
 
 # print table
-print(table.1)
+print(table.1.1.1)
 
 cat('<br>')
 cat('\n\n')
@@ -534,9 +535,99 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Proposta Curricular do Programa**
 
+##### *Qualitativa*
+
+<br>
+
 *Em construção*
 
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
+
+<br>
+
+##### *Quantitativa*
+
+```{r 1-1-2-quanti, eval = has.sucupira.files}
+# read each tab content
+sheet <- "Disciplinas"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# get all years available
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+síntese.ano <- c()
+# loop for every available year
+for (i in 1:length(anos)) {
+  # get síntese anual
+  source("Scripts/síntese-sucupira.R", local = knitr::knit_global())
+  síntese.ano <-
+    dplyr::bind_rows(síntese.ano,
+          sintese(
+            sucupira.list = sucupira.list,
+            ano = anos[i]
+          ))
+}
+
+# Data selection
+síntese.ano <- síntese.ano %>%
+  dplyr::select(c(
+    "Ano",
+    "Níveis de curso",
+    "Mestrado",
+    "Doutorado",
+    "Disciplinas (M)",
+    "Disciplinas (D)",
+    "Disciplinas obrigatórias (M)",
+    "Disciplinas obrigatórias (D)",
+    "Disciplinas eletivas (M)",
+    "Disciplinas eletivas (D)",
+    "Créditos totais (M)",
+    "Créditos totais (D)",
+    "Carga horária total (M)",
+    "Carga horária total (D)"
+    ))
+
+# generate table (total by year)
+table.1.1.2 <-
+  gtsummary::tbl_summary(
+    síntese.ano,
+    by = "Ano",
+    type = list(
+      "Níveis de curso" ~ "continuous",
+      "Mestrado" ~ "continuous",
+      "Doutorado" ~ "continuous",
+      "Disciplinas (M)" ~ "continuous",
+      "Disciplinas (D)" ~ "continuous",
+      "Disciplinas obrigatórias (M)" ~ "continuous",
+      "Disciplinas obrigatórias (D)" ~ "continuous",
+      "Disciplinas eletivas (M)" ~ "continuous",
+      "Disciplinas eletivas (D)" ~ "continuous",
+      "Créditos totais (M)" ~ "continuous",
+      "Créditos totais (D)" ~ "continuous",
+      "Carga horária total (M)" ~ "continuous",
+      "Carga horária total (D)" ~ "continuous"
+      ),
+    statistic = list(
+      all_continuous() ~ c("{max}")),
+    missing = "no",
+    digits = list(everything() ~ 0)) %>%
+  gtsummary::modify_header(
+#    label = "**Ano**",
+    all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(
+    tidyselect::everything() ~ NA) %>%
+  gtsummary::bold_labels()
+
+# print table
+print(table.1.1.2)
+
+cat('<br>')
+cat('\n\n')
+cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")
+
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+```
 
 <br>
 

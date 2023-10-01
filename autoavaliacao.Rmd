@@ -370,9 +370,9 @@ quadrienal.vigente <- 2021:min(as.numeric(format(Sys.Date(), "%Y")), 2024)
 
 #### **Estrutura Acadêmica do Programa** {.tabset}
 
-##### **AC** {#areas}
+##### **Descrição** {#descricao .tabset}
 
-```{r AC, eval = has.dados.cadastrais}
+```{r 1-1-1-AC, eval = has.dados.cadastrais}
 area.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
                      sheet = "AC",
@@ -397,9 +397,7 @@ print(
 
 <br>
 
-##### **LP** {#linhas}
-
-```{r LP, eval = has.dados.cadastrais}
+```{r 1-1-1-LP, eval = has.dados.cadastrais}
 linhas.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
              sheet = "LP",
@@ -429,9 +427,9 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
-##### **PP** {#projetos}
+##### **AC-LP-PP-DP** {#ac-lp-pp-dp}
 
-```{r PP, eval = has.sucupira.files}
+```{r projetos-em-andamento, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -462,7 +460,7 @@ projetos <-
 projetos <- unique(projetos)
 ```
 
-```{r PP-lista, eval = has.sucupira.files}
+```{r 1-1-1-PP-DP, eval = has.sucupira.files}
 table.projetos <-
   data.frame(
     projetos$`Área de Concentração`,
@@ -506,9 +504,327 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
+##### **Coerência** {#coerencia}
+
+```{r 1-1-1-coerencia-ac, eval = has.sucupira.files}
+# AC-LP-PP
+sheet <- "Linhas de Pesquisa - Projetos"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get docentes for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  compact()
+sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira) <-
+  names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
+
+# recode
+sucupira$'Data de Início da Linha' <-
+  substr(as.Date(sucupira$'Data de Início da Linha', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data de Fim da Linha' <-
+  substr(as.Date(sucupira$'Data de Fim da Linha', format = "%d/%m/%Y"),
+         1, 4)
+sucupira$'Data de Início do Projeto' <-
+  substr(as.Date(sucupira$'Data de Início do Projeto', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação' <-
+  substr(as.Date(sucupira$'Data da Situação', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação'[is.na(sucupira$'Data da Situação')] <-
+  format(Sys.Date(), "%Y")
+
+# filter duplicated rows (changes in details will we exhibited)
+sucupira <- sucupira[!duplicated(sucupira), ]
+sucupira <- sucupira[order(sucupira$"Data de Início do Projeto"),]
+
+data <- dplyr::select(sucupira, c("Área de Concentração", "Linha de Pesquisa", "Nome do Projeto de Pesquisa", "Data de Início do Projeto", "Situação", "Data da Situação"))
+
+table.ac <- data.frame(matrix(NA, nrow = length(unique(data$`Área de Concentração`)), ncol = length(quadrienal.vigente)))
+rownames(table.ac) <- NULL
+table.ac <- cbind(unique(data$`Área de Concentração`), table.ac)
+colnames(table.ac) <- c("Área de Concentração", as.character(quadrienal.vigente))
+for (i in 1:dim(table.ac)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    table.ac[i, j + 1] <-
+      try(data$`Área de Concentração`[match(table.ac$`Área de Concentração`[i], data$`Área de Concentração`)]
+          , silent = TRUE)
+  }
+}
+
+table.ac.long <- tidyr::gather(table.ac[, -1], "Ano", "Área de Concentração", colnames(table.ac)[-1], factor_key=TRUE)
+
+table.ac.long <- rbind(
+  table.ac.long,
+  data.frame(
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.ac)[1]),
+    "Área de Concentração" = rep("Áreas", times = dim(table.ac)[1]),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  style_number(sum(data == "Áreas", na.rm = TRUE), digits = 0)
+}
+
+# print tables
+table.ac.gt <-
+  gtsummary::tbl_summary(
+    table.ac.long,
+    by = "Ano",
+    statistic = list(all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = everything() ~ 0) %>%
+  gtsummary::modify_header(label = "", all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(
+    list(
+      add_stat_1 ~ "**N (Quadriênio)**",
+      all_stat_cols() ~ "**{level}**"
+    )
+  ) %>%  
+  remove_row_type(variables = c('Área de Concentração'), 
+                  type = "level", level_value = ("Áreas")) %>%
+  modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r 1-1-1-coerencia-lp, eval = has.sucupira.files}
+# AC-LP-PP
+sheet <- "Linhas de Pesquisa - Projetos"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get docentes for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  compact()
+sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira) <-
+  names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
+
+# recode
+sucupira$'Data de Início da Linha' <-
+  substr(as.Date(sucupira$'Data de Início da Linha', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data de Fim da Linha' <-
+  substr(as.Date(sucupira$'Data de Fim da Linha', format = "%d/%m/%Y"),
+         1, 4)
+sucupira$'Data de Início do Projeto' <-
+  substr(as.Date(sucupira$'Data de Início do Projeto', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação' <-
+  substr(as.Date(sucupira$'Data da Situação', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação'[is.na(sucupira$'Data da Situação')] <-
+  format(Sys.Date(), "%Y")
+
+# filter duplicated rows (changes in details will we exhibited)
+sucupira <- sucupira[!duplicated(sucupira), ]
+sucupira <- sucupira[order(sucupira$"Data de Início do Projeto"),]
+
+data <- dplyr::select(sucupira, c("Área de Concentração", "Linha de Pesquisa", "Nome do Projeto de Pesquisa", "Data de Início do Projeto", "Situação", "Data da Situação"))
+
+table.lp <- data.frame(matrix(NA, nrow = length(unique(data$`Linha de Pesquisa`)), ncol = length(quadrienal.vigente)))
+rownames(table.lp) <- NULL
+table.lp <- cbind(unique(data$`Linha de Pesquisa`), table.lp)
+colnames(table.lp) <- c("Linha de Pesquisa", as.character(quadrienal.vigente))
+for (i in 1:dim(table.lp)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    table.lp[i, j + 1] <-
+      try(data$`Linha de Pesquisa`[match(table.lp$`Linha de Pesquisa`[i], data$`Linha de Pesquisa`)]
+          , silent = TRUE)
+  }
+}
+
+table.lp.long <- tidyr::gather(table.lp[, -1], "Ano", "Linha de Pesquisa", colnames(table.lp)[-1], factor_key=TRUE)
+
+table.lp.long <- rbind(
+  table.lp.long,
+  data.frame(
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.lp)[1]),
+    "Linha de Pesquisa" = rep("Linhas", times = dim(table.lp)[1]),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  style_number(sum(data == "Linhas", na.rm = TRUE), digits = 0)
+}
+
+# print tables
+table.lp.gt <-
+  gtsummary::tbl_summary(
+    table.lp.long,
+    by = "Ano",
+    statistic = list(all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = everything() ~ 0) %>%
+  gtsummary::modify_header(label = "", all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(
+    list(
+      add_stat_1 ~ "**N (Quadriênio)**",
+      all_stat_cols() ~ "**{level}**"
+    )
+  ) %>%  
+  remove_row_type(variables = c('Linha de Pesquisa'), 
+                  type = "level", level_value = ("Linhas")) %>%
+  modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r 1-1-1-coerencia-pp, eval = has.sucupira.files}
+# AC-LP-PP
+sheet <- "Linhas de Pesquisa - Projetos"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# get years
+source("Scripts/years-sucupira.R")
+names(sucupira.list) <- as.character(anos)
+
+# get docentes for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  compact()
+sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira) <-
+  names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
+
+# recode
+sucupira$'Data de Início da Linha' <-
+  substr(as.Date(sucupira$'Data de Início da Linha', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data de Fim da Linha' <-
+  substr(as.Date(sucupira$'Data de Fim da Linha', format = "%d/%m/%Y"),
+         1, 4)
+sucupira$'Data de Início do Projeto' <-
+  substr(as.Date(sucupira$'Data de Início do Projeto', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação' <-
+  substr(as.Date(sucupira$'Data da Situação', format = "%d/%m/%Y"), 1, 4)
+sucupira$'Data da Situação'[is.na(sucupira$'Data da Situação')] <-
+  format(Sys.Date(), "%Y")
+
+# filter duplicated rows (changes in details will we exhibited)
+sucupira <- sucupira[!duplicated(sucupira), ]
+sucupira <- sucupira[order(sucupira$"Data de Início do Projeto"),]
+
+data <- dplyr::select(sucupira, c("Área de Concentração", "Linha de Pesquisa", "Nome do Projeto de Pesquisa", "Data de Início do Projeto", "Situação", "Data da Situação"))
+
+table.pp <- data.frame(matrix(NA, nrow = length(unique(data$`Nome do Projeto de Pesquisa`)), ncol = length(quadrienal.vigente)))
+rownames(table.pp) <- NULL
+table.pp <- cbind(unique(data$`Nome do Projeto de Pesquisa`), table.pp)
+colnames(table.pp) <- c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
+for (i in 1:dim(table.pp)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    table.pp[i, j + 1] <-
+      try(data$`Nome do Projeto de Pesquisa`[match(table.pp$`Nome do Projeto de Pesquisa`[i], data$`Nome do Projeto de Pesquisa`)]
+          , silent = TRUE)
+  }
+}
+
+table.pp.long <- tidyr::gather(table.pp[, -1], "Ano", "Nome do Projeto de Pesquisa", colnames(table.pp)[-1], factor_key=TRUE)
+
+table.pp.long <- rbind(
+  table.pp.long,
+  data.frame(
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.pp)[1]),
+    "Nome do Projeto de Pesquisa" = rep("Projetos", times = dim(table.pp)[1]),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  style_number(sum(data == "Projetos", na.rm = TRUE), digits = 0)
+}
+
+# print tables
+table.pp.gt <-
+  gtsummary::tbl_summary(
+    table.pp.long,
+    by = "Ano",
+    statistic = list(all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = everything() ~ 0) %>%
+  gtsummary::modify_header(label = "", all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(
+    list(
+      add_stat_1 ~ "**N (Quadriênio)**",
+      all_stat_cols() ~ "**{level}**"
+    )
+  ) %>%  
+  remove_row_type(variables = c('Nome do Projeto de Pesquisa'), 
+                  type = "level", level_value = ("Projetos")) %>%
+  modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r ac-lp-pp, eval = has.sucupira.files}
+table.all <- gtsummary::tbl_stack(
+  list(
+    table.ac.gt,
+    table.lp.gt,
+    table.pp.gt
+  )
+)
+print(table.all)
+```
+
+<details>
+<summary>Área de Concentração | Dados individuais</summary>
+```{r ac-detalhes, eval = has.sucupira.files}
+options(knitr.kable.NA = '')
+print(
+  kable(table.ac, align = c("l", rep(
+    "c", ncol(table.ac) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  ) %>% scroll_box(width = "100%")
+)
+```
+</details>
+
+<details>
+<summary>Linhas de pesquisa | Dados individuais</summary>
+```{r lp-detalhes, eval = has.sucupira.files}
+options(knitr.kable.NA = '')
+print(
+  kable(table.lp, align = c("l", rep(
+    "c", ncol(table.lp) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  ) %>% scroll_box(width = "100%")
+)
+```
+</details>
+
+<details>
+<summary>Projetos de pesquisa | Dados individuais</summary>
+```{r pp-detalhes, eval = has.sucupira.files}
+options(knitr.kable.NA = '')
+print(
+  kable(table.pp, align = c("l", rep(
+    "c", ncol(table.pp) - 2
+  ), "r")) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  ) %>% scroll_box(width = "100%")
+)
+```
+</details>
+
+<br>
+
 ##### **Docentes** {#docentes-linhas-pesquisa}
 
-```{r projetos-de-pesquisa-em-andamento-tabela, eval = has.sucupira.files}
+```{r 1-1-1-docentes, eval = has.sucupira.files}
 # select data DOCENTES
 projetos.doc <-
   projetos[projetos$`Categoria do Membro do Projeto` == "Docente",]
@@ -574,71 +890,6 @@ cat("  \n")
 cat('\n\n')
 cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
 cat('\n\n')
-cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
-```
-
-<br>
-
-##### **Coerência** {#coerencia}
-
-```{r 1-1-1-quanti, eval = has.sucupira.files}
-# read each tab content
-sheet <- "Projetos"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-
-# get all years available
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
-names(sucupira.list) <- as.character(anos)
-
-síntese.ano <- c()
-# loop for every available year
-for (i in 1:length(anos)) {
-  # get síntese anual
-  source("Scripts/síntese-sucupira.R", local = knitr::knit_global())
-  síntese.ano <-
-    dplyr::bind_rows(síntese.ano,
-          sintese(
-            sucupira.list = sucupira.list,
-            ano = anos[i]
-          ))
-}
-
-# Data selection
-síntese.ano <- síntese.ano %>%
-  dplyr::select(c(
-    "Ano",
-    "Áreas de concentração",
-    "Linhas de pesquisa",
-    "Projetos de pesquisa"
-    ))
-
-# generate table (total by year)
-table.1.1.1 <-
-  gtsummary::tbl_summary(
-    síntese.ano,
-    by = "Ano",
-    type = list(
-      "Áreas de concentração" ~ "continuous",
-      "Linhas de pesquisa" ~ "continuous",
-      "Projetos de pesquisa" ~ "continuous"),
-    statistic = list(
-      all_continuous() ~ c("{max}")),
-    missing = "no",
-    digits = list(everything() ~ 0)) %>%
-  gtsummary::modify_header(
-    label = "**Ano**",
-    all_stat_cols() ~ "**{level}**") %>%
-  gtsummary::modify_footnote(
-    tidyselect::everything() ~ NA) %>%
-  gtsummary::bold_labels()
-
-# print table
-print(table.1.1.1)
-
-cat('<br>')
-cat('\n\n')
-cat("*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)")
-
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
 

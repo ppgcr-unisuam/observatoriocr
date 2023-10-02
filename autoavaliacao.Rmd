@@ -370,7 +370,9 @@ quadrienal.vigente <- 2021:min(as.numeric(format(Sys.Date(), "%Y")), 2024)
 
 #### **Estrutura Acadêmica do Programa** {.tabset}
 
-##### **Descrição** {#descricao .tabset}
+##### **Qualitativo** {#ac-cp .tabset}
+
+###### **Áreas de Concentração** {#descricao-ac}
 
 ```{r 1-1-1-AC, eval = has.dados.cadastrais}
 area.raw <-
@@ -397,6 +399,17 @@ print(
 
 <br>
 
+```{r, eval = has.sucupira.files}
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+```
+
+<br>
+
+###### **Linhas de Pesquisa** {#descricao-lp}
+
 ```{r 1-1-1-LP, eval = has.dados.cadastrais}
 linhas.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
@@ -418,7 +431,11 @@ print(
     position = "center"
   ) %>% scroll_box(width = "100%")
 )
+```
 
+<br>
+
+```{r, eval = has.sucupira.files}
 cat('\n\n')
 cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
 cat('\n\n')
@@ -427,9 +444,9 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
-##### **AC-LP-PP-DP** {#ac-lp-pp-dp}
+###### **Projetos de Pesquisa** {#descricao-pp}
 
-```{r projetos-em-andamento, eval = has.sucupira.files}
+```{r 1-1-1-data, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -438,38 +455,54 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get data from last Sucupira year available
-projetos.all <-
-  do.call(rbind.data.frame, sucupira.list[as.character(max(anos))])
+# get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
+for(i in 1:length(sucupira)){
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.df) <-
+  names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
 
-# filter ongoing projects only
-projetos <-
-  projetos.all[projetos.all$`Membro Responsável` == "Sim" &
-                 projetos.all$Situação == "EM ANDAMENTO", ]
+# filter docente responsável
+sucupira.df <-
+  sucupira.df[sucupira.df$`Membro Responsável` == "Sim", ]
 
-projetos <-
-  projetos %>% dplyr::select(
+# remove duplicates
+sucupira.df <- sucupira.df[!duplicated(sucupira.df), ]
+
+sucupira.df <-
+  sucupira.df %>% dplyr::select(
+    "Anos",
     "Área de Concentração",
     "Linha de Pesquisa",
     "Nome do Projeto de Pesquisa",
     "Nome do Membro do Projeto",
     "Categoria do Membro do Projeto",
     "Data de Início",
-    "Data da Situação"
+    "Data da Situação",
+    "Situação"
   )
-projetos <- unique(projetos)
 ```
 
 ```{r 1-1-1-PP-DP, eval = has.sucupira.files}
 table.projetos <-
   data.frame(
-    projetos$`Área de Concentração`,
-    projetos$`Linha de Pesquisa`,
-    projetos$`Nome do Projeto de Pesquisa`,
-    projetos$`Nome do Membro do Projeto`,
-    projetos$`Data de Início`
+    sucupira.df$`Área de Concentração`,
+    sucupira.df$`Linha de Pesquisa`,
+    sucupira.df$`Nome do Projeto de Pesquisa`,
+    sucupira.df$`Nome do Membro do Projeto`,
+    sucupira.df$`Situação`
   )
-table.projetos <- table.projetos[order(table.projetos[, 1]),]
+
+# remove duplicates
+table.projetos <- table.projetos[!duplicated(table.projetos), ]
+
+table.projetos <- table.projetos[order(table.projetos[, 1], table.projetos[, 2], table.projetos[, 3]),]
 labels <- colnames(table.projetos)
 # print tables
 table.projetos[, 1] <-
@@ -478,14 +511,17 @@ table.projetos[, 2] <-
   as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
 table.projetos[, 3] <-
   as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
+table.projetos <- cbind(seq(1,dim(table.projetos)[1]), table.projetos)
 
 colnames(table.projetos) <-
-  c("Área de Concentração",
+  c("ID",
+    "Área de Concentração",
     "Linha de Pesquisa",
     "Projeto de Pesquisa",
     "Membro Responsável",
-    "Início")
+    "Situação")
 
+rownames(table.projetos) <- NULL
 print(
   kable(table.projetos, align = c("l", rep(
     "c", ncol(table.projetos) - 2
@@ -495,7 +531,11 @@ print(
     position = "center"
   ) %>% scroll_box(width = "100%")
 )
+```
 
+<br>
+
+```{r, eval = has.sucupira.files}
 cat('\n\n')
 cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
 cat('\n\n')
@@ -504,9 +544,78 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
-##### **Coerência** {#coerencia}
+###### **Docentes** {#docentes-linhas-pesquisa}
 
-```{r 1-1-1-coerencia-ac, eval = has.sucupira.files}
+```{r 1-1-1-docentes, eval = has.sucupira.files}
+# remove duplicates
+sucupira.df <- sucupira.df[!duplicated(sucupira.df[, -1]), ]
+
+# select data DOCENTES
+table.doc <-
+  table(sucupira.df$`Nome do Membro do Projeto`,
+        sucupira.df$`Linha de Pesquisa`)
+# add row totals
+table.doc <- cbind(table.doc, rowSums(table.doc))
+colnames(table.doc) <- c(head(colnames(table.doc), -1), "N")
+# add column totals
+table.doc <- rbind(table.doc, colSums(table.doc))
+rownames(table.doc) <- c(head(rownames(table.doc), -1), "N")
+# print tables
+print(
+  kable(
+    table.doc,
+    align = c("c", rep("c", ncol(table.doc) - 2), "r"),
+    caption = "Docentes"
+  ) %>% kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = T,
+    position = "center"
+  ) %>% scroll_box(width = "100%")
+)
+
+# line break
+cat("  \n")
+cat("  \n")
+
+# select data POS-DOC
+table.posdoc <- NULL
+if (any(sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc")) {
+  table.posdoc <-
+    table(sucupira.df$`Nome do Membro do Projeto`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"],
+          sucupira.df$`Linha de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"])
+  # add row totals
+  table.posdoc <- cbind(table.posdoc, rowSums(table.posdoc))
+  colnames(table.posdoc) <- c(head(colnames(table.posdoc), -1), "N")
+  # add column totals
+  table.posdoc <- rbind(table.posdoc, colSums(table.posdoc))
+  rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
+  # print tables
+  print(
+    kable(
+      table.posdoc,
+      align = c("c", rep("c", ncol(table.posdoc) - 2), "r"),
+      caption = "Pós-Doutorandos"
+    ) %>% kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    ) %>% scroll_box(width = "100%")
+  )
+}
+```
+
+<br>
+
+```{r, eval = has.sucupira.files}
+cat('\n\n')
+cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
+cat('\n\n')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+```
+
+##### **Quantitativo** {#coerencia-quantitativo}
+
+```{r 1-1-1-ac, eval = has.sucupira.files}
 # AC-LP-PP
 sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -515,7 +624,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
-# get docentes for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   compact()
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
@@ -591,7 +700,7 @@ table.ac.gt <-
   modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-coerencia-lp, eval = has.sucupira.files}
+```{r 1-1-1-lp, eval = has.sucupira.files}
 # AC-LP-PP
 sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -600,7 +709,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
-# get docentes for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   compact()
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
@@ -676,7 +785,7 @@ table.lp.gt <-
   modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-coerencia-pp, eval = has.sucupira.files}
+```{r 1-1-1-pp, eval = has.sucupira.files}
 # AC-LP-PP
 sheet <- "Linhas de Pesquisa - Projetos"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -685,7 +794,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
-# get docentes for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   compact()
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
@@ -761,7 +870,7 @@ table.pp.gt <-
   modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r ac-lp-pp, eval = has.sucupira.files}
+```{r 1-1-1-ac-lp-pp, eval = has.sucupira.files}
 table.all <- gtsummary::tbl_stack(
   list(
     table.ac.gt,
@@ -822,71 +931,7 @@ print(
 
 <br>
 
-##### **Docentes** {#docentes-linhas-pesquisa}
-
-```{r 1-1-1-docentes, eval = has.sucupira.files}
-# select data DOCENTES
-projetos.doc <-
-  projetos[projetos$`Categoria do Membro do Projeto` == "Docente",]
-table.doc <-
-  table(projetos.doc$`Nome do Membro do Projeto`,
-        projetos.doc$`Linha de Pesquisa`)
-# add row totals
-table.doc <- cbind(table.doc, rowSums(table.doc))
-colnames(table.doc) <- c(head(colnames(table.doc), -1), "N")
-# add column totals
-table.doc <- rbind(table.doc, colSums(table.doc))
-rownames(table.doc) <- c(head(rownames(table.doc), -1), "N")
-# print tables
-print(
-  kable(
-    table.doc,
-    align = c("c", rep("c", ncol(table.doc) - 2), "r"),
-    caption = "Docentes"
-  ) %>% kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  ) %>% scroll_box(width = "100%")
-)
-
-# line break
-cat("  \n")
-cat("  \n")
-
-# select data POS-DOC
-table.posdoc <- NULL
-projetos.posdoc <-
-  projetos[projetos$`Categoria do Membro do Projeto` == "Pós-Doc",]
-if (dim(projetos.posdoc)[1] != 0) {
-  table.posdoc <-
-    table(projetos.posdoc$`Nome do Membro do Projeto`,
-          projetos.posdoc$`Linha de Pesquisa`)
-  # add row totals
-  table.posdoc <- cbind(table.posdoc, rowSums(table.posdoc))
-  colnames(table.posdoc) <- c(head(colnames(table.posdoc), -1), "N")
-  # add column totals
-  table.posdoc <- rbind(table.posdoc, colSums(table.posdoc))
-  rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
-  # print tables
-  print(
-    kable(
-      table.posdoc,
-      align = c("c", rep("c", ncol(table.posdoc) - 2), "r"),
-      caption = "Pós-Doutorandos"
-    ) %>% kable_styling(
-      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-      full_width = T,
-      position = "center"
-    ) %>% scroll_box(width = "100%")
-  )
-  
-}
-
-# line break
-cat("  \n")
-cat("  \n")
-
+```{r, eval = has.sucupira.files}
 cat('\n\n')
 cat('*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/)')
 cat('\n\n')
@@ -1633,7 +1678,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 ### **1.3.1**
 
 #### **Adequação da proposta ao Plano Institucional da IES** {.tabset}
-<br>
 
 ```{r planejamento, eval = has.planejamento}
 # initialize all sheets

@@ -429,9 +429,14 @@ for (i in 1:length(abas)) {
 quadrienal.vigente <- 2021:min(as.numeric(format(Sys.Date(), "%Y")), 2024)
 ```
 
-### **1.1.1**
+```{r, eval = knitr::is_html_output()}
+cat("### **1.1.1**")
+cat("#### **Estrutura Acadêmica do Programa** {.tabset}")
+```
 
-#### **Estrutura Acadêmica do Programa** {.tabset}
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.1.1 Estrutura Acadêmica do Programa**")
+```
 
 ##### **Objetivos**
 

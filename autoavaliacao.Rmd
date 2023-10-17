@@ -20,12 +20,12 @@ output:
     toc: true
     lot: true
     lof: true
-    number_sections: true
+    number_sections: false
     includes:
       in_header: tex/preamble.tex
       before_body: tex/cover_1.tex
     latex_engine: xelatex
-    keep_tex: yes
+    keep_tex: no
 ---
 
 ```{r cover-one, fig.align = 'right', echo = FALSE, include = identical(knitr:::pandoc_to(), 'html'), fig.link = 'images/Cover_1.png', out.width = "100%", eval = !knitr::is_html_output()}
@@ -33,15 +33,13 @@ knitr::include_graphics('images/Cover_1.png', dpi = NA)
 ```
 
 ```{=latex}
-\mainmatter
-\clearpage
-\markboth{}{}
-```
+% unnumbered chapters and arabic page numbering
+\backmatter
 
-```{=latex}
-\mainmatter
 \clearpage
 \markboth{}{}
+
+\EnableFootNotes
 ```
 
 <!--install and/or load all R packages-->
@@ -71,7 +69,7 @@ $(document).ready(function() {
 
 <!--script for sharing-->
 <p align="right">
-```{r share}
+```{r share, eval = knitr::is_html_output()}
 home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
@@ -2931,3 +2929,7 @@ print(
 <a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
+
+```{=latex}
+\DisableFootNotes
+```

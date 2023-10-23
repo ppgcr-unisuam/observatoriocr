@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.12)  17 OCT 2023 21:10
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.12)  23 OCT 2023 12:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -582,7 +582,7 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 \tcb@temp=\box81
 \tcb@temp=\box82
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2021/07/05 v2.14 Sectioning titles
+Package: titlesec 2023/10/17 v2.15 Sectioning titles
 \ttl@box=\box83
 \beforetitleunit=\skip62
 \aftertitleunit=\skip63
@@ -1156,10 +1156,10 @@ L3 programming layer <2023-10-10>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33590 strings out of 477150
- 648383 string characters out of 5810114
+ 33592 strings out of 477150
+ 648421 string characters out of 5810114
  1921671 words of memory out of 5000000
- 54693 multiletter control sequences out of 15000+600000
+ 54695 multiletter control sequences out of 15000+600000
  561654 words of font info for 74 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  94i,18n,120p,1202b,499s stack positions out of 10000i,1000n,20000p,200000b,200000s

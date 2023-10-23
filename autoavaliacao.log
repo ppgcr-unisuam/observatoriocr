@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.12)  23 OCT 2023 12:10
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.12)  23 OCT 2023 20:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1044,20 +1044,20 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 ))
 Package hyperref Info: Link coloring OFF on input line 149.
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf, page 1>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf, page 1>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf, page 1>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf, page 1>
-File: covers/Cover_1.pdf Graphic file (type pdf)
-<use covers/Cover_1.pdf, page 1>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf, page 1>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf, page 1>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf, page 1>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf, page 1>
+File: PPG/Images/Cover_1.pdf Graphic file (type pdf)
+<use PPG/Images/Cover_1.pdf, page 1>
 [1
 
 
@@ -1157,7 +1157,7 @@ L3 programming layer <2023-10-10>
  ) 
 Here is how much of TeX's memory you used:
  33592 strings out of 477150
- 648421 string characters out of 5810114
+ 648465 string characters out of 5810114
  1921671 words of memory out of 5000000
  54695 multiletter control sequences out of 15000+600000
  561654 words of font info for 74 fonts, out of 8000000 for 9000

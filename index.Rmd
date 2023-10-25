@@ -6,6 +6,7 @@ output:
     css:
       - css/index.css
       - css/main-color.css
+      - css/responsive.css
 ---
 
 <!--install and/or load all R packages-->

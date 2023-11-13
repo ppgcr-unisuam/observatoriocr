@@ -194,15 +194,18 @@ navbar:
     - text: "Links"
       href: [links.html]
     - text: ""
-      icon: "fa-envelope"
-      href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
-    - text: ""
       icon: "fa-share-nodes"
       menu:
-        - text: ""
+        - text: "E-mail"
+          icon: "fa-envelope"
+          href: [mailto:cienciasdareabilitacao@souunisuam.com.br]
+        - text: "Site insttitucional"
+          icon: "fa-globe"
+          href: [https://www.unisuam.edu.br/programa-pos-graduacao-ciencias-da-reabilitacao/]
+        - text: "Instagram"
           icon: "fa-instagram"
           href: [https://www.instagram.com/ppgcr_unisuam/]
-        - text: ""
+        - text: "Facebook"
           icon: "fa-facebook"
           href: [https://www.facebook.com/people/Ciências-da-Reabilitação/100010029900421/]
   right:

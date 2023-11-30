@@ -1927,9 +1927,11 @@ for (j in 1:length(abas)) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-### **Projetos de pesquisa**
+### **Projetos de pesquisa** {#financiadores-projetos .tabset}
 
-```{r financiadores-sucupira-pp, eval = has.sucupira.files}
+#### **Auxílio financeiro** {#auxilio-financeiro}
+
+```{r financiadores-sucupira-pp-auxilios, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Financiadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1939,19 +1941,16 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 financiadores.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 financiadores.all <- unique(financiadores.all)
 
 if (dim(financiadores.all)[1] != 0) {
-  # dplyr::select data DOCENTES
-  table.financiadores <-
-    data.frame(
-      financiadores.all$`Nome do Financiador`,
-      financiadores.all$`Natureza do Financiador`,
-      financiadores.all$`Data Início Financiador`,
-      financiadores.all$`Data Fim Financiador`
-    )
+  # dplyr::select data
+  table.financiadores <- dplyr::select(financiadores.all,
+                                      c("Nome do Financiador",
+                                        "Natureza do Financiador",
+                                        "Data Início Financiador",
+                                        "Data Fim Financiador"))
   table.financiadores <- table.financiadores[order(financiadores.all[, 1]), ]
   # print tables
   table.financiadores[, 1] <-
@@ -1961,6 +1960,62 @@ if (dim(financiadores.all)[1] != 0) {
 
   # remove duplicated entries
   table.financiadores <- table.financiadores[!duplicated(table.financiadores),]
+  
+  # select only outros auxílios
+  table.financiadores <- table.financiadores[table.financiadores$`Natureza do Financiador` != "Bolsa", ]
+  
+  colnames(table.financiadores) <-
+    c("Agência",
+      "Natureza",
+      "Início",
+      "Fim")
+  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+  create_dt(table.financiadores, title = "Financiadores - Projetos de Pesquisa")
+} else {
+  cat('\n\n')
+  cat('*Sem produção para exibir no período*')
+  cat('\n\n')
+}
+
+source("Scripts/fonte_sucupira.R", local = knitr::knit_global())
+```
+
+<br>
+
+#### **Bolsas** {#bolsas}
+
+```{r financiadores-sucupira-pp-bolsas, eval = has.sucupira.files}
+# projetos - membros
+sheet <- "Projetos - Financiadores"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+periodos <- names(sucupira.list)
+financiadores.all <- do.call(rbind.data.frame, sucupira.list[periodos])
+financiadores.all <- unique(financiadores.all)
+
+if (dim(financiadores.all)[1] != 0) {
+  # dplyr::select data
+  table.financiadores <- dplyr::select(financiadores.all,
+                                      c("Nome do Financiador",
+                                        "Natureza do Financiador",
+                                        "Data Início Financiador",
+                                        "Data Fim Financiador"))
+  table.financiadores <- table.financiadores[order(financiadores.all[, 1]), ]
+  # print tables
+  table.financiadores[, 1] <-
+    as.vector(unlist(lapply(table.financiadores[, 1], FUN = stringr::str_to_upper)))
+  table.financiadores[, 2] <-
+    as.vector(unlist(lapply(table.financiadores[, 2], FUN = stringr::str_to_sentence)))
+
+  # remove duplicated entries
+  table.financiadores <- table.financiadores[!duplicated(table.financiadores),]
+  
+  # select only outros auxílios
+  table.financiadores <- table.financiadores[table.financiadores$`Natureza do Financiador` == "Bolsa", ]
   
   colnames(table.financiadores) <-
     c("Agência",
@@ -1992,30 +2047,28 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 periodos <- names(sucupira.list)
-periodo <- as.character(seq(min(periodos), max(periodos), by = 1))
 financiadores.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 financiadores.all <- unique(financiadores.all)
 
 if (dim(financiadores)[1] != 0) {
-  # dplyr::select data DOCENTES
-  table.financiadores <-
-    data.frame(
-      financiadores.all$`Nome do Financiador`,
-      financiadores.all$`Nome do Programa de Fomento`,
-      financiadores.all$`Data início da orientação`,
-      financiadores.all$`Data fim da orientação`
-    )
+  # dplyr::select data
+  table.financiadores <- dplyr::select(financiadores.all,
+                                      c("Nome do Financiador",
+                                        "Nome do Programa de Fomento",
+                                        "Data início da orientação",
+                                        "Data fim da orientação"))
   table.financiadores <- table.financiadores[order(financiadores.all[, 1]), ]
   # print tables
   table.financiadores[, 1] <-
     as.vector(unlist(lapply(table.financiadores[, 1], FUN = stringr::str_to_upper)))
   table.financiadores[, 2] <-
     as.vector(unlist(lapply(table.financiadores[, 2], FUN = stringr::str_to_sentence)))
-  table.financiadores[, 3] <-
-    as.vector(unlist(lapply(table.financiadores[, 3], FUN = stringr::str_to_title)))
-  
+
   # remove duplicated entries
   table.financiadores <- table.financiadores[!duplicated(table.financiadores),]
+  
+  # remove empty rows
+  table.financiadores <- table.financiadores[!is.na(table.financiadores$`Nome do Financiador`),]
   
   colnames(table.financiadores) <-
     c("Agência",

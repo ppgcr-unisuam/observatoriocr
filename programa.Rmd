@@ -2050,7 +2050,7 @@ periodos <- names(sucupira.list)
 financiadores.all <- do.call(rbind.data.frame, sucupira.list[periodos])
 financiadores.all <- unique(financiadores.all)
 
-if (dim(financiadores)[1] != 0) {
+if (dim(financiadores.all)[1] != 0) {
   # dplyr::select data
   table.financiadores <- dplyr::select(financiadores.all,
                                       c("Nome do Financiador",

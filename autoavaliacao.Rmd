@@ -28,7 +28,7 @@ output:
     keep_tex: no
 ---
 
-```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE}
+```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE, eval = has.sucupira.files}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 

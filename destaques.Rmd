@@ -65,50 +65,48 @@ cat('<br>')
 ```
 
 ```{r egressos-destaque, eval = has.destaques}
-# read separate sheets
-file.path <- "PPG/Destaques.xlsx"
-abas <- readxl::excel_sheets(file.path)
-topics <- c()
-destaques.list <- vector(mode = "list", length = length(abas))
+# initialize all sheets
+abas <- readxl::excel_sheets("PPG/Destaques.xlsx")
 
-# iterate across sheets
+# display each sheet in a tab
 for (j in 1:length(abas)) {
-  destaques <-
-    readxl::read_excel(file.path,
-               sheet = abas[j],
-               col_types = c("text", "text", "text"))
+  cat('\n\n<!-- -->\n\n')
+  cat(paste0('### **', abas[j], '**'))
+  cat('\n\n<!-- -->\n\n')
+  destaques.raw <-
+    readxl::read_excel("PPG/Destaques.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
+  
   # replace the link by a tag
-  for (i in 1:dim(destaques)[1]) {
-    destaques[i, 1] <-
-      paste("### **", as.character(as.Date(as.numeric(destaques[i, 1]), origin = "1899-12-30")), "**", sep = "")
-    destaques[i, 3] <-
-      paste0('<a href="', destaques[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
+  Abrir <- matrix(NA, nrow = dim(destaques.raw)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(destaques.raw)[1]) {
+    if (!is.na(destaques.raw[i, 3])) {
+      Abrir[i] <-
+        paste0('<a href="',
+               destaques.raw[i, 3],
+               '" target="_blank"',
+               '>',
+               "↗️" ,
+               "</a>",
+               sep = "")
+    }
+  }
+  destaques <- cbind(destaques.raw[, -3], Abrir)
+  
+  # print table
+  if (dim(destaques)[1] != 0) {
+    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+    cat(knitr::knit_print(create_dt(destaques, title = "Destaques - Egressos")))
+  } else {
+    cat("*Sem dados para exibir*")
   }
   
-  # drop date column
-  destaques <- destaques[, -1]
-  # store data to print table
-  destaques.list[[j]] <- destaques
-  
-  # store data to plot wordcloud
-  topics <- rbind(topics, destaques[i, 1])
-}
-
-# iterate across sheets
-for (j in 1:length(abas)) {
-  cat('\n\n<!-- -->\n\n')
-  cat("### **", abas[j], "**", "\n", sep = "")
-  cat('\n\n<!-- -->\n\n')
-  print(
-    kable(destaques.list[[j]], align = c("l", rep(
-      "c", ncol(destaques) - 2
-    ), "r"), escape = FALSE) %>% kable_styling(
-      bootstrap_options = c("hover", "condensed", "responsive"),
-      full_width = T,
-      position = "center"
-    )
-  )
-  cat('\n\n<!-- -->\n\n')
+  # print end of tab rows
+  cat('\n\n')
+  cat('*Fonte:* **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```

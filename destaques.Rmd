@@ -73,30 +73,25 @@ for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat(paste0('### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
-  destaques.raw <-
-    readxl::read_excel("PPG/Destaques.xlsx",
-                       sheet = abas[j],
-                       col_types = c("text"))
+  
+  destaques.raw <- readxl::read_excel("PPG/Destaques.xlsx",
+                                      sheet = abas[j],
+                                      col_types = c("text"))
   
   # Replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(destaques.raw)[1])
   colnames(Abrir) <- "Abrir"
+  
   # Add hyperlinks
   for (i in 1:dim(destaques.raw)[1]) {
     if (!is.na(destaques.raw[i, 3])) {
-      Abrir[i] <-
-        paste0('<a href="',
-               destaques.raw[i, 3],
-               '" target="_blank"',
-               '>',
-               "↗️" ,
-               "</a>",
-               sep = "")
+      Abrir[i] <- paste0('<a href="', destaques.raw[i, 3], '" target="_blank">', "↗️" ,"</a>")
     }
   }
+  
   destaques <- cbind(destaques.raw[, -3], Abrir)
   
-  # Print table
+  # Print table or message if no data
   if (dim(destaques)[1] != 0) {
     source("Scripts/table-with-buttons.R", local = knitr::knit_global())
     cat(knitr::knit_print(create_dt(destaques, title = "Destaques - Egressos")))
@@ -552,38 +547,34 @@ cat('<br>')
 # read separate sheets
 file.path <- "PPG/Blog institucional.xlsx"
 abas <- readxl::excel_sheets(file.path)
-topics <- c()
 news.list <- vector(mode = "list", length = length(abas))
 
 # iterate across sheets
 for (j in 1:length(abas)) {
-  news <-
-    readxl::read_excel(file.path,
-               sheet = abas[j],
-               col_types = c("text", "text", "text"))
-  # replace the link by a tag
+  news <- readxl::read_excel(file.path,
+                             sheet = abas[j],
+                             col_types = c("text", "text", "text"))
+  
+  # Format date column and add hyperlink tags
   for (i in 1:dim(news)[1]) {
-    news[i, 1] <-
-      paste("#### **", as.character(as.Date(as.numeric(news[i, 1]), origin = "1899-12-30")), "**", sep = "")
-    news[i, 3] <-
-      paste0('<a href="', news[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
+    news[i, 1] <- paste("#### **", as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"), "**", sep = "")
+    news[i, 3] <- paste0('<a href="', news[i,3],'" target="_blank">', "↗️" ,"</a>")
   }
   
-  # drop date column
+  # Drop date column
   news <- news[, -1]
-  # store data to print table
+  
+  # Store data to print table
   news.list[[j]] <- news
 }
 
-# iterate across sheets
+# Iterate across sheets
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    kable(news.list[[j]], align = c("l", rep("c", ncol(
-      news
-    ) - 2), "r"), escape = FALSE) %>% kable_styling(
+    kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -602,38 +593,34 @@ for (j in 1:length(abas)) {
 # read separate sheets
 file.path <- "PPG/Blogs externos.xlsx"
 abas <- readxl::excel_sheets(file.path)
-topics <- c()
 news.list <- vector(mode = "list", length = length(abas))
 
 # iterate across sheets
 for (j in 1:length(abas)) {
-  news <-
-    readxl::read_excel(file.path,
-               sheet = abas[j],
-               col_types = c("text", "text", "text"))
-  # replace the link by a tag
+  news <- readxl::read_excel(file.path,
+                             sheet = abas[j],
+                             col_types = c("text", "text", "text"))
+  
+  # Format date column and add hyperlink tags
   for (i in 1:dim(news)[1]) {
-    news[i, 1] <-
-      paste("#### **", as.character(as.Date(as.numeric(news[i, 1]), origin = "1899-12-30")), "**", sep = "")
-    news[i, 3] <-
-      paste0('<a href="', news[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
+    news[i, 1] <- paste("#### **", as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"), "**", sep = "")
+    news[i, 3] <- paste0('<a href="', news[i,3],'" target="_blank">', "↗️" ,"</a>")
   }
   
-  # drop date column
+  # Drop date column
   news <- news[, -1]
-  # store data to print table
+  
+  # Store data to print table
   news.list[[j]] <- news
 }
 
-# iterate across sheets
+# Iterate across sheets
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    kable(news.list[[j]], align = c("l", rep("c", ncol(
-      news
-    ) - 2), "r"), escape = FALSE) %>% kable_styling(
+    kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -642,6 +629,7 @@ for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
+
 ```
 
 <br>

@@ -74,9 +74,9 @@ for (j in 1:length(abas)) {
   # replace the link by a tag
   for (i in 1:dim(videos)[1]) {
     videos[i, 4] <-
-      paste0('<iframe width="560" height="315" src="',
+      paste0('<iframe src="',
     videos[i,4],
-    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display: block; margin: 0 auto;"></iframe>') # Added CSS styling to center justify
   }
   
   # store data to print table
@@ -91,13 +91,12 @@ for (j in 1:length(abas)) {
   print(
     kable(videos.list[[j]][4], align = c("l", rep("c", ncol(
       videos
-    ) - 2), "r"), escape = FALSE, col.names = NA) %>% kable_styling(
+    ) - 2), "r"), escape = FALSE, col.names = NA, format = "html") %>% kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    )
-  )
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+    ), results = 'asis')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>', "\n\n")
 }
 ```
 
@@ -116,7 +115,6 @@ cat('<br>')
 # read separate sheets
 file.path <- "PPG/Podcasts.xlsx"
 abas <- readxl::excel_sheets(file.path)
-topics <- c()
 podcasts.list <- vector(mode = "list", length = length(abas))
 
 # iterate across sheets
@@ -143,13 +141,12 @@ for (j in 1:length(abas)) {
   print(
     kable(podcasts.list[[j]], align = c("l", rep("c", ncol(
       podcasts
-    ) - 2), "r"), escape = FALSE, col.names = NA) %>% kable_styling(
+    ) - 2), "r"), escape = FALSE, col.names = NA, format = "html") %>% kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    )
-  )
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+    ), results = 'asis')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>', "\n\n")
 }
 ```
 

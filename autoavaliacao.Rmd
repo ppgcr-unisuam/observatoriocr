@@ -256,40 +256,35 @@ cat("### **Dados completos** {-}")
 ```{r barchart-data, eval = any(has.sucupira.files, has.ppg.files), cache = TRUE, cache.path = "cache/missing/", eval = knitr::is_html_output()}
 data.sucupira <- 0
 if (has.sucupira.files) {
-  # get amount of data from Sucupira XLSX files
-  source("Scripts/get-sucupira-sheets-names.R",
-         local = knitr::knit_global())
-  abas <- sucupira.sheets
+  # Get amount of data from Sucupira XLSX files
+  source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
   
-  for (i in 1:length(abas)) {
-    aba <- abas[i]
+  for (sheet in sucupira.sheets) {
     source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-    data.sucupira <- sum(data.sucupira, !is.na(sucupira.raw))
+    data.sucupira <- data.sucupira + sum(!is.na(unlist(sucupira.raw)))
   }
 }
 
 data.ppg <- 0
 if (has.ppg.files) {
-  # get amount of data from PPG XLSX files
+  # Get amount of data from PPG XLSX files
   source("Scripts/get-ppg-xlsx-data.R", local = knitr::knit_global())
-  if (length(files.to.read) != 0) {
-    for (i in 1:length(files.to.read)) {
-      abas <- readxl::excel_sheets(files.to.read[i])
-      for (j in 1:length(abas)) {
-        sheet <- abas[j]
-        try(ppg.file <-
-              readxl::read_excel(files.to.read[i], sheet = abas[j]),
-            silent = TRUE)
-        data.ppg <- sum(data.ppg, !is.na(ppg.file))
+  
+  for (file_path in files.to.read) {
+    abas <- readxl::excel_sheets(file_path)
+    for (sheet in abas) {
+      ppg.file <- try(readxl::read_excel(file_path, sheet = sheet), silent = TRUE)
+      if (!inherits(ppg.file, "try-error")) {
+        data.ppg <- data.ppg + sum(!is.na(unlist(ppg.file)))
       }
     }
   }
 }
 
-# total data
+# Total data
 total <- data.sucupira + data.ppg
 
-# print stacked horizontal bar chart
+# Print stacked horizontal bar chart
 cat('<div class="row">')
 cat('<div class="bar-container">')
 cat(
@@ -309,6 +304,7 @@ cat(
 cat('</div>')
 cat('</div>')
 
+# Source fonte-sucupira.R
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
@@ -323,58 +319,49 @@ cat("### **Dados perdidos** {-}")
 ```
 
 ```{r missing-data-sucupira, cache = TRUE, cache.path = "cache/dados-perdidos/", eval = all(has.sucupira.files, knitr::is_html_output())}
-# initialize data
-missing.data <- c()
+# Initialize data
+missing.data <- data.frame(Aba = character(),
+                            Ano = integer(),
+                            Coluna = character(),
+                            stringsAsFactors = FALSE)
 
-# get amount of data from Sucupira XLSX files
-source("Scripts/get-sucupira-sheets-names.R",
-       local = knitr::knit_global())
+# Get amount of data from Sucupira XLSX files
+source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
 
-# get all years available
+# Get all years available
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
-for (ii in 1:length(sucupira.sheets)) {
-  sheet <- sucupira.sheets[ii]
+# Iterate through each sheet
+for (sheet in sucupira.sheets) {
   source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
   
-  # loop for every available year
-  for (jj in 1:length(anos)) {
-    # check index of missing data
-    indexes <-
-      which(is.na(sucupira.list[[jj]]) == TRUE, arr.ind = TRUE)
-    if (dim(indexes)[1] != 0) {
-      for (kk in 1:dim(indexes)[1]) {
-        # get metadata about the missing data
-        missing.data <-
-          rbind(missing.data,
-                cbind(anos[jj],
-                      sucupira.sheets[ii],
-                      colnames(sucupira.list[[jj]])[indexes[kk, 2]]
-                      )
-                )
-      }
+  # Loop for every available year
+  for (i in seq_along(anos)) {
+    # Check for missing data
+    missing <- which(is.na(sucupira.list[[i]]), arr.ind = TRUE)
+    if (length(missing) > 0) {
+      missing.data <- rbind(missing.data,
+                            data.frame(Aba = sheet,
+                                       Ano = anos[i],
+                                       Coluna = colnames(sucupira.list[[i]])[missing[, 2]],
+                                       stringsAsFactors = FALSE))
     }
   }
 }
 
-if (dim(missing.data)[1] != 0) {
-  missing.data <- as.data.frame(missing.data)
-  colnames(missing.data) <-
-    c("Aba", "Ano", "Coluna")
-  
-  missing.data <- unique(missing.data)
+# Filter out duplicate entries
+missing.data <- unique(missing.data)
 
-  ids <- order(as.numeric(missing.data$'Ano'), decreasing = TRUE)
-  table <- missing.data[ids, ]
+if (nrow(missing.data) > 0) {
+  # Sort by year
+  missing.data <- missing.data[order(-missing.data$Ano), ]
   
+  # Display missing data
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(table, title = "Autoavaliação - Dados perdidos na Sucupira")
-
+  create_dt(missing.data, title = "Autoavaliação - Dados perdidos na Sucupira")
 } else {
   cat("*Sem dados para exibir*")
 }
-
-source("Scripts/fonte-capes.R", local = knitr::knit_global())
 ```
 
 <br>

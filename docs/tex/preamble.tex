@@ -1,15 +1,15 @@
-\usepackage{academicons}
+% load packages and define commands
 \usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\usepackage{academicons}
 \usepackage{booktabs}
 \usepackage{draftwatermark}
-\usepackage{fontspec}
 \usepackage{fontawesome5}
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{letltxmacro}
 \usepackage{longtable}
-\usepackage[utf8]{inputenc}
 \usepackage{pdfpages}
 \usepackage[notransparent]{svg}
 \usepackage{tcolorbox}
@@ -19,31 +19,34 @@
 \usepackage{xcolor}
 \usepackage[linktoc=all]{hyperref}
 
+% remove the title page
+\AtBeginDocument{\let\maketitle\relax}
+
+% Watermark
 \SetWatermarkLightness{0.9}
 \SetWatermarkText{RASCUNHO}
 \SetWatermarkScale{1}
 
-\AtBeginDocument{\let\maketitle\relax}
-
+% Custom footnote command
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 
+% Define color
 \definecolor{lightgray}{gray}{0.95}
 
+% Define tcolorbox
 \newtcolorbox{blackbox}{
   colback=lightgray,
   colframe=orange,
   coltext=black,
   boxsep=5pt,
-  arc=4pt}
+  arc=4pt
+}
+
+% Define infobox environment
 \newenvironment{infobox}[1]
   {
   \begin{itemize}
-  \renewcommand{\labelitemi}{
-    \raisebox{-.7\height}[0pt][0pt]{
-      {\setkeys{Gin}{width=3em,keepaspectratio}
-        \includegraphics{#1}}
-    }
-  }
+  \renewcommand{\labelitemi}{\raisebox{-.7\height}[0pt][0pt]{\includegraphics[width=3em,keepaspectratio]{#1}}}
   \setlength{\fboxsep}{1em}
   \begin{blackbox}
   \item
@@ -53,14 +56,10 @@
   \end{itemize}
   }
 
-
+% Enable/disable footnotes
 \LetLtxMacro\Oldfootnote\footnote
-\newcommand{\EnableFootNotes}{%
-  \LetLtxMacro\footnote\Oldfootnote%
-}
-\newcommand{\DisableFootNotes}{%
-  \renewcommand{\footnote}[2][]{\relax}
-}
+\newcommand{\EnableFootNotes}{\LetLtxMacro\footnote\Oldfootnote}
+\newcommand{\DisableFootNotes}{\renewcommand{\footnote}[2][]{\relax}}
 
-% unnumbered chapters and arabic page numbering
+% Unnumbered chapters and Arabic page numbering
 \backmatter

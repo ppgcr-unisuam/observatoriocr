@@ -27,6 +27,10 @@ knitr::opts_chunk$set(
   dev = "png"
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
+
+has.videos <- TRUE
+has.podcasts <- TRUE
+
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
@@ -59,7 +63,6 @@ cat('<br>')
 # read separate sheets
 file.path <- "PPG/Videos.xlsx"
 abas <- readxl::excel_sheets(file.path)
-topics <- c()
 videos.list <- vector(mode = "list", length = length(abas))
 
 # iterate across sheets
@@ -71,9 +74,9 @@ for (j in 1:length(abas)) {
   # replace the link by a tag
   for (i in 1:dim(videos)[1]) {
     videos[i, 4] <-
-      paste0('<div class="sizer" text-align:"center"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="',
+      paste0('<iframe width="560" height="315" src="',
     videos[i,4],
-    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>')
+    '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
   }
   
   # store data to print table
@@ -125,7 +128,7 @@ for (j in 1:length(abas)) {
   # replace the link by a tag
   for (i in 1:dim(podcasts)[1]) {
     podcasts[i, 3] <-
-      paste0('<iframe src=', podcasts[i,3],'\" height="100px" width="400px" frameborder="0" scrolling="no"></iframe>')
+      paste0('<iframe src="', podcasts[i,3],'\" height="100px" width="400px" frameborder="0" scrolling="no"></iframe>')
   }
   
   # store data to print table

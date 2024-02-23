@@ -1220,7 +1220,6 @@ cat('<br>')
 ### **Agência-Edital**
 
 ```{r auto-financiadores-agencia-programa, eval = has.financiadores}
-# this chunk requires additional data that may not be available
 financiadores.raw <-
   readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1264,7 +1263,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 ### **Agência-Ano**
 
 ```{r auto-financiadores-agencia-ano, eval = has.financiadores}
-# this chunk requires additional data that may not be available
 financiadores.raw <-
   readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1315,10 +1313,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 ### **Edital-Ano**
 
 ```{r auto-financiadores-docente-programa, eval = has.financiadores}
-# this chunk requires additional data that may not be available
-financiadores.raw <-
-  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
-
 options(scipen = 10)
 
 financiadores.raw <-
@@ -1326,7 +1320,7 @@ financiadores.raw <-
 
 # dplyr::select variables to display, by AGENCIA & ANO
 financiadores <-
-  financiadores.raw %>% dplyr::select("Programa", "Ano", "Total")
+  financiadores.raw %>% dplyr::select("Ano", "Programa", "Total")
 
 # drop rows with empty cells
 financiadores <- financiadores[complete.cases(financiadores),]

@@ -440,7 +440,7 @@ cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 
 # print tables
 print(
-  kableExtra::kable(cursos, align = c("l", rep("c", ncol(
+  knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
   ) - 2), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -464,7 +464,7 @@ cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 
 # print tables
 print(
-  kableExtra::kable(cursos, align = c("l", rep("c", ncol(
+  knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
   ) - 2), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -493,7 +493,7 @@ ids <- order(area.ativas$'Área de Concentração', decreasing = FALSE)
 area.ativas <- area.ativas[ids, ]
 
 print(
-  kableExtra::kable(area.ativas, align = c("l", rep(
+  knitr::kable(area.ativas, align = c("l", rep(
     "c", ncol(area.ativas) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -522,7 +522,7 @@ ids <- order(linhas.atual$'Linhas de Pesquisa', decreasing = FALSE)
 linhas.atual <- linhas.atual[ids, ]
 
 print(
-  kableExtra::kable(linhas.atual, align = c("l", rep(
+  knitr::kable(linhas.atual, align = c("l", rep(
     "c", ncol(linhas.atual) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -612,7 +612,7 @@ colnames(table.projetos) <-
 
 rownames(table.projetos) <- NULL
 print(
-  kableExtra::kable(table.projetos, align = c("l", rep(
+  knitr::kable(table.projetos, align = c("l", rep(
     "c", ncol(table.projetos) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -645,7 +645,7 @@ table.doc <- rbind(table.doc, colSums(table.doc))
 rownames(table.doc) <- c(head(rownames(table.doc), -1), "N")
 # print tables
 print(
-  kableExtra::kable(
+  knitr::kable(
     table.doc,
     align = c("c", rep("c", ncol(table.doc) - 2), "r"),
     caption = "Docentes"
@@ -681,7 +681,7 @@ if (any(table.all$`Categoria do Membro do Projeto` == "Pós-Doc")) {
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
   print(
-    kableExtra::kable(
+    knitr::kable(
       table.posdoc,
       align = c("c", rep("c", ncol(table.posdoc) - 2), "r"),
       caption = "Pós-Doutorandos"
@@ -1079,7 +1079,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```{r ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.ac, align = c("l", rep(
+  knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
   ), "r")) %>%
   kableExtra::kable_styling(
@@ -1097,7 +1097,7 @@ print(
 ```{r lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.lp, align = c("l", rep(
+  knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
   ), "r")) %>%
   kableExtra::kable_styling(
@@ -1115,7 +1115,7 @@ print(
 ```{r pp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.pp, align = c("l", rep(
+  knitr::kable(table.pp, align = c("l", rep(
     "c", ncol(table.pp) - 2
   ), "r")) %>%
   kableExtra::kable_styling(
@@ -1133,7 +1133,7 @@ print(
 ```{r doc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc, align = c("l", rep(
+  knitr::kable(table.doc, align = c("l", rep(
     "c", ncol(table.doc) - 2
   ), "r")) %>%
   kableExtra::kable_styling(
@@ -1151,7 +1151,7 @@ print(
 ```{r posdoc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.posdoc, align = c("l", rep(
+  knitr::kable(table.posdoc, align = c("l", rep(
     "c", ncol(table.posdoc) - 2
   ), "r")) %>%
   kableExtra::kable_styling(
@@ -1608,7 +1608,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```{r dimensao-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc.1, align = c("l", rep(
+  knitr::kable(table.doc.1, align = c("l", rep(
     "c", ncol(table.doc.1) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -1624,7 +1624,7 @@ print(
 ```{r vinculacao-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc.2, align = c("l", rep(
+  knitr::kable(table.doc.2, align = c("l", rep(
     "c", ncol(table.doc.2) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -1640,7 +1640,7 @@ print(
 ```{r regime-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc.3, align = c("l", rep(
+  knitr::kable(table.doc.3, align = c("l", rep(
     "c", ncol(table.doc.3) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -1656,7 +1656,7 @@ print(
 ```{r carga-horaria-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc.4, align = c("l", rep(
+  knitr::kable(table.doc.4, align = c("l", rep(
     "c", ncol(table.doc.4) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -1755,7 +1755,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```{r coerencia-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.doc.5, align = c("l", rep(
+  knitr::kable(table.doc.5, align = c("l", rep(
     "c", ncol(table.doc.5) - 2
   ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -2066,7 +2066,7 @@ if (dim(disciplinas.raw)[1] != 0) {
   
   # Print the table
   print(
-    kableExtra::kable(turmas.docentes, align = c("l", rep(
+    knitr::kable(turmas.docentes, align = c("l", rep(
       "c", ncol(turmas.docentes) - 2
     ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -2743,7 +2743,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```{r producao-ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.ac, align = c("l", rep(
+  knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2761,7 +2761,7 @@ print(
 ```{r producao-lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(knitr.kable.NA = '')
 print(
-  kableExtra::kable(table.lp, align = c("l", rep(
+  knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2779,7 +2779,7 @@ print(
 ```{r producao-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(nitr.kable.NA = '')
 print(
-  kableExtra::kable(table.prd, align = c("l", rep(
+  knitr::kable(table.prd, align = c("l", rep(
     "c", ncol(table.prd) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2797,7 +2797,7 @@ print(
 ```{r autor-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(nitr.kable.NA = '')
 print(
-  kableExtra::kable(table.aut, align = c("l", rep(
+  knitr::kable(table.aut, align = c("l", rep(
     "c", ncol(table.aut) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2815,7 +2815,7 @@ print(
 ```{r tecnica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(nitr.kable.NA = '')
 print(
-  kableExtra::kable(table.tcc, align = c("l", rep(
+  knitr::kable(table.tcc, align = c("l", rep(
     "c", ncol(table.tcc) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2833,7 +2833,7 @@ print(
 ```{r bibliografica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(nitr.kable.NA = '')
 print(
-  kableExtra::kable(table.bib, align = c("l", rep(
+  knitr::kable(table.bib, align = c("l", rep(
     "c", ncol(table.bib) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(
@@ -2851,7 +2851,7 @@ print(
 ```{r tecnioca-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
 options(nitr.kable.NA = '')
 print(
-  kableExtra::kable(table.tec, align = c("l", rep(
+  knitr::kable(table.tec, align = c("l", rep(
     "c", ncol(table.tec) - 2
   ), "r")) %>% 
     kableExtra::kable_styling(

@@ -108,7 +108,6 @@ cat(paste('<iframe src="https://drive.google.com/embeddedfolderview?id=', reposi
 
 cat('\n\n')
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
-
 ```
 
 <br>

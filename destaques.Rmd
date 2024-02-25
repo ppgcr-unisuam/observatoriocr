@@ -85,7 +85,7 @@ for (j in 1:length(abas)) {
   # Add hyperlinks
   for (i in 1:dim(destaques.raw)[1]) {
     if (!is.na(destaques.raw[i, 3])) {
-      Abrir[i] <- paste0('<a href="', destaques.raw[i, 3], '" target="_blank">', "↗️" ,"</a>")
+      Abrir[i] <- paste0('<a href=\"', destaques.raw[i, 3], '\" target=\"_blank\">', '↗️' ,'</a>')
     }
   }
   

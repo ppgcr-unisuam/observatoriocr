@@ -486,7 +486,7 @@ for (id in 1:length(orcids)) {
   cat('\n\n<!-- -->\n\n')
   cat('##### **', editor.name, '**', sep = "")
   cat('\n\n<!-- -->\n\n')
-  knitr::knit_print(source("Scripts/invited-positions.R", local = knitr::knit_global()))
+  source("Scripts/invited-positions.R", local = knitr::knit_global())
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
@@ -520,7 +520,7 @@ for (id in 1:length(orcids)) {
   cat('\n\n<!-- -->\n\n')
   cat('##### **', reviewer.name, '**', sep = "")
   cat('\n\n<!-- -->\n\n')
-  knitr::knit_print(source("Scripts/reviewer-board.R", local = knitr::knit_global()))
+  source("Scripts/reviewer-board.R", local = knitr::knit_global())
   cat('\n\n<!-- -->\n\n')
   cat(
     "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/), [**ORCID**](https://orcid.org)"
@@ -574,7 +574,7 @@ for (j in 1:length(abas)) {
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kableExtra::kable_styling(
+    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -620,7 +620,7 @@ for (j in 1:length(abas)) {
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kableExtra::kable_styling(
+    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"

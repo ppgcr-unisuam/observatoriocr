@@ -60,7 +60,6 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 
-
 ```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE, eval = has.sucupira.files}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
@@ -442,7 +441,7 @@ cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 print(
   knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
-  ) - 2), "r")) %>% kableExtra::kable_styling(
+  ) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -466,7 +465,7 @@ cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 print(
   knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
-  ) - 2), "r")) %>% kableExtra::kable_styling(
+  ) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -495,7 +494,7 @@ area.ativas <- area.ativas[ids, ]
 print(
   knitr::kable(area.ativas, align = c("l", rep(
     "c", ncol(area.ativas) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -524,7 +523,7 @@ linhas.atual <- linhas.atual[ids, ]
 print(
   knitr::kable(linhas.atual, align = c("l", rep(
     "c", ncol(linhas.atual) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -550,6 +549,7 @@ names(sucupira.list) <- as.character(anos)
 # get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
+
 for(i in 1:length(sucupira)){
   sucupira[[i]] <- cbind(
     "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
@@ -614,7 +614,7 @@ rownames(table.projetos) <- NULL
 print(
   knitr::kable(table.projetos, align = c("l", rep(
     "c", ncol(table.projetos) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -648,6 +648,8 @@ print(
   knitr::kable(
     table.doc,
     align = c("c", rep("c", ncol(table.doc) - 2), "r"),
+    escape = FALSE,
+    format = "html",
     caption = "Docentes"
   ) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -684,6 +686,8 @@ if (any(table.all$`Categoria do Membro do Projeto` == "Pós-Doc")) {
     knitr::kable(
       table.posdoc,
       align = c("c", rep("c", ncol(table.posdoc) - 2), "r"),
+      escape = FALSE,
+      format = "html",
       caption = "Pós-Doutorandos"
     ) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
@@ -1081,7 +1085,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
-  ), "r")) %>%
+  ), "r"), escape = FALSE, format = "html") %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
@@ -1099,7 +1103,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
-  ), "r")) %>%
+  ), "r"), escape = FALSE, format = "html") %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
@@ -1117,7 +1121,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.pp, align = c("l", rep(
     "c", ncol(table.pp) - 2
-  ), "r")) %>%
+  ), "r"), escape = FALSE, format = "html") %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
@@ -1135,7 +1139,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc, align = c("l", rep(
     "c", ncol(table.doc) - 2
-  ), "r")) %>%
+  ), "r"), escape = FALSE, format = "html") %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
@@ -1153,7 +1157,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.posdoc, align = c("l", rep(
     "c", ncol(table.posdoc) - 2
-  ), "r")) %>%
+  ), "r"), escape = FALSE, format = "html") %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
@@ -1183,20 +1187,22 @@ print(
 ##### *Quantitativa*
 
 ```{r 1-1-2-quanti, eval = all(has.sucupira.files, knitr::is_html_output())}
+# disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
+# get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
 síntese.ano <- c()
-for (i in 1:length(anos)) {
+for (i in 1:length(quadrienal.vigente)) {
   source("Scripts/síntese-sucupira.R", local = knitr::knit_global())
   síntese.ano <-
     dplyr::bind_rows(síntese.ano,
           sintese(
             sucupira.list = sucupira.list,
-            ano = anos[i]
+            ano = quadrienal.vigente[i]
           ))
 }
 
@@ -1277,7 +1283,8 @@ source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
-  compact()
+  plyr::compact()
+
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira) <-
   names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
@@ -1358,7 +1365,8 @@ source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
-  compact()
+  plyr::compact()
+
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira) <-
   names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
@@ -1438,7 +1446,8 @@ source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
-  compact()
+  plyr::compact()
+
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira) <-
   names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
@@ -1518,7 +1527,8 @@ source("Scripts/years-sucupira.R")
 names(sucupira.list) <- as.character(anos)
 
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
-  compact()
+  plyr::compact()
+
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira) <-
   names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
@@ -1610,7 +1620,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.1, align = c("l", rep(
     "c", ncol(table.doc.1) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1626,7 +1636,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.2, align = c("l", rep(
     "c", ncol(table.doc.2) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1642,7 +1652,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.3, align = c("l", rep(
     "c", ncol(table.doc.3) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1658,7 +1668,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.4, align = c("l", rep(
     "c", ncol(table.doc.4) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1684,7 +1694,8 @@ names(sucupira.list) <- as.character(anos)
 
 # get docentes for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
-  compact()
+  plyr::compact()
+
 sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira) <- names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
 
@@ -1757,7 +1768,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.5, align = c("l", rep(
     "c", ncol(table.doc.5) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1843,9 +1854,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 #### **Adequação da proposta ao Plano Institucional da IES** {.tabset}
 
 ```{r planejamento, eval = all(has.planejamento, knitr::is_html_output())}
-# Load required package
-library(formatR)
-
 # Initialize all sheets
 abas <- readxl::excel_sheets("PPG/Planejamento estratégico.xlsx")
 
@@ -1864,7 +1872,7 @@ for (i in 1:length(abas)) {
   cat(
     paste(
       '<iframe src="',
-      format(planejamento[1], justify = "left"),
+      planejamento[1],
       '/preview" style=\"width:100%; height:600px; border:2px solid black;\"></iframe>',
       sep = ""
     )
@@ -2068,7 +2076,7 @@ if (dim(disciplinas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.docentes, align = c("l", rep(
       "c", ncol(turmas.docentes) - 2
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -2745,7 +2753,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2763,7 +2771,7 @@ options(knitr.kable.NA = '')
 print(
   knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2781,7 +2789,7 @@ options(nitr.kable.NA = '')
 print(
   knitr::kable(table.prd, align = c("l", rep(
     "c", ncol(table.prd) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2799,7 +2807,7 @@ options(nitr.kable.NA = '')
 print(
   knitr::kable(table.aut, align = c("l", rep(
     "c", ncol(table.aut) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2817,7 +2825,7 @@ options(nitr.kable.NA = '')
 print(
   knitr::kable(table.tcc, align = c("l", rep(
     "c", ncol(table.tcc) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2835,7 +2843,7 @@ options(nitr.kable.NA = '')
 print(
   knitr::kable(table.bib, align = c("l", rep(
     "c", ncol(table.bib) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2853,7 +2861,7 @@ options(nitr.kable.NA = '')
 print(
   knitr::kable(table.tec, align = c("l", rep(
     "c", ncol(table.tec) - 2
-  ), "r")) %>% 
+  ), "r"), escape = FALSE, format = "html") %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,

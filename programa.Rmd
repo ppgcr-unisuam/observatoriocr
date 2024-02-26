@@ -95,7 +95,7 @@ for (i in 1:length(abas)) {
   
   # print table
   print(
-    knitr::kable(historico.raw, align = "l", col.names = NULL) %>% kableExtra::kable_styling(
+    knitr::kable(historico.raw, align = "l", col.names = NULL, escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -445,7 +445,7 @@ cursos <- dplyr::select(cursos.raw, c("Código", "Curso", "Nível"))
 print(
   knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
-  ) - 2), "r")) %>% kableExtra::kable_styling(
+  ) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -470,7 +470,7 @@ creditos.raw <-
 print(
   knitr::kable(creditos.raw, align = c("l", rep(
     "c", ncol(creditos.raw) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1234,7 +1234,7 @@ if (dim(turmas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1318,7 +1318,7 @@ if (dim(turmas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1402,7 +1402,7 @@ if (dim(turmas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1486,7 +1486,7 @@ if (dim(turmas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1727,7 +1727,7 @@ for (i in 1:length(abas)) {
   print(
     knitr::kable(lab, digits = 0, align = c("l", rep("c", ncol(
       lab
-    ) - 2), "r")) %>% kableExtra::kable_styling(
+    ) - 2), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"

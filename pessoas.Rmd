@@ -62,8 +62,8 @@ colnames(endereco.raw) <- seq(1:dim(endereco.raw)[2])
 
 # Resolve long URLs
 for (i in 1:dim(endereco.raw)[1]) {
-  if (length(grep("https://", endereco.raw[i, 2])) != 0) {
-    endereco.raw[i, 2] <- paste0('<a href="', endereco.raw[i,2],'" target="_blank"', '>', "↗️" ,"</a>")
+  if (length(grep('https://', endereco.raw[i, 2])) != 0) {
+    endereco.raw[i, 2] <- paste0('<a href=\"', endereco.raw[i,2],'\" target=\"_blank\"', '>', '↗️' ,'</a>')
   }
 }
 
@@ -71,7 +71,7 @@ for (i in 1:dim(endereco.raw)[1]) {
 table <- unname(as.data.frame(endereco.raw))
 
 print(
-  knitr::kable(table, align = c("l", rep("c", ncol(table) - 2), "r"), escape = FALSE) %>%
+  knitr::kable(table, align = c("l", rep("c", ncol(table) - 2), "r"), escape = FALSE, format = "html") %>%
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
@@ -908,7 +908,7 @@ if (dim(discentes)[1] != 0) {
   print(
     knitr::kable(summ.table, align = c("l", rep(
       "c", ncol(summ.table) - 2
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1017,7 +1017,7 @@ if (dim(discentes)[1] != 0) {
   print(
     knitr::kable(summ.table, align = c("l", rep(
       "c", ncol(summ.table) - 2
-    ), "r")) %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1441,7 +1441,7 @@ grupos.raw <-
 print(
   knitr::kable(grupos.raw, align = c("l", rep(
     "c", ncol(grupos.raw) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1462,7 +1462,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 grupos.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.inativos")
 
 # print tables
-print(knitr::kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(knitr::kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r"), escape = FALSE, format = "html") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 
 cat('\n\n')
 cat('*Fontes:* [**CNPq**](http://lattes.cnpq.br/web/dgp)')
@@ -1482,7 +1482,7 @@ membros.raw <-
 print(
   knitr::kable(membros.raw, align = c("l", rep(
     "c", ncol(membros.raw) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1507,7 +1507,7 @@ grupos.raw <-
 print(
   knitr::kable(grupos.raw, align = c("l", rep(
     "c", ncol(grupos.raw) - 2
-  ), "r")) %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"

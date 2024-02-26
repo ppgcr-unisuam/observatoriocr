@@ -1238,7 +1238,7 @@ if (dim(turmas.raw)[1] != 0) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    ) %>% scroll_box(width = "100%")
+    ) %>% kableExtra::scroll_box(width = "100%")
   )
   
   # line break
@@ -1322,7 +1322,7 @@ if (dim(turmas.raw)[1] != 0) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    ) %>% scroll_box(width = "100%")
+    ) %>% kableExtra::scroll_box(width = "100%")
   )
   
   # line break
@@ -1406,7 +1406,7 @@ if (dim(turmas.raw)[1] != 0) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    ) %>% scroll_box(width = "100%")
+    ) %>% kableExtra::scroll_box(width = "100%")
   )
   
   # line break
@@ -1490,7 +1490,7 @@ if (dim(turmas.raw)[1] != 0) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    ) %>% scroll_box(width = "100%")
+    ) %>% kableExtra::scroll_box(width = "100%")
   )
   
   # line break
@@ -1731,7 +1731,7 @@ for (i in 1:length(abas)) {
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    )  %>% scroll_box(width = "100%", height = "250px")
+    )  %>% kableExtra::scroll_box(width = "100%", height = "250px")
   )
   cat('\n</center>')
   cat('</div></div>')

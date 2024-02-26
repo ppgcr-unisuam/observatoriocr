@@ -873,13 +873,13 @@ if (dim(discentes)[1] != 0) {
   table <- discentes[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
   create_dt(table, title = "Pessoas - Datas e Prazos - Doutorado") %>%
-    formatStyle('Tempo em curso',
+    DT::formatStyle('Tempo em curso',
                 target = 'row',
-                backgroundColor = styleEqual(49:54, rep('lightyellow', length(49:54)))
+                backgroundColor = DT::styleEqual(49:54, rep('lightyellow', length(49:54)))
                 )  %>%
-    formatStyle('Tempo em curso',
+    DT::formatStyle('Tempo em curso',
                 target = 'row',
-                backgroundColor = styleEqual(55:1000, rep('#ffcccb', length(55:1000)))
+                backgroundColor = DT::styleEqual(55:1000, rep('#ffcccb', length(55:1000)))
                 )
 } else {
   cat("*Sem dados para exibir*")
@@ -982,13 +982,13 @@ if (dim(discentes)[1] != 0) {
   table <- discentes[ids,]
   source("Scripts/table-with-buttons.R", local = knitr::knit_global())
   create_dt(table, title = "Pessoas - Datas e Prazos - Mestrado") %>%
-    formatStyle('Tempo em curso',
+    DT::formatStyle('Tempo em curso',
                 target = 'row',
-                backgroundColor = styleEqual(25:30, rep('lightyellow', length(25:30)))
+                backgroundColor = DT::styleEqual(25:30, rep('lightyellow', length(25:30)))
                 )  %>%
-    formatStyle('Tempo em curso',
+    DT::formatStyle('Tempo em curso',
                 target = 'row',
-                backgroundColor = styleEqual(31:1000, rep('#ffcccb', length(31:1000)))
+                backgroundColor = DT::styleEqual(31:1000, rep('#ffcccb', length(31:1000)))
                 )
 } else {
   cat("*Sem dados para exibir*")

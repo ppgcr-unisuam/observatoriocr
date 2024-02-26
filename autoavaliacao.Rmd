@@ -1,10 +1,10 @@
 ---
 title: Autoavaliação
 
-geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
 link-citations: yes
 always_allow_html: true
 documentclass: book
+geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
 papersize: a4
 
 output:

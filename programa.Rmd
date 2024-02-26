@@ -95,7 +95,7 @@ for (i in 1:length(abas)) {
   
   # print table
   print(
-    kable(historico.raw, align = "l", col.names = NULL) %>% kable_styling(
+    knitr::kable(historico.raw, align = "l", col.names = NULL) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -443,9 +443,9 @@ cursos <- dplyr::select(cursos.raw, c("Código", "Curso", "Nível"))
 
 # print tables
 print(
-  kable(cursos, align = c("l", rep("c", ncol(
+  knitr::kable(cursos, align = c("l", rep("c", ncol(
     cursos
-  ) - 2), "r")) %>% kable_styling(
+  ) - 2), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1232,9 +1232,9 @@ if (dim(turmas.raw)[1] != 0) {
       turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
   }
   print(
-    kable(turmas.oferecidas, align = c("l", rep(
+    knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1316,9 +1316,9 @@ if (dim(turmas.raw)[1] != 0) {
       turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
   }
   print(
-    kable(turmas.oferecidas, align = c("l", rep(
+    knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1400,9 +1400,9 @@ if (dim(turmas.raw)[1] != 0) {
       turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
   }
   print(
-    kable(turmas.oferecidas, align = c("l", rep(
+    knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1484,9 +1484,9 @@ if (dim(turmas.raw)[1] != 0) {
       turmas.oferecidas[, order(colnames(turmas.oferecidas), decreasing = TRUE)]
   }
   print(
-    kable(turmas.oferecidas, align = c("l", rep(
+    knitr::kable(turmas.oferecidas, align = c("l", rep(
       "c",  max(0, ncol(turmas.oferecidas) - 2)
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1725,9 +1725,9 @@ for (i in 1:length(abas)) {
   cat('<center>\n')
   cat('\n\n<!-- -->\n\n')
   print(
-    kable(lab, digits = 0, align = c("l", rep("c", ncol(
+    knitr::kable(lab, digits = 0, align = c("l", rep("c", ncol(
       lab
-    ) - 2), "r")) %>% kable_styling(
+    ) - 2), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"

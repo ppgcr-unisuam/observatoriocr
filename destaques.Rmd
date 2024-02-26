@@ -574,7 +574,7 @@ for (j in 1:length(abas)) {
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kable_styling(
+    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kableExtra::kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -620,7 +620,7 @@ for (j in 1:length(abas)) {
   cat("#### **", abas[j], "**", "\n", sep = "")
   cat('\n\n<!-- -->\n\n')
   print(
-    kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kable_styling(
+    knitr::kable(news.list[[j]], align = c("l", rep("c", ncol(news) - 2), "r"), escape = FALSE) %>% kableExtra::kable_styling(
       bootstrap_options = c("hover", "condensed", "responsive"),
       full_width = T,
       position = "center"

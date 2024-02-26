@@ -71,7 +71,7 @@ for (i in 1:dim(endereco.raw)[1]) {
 table <- unname(as.data.frame(endereco.raw))
 
 print(
-  kable(table, align = c("l", rep("c", ncol(table) - 2), "r"), escape = FALSE) %>%
+  knitr::kable(table, align = c("l", rep("c", ncol(table) - 2), "r"), escape = FALSE) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
@@ -906,9 +906,9 @@ if (dim(discentes)[1] != 0) {
   summ.table[summ.table == 0] <- ""
   # print table
   print(
-    kable(summ.table, align = c("l", rep(
+    knitr::kable(summ.table, align = c("l", rep(
       "c", ncol(summ.table) - 2
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1015,9 +1015,9 @@ if (dim(discentes)[1] != 0) {
   summ.table[summ.table == 0] <- ""
   # print table
   print(
-    kable(summ.table, align = c("l", rep(
+    knitr::kable(summ.table, align = c("l", rep(
       "c", ncol(summ.table) - 2
-    ), "r")) %>% kable_styling(
+    ), "r")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
@@ -1439,9 +1439,9 @@ grupos.raw <-
 
 # print tables
 print(
-  kable(grupos.raw, align = c("l", rep(
+  knitr::kable(grupos.raw, align = c("l", rep(
     "c", ncol(grupos.raw) - 2
-  ), "r")) %>% kable_styling(
+  ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1462,7 +1462,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 grupos.raw <- readxl::read_excel("PPG/Grupos de Pesquisa.xlsx", sheet = "GP.inativos")
 
 # print tables
-print(kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
+print(knitr::kable(grupos.raw, align = c("l", rep("c", ncol(grupos.raw)-2), "r")) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = T, position = "center"))
 
 cat('\n\n')
 cat('*Fontes:* [**CNPq**](http://lattes.cnpq.br/web/dgp)')
@@ -1480,9 +1480,9 @@ membros.raw <-
 
 # print tables
 print(
-  kable(membros.raw, align = c("l", rep(
+  knitr::kable(membros.raw, align = c("l", rep(
     "c", ncol(membros.raw) - 2
-  ), "r")) %>% kable_styling(
+  ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
@@ -1505,9 +1505,9 @@ grupos.raw <-
 
 # print tables
 print(
-  kable(grupos.raw, align = c("l", rep(
+  knitr::kable(grupos.raw, align = c("l", rep(
     "c", ncol(grupos.raw) - 2
-  ), "r")) %>% kable_styling(
+  ), "r")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"

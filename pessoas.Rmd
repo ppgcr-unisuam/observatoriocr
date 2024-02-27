@@ -63,7 +63,14 @@ colnames(endereco.raw) <- seq(1:dim(endereco.raw)[2])
 # Resolve long URLs
 for (i in 1:dim(endereco.raw)[1]) {
   if (length(grep('https://', endereco.raw[i, 2])) != 0) {
-    endereco.raw[i, 2] <- paste0('<a href=\"', endereco.raw[i,2],'\" target=\"_blank\"', '>', '↗️' ,'</a>')
+    endereco.raw[i, 2] <-
+      paste0('<a href=\"',
+             endereco.raw[i, 2],
+             '\" target=\"_blank\"',
+             '>',
+             # fontawesome icon
+             fontawesome::fa("up-right-from-square"),
+             '</a>')
   }
 }
 
@@ -115,9 +122,9 @@ table.2 <- data.frame(matrix(NA, nrow = 0, ncol = 4))
 # Iterate through rows to construct table
 for (i in 1:dim(coordenadores)[1]) {
   table <- cbind(
-    paste('<a href=\"mailto:', coordenadores$"E-mail"[i], '\">', coordenadores$'Nome'[i], '</a>', sep = ""),
+    paste0('<a href=\"mailto:', coordenadores$"E-mail"[i], '\">', coordenadores$'Nome'[i], '</a>'),
     coordenadores$Categoria[i],
-    paste(coordenadores$'Credenciamento'[i], "-", coordenadores$'Descredenciamento'[i], sep = "")
+    paste0(coordenadores$'Credenciamento'[i], "-", coordenadores$'Descredenciamento'[i])
   )
   table.2 <- rbind(table.2, table)
 }
@@ -186,31 +193,71 @@ table.2 <- data.frame(matrix(NA, nrow = 0, ncol = 7))
 # Iterate through rows to construct table
 for (i in 1:dim(docentes)[1]) {
   table <- cbind(
-    paste('<a href=\"mailto:', docentes$"E-mail"[i], '\">', docentes$'Nome Docente'[i], '</a>', sep = ""),
+    paste0(
+      '<a href=\"mailto:',
+      docentes$"E-mail"[i],
+      '\">',
+      docentes$'Nome Docente'[i],
+      '</a>'
+    ),
     docentes$Categoria[i],
-    paste(docentes$'Data de Admissão'[i], "-", docentes$'Data de Desligamento'[i], sep = ""),
-    ifelse(!is.na(docentes$'Número do currículo Lattes'[i]),
-           paste('<a href=\"http://lattes.cnpq.br/', docentes$'Número do currículo Lattes'[i], '\">',
-                 docentes$'Número do currículo Lattes'[i], '</a>', sep = ""),
-           docentes$'Número do currículo Lattes'[i]),
-    ifelse(!is.na(docentes$ORCID[i]),
-           paste('<a href=\"https://orcid.org/', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                                               function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"),
-                 '\">', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                     function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"), '</a>', sep = ""),
-           docentes$ORCID[i]),
+    paste0(
+      docentes$'Data de Admissão'[i],
+      "-",
+      docentes$'Data de Desligamento'[i]
+    ),
+    ifelse(
+      !is.na(docentes$'Número do currículo Lattes'[i]),
+      paste0(
+        '<a href=\"http://lattes.cnpq.br/',
+        docentes$'Número do currículo Lattes'[i],
+        '\">',
+        docentes$'Número do currículo Lattes'[i],
+        '</a>'
+      ),
+      docentes$'Número do currículo Lattes'[i]
+    ),
+    ifelse(
+      !is.na(docentes$ORCID[i]),
+      paste0(
+        '<a href=\"https://orcid.org/',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '\">',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '</a>'
+      ),
+      docentes$ORCID[i]
+    ),
     docentes$País[i]
   )
   table.2 <- rbind(table.2, table)
 }
 
 # Set column and row names
-colnames(table.2) <- c("Nome", "Categoria", "Credenciamento", "Lattes ID", "ORCID", "País")
+colnames(table.2) <-
+  c("Nome",
+    "Categoria",
+    "Credenciamento",
+    "Lattes ID",
+    "ORCID",
+    "País")
 rownames(table.2) <- NULL
 
 # Order table
 ids <- order(table.2$'Nome', decreasing = FALSE)
-table <- table.2[ids, ]
+table <- table.2[ids,]
 
 # Print tables
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
@@ -352,31 +399,71 @@ table.2 <- data.frame(matrix(NA, nrow = 0, ncol = 7))
 # Iterate through rows to construct table
 for (i in 1:dim(docentes)[1]) {
   table <- cbind(
-    paste('<a href=\"mailto:', docentes$"E-mail"[i], '\">', docentes$'Nome Docente'[i], '</a>', sep = ""),
+    paste0(
+      '<a href=\"mailto:',
+      docentes$"E-mail"[i],
+      '\">',
+      docentes$'Nome Docente'[i],
+      '</a>'
+    ),
     docentes$Categoria[i],
-    paste(docentes$'Data de Admissão'[i], "-", docentes$'Data de Desligamento'[i], sep = ""),
-    ifelse(!is.na(docentes$'Número do currículo Lattes'[i]),
-           paste('<a href=\"http://lattes.cnpq.br/', docentes$'Número do currículo Lattes'[i], '\">',
-                 docentes$'Número do currículo Lattes'[i], '</a>', sep = ""),
-           docentes$'Número do currículo Lattes'[i]),
-    ifelse(!is.na(docentes$ORCID[i]),
-           paste('<a href=\"https://orcid.org/', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                                               function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"),
-                 '\">', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                     function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"), '</a>', sep = ""),
-           docentes$ORCID[i]),
+    paste0(
+      docentes$'Data de Admissão'[i],
+      "-",
+      docentes$'Data de Desligamento'[i]
+    ),
+    ifelse(
+      !is.na(docentes$'Número do currículo Lattes'[i]),
+      paste0(
+        '<a href=\"http://lattes.cnpq.br/',
+        docentes$'Número do currículo Lattes'[i],
+        '\">',
+        docentes$'Número do currículo Lattes'[i],
+        '</a>'
+      ),
+      docentes$'Número do currículo Lattes'[i]
+    ),
+    ifelse(
+      !is.na(docentes$ORCID[i]),
+      paste0(
+        '<a href=\"https://orcid.org/',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '\">',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '</a>'
+      ),
+      docentes$ORCID[i]
+    ),
     docentes$País[i]
   )
   table.2 <- rbind(table.2, table)
 }
 
 # Set column names
-colnames(table.2) <- c("Nome", "Categoria", "Credenciamento", "Lattes ID", "ORCID", "País")
+colnames(table.2) <-
+  c("Nome",
+    "Categoria",
+    "Credenciamento",
+    "Lattes ID",
+    "ORCID",
+    "País")
 rownames(table.2) <- NULL
 
 # Order table
 ids <- order(table.2$'Nome', decreasing = FALSE)
-table <- table.2[ids, ]
+table <- table.2[ids,]
 
 # Print tables
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
@@ -469,8 +556,8 @@ sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
 
 # filter duplicated docentes (changes in details will we exhibited)
 docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
+docentes <- docentes[order(docentes$"Nome Docente"), ]
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
@@ -482,31 +569,71 @@ table.2 <- data.frame(matrix(NA, nrow = 0, ncol = 7))
 # Iterate through rows to construct table
 for (i in 1:dim(docentes)[1]) {
   table <- cbind(
-    paste('<a href=\"mailto:', docentes$"E-mail"[i], '\">', docentes$'Nome Docente'[i], '</a>', sep = ""),
+    paste0(
+      '<a href=\"mailto:',
+      docentes$"E-mail"[i],
+      '\">',
+      docentes$'Nome Docente'[i],
+      '</a>'
+    ),
     docentes$Categoria[i],
-    paste(docentes$'Data de Admissão'[i], "-", docentes$'Data de Desligamento'[i], sep = ""),
-    ifelse(!is.na(docentes$'Número do currículo Lattes'[i]),
-           paste('<a href=\"http://lattes.cnpq.br/', docentes$'Número do currículo Lattes'[i], '\">',
-                 docentes$'Número do currículo Lattes'[i], '</a>', sep = ""),
-           docentes$'Número do currículo Lattes'[i]),
-    ifelse(!is.na(docentes$ORCID[i]),
-           paste('<a href=\"https://orcid.org/', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                                               function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"),
-                 '\">', paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4),
-                                     function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"), '</a>', sep = ""),
-           docentes$ORCID[i]),
+    paste0(
+      docentes$'Data de Admissão'[i],
+      "-",
+      docentes$'Data de Desligamento'[i]
+    ),
+    ifelse(
+      !is.na(docentes$'Número do currículo Lattes'[i]),
+      paste0(
+        '<a href=\"http://lattes.cnpq.br/',
+        docentes$'Número do currículo Lattes'[i],
+        '\">',
+        docentes$'Número do currículo Lattes'[i],
+        '</a>'
+      ),
+      docentes$'Número do currículo Lattes'[i]
+    ),
+    ifelse(
+      !is.na(docentes$ORCID[i]),
+      paste0(
+        '<a href=\"https://orcid.org/',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '\">',
+        paste0(sapply(seq(
+          from = 1,
+          to = nchar(docentes$ORCID[i]),
+          by = 4
+        ),
+        function(j)
+          substr(docentes$ORCID[i], j, j + 3)), collapse = "-"),
+        '</a>'
+      ),
+      docentes$ORCID[i]
+    ),
     docentes$País[i]
   )
   table.2 <- rbind(table.2, table)
 }
 
 # Set column names
-colnames(table.2) <- c("Nome", "Categoria", "Credenciamento", "Lattes ID", "ORCID", "País")
+colnames(table.2) <-
+  c("Nome",
+    "Categoria",
+    "Credenciamento",
+    "Lattes ID",
+    "ORCID",
+    "País")
 rownames(table.2) <- NULL
 
 # Order table
 ids <- order(table.2$'Nome', decreasing = FALSE)
-table <- table.2[ids, ]
+table <- table.2[ids,]
 
 # Print tables
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
@@ -612,30 +739,27 @@ if (dim(docentes)[1] == 0) {
   table.2 <- data.frame(matrix(NA, nrow = 0, ncol = 6))
   for (i in 1:dim(docentes)[1]) {
     table <- cbind(
-      paste(
+      paste0(
         '<a href=\"mailto:',
         docentes$"E-mail"[i],
         '\">',
         docentes$'Pós-Doc Nome'[i],
-        '</a>',
-        sep = ""
+        '</a>'
       ),
       docentes$'Origem IES Nome'[i],
-      paste(
+      paste0(
         docentes$'Vínculo Início'[i],
         "-",
-        docentes$'Vínculo Fim'[i],
-        sep = ""
+        docentes$'Vínculo Fim'[i]
       ),
       ifelse(
         !is.na(docentes$ORCID[i]),
-        paste(
+        paste0(
           '<a href=\"https://orcid.org/',
           paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4), function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"),
           '\">',
           paste0(sapply(seq(from=1, to=nchar(docentes$ORCID[i]), by=4), function(j) substr(docentes$ORCID[i], j, j+3)), collapse = "-"),
-          '</a>',
-          sep = ""
+          '</a>'
         ),
         docentes$ORCID[i]
       ),
@@ -1356,7 +1480,7 @@ for (j in 1:dim(periodos)[1]) {
       axis.text.x = element_blank(),
       axis.text.y = element_blank()
   ) +
-    labs(subtitle = paste(periodos[j, 1], "-", periodos[j, 2], sep = ""),
+    labs(subtitle = paste0(periodos[j, 1], "-", periodos[j, 2]),
          size = 12) +
     guides(fill = FALSE)
 }

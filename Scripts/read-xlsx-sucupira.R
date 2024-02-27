@@ -39,11 +39,10 @@ if (length(files.to.read) != 0) {
     
     if (length(has.any.change) != 0) {
       warning(
-        paste(
+        paste0(
           "Resolving duplicated entryes marked with ' | ' in Sucupira data of ",
           files.to.read[file]
-        ),
-        sep = ""
+        )
       )
       rows.to.change <- c()
       cols.to.change <- c()

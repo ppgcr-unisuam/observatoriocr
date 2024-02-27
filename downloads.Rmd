@@ -70,9 +70,9 @@ for (j in 1:length(abas)) {
                downloads.raw[i, 3],
                '" target="_blank"',
                '>',
-               "↗️" ,
-               "</a>",
-               sep = "")
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               "</a>")
     }
   }
   downloads.raw <- cbind(downloads.raw[, -3], Abrir)

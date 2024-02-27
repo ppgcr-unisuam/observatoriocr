@@ -30,7 +30,7 @@ source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->
-```{js table-of-contents}
+```{js}
 $(document).ready(function() {
   $('#TOC').parent().prepend('<div id=\"nav_logo\"><img src="PPG/Images/logo-programa.png"></div>');
   });
@@ -44,20 +44,32 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 
+<br>
+
 <!--script for generating ALTMETRIC badges-->
+
+```{=html}
 <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+```
 
 <!--script for generating multiple DIMENSIONS badges-->
+
+```{=html}
 <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+```
 
 <!--script for generating multiple PLUMX badges-->
+
+```{=html}
 <script type="text/javascript" src="//cdn.plu.mx/widget-all.js"></script>
+```
 
 <br>
 
 ## **Egressos** {#egressos-destaque .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.destaques}
@@ -85,7 +97,13 @@ for (j in 1:length(abas)) {
   # Add hyperlinks
   for (i in 1:dim(destaques.raw)[1]) {
     if (!is.na(destaques.raw[i, 3])) {
-      Abrir[i] <- paste0('<a href=\"', destaques.raw[i, 3], '\" target=\"_blank\">', '↗️' ,'</a>')
+      Abrir[i] <-
+        paste0('<a href=\"',
+               destaques.raw[i, 3],
+               '\" target=\"_blank\">',
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               '</a>')
     }
   }
   
@@ -111,6 +129,7 @@ for (j in 1:length(abas)) {
 ## **Dissertações/Teses** {#TCC-destaque}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.sucupira.files}
@@ -122,6 +141,7 @@ cat('<br>')
 ## **Produções: Visibilidade** {#destaque-visibilidade .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.producao.sucupira, has.producao.ppg)}
@@ -168,11 +188,10 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
   # Section header
   cat('\n\n<!-- -->\n\n')
   cat(
-    paste(
+    paste0(
       "**Produtos (n = ",
       max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)** \n\n",
-      sep = ""
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)** \n\n"
     )
   )
   cat('<br>')
@@ -213,6 +232,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 ## **Produções: Prestígio** {#destaque-prestigio .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.producao.sucupira, has.producao.ppg)}
@@ -258,11 +278,10 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
   # Section header
   cat('\n\n<!-- -->\n\n')
   cat(
-    paste(
+    paste0(
       "**Produtos (n = ",
       max(dim(doi_with_altmetric)[1], 0) + max(dim(doi_without_altmetric)[1], 0),
-      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)** \n\n",
-      sep = ""
+      ") e Impactos (Altmetric^1^, Dimensions^2^, PlumX^3^, CiteScore^4^, SJR^5^, Qualis^6^, Open Access^7^)** \n\n"
     )
   )
   cat('<br>')
@@ -303,6 +322,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 ## **Prêmios** {#premios .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.premios}
@@ -328,19 +348,20 @@ for (j in 1:length(abas)) {
   # Replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(premios.raw)[1])
   colnames(Abrir) <- "Abrir"
+  
   # Add hyperlinks
   for (i in 1:dim(premios.raw)[1]) {
     if (!is.na(premios.raw[i, 3])) {
       Abrir[i] <-
         paste0('<a href=\"',
                premios.raw[i, 3],
-               '\" target=\"_blank\"',
-               '>',
-               '↗️',
-               '</a>',
-               sep = "")
+               '\" target=\"_blank\">',
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               '</a>')
     }
   }
+  
   premios <- cbind(premios.raw[, -3], Abrir)
   
   # Print table
@@ -361,6 +382,7 @@ for (j in 1:length(abas)) {
 ## **Prêmio CAPES de Tese** {#premio-capes .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.premio.capes}
@@ -418,6 +440,7 @@ for (j in 1:length(abas)) {
 ## **Representatividade** {#representatividade}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.sucupira.files}
@@ -535,6 +558,7 @@ for (id in 1:length(orcids)) {
 ## **Divulgação** {#divulgacao}
 
 <!--script for generating HORIZONTAL LINE-->
+
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.blog.ies, has.blogs.externos)}
@@ -557,8 +581,20 @@ for (j in 1:length(abas)) {
   
   # Format date column and add hyperlink tags
   for (i in 1:dim(news)[1]) {
-    news[i, 1] <- paste("#### **", as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"), "**", sep = "")
-    news[i, 3] <- paste0('<a href="', news[i,3],'" target="_blank">', "↗️" ,"</a>")
+    news[i, 1] <-
+      paste("#### **",
+            as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"),
+            "**",
+            sep = "")
+    news[i, 3] <-
+      paste0(
+        '<a href="',
+        news[i, 3],
+        '" target="_blank">',
+        # fontawesome icon
+        fontawesome::fa("up-right-from-square"),
+        "</a>"
+      )
   }
   
   # Drop date column
@@ -603,10 +639,21 @@ for (j in 1:length(abas)) {
   
   # Format date column and add hyperlink tags
   for (i in 1:dim(news)[1]) {
-    news[i, 1] <- paste("#### **", as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"), "**", sep = "")
-    news[i, 3] <- paste0('<a href="', news[i,3],'" target="_blank">', "↗️" ,"</a>")
+    news[i, 1] <-
+      paste("#### **",
+            as.Date(as.numeric(news[i, 1]), origin = "1899-12-30"),
+            "**",
+            sep = "")
+    news[i, 3] <-
+      paste0(
+        '<a href="',
+        news[i, 3],
+        '" target="_blank">',
+        # fontawesome icon
+        fontawesome::fa("up-right-from-square"),
+        "</a>"
+      )
   }
-  
   # Drop date column
   news <- news[, -1]
   

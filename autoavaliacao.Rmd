@@ -45,6 +45,7 @@ knitr::opts_chunk$set(
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
+
 <!--script for inserting LOGO ABOVE THE TOC-->
 ```{js table-of-contents}
 $(document).ready(function() {
@@ -127,9 +128,9 @@ for (j in 1:length(abas)) {
                metodologia.raw[i, 2],
                '" target="_blank"',
                '>',
-               "↗️" ,
-               "</a>",
-               sep = "")
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               "</a>")
     }
   }
   metodologia <- cbind(metodologia.raw[, -2], Abrir)
@@ -173,9 +174,9 @@ for (j in 1:length(abas)) {
                autoavaliacao.raw[i, 3],
                '" target="_blank"',
                '>',
-               "↗️" ,
-               "</a>",
-               sep = "")
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               "</a>")
     }
   }
   autoavaliacao <- cbind(autoavaliacao.raw[, -3], Abrir)
@@ -221,7 +222,6 @@ cat("### **Dados completos** {-}")
 ```
 
 <!--script for generating STACKED HORIZONTAL BAR CHART-->
-
 ```{css barchart-css}
 .row {
   display: flex;
@@ -390,7 +390,15 @@ for (i in 1:length(abas)) {
   # replace the link by a tag
   for (i in 1:dim(periodo.raw)[1]) {
     periodo.raw[i, 3] <-
-      paste0('<a href="', periodo.raw[i,3],'" target="_blank"', '>', "↗️" ,"</a>")
+      paste0(
+        '<a href="',
+        periodo.raw[i, 3],
+        '" target="_blank"',
+        '>',
+        # fontawesome icon
+        fontawesome::fa("up-right-from-square"),
+        "</a>"
+      )
   }
   
   # print table
@@ -1870,11 +1878,10 @@ for (i in 1:length(abas)) {
   
   # Display sheet content in an iframe
   cat(
-    paste(
+    paste0(
       '<iframe src="',
       planejamento[1],
-      '/preview" style=\"width:100%; height:600px; border:2px solid black;\"></iframe>',
-      sep = ""
+      '/preview" style=\"width:100%; height:600px; border:2px solid black;\"></iframe>'
     )
   )
   

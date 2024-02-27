@@ -934,9 +934,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-### **Atual** {.tabset}
-
-#### **Disciplinas**
+### **Disciplinas**
 
 ```{r estrutura-academica-atual-tabela, eval = has.sucupira.files}
 # load custom function
@@ -971,9 +969,10 @@ table.msc <-
     disciplinas.msc$`Nome da Disciplina`,
     disciplinas.msc$`Indicadora de disciplina obrigatória`,
     disciplinas.msc$`Quantidade de créditos`,
-    disciplinas.msc$`Carga Horária`
+    disciplinas.msc$`Carga Horária`,
+    substr(as.Date(disciplinas.msc$`Data de início`, format = "%d/%m/%Y"), 1, 4)
   )
-colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+colnames(table.msc) <- c("Disciplina", "Obrigatória", "CR", "CH", "Início")
 
 # select level
 course.level <- "Doutorado"
@@ -984,9 +983,10 @@ table.dsc <-
     disciplinas.dsc$`Nome da Disciplina`,
     disciplinas.dsc$`Indicadora de disciplina obrigatória`,
     disciplinas.dsc$`Quantidade de créditos`,
-    disciplinas.dsc$`Carga Horária`
+    disciplinas.dsc$`Carga Horária`,
+    substr(as.Date(disciplinas.dsc$`Data de início`, format = "%d/%m/%Y"), 1, 4)
   )
-colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
+colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH", "Início")
 
 table <-
   merge(table.msc,
@@ -998,11 +998,13 @@ colnames(table) <-
   c(
     "Disciplina",
     "Obrigatória (MA)",
-    "CR (MA)",
-    "CH (MA)",
+    "CR",
+    "CH",
+    "Início",
     "Obrigatória (DA)",
-    "CR (DA)",
-    "CH (DA)"
+    "CR",
+    "CH",
+    "Início"
   )
 
 ids <- order(table$'Disciplina', decreasing = FALSE)
@@ -1017,7 +1019,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 <br>
 
-#### **Ementas**
+### **Ementas**
 
 ```{r ementas, eval = has.bibliografia}
 # Read separate sheets
@@ -1046,7 +1048,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 <br>
 
-#### **Bibliografia**
+### **Bibliografia**
 
 ```{r bibliografia, eval = has.bibliografia}
 # read separate sheets
@@ -1128,7 +1130,7 @@ table.msc <-
     disciplinas.msc$`Indicadora de disciplina obrigatória`,
     disciplinas.msc$`Quantidade de créditos`,
     disciplinas.msc$`Carga Horária`,
-    disciplinas.msc$`Data de fim`
+    substr(as.Date(disciplinas.msc$`Data de fim`, format = "%d/%m/%Y"), 1, 4)
   )
 colnames(table.msc) <-
   c("Disciplina", "Obrigatória", "CR", "CH", "Fim")
@@ -1144,7 +1146,7 @@ table.dsc <-
     disciplinas.dsc$`Indicadora de disciplina obrigatória`,
     disciplinas.dsc$`Quantidade de créditos`,
     disciplinas.dsc$`Carga Horária`,
-    disciplinas.dsc$`Data de fim`
+    substr(as.Date(disciplinas.dsc$`Data de fim`, format = "%d/%m/%Y"), 1, 4)
   )
 colnames(table.dsc) <-
   c("Disciplina", "Obrigatória", "CR", "CH", "Fim")
@@ -1159,12 +1161,12 @@ colnames(table) <-
   c(
     "Disciplina",
     "Obrigatória (MA)",
-    "CR (MA)",
-    "CH (MA)",
+    "CR",
+    "CH",
     "Fim",
     "Obrigatória (DA)",
-    "CR (DA)",
-    "CH (DA)",
+    "CR",
+    "CH",
     "Fim"
   )
 

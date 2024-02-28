@@ -77,49 +77,51 @@ cat('<br>')
 ```
 
 ```{r egressos-destaque, eval = has.destaques}
-# Initialize all sheets
+# initialize all sheets
 abas <- readxl::excel_sheets("PPG/Destaques.xlsx")
 
-# Display each sheet in a tab
+# display each sheet in a tab
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat(paste0('### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
+  destaques.raw <-
+    readxl::read_excel("PPG/Destaques.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
   
-  destaques.raw <- readxl::read_excel("PPG/Destaques.xlsx",
-                                      sheet = abas[j],
-                                      col_types = c("text"))
-  
-  # Replace the link by a tag
+  # replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(destaques.raw)[1])
   colnames(Abrir) <- "Abrir"
-  
-  # Add hyperlinks
+  # add hyperlinks
   for (i in 1:dim(destaques.raw)[1]) {
     if (!is.na(destaques.raw[i, 3])) {
       Abrir[i] <-
-        paste0('<a href=\"',
+        paste0('<a href="',
                destaques.raw[i, 3],
-               '\" target=\"_blank\">',
+               '" target="_blank"',
+               '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               '</a>')
+               "</a>")
     }
   }
-  
   destaques <- cbind(destaques.raw[, -3], Abrir)
   
-  # Print table or message if no data
+  ids <- order(destaques[, 1], decreasing = TRUE)
+  destaques <- destaques[ids,]
+
+  # print table
   if (dim(destaques)[1] != 0) {
     source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(create_dt(destaques, title = "Destaques - Egressos")))
+    knit_print(create_dt(destaques, title = "Destaques - Egressos"))
   } else {
     cat("*Sem dados para exibir*")
   }
   
-  # Print end of tab rows
+  # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -330,49 +332,51 @@ cat('<br>')
 ```
 
 ```{r premios, eval = has.premios}
-# Initialize all sheets
+# initialize all sheets
 abas <- readxl::excel_sheets("PPG/Prêmios.xlsx")
 
-# Display each sheet in a tab
+# display each sheet in a tab
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
-  cat(paste0('#### **', abas[j], '**'))
+  cat(paste0('### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
   premios.raw <-
-    readxl::read_excel(
-      "PPG/Prêmios.xlsx",
-      sheet = abas[j],
-      col_types = c("text")
-    )
+    readxl::read_excel("PPG/Prêmios.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
   
-  # Replace the link by a tag
+  # replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(premios.raw)[1])
   colnames(Abrir) <- "Abrir"
-  
-  # Add hyperlinks
+  # add hyperlinks
   for (i in 1:dim(premios.raw)[1]) {
     if (!is.na(premios.raw[i, 3])) {
       Abrir[i] <-
-        paste0('<a href=\"',
+        paste0('<a href="',
                premios.raw[i, 3],
-               '\" target=\"_blank\">',
+               '" target="_blank"',
+               '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               '</a>')
+               "</a>")
     }
   }
-  
   premios <- cbind(premios.raw[, -3], Abrir)
   
-  # Print table
+  ids <- order(premios[, 1], decreasing = TRUE)
+  premios <- premios[ids,]
+
+  # print table
   if (dim(premios)[1] != 0) {
     source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(create_dt(premios, title = "Destaques - Prêmios")))
+    knit_print(create_dt(premios, title = "Destaques - Prêmios"))
   } else {
     cat("*Sem dados para exibir*")
   }
   
-  # Print end of tab rows
+  # print end of tab rows
+  cat('\n\n')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```

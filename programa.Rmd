@@ -103,7 +103,7 @@ for (i in 1:length(abas)) {
   )
   
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
 
   # print end of tab rows
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
@@ -1576,7 +1576,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -1637,7 +1637,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -1677,7 +1677,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -1796,7 +1796,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -1856,7 +1856,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -1916,7 +1916,7 @@ for (j in 1:length(abas)) {
   
   # print end of tab rows
   cat('\n\n')
-  cat('*Fonte:* **PPG**')
+  cat('Fonte: **PPG**')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```

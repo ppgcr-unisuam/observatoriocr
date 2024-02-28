@@ -1133,7 +1133,7 @@ create_dt(sage.profiles, title = "Impactos - Produção citada em diretrizes e p
 
 cat('\n\n')
 cat(
-  "*Fonte:* [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
+  "Fonte: [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
 )
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
@@ -1167,7 +1167,7 @@ axis(1, at = 1:length(cross.table.politicas), labels = rownames(cross.table.poli
 
 cat('\n\n')
 cat(
-  "*Fonte:* [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
+  "Fonte: [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
 )
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 ```
@@ -1197,7 +1197,7 @@ for (i in 1:length(abas)) {
   cat('\n\n')
   
   cat(
-    "*Fonte:* [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
+    "Fonte: [**SAGE Profile Policies**](https://www.socialsciencespace.com/sagepolicyprofiles/)"
   )
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }

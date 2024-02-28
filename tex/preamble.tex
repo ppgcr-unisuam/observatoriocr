@@ -1,10 +1,7 @@
-% load packages and define commands
-\usepackage[portuguese]{babel}
+% Load packages
+\usepackage[brazilian]{babel}
 \usepackage{fontspec}
-\usepackage{academicons}
 \usepackage{booktabs}
-\usepackage{draftwatermark}
-\usepackage{fontawesome5}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{letltxmacro}
@@ -17,17 +14,6 @@
 \usepackage{url}
 \usepackage{xcolor}
 \usepackage[linktoc=all]{hyperref}
-
-% remove the title page
-\AtBeginDocument{\let\maketitle\relax}
-
-% Watermark
-\SetWatermarkLightness{0.9}
-\SetWatermarkText{RASCUNHO}
-\SetWatermarkScale{1}
-
-% Custom footnote command
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 
 % Define color
 \definecolor{lightgray}{gray}{0.95}
@@ -60,5 +46,18 @@
 \newcommand{\EnableFootNotes}{\LetLtxMacro\footnote\Oldfootnote}
 \newcommand{\DisableFootNotes}{\renewcommand{\footnote}[2][]{\relax}}
 
-% Unnumbered chapters and Arabic page numbering
-\backmatter
+% Watermark
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.9}
+\SetWatermarkText{RASCUNHO}
+\SetWatermarkScale{1}
+
+% Remove the title page
+\AtBeginDocument{\let\maketitle\relax}
+
+% Remove unnecessary packages
+\usepackage{academicons} % Consider removing if not needed
+\usepackage{fontawesome5} % Consider removing if not needed
+
+% Arabic page numbering for backmatter
+\pagenumbering{arabic}

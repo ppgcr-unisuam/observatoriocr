@@ -72,7 +72,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   downloads.raw <- cbind(downloads.raw[, -3], Abrir)

@@ -855,7 +855,7 @@ for (i in 1:dim(periodicos.raw)[1]) {
              '>',
              # fontawesome icon
              fontawesome::fa("up-right-from-square"),
-             "</a>")
+             '</a>')
   }
 }
 
@@ -942,7 +942,7 @@ for (i in 1:dim(cep.vigentes.raw)[1]) {
              '>',
              # fontawesome icon
              fontawesome::fa("up-right-from-square"),
-             "</a>")
+             '</a>')
   }
 }
 
@@ -979,7 +979,7 @@ for (i in 1:dim(cep.revogados.raw)[1]) {
              '>',
              # fontawesome icon
              fontawesome::fa("up-right-from-square"),
-             "</a>")
+             '</a>')
   }
 }
 
@@ -1060,7 +1060,7 @@ sage.profiles$Source.title <-
          '" target="_blank"',
          '>',
          sage.profiles$Source.title,
-         "</a>")
+         '</a>')
 
 # loop for all entries to bind Cited.research.titles with respective Cited.research.DOIs
 bib.data.out <- c()
@@ -2333,7 +2333,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   premios <- cbind(premios.raw[, -3], Abrir)

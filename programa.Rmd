@@ -139,7 +139,7 @@ for (i in 1:dim(area.capes)[1]) {
              '>',
              # fontawesome icon
              fontawesome::fa("up-right-from-square"),
-             "</a>")
+             '</a>')
   }
 }
 area.capes <- cbind(area.capes[,-2], Abrir)
@@ -1558,7 +1558,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   calendarios <- cbind(calendarios.raw[, -3], Abrir)
@@ -1619,7 +1619,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   editais <- cbind(editais.raw[, -3], Abrir)
@@ -1781,7 +1781,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   convenios <- cbind(convenios.raw[, -3], Abrir)
@@ -1839,7 +1839,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   cooperacoes <- cbind(cooperacoes.raw[, -3], Abrir)
@@ -1901,7 +1901,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   internacional <- cbind(internacional.raw[, -4], Abrir)
@@ -2184,7 +2184,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   bolsas.raw <- cbind(bolsas.raw[, -3], Abrir)

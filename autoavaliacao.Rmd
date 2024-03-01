@@ -130,7 +130,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   metodologia <- cbind(metodologia.raw[, -2], Abrir)
@@ -176,7 +176,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   autoavaliacao <- cbind(autoavaliacao.raw[, -3], Abrir)
@@ -397,8 +397,7 @@ for (i in 1:length(abas)) {
         '>',
         # fontawesome icon
         fontawesome::fa("up-right-from-square"),
-        "</a>"
-      )
+        '</a>')
   }
   
   # print table

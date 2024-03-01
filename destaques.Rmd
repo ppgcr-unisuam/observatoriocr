@@ -24,6 +24,7 @@ knitr::opts_chunk$set(
   knitr.kable.NA = '',
   knitr.table.format = "html",
   webshot = "webshot",
+  dev = "png",
   dev = "png"
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
@@ -69,7 +70,6 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ## **Egressos** {#egressos-destaque .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.destaques}
@@ -103,18 +103,18 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   destaques <- cbind(destaques.raw[, -3], Abrir)
   
   ids <- order(destaques[, 1], decreasing = TRUE)
   destaques <- destaques[ids,]
-
+  
   # print table
   if (dim(destaques)[1] != 0) {
     source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    knit_print(create_dt(destaques, title = "Destaques - Egressos"))
+    cat(knitr::knit_print(create_dt(destaques, title = "Destaques - Egressos")))
   } else {
     cat("*Sem dados para exibir*")
   }
@@ -128,7 +128,7 @@ for (j in 1:length(abas)) {
 
 <br>
 
-## **Dissertações/Teses** {#TCC-destaque}
+## **Dissertações/Teses** {#TCC-destaque .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 
@@ -234,7 +234,6 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 ## **Produções: Prestígio** {#destaque-prestigio .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.producao.sucupira, has.producao.ppg)}
@@ -358,7 +357,7 @@ for (j in 1:length(abas)) {
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
-               "</a>")
+               '</a>')
     }
   }
   premios <- cbind(premios.raw[, -3], Abrir)
@@ -369,7 +368,7 @@ for (j in 1:length(abas)) {
   # print table
   if (dim(premios)[1] != 0) {
     source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    knit_print(create_dt(premios, title = "Destaques - Prêmios"))
+    cat(knitr::knit_print(create_dt(premios, title = "Destaques - Prêmios")))
   } else {
     cat("*Sem dados para exibir*")
   }
@@ -597,8 +596,7 @@ for (j in 1:length(abas)) {
         '" target="_blank">',
         # fontawesome icon
         fontawesome::fa("up-right-from-square"),
-        "</a>"
-      )
+        '</a>')
   }
   
   # Drop date column
@@ -655,8 +653,7 @@ for (j in 1:length(abas)) {
         '" target="_blank">',
         # fontawesome icon
         fontawesome::fa("up-right-from-square"),
-        "</a>"
-      )
+        '</a>')
   }
   # Drop date column
   news <- news[, -1]

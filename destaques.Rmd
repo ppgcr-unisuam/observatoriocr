@@ -77,51 +77,52 @@ cat('<br>')
 ```
 
 ```{r egressos-destaque, eval = has.destaques}
-# initialize all sheets
-abas <- readxl::excel_sheets("PPG/Destaques.xlsx")
+# read separate sheets
+file.path <- "PPG/Destaques.xlsx"
+abas <- readxl::excel_sheets(file.path)
+destaques.list <- vector(mode = "list", length = length(abas))
 
-# display each sheet in a tab
+# iterate across sheets
 for (j in 1:length(abas)) {
-  cat('\n\n<!-- -->\n\n')
-  cat(paste0('### **', abas[j], '**'))
-  cat('\n\n<!-- -->\n\n')
-  destaques.raw <-
-    readxl::read_excel("PPG/Destaques.xlsx",
-                       sheet = abas[j],
-                       col_types = c("text"))
-  
+  destaques <-
+    readxl::read_excel(file.path,
+               sheet = abas[j],
+               col_types = c("text", "text", "text"))
   # replace the link by a tag
-  Abrir <- matrix(NA, nrow = dim(destaques.raw)[1])
-  colnames(Abrir) <- "Abrir"
-  # add hyperlinks
-  for (i in 1:dim(destaques.raw)[1]) {
-    if (!is.na(destaques.raw[i, 3])) {
-      Abrir[i] <-
+  for (i in 1:dim(destaques)[1]) {
+    destaques[i, 1] <-
+      paste("### **", as.character(as.Date(as.numeric(destaques[i, 1]), origin = "1899-12-30")), "**", sep = "")
+    destaques[i, 3] <-
         paste0('<a href="',
-               destaques.raw[i, 3],
+               destaques[i, 3],
                '" target="_blank"',
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
                '</a>')
-    }
-  }
-  destaques <- cbind(destaques.raw[, -3], Abrir)
-  
-  ids <- order(destaques[, 1], decreasing = TRUE)
-  destaques <- destaques[ids,]
-  
-  # print table
-  if (dim(destaques)[1] != 0) {
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(create_dt(destaques, title = "Destaques - Egressos")))
-  } else {
-    cat("*Sem dados para exibir*")
   }
   
-  # print end of tab rows
-  cat('\n\n')
-  cat('Fonte: **PPG**')
+  # drop date column
+  destaques <- destaques[, -1]
+  # store data to print table
+  destaques.list[[j]] <- destaques
+}
+
+# iterate across sheets
+for (j in 1:length(abas)) {
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", abas[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  print(
+    kableExtra::kable(destaques.list[[j]], align = c("l", rep(
+      "c", ncol(destaques.list[[j]]) - 2
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+      bootstrap_options = c("hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```
@@ -323,7 +324,6 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 ## **Prêmios** {#premios .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.premios}
@@ -331,51 +331,52 @@ cat('<br>')
 ```
 
 ```{r premios, eval = has.premios}
-# initialize all sheets
-abas <- readxl::excel_sheets("PPG/Prêmios.xlsx")
+# read separate sheets
+file.path <- "PPG/Prêmios.xlsx"
+abas <- readxl::excel_sheets(file.path)
+premios.list <- vector(mode = "list", length = length(abas))
 
-# display each sheet in a tab
+# iterate across sheets
 for (j in 1:length(abas)) {
-  cat('\n\n<!-- -->\n\n')
-  cat(paste0('### **', abas[j], '**'))
-  cat('\n\n<!-- -->\n\n')
-  premios.raw <-
-    readxl::read_excel("PPG/Prêmios.xlsx",
-                       sheet = abas[j],
-                       col_types = c("text"))
-  
+  premios <-
+    readxl::read_excel(file.path,
+               sheet = abas[j],
+               col_types = c("text", "text", "text"))
   # replace the link by a tag
-  Abrir <- matrix(NA, nrow = dim(premios.raw)[1])
-  colnames(Abrir) <- "Abrir"
-  # add hyperlinks
-  for (i in 1:dim(premios.raw)[1]) {
-    if (!is.na(premios.raw[i, 3])) {
-      Abrir[i] <-
+  for (i in 1:dim(premios)[1]) {
+    premios[i, 1] <-
+      paste("### **", as.character(as.Date(as.numeric(premios[i, 1]), origin = "1899-12-30")), "**", sep = "")
+    premios[i, 3] <-
         paste0('<a href="',
-               premios.raw[i, 3],
+               premios[i, 3],
                '" target="_blank"',
                '>',
                # fontawesome icon
                fontawesome::fa("up-right-from-square"),
                '</a>')
-    }
   }
-  premios <- cbind(premios.raw[, -3], Abrir)
   
-  ids <- order(premios[, 1], decreasing = TRUE)
-  premios <- premios[ids,]
+  # drop date column
+  premios <- premios[, -1]
+  # store data to print table
+  premios.list[[j]] <- premios
+}
 
-  # print table
-  if (dim(premios)[1] != 0) {
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(create_dt(premios, title = "Destaques - Prêmios")))
-  } else {
-    cat("*Sem dados para exibir*")
-  }
-  
-  # print end of tab rows
-  cat('\n\n')
-  cat('Fonte: **PPG**')
+# iterate across sheets
+for (j in 1:length(abas)) {
+  cat('\n\n<!-- -->\n\n')
+  cat("### **", abas[j], "**", "\n", sep = "")
+  cat('\n\n<!-- -->\n\n')
+  print(
+    kableExtra::kable(premios.list[[j]], align = c("l", rep(
+      "c", ncol(premios.list[[j]]) - 2
+    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+      bootstrap_options = c("hover", "condensed", "responsive"),
+      full_width = T,
+      position = "center"
+    )
+  )
+  cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
 }
 ```

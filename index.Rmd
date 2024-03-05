@@ -101,7 +101,7 @@ cat('<br>')
 cat('<br>')
 
 shiny::HTML("<h1>UNISUAM | PPGDL</h1>")
-shiny::HTML('<iframe id="scaled-frame" src="https://ppgcr-ppgdl.github.io/observatoriodl/" style="width:100%; height:600px; border:2px solid white;"></iframe>')
+shiny::HTML('<iframe id="scaled-frame" src="https://ppgdl-unisuam.github.io/observatoriodl/" style="width:100%; height:600px; border:2px solid white;"></iframe>')
 
 cat('<br>')
 cat('<br>')

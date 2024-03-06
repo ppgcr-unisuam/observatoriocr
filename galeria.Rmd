@@ -27,10 +27,6 @@ knitr::opts_chunk$set(
   dev = "png"
 )
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
-
-has.videos <- TRUE
-has.podcasts <- TRUE
-
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->

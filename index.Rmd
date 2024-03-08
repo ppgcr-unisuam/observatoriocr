@@ -3,6 +3,7 @@ title: OBSERVATÓRIO
 output:
   html_document:
     toc: false
+    toc_float: true
     css:
       - ./CSS/index.css
       - ./CSS/main-color.css

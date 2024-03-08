@@ -4,8 +4,6 @@ title: Autoavaliação
 link-citations: yes
 always_allow_html: true
 
-site: bookdown::bookdown_site
-
 documentclass: book
 papersize: a4
 geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"

@@ -1,11 +1,14 @@
 ---
 title: Autoavaliação
 
-geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
 link-citations: yes
 always_allow_html: true
+
+site: bookdown::bookdown_site
+
 documentclass: book
 papersize: a4
+geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
 
 output:
   html_document:
@@ -44,7 +47,6 @@ knitr::opts_chunk$set(
   webshot = "webshot",
   dev = "png"
 )
-source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 <!--script for inserting LOGO ABOVE THE TOC-->

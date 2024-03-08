@@ -25,7 +25,6 @@ knitr::opts_chunk$set(
   webshot = "webshot",
   dev = "png"
 )
-source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
 ---

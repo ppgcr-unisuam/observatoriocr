@@ -18,16 +18,13 @@ output:
       - ./CSS/main-color.css
       - ./CSS/narrow-margins.css
       - ./CSS/responsive.css
-  bookdown::pdf_book:
+  pdf_document:
     toc: true
-    lot: true
-    lof: true
-    number_sections: false
     includes:
       in_header: tex/preamble.tex
       before_body: [tex/cover-1.tex, tex/cover-2.tex]
     latex_engine: xelatex
-    keep_tex: no
+    keep_tex: false
 ---
 
 <!--install and/or load all R packages-->

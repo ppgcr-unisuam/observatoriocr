@@ -5,7 +5,7 @@
 # 3. packup()
 
 # set default directory
-options(repos = structure(c(CRAN = "http://cran.r-project.org")))
+options(repos = list(CRAN="http://cran.rstudio.com/"))
 
 # set timeout to download packages, in seconds
 options(timeout = 360)
@@ -34,6 +34,7 @@ packs.cran <-
     "ggplot2",
     "ggpubr",
     "ggraph",
+    "ggtext",
     "grid",
     "gridExtra",
     "gtsummary",
@@ -64,19 +65,23 @@ packs.cran <-
     "Rmisc",
     "roadoi",
     "rorcid",
-    "spatstat.linnet",
     "sessioninfo",
     "sf",
+    "sjmisc",
+    "spatstat.linnet",
     "stringr",
+    "svDialogs",
     "tau",
     "terra",
     "tidyverse",
     "tm",
     "tools",
+    "units",
     "usethis",
     "vioplot",
     "webshot2",
-    "wordcloud2"
+    "wordcloud2",
+    "yaml"
   )
 
 for (i in 1:length(packs.cran)) {

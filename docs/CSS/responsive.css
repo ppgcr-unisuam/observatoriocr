@@ -2,3 +2,10 @@
 @viewport {
     width: device-width;
 }
+
+/* CSS for hiding TOC on mobile devices */
+@media only screen and (max-width: 768px) {
+  nav#TOC {
+    display: none !important;
+  }
+}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.22)  22 APR 2024 17:30
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.4.22)  22 APR 2024 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -292,6 +292,19 @@ Package babel Info: Making " an active character on input line 143.
 .tex
 Package babel Info: Importing font and identification data for brazilian
 (babel)             from babel-pt-BR.ini. Reported on input line 11.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks26
+\inpenc@posthook=\toks27
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen165
@@ -314,9 +327,9 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count301
-\float@exts=\toks26
+\float@exts=\toks28
 \float@box=\box55
-\@float@everytoks=\toks27
+\@float@everytoks=\toks29
 \@floatcapt=\box56
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
@@ -337,7 +350,7 @@ Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
 \LT@rows=\count304
 \c@LT@tables=\count305
 \c@LT@chunks=\count306
-\LT@p@ftn=\toks28
+\LT@p@ftn=\toks30
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2024/01/21 v0.5y Insert pages of external PDF documents (AM)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
@@ -367,10 +380,10 @@ File: ppxetex.def 2024/01/21 v0.5y Pdfpages driver for XeTeX (AM)
 )
 \pdfpages@includegraphics@status=\count310
 \AM@pagebox=\box62
-\AM@global@opts=\toks29
+\AM@global@opts=\toks31
 \AM@pagecnt=\count311
-\AM@toc@title=\toks30
-\AM@lof@heading=\toks31
+\AM@toc@title=\toks32
+\AM@lof@heading=\toks33
 \c@AM@survey=\count312
 \AM@templatesizebox=\box63
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/svg/svg.sty
@@ -413,7 +426,7 @@ Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 l/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks32
+\pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen186
 \pgfutil@tempdimb=\dimen187
 )
@@ -429,12 +442,12 @@ local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks33
-\pgfkeys@temptoks=\toks34
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
 tered.code.tex
-\pgfkeys@tmptoks=\toks35
+\pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen188
 \pgf@y=\dimen189
@@ -452,9 +465,9 @@ tered.code.tex
 \c@pgf@countb=\count316
 \c@pgf@countc=\count317
 \c@pgf@countd=\count318
-\t@pgf@toka=\toks36
-\t@pgf@tokb=\toks37
-\t@pgf@tokc=\toks38
+\t@pgf@toka=\toks38
+\t@pgf@tokb=\toks39
+\t@pgf@tokc=\toks40
 \pgf@sys@id@count=\count319
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
@@ -493,9 +506,9 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 \pgfmath@dimen=\dimen198
 \pgfmath@count=\count323
 \pgfmath@box=\box66
-\pgfmath@toks=\toks39
-\pgfmath@stack@operand=\toks40
-\pgfmath@stack@operation=\toks41
+\pgfmath@toks=\toks41
+\pgfmath@stack@operand=\toks42
+\pgfmath@stack@operation=\toks43
 )
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex)
@@ -638,8 +651,8 @@ Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks42
-\verbatim@line=\toks43
+\every@verbatim=\toks44
+\verbatim@line=\toks45
 \verbatim@in@stream=\read4
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -664,7 +677,7 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \aftertitleunit=\skip61
 \ttl@plus=\dimen282
 \ttl@minus=\dimen283
-\ttl@toksa=\toks44
+\ttl@toksa=\toks46
 \titlewidth=\dimen284
 \titlewidthlast=\dimen285
 \titlewidthfirst=\dimen286
@@ -813,25 +826,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (/usr/local/texlive/2024/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty
 Package: draftwatermark 2024/03/04 3.3 Put a gray textual watermark on document
  pages
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/academicons/academicons.sty
-Package: academicons 2021/11/26 v1.9.1 Academicons Icons
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
-Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-he
-lper.sty
-Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesom
-e5
-LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on i
-nput line 69.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/fontawesome5/tufontawesomefree.fd
-)
-LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on
- input line 70.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/fontawesome5/tufontawesomebrands.
-fd))) (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bookmark.sty
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
@@ -841,48 +836,48 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (./autoavaliacao.aux)
 \openout1 = `autoavaliacao.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 136.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 136.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 136.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 136.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 136.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 136.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 140.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 136.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 140.
 
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
 
 
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
 
 
 Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
@@ -894,246 +889,90 @@ allCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
+(fontspec)             <->s*[0.9989520677190833]"[latinmodern-math.otf]/OT:scri
 pt=math;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
+(fontspec)             <->s*[0.9989520677190833]"[latinmodern-math.otf]/OT:scri
 pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 136.
+LaTeX Font Info:    Trying to load font information for T1+latinmodern-math.otf
+(0) on input line 140.
+LaTeX Font Info:    No file T1latinmodern-math.otf(0).fd. on input line 140.
 
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
+LaTeX Font Warning: Font shape `T1/latinmodern-math.otf(0)/m/n' undefined
+(Font)              using `T1/cmr/m/n' instead on input line 140.
 
 
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
+Package unicode-math Warning: The first font loaded by unicode-math must be an
+(unicode-math)                OpenType Math font (with script=math). If you
+(unicode-math)                simply want ‘the default’ before loading
+(unicode-math)                supplementary fonts over the top for certain
+(unicode-math)                ranges, use: 
+(unicode-math)                  \setmathfont{latinmodern-math.otf}
 
 
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9989520677190833.
 
 
 Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
 (fontspec)             'latinmodern-math.otf' with options
 (fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf}].
+allCapsFont={},Script=Math,SizeFeatures={{Size=0-},{Size=0-0,Font=latinmodern-m
+ath.otf,Style=MathScript},{Size=-0,Font=latinmodern-math.otf,Style=MathScriptSc
+ript}},BoldFont={latinmodern-math.otf}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:s
-cript=math;language=dflt;"<6-8.5>s*[0.9999964596882403]"[latinmodern-math.otf]/
-OT:script=math;language=dflt;+ssty=0;"<-6>s*[0.9999964596882403]"[latinmodern-m
-ath.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             <0->s*[0.9989520677190833]"[latinmodern-math.otf]/OT:scr
+ipt=math;language=dflt;"<0-0>s*[0.9989520677190833]"[latinmodern-math.otf]/OT:s
+cript=math;language=dflt;+ssty=0;"<-0>s*[0.9989520677190833]"[latinmodern-math.
+otf]/OT:script=math;language=dflt;+ssty=1;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
+(fontspec)             <->s*[0.9989520677190833]"[latinmodern-math.otf]/OT:scri
 pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 136.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 136.
+LaTeX Font Info:    Trying to load font information for T1+latinmodern-math.otf
+(1) on input line 140.
+LaTeX Font Info:    No file T1latinmodern-math.otf(1).fd. on input line 140.
+
+LaTeX Font Warning: Font shape `T1/latinmodern-math.otf(1)/m/n' undefined
+(Font)              using `T1/cmr/m/n' instead on input line 140.
+
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 140.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 136.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 136.
+(Font)                  OT1/lmr/m/n --> T1/latinmodern-math.otf(1)/m/n on input
+ line 140.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 140.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 136.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,FontAdjustment={\f
-ontdimen
-(fontspec)             8\font =6.77pt\relax \fontdimen 9\font =3.94pt\relax
-(fontspec)             \fontdimen 10\font =4.44pt\relax \fontdimen 11\font
-(fontspec)             =6.86pt\relax \fontdimen 12\font =3.45pt\relax
-(fontspec)             \fontdimen 13\font =3.63pt\relax \fontdimen 14\font
-(fontspec)             =3.63pt\relax \fontdimen 15\font =2.89pt\relax
-(fontspec)             \fontdimen 16\font =2.47pt\relax \fontdimen 17\font
-(fontspec)             =2.47pt\relax \fontdimen 18\font =2.5pt\relax
-(fontspec)             \fontdimen 19\font =2.0pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[1.000096459334209]"[latinmodern-math.otf]/OT:sc
-ript=math;language=dflt;"<6-8.5>s*[1.000096459334209]"[latinmodern-math.otf]/OT
-:script=math;language=dflt;+ssty=0;"<-6>s*[1.000096459334209]"[latinmodern-math
-.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[1.000096459334209]"[latinmodern-math.otf]/OT:scrip
-t=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 136.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 136.
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 136.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 136.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,FontAdjustment={\f
-ontdimen
-(fontspec)             8\font =0.4pt\relax \fontdimen 9\font =2.0pt\relax
-(fontspec)             \fontdimen 10\font =1.67pt\relax \fontdimen 11\font
-(fontspec)             =1.11pt\relax \fontdimen 12\font =6.0pt\relax
-(fontspec)             \fontdimen 13\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[0.9998964600422715]"[latinmodern-math.otf]/OT:s
-cript=math;language=dflt;"<6-8.5>s*[0.9998964600422715]"[latinmodern-math.otf]/
-OT:script=math;language=dflt;+ssty=0;"<-6>s*[0.9998964600422715]"[latinmodern-m
-ath.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9998964600422715]"[latinmodern-math.otf]/OT:scri
-pt=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 1
-36.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 136.
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 136
-.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 136.
-LaTeX Info: Redefining \microtypecontext on input line 136.
-Package microtype Info: Applying patch `item' on input line 136.
-Package microtype Info: Applying patch `toc' on input line 136.
-Package microtype Info: Applying patch `eqnum' on input line 136.
-Package microtype Info: Applying patch `footnote' on input line 136.
-Package microtype Info: Applying patch `verbatim' on input line 136.
+(Font)                  OT1/lmr/bx/n --> T1/latinmodern-math.otf(1)/b/n on inpu
+t line 140.
+LaTeX Info: Redefining \microtypecontext on input line 140.
+Package microtype Info: Applying patch `item' on input line 140.
+Package microtype Info: Applying patch `toc' on input line 140.
+Package microtype Info: Applying patch `eqnum' on input line 140.
+Package microtype Info: Applying patch `footnote' on input line 140.
+Package microtype Info: Applying patch `verbatim' on input line 140.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1144,6 +983,10 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1191,7 +1034,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 
 ))
-Package hyperref Info: Link coloring OFF on input line 136.
+Package hyperref Info: Link coloring OFF on input line 140.
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
@@ -1228,27 +1071,27 @@ File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
 [2
 
 ] (./autoavaliacao.toc
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 2.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 2.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+2.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 2.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1270,114 +1113,71 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 ] [2]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
 [3]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
 [4]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
 [5]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
 [6]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[7] [8]
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ⬆ (U+2B06) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[9] [10
-
-] (./autoavaliacao.aux)
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+[7]
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+Missing character: There is no ⬆ ("2B06) in font ec-lmr10!
+Missing character: There is no ️ ("FE0F) in font ec-lmr10!
+[8] (./autoavaliacao.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 33590 strings out of 474760
- 647037 string characters out of 5757492
- 1927145 words of memory out of 5000000
- 55225 multiletter control sequences out of 15000+600000
- 561646 words of font info for 73 fonts, out of 8000000 for 9000
+ 31701 strings out of 474760
+ 619358 string characters out of 5757492
+ 1929145 words of memory out of 5000000
+ 53370 multiletter control sequences out of 15000+600000
+ 605979 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,19n,121p,1202b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,19n,120p,1202b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao.pdf (14 pages).
+Output written on autoavaliacao.pdf (12 pages).

@@ -2890,7 +2890,8 @@ print(
 
 #### **Avaliação quantitativa dos impactos do PPG**
 
-```{r 3-2-1-data, eval = any(has.producao.ppg, has.producao.sucupira)}
+```{r 3-2-1-data, eval = any(has.producao.ppg, has.producao.sucupira), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+
 síntese.ano <- dplyr::bind_cols(
       Ano = as.numeric(doi_all$published_on),
       CiteScore = as.numeric(doi_all$CiteScore),
@@ -2924,8 +2925,8 @@ table.3.2.1 <-
       "SJR" ~ "continuous",
       "WebQualis" ~ "categorical"),
     statistic = list(
-      all_continuous() ~ "{median} ({p25}, {p75})",
-      all_categorical() ~ "{n} ({p}%)"
+      gtsummary::all_continuous() ~ "{median} ({p25}, {p75})",
+      gtsummary::all_categorical() ~ "{n} ({p}%)"
       ),
     missing = "no",
     digits = list(
@@ -2940,8 +2941,26 @@ table.3.2.1 <-
     tidyselect::everything() ~ NA) %>%
   gtsummary::bold_labels()
 
-# print table
-print(table.3.2.1)
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.3.2.1)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.3.2.1,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = "3.1.1 Avaliação quantitativa dos impactos do PPG",
+    latex_options = c("basic"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    full_width = TRUE
+  )
+  kable_table
+}
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```

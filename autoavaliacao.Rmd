@@ -1,13 +1,5 @@
 ---
 title: Autoavaliação
-
-link-citations: yes
-always_allow_html: true
-
-documentclass: book
-papersize: a4
-geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
-
 output:
   html_document:
     toc: true
@@ -24,7 +16,13 @@ output:
       in_header: tex/preamble.tex
       before_body: [tex/cover-1.tex, tex/cover-2.tex]
     latex_engine: xelatex
-    keep_tex: false
+    keep_tex: no
+documentclass: book
+papersize: a4
+geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
+link-citations: yes
+always_allow_html: true
+tables: true
 ---
 
 <!--install and/or load all R packages-->
@@ -38,7 +36,7 @@ knitr::opts_chunk$set(
   include = TRUE,
   out.width = "100%",
   knitr.kable.NA = '',
-  knitr.table.format = "html",
+  knitr.table.format = ifelse(knitr::is_html_output(), "html", "latex"),
   webshot = "webshot",
   dev = "png"
 )
@@ -103,7 +101,7 @@ cat("## **Metodologia** {-}")
 cat('<br>')
 ```
 
-```{r metodologia, eval = all(has.metodologia, knitr::is_html_output())}
+```{r metodologia, eval = all(has.metodologia, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 
@@ -124,13 +122,15 @@ for (j in 1:length(abas)) {
   for (i in 1:dim(metodologia.raw)[1]) {
     if (!is.na(metodologia.raw[i, 2])) {
       Abrir[i] <-
-        paste0('<a href="',
-               metodologia.raw[i, 2],
-               '" target="_blank"',
-               '>',
-               # fontawesome icon
-               fontawesome::fa("up-right-from-square"),
-               '</a>')
+        paste0(
+          '<a href="',
+          metodologia.raw[i, 2],
+          '" target="_blank"',
+          '>',
+          # fontawesome icon
+          fontawesome::fa("up-right-from-square"),
+          '</a>'
+        )
     }
   }
   metodologia <- cbind(metodologia.raw[, -2], Abrir)
@@ -143,13 +143,19 @@ for (j in 1:length(abas)) {
     ))
   } else {
     cat("*Sem dados para exibir*")
-  }  
-  # print end of tab rows
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+  }
+  if (knitr::is_html_output()) {
+    # print end of tab rows
+    cat(
+      '<br><a style="float:right" href="#top"><b>Início &nbsp;</b>',
+      fontawesome::fa("circle-arrow-up"),
+      '</a><br>'
+    )
+  }
 }
 ```
 
-```{r autoavaliacao, eval = all(has.autoavaliacao, knitr::is_html_output())}
+```{r autoavaliacao, eval = all(has.autoavaliacao, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Autoavaliação.xlsx")
 
@@ -170,13 +176,15 @@ for (j in 1:length(abas)) {
   for (i in 1:dim(autoavaliacao.raw)[1]) {
     if (!is.na(autoavaliacao.raw[i, 3])) {
       Abrir[i] <-
-        paste0('<a href="',
-               autoavaliacao.raw[i, 3],
-               '" target="_blank"',
-               '>',
-               # fontawesome icon
-               fontawesome::fa("up-right-from-square"),
-               '</a>')
+        paste0(
+          '<a href="',
+          autoavaliacao.raw[i, 3],
+          '" target="_blank"',
+          '>',
+          # fontawesome icon
+          fontawesome::fa("up-right-from-square"),
+          '</a>'
+        )
     }
   }
   autoavaliacao <- cbind(autoavaliacao.raw[, -3], Abrir)
@@ -191,8 +199,14 @@ for (j in 1:length(abas)) {
     cat("*Sem dados para exibir*")
   }
   
-  # print end of tab rows
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+  if (knitr::is_html_output()) {
+    # print end of tab rows
+    cat(
+      '<br><a style="float:right" href="#top"><b>Início &nbsp;</b>',
+      fontawesome::fa("circle-arrow-up"),
+      '</a><br>'
+    )
+  }
 }
 ```
 
@@ -252,7 +266,7 @@ cat("### **Dados completos** {-}")
 
 <br>
 
-```{r barchart-data, eval = any(has.sucupira.files, has.ppg.files), cache = TRUE, cache.path = "cache/missing/", eval = knitr::is_html_output()}
+```{r barchart-data, eval = any(has.sucupira.files, has.ppg.files), cache = TRUE, cache.path = "cache/missing/"}
 data.sucupira <- 0
 if (has.sucupira.files) {
   # Get amount of data from Sucupira XLSX files
@@ -317,7 +331,7 @@ cat("### **Dados perdidos**")
 cat("### **Dados perdidos** {-}")
 ```
 
-```{r missing-data-sucupira, cache = TRUE, cache.path = "cache/dados-perdidos/", eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r missing-data-sucupira, cache = TRUE, cache.path = "cache/dados-perdidos/", eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Initialize data
 missing.data <- data.frame(Aba = character(),
                             Ano = integer(),
@@ -373,7 +387,7 @@ cat("### **Documentos CAPES** {#documentos .tabset}")
 cat("### **Documentos CAPES** {-}")
 ```
 
-```{r apresentacao-periodos, eval = all(has.avaliacao, knitr::is_html_output())}
+```{r apresentacao-periodos, eval = all(has.avaliacao, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Avaliação.xlsx")
 
@@ -438,19 +452,28 @@ cat('<br>')
 
 ##### **Objetivos**
 
-```{r cursos-objetivos, eval = all(has.dados.cadastrais, knitr::is_html_output())}
-# read separate sheets
-cursos.raw <- readxl::read_excel("PPG/Dados Cadastrais.xlsx", sheet = "Cursos", col_types = c("text"))
+```{r cursos-objetivos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cursos.raw <-
+  readxl::read_excel("PPG/Dados Cadastrais.xlsx",
+                     sheet = "Cursos",
+                     col_types = c("text"))
 
 cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 
 # print tables
-print(
-  knitr::kable(cursos, align = c("l"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  )
+knitr::kable(
+  cursos,
+  align = "l",
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Objetivos do curso")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -460,19 +483,28 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **Perfil do egresso**
 
-```{r cursos-egressos, eval = all(has.dados.cadastrais, knitr::is_html_output())}
-# read separate sheets
-cursos.raw <- readxl::read_excel("PPG/Dados Cadastrais.xlsx", sheet = "Egressos", col_types = c("text"))
+```{r cursos-egressos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cursos.raw <-
+  readxl::read_excel("PPG/Dados Cadastrais.xlsx",
+                     sheet = "Egressos",
+                     col_types = c("text"))
 
 cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
 
 # print tables
-print(
-  knitr::kable(cursos, align = c("l"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  )
+knitr::kable(
+  cursos,
+  align = "l",
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Perfil do egresso")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -482,7 +514,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **AC** {#descricao-ac}
 
-```{r 1-1-1-AC, eval = all(has.dados.cadastrais, knitr::is_html_output())}
+```{r 1-1-1-AC, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 area.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
                      sheet = "AC",
@@ -490,18 +522,27 @@ area.raw <-
 area.raw$Fim <- NULL
 area.ativas <- area.raw
 
+# to title case
+area.ativas$'Área de Concentração' <- tools::toTitleCase(area.ativas$'Área de Concentração')
+
 # print tables
 ids <- order(area.ativas$'Área de Concentração', decreasing = FALSE)
-area.ativas <- area.ativas[ids, ]
+area.ativas <- area.ativas[ids,]
 
-print(
-  knitr::kable(area.ativas, align = c("l", rep(
-    "c", ncol(area.ativas) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+# print tables
+knitr::kable(
+  area.ativas,
+  align = c("l", rep("c", ncol(area.ativas) - 2), "r"),
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Área de concentração")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -511,26 +552,35 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **LP** {#descricao-lp}
 
-```{r 1-1-1-LP, eval = all(has.dados.cadastrais, knitr::is_html_output())}
+```{r 1-1-1-LP, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 linhas.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
-             sheet = "LP",
-             col_types = c("text"))
-linhas.atual <- linhas.raw[is.na(linhas.raw$Fim),]
+                     sheet = "LP",
+                     col_types = c("text"))
+linhas.atual <- linhas.raw[is.na(linhas.raw$Fim), ]
 linhas.atual$Fim <- NULL
+
+# to title case
+linhas.atual$'Linhas de Pesquisa' <- tools::toTitleCase(linhas.atual$'Linhas de Pesquisa')
 
 # print tables
 ids <- order(linhas.atual$'Linhas de Pesquisa', decreasing = FALSE)
-linhas.atual <- linhas.atual[ids, ]
+linhas.atual <- linhas.atual[ids,]
 
-print(
-  knitr::kable(linhas.atual, align = c("l", rep(
-    "c", ncol(linhas.atual) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+# print tables
+knitr::kable(
+  linhas.atual,
+  align = c("l", rep("c", ncol(linhas.atual) - 2), "r"),
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Linha de pesquisa")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -540,7 +590,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **PP** {#descricao-pp}
 
-```{r 1-1-1-data, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -553,11 +603,9 @@ names(sucupira.list) <- as.character(anos)
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
-for(i in 1:length(sucupira)){
-  sucupira[[i]] <- cbind(
-    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
-    sucupira[[i]]
-  )
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind("Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+                         sucupira[[i]])
 }
 sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira.df) <-
@@ -565,7 +613,7 @@ names(sucupira.df) <-
 
 # filter docente responsável
 sucupira.df <-
-  sucupira.df[sucupira.df$`Membro Responsável` == "Sim", ]
+  sucupira.df[sucupira.df$`Membro Responsável` == "Sim",]
 
 sucupira.df <-
   sucupira.df %>% dplyr::select(
@@ -581,47 +629,58 @@ sucupira.df <-
   )
 ```
 
-```{r 1-1-1-PP-DP, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-PP-DP, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.projetos <-
   data.frame(
-    sucupira.df$`Área de Concentração`,
-    sucupira.df$`Linha de Pesquisa`,
-    sucupira.df$`Nome do Projeto de Pesquisa`,
-    sucupira.df$`Nome do Membro do Projeto`,
+    stringr::str_to_title(sucupira.df$`Área de Concentração`),
+    stringr::str_to_title(sucupira.df$`Linha de Pesquisa`),
+    stringr::str_to_title(sucupira.df$`Nome do Projeto de Pesquisa`),
+    stringr::str_to_title(sucupira.df$`Nome do Membro do Projeto`),
     sucupira.df$`Situação`
   )
 
 # remove duplicates
-table.projetos <- table.projetos[!duplicated(table.projetos), ]
+table.projetos <- table.projetos[!duplicated(table.projetos),]
 
-table.projetos <- table.projetos[order(table.projetos[, 1], table.projetos[, 2], table.projetos[, 3]),]
+table.projetos <-
+  table.projetos[order(table.projetos[, 1], table.projetos[, 2], table.projetos[, 3]), ]
 labels <- colnames(table.projetos)
 # print tables
 table.projetos[, 1] <-
-  as.vector(unlist(lapply(table.projetos[, 1], FUN = str_to_upper)))
+  as.vector(unlist(lapply(table.projetos[, 1], FUN = stringr::str_to_upper)))
 table.projetos[, 2] <-
-  as.vector(unlist(lapply(table.projetos[, 2], FUN = str_to_sentence)))
+  as.vector(unlist(lapply(table.projetos[, 2], FUN = stringr::str_to_sentence)))
 table.projetos[, 3] <-
-  as.vector(unlist(lapply(table.projetos[, 3], FUN = str_to_title)))
-table.projetos <- cbind(seq(1,dim(table.projetos)[1]), table.projetos)
+  as.vector(unlist(lapply(table.projetos[, 3], FUN = stringr::str_to_title)))
+table.projetos <-
+  cbind(seq(1, dim(table.projetos)[1]), table.projetos)
 
 colnames(table.projetos) <-
-  c("ID",
+  c(
+    "ID",
     "Área de Concentração",
     "Linha de Pesquisa",
     "Projeto de Pesquisa",
     "Membro Responsável",
-    "Situação")
+    "Situação"
+  )
 
 rownames(table.projetos) <- NULL
-print(
-  knitr::kable(table.projetos, align = c("l", rep(
-    "c", ncol(table.projetos) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+
+# print tables
+knitr::kable(
+  table.projetos,
+  align = c("l", rep("c", ncol(table.projetos) - 2), "r"),
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Projeto de pesquisa")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -631,9 +690,9 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **Docentes** {#docentes-linhas-pesquisa}
 
-```{r 1-1-1-docentes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-docentes, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # remove duplicates
-table.all <- sucupira.df[!duplicated(sucupira.df[, -1]), ]
+table.all <- sucupira.df[!duplicated(sucupira.df[, -1]),]
 
 # select data DOCENTES
 table.doc <-
@@ -646,19 +705,21 @@ colnames(table.doc) <- c(head(colnames(table.doc), -1), "N")
 # add column totals
 table.doc <- rbind(table.doc, colSums(table.doc))
 rownames(table.doc) <- c(head(rownames(table.doc), -1), "N")
+
 # print tables
-print(
-  knitr::kable(
-    table.doc,
-    align = c("c", rep("c", ncol(table.doc) - 2), "r"),
-    escape = FALSE,
-    format = "html",
-    caption = "Docentes"
-  ) %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = T,
-    position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+knitr::kable(
+  table.doc,
+  align = c(rep("c", ncol(table.doc) - 1), "r"),
+  escape = FALSE,
+  format = ifelse(knitr::is_html_output(), "html", "latex"),
+  booktabs = TRUE,
+  linesep = "",
+  caption = ifelse(knitr::is_html_output(), "", "Docentes")
+) %>% kableExtra::kable_styling(
+  bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+  latex_options = c("striped", "repeat_header", "hold_position"),
+  full_width = TRUE,
+  position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -668,9 +729,9 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **Pós-Docs** {#posdocs-linhas-pesquisa}
 
-```{r 1-1-1-posdocs, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-posdocs, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # remove duplicates
-table.all <- sucupira.df[!duplicated(sucupira.df[, -1]), ]
+table.all <- sucupira.df[!duplicated(sucupira.df[, -1]),]
 
 # select data POS-DOC
 table.posdoc <- NULL
@@ -685,18 +746,19 @@ if (any(table.all$`Categoria do Membro do Projeto` == "Pós-Doc")) {
   table.posdoc <- rbind(table.posdoc, colSums(table.posdoc))
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
-  print(
-    knitr::kable(
-      table.posdoc,
-      align = c("c", rep("c", ncol(table.posdoc) - 2), "r"),
-      escape = FALSE,
-      format = "html",
-      caption = "Pós-Doutorandos"
-    ) %>% kableExtra::kable_styling(
-      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-      full_width = T,
-      position = "center"
-    ) %>% kableExtra::scroll_box(width = "100%")
+  knitr::kable(
+    table.doc,
+    align = c(rep("c", ncol(table.posdoc) - 1), "r"),
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Docentes")
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    latex_options = c("striped", "repeat_header", "hold_position"),
+    full_width = TRUE,
+    position = "center"
   )
 }
 
@@ -707,7 +769,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 ##### **Síntese** {#coerencia-quantitativo}
 
-```{r 1-1-1-ac, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-ac, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.ac <-
   data.frame(matrix(
     NA,
@@ -715,16 +777,16 @@ table.ac <-
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.ac) <- NULL
-table.ac <- cbind(unique(sucupira.df$`Área de Concentração`), table.ac)
+table.ac <-
+  cbind(unique(sucupira.df$`Área de Concentração`), table.ac)
 colnames(table.ac) <-
   c("Área de Concentração", as.character(quadrienal.vigente))
 for (i in 1:dim(table.ac)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j], ]
+    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.ac[i, j + 1] <-
-      try(
-        data$`Área de Concentração`[match(table.ac$`Área de Concentração`[i],data$`Área de Concentração`)]
-          , silent = TRUE)
+      try(data$`Área de Concentração`[match(table.ac$`Área de Concentração`[i],
+                                            data$`Área de Concentração`)], silent = TRUE)
   }
 }
 
@@ -775,7 +837,7 @@ table.ac.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-lp, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-lp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.lp <-
   data.frame(matrix(
     NA,
@@ -788,10 +850,9 @@ colnames(table.lp) <-
   c("Linha de Pesquisa", as.character(quadrienal.vigente))
 for (i in 1:dim(table.lp)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j], ]
+    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.lp[i, j + 1] <-
-      try(
-        data$`Linha de Pesquisa`[match(table.lp$`Linha de Pesquisa`[i],data$`Linha de Pesquisa`)]
+      try(data$`Linha de Pesquisa`[match(table.lp$`Linha de Pesquisa`[i], data$`Linha de Pesquisa`)]
           , silent = TRUE)
   }
 }
@@ -803,16 +864,14 @@ table.lp.long <-
                 colnames(table.lp)[-1],
                 factor_key = TRUE)
 
-table.lp.long <- rbind(
-  table.lp.long,
-  data.frame(
-    "Ano" = rep(paste0(
-      min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = dim(table.lp)[1]),
-    "Linha de Pesquisa" = rep("Linhas", times = dim(table.lp)[1]),
-    check.names = FALSE
-  )
-)
+table.lp.long <- rbind(table.lp.long,
+                       data.frame(
+                         "Ano" = rep(paste0(
+                           min(quadrienal.vigente), "-", max(quadrienal.vigente)
+                         ), times = dim(table.lp)[1]),
+                         "Linha de Pesquisa" = rep("Linhas", times = dim(table.lp)[1]),
+                         check.names = FALSE
+                       ))
 
 my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Linhas", na.rm = TRUE), digits = 0)
@@ -843,7 +902,7 @@ table.lp.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-pp, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-pp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.pp <-
   data.frame(matrix(
     NA,
@@ -851,16 +910,16 @@ table.pp <-
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.pp) <- NULL
-table.pp <- cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`), table.pp)
+table.pp <-
+  cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`), table.pp)
 colnames(table.pp) <-
   c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
 for (i in 1:dim(table.pp)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j], ]
+    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.pp[i, j + 1] <-
-      try(
-        data$`Linha de Pesquisa`[match(table.pp$`Nome do Projeto de Pesquisa`[i],data$`Nome do Projeto de Pesquisa`)]
-          , silent = TRUE)
+      try(data$`Linha de Pesquisa`[match(table.pp$`Nome do Projeto de Pesquisa`[i],
+                                         data$`Nome do Projeto de Pesquisa`)], silent = TRUE)
   }
 }
 
@@ -886,7 +945,8 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Projetos", na.rm = TRUE), digits = 0)
 }
 
-colnames(table.pp.long) <- c("Ano", "Projetos de Pesquisa por Linha")
+colnames(table.pp.long) <-
+  c("Ano", "Projetos de Pesquisa por Linha")
 
 # print tables
 table.pp.gt <-
@@ -913,7 +973,7 @@ table.pp.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-doc, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-doc, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.doc <-
   data.frame(matrix(
     NA,
@@ -921,16 +981,16 @@ table.doc <-
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Docente"]), table.doc)
+table.doc <-
+  cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Docente"]), table.doc)
 colnames(table.doc) <-
   c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
 for (i in 1:dim(table.doc)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j], ]
+    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.doc[i, j + 1] <-
-      try(
-        data$`Nome do Membro do Projeto`[match(table.doc$`Nome do Projeto de Pesquisa`[i],data$`Nome do Projeto de Pesquisa`)]
-          , silent = TRUE)
+      try(data$`Nome do Membro do Projeto`[match(table.doc$`Nome do Projeto de Pesquisa`[i],
+                                                 data$`Nome do Projeto de Pesquisa`)], silent = TRUE)
   }
 }
 
@@ -956,7 +1016,8 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Membros", na.rm = TRUE), digits = 0)
 }
 
-colnames(table.doc.long) <- c("Ano", "Projetos de pesquisa por Docente")
+colnames(table.doc.long) <-
+  c("Ano", "Projetos de pesquisa por Docente")
 
 # print tables
 table.doc.gt <-
@@ -983,7 +1044,7 @@ table.doc.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-posdoc, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-posdoc, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.posdoc <-
   data.frame(matrix(
     NA,
@@ -991,25 +1052,28 @@ table.posdoc <-
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.posdoc) <- NULL
-table.posdoc <- cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"]), table.posdoc)
+table.posdoc <-
+  cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"]),
+        table.posdoc)
 colnames(table.posdoc) <-
   c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
 for (i in 1:dim(table.posdoc)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j], ]
+    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.posdoc[i, j + 1] <-
-      try(
-        data$`Nome do Membro do Projeto`[match(table.posdoc$`Nome do Projeto de Pesquisa`[i],data$`Nome do Projeto de Pesquisa`)]
-          , silent = TRUE)
+      try(data$`Nome do Membro do Projeto`[match(table.posdoc$`Nome do Projeto de Pesquisa`[i],
+                                                 data$`Nome do Projeto de Pesquisa`)], silent = TRUE)
   }
 }
 
 table.posdoc.long <-
-  tidyr::gather(table.posdoc[, -1],
-                "Ano",
-                "Nome do Membro do Projeto",
-                colnames(table.posdoc)[-1],
-                factor_key = TRUE)
+  tidyr::gather(
+    table.posdoc[, -1],
+    "Ano",
+    "Nome do Membro do Projeto",
+    colnames(table.posdoc)[-1],
+    factor_key = TRUE
+  )
 
 table.posdoc.long <- rbind(
   table.posdoc.long,
@@ -1026,7 +1090,8 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Membros", na.rm = TRUE), digits = 0)
 }
 
-colnames(table.posdoc.long) <- c("Ano", "Projetos de pesquisa por Pós-Doc")
+colnames(table.posdoc.long) <-
+  c("Ano", "Projetos de pesquisa por Pós-Doc")
 
 # print tables
 table.posdoc.gt <-
@@ -1035,7 +1100,7 @@ table.posdoc.gt <-
     by = "Ano",
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
-    digits = everything() ~ 0
+    digits = gtsummary::everything() ~ 0
   ) %>%
   gtsummary::modify_header(label = "Ano", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
@@ -1053,123 +1118,129 @@ table.posdoc.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-list-tables, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-1-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # list all tables
 table.all <-
   list(table.ac.gt,
        table.lp.gt,
        table.pp.gt,
        table.doc.gt,
-       table.posdoc.gt)
+       table.posdoc.gt
+       )
 
 # drop empty elements from list
 table.all <- table.all[lapply(table.all, length) > 0]
 
-tbl <- gtsummary::tbl_stack(table.all)
+table.1.1.1 <- gtsummary::tbl_stack(table.all)
 
-# print all tables stacked
-if(knitr::is_html_output()){
-  tbl %>%
-  print()
-} else {
-  tbl  %>%
-  gtsummary::as_gt() %>%
-  gt::as_latex() %>%
-  print()
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.1.1.1)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.1.1,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "1.1.1 Estrutura acadêmica do Programa"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
+  )
+  kable_table
 }
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<details>
-<summary>Área de Concentração | Dados individuais</summary>
-```{r ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Área de Concentração | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
-  ), "r"), escape = FALSE, format = "html") %>%
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>%
-  kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Linhas de pesquisa | Dados individuais</summary>
-```{r lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Linhas de pesquisa | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
-  ), "r"), escape = FALSE, format = "html") %>%
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>%
-  kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Projetos de pesquisa | Dados individuais</summary>
-```{r pp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r pp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Projetos de pesquisa | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.pp, align = c("l", rep(
     "c", ncol(table.pp) - 2
-  ), "r"), escape = FALSE, format = "html") %>%
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>%
-  kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Docentes | Dados individuais</summary>
-```{r doc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r doc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Docentes | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc, align = c("l", rep(
     "c", ncol(table.doc) - 2
-  ), "r"), escape = FALSE, format = "html") %>%
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>%
-  kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Pós-Docs | Dados individuais</summary>
-```{r posdoc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r posdoc-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Pós-Docs | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.posdoc, align = c("l", rep(
     "c", ncol(table.posdoc) - 2
-  ), "r"), escape = FALSE, format = "html") %>%
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>%
   kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>%
-  kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
 <br>
 
@@ -1179,17 +1250,13 @@ print(
 
 ##### *Qualitativa*
 
-<br>
 
-*Em construção*
-
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
 ##### *Quantitativa*
 
-```{r 1-1-2-quanti, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 1-1-2-quanti, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1249,16 +1316,34 @@ table.1.1.2 <-
     statistic = list(
       gtsummary::all_continuous() ~ c("{max}")),
     missing = "no",
-    digits = list(everything() ~ 0)) %>%
+    digits = list(gtsummary::everything() ~ 0)) %>%
   gtsummary::modify_header(
     label = "**Ano**",
     gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(
-    tidyselect::everything() ~ NA) %>%
+    gtsummary::everything() ~ NA) %>%
   gtsummary::bold_labels()
 
-print(table.1.1.2)
-
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.1.1.2)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.1.2,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "1.1.2 Proposta Curricular do Programa"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
+  )
+  kable_table
+}
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
@@ -1268,9 +1353,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Infraestrutura**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1278,7 +1361,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Dimensão do corpo Docente Permanente**
 
-```{r categoria-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r categoria-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -1302,13 +1385,19 @@ sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
 docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Categoria", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Categoria", colnames(sucupira))]),]
+docentes <- docentes[order(docentes$"Nome Docente"), ]
 
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = dim(docentes)[1],
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
 table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
 for (i in 1:dim(docentes)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
@@ -1321,16 +1410,24 @@ for (i in 1:dim(docentes)[1]) {
 }
 table.doc.1 <- table.doc
 
-table.doc.long <- tidyr::gather(table.doc[, -1], "Ano", "Categoria", colnames(table.doc)[-1], factor_key=TRUE)
+table.doc.long <-
+  tidyr::gather(table.doc[, -1],
+                "Ano",
+                "Categoria",
+                colnames(table.doc)[-1],
+                factor_key = TRUE)
 
-table.doc.long <- rbind(
-  table.doc.long,
-  data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "Categoria" = rep("Docentes", times = dim(table.doc)[1]),
-    check.names = FALSE
-  )
-)
+# to sentence format
+table.doc.long$Categoria <- stringr::str_to_sentence(table.doc.long$Categoria)
+
+table.doc.long <- rbind(table.doc.long,
+                        data.frame(
+                          "Ano" = rep(paste0(
+                            min(quadrienal.vigente), "-", max(quadrienal.vigente)
+                          ), times = dim(table.doc)[1]),
+                          "Categoria" = rep("Docentes", times = dim(table.doc)[1]),
+                          check.names = FALSE
+                        ))
 
 my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
@@ -1356,10 +1453,9 @@ table.1a <-
   gtsummary::remove_row_type(variables = c('Categoria'), 
                   type = "level", level_value = ("Docentes")) %>%
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
-
 ```
 
-```{r vinculacao-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r vinculacao-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1384,13 +1480,19 @@ sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
 docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
+docentes <- docentes[order(docentes$"Nome Docente"), ]
 
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = dim(docentes)[1],
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
 table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
 for (i in 1:dim(docentes)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
@@ -1403,16 +1505,24 @@ for (i in 1:dim(docentes)[1]) {
 }
 table.doc.2 <- table.doc
 
-table.doc.long <- tidyr::gather(table.doc[, -1], "Ano", "Tipo vínculo", colnames(table.doc)[-1], factor_key=TRUE)
+table.doc.long <-
+  tidyr::gather(table.doc[, -1],
+                "Ano",
+                "Tipo vínculo",
+                colnames(table.doc)[-1],
+                factor_key = TRUE)
 
-table.doc.long <- rbind(
-  table.doc.long,
-  data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "Tipo vínculo" = rep("Docentes", times = dim(table.doc)[1]),
-    check.names = FALSE
-  )
-)
+# to sentence format
+table.doc.long$'Tipo vínculo' <- stringr::str_to_sentence(table.doc.long$'Tipo vínculo')
+
+table.doc.long <- rbind(table.doc.long,
+                        data.frame(
+                          "Ano" = rep(paste0(
+                            min(quadrienal.vigente), "-", max(quadrienal.vigente)
+                          ), times = dim(table.doc)[1]),
+                          "Tipo vínculo" = rep("Docentes", times = dim(table.doc)[1]),
+                          check.names = FALSE
+                        ))
 
 my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
@@ -1440,7 +1550,7 @@ table.1b <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r regime-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r regime-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1465,13 +1575,19 @@ sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
 docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
+docentes <- docentes[order(docentes$"Nome Docente"), ]
 
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = dim(docentes)[1],
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
 table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
 for (i in 1:dim(docentes)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
@@ -1484,12 +1600,22 @@ for (i in 1:dim(docentes)[1]) {
 }
 table.doc.3 <- table.doc
 
-table.doc.long <- tidyr::gather(table.doc[, -1], "Ano", "Regime de Trabalho", colnames(table.doc)[-1], factor_key=TRUE)
+table.doc.long <-
+  tidyr::gather(table.doc[, -1],
+                "Ano",
+                "Regime de Trabalho",
+                colnames(table.doc)[-1],
+                factor_key = TRUE)
+
+# to sentence format
+table.doc.long$'Regime de Trabalho' <- stringr::str_to_sentence(table.doc.long$'Regime de Trabalho')
 
 table.doc.long <- rbind(
   table.doc.long,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(
+      min(quadrienal.vigente), "-", max(quadrienal.vigente)
+    ), times = dim(table.doc)[1]),
     "Regime de Trabalho" = rep("Docentes", times = dim(table.doc)[1]),
     check.names = FALSE
   )
@@ -1521,7 +1647,7 @@ table.1c <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r carga-horaria-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r carga-horaria-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1546,13 +1672,19 @@ sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
 docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
+docentes <- docentes[order(docentes$"Nome Docente"), ]
 
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = dim(docentes)[1],
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
 table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
 for (i in 1:dim(docentes)[1]) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
@@ -1586,7 +1718,7 @@ table.1d <-
     by = "Ano",
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
-    digits = everything() ~ 0) %>%
+    digits = gtsummary::everything() ~ 0) %>%
   gtsummary::modify_header(label = "Ano", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
   gtsummary::bold_labels() %>%
@@ -1602,83 +1734,106 @@ table.1d <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r dimensao-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
-table.all <- gtsummary::tbl_stack(
-  list(
-    table.1a,
-    table.1b,
-    table.1c,
-    table.1d
+```{r dimensao-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+# list all tables
+table.all <- 
+  list(table.1a,
+       table.1b,
+       table.1c,
+       table.1d)
+
+# drop empty elements from list
+table.all <- table.all[lapply(table.all, length) > 0]
+
+table.1.2.1 <- gtsummary::tbl_stack(table.all)
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.1.2.1)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.2.1,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "1.2.1 Dimensão Corpo Docente"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
   )
-)
-print(table.all)
+  kable_table
+}
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<details>
-<summary>Dimensão | Dados individuais</summary>
 ```{r dimensao-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+cat('<details>')
+cat('<summary>Dimensão | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.1, align = c("l", rep(
     "c", ncol(table.doc.1) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Vínculo | Dados individuais</summary>
 ```{r vinculacao-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+cat('<details>')
+cat('<summary>Vínculo | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.2, align = c("l", rep(
     "c", ncol(table.doc.2) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Regime de trabalho | Dados individuais</summary>
 ```{r regime-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+cat('<details>')
+cat('<summary>Regime de trabalho | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.3, align = c("l", rep(
     "c", ncol(table.doc.3) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Carga horária PG | Dados individuais</summary>
 ```{r carga-horaria-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+cat('<details>')
+cat('<summary>Carga horária PG | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.4, align = c("l", rep(
     "c", ncol(table.doc.4) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
 <br>
 
@@ -1686,7 +1841,7 @@ print(
 
 #### **Coerência acadêmica do Corpo Docente à proposta do PPG**
 
-```{r coerencia-corpo-docente, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r coerencia-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -1724,7 +1879,18 @@ for (i in 1:dim(docentes)[1]) {
 }
 table.doc.5 <- table.doc
 
-table.doc.long <- tidyr::gather(table.doc[, -1], "Ano", "Área de Conhecimento Titulação", colnames(table.doc)[-1], factor_key=TRUE)
+table.doc.long <-
+  tidyr::gather(
+    table.doc[, -1],
+    "Ano",
+    "Área de Conhecimento Titulação",
+    colnames(table.doc)[-1],
+    factor_key = TRUE
+  )
+
+# to title case
+table.doc.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(table.doc.long$"Área de Conhecimento Titulação")
+
 table.doc.long <- rbind(
   table.doc.long,
   data.frame(
@@ -1739,12 +1905,12 @@ my_N <- function(data, ...) {
 }
 
 # print tables
-table.1 <- gtsummary::tbl_summary(
+table.1.2.2 <- gtsummary::tbl_summary(
   table.doc.long,
   by = "Ano",
   statistic = list(gtsummary::all_categorical() ~ "{n}"),
   missing = "no",
-  digits = everything() ~ 0
+  digits = gtsummary::everything() ~ 0
 ) %>%
   gtsummary::modify_header(label = "Ano", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
@@ -1759,26 +1925,45 @@ table.1 <- gtsummary::tbl_summary(
   gtsummary::remove_row_type(variables = c('Área de Conhecimento Titulação'), type = "level", level_value = ("Docentes")) %>%
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 
-print(table.1)
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.1.2.2)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.2.2,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "1.2.2 Coerência acadêmica do Corpo Docente à proposta do Programa"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
+  )
+  kable_table
+}
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<details>
-<summary>Área de conhecimento titulação | Dados individuais</summary>
 ```{r coerencia-corpo-docente-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+cat('<details>')
+cat('<summary>Área de conhecimento titulação | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.doc.5, align = c("l", rep(
     "c", ncol(table.doc.5) - 2
-  ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = T,
     position = "center"
-  ) %>% kableExtra::scroll_box(width = "100%")
+  )
 )
+cat('</details>')
 ```
-</details>
 
 <br>
 
@@ -1786,9 +1971,7 @@ print(
 
 #### **Estabilidade do corpo docente permanente**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1796,9 +1979,7 @@ print(
 
 #### **Percentual de docentes permanentes com dedicação exclusiva ao PPG**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1806,7 +1987,7 @@ print(
 
 #### **Capacidade de captação de recursos** {.tabset}
 
-```{r auto-financiadores-docente-ano, eval = all(has.financiadores, knitr::is_html_output())}
+```{r auto-financiadores-docente-ano, eval = has.financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Read the financiadores raw data
 financiadores.raw <- readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
 
@@ -1829,7 +2010,7 @@ my_N <- function(data, ...) {
 }
 
 # print tables
-financiadores.gt <-
+table.1.2.5 <-
   gtsummary::tbl_summary(
     financiadores,
     by = "Ano",
@@ -1849,15 +2030,33 @@ financiadores.gt <-
   )) %>%
   gtsummary::remove_row_type(variables = c("Total"), type = "all")
 
-# Print the summarized table
-print(financiadores.gt)
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.1.2.5)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.2.5,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "1.2.5 Capacidade de captação de recursos"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
+  )
+  kable_table
+}
 
 # Print additional information
 cat('\n\n')
 cat(
   "*Fontes:* [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
 )
-cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
 ```
 
 <br>
@@ -1866,7 +2065,7 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>'
 
 #### **Adequação da proposta ao Plano Institucional da IES** {.tabset}
 
-```{r planejamento, eval = all(has.planejamento, knitr::is_html_output())}
+```{r planejamento, eval = all(has.planejamento, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Initialize all sheets
 abas <- readxl::excel_sheets("PPG/Planejamento estratégico.xlsx")
 
@@ -1891,7 +2090,7 @@ for (i in 1:length(abas)) {
   )
   
   # Print end of tab rows
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a><br>')
+  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
 }
 ```
 
@@ -1901,9 +2100,7 @@ for (i in 1:length(abas)) {
 
 #### **Adequação do planejamento**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1911,9 +2108,7 @@ for (i in 1:length(abas)) {
 
 #### **Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1930,9 +2125,7 @@ for (i in 1:length(abas)) {
 
 #### **Coerência do produto final**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1940,9 +2133,7 @@ for (i in 1:length(abas)) {
 
 #### **Qualidade do produto final**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1950,9 +2141,7 @@ for (i in 1:length(abas)) {
 
 #### **Produção do corpo discente em eventos científicos**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1960,9 +2149,7 @@ for (i in 1:length(abas)) {
 
 #### **Produção bibliográfica dos discentes/egressos – Acadêmico**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1970,9 +2157,7 @@ for (i in 1:length(abas)) {
 
 #### **Atuação dos Egressos**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1980,9 +2165,7 @@ for (i in 1:length(abas)) {
 
 #### **Egressos de destaque na sociedade**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -1990,9 +2173,7 @@ for (i in 1:length(abas)) {
 
 #### **Produção bibliográfica total do Programa – Acadêmico**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2000,7 +2181,7 @@ for (i in 1:length(abas)) {
 
 #### **Atividades de ensino nas disciplinas do PPG**
 
-```{r turmas-docentes-2024, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r turmas-docentes-2024, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Load custom function
 source("Scripts/get-initials.R", local = knitr::knit_global())
 
@@ -2055,7 +2236,7 @@ if (dim(disciplinas.raw)[1] != 0) {
   )
   colnames(table.dsc) <- c("Disciplina", "Obrigatória", "CR", "CH")
   
-  table <- merge(
+  table <- base::merge(
     table.msc,
     table.dsc,
     by = "Disciplina",
@@ -2088,11 +2269,11 @@ if (dim(disciplinas.raw)[1] != 0) {
   print(
     knitr::kable(turmas.docentes, align = c("l", rep(
       "c", ncol(turmas.docentes) - 2
-    ), "r"), escape = FALSE, format = "html") %>% kableExtra::kable_styling(
+    ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = T,
       position = "center"
-    ) %>% kableExtra::scroll_box(width = "100%")
+    )
   )
   
   # Line break
@@ -2109,7 +2290,7 @@ if (dim(disciplinas.raw)[1] != 0) {
     "*",
     legenda.turma[, 1],
     ": ",
-    lapply(legenda.turma[, 2], str_to_title),
+    lapply(legenda.turma[, 2], stringr::str_to_title),
     "*",
     sep = "",
     collapse = "; "
@@ -2129,7 +2310,7 @@ if (dim(disciplinas.raw)[1] != 0) {
     "*",
     legenda.doc[, 1],
     ": ",
-    lapply(legenda.doc[, 2], str_to_title),
+    lapply(legenda.doc[, 2], stringr::str_to_title),
     "*",
     sep = "",
     collapse = "; "
@@ -2146,9 +2327,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Responsabilidade por PP/PTT**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2156,9 +2335,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Orientação no PPG**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2166,9 +2343,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Titulação no PPG**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2176,9 +2351,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Orientação na graduação**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2195,9 +2368,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Produção bibliográfica indicada dos DP – Acadêmico**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2205,7 +2376,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Produção do Programa**
 
-```{r 3-1-2-data, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Produções - Detalhes
 sheet <- "Produções - Detalhes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2242,7 +2413,7 @@ sucupira.df <- sucupira.df %>%
   )
 ```
 
-```{r 3-1-2-ac, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-ac, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.ac <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`)),
@@ -2268,6 +2439,11 @@ table.ac.long <- tidyr::gather(
   "Área de Concentração",
   colnames(table.ac)[-1],
   factor_key = TRUE
+)
+
+# to title case
+table.ac.long$`Área de Concentração` <- stringr::str_to_title(
+  table.ac.long$`Área de Concentração`
 )
 
 table.ac.long <- rbind(
@@ -2312,7 +2488,7 @@ table.ac.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-lp, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-lp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.lp <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`)),
@@ -2338,6 +2514,11 @@ table.lp.long <- tidyr::gather(
   "Linha de Pesquisa",
   colnames(table.lp)[-1],
   factor_key = TRUE
+)
+
+# to title case
+table.lp.long$`Linha de Pesquisa` <- stringr::str_to_title(
+  table.lp.long$`Linha de Pesquisa`
 )
 
 table.lp.long <- rbind(
@@ -2382,7 +2563,7 @@ table.lp.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-producao, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-producao, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.prd <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`)),
@@ -2408,6 +2589,11 @@ table.prd.long <- tidyr::gather(
   "Nome da Produção",
   colnames(table.prd)[-1],
   factor_key = TRUE
+)
+
+# to title case
+table.prd.long$`Nome da Produção` <- stringr::str_to_title(
+  table.prd.long$`Nome da Produção`
 )
 
 table.prd.long <- rbind(
@@ -2452,7 +2638,7 @@ table.prd.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-autor, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-autor, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.aut <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`)),
@@ -2522,7 +2708,7 @@ table.aut.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-tcc, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-tcc, eval = has.sucupira.files}
 table.tcc <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`)),
@@ -2592,7 +2778,7 @@ table.tcc.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-bibliografica, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-bibliografica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.bib <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`[sucupira.df$`Tipo de Produção` == "BIBLIOGRÁFICA"])),
@@ -2619,6 +2805,9 @@ table.bib.long <- tidyr::gather(
   colnames(table.bib)[-1],
   factor_key = TRUE
 )
+
+# to title case
+table.bib.long$`Subtipo de Produção` <- tools::toTitleCase(table.bib.long$`Subtipo de Produção`)
 
 table.bib.long <- rbind(
   table.bib.long,
@@ -2662,7 +2851,7 @@ table.bib.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-tecnica, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-tecnica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.tec <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`Nome da Produção`[sucupira.df$`Tipo de Produção` == "TÉCNICA"])),
@@ -2689,6 +2878,9 @@ table.tec.long <- tidyr::gather(
   colnames(table.tec)[-1],
   factor_key = TRUE
 )
+
+# to title case
+table.tec.long$`Subtipo de Produção` <- tools::toTitleCase(table.tec.long$`Subtipo de Produção`)
 
 table.tec.long <- rbind(
   table.tec.long,
@@ -2734,7 +2926,7 @@ table.tec.gt <- gtsummary::tbl_summary(
 
 <br>
 
-```{r 3-1-2-list-tables, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r 3-1-2-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # List all tables
 table.all <- list(
   table.ac.gt,
@@ -2749,8 +2941,28 @@ table.all <- list(
 # Drop empty elements from the list
 table.all <- table.all[lapply(table.all, length) > 0]
 
-# Print all tables stacked
-print(gtsummary::tbl_stack(table.all))
+table.3.1.2 <- gtsummary::tbl_stack(table.all)
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.3.1.2)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.3.1.2,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "3.1.2 Produção do Programa"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
+    full_width = TRUE
+  )
+  kable_table
+}
 
 # Add source information
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -2758,14 +2970,14 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 <br>
 
-<details>
-<summary>Produção por Área de Concentração | Dados individuais</summary>
-```{r producao-ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r producao-ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção por Área de Concentração | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.ac, align = c("l", rep(
     "c", ncol(table.ac) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2773,17 +2985,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Produção por Linha de Pesquisa | Dados individuais</summary>
-```{r producao-lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r producao-lp-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção por Linha de Pesquisa | Dados individuais</summary>')
 options(knitr.kable.NA = '')
 print(
   knitr::kable(table.lp, align = c("l", rep(
     "c", ncol(table.lp) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2791,17 +3003,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Produção por tipo | Dados individuais</summary>
-```{r producao-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r producao-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção por tipo | Dados individuais</summary>')
 options(nitr.kable.NA = '')
 print(
   knitr::kable(table.prd, align = c("l", rep(
     "c", ncol(table.prd) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2809,17 +3021,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Categoria do Autor Principal | Dados individuais</summary>
-```{r autor-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r autor-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Categoria do Autor Principal | Dados individuais</summary>')
 options(nitr.kable.NA = '')
 print(
   knitr::kable(table.aut, align = c("l", rep(
     "c", ncol(table.aut) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2827,17 +3039,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Produção vinculada à TCC | Dados individuais</summary>
-```{r tecnica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r tecnica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção vinculada à TCC | Dados individuais</summary>')
 options(nitr.kable.NA = '')
 print(
   knitr::kable(table.tcc, align = c("l", rep(
     "c", ncol(table.tcc) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2845,17 +3057,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Produção bibliográfica | Dados individuais</summary>
-```{r bibliografica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r bibliografica-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção bibliográfica | Dados individuais</summary>')
 options(nitr.kable.NA = '')
 print(
   knitr::kable(table.bib, align = c("l", rep(
     "c", ncol(table.bib) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2863,17 +3075,17 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
-<details>
-<summary>Produção técnica | Dados individuais</summary>
-```{r tecnioca-detalhes, eval = all(has.sucupira.files, knitr::is_html_output())}
+```{r tecnioca-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+cat('<details>')
+cat('<summary>Produção técnica | Dados individuais</summary>')
 options(nitr.kable.NA = '')
 print(
   knitr::kable(table.tec, align = c("l", rep(
     "c", ncol(table.tec) - 2
-  ), "r"), escape = FALSE, format = "html") %>% 
+  ), "r"), escape = FALSE, format = ifelse(knitr::is_html_output(), "html", "latex")) %>% 
     kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       full_width = TRUE,
@@ -2881,8 +3093,8 @@ print(
     ) %>% 
     kableExtra::scroll_box(width = "100%")
 )
+cat('</details>')
 ```
-</details>
 
 <br>
 
@@ -2938,7 +3150,7 @@ table.3.2.1 <-
     label = "**Ano**",
     gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(
-    tidyselect::everything() ~ NA) %>%
+    gtsummary::everything() ~ NA) %>%
   gtsummary::bold_labels()
 
 # Print HTML table
@@ -2952,11 +3164,11 @@ if (knitr::is_latex_output()) {
     x = table.3.2.1,
     escape = FALSE,
     format = ifelse(knitr::is_html_output(), "html", "latex"),
-    booktabs = TRUE,
+    booktabs = TRUE, longtable = TRUE,
     linesep = "",
-    caption = "3.1.1 Avaliação quantitativa dos impactos do PPG",
-    latex_options = c("basic"),
+    caption = ifelse(knitr::is_html_output(), "", "3.2.1 Avaliação quantitativa dos impactos do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down"),
     full_width = TRUE
   )
   kable_table
@@ -2971,9 +3183,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Avaliação qualitativa dos impactos do PPG**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2981,9 +3191,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Visibilidade**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -2991,9 +3199,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 #### **Internacionalização e Inserção**
 
-*Em construção*
 
-<a style="float:right" href="#top"><b>Início &nbsp;</b>⬆️</a>
 
 <br>
 
@@ -3001,7 +3207,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \DisableFootNotes
 ```
 
-```{r relatorio-quadrienal, eval = knitr::is_html_output()}
+```{r relatorio-quadrienal, eval = knitr::is_html_output(), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 cat("## **Relatório quadrienal** {#relatorio-quadrienal}")
 cat('\n\n')
 cat('<!--script for generating HORIZONTAL LINE-->')

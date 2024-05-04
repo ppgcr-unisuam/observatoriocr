@@ -12,18 +12,24 @@ output:
       - ./CSS/responsive.css
   pdf_document:
     toc: true
+    toc_depth: 4
     includes:
       in_header: tex/preamble.tex
       before_body: [tex/cover-1.tex, tex/cover-2.tex]
     latex_engine: xelatex
-    keep_tex: no
+    keep_tex: false
 documentclass: book
 papersize: a4
 geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
-link-citations: yes
+link-citations: true
 always_allow_html: true
 tables: true
+lot: true
 ---
+
+```{r, results = "hide", include = FALSE}
+options(tinytex.compile.min_times = 3)
+```
 
 <!--install and/or load all R packages-->
 ```{r setup, include = FALSE, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', out.width = "100%", results = "hide"}
@@ -87,11 +93,11 @@ source("Scripts/cover-2.R", local = knitr::knit_global())
 ```
 
 ```{r, eval = knitr::is_html_output()}
-cat("## **Metodologia** {#metodologia .tabset}")
+cat("## **Procedimentos** {#procedimentos .tabset}")
 ```
 
 ```{r, eval = !knitr::is_html_output()}
-cat("## **Metodologia** {-}")
+cat("## **Procedimentos** {-}")
 ```
 
 <!--script for generating HORIZONTAL LINE-->
@@ -101,7 +107,7 @@ cat("## **Metodologia** {-}")
 cat('<br>')
 ```
 
-```{r metodologia, eval = all(has.metodologia, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r metodologia, eval = has.metodologia, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 
@@ -118,32 +124,49 @@ for (j in 1:length(abas)) {
   # replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(metodologia.raw)[1])
   colnames(Abrir) <- "Abrir"
+  
   # add hyperlinks
   for (i in 1:dim(metodologia.raw)[1]) {
-    if (!is.na(metodologia.raw[i, 2])) {
-      Abrir[i] <-
-        paste0(
-          '<a href="',
-          metodologia.raw[i, 2],
-          '" target="_blank"',
-          '>',
-          # fontawesome icon
-          fontawesome::fa("up-right-from-square"),
-          '</a>'
-        )
+    if (knitr::is_html_output()) {
+      if (!is.na(metodologia.raw[i, ncol(metodologia.raw)])) {
+        Abrir[i] <-
+          paste0('<a href="',metodologia.raw[i, ncol(metodologia.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+        }
+      } else {
+        if (!is.na(metodologia.raw[i, ncol(metodologia.raw)])) {
+          Abrir[i] <-
+            paste0('\\url{', metodologia.raw[i, ncol(metodologia.raw)],'}')
+        }
+      }
     }
-  }
-  metodologia <- cbind(metodologia.raw[, -2], Abrir)
   
-  # print table
-  if (dim(metodologia)[1] != 0) {
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(
-      create_dt(metodologia, title = "Autoavaliação - Metodologias")
-    ))
+  metodologia <- cbind(metodologia.raw[, -ncol(metodologia.raw)], Abrir)
+  table <- metodologia
+  
+  if(knitr::is_html_output()) {
+    alignment <- c("l", rep("c", ncol(table) - 2), "r")
   } else {
-    cat("*Sem dados para exibir*")
+    alignment <- c("X")
   }
+
+  cat(knitr::knit_print(
+    knitr::kable(
+      x = table,
+      align = alignment,
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", abas[j])
+    ) %>% kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      latex_options = c("striped", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    )
+  ))
+  
   if (knitr::is_html_output()) {
     # print end of tab rows
     cat(
@@ -151,11 +174,13 @@ for (j in 1:length(abas)) {
       fontawesome::fa("circle-arrow-up"),
       '</a><br>'
     )
+  } else {
+    cat('\\newpage')
   }
 }
 ```
 
-```{r autoavaliacao, eval = all(has.autoavaliacao, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r autoavaliacao, eval = has.autoavaliacao, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Autoavaliação.xlsx")
 
@@ -172,32 +197,48 @@ for (j in 1:length(abas)) {
   # replace the link by a tag
   Abrir <- matrix(NA, nrow = dim(autoavaliacao.raw)[1])
   colnames(Abrir) <- "Abrir"
+  
   # add hyperlinks
   for (i in 1:dim(autoavaliacao.raw)[1]) {
-    if (!is.na(autoavaliacao.raw[i, 3])) {
-      Abrir[i] <-
-        paste0(
-          '<a href="',
-          autoavaliacao.raw[i, 3],
-          '" target="_blank"',
-          '>',
-          # fontawesome icon
-          fontawesome::fa("up-right-from-square"),
-          '</a>'
-        )
+    if (knitr::is_html_output()) {
+      if (!is.na(autoavaliacao.raw[i, ncol(autoavaliacao.raw)])) {
+        Abrir[i] <-
+          paste0('<a href="',autoavaliacao.raw[i, ncol(autoavaliacao.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+        }
+      } else {
+        if (!is.na(autoavaliacao.raw[i, ncol(autoavaliacao.raw)])) {
+          Abrir[i] <-
+            paste0('\\url{', autoavaliacao.raw[i, ncol(autoavaliacao.raw)],'}')
+        }
+      }
     }
-  }
-  autoavaliacao <- cbind(autoavaliacao.raw[, -3], Abrir)
   
-  # print table
-  if (dim(autoavaliacao)[1] != 0) {
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(
-      create_dt(autoavaliacao, title = "Autoavaliação - Autoavaliação")
-    ))
+  autoavaliacao <- cbind(autoavaliacao.raw[, -ncol(autoavaliacao.raw)], Abrir)
+  table <- autoavaliacao
+
+  if(knitr::is_html_output()) {
+    alignment <- c("l", rep("c", ncol(table) - 2), "r")
   } else {
-    cat("*Sem dados para exibir*")
+    alignment <- c("X")
   }
+
+  cat(knitr::knit_print(
+    knitr::kable(
+      x = table,
+      align = alignment,
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", abas[j])
+    ) %>% kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      latex_options = c("striped", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    )
+  ))
   
   if (knitr::is_html_output()) {
     # print end of tab rows
@@ -206,22 +247,110 @@ for (j in 1:length(abas)) {
       fontawesome::fa("circle-arrow-up"),
       '</a><br>'
     )
+  } else {
+    cat('\\newpage')
   }
 }
-```
-
-```{=latex}
-\newpage
 ```
 
 <br>
 
 ```{r, eval = knitr::is_html_output()}
-cat("## **Resultados** {#resultados .tabset}")
+cat("## **Documentos CAPES** {#documentos .tabset}")
 ```
 
 ```{r, eval = !knitr::is_html_output()}
-cat("## **Resultados** {-}")
+cat("## **Documentos CAPES** {-}")
+```
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:black;background-color:black">
+
+```{r, eval = !has.avaliacao}
+cat('<br>')
+```
+
+```{r avaliacao, eval = has.avaliacao, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+# initialize all sheets
+abas <- readxl::excel_sheets("PPG/Avaliação.xlsx")
+
+# display each sheet in a tab
+for (j in 1:length(abas)) {
+  cat('\n\n<!-- -->\n\n')
+  cat(paste0('### **', abas[j], '**'))
+  cat('\n\n<!-- -->\n\n')
+  avaliacao.raw <-
+    readxl::read_excel("PPG/Avaliação.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
+  
+  # replace the link by a tag
+  Abrir <- matrix(NA, nrow = dim(avaliacao.raw)[1])
+  colnames(Abrir) <- "Abrir"
+
+  # add hyperlinks
+  for (i in 1:dim(avaliacao.raw)[1]) {
+    if (knitr::is_html_output()) {
+      if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+        Abrir[i] <-
+          paste0('<a href="',avaliacao.raw[i, ncol(avaliacao.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+        }
+      } else {
+        if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+          Abrir[i] <-
+            paste0('\\url{', avaliacao.raw[i, ncol(avaliacao.raw)],'}')
+        }
+      }
+    }
+  
+  avaliacao <- cbind(avaliacao.raw[, -ncol(avaliacao.raw)], Abrir)
+  table <- avaliacao
+  
+  if(knitr::is_html_output()) {
+    alignment <- c("l", rep("c", ncol(table) - 2), "r")
+  } else {
+    alignment <- c("X")
+  }
+
+  cat(knitr::knit_print(
+    knitr::kable(
+      x = table,
+      align = alignment,
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", abas[j])
+    ) %>% kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      latex_options = c("striped", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    )
+  ))
+  
+  if (knitr::is_html_output()) {
+    # print end of tab rows
+    cat(
+      '<br><a style="float:right" href="#top"><b>Início &nbsp;</b>',
+      fontawesome::fa("circle-arrow-up"),
+      '</a><br>'
+    )
+  } else {
+    cat('\\newpage')
+  }
+}
+```
+
+<br>
+
+```{r, eval = knitr::is_html_output()}
+cat("## **Preenchimento do Coleta** {#coleta .tabset}")
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("## **Preenchimento do Coleta** {-}")
 ```
 
 <!--script for generating HORIZONTAL LINE-->
@@ -235,196 +364,110 @@ cat("### **Dados completos**")
 cat("### **Dados completos** {-}")
 ```
 
-<!--script for generating STACKED HORIZONTAL BAR CHART-->
-```{css barchart-css}
-.row {
-  display: flex;
-  align-items: stretch;
-  margin: 0 0;
-}
-
-.row .label {
-  flex: 0 0 auto;
-}
-
-.row .bar-container {
-  flex: 1;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-
-.row .bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.val-a { background: #18BC9C }
-.val-b { background: #F39C12 }
-```
-
-<br>
-
-```{r barchart-data, eval = any(has.sucupira.files, has.ppg.files), cache = TRUE, cache.path = "cache/missing/"}
-data.sucupira <- 0
-if (has.sucupira.files) {
-  # Get amount of data from Sucupira XLSX files
-  source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
-  
-  for (sheet in sucupira.sheets) {
-    source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-    data.sucupira <- data.sucupira + sum(!is.na(unlist(sucupira.raw)))
-  }
-}
-
-data.ppg <- 0
-if (has.ppg.files) {
-  # Get amount of data from PPG XLSX files
-  source("Scripts/get-ppg-xlsx-data.R", local = knitr::knit_global())
-  
-  for (file_path in files.to.read) {
-    abas <- readxl::excel_sheets(file_path)
-    for (sheet in abas) {
-      ppg.file <- try(readxl::read_excel(file_path, sheet = sheet), silent = TRUE)
-      if (!inherits(ppg.file, "try-error")) {
-        data.ppg <- data.ppg + sum(!is.na(unlist(ppg.file)))
-      }
-    }
-  }
-}
-
-# Total data
-total <- data.sucupira + data.ppg
-
-# Print stacked horizontal bar chart
-cat('<div class="row">')
-cat('<div class="bar-container">')
-cat(
-  paste0(
-    '<div class="bar val-a" style="color:white; font-weight:bold; flex-basis:',
-    data.sucupira / total * 100,
-    '%">Plataforma Sucupira</div>'
-  )
-)
-cat(
-  paste0(
-    '<div class="bar val-b" style="color:white; font-weight:bold; flex-basis:',
-    data.ppg / total * 100,
-    '%">Institucionais</div>'
-  )
-)
-cat('</div>')
-cat('</div>')
-
-# Source fonte-sucupira.R
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-```
-
-<br>
-
-```{r, eval = knitr::is_html_output()}
-cat("### **Dados perdidos**")
-```
-
-```{r, eval = !knitr::is_html_output()}
-cat("### **Dados perdidos** {-}")
-```
-
-```{r missing-data-sucupira, cache = TRUE, cache.path = "cache/dados-perdidos/", eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-# Initialize data
-missing.data <- data.frame(Aba = character(),
-                            Ano = integer(),
-                            Coluna = character(),
-                            stringsAsFactors = FALSE)
+```{r descritivo-dados, eval = has.sucupira.files, cache = TRUE, cache.path = "cache/missing/"}
+# get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 # Get amount of data from Sucupira XLSX files
 source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
 
-# Get all years available
-source("Scripts/years-sucupira.R", local = knitr::knit_global())
+summ.df <- data.frame(
+  "Ano" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
+  "Aba" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
+  "Quantidade de dados" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
+  "Dados perdidos" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
+  check.names = FALSE
+)
 
-# Iterate through each sheet
-for (sheet in sucupira.sheets) {
-  source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-  
-  # Loop for every available year
-  for (i in seq_along(anos)) {
-    # Check for missing data
-    missing <- which(is.na(sucupira.list[[i]]), arr.ind = TRUE)
-    if (length(missing) > 0) {
-      missing.data <- rbind(missing.data,
-                            data.frame(Aba = sheet,
-                                       Ano = anos[i],
-                                       Coluna = colnames(sucupira.list[[i]])[missing[, 2]],
-                                       stringsAsFactors = FALSE))
+if (has.sucupira.files) {
+  for (ROW in 1:length(sucupira.sheets)) {
+    sheet <- sucupira.sheets[ROW]
+    source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+    # Get yearly data from Sucupira XLSX files
+    names(sucupira.list) <- as.character(anos)
+    sucupira.quadr <- sucupira.list[as.character(quadrienal.vigente)]
+    for (COL in 1:length(quadrienal.vigente)) {
+      ano <- quadrienal.vigente[COL]
+      summ.df$Ano[COL + length(quadrienal.vigente)*(ROW - 1)] <- ano
+      summ.df$Aba[COL + length(quadrienal.vigente)*(ROW - 1)] <- sheet
+      summ.df$`Quantidade de dados`[COL + length(quadrienal.vigente)*(ROW - 1)] <- sum(!is.na(unlist(sucupira.list[[as.character(ano)]])))
+      summ.df$`Dados perdidos`[COL + length(quadrienal.vigente)*(ROW - 1)] <- sum(is.na(unlist(sucupira.list[[as.character(ano)]])))
     }
   }
 }
 
-# Filter out duplicate entries
-missing.data <- unique(missing.data)
+summ.data.wider <- tidyr::pivot_wider(
+  summ.df,
+  id_cols = Ano,
+  names_from = Aba,
+  values_from = `Quantidade de dados`
+)
 
-if (nrow(missing.data) > 0) {
-  # Sort by year
-  missing.data <- missing.data[order(-missing.data$Ano), ]
-  
-  # Display missing data
-  source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-  create_dt(missing.data, title = "Autoavaliação - Dados perdidos na Sucupira")
-} else {
-  cat("*Sem dados para exibir*")
+summ.missing.wider <- tidyr::pivot_wider(
+  summ.df,
+  id_cols = Ano,
+  names_from = Aba,
+  values_from = `Dados perdidos`
+)
+
+# percent of missing data
+summ.missing.wider <- summ.missing.wider / (summ.data.wider + summ.data.wider) * 100
+summ.missing.wider$Ano <- quadrienal.vigente
+
+# data.ppg <- 0
+# if (has.ppg.files) {
+#   # Get amount of data from PPG XLSX files
+#   source("Scripts/get-ppg-xlsx-data.R", local = knitr::knit_global())
+#   
+#   for (file_path in files.to.read) {
+#     abas <- readxl::excel_sheets(file_path)
+#     for (sheet in abas) {
+#       ppg.file <- try(readxl::read_excel(file_path, sheet = sheet), silent = TRUE)
+#       if (!inherits(ppg.file, "try-error")) {
+#         data.ppg <- data.ppg + sum(!is.na(unlist(ppg.file)))
+#       }
+#     }
+#   }
+# }
+```
+
+```{r descritivo-completos, eval = has.sucupira.files, cache = TRUE, cache.path = "cache/missing/"}
+# print tables
+table.dados.gt <-
+  gtsummary::tbl_summary(
+    summ.data.wider,
+    type = list(gtsummary::everything() ~ "continuous"),
+    by = "Ano",
+    statistic = list(gtsummary::everything() ~ "{sum}"),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0
+  ) %>%
+  gtsummary::modify_header(label = "Ano", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels()
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.dados.gt)
 }
-```
-
-<br>
-
-```{r, eval = knitr::is_html_output()}
-cat("### **Documentos CAPES** {#documentos .tabset}")
-```
-
-```{r, eval = !knitr::is_html_output()}
-cat("### **Documentos CAPES** {-}")
-```
-
-```{r apresentacao-periodos, eval = all(has.avaliacao, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-# initialize all sheets
-abas <- readxl::excel_sheets("PPG/Avaliação.xlsx")
-
-# display each sheet in a tab
-for (i in 1:length(abas)) {
-  cat('\n\n<!-- -->\n\n')
-  cat(paste0('#### **', abas[i], '**'))
-  cat('\n\n<!-- -->\n\n')
-  periodo.raw <-
-    readxl::read_excel("PPG/Avaliação.xlsx",
-               sheet = abas[i],
-               col_types = c("text"))
-  
-  # replace the link by a tag
-  for (i in 1:dim(periodo.raw)[1]) {
-    periodo.raw[i, 3] <-
-      paste0(
-        '<a href="',
-        periodo.raw[i, 3],
-        '" target="_blank"',
-        '>',
-        # fontawesome icon
-        fontawesome::fa("up-right-from-square"),
-        '</a>')
-  }
-  
-  # print table
-  if (dim(periodo.raw)[1] != 0) {
-    source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-    cat(knitr::knit_print(create_dt(periodo.raw, title = "Autoavaliação - Documentos CAPES")))
-  } else {
-    cat("*Sem dados para exibir*")
-  }
-  
-  # print end of tab rows
-  source("Scripts/fonte-capes.R", local = knitr::knit_global())
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.dados.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Dados completos por ano e aba da planilha Sucupira"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
+    full_width = TRUE
+  )
+  kable_table
 }
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
 ```{=latex}
@@ -433,12 +476,72 @@ for (i in 1:length(abas)) {
 
 <br>
 
+```{r, eval = knitr::is_html_output()}
+cat("### **Dados não preenchidos**")
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **Dados não preenchidos** {-}")
+```
+
+```{r descritivo-nao-preenchidos, eval = has.sucupira.files, cache = TRUE, cache.path = "cache/missing/"}
+# print tables
+table.missing.gt <-
+  gtsummary::tbl_summary(
+    summ.missing.wider,
+    type = list(gtsummary::everything() ~ "continuous"),
+    by = "Ano",
+    statistic = list(gtsummary::everything() ~ "{sum}%"),
+    missing = "no",
+    digits = gtsummary::everything() ~ 1
+  ) %>%
+  gtsummary::modify_header(label = "Ano", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels()
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.missing.gt)
+}
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.missing.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE, longtable = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Dados não preenchidos por ano e aba da planilha Sucupira"),
+    bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
+    full_width = TRUE
+  )
+  kable_table
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r, eval = knitr::is_html_output()}
+cat("## **Ficha de Avaliação** {#ficha-avaliacao}")
+```
+
+<!--script for generating HORIZONTAL LINE-->
+<hr style="height:2px;border-width:0;color:black;background-color:black">
+
 ## **1. Programa** {#programa .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r, eval = knitr::is_html_output()}
+```{r 1-1-1, eval = knitr::is_html_output()}
 cat("### **1.1.1**")
 cat('\n\n')
 cat("#### **Estrutura Acadêmica do Programa** {.tabset}")
@@ -471,12 +574,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Objetivos do curso")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -502,12 +609,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Perfil do egresso")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -523,7 +634,7 @@ area.raw$Fim <- NULL
 area.ativas <- area.raw
 
 # to title case
-area.ativas$'Área de Concentração' <- tools::toTitleCase(area.ativas$'Área de Concentração')
+area.ativas$'Área de Concentração' <- tools::toTitleCase(tolower(area.ativas$'Área de Concentração'))
 
 # print tables
 ids <- order(area.ativas$'Área de Concentração', decreasing = FALSE)
@@ -540,12 +651,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Área de concentração")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -561,7 +676,7 @@ linhas.atual <- linhas.raw[is.na(linhas.raw$Fim), ]
 linhas.atual$Fim <- NULL
 
 # to title case
-linhas.atual$'Linhas de Pesquisa' <- tools::toTitleCase(linhas.atual$'Linhas de Pesquisa')
+linhas.atual$'Linhas de Pesquisa' <- tools::toTitleCase(tolower(linhas.atual$'Linhas de Pesquisa'))
 
 # print tables
 ids <- order(linhas.atual$'Linhas de Pesquisa', decreasing = FALSE)
@@ -578,12 +693,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Linha de pesquisa")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -629,7 +748,7 @@ sucupira.df <-
   )
 ```
 
-```{r 1-1-1-PP-DP, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+```{r 1-1-1-PP-DP, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 table.projetos <-
   data.frame(
     stringr::str_to_title(sucupira.df$`Área de Concentração`),
@@ -678,12 +797,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Projeto de pesquisa")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -717,12 +840,16 @@ knitr::kable(
   caption = ifelse(knitr::is_html_output(), "", "Docentes")
 ) %>% kableExtra::kable_styling(
   bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-  latex_options = c("striped", "repeat_header", "hold_position"),
+  latex_options = c("striped", "repeat_header", "HOLD_position"),
   full_width = TRUE,
   position = "center"
 )
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -747,22 +874,26 @@ if (any(table.all$`Categoria do Membro do Projeto` == "Pós-Doc")) {
   rownames(table.posdoc) <- c(head(rownames(table.posdoc), -1), "N")
   # print tables
   knitr::kable(
-    table.doc,
+    table.posdoc,
     align = c(rep("c", ncol(table.posdoc) - 1), "r"),
     escape = FALSE,
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Docentes")
+    caption = ifelse(knitr::is_html_output(), "", "Pós-doutorandos")
   ) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    latex_options = c("striped", "repeat_header", "hold_position"),
+    latex_options = c("striped", "repeat_header", "HOLD_position"),
     full_width = TRUE,
     position = "center"
   )
 }
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
+```{=latex}
+\newpage
 ```
 
 <br>
@@ -796,6 +927,9 @@ table.ac.long <-
                 "Área de Concentração",
                 colnames(table.ac)[-1],
                 factor_key = TRUE)
+
+# to title case
+table.ac.long$`Área de Concentração` <- tools::toTitleCase(tolower(table.ac.long$`Área de Concentração`))
 
 table.ac.long <- rbind(
   table.ac.long,
@@ -864,6 +998,9 @@ table.lp.long <-
                 colnames(table.lp)[-1],
                 factor_key = TRUE)
 
+# to title case
+table.lp.long$`Linha de Pesquisa` <- tools::toTitleCase(tolower(table.lp.long$`Linha de Pesquisa`))
+
 table.lp.long <- rbind(table.lp.long,
                        data.frame(
                          "Ano" = rep(paste0(
@@ -929,6 +1066,9 @@ table.pp.long <-
                 "Nome do Projeto de Pesquisa",
                 colnames(table.pp)[-1],
                 factor_key = TRUE)
+
+# to title case
+table.pp.long$`Nome do Projeto de Pesquisa` <- tools::toTitleCase(tolower(table.pp.long$`Nome do Projeto de Pesquisa`))
 
 table.pp.long <- rbind(
   table.pp.long,
@@ -1000,6 +1140,9 @@ table.doc.long <-
                 "Nome do Membro do Projeto",
                 colnames(table.doc)[-1],
                 factor_key = TRUE)
+
+# to title case
+table.doc.long$`Nome do Membro do Projeto` <- tools::toTitleCase(tolower(table.doc.long$`Nome do Membro do Projeto`))
 
 table.doc.long <- rbind(
   table.doc.long,
@@ -1075,6 +1218,10 @@ table.posdoc.long <-
     factor_key = TRUE
   )
 
+# to title case
+table.posdoc.long$`Nome do Membro do Projeto` <- tools::toTitleCase(tolower(table.posdoc.long$`Nome do Membro do Projeto`))
+
+
 table.posdoc.long <- rbind(
   table.posdoc.long,
   data.frame(
@@ -1148,7 +1295,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "1.1.1 Estrutura acadêmica do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -1242,15 +1389,27 @@ print(
 cat('</details>')
 ```
 
+```{=latex}
+\newpage
+```
+
 <br>
 
-### **1.1.2**
+```{r 1-1-2, eval = knitr::is_html_output()}
+cat("### **1.1.2**")
+cat('\n\n')
+cat("#### **Proposta Curricular do Programa** {.tabset}")
+cat('\n\n')
+```
 
-#### **Proposta Curricular do Programa** {.tabset}
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.1.2 Proposta Curricular do Programa**")
+cat('<br>')
+```
 
 ##### *Qualitativa*
 
-
+<!-- EM CONSTRUÇÃO -->
 
 <br>
 
@@ -1339,7 +1498,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "1.1.2 Proposta Curricular do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -1347,19 +1506,45 @@ if (knitr::is_latex_output()) {
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<br>
-
-### **1.1.3**
-
-#### **Infraestrutura**
-
-
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **1.2.1**
+```{r 1-1-3, eval = knitr::is_html_output()}
+cat("### **1.1.3**")
+cat('\n\n')
+cat("#### **Infraestrutura** {.tabset}")
+cat('\n\n')
+```
 
-#### **Dimensão do corpo Docente Permanente**
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.1.3 Infraestrutura**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 1-2-1, eval = knitr::is_html_output()}
+cat("### **1.2.1**")
+cat('\n\n')
+cat("#### **Dimensão do corpo Docente Permanente** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.2.1 Dimensão do corpo Docente Permanente**")
+cat('<br>')
+```
 
 ```{r categoria-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 sheet <- "Docentes"
@@ -1511,9 +1696,6 @@ table.doc.long <-
                 "Tipo vínculo",
                 colnames(table.doc)[-1],
                 factor_key = TRUE)
-
-# to sentence format
-table.doc.long$'Tipo vínculo' <- stringr::str_to_sentence(table.doc.long$'Tipo vínculo')
 
 table.doc.long <- rbind(table.doc.long,
                         data.frame(
@@ -1762,7 +1944,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "1.2.1 Dimensão Corpo Docente"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -1835,11 +2017,23 @@ print(
 cat('</details>')
 ```
 
+```{=latex}
+\newpage
+```
+
 <br>
 
-### **1.2.2**
+```{r 1-2-2, eval = knitr::is_html_output()}
+cat("### **1.2.2**")
+cat('\n\n')
+cat("#### **Coerência acadêmica do Corpo Docente à proposta do PPG* {.tabset}")
+cat('\n\n')
+```
 
-#### **Coerência acadêmica do Corpo Docente à proposta do PPG**
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.2.2 Coerência acadêmica do Corpo Docente à proposta do PPG**")
+cat('<br>')
+```
 
 ```{r coerencia-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # docentes
@@ -1889,7 +2083,7 @@ table.doc.long <-
   )
 
 # to title case
-table.doc.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(table.doc.long$"Área de Conhecimento Titulação")
+table.doc.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower(table.doc.long$"Área de Conhecimento Titulação"))
 
 table.doc.long <- rbind(
   table.doc.long,
@@ -1940,7 +2134,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "1.2.2 Coerência acadêmica do Corpo Docente à proposta do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -1965,27 +2159,67 @@ print(
 cat('</details>')
 ```
 
-<br>
-
-### **1.2.3**
-
-#### **Estabilidade do corpo docente permanente**
-
-
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **1.2.4**
+```{r 1-2-3, eval = knitr::is_html_output()}
+cat("### **1.2.3**")
+cat('\n\n')
+cat("#### **Estabilidade do corpo docente permanente* {.tabset}")
+cat('\n\n')
+```
 
-#### **Percentual de docentes permanentes com dedicação exclusiva ao PPG**
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.2.3 Estabilidade do corpo docente permanente**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **1.2.5**
+```{r 1-2-4, eval = knitr::is_html_output()}
+cat("### **1.2.4**")
+cat('\n\n')
+cat("#### **Percentual de docentes permanentes com dedicação exclusiva ao PPG* {.tabset}")
+cat('\n\n')
+```
 
-#### **Capacidade de captação de recursos** {.tabset}
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.2.4 Percentual de docentes permanentes com dedicação exclusiva ao PPG**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 1-2-5, eval = knitr::is_html_output()}
+cat("### **1.2.5**")
+cat('\n\n')
+cat("#### **Capacidade de captação de recursos* {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.2.5 Capacidade de captação de recursos**")
+cat('<br>')
+```
 
 ```{r auto-financiadores-docente-ano, eval = has.financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Read the financiadores raw data
@@ -2045,7 +2279,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "1.2.5 Capacidade de captação de recursos"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -2059,11 +2293,23 @@ cat(
 cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
 ```
 
+```{=latex}
+\newpage
+```
+
 <br>
 
-### **1.3.1**
+```{r 1-3-1, eval = knitr::is_html_output()}
+cat("### **1.3.1**")
+cat('\n\n')
+cat("#### **Adequação da proposta ao Plano Institucional da IES* {.tabset}")
+cat('\n\n')
+```
 
-#### **Adequação da proposta ao Plano Institucional da IES** {.tabset}
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.3.1 Adequação da proposta ao Plano Institucional da IES**")
+cat('<br>')
+```
 
 ```{r planejamento, eval = all(has.planejamento, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Initialize all sheets
@@ -2094,92 +2340,226 @@ for (i in 1:length(abas)) {
 }
 ```
 
-<br>
-
-### **1.3.2**
-
-#### **Adequação do planejamento**
-
-
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **1.4.1**
+```{r 1-3-2, eval = knitr::is_html_output()}
+cat("### **1.3.1**")
+cat('\n\n')
+cat("#### **Adequação do planejamento* {.tabset}")
+cat('\n\n')
+```
 
-#### **Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa**
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.3.1 Adequação do planejamento**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
 
-<br>
 
 ```{=latex}
 \newpage
 ```
 
-## **2. Formação** {#formacao .tabset}
+<br>
+
+```{r 1-4-1, eval = knitr::is_html_output()}
+cat("### **1.4.1**")
+cat('\n\n')
+cat("#### **Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa* {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **1.4.1 Adequação dos processos e procedimentos utilizados para a autoavaliação do Programa**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+## **2. Formação e Produção Intelectual** {#formacao .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-### **2.1.1**
+```{r 2-1-1, eval = knitr::is_html_output()}
+cat("### **2.1.1**")
+cat('\n\n')
+cat("#### **Coerência do produto final** {.tabset}")
+cat('\n\n')
+```
 
-#### **Coerência do produto final**
-
-
-
-<br>
-
-### **2.1.2**
-
-#### **Qualidade do produto final**
-
-
-
-<br>
-
-### **2.2.1**
-
-#### **Produção do corpo discente em eventos científicos**
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.1.1 Coerência do produto final**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **2.2.2**
+```{r 2-1-2, eval = knitr::is_html_output()}
+cat("### **2.1.2**")
+cat('\n\n')
+cat("#### **Qualidade do produto final** {.tabset}")
+cat('\n\n')
+```
 
-#### **Produção bibliográfica dos discentes/egressos – Acadêmico**
-
-
-
-<br>
-
-### **2.3.1**
-
-#### **Atuação dos Egressos**
-
-
-
-<br>
-
-### **2.3.2**
-
-#### **Egressos de destaque na sociedade**
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.1.2 Qualidade do produto final**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **2.4.1**
+```{r 2-2-1, eval = knitr::is_html_output()}
+cat("### **2.2.1**")
+cat('\n\n')
+cat("#### **Produção do corpo discente em eventos científicos** {.tabset}")
+cat('\n\n')
+```
 
-#### **Produção bibliográfica total do Programa – Acadêmico**
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.2.1 Produção do corpo discente em eventos científicos**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **2.5.1**
+```{r 2-2-2, eval = knitr::is_html_output()}
+cat("### **2.2.2**")
+cat('\n\n')
+cat("#### **Produção bibliográfica dos discentes/egressos – Acadêmico** {.tabset}")
+cat('\n\n')
+```
 
-#### **Atividades de ensino nas disciplinas do PPG**
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.2.2 Produção bibliográfica dos discentes/egressos – Acadêmico**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-3-1, eval = knitr::is_html_output()}
+cat("### **2.3.1**")
+cat('\n\n')
+cat("#### **Atuação dos Egressos** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.3.1 Atuação dos Egressos**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-3-2, eval = knitr::is_html_output()}
+cat("### **2.3.2**")
+cat('\n\n')
+cat("#### **Egressos de destaque na sociedade** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.3.2 Egressos de destaque na sociedade**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-4-1, eval = knitr::is_html_output()}
+cat("### **2.4.1**")
+cat('\n\n')
+cat("#### **Produção bibliográfica total do Programa – Acadêmico** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.4.1 Produção bibliográfica total do Programa – Acadêmico**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-5-1, eval = knitr::is_html_output()}
+cat("### **2.5.1**")
+cat('\n\n')
+cat("#### **Atividades de ensino nas disciplinas do PPG** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.5.1 Atividades de ensino nas disciplinas do PPG**")
+cat('<br>')
+```
 
 ```{r turmas-docentes-2024, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Load custom function
@@ -2321,60 +2701,138 @@ if (dim(disciplinas.raw)[1] != 0) {
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<br>
-
-### **2.5.2**
-
-#### **Responsabilidade por PP/PTT**
-
-
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **2.5.3**
+```{r 2-5-2, eval = knitr::is_html_output()}
+cat("### **2.5.2**")
+cat('\n\n')
+cat("#### **Responsabilidade por PP/PTT** {.tabset}")
+cat('\n\n')
+```
 
-#### **Orientação no PPG**
-
-
-
-<br>
-
-### **2.5.4**
-
-#### **Titulação no PPG**
-
-
-
-<br>
-
-### **2.5.5**
-
-#### **Orientação na graduação**
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.5.2 Responsabilidade por PP/PTT**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
 
-<br>
 
 ```{=latex}
 \newpage
 ```
+
+<br>
+
+```{r 2-5-3, eval = knitr::is_html_output()}
+cat("### **2.5.3**")
+cat('\n\n')
+cat("#### **Orientação no PPG** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.5.3 Orientação no PPG**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-5-4, eval = knitr::is_html_output()}
+cat("### **2.5.4**")
+cat('\n\n')
+cat("#### **Titulação no PPG** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.5.4 Titulação no PPG**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 2-5-5, eval = knitr::is_html_output()}
+cat("### **2.5.5**")
+cat('\n\n')
+cat("#### **Orientação na graduação** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **2.5.5 Orientação na graduação**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
 
 ## **3. Impacto na sociedade** {#impacto .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-### **3.1.1**
+```{r 3-1-1, eval = knitr::is_html_output()}
+cat("### **3.1.1**")
+cat('\n\n')
+cat("#### **Produção bibliográfica indicada dos DP – Acadêmico** {.tabset}")
+cat('\n\n')
+```
 
-#### **Produção bibliográfica indicada dos DP – Acadêmico**
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.1.1 Produção bibliográfica indicada dos DP – Acadêmico**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **3.1.2**
+```{r 3-1-2, eval = knitr::is_html_output()}
+cat("### **3.1.2**")
+cat('\n\n')
+cat("#### **Produção do Programa** {.tabset}")
+cat('\n\n')
+```
 
-#### **Produção do Programa**
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.1.2 Produção do Programa**")
+cat('<br>')
+```
 
 ```{r 3-1-2-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # Produções - Detalhes
@@ -2592,9 +3050,7 @@ table.prd.long <- tidyr::gather(
 )
 
 # to title case
-table.prd.long$`Nome da Produção` <- stringr::str_to_title(
-  table.prd.long$`Nome da Produção`
-)
+table.prd.long$`Nome da Produção` <- tools::toTitleCase(tolower(table.prd.long$`Nome da Produção`))
 
 table.prd.long <- rbind(
   table.prd.long,
@@ -2807,7 +3263,7 @@ table.bib.long <- tidyr::gather(
 )
 
 # to title case
-table.bib.long$`Subtipo de Produção` <- tools::toTitleCase(table.bib.long$`Subtipo de Produção`)
+table.bib.long$`Subtipo de Produção` <- tools::toTitleCase(tolower(table.bib.long$`Subtipo de Produção`))
 
 table.bib.long <- rbind(
   table.bib.long,
@@ -2880,7 +3336,7 @@ table.tec.long <- tidyr::gather(
 )
 
 # to title case
-table.tec.long$`Subtipo de Produção` <- tools::toTitleCase(table.tec.long$`Subtipo de Produção`)
+table.tec.long$`Subtipo de Produção` <- tools::toTitleCase(tolower(table.tec.long$`Subtipo de Produção`))
 
 table.tec.long <- rbind(
   table.tec.long,
@@ -2958,7 +3414,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "3.1.2 Produção do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -3096,11 +3552,23 @@ print(
 cat('</details>')
 ```
 
+```{=latex}
+\newpage
+```
+
 <br>
 
-### **3.2.1**
+```{r 3-2-1, eval = knitr::is_html_output()}
+cat("### **3.2.1**")
+cat('\n\n')
+cat("#### **Avaliação quantitativa dos impactos do PPG** {.tabset}")
+cat('\n\n')
+```
 
-#### **Avaliação quantitativa dos impactos do PPG**
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.2.1 Avaliação quantitativa dos impactos do PPG**")
+cat('<br>')
+```
 
 ```{r 3-2-1-data, eval = any(has.producao.ppg, has.producao.sucupira), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 
@@ -3168,7 +3636,7 @@ if (knitr::is_latex_output()) {
     linesep = "",
     caption = ifelse(knitr::is_html_output(), "", "3.2.1 Avaliação quantitativa dos impactos do Programa"),
     bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-    latex_options = c("basic", "scale_down"),
+    latex_options = c("basic", "scale_down", "HOLD_position"),
     full_width = TRUE
   )
   kable_table
@@ -3177,29 +3645,75 @@ if (knitr::is_latex_output()) {
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-<br>
-
-### **3.2.2**
-
-#### **Avaliação qualitativa dos impactos do PPG**
-
-
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **3.3.1**
+```{r 3-2-2, eval = knitr::is_html_output()}
+cat("### **3.2.2**")
+cat('\n\n')
+cat("#### **Avaliação qualitativa dos impactos do PPG** {.tabset}")
+cat('\n\n')
+```
 
-#### **Visibilidade**
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.2.2 Avaliação qualitativa dos impactos do PPG**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 
-### **3.3.2**
+```{r 3-3-1, eval = knitr::is_html_output()}
+cat("### **3.3.1**")
+cat('\n\n')
+cat("#### **Visibilidade** {.tabset}")
+cat('\n\n')
+```
 
-#### **Internacionalização e Inserção**
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.3.1 Visibilidade**")
+cat('<br>')
+```
 
 
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
+
+<br>
+
+```{r 3-3-2, eval = knitr::is_html_output()}
+cat("### **3.3.2**")
+cat('\n\n')
+cat("#### **Internacionalização e Inserção** {.tabset}")
+cat('\n\n')
+```
+
+```{r, eval = !knitr::is_html_output()}
+cat("### **3.3.2 Internacionalização e Inserção**")
+cat('<br>')
+```
+
+
+<!-- EM CONSTRUÇÃO -->
+
+
+```{=latex}
+\newpage
+```
 
 <br>
 

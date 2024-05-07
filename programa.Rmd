@@ -1718,7 +1718,7 @@ for (i in 1:length(abas)) {
   cat('<center>\n')
   cat('\n\n<!-- -->\n\n')
   lab <- lab[-1,]
-  cat(paste0("![](", getwd(), "/PPG/Labs/Lab-", i, ".jpg)"), "\n")
+  cat(paste0("![](PPG/Labs/Lab-", i, ".jpg)"), "\n")
   cat('\n\n<!-- -->\n\n')
   cat('\n</center>')
   cat('</div>')

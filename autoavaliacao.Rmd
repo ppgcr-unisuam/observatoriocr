@@ -24,7 +24,6 @@ geometry: "top=3cm,left=3cm,right=2cm,bottom=2cm"
 link-citations: true
 always_allow_html: true
 tables: true
-lot: true
 ---
 
 ```{r, results = "hide", include = FALSE}
@@ -253,6 +252,10 @@ for (j in 1:length(abas)) {
 }
 ```
 
+```{=latex}
+\newpage
+```
+
 <br>
 
 ```{r, eval = knitr::is_html_output()}
@@ -359,8 +362,6 @@ cat("## **Preenchimento do Coleta** {-}")
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
-
-<br>
 
 ```{r, eval = knitr::is_html_output()}
 cat("### **Dados completos**")
@@ -480,8 +481,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r, eval = knitr::is_html_output()}
 cat("### **Dados omissos**")
 ```
@@ -489,8 +488,6 @@ cat("### **Dados omissos**")
 ```{r, eval = !knitr::is_html_output()}
 cat("### **Dados omissos** {-}")
 ```
-
-<br>
 
 ```{r descritivo-nao-preenchidos, eval = has.sucupira.files, cache = TRUE, cache.path = "cache/missing/"}
 # print tables
@@ -562,7 +559,7 @@ cat('<br>')
 ```
 
 ```{r cursos-objetivos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-if(!knitr::is_html_output()) {
+if(knitr::is_html_output()) {
   cat("##### **Objetivos do curso**")
   cat('\n\n')
 }
@@ -598,10 +595,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r cursos-egressos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-if(!knitr::is_html_output()) {
+if(knitr::is_html_output()) {
   cat("##### **Perfil do egresso**")
   cat('\n\n')
 }
@@ -637,10 +632,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r 1-1-1-AC, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-if(!knitr::is_html_output()) {
+if(knitr::is_html_output()) {
   cat("##### **AC** {#descricao-ac}")
   cat('\n\n')
 }
@@ -683,10 +676,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r 1-1-1-LP, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-if(!knitr::is_html_output()) {
+if(knitr::is_html_output()) {
   cat("##### **LP** {#descricao-lp}")
   cat('\n\n')
 }
@@ -729,10 +720,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r 1-1-1-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
-if(!knitr::is_html_output()) {
+if(knitr::is_html_output()) {
   cat("##### **PP** {#descricao-pp}")
   cat('\n\n')
 }
@@ -840,8 +829,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
 ```{r 1-1-1-docentes, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 if(knitr::is_html_output()) {
   cat("##### **Docentes** {#docentes-linhas-pesquisa}")
@@ -887,8 +874,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```{=latex}
 \newpage
 ```
-
-<br>
 
 ```{r 1-1-1-posdocs, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 if(knitr::is_html_output()) {
@@ -939,11 +924,12 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 ```
 
-<br>
-
-##### **Síntese** {#coerencia-quantitativo}
-
 ```{r 1-1-1-ac, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+if(knitr::is_html_output()) {
+  cat("##### **Síntese** {#coerencia-quantitativo}")
+  cat("\n")
+}
+
 table.ac <-
   data.frame(matrix(
     NA,
@@ -1444,15 +1430,12 @@ cat("### **1.1.2 Proposta Curricular do Programa**")
 cat('<br>')
 ```
 
-##### *Qualitativa*
-
-<!-- EM CONSTRUÇÃO -->
-
-<br>
-
-##### *Quantitativa*
-
 ```{r 1-1-2-quanti, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
+if(knitr::is_html_output()) {
+  cat('##### *Quantitativa*')
+  cat('\n\n')
+}
+
 # disciplinas
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -3408,8 +3391,6 @@ table.tec.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-<br>
-
 ```{r 3-1-2-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 # List all tables
 table.all <- list(
@@ -3451,8 +3432,6 @@ if (knitr::is_latex_output()) {
 # Add source information
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
-
-<br>
 
 ```{r producao-ac-detalhes, eval = all(has.sucupira.files, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 cat('<details>')

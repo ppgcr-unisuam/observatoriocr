@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.2)  10 MAY 2024 06:04
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.2)  10 MAY 2024 10:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -119,9 +119,9 @@ Package: xparse 2024-03-14 L3 Experimental document command parser
 y
 Package: l3keys2e 2024-03-14 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2024/05/03 v2.9c Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2024/05/07 v2.9d Font selection for XeLaTeX and LuaLaTeX
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2024/05/03 v2.9c Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2024/05/07 v2.9d Font selection for XeLaTeX and LuaLaTe
 X
 \l__fontspec_script_int=\count275
 \l__fontspec_language_int=\count276
@@ -1523,21 +1523,16 @@ Overfull \hbox (3.98685pt too wide) in paragraph at lines 596--596
  []
 
 
-Overfull \vbox (4698.0969pt too high) has occurred while \output is active []
+Overfull \vbox (4986.43033pt too high) has occurred while \output is active []
 
-[14] [15] [16] [17]
-Overfull \hbox (9.99179pt too wide) in paragraph at lines 669--712
- [][] 
- []
-
-[18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33]
-[34] [35] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (133.35089pt too wide) in paragraph at lines 956--992
+[14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29]
+[30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
+Overfull \hbox (55.49269pt too wide) in paragraph at lines 956--992
  [][] 
  []
 
 [43]
-Overfull \hbox (36.06152pt too wide) in paragraph at lines 1007--1038
+Overfull \hbox (69.17284pt too wide) in paragraph at lines 1007--1040
  [][] 
  []
 
@@ -1556,10 +1551,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37418 strings out of 474706
- 724188 string characters out of 5756289
- 2010403 words of memory out of 5000000
- 59061 multiletter control sequences out of 15000+600000
+ 37413 strings out of 474706
+ 723972 string characters out of 5756289
+ 2012403 words of memory out of 5000000
+ 59056 multiletter control sequences out of 15000+600000
  601830 words of font info for 73 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  94i,19n,120p,1202b,768s stack positions out of 10000i,1000n,20000p,200000b,200000s

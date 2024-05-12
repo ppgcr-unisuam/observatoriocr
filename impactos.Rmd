@@ -70,7 +70,6 @@ periodo.vigente <- anos
 
 ```{r, eval = !has.sucupira.files}
 cat('<br>')
-cat('<br>')
 ```
 
 ### **Formação discente** {.tabset}
@@ -183,7 +182,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.periodicos, has.cep)}
-cat('<br>')
 cat('<br>')
 ```
 
@@ -1187,7 +1185,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome:
 
 ```{r, eval = !has.financiadores}
 cat('<br>')
-cat('<br>')
 ```
 
 ### **Agência-Edital**
@@ -1335,7 +1332,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome:
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.politicas}
-cat('<br>')
 cat('<br>')
 ```
 
@@ -2295,7 +2291,7 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 
 <br>
 
-### **Trabalho em Anais** {.tabset}
+### **Trabalho em anais** {.tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
@@ -2386,38 +2382,39 @@ if (max(dim(doi_with_altmetric)[1], 0) == 0 &
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 
+<br>
 
 ### **Organização de evento** {#organizacao-evento .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-
+<br>
 
 ### **Curso de curta duração** {#curso-curta-duracao .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-
+<br>
 
 ### **Material didático e instrucional** {#didatico-instrucional .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-
+<br>
 
 ### **Patente** {#patente .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-
+<br>
 
 ### **Aplicativo** {#aplicativo .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-
+<br>

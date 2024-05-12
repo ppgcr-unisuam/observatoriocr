@@ -501,6 +501,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \FloatBarrier
 ```
 
+<br>
+
 ```{r, eval = knitr::is_html_output()}
 cat("### **Dados omissos**")
 ```
@@ -1579,8 +1581,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 \newpage
 \FloatBarrier
 ```
-
-<br>
 
 ```{r 1-1-2-disciplinas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = "asis"}
 if(knitr::is_html_output()) {

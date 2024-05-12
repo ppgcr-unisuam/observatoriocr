@@ -942,7 +942,7 @@ table <- produtos.df %>% dplyr::arrange(
   produtos.df$'Título'
 )
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table, title = "Produções - Trabalho em Anais (¹Discente, ²Egresso, ³Docente)")
+create_dt(table, title = "Produções - Trabalho em anais de eventos científicos (¹Discente, ²Egresso, ³Docente)")
 cat("**Autoria**: ¹Discente, ²Egresso, ³Docente")
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())

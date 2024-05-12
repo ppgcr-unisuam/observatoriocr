@@ -108,7 +108,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome:
 ## **Dissertações/Teses** {#TCC-destaque .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.sucupira.files}
@@ -120,7 +119,6 @@ cat('<br>')
 ## **Produções: Visibilidade** {#destaque-visibilidade .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.producao.sucupira, has.producao.ppg)}
@@ -354,7 +352,6 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome:
 ## **Prêmio CAPES de Tese** {#premio-capes .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.premio.capes}
@@ -405,10 +402,10 @@ cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome:
 ## **Representatividade** {#representatividade}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !has.sucupira.files}
+cat('<br>')
 cat('<br>')
 ```
 
@@ -511,7 +508,7 @@ for (id in 1:length(orcids)) {
   source("Scripts/reviewer-board.R", local = knitr::knit_global())
   cat('\n\n<!-- -->\n\n')
   cat(
-    "*Fontes:* [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/), [**ORCID**](https://orcid.org)"
+    "**Fontes**: [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/), [**ORCID**](https://orcid.org)"
   )
   cat('\n\n<!-- -->\n\n')
   cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
@@ -520,13 +517,13 @@ for (id in 1:length(orcids)) {
 
 <br>
 
-## **Divulgação** {#divulgacao}
+## **Divulgação científica** {#divulgacao}
 
 <!--script for generating HORIZONTAL LINE-->
-
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = !any(has.blog.ies, has.blogs.externos)}
+cat('<br>')
 cat('<br>')
 ```
 

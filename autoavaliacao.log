@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.2)  13 MAY 2024 09:01
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.20)  20 MAY 2024 10:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -337,7 +337,7 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 \Gin@req@height=\dimen181
 \Gin@req@width=\dimen182
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2024/04/20 v24.4 The Babel package
+Package: babel 2024/05/18 v24.5 The Babel package
 \babel@savecnt=\count307
 \U@D=\dimen183
 \l@unhyphenated=\language89
@@ -1792,7 +1792,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  37439 strings out of 474706
- 724588 string characters out of 5756289
+ 724588 string characters out of 5756288
  2015403 words of memory out of 5000000
  59080 multiletter control sequences out of 15000+600000
  594537 words of font info for 71 fonts, out of 8000000 for 9000

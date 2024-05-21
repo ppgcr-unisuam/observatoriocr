@@ -114,6 +114,12 @@ shiny::HTML('<iframe id="scaled-frame" src="https://ppgctis.github.io/Observator
 
 cat('<br>')
 cat('<br>')
+
+shiny::HTML("<h1>UPE | PPGRDF</h1>")
+shiny::HTML('<iframe id="scaled-frame" src="https://ppgrdf-upe.github.io/Observatorio_PPGRDF/" style="width:100%; height:600px; border:2px solid white;"></iframe>')
+
+cat('<br>')
+cat('<br>')
 ```
 
 ```{r sintese-coerencia, include = FALSE, eval = has.sucupira.files}
@@ -2286,23 +2292,6 @@ bsplus::bs_carousel(id = "rede-carousel",
   bsplus::bs_append(content = bsplus::bs_carousel_image(src = "index_files/figure-html/sintese-rede-6.png"))
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-```
-
-<br>
-
-<br>
-
-<center><img width="5%" height="5%" src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/thumbs/RStudio.png"> Esta página foi desenvolvida em [**`r R.version$version.string`**](https://www.rstudio.com) usando [**R markdown**](https://rmarkdown.rstudio.com)
-</center>
-
-<br>
-
-<br>
-
-```{r session-info}
-sessioninfo::session_info() %>%
-  details::details(summary = 'Current session info',
-                   open = FALSE)
 ```
 
 <br>

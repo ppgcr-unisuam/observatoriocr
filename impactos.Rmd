@@ -1046,9 +1046,9 @@ for (i in 1:dim(periodicos.raw)[1]) {
 periodicos <- cbind(periodicos.raw[, -3], Abrir)
 
 # add metrics
-source(file.path("Scripts", "get_citescore.R"), local = knitr::knit_global())
-source(file.path("Scripts", "get_sjr.R"), local = knitr::knit_global())
-source(file.path("Scripts", "get_webqualis.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-citescore.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-sjr.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-webqualis.R"), local = knitr::knit_global())
 periodicos$WebQualis <- rep('-', dim(periodicos)[1])
 periodicos$SJR <- rep('-', dim(periodicos)[1])
 periodicos$CiteScore <- rep('-', dim(periodicos)[1])

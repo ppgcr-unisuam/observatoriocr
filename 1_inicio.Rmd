@@ -84,9 +84,9 @@ source(file.path("Scripts", "webqualis.R"), local = knitr::knit_global())
 
 source(file.path("Scripts", "doi-cleaner.R"), local = knitr::knit_global())
 
-source(file.path("Scripts", "get_citescore.R"), local = knitr::knit_global())
-source(file.path("Scripts", "get_sjr.R"), local = knitr::knit_global())
-source(file.path("Scripts", "get_webqualis.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-citescore.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-sjr.R"), local = knitr::knit_global())
+source(file.path("Scripts", "get-webqualis.R"), local = knitr::knit_global())
 source(file.path("Scripts", "get-metrics-from-sources.R"), local = knitr::knit_global())
 ```
 
@@ -770,7 +770,7 @@ if(!sjmisc::is_empty(dois)) {
 }
 ```
 
-```{r metrics-artigos-resumos, cache = TRUE, cache.path = "cache/artigos-resumos/", eval = any(has.editoria.ppg, has.editoria.sucupira)}
+```{r metrics-editoria, cache = TRUE, cache.path = "cache/editoria/", eval = any(has.editoria.ppg, has.editoria.sucupira)}
 # bind PPG and SUCUPIRA DOIs
 dois.ppg <- data.frame()
 if (has.editoria.ppg) {

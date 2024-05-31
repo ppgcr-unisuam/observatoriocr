@@ -102,14 +102,10 @@ navbar:
       href: producoes.html#dissertacao
     - text: Artigo em periódico
       href: producoes.html#artigo-periodico
-    - text: Preprint
-      href: producoes.html#preprint
     - text: Editoria
       href: producoes.html#editoria
     - text: Livro
       href: producoes.html#livro
-    - text: Capítulo
-      href: producoes.html#capitulo
     - text: Trabalho em anais
       href: producoes.html#trabalho-em-anais
     - text: Apresentação de trabalho
@@ -124,6 +120,10 @@ navbar:
       href: producoes.html#patente
     - text: Aplicativo
       href: producoes.html#aplicativo
+    - text: Artigo em jornal ou revista
+      href: producoes.html#jornal-revista
+    - text: Programa de rádio ou TV
+      href: producoes.html#radio-tv
     - text: Retratação
       href: producoes.html#retratacao
   - text: Destaques

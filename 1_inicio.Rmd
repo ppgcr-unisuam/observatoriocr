@@ -40,7 +40,7 @@ rm(list = ls(all = TRUE))
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
-```{r custom-yaml}
+```{r custom-yaml, eval = FALSE}
 source("Scripts/custom-yaml.R", local = knitr::knit_global())
 ```
 
@@ -109,6 +109,7 @@ has.2020.2017 <- FALSE
 has.2016.2013 <- FALSE
 has.2012.2010 <- FALSE
 has.posdocs <- FALSE
+has.retratacoes <- FALSE
 ```
 
 ```{r try-periodos, eval = has.sucupira.files}

@@ -35,6 +35,27 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/pdfmake-1.13.6/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.13.6/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="site_libs/dt-ext-responsive-1.13.6/css/responsive.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-responsive-1.13.6/js/dataTables.responsive.min.js"></script>
+<link href="site_libs/dt-plugin-searchhighlight-1.13.6/source.css" rel="stylesheet" />
+<script src="site_libs/dt-plugin-searchhighlight-1.13.6/jquery.highlight.js"></script>
+<script src="site_libs/dt-plugin-searchhighlight-1.13.6/source.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="favicon_io/android-chrome-192x192.png" sizes="192x192" type="image/png">
@@ -789,10 +810,6 @@ function googleTranslateElementInit() {
 <h2><strong>Diretórios</strong></h2>
 <!--create (if non existent) all required folders-->
 </div>
-<div id="source-scripts-de-métricas" class="section level2">
-<h2><strong>Source scripts de métricas</strong></h2>
-<!--read METRIC files-->
-</div>
 <div id="check-arquivos-impacto" class="section level2">
 <h2><strong>Check arquivos Impacto</strong></h2>
 <!--check Impacto/Sage folder-->
@@ -812,37 +829,40 @@ function googleTranslateElementInit() {
 <div id="check-dados-cadastrais-ppg" class="section level2">
 <h2><strong>Check dados cadastrais PPG</strong></h2>
 </div>
-<div id="check-doi-produção-sucupira" class="section level2">
-<h2><strong>Check DOI produção Sucupira</strong></h2>
+<div id="check-metricas-pelo-doi-da-produção-sucupira"
+class="section level2">
+<h2><strong>Check metricas pelo DOI da produção Sucupira</strong></h2>
+<div id="altmetric-score" class="section level3">
+<h3><strong>Altmetric (score)</strong></h3>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="Doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.DOI" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DOIs" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="rft_id" content="doi:10.1590/s1809-29502013000300015"/>
+<meta name="citation_doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="Doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.DOI" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DOIs" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="rft_id" content="doi:10.1590/S1809-29502013000300015"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="Doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.DOI" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="DOIs" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1809-29502013000300015"/>
-<meta name="rft_id" content="doi:10.1590/s1809-29502013000300015"/>
+<meta name="citation_doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="Doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.DOI" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="DOIs" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1809-29502013000300015"/>
+<meta name="rft_id" content="doi:10.1590/S1809-29502013000300015"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="Doi" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="DC.Identifier" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="DC.DOI" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="DOIs" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s0103-51502013000300009"/>
-<meta name="rft_id" content="doi:10.1590/s0103-51502013000300009"/>
+<meta name="citation_doi" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="Doi" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="DC.Identifier" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="DC.DOI" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="DOIs" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S0103-51502013000300009"/>
+<meta name="rft_id" content="doi:10.1590/S0103-51502013000300009"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.5923/j.ajbe.20130303.02"/>
@@ -855,14 +875,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.5923/j.ajbe.20130303.02"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="Doi" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="DC.DOI" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="DOIs" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1413-35552013005000097"/>
-<meta name="rft_id" content="doi:10.1590/s1413-35552013005000097"/>
+<meta name="citation_doi" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="Doi" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="DC.DOI" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="DOIs" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1413-35552013005000097"/>
+<meta name="rft_id" content="doi:10.1590/S1413-35552013005000097"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.590/1809-2950/11903021042014"/>
@@ -915,14 +935,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.2174/1745017901309010196"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="Doi" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="DC.DOI" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="DOIs" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1413-78522013000400003"/>
-<meta name="rft_id" content="doi:10.1590/s1413-78522013000400003"/>
+<meta name="citation_doi" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="Doi" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="DC.DOI" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="DOIs" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1413-78522013000400003"/>
+<meta name="rft_id" content="doi:10.1590/S1413-78522013000400003"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.rppneu.2013.03.004"/>
@@ -935,14 +955,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.rppneu.2013.03.004"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="Doi" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="DC.DOI" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="DOIs" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1809-29502013000300016"/>
-<meta name="rft_id" content="doi:10.1590/s1809-29502013000300016"/>
+<meta name="citation_doi" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="Doi" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="DC.DOI" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="DOIs" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1809-29502013000300016"/>
+<meta name="rft_id" content="doi:10.1590/S1809-29502013000300016"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1007/s11655-013-1451-5"/>
@@ -1085,14 +1105,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.3736/jintegrmed2013013"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/ies-130508"/>
-<meta name="Doi" content="doi:10.3233/ies-130508"/>
-<meta name="DC.Identifier" content="doi:10.3233/ies-130508"/>
-<meta name="DC.DOI" content="doi:10.3233/ies-130508"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/ies-130508"/>
-<meta name="DOIs" content="doi:10.3233/ies-130508"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/ies-130508"/>
-<meta name="rft_id" content="doi:10.3233/ies-130508"/>
+<meta name="citation_doi" content="doi:10.3233/IES-130508"/>
+<meta name="Doi" content="doi:10.3233/IES-130508"/>
+<meta name="DC.Identifier" content="doi:10.3233/IES-130508"/>
+<meta name="DC.DOI" content="doi:10.3233/IES-130508"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/IES-130508"/>
+<meta name="DOIs" content="doi:10.3233/IES-130508"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/IES-130508"/>
+<meta name="rft_id" content="doi:10.3233/IES-130508"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1007/s11655-013-1412-z"/>
@@ -1105,34 +1125,34 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1007/s11655-013-1412-z"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="Doi" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="DC.Identifier" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="DC.DOI" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="DOIs" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="bepress_citation_doi" content="doi:10.1097/coc.0b013e318248d864"/>
-<meta name="rft_id" content="doi:10.1097/coc.0b013e318248d864"/>
+<meta name="citation_doi" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="Doi" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="DC.Identifier" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="DC.DOI" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="DOIs" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="bepress_citation_doi" content="doi:10.1097/COC.0b013e318248d864"/>
+<meta name="rft_id" content="doi:10.1097/COC.0b013e318248d864"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="Doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.DOI" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DOIs" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="rft_id" content="doi:10.1590/s1413-35552012005000111"/>
+<meta name="citation_doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="Doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.DOI" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DOIs" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="rft_id" content="doi:10.1590/S1413-35552012005000111"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="Doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.DOI" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="DOIs" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1413-35552012005000111"/>
-<meta name="rft_id" content="doi:10.1590/s1413-35552012005000111"/>
+<meta name="citation_doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="Doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.DOI" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="DOIs" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1413-35552012005000111"/>
+<meta name="rft_id" content="doi:10.1590/S1413-35552012005000111"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1186/1749-8546-8-24"/>
@@ -1155,14 +1175,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.4081/ni.2013.e24"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="Doi" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="DC.Identifier" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="DC.DOI" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="DOIs" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="bepress_citation_doi" content="doi:10.1097/npt.0b013e3182840354"/>
-<meta name="rft_id" content="doi:10.1097/npt.0b013e3182840354"/>
+<meta name="citation_doi" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="Doi" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="DC.Identifier" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="DC.DOI" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="DOIs" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="bepress_citation_doi" content="doi:10.1097/NPT.0b013e3182840354"/>
+<meta name="rft_id" content="doi:10.1097/NPT.0b013e3182840354"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jbmt.2013.03.006"/>
@@ -1175,14 +1195,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.jbmt.2013.03.006"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20130080"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20130080"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20130080"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20130080"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20130080"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20130080"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20130080"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20130080"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20130080"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20130080"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20130080"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20130080"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20130080"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20130080"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20130080"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20130080"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1590/0004-282x20130080"/>
@@ -1295,34 +1315,34 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1159/000365175"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="Doi" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="DC.DOI" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="DOIs" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1980-65742014000400011"/>
-<meta name="rft_id" content="doi:10.1590/s1980-65742014000400011"/>
+<meta name="citation_doi" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="Doi" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="DC.DOI" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="DOIs" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1980-65742014000400011"/>
+<meta name="rft_id" content="doi:10.1590/S1980-65742014000400011"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="Doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.Identifier" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.DOI" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DOIs" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="rft_id" content="doi:10.1590/0103-5150.027.004.ed01"/>
+<meta name="citation_doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="Doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.Identifier" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.DOI" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DOIs" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="rft_id" content="doi:10.1590/0103-5150.027.004.ED01"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="Doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.Identifier" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.DOI" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="DOIs" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0103-5150.027.004.ed01"/>
-<meta name="rft_id" content="doi:10.1590/0103-5150.027.004.ed01"/>
+<meta name="citation_doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="Doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.Identifier" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.DOI" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="DOIs" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0103-5150.027.004.ED01"/>
+<meta name="rft_id" content="doi:10.1590/0103-5150.027.004.ED01"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.3109/09593985.2013.820246"/>
@@ -1465,14 +1485,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1590/1413-78522014220200748"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="Doi" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="DC.Identifier" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="DC.DOI" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="DC.Identifier.DOI" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="DOIs" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="bepress_citation_doi" content="doi:10.4181/rnc.2014.22.896.7p"/>
-<meta name="rft_id" content="doi:10.4181/rnc.2014.22.896.7p"/>
+<meta name="citation_doi" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="Doi" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="DC.Identifier" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="DC.DOI" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="DC.Identifier.DOI" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="DOIs" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="bepress_citation_doi" content="doi:10.4181/RNC.2014.22.896.7p"/>
+<meta name="rft_id" content="doi:10.4181/RNC.2014.22.896.7p"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1080/00222895.2014.916651"/>
@@ -1535,14 +1555,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.neulet.2014.06.019"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="Doi" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="DC.DOI" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="DOIs" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1413-78522014000100010"/>
-<meta name="rft_id" content="doi:10.1590/s1413-78522014000100010"/>
+<meta name="citation_doi" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="Doi" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="DC.DOI" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="DOIs" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1413-78522014000100010"/>
+<meta name="rft_id" content="doi:10.1590/S1413-78522014000100010"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.590/1809-2950/11903021042014"/>
@@ -1615,14 +1635,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.4081/ni.2014.5442"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="Doi" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="DC.Identifier" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="DC.DOI" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="DC.Identifier.DOI" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="DOIs" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="bepress_citation_doi" content="doi:10.4181/rnc.2013.21.895.16p"/>
-<meta name="rft_id" content="doi:10.4181/rnc.2013.21.895.16p"/>
+<meta name="citation_doi" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="Doi" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="DC.Identifier" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="DC.DOI" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="DC.Identifier.DOI" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="DOIs" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="bepress_citation_doi" content="doi:10.4181/RNC.2013.21.895.16p"/>
+<meta name="rft_id" content="doi:10.4181/RNC.2013.21.895.16p"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1073/pnas.1400806111"/>
@@ -1685,26 +1705,6 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1590/0103-5150.028.001.ao05"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.5935/abc.20150012"/>
-<meta name="Doi" content="doi:10.5935/abc.20150012"/>
-<meta name="DC.Identifier" content="doi:10.5935/abc.20150012"/>
-<meta name="DC.DOI" content="doi:10.5935/abc.20150012"/>
-<meta name="DC.Identifier.DOI" content="doi:10.5935/abc.20150012"/>
-<meta name="DOIs" content="doi:10.5935/abc.20150012"/>
-<meta name="bepress_citation_doi" content="doi:10.5935/abc.20150012"/>
-<meta name="rft_id" content="doi:10.5935/abc.20150012"/>
-</head>
-<head>
-<meta name="citation_doi" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="Doi" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="DC.Identifier" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="DC.DOI" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="DC.Identifier.DOI" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="DOIs" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="bepress_citation_doi" content="doi:doi 10.5935/abc.20150012"/>
-<meta name="rft_id" content="doi:doi 10.5935/abc.20150012"/>
-</head>
-<head>
 <meta name="citation_doi" content="doi:10.1007/s00586-014-3571-9"/>
 <meta name="Doi" content="doi:10.1007/s00586-014-3571-9"/>
 <meta name="DC.Identifier" content="doi:10.1007/s00586-014-3571-9"/>
@@ -1713,6 +1713,16 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1007/s00586-014-3571-9"/>
 <meta name="bepress_citation_doi" content="doi:10.1007/s00586-014-3571-9"/>
 <meta name="rft_id" content="doi:10.1007/s00586-014-3571-9"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.5935/abc.20150012"/>
+<meta name="Doi" content="doi:10.5935/abc.20150012"/>
+<meta name="DC.Identifier" content="doi:10.5935/abc.20150012"/>
+<meta name="DC.DOI" content="doi:10.5935/abc.20150012"/>
+<meta name="DC.Identifier.DOI" content="doi:10.5935/abc.20150012"/>
+<meta name="DOIs" content="doi:10.5935/abc.20150012"/>
+<meta name="bepress_citation_doi" content="doi:10.5935/abc.20150012"/>
+<meta name="rft_id" content="doi:10.5935/abc.20150012"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1055/s-0034-1398654"/>
@@ -1765,14 +1775,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1589/jpts.27.1549"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20150132"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20150132"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20150132"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20150132"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20150132"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20150132"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20150132"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20150132"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20150132"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20150132"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20150132"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20150132"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20150132"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20150132"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20150132"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20150132"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1589/jpts.27.1223"/>
@@ -1895,14 +1905,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.4081/monaldi.2012.145"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="Doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.Identifier" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.DOI" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DOIs" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="bepress_citation_doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="rft_id" content="doi:10.1519/jsc.0000000000001232"/>
+<meta name="citation_doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="Doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.Identifier" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.DOI" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DOIs" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="bepress_citation_doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="rft_id" content="doi:10.1519/JSC.0000000000001232"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1590/bjpt-rbf.2014.0084"/>
@@ -2065,14 +2075,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.clinbiomech.2015.03.013"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="Doi" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="DC.Identifier" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="DC.DOI" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="DOIs" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="bepress_citation_doi" content="doi:10.1016/s2095-4964(15)60151-0"/>
-<meta name="rft_id" content="doi:10.1016/s2095-4964(15)60151-0"/>
+<meta name="citation_doi" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="Doi" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="DC.Identifier" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="DC.DOI" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="DOIs" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="bepress_citation_doi" content="doi:10.1016/S2095-4964(15)60151-0"/>
+<meta name="rft_id" content="doi:10.1016/S2095-4964(15)60151-0"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jns.2015.08.1257"/>
@@ -2145,14 +2155,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1055/s-0042-104197"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="Doi" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="DC.Identifier" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="DC.DOI" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="DOIs" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="bepress_citation_doi" content="doi:10.1016/s1109-9666(16)30013-6"/>
-<meta name="rft_id" content="doi:10.1016/s1109-9666(16)30013-6"/>
+<meta name="citation_doi" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="Doi" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="DC.Identifier" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="DC.DOI" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="DOIs" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="bepress_citation_doi" content="doi:10.1016/S1109-9666(16)30013-6"/>
+<meta name="rft_id" content="doi:10.1016/S1109-9666(16)30013-6"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1589/jpts.28.569"/>
@@ -2205,24 +2215,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1155/2016/2560710"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.2147/copd.s54328"/>
-<meta name="Doi" content="doi:10.2147/copd.s54328"/>
-<meta name="DC.Identifier" content="doi:10.2147/copd.s54328"/>
-<meta name="DC.DOI" content="doi:10.2147/copd.s54328"/>
-<meta name="DC.Identifier.DOI" content="doi:10.2147/copd.s54328"/>
-<meta name="DOIs" content="doi:10.2147/copd.s54328"/>
-<meta name="bepress_citation_doi" content="doi:10.2147/copd.s54328"/>
-<meta name="rft_id" content="doi:10.2147/copd.s54328"/>
+<meta name="citation_doi" content="doi:10.2147/COPD.S54328"/>
+<meta name="Doi" content="doi:10.2147/COPD.S54328"/>
+<meta name="DC.Identifier" content="doi:10.2147/COPD.S54328"/>
+<meta name="DC.DOI" content="doi:10.2147/COPD.S54328"/>
+<meta name="DC.Identifier.DOI" content="doi:10.2147/COPD.S54328"/>
+<meta name="DOIs" content="doi:10.2147/COPD.S54328"/>
+<meta name="bepress_citation_doi" content="doi:10.2147/COPD.S54328"/>
+<meta name="rft_id" content="doi:10.2147/COPD.S54328"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="Doi" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="DC.Identifier" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="DC.DOI" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="DOIs" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="bepress_citation_doi" content="doi:10.1519/jsc.0000000000001457"/>
-<meta name="rft_id" content="doi:10.1519/jsc.0000000000001457"/>
+<meta name="citation_doi" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="Doi" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="DC.Identifier" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="DC.DOI" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="DOIs" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="bepress_citation_doi" content="doi:10.1519/JSC.0000000000001457"/>
+<meta name="rft_id" content="doi:10.1519/JSC.0000000000001457"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.3109/21679169.2016.1150509"/>
@@ -2255,14 +2265,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.jcm.2016.08.001"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20160072"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20160072"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20160072"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20160072"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20160072"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20160072"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20160072"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20160072"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20160072"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20160072"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20160072"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20160072"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20160072"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20160072"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20160072"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20160072"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.5492/wjccm.v5.i4.219"/>
@@ -2335,14 +2345,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.5114/aoms.2016.57582"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="Doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.Identifier" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.DOI" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="DOIs" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="bepress_citation_doi" content="doi:10.1519/jsc.0000000000001232"/>
-<meta name="rft_id" content="doi:10.1519/jsc.0000000000001232"/>
+<meta name="citation_doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="Doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.Identifier" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.DOI" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="DOIs" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="bepress_citation_doi" content="doi:10.1519/JSC.0000000000001232"/>
+<meta name="rft_id" content="doi:10.1519/JSC.0000000000001232"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.math.2016.02.007"/>
@@ -2375,14 +2385,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1038/srep28780"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20160019"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20160019"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20160019"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20160019"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20160019"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20160019"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20160019"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20160019"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20160019"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20160019"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20160019"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20160019"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20160019"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20160019"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20160019"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20160019"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1186/s40248-016-0066-z"/>
@@ -2405,24 +2415,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.3389/fnhum.2016.00434"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x20165200"/>
-<meta name="Doi" content="doi:10.1590/1414-431x20165200"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x20165200"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x20165200"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x20165200"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x20165200"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x20165200"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x20165200"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X20165200"/>
+<meta name="Doi" content="doi:10.1590/1414-431X20165200"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X20165200"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X20165200"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X20165200"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X20165200"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X20165200"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X20165200"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/ies-160635"/>
-<meta name="Doi" content="doi:10.3233/ies-160635"/>
-<meta name="DC.Identifier" content="doi:10.3233/ies-160635"/>
-<meta name="DC.DOI" content="doi:10.3233/ies-160635"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/ies-160635"/>
-<meta name="DOIs" content="doi:10.3233/ies-160635"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/ies-160635"/>
-<meta name="rft_id" content="doi:10.3233/ies-160635"/>
+<meta name="citation_doi" content="doi:10.3233/IES-160635"/>
+<meta name="Doi" content="doi:10.3233/IES-160635"/>
+<meta name="DC.Identifier" content="doi:10.3233/IES-160635"/>
+<meta name="DC.DOI" content="doi:10.3233/IES-160635"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/IES-160635"/>
+<meta name="DOIs" content="doi:10.3233/IES-160635"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/IES-160635"/>
+<meta name="rft_id" content="doi:10.3233/IES-160635"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.math.2016.05.314"/>
@@ -2443,16 +2453,6 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1111/sms.12693"/>
 <meta name="bepress_citation_doi" content="doi:10.1111/sms.12693"/>
 <meta name="rft_id" content="doi:10.1111/sms.12693"/>
-</head>
-<head>
-<meta name="citation_doi" content="doi:10.1111/sms.13528"/>
-<meta name="Doi" content="doi:10.1111/sms.13528"/>
-<meta name="DC.Identifier" content="doi:10.1111/sms.13528"/>
-<meta name="DC.DOI" content="doi:10.1111/sms.13528"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1111/sms.13528"/>
-<meta name="DOIs" content="doi:10.1111/sms.13528"/>
-<meta name="bepress_citation_doi" content="doi:10.1111/sms.13528"/>
-<meta name="rft_id" content="doi:10.1111/sms.13528"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jbmt.2016.02.005"/>
@@ -2525,14 +2525,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1590/1517-869220162206153957"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="Doi" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="DC.Identifier" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="DC.DOI" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="DOIs" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="bepress_citation_doi" content="doi:10.1016/s2095-4964(16)60233-9"/>
-<meta name="rft_id" content="doi:10.1016/s2095-4964(16)60233-9"/>
+<meta name="citation_doi" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="Doi" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="DC.Identifier" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="DC.DOI" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="DOIs" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="bepress_citation_doi" content="doi:10.1016/S2095-4964(16)60233-9"/>
+<meta name="rft_id" content="doi:10.1016/S2095-4964(16)60233-9"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.5935/1806-0013.20170018"/>
@@ -2555,24 +2555,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.bjpt.2017.06.020"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20170013"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20170013"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20170013"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20170013"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20170013"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20170013"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20170013"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20170013"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20170013"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20170013"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20170013"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20170013"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20170013"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20170013"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20170013"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20170013"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/bmr-150339"/>
-<meta name="Doi" content="doi:10.3233/bmr-150339"/>
-<meta name="DC.Identifier" content="doi:10.3233/bmr-150339"/>
-<meta name="DC.DOI" content="doi:10.3233/bmr-150339"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/bmr-150339"/>
-<meta name="DOIs" content="doi:10.3233/bmr-150339"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/bmr-150339"/>
-<meta name="rft_id" content="doi:10.3233/bmr-150339"/>
+<meta name="citation_doi" content="doi:10.3233/BMR-150339"/>
+<meta name="Doi" content="doi:10.3233/BMR-150339"/>
+<meta name="DC.Identifier" content="doi:10.3233/BMR-150339"/>
+<meta name="DC.DOI" content="doi:10.3233/BMR-150339"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/BMR-150339"/>
+<meta name="DOIs" content="doi:10.3233/BMR-150339"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/BMR-150339"/>
+<meta name="rft_id" content="doi:10.3233/BMR-150339"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1123/japa.2016-0100"/>
@@ -2623,6 +2623,16 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.33233/fb.v18i5.1289"/>
 <meta name="bepress_citation_doi" content="doi:10.33233/fb.v18i5.1289"/>
 <meta name="rft_id" content="doi:10.33233/fb.v18i5.1289"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="Doi" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="DC.DOI" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="DOIs" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/kbgsnjtbvy.1"/>
+<meta name="rft_id" content="doi:10.17632/kbgsnjtbvy.1"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.33233/fb.v18i2.796"/>
@@ -2705,14 +2715,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.26582/k.49.2.5"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/0004-282x20170022"/>
-<meta name="Doi" content="doi:10.1590/0004-282x20170022"/>
-<meta name="DC.Identifier" content="doi:10.1590/0004-282x20170022"/>
-<meta name="DC.DOI" content="doi:10.1590/0004-282x20170022"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282x20170022"/>
-<meta name="DOIs" content="doi:10.1590/0004-282x20170022"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/0004-282x20170022"/>
-<meta name="rft_id" content="doi:10.1590/0004-282x20170022"/>
+<meta name="citation_doi" content="doi:10.1590/0004-282X20170022"/>
+<meta name="Doi" content="doi:10.1590/0004-282X20170022"/>
+<meta name="DC.Identifier" content="doi:10.1590/0004-282X20170022"/>
+<meta name="DC.DOI" content="doi:10.1590/0004-282X20170022"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/0004-282X20170022"/>
+<meta name="DOIs" content="doi:10.1590/0004-282X20170022"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/0004-282X20170022"/>
+<meta name="rft_id" content="doi:10.1590/0004-282X20170022"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1186/s12955-017-0790-x"/>
@@ -2815,24 +2825,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.2519/jospt.2017.6135"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="Doi" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="DC.Identifier" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="DC.DOI" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="DOIs" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="bepress_citation_doi" content="doi:10.1097/tgr.0000000000000134"/>
-<meta name="rft_id" content="doi:10.1097/tgr.0000000000000134"/>
+<meta name="citation_doi" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="Doi" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="DC.Identifier" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="DC.DOI" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="DOIs" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="bepress_citation_doi" content="doi:10.1097/TGR.0000000000000134"/>
+<meta name="rft_id" content="doi:10.1097/TGR.0000000000000134"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="Doi" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="DC.Identifier" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="DC.DOI" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="DC.Identifier.DOI" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="DOIs" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="bepress_citation_doi" content="doi:10.12678/1089-313x.21.4.151"/>
-<meta name="rft_id" content="doi:10.12678/1089-313x.21.4.151"/>
+<meta name="citation_doi" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="Doi" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="DC.Identifier" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="DC.DOI" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="DC.Identifier.DOI" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="DOIs" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="bepress_citation_doi" content="doi:10.12678/1089-313X.21.4.151"/>
+<meta name="rft_id" content="doi:10.12678/1089-313X.21.4.151"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.21091/mppa.2017.1006"/>
@@ -2845,14 +2855,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.21091/mppa.2017.1006"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="Doi" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="DC.DOI" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="DOIs" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1980-6574201700020013"/>
-<meta name="rft_id" content="doi:10.1590/s1980-6574201700020013"/>
+<meta name="citation_doi" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="Doi" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="DC.DOI" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="DOIs" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1980-6574201700020013"/>
+<meta name="rft_id" content="doi:10.1590/S1980-6574201700020013"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.4025/actascihealthsci.v39i2.33468"/>
@@ -2875,14 +2885,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.jmpt.2016.12.001"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x20176512"/>
-<meta name="Doi" content="doi:10.1590/1414-431x20176512"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x20176512"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x20176512"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x20176512"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x20176512"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x20176512"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x20176512"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X20176512"/>
+<meta name="Doi" content="doi:10.1590/1414-431X20176512"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X20176512"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X20176512"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X20176512"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X20176512"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X20176512"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X20176512"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1371/journal.pone.0187833"/>
@@ -2905,24 +2915,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1111/sms.12847"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/bmr-150356"/>
-<meta name="Doi" content="doi:10.3233/bmr-150356"/>
-<meta name="DC.Identifier" content="doi:10.3233/bmr-150356"/>
-<meta name="DC.DOI" content="doi:10.3233/bmr-150356"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/bmr-150356"/>
-<meta name="DOIs" content="doi:10.3233/bmr-150356"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/bmr-150356"/>
-<meta name="rft_id" content="doi:10.3233/bmr-150356"/>
+<meta name="citation_doi" content="doi:10.3233/BMR-150356"/>
+<meta name="Doi" content="doi:10.3233/BMR-150356"/>
+<meta name="DC.Identifier" content="doi:10.3233/BMR-150356"/>
+<meta name="DC.DOI" content="doi:10.3233/BMR-150356"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/BMR-150356"/>
+<meta name="DOIs" content="doi:10.3233/BMR-150356"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/BMR-150356"/>
+<meta name="rft_id" content="doi:10.3233/BMR-150356"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x20175700"/>
-<meta name="Doi" content="doi:10.1590/1414-431x20175700"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x20175700"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x20175700"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x20175700"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x20175700"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x20175700"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x20175700"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X20175700"/>
+<meta name="Doi" content="doi:10.1590/1414-431X20175700"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X20175700"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X20175700"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X20175700"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X20175700"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X20175700"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X20175700"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1055/s-0043-115739"/>
@@ -3025,14 +3035,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1080/08990220.2018.1481829"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1177%2f0031512518767755"/>
-<meta name="Doi" content="doi:10.1177%2f0031512518767755"/>
-<meta name="DC.Identifier" content="doi:10.1177%2f0031512518767755"/>
-<meta name="DC.DOI" content="doi:10.1177%2f0031512518767755"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1177%2f0031512518767755"/>
-<meta name="DOIs" content="doi:10.1177%2f0031512518767755"/>
-<meta name="bepress_citation_doi" content="doi:10.1177%2f0031512518767755"/>
-<meta name="rft_id" content="doi:10.1177%2f0031512518767755"/>
+<meta name="citation_doi" content="doi:10.1177%2F0031512518767755"/>
+<meta name="Doi" content="doi:10.1177%2F0031512518767755"/>
+<meta name="DC.Identifier" content="doi:10.1177%2F0031512518767755"/>
+<meta name="DC.DOI" content="doi:10.1177%2F0031512518767755"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1177%2F0031512518767755"/>
+<meta name="DOIs" content="doi:10.1177%2F0031512518767755"/>
+<meta name="bepress_citation_doi" content="doi:10.1177%2F0031512518767755"/>
+<meta name="rft_id" content="doi:10.1177%2F0031512518767755"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.4025/actascihealthsci.v40i1.33469"/>
@@ -3105,6 +3115,16 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1590/0047-2085000000215"/>
 </head>
 <head>
+<meta name="citation_doi" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="Doi" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="DC.DOI" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="DOIs" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/6wyn9ktx7f.1"/>
+<meta name="rft_id" content="doi:10.17632/6wyn9ktx7f.1"/>
+</head>
+<head>
 <meta name="citation_doi" content="doi:10.5812/asjsm.63946"/>
 <meta name="Doi" content="doi:10.5812/asjsm.63946"/>
 <meta name="DC.Identifier" content="doi:10.5812/asjsm.63946"/>
@@ -3125,14 +3145,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.33233/fb.v19i1.2182"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="Doi" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="DC.Identifier" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="DC.DOI" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="DOIs" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="bepress_citation_doi" content="doi:10.1097/tgr.0000000000000203"/>
-<meta name="rft_id" content="doi:10.1097/tgr.0000000000000203"/>
+<meta name="citation_doi" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="Doi" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="DC.Identifier" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="DC.DOI" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="DOIs" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="bepress_citation_doi" content="doi:10.1097/TGR.0000000000000203"/>
+<meta name="rft_id" content="doi:10.1097/TGR.0000000000000203"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1177/1367493517752500"/>
@@ -3285,14 +3305,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1155/2018/7172686"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="Doi" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="DC.Identifier" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="DC.DOI" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="DC.Identifier.DOI" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="DOIs" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="bepress_citation_doi" content="doi:10.36076/ppj.2018.4.e409"/>
-<meta name="rft_id" content="doi:10.36076/ppj.2018.4.e409"/>
+<meta name="citation_doi" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="Doi" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="DC.Identifier" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="DC.DOI" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="DC.Identifier.DOI" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="DOIs" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="bepress_citation_doi" content="doi:10.36076/ppj.2018.4.E409"/>
+<meta name="rft_id" content="doi:10.36076/ppj.2018.4.E409"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jams.2018.07.006"/>
@@ -3355,14 +3375,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1080/00207454.2017.1385614"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/ies-171179"/>
-<meta name="Doi" content="doi:10.3233/ies-171179"/>
-<meta name="DC.Identifier" content="doi:10.3233/ies-171179"/>
-<meta name="DC.DOI" content="doi:10.3233/ies-171179"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/ies-171179"/>
-<meta name="DOIs" content="doi:10.3233/ies-171179"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/ies-171179"/>
-<meta name="rft_id" content="doi:10.3233/ies-171179"/>
+<meta name="citation_doi" content="doi:10.3233/IES-171179"/>
+<meta name="Doi" content="doi:10.3233/IES-171179"/>
+<meta name="DC.Identifier" content="doi:10.3233/IES-171179"/>
+<meta name="DC.DOI" content="doi:10.3233/IES-171179"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/IES-171179"/>
+<meta name="DOIs" content="doi:10.3233/IES-171179"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/IES-171179"/>
+<meta name="rft_id" content="doi:10.3233/IES-171179"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1080/21679169.2018.1435720"/>
@@ -3425,14 +3445,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.33233/fb.v20i2.2226"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="Doi" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="DC.Identifier" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="DC.DOI" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="DOIs" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="bepress_citation_doi" content="doi:10.1519/jsc.0000000000002372"/>
-<meta name="rft_id" content="doi:10.1519/jsc.0000000000002372"/>
+<meta name="citation_doi" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="Doi" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="DC.Identifier" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="DC.DOI" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="DOIs" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="bepress_citation_doi" content="doi:10.1519/JSC.0000000000002372"/>
+<meta name="rft_id" content="doi:10.1519/JSC.0000000000002372"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1080/17476348.2019.1607301"/>
@@ -3575,14 +3595,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1080/21679169.2018.1531922"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.14336/ad.2018.1226"/>
-<meta name="Doi" content="doi:10.14336/ad.2018.1226"/>
-<meta name="DC.Identifier" content="doi:10.14336/ad.2018.1226"/>
-<meta name="DC.DOI" content="doi:10.14336/ad.2018.1226"/>
-<meta name="DC.Identifier.DOI" content="doi:10.14336/ad.2018.1226"/>
-<meta name="DOIs" content="doi:10.14336/ad.2018.1226"/>
-<meta name="bepress_citation_doi" content="doi:10.14336/ad.2018.1226"/>
-<meta name="rft_id" content="doi:10.14336/ad.2018.1226"/>
+<meta name="citation_doi" content="doi:10.14336/AD.2018.1226"/>
+<meta name="Doi" content="doi:10.14336/AD.2018.1226"/>
+<meta name="DC.Identifier" content="doi:10.14336/AD.2018.1226"/>
+<meta name="DC.DOI" content="doi:10.14336/AD.2018.1226"/>
+<meta name="DC.Identifier.DOI" content="doi:10.14336/AD.2018.1226"/>
+<meta name="DOIs" content="doi:10.14336/AD.2018.1226"/>
+<meta name="bepress_citation_doi" content="doi:10.14336/AD.2018.1226"/>
+<meta name="rft_id" content="doi:10.14336/AD.2018.1226"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jbmt.2019.05.020"/>
@@ -3645,24 +3665,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.12968/ijtr.2017.0170"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/bmr-171027"/>
-<meta name="Doi" content="doi:10.3233/bmr-171027"/>
-<meta name="DC.Identifier" content="doi:10.3233/bmr-171027"/>
-<meta name="DC.DOI" content="doi:10.3233/bmr-171027"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/bmr-171027"/>
-<meta name="DOIs" content="doi:10.3233/bmr-171027"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/bmr-171027"/>
-<meta name="rft_id" content="doi:10.3233/bmr-171027"/>
+<meta name="citation_doi" content="doi:10.3233/BMR-171027"/>
+<meta name="Doi" content="doi:10.3233/BMR-171027"/>
+<meta name="DC.Identifier" content="doi:10.3233/BMR-171027"/>
+<meta name="DC.DOI" content="doi:10.3233/BMR-171027"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/BMR-171027"/>
+<meta name="DOIs" content="doi:10.3233/BMR-171027"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/BMR-171027"/>
+<meta name="rft_id" content="doi:10.3233/BMR-171027"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="Doi" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="DC.Identifier" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="DC.DOI" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="DC.Identifier.DOI" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="DOIs" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="bepress_citation_doi" content="doi:10.23736/s0022-4707.18.08030-1"/>
-<meta name="rft_id" content="doi:10.23736/s0022-4707.18.08030-1"/>
+<meta name="citation_doi" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="Doi" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="DC.Identifier" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="DC.DOI" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="DOIs" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="bepress_citation_doi" content="doi:10.23736/S0022-4707.18.08030-1"/>
+<meta name="rft_id" content="doi:10.23736/S0022-4707.18.08030-1"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1111/papr.12803"/>
@@ -3725,34 +3745,34 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.3389/fneur.2019.00686"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="Doi" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="DC.Identifier" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="DC.DOI" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="DOIs" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="bepress_citation_doi" content="doi:10.1080%2f10669817.2019.1580420"/>
-<meta name="rft_id" content="doi:10.1080%2f10669817.2019.1580420"/>
+<meta name="citation_doi" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="Doi" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="DC.Identifier" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="DC.DOI" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="DOIs" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="bepress_citation_doi" content="doi:10.1080%2F10669817.2019.1580420"/>
+<meta name="rft_id" content="doi:10.1080%2F10669817.2019.1580420"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="Doi" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="DC.Identifier" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="DC.DOI" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="DC.Identifier.DOI" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="DOIs" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="bepress_citation_doi" content="doi:10.23736/s1973-9087.19.05687-9"/>
-<meta name="rft_id" content="doi:10.23736/s1973-9087.19.05687-9"/>
+<meta name="citation_doi" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="Doi" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="DC.Identifier" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="DC.DOI" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="DC.Identifier.DOI" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="DOIs" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="bepress_citation_doi" content="doi:10.23736/S1973-9087.19.05687-9"/>
+<meta name="rft_id" content="doi:10.23736/S1973-9087.19.05687-9"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="Doi" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="DC.Identifier" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="DC.DOI" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="DOIs" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="bepress_citation_doi" content="doi:10.1519/jsc.0000000000002079"/>
-<meta name="rft_id" content="doi:10.1519/jsc.0000000000002079"/>
+<meta name="citation_doi" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="Doi" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="DC.Identifier" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="DC.DOI" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="DOIs" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="bepress_citation_doi" content="doi:10.1519/JSC.0000000000002079"/>
+<meta name="rft_id" content="doi:10.1519/JSC.0000000000002079"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.5585/conssaude.v18n3.11179"/>
@@ -3765,24 +3785,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.5585/conssaude.v18n3.11179"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="Doi" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="DC.Identifier" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="DC.DOI" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="DOIs" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1806-3713%2fe20180311"/>
-<meta name="rft_id" content="doi:10.1590/1806-3713%2fe20180311"/>
+<meta name="citation_doi" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="Doi" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="DC.Identifier" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="DC.DOI" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="DOIs" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1806-3713%2Fe20180311"/>
+<meta name="rft_id" content="doi:10.1590/1806-3713%2Fe20180311"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.3233/bmr-181452"/>
-<meta name="Doi" content="doi:10.3233/bmr-181452"/>
-<meta name="DC.Identifier" content="doi:10.3233/bmr-181452"/>
-<meta name="DC.DOI" content="doi:10.3233/bmr-181452"/>
-<meta name="DC.Identifier.DOI" content="doi:10.3233/bmr-181452"/>
-<meta name="DOIs" content="doi:10.3233/bmr-181452"/>
-<meta name="bepress_citation_doi" content="doi:10.3233/bmr-181452"/>
-<meta name="rft_id" content="doi:10.3233/bmr-181452"/>
+<meta name="citation_doi" content="doi:10.3233/BMR-181452"/>
+<meta name="Doi" content="doi:10.3233/BMR-181452"/>
+<meta name="DC.Identifier" content="doi:10.3233/BMR-181452"/>
+<meta name="DC.DOI" content="doi:10.3233/BMR-181452"/>
+<meta name="DC.Identifier.DOI" content="doi:10.3233/BMR-181452"/>
+<meta name="DOIs" content="doi:10.3233/BMR-181452"/>
+<meta name="bepress_citation_doi" content="doi:10.3233/BMR-181452"/>
+<meta name="rft_id" content="doi:10.3233/BMR-181452"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1371/journal.pone.0219556"/>
@@ -3865,14 +3885,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.jmpt.2019.03.003"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x20198513"/>
-<meta name="Doi" content="doi:10.1590/1414-431x20198513"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x20198513"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x20198513"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x20198513"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x20198513"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x20198513"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x20198513"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X20198513"/>
+<meta name="Doi" content="doi:10.1590/1414-431X20198513"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X20198513"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X20198513"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X20198513"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X20198513"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X20198513"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X20198513"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.archger.2020.104228"/>
@@ -4035,16 +4055,6 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.15406/mojsm.2020.04.0009"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="Doi" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="DC.Identifier" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="DC.DOI" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="DC.Identifier.DOI" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="DOIs" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="bepress_citation_doi" content="doi:10.15406/mojsm.2020.04.00099"/>
-<meta name="rft_id" content="doi:10.15406/mojsm.2020.04.00099"/>
-</head>
-<head>
 <meta name="citation_doi" content="doi:10.1016/j.jbmt.2020.12.040"/>
 <meta name="Doi" content="doi:10.1016/j.jbmt.2020.12.040"/>
 <meta name="DC.Identifier" content="doi:10.1016/j.jbmt.2020.12.040"/>
@@ -4065,14 +4075,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.5935/2595-0118.20200187"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x202010279"/>
-<meta name="Doi" content="doi:10.1590/1414-431x202010279"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x202010279"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x202010279"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x202010279"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x202010279"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x202010279"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x202010279"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X202010279"/>
+<meta name="Doi" content="doi:10.1590/1414-431X202010279"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X202010279"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X202010279"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X202010279"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X202010279"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X202010279"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X202010279"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.29390/cjrt-2020-037"/>
@@ -4125,14 +4135,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.2478/bhk-2020-0008"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="Doi" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="DC.Identifier" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="DC.DOI" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="DC.Identifier.DOI" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="DOIs" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="bepress_citation_doi" content="doi:10.23736/s1973-9087.20.06013-x"/>
-<meta name="rft_id" content="doi:10.23736/s1973-9087.20.06013-x"/>
+<meta name="citation_doi" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="Doi" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="DC.Identifier" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="DC.DOI" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="DC.Identifier.DOI" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="DOIs" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="bepress_citation_doi" content="doi:10.23736/S1973-9087.20.06013-X"/>
+<meta name="rft_id" content="doi:10.23736/S1973-9087.20.06013-X"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.jbmt.2020.10.024"/>
@@ -4175,14 +4185,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.humov.2020.102588"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.2147/copd.s276690"/>
-<meta name="Doi" content="doi:10.2147/copd.s276690"/>
-<meta name="DC.Identifier" content="doi:10.2147/copd.s276690"/>
-<meta name="DC.DOI" content="doi:10.2147/copd.s276690"/>
-<meta name="DC.Identifier.DOI" content="doi:10.2147/copd.s276690"/>
-<meta name="DOIs" content="doi:10.2147/copd.s276690"/>
-<meta name="bepress_citation_doi" content="doi:10.2147/copd.s276690"/>
-<meta name="rft_id" content="doi:10.2147/copd.s276690"/>
+<meta name="citation_doi" content="doi:10.2147/COPD.S276690"/>
+<meta name="Doi" content="doi:10.2147/COPD.S276690"/>
+<meta name="DC.Identifier" content="doi:10.2147/COPD.S276690"/>
+<meta name="DC.DOI" content="doi:10.2147/COPD.S276690"/>
+<meta name="DC.Identifier.DOI" content="doi:10.2147/COPD.S276690"/>
+<meta name="DOIs" content="doi:10.2147/COPD.S276690"/>
+<meta name="bepress_citation_doi" content="doi:10.2147/COPD.S276690"/>
+<meta name="rft_id" content="doi:10.2147/COPD.S276690"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.23736/s1973-9087.19.05687-9"/>
@@ -4433,6 +4443,66 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1016/j.sleep.2021.06.039"/>
 <meta name="bepress_citation_doi" content="doi:10.1016/j.sleep.2021.06.039"/>
 <meta name="rft_id" content="doi:10.1016/j.sleep.2021.06.039"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="Doi" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="DC.Identifier" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="DC.DOI" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="DOIs" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/3d4vr4dwjs.3"/>
+<meta name="rft_id" content="doi:10.17632/3d4vr4dwjs.3"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="Doi" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="DC.DOI" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="DOIs" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/5hbfnnjfff.1"/>
+<meta name="rft_id" content="doi:10.17632/5hbfnnjfff.1"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="Doi" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="DC.DOI" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="DOIs" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/47s5jdw7vn.1"/>
+<meta name="rft_id" content="doi:10.17632/47s5jdw7vn.1"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="Doi" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="DC.DOI" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="DOIs" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/5c97xjmcw2.1"/>
+<meta name="rft_id" content="doi:10.17632/5c97xjmcw2.1"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="Doi" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="DC.Identifier" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="DC.DOI" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="DOIs" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/xbgx8gbyms.4"/>
+<meta name="rft_id" content="doi:10.17632/xbgx8gbyms.4"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="Doi" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="DC.Identifier" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="DC.DOI" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="DOIs" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/tb5fmh8znj.1"/>
+<meta name="rft_id" content="doi:10.17632/tb5fmh8znj.1"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1186/s40945-020-00095-7"/>
@@ -4725,16 +4795,6 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1080/21679169.2019.1676307"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="Doi" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="DC.Identifier" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="DC.DOI" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="DC.Identifier.DOI" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="DOIs" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="bepress_citation_doi" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-<meta name="rft_id" content="doi:ttps://doi.org/10.1080/21679169.2019.1676307"/>
-</head>
-<head>
 <meta name="citation_doi" content="doi:10.5935/2595-0118.20210016"/>
 <meta name="Doi" content="doi:10.5935/2595-0118.20210016"/>
 <meta name="DC.Identifier" content="doi:10.5935/2595-0118.20210016"/>
@@ -4755,14 +4815,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1155/2021/6649135"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/1414-431x202010040"/>
-<meta name="Doi" content="doi:10.1590/1414-431x202010040"/>
-<meta name="DC.Identifier" content="doi:10.1590/1414-431x202010040"/>
-<meta name="DC.DOI" content="doi:10.1590/1414-431x202010040"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431x202010040"/>
-<meta name="DOIs" content="doi:10.1590/1414-431x202010040"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/1414-431x202010040"/>
-<meta name="rft_id" content="doi:10.1590/1414-431x202010040"/>
+<meta name="citation_doi" content="doi:10.1590/1414-431X202010040"/>
+<meta name="Doi" content="doi:10.1590/1414-431X202010040"/>
+<meta name="DC.Identifier" content="doi:10.1590/1414-431X202010040"/>
+<meta name="DC.DOI" content="doi:10.1590/1414-431X202010040"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/1414-431X202010040"/>
+<meta name="DOIs" content="doi:10.1590/1414-431X202010040"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/1414-431X202010040"/>
+<meta name="rft_id" content="doi:10.1590/1414-431X202010040"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1155/2021/9577412"/>
@@ -4855,24 +4915,24 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.33448/rsd-v10i11.20026"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="Doi" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="DC.DOI" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="DOIs" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1980-65742021003221"/>
-<meta name="rft_id" content="doi:10.1590/s1980-65742021003221"/>
+<meta name="citation_doi" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="Doi" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="DC.DOI" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="DOIs" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1980-65742021003221"/>
+<meta name="rft_id" content="doi:10.1590/S1980-65742021003221"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="Doi" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="DC.Identifier" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="DC.DOI" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="DOIs" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="bepress_citation_doi" content="doi:10.1136/bjsports-2021-ioc.187"/>
-<meta name="rft_id" content="doi:10.1136/bjsports-2021-ioc.187"/>
+<meta name="citation_doi" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="Doi" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="DC.Identifier" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="DC.DOI" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="DOIs" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="bepress_citation_doi" content="doi:10.1136/bjsports-2021-IOC.187"/>
+<meta name="rft_id" content="doi:10.1136/bjsports-2021-IOC.187"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.bjpt.2021.04.009"/>
@@ -4905,14 +4965,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.21037/lcm-22-8"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="Doi" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="DC.Identifier" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="DC.DOI" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="DC.Identifier.DOI" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="DOIs" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="bepress_citation_doi" content="doi:10.29359/bjhpa.14.2.06"/>
-<meta name="rft_id" content="doi:10.29359/bjhpa.14.2.06"/>
+<meta name="citation_doi" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="Doi" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="DC.Identifier" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="DC.DOI" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="DC.Identifier.DOI" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="DOIs" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="bepress_citation_doi" content="doi:10.29359/BJHPA.14.2.06"/>
+<meta name="rft_id" content="doi:10.29359/BJHPA.14.2.06"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.31501/rbcm.v30i1.12858"/>
@@ -5055,14 +5115,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1080/03091902.2022.2043947"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="Doi" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="DC.Identifier" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="DC.DOI" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="DOIs" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="bepress_citation_doi" content="doi:10.1097/tgr.0000000000000343"/>
-<meta name="rft_id" content="doi:10.1097/tgr.0000000000000343"/>
+<meta name="citation_doi" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="Doi" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="DC.Identifier" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="DC.DOI" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="DOIs" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="bepress_citation_doi" content="doi:10.1097/TGR.0000000000000343"/>
+<meta name="rft_id" content="doi:10.1097/TGR.0000000000000343"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.bjane.2021.06.013"/>
@@ -5073,6 +5133,16 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1016/j.bjane.2021.06.013"/>
 <meta name="bepress_citation_doi" content="doi:10.1016/j.bjane.2021.06.013"/>
 <meta name="rft_id" content="doi:10.1016/j.bjane.2021.06.013"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="Doi" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="DC.Identifier" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="DC.DOI" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="DC.Identifier.DOI" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="DOIs" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="bepress_citation_doi" content="doi:10.17632/dxj78tyyhj.2"/>
+<meta name="rft_id" content="doi:10.17632/dxj78tyyhj.2"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1016/j.liver.2021.100067"/>
@@ -5305,14 +5375,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1016/j.jsams.2022.09.048"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="Doi" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="DC.Identifier" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="DC.DOI" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="DOIs" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="bepress_citation_doi" content="doi:10.1590/s1980-657420220018921"/>
-<meta name="rft_id" content="doi:10.1590/s1980-657420220018921"/>
+<meta name="citation_doi" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="Doi" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="DC.Identifier" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="DC.DOI" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="DOIs" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="bepress_citation_doi" content="doi:10.1590/S1980-657420220018921"/>
+<meta name="rft_id" content="doi:10.1590/S1980-657420220018921"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.47879/ed.ep.2022625"/>
@@ -5535,14 +5605,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.5281/zenodo.8320232"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="Doi" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="DC.Identifier" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="DC.DOI" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="DOIs" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="bepress_citation_doi" content="doi:10.1016/s0140-6736(23)00571-8"/>
-<meta name="rft_id" content="doi:10.1016/s0140-6736(23)00571-8"/>
+<meta name="citation_doi" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="Doi" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="DC.Identifier" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="DC.DOI" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="DOIs" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="bepress_citation_doi" content="doi:10.1016/S0140-6736(23)00571-8"/>
+<meta name="rft_id" content="doi:10.1016/S0140-6736(23)00571-8"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1093/rheumatology/keac642"/>
@@ -5615,14 +5685,14 @@ function googleTranslateElementInit() {
 <meta name="rft_id" content="doi:10.1186/s40945-023-00171-8"/>
 </head>
 <head>
-<meta name="citation_doi" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="Doi" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="DC.Identifier" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="DC.DOI" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="DC.Identifier.DOI" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="DOIs" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="bepress_citation_doi" content="doi:10.1183/13993003.congress-2023.pa2682"/>
-<meta name="rft_id" content="doi:10.1183/13993003.congress-2023.pa2682"/>
+<meta name="citation_doi" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="Doi" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="DC.Identifier" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="DC.DOI" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="DC.Identifier.DOI" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="DOIs" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="bepress_citation_doi" content="doi:10.1183/13993003.congress-2023.PA2682"/>
+<meta name="rft_id" content="doi:10.1183/13993003.congress-2023.PA2682"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.1186/s12891-023-06160-z"/>
@@ -5703,6 +5773,16 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1016/j.jbmt.2023.04.017"/>
 <meta name="bepress_citation_doi" content="doi:10.1016/j.jbmt.2023.04.017"/>
 <meta name="rft_id" content="doi:10.1016/j.jbmt.2023.04.017"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="Doi" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="DC.Identifier" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="DC.DOI" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="DC.Identifier.DOI" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="DOIs" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="bepress_citation_doi" content="doi:10.31668/movimenta.v16i2.14271"/>
+<meta name="rft_id" content="doi:10.31668/movimenta.v16i2.14271"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.31668/movimenta.v16i2.14271"/>
@@ -5893,6 +5973,16 @@ function googleTranslateElementInit() {
 <meta name="DOIs" content="doi:10.1152/ajpregu.00111.2023"/>
 <meta name="bepress_citation_doi" content="doi:10.1152/ajpregu.00111.2023"/>
 <meta name="rft_id" content="doi:10.1152/ajpregu.00111.2023"/>
+</head>
+<head>
+<meta name="citation_doi" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="Doi" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="DC.Identifier" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="DC.DOI" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="DC.Identifier.DOI" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="DOIs" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="bepress_citation_doi" content="doi:10.20338/bjmb.v17i2.365"/>
+<meta name="rft_id" content="doi:10.20338/bjmb.v17i2.365"/>
 </head>
 <head>
 <meta name="citation_doi" content="doi:10.20338/bjmb.v17i2.365"/>
@@ -6244,675 +6334,19 @@ function googleTranslateElementInit() {
 <meta name="bepress_citation_doi" content="doi:10.55905/revconv.17n.2-162"/>
 <meta name="rft_id" content="doi:10.55905/revconv.17n.2-162"/>
 </head>
-<p>Error in roadoi::oadoi_fetch(dois = doi_without_altmetric<span
-class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric<span class="math inline">\(DOI[ix], email =
-&quot;cienciasdareabilitacao@souunisuam.com.br&quot;) :
-  !is.null(dois) is not TRUE
-Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric\)</span>DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE Error in roadoi::oadoi_fetch(dois =
-doi_without_altmetric$DOI[ix], email = “<a
-href="mailto:cienciasdareabilitacao@souunisuam.com.br"
-class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
-!is.null(dois) is not TRUE</p>
+</div>
+<div id="crossref-open-access-citations" class="section level3">
+<h3><strong>CrossRef (Open Access, Citations)</strong></h3>
+</div>
+<div id="scopus-sjr-citescore" class="section level3">
+<h3><strong>Scopus (SJR, CiteScore)</strong></h3>
+</div>
+<div id="plumx-score" class="section level3">
+<h3><strong>PlumX (score)</strong></h3>
+</div>
+<div id="dimensions-score" class="section level3">
+<h3><strong>Dimensions (score)</strong></h3>
+</div>
 </div>
 <div id="check-doi-produção-ppg" class="section level2">
 <h2><strong>Check DOI produção PPG</strong></h2>
@@ -6923,11 +6357,8 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
 <div id="agregar-dados-de-produção" class="section level2">
 <h2><strong>Agregar dados de produção</strong></h2>
 </div>
-<div id="salva-arquivos-.tsv" class="section level2">
-<h2><strong>Salva arquivos .TSV</strong></h2>
-</div>
-<div id="sessio-info" class="section level2">
-<h2><strong>Sessio info</strong></h2>
+<div id="session-info" class="section level2">
+<h2><strong>Session info</strong></h2>
 <details closed>
 <summary>
 <span title="Click to Expand"> Current session info </span>
@@ -6943,7 +6374,7 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Sao_Paulo
- date     2024-06-19
+ date     2024-06-28
  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/x86_64/ (via rmarkdown)
 
 ─ Packages ──────────────────────────────────────────────────────────────────────────────────────
@@ -6967,12 +6398,12 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
  chromote          * 0.2.0   2024-02-12 [1] CRAN (R 4.4.0)
  class               7.3-22  2023-05-03 [1] CRAN (R 4.4.0)
  classInt            0.4-10  2023-09-05 [1] CRAN (R 4.4.0)
- cli                 3.6.2   2023-12-11 [1] CRAN (R 4.4.0)
+ cli                 3.6.3   2024-06-21 [1] CRAN (R 4.4.0)
  clipr               0.8.0   2022-02-22 [1] CRAN (R 4.4.0)
  codetools           0.2-20  2024-03-31 [1] CRAN (R 4.4.0)
  colorspace          2.1-0   2023-01-23 [1] CRAN (R 4.4.0)
  cowplot           * 1.1.3   2024-01-22 [1] CRAN (R 4.4.0)
- crayon              1.5.2   2022-09-29 [1] CRAN (R 4.4.0)
+ crayon              1.5.3   2024-06-20 [1] CRAN (R 4.4.0)
  crul                1.4.2   2024-04-09 [1] CRAN (R 4.4.0)
  cssparser         * 0.1.1   2024-05-26 [1] Github (coolbutuseless/cssparser@a5a3765)
  curl              * 5.2.1   2024-03-01 [1] CRAN (R 4.4.0)
@@ -6983,7 +6414,7 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
  desc                1.4.3   2023-12-10 [1] CRAN (R 4.4.0)
  details           * 0.3.0   2022-03-27 [1] CRAN (R 4.4.0)
  devtools          * 2.4.5   2022-10-11 [1] CRAN (R 4.4.0)
- digest              0.6.35  2024-03-11 [1] CRAN (R 4.4.0)
+ digest              0.6.36  2024-06-23 [1] CRAN (R 4.4.0)
  do                * 2.0.0.0 2021-08-03 [1] CRAN (R 4.4.0)
  dplyr             * 1.1.4   2023-11-17 [1] CRAN (R 4.4.0)
  DT                * 0.33    2024-04-04 [1] CRAN (R 4.4.0)
@@ -7108,13 +6539,13 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
  sm                * 2.2-6.0 2024-02-17 [1] CRAN (R 4.4.0)
  snakecase           0.11.1  2023-08-27 [1] CRAN (R 4.4.0)
  sp                * 2.1-4   2024-04-30 [1] CRAN (R 4.4.0)
- spatstat.data     * 3.0-4   2024-01-15 [1] CRAN (R 4.4.0)
+ spatstat.data     * 3.1-2   2024-06-21 [1] CRAN (R 4.4.0)
  spatstat.explore  * 3.2-7   2024-03-21 [1] CRAN (R 4.4.0)
  spatstat.geom     * 3.2-9   2024-02-28 [1] CRAN (R 4.4.0)
  spatstat.linnet   * 3.1-5   2024-03-25 [1] CRAN (R 4.4.0)
  spatstat.model    * 3.2-11  2024-03-22 [1] CRAN (R 4.4.0)
  spatstat.random   * 3.2-3   2024-02-29 [1] CRAN (R 4.4.0)
- spatstat.sparse     3.0-3   2023-10-24 [1] CRAN (R 4.4.0)
+ spatstat.sparse     3.1-0   2024-06-21 [1] CRAN (R 4.4.0)
  spatstat.utils      3.0-5   2024-06-17 [1] CRAN (R 4.4.0)
  stringi             1.8.4   2024-05-06 [1] CRAN (R 4.4.0)
  stringr           * 1.5.1   2023-11-14 [1] CRAN (R 4.4.0)
@@ -7133,12 +6564,10 @@ class="email">cienciasdareabilitacao@souunisuam.com.br</a>”) :
  tidyverse         * 2.0.0   2023-02-22 [1] CRAN (R 4.4.0)
  timechange          0.3.0   2024-01-18 [1] CRAN (R 4.4.0)
  tm                * 0.7-13  2024-04-20 [1] CRAN (R 4.4.0)
- triebeard           0.4.1   2023-03-04 [1] CRAN (R 4.4.0)
  tweenr              2.0.3   2024-02-26 [1] CRAN (R 4.4.0)
  tzdb                0.4.0   2023-05-12 [1] CRAN (R 4.4.0)
  units             * 0.8-5   2023-11-28 [1] CRAN (R 4.4.0)
  urlchecker          1.0.1   2021-11-30 [1] CRAN (R 4.4.0)
- urltools            1.7.3   2019-04-14 [1] CRAN (R 4.4.0)
  usethis           * 2.2.3   2024-02-19 [1] CRAN (R 4.4.0)
  utf8                1.2.4   2023-10-22 [1] CRAN (R 4.4.0)
  vctrs               0.6.5   2023-12-01 [1] CRAN (R 4.4.0)

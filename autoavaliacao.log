@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.1)  19 JUL 2024 08:50
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.1)  24 JUL 2024 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1951,9 +1951,12 @@ Overfull \vbox (3311.18866pt too high) has occurred while \output is active []
 [38]
 
 [39]
-Overfull \hbox (183.74759pt too wide) in paragraph at lines 1138--1193
+Overfull \hbox (183.74759pt too wide) in paragraph at lines 1138--1206
  [][] 
  []
+
+
+LaTeX Warning: Float too large for page by 154.42908pt on input line 1206.
 
 
 
@@ -1970,7 +1973,7 @@ Overfull \hbox (183.74759pt too wide) in paragraph at lines 1138--1193
 [45]
 
 [46]
-Overfull \hbox (27.03993pt too wide) in paragraph at lines 1243--1280
+Overfull \hbox (27.03993pt too wide) in paragraph at lines 1256--1293
  [][] 
  []
 
@@ -1979,7 +1982,7 @@ Overfull \hbox (27.03993pt too wide) in paragraph at lines 1243--1280
 [47]
 
 [48]
-Overfull \hbox (40.72008pt too wide) in paragraph at lines 1297--1320
+Overfull \hbox (40.72008pt too wide) in paragraph at lines 1310--1333
  [][] 
  []
 

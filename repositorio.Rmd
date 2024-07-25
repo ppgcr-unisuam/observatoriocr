@@ -192,15 +192,15 @@ if (dim(tcc)[1] != 0) {
 
   colnames(table.tcc) <-
     c("Ano", "Linha de Pesquisa", "Título", "Autor", "Orientador", "Financiador", "País")
+  
+  # drop duplicated entries
+  table.tcc <- table.tcc[!duplicated(table.tcc), ]
+  
+  # sort by Ano and Titulo
+  table.tcc <- table.tcc[order(table.tcc$Ano, table.tcc$Título), ]
 } else {
   table.tcc <- data.frame()
 }
-
-# drop duplicated entries
-table.tcc <- table.tcc[!duplicated(table.tcc),]
-
-# sort by Ano and Titulo
-table.tcc <- table.tcc[order(table.tcc$Ano, table.tcc$Título),]
 
 # print table
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
@@ -282,15 +282,15 @@ if (dim(tcc)[1] != 0) {
 
   colnames(table.tcc) <-
     c("Ano", "Linha de Pesquisa", "Título", "Autor", "Orientador", "Financiador", "País")
+  
+  # drop duplicated entries
+  table.tcc <- table.tcc[!duplicated(table.tcc), ]
+  
+  # sort by Ano and Titulo
+  table.tcc <- table.tcc[order(table.tcc$Ano, table.tcc$Título), ]
 } else {
   table.tcc <- data.frame()
 }
-
-# drop duplicated entries
-table.tcc <- table.tcc[!duplicated(table.tcc),]
-
-# sort by Ano and Titulo
-table.tcc <- table.tcc[order(table.tcc$Ano, table.tcc$Título),]
 
 # print table
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())

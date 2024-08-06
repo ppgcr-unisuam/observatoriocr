@@ -1973,6 +1973,9 @@ for (i in 1:n.proj) {
   }
 }
 
+# complete cases only
+edge.matrix <- edge.matrix[complete.cases(edge.matrix), ]
+
 # build the graph object
 network <- igraph::graph_from_edgelist(edge.matrix, directed = FALSE)
 

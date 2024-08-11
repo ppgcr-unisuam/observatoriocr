@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.9)  11 AUG 2024 08:31
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.9)  11 AUG 2024 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2018,12 +2018,12 @@ Overfull \vbox (3008.51305pt too high) has occurred while \output is active []
 [37]
 
 [38]
-Overfull \hbox (183.73315pt too wide) in paragraph at lines 1131--1199
+Overfull \hbox (183.73315pt too wide) in paragraph at lines 1147--1215
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 66.34517pt on input line 1199.
+LaTeX Warning: Float too large for page by 66.34517pt on input line 1215.
 
 
 
@@ -2040,7 +2040,7 @@ LaTeX Warning: Float too large for page by 66.34517pt on input line 1199.
 [44]
 
 [45]
-Overfull \hbox (27.01315pt too wide) in paragraph at lines 1249--1286
+Overfull \hbox (27.01315pt too wide) in paragraph at lines 1265--1302
  [][] 
  []
 
@@ -2049,7 +2049,7 @@ Overfull \hbox (27.01315pt too wide) in paragraph at lines 1249--1286
 [46]
 
 [47]
-Overfull \hbox (40.71313pt too wide) in paragraph at lines 1303--1326
+Overfull \hbox (40.71313pt too wide) in paragraph at lines 1319--1342
  [][] 
  []
 
@@ -2071,10 +2071,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 39826 strings out of 474235
- 784916 string characters out of 5742254
+ 39827 strings out of 474235
+ 784947 string characters out of 5742254
  2030609 words of memory out of 5000000
- 61898 multiletter control sequences out of 15000+600000
+ 61899 multiletter control sequences out of 15000+600000
  561728 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,123p,1202b,873s stack positions out of 10000i,1000n,20000p,200000b,200000s

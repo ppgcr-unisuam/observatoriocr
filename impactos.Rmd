@@ -226,7 +226,7 @@ egressos <- dplyr::select(
 colnames(egressos)[1] <- "Identificador da Pessoa"
 colnames(egressos)[2] <- "Nome"
 colnames(egressos)[3] <- "Nível"
-egressos$Situação <- "EGRESSO"
+try(egressos$Situação <- "EGRESSO", silent = TRUE)
 
 # Pós-Doc
 sheet <- "Pós-Doc"
@@ -240,7 +240,7 @@ posdoc <- dplyr::select(
   `Vínculo Fim`
 )
 colnames(posdoc)[2] <- "Nome"
-posdoc$Situação <- "PÓS-DOC"
+try(posdoc$Situação <- "PÓS-DOC", silent = TRUE)
 
 # Docentes
 sheet <- "Docentes"
@@ -254,7 +254,7 @@ docentes <- dplyr::select(
   `Data de Desligamento`
 )
 colnames(docentes)[2] <- "Nome"
-docentes$Situação <- "DOCENTE"
+try(docentes$Situação <- "DOCENTE", silent = TRUE)
 
 # bind all data by "Identificador da Pessoa"
 formacao.continuada <- dplyr::bind_rows(
@@ -275,7 +275,7 @@ formacao.continuada <- formacao.continuada %>%
 # create table to fill with start-end year for each situation
 table <- data.frame(
   "Nome" = NA,
-  "Iniciação científica" = NA,
+  Bacharelado = NA,
   "Mestrado" = NA,
   "Doutorado" = NA,
   "Pós-Doc" = NA,
@@ -291,8 +291,8 @@ for (i in 1:length(ID)) {
   # get name
   table[i, "Nome"] <- data$Nome[1]
   # get year of start and end for discentes equal to bacharelado
-  table[i, "Iniciação científica"] <- min(data$`Data Matrícula`[data$Nível == "Bacharelado"], na.rm = TRUE)
-  table[i, "Iniciação científica"] <- format(as.Date(table[i, "Iniciação científica"], format = "%d/%m/%Y"), "%Y")
+  table[i, "Bacharelado"] <- min(data$`Data Matrícula`[data$Nível == "Bacharelado"], na.rm = TRUE)
+  table[i, "Bacharelado"] <- format(as.Date(table[i, "Bacharelado"], format = "%d/%m/%Y"), "%Y")
   # get year of start and end for discentes equal to mestrado
   table[i, "Mestrado"] <- min(data$`Data Matrícula`[data$Nível == "Mestrado"], na.rm = TRUE)
   table[i, "Mestrado"] <- format(as.Date(table[i, "Mestrado"], format = "%d/%m/%Y"), "%Y")
@@ -330,7 +330,7 @@ table$Formação <- apply(table, 1, function(x) {
 # sort by iniciacao científica, mestrado, doutorado, pós-doc, docente e nome
 table.continuada <- table %>%
   dplyr::arrange(
-    `Iniciação científica`,
+    `Bacharelado`,
     `Mestrado`,
     `Doutorado`,
     `Pós-Doc`,
@@ -343,6 +343,16 @@ table.continuada$Ano <- apply(table.continuada, 1, function(x) {
   as.numeric(min(x[2:6], na.rm = TRUE))
 })
 
+# select data to print with Ano in quadrienal.vigente
+table.continuada <- table.continuada %>%
+  dplyr::filter(
+    table.continuada$`Bacharelado` == quadrienal.vigente |
+      table.continuada$`Mestrado` == quadrienal.vigente |
+      table.continuada$`Doutorado` == quadrienal.vigente |
+      table.continuada$`Pós-Doc` == quadrienal.vigente |
+      table.continuada$`Docente` == quadrienal.vigente
+  )
+
 # select columns to print
 table.continuada.part <- table.continuada %>%
   dplyr::select(Atuações, Formação, Ano)
@@ -350,6 +360,15 @@ table.continuada.part <- table.continuada %>%
 # sort by Ano
 table.continuada.part <- table.continuada.part %>%
   dplyr::arrange(Ano, Atuações, Formação)
+
+# select Formação with " - " in Formação
+try(table.continuada.part <- dplyr::filter(table.continuada.part, grepl(" - ", Formação)), silent = TRUE)
+
+# reload previous table if current is empty
+if(nrow(table.continuada.part) == 0) {
+  table.continuada.part <- table.continuada %>%
+    dplyr::select(Atuações, Formação, Ano)
+}
 
 # bug report
 # https://stackoverflow.com/questions/78811916/gtsummary-tbl-summary-sorting-of-stratify-variable/78812588
@@ -366,19 +385,17 @@ tbl_fix_order <- function(x) {
   x  
 }
 
-# select Formação with " - " in Formação
-table.continuada.part <- table.continuada.part %>%
-  dplyr::filter(grepl(" - ", Formação))
-
-# Print tables
-table.continuada.gt <- gtsummary::tbl_summary(
-  table.continuada.part,
-  by = "Ano",
-  statistic = list(gtsummary::all_categorical() ~ "{n}"),
-  missing = "no",
-  digits = gtsummary::everything() ~ 0,
-  sort = gtsummary::all_categorical() ~ "frequency"
-) %>%
+# print tables
+table.2.3.1 <-
+ gtsummary::tbl_summary(
+    table.continuada.part,
+    by = "Ano",
+    statistic = list(gtsummary::all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0,
+    sort = gtsummary::all_categorical() ~ "frequency"
+  ) %>%
+  tbl_fix_order() %>%
   gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::bold_labels() %>%
   tbl_fix_order() %>%
@@ -390,7 +407,7 @@ table.continuada.gt <- gtsummary::tbl_summary(
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA)
 
 # Print table
-print(table.continuada.gt)
+print(table.2.3.1)
 ```
 
 <br>

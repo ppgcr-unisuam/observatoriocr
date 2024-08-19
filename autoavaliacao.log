@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.9)  18 AUG 2024 19:42
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.9)  18 AUG 2024 22:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1084,11 +1084,44 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (/usr/local/texlive/2024/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty
 Package: draftwatermark 2024/03/04 3.3 Put a gray textual watermark on document
  pages
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count395
+\l__siunitx_number_exponent_fixed_int=\count396
+\l__siunitx_number_min_decimal_int=\count397
+\l__siunitx_number_min_integer_int=\count398
+\l__siunitx_number_round_precision_int=\count399
+\l__siunitx_number_lower_threshold_int=\count400
+\l__siunitx_number_upper_threshold_int=\count401
+\l__siunitx_number_group_first_int=\count402
+\l__siunitx_number_group_size_int=\count403
+\l__siunitx_number_group_minimum_int=\count404
+\l__siunitx_angle_tmp_dim=\dimen371
+\l__siunitx_angle_marker_box=\box125
+\l__siunitx_angle_unit_box=\box126
+\l__siunitx_compound_count_int=\count405
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_table_tmp_box=\box127
+\l__siunitx_table_tmp_dim=\dimen372
+\l__siunitx_table_column_width_dim=\dimen373
+\l__siunitx_table_integer_box=\box128
+\l__siunitx_table_decimal_box=\box129
+\l__siunitx_table_uncert_box=\box130
+\l__siunitx_table_before_box=\box131
+\l__siunitx_table_after_box=\box132
+\l__siunitx_table_before_dim=\dimen374
+\l__siunitx_table_carry_dim=\dimen375
+\l__siunitx_unit_tmp_int=\count406
+\l__siunitx_unit_position_int=\count407
+\l__siunitx_unit_total_int=\count408
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count395
+\BKM@id=\count409
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/xurl/xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (./autoavaliacao.aux
@@ -1137,40 +1170,40 @@ LaTeX Warning: Label `tab:turmas' multiply defined.
 )
 \openout1 = `autoavaliacao.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 162.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 162.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 162.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 162.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 162.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 162.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 162.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 171.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1201,7 +1234,7 @@ pt=math;language=dflt;"
 pt=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 162.
+(Font)              scaled to size 10.0pt on input line 171.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1244,18 +1277,18 @@ ath.otf]/OT:script=math;language=dflt;+ssty=1;"
 pt=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 162.
+(Font)              scaled to size 10.0pt on input line 171.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 162.
+(Font)              `operators' in the math version `normal' on input line 171.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 162.
+ line 171.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 162.
+(Font)              `operators' in the math version `bold' on input line 171.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 162.
+t line 171.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1329,15 +1362,15 @@ ript=math;language=dflt;"<6-8.5>s*[1.000096459334209]"[latinmodern-math.otf]/OT
 t=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 162.
+(Font)              `symbols' in the math version `normal' on input line 171.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 162.
+t line 171.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 162.
+(Font)              `symbols' in the math version `bold' on input line 171.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 162.
+t line 171.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999964596882403.
@@ -1406,22 +1439,22 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-62.
+71.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 162.
+t line 171.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 162
+(Font)              `largesymbols' in the math version `bold' on input line 171
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 162.
-LaTeX Info: Redefining \microtypecontext on input line 162.
-Package microtype Info: Applying patch `item' on input line 162.
-Package microtype Info: Applying patch `toc' on input line 162.
-Package microtype Info: Applying patch `eqnum' on input line 162.
-Package microtype Info: Applying patch `footnote' on input line 162.
-Package microtype Info: Applying patch `verbatim' on input line 162.
+t line 171.
+LaTeX Info: Redefining \microtypecontext on input line 171.
+Package microtype Info: Applying patch `item' on input line 171.
+Package microtype Info: Applying patch `toc' on input line 171.
+Package microtype Info: Applying patch `eqnum' on input line 171.
+Package microtype Info: Applying patch `footnote' on input line 171.
+Package microtype Info: Applying patch `verbatim' on input line 171.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1469,7 +1502,15 @@ ern Roman (RS)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ninecolors/ninecolors.sty
 Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 )
-Package hyperref Info: Link coloring OFF on input line 162.
+Package hyperref Info: Link coloring OFF on input line 171.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-d
+ictionary-brazil.trsl
+File: translations-basic-dictionary-brazil.trsl (brazil translation file `trans
+lations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `brazil'. on input line 171.
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
@@ -1621,14 +1662,912 @@ ex-text;!
 [17]
 
 [18]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 1902) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 677--677
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 677--677
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 677--677
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 677--677
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 677--677
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 677--677
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 677--677
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+> Step: build the whole table.
+
+Underfull \hbox (badness 1902) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 677--677
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 677--677
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 677--677
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 677--677
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
 
 [19]
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 677--677
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 677--677
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 677--677
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 677--677
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
 
 [20]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 1902) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 738--738
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 738--738
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 738--738
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 738--738
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 738--738
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 738--738
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 738--738
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+> Step: build the whole table.
+
+Underfull \hbox (badness 1902) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 738--738
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 738--738
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 738--738
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 738--738
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
 
 [21]
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 738--738
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 738--738
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 738--738
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
 
 [22]
+Underfull \hbox (badness 1194) in paragraph at lines 738--738
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
 
 [23]
 
@@ -1642,7 +2581,13 @@ ex-text;!
 
 [28]
 
-[29
+[29]
+
+[30]
+
+[31]
+
+[32
 
 
 
@@ -1652,12 +2597,6 @@ ex-text;!
 
 ]
 
-[30]
-
-[31]
-
-[32]
-
 [33]
 
 [34]
@@ -1665,19 +2604,19 @@ ex-text;!
 [35]
 
 [36]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
 
 [37]
 
 [38]
 
 [39]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [40]
 
@@ -1688,31 +2627,31 @@ ex-text;!
 [43]
 
 [44]
-Overfull \hbox (5.83313pt too wide) in paragraph at lines 1179--1193
- [][] 
- []
-
-
 
 [45]
-Overfull \hbox (183.73315pt too wide) in paragraph at lines 1205--1237
- [][] 
- []
-
-
 
 [46]
-Overfull \hbox (73.66313pt too wide) in paragraph at lines 1249--1270
+
+[47]
+Overfull \hbox (5.83313pt too wide) in paragraph at lines 1288--1302
  [][] 
  []
 
 
 
-[47]
-
 [48]
+Overfull \hbox (183.73315pt too wide) in paragraph at lines 1314--1346
+ [][] 
+ []
+
+
 
 [49]
+Overfull \hbox (73.66313pt too wide) in paragraph at lines 1358--1379
+ [][] 
+ []
+
+
 
 [50]
 
@@ -1721,28 +2660,34 @@ Overfull \hbox (73.66313pt too wide) in paragraph at lines 1249--1270
 [52]
 
 [53]
-Overfull \hbox (27.01315pt too wide) in paragraph at lines 1343--1380
- [][] 
- []
-
-
 
 [54]
 
 [55]
-Overfull \hbox (40.71313pt too wide) in paragraph at lines 1396--1419
+
+[56]
+Overfull \hbox (27.01315pt too wide) in paragraph at lines 1452--1489
  [][] 
  []
 
 
 
-[56]
-
 [57]
 
 [58]
+Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1528
+ [][] 
+ []
 
-[59] (./autoavaliacao.aux)
+
+
+[59]
+
+[60]
+
+[61]
+
+[62] (./autoavaliacao.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-07-20>
@@ -1752,12 +2697,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 39745 strings out of 474235
- 784165 string characters out of 5742254
- 1963609 words of memory out of 5000000
- 61817 multiletter control sequences out of 15000+600000
- 561728 words of font info for 71 fonts, out of 8000000 for 9000
+ 44001 strings out of 474235
+ 920633 string characters out of 5742254
+ 1972609 words of memory out of 5000000
+ 66061 multiletter control sequences out of 15000+600000
+ 568632 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,19n,123p,1202b,879s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,123p,1202b,1332s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao.pdf (62 pages).
+Output written on autoavaliacao.pdf (65 pages).

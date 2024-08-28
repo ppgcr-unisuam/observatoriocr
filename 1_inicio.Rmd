@@ -54,7 +54,7 @@ for(folder in folders){
 ## **Install packages**
 
 <!--install and/or load all packages-->
-```{r install-update-packages, echo = FALSE, include = FALSE}
+```{r install-update-packages, echo = FALSE}
 source("Scripts/all-required-packages.R", local = knitr::knit_global())
 ```
 
@@ -87,9 +87,20 @@ css <- cssparser::read_css("./CSS/main-color.css")
 main.color <- css$`:root`$`--mybackgroundcolor`
 ```
 
+## **Qualis CAPES**
+
+```{r qualis-capes}
+# read XLSX file
+qualis <- readxl::read_xlsx(list.files(
+  path = "Metrics/Qualis",
+  pattern = ".xlsx",
+  full.names = TRUE
+))
+```
+
 ## **GeoBR data**
 
-```{r geobr-data, cache = TRUE, cache.path = "cache/geobr-data/"}
+```{r geobr-data, cache = TRUE, cache.path = "cache/geobr-data/", eval = curl::has_internet()}
 # reading BR geospatial data from IPEA
 geoBRdata <- geobr::list_geobr()$years[3]
 # reading BR geospatial data from IPEA
@@ -606,7 +617,7 @@ for (item in 1:nrow(produtos.sucupira)) {
 }
 
 # rename column
-data.table::setnames(produtos.detalhes.sucupira, 'score', 'altmetric_score')
+names(produtos.detalhes.sucupira)[names(produtos.detalhes.sucupira) == "score"] <- "altmetric_score"
 ```
 
 ### **CrossRef (Open Access, Citations)**

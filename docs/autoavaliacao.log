@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.22)  26 AUG 2024 21:34
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.22)  28 AUG 2024 19:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2675,7 +2675,7 @@ Overfull \hbox (27.01315pt too wide) in paragraph at lines 1452--1489
 [57]
 
 [58]
-Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1528
+Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1539
  [][] 
  []
 
@@ -2687,7 +2687,9 @@ Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1528
 
 [61]
 
-[62] (./autoavaliacao.aux)
+[62]
+
+[63] (./autoavaliacao.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-07-20>
@@ -2705,4 +2707,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  99i,19n,123p,1202b,1332s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao.pdf (65 pages).
+Output written on autoavaliacao.pdf (66 pages).

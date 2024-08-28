@@ -898,7 +898,7 @@ plot.3 <- plot.3 %>% plotly::layout(
 
 
 editais <- financiadores$Programa
-top <- min(length(do::unique_no.NA(editais)), 10)
+top <- min(length(unique(editais[!is.na(editais)])), 10)
 data.editais <-
   na.omit(data.frame(name = names(sort(
     table(editais), decreasing = TRUE
@@ -964,7 +964,7 @@ plot.4 <- plot.4 %>% plotly::layout(
 
 
 agencias <- financiadores$Agência
-top <- min(length(do::unique_no.NA(agencias)), 10)
+top <- min(length(unique(agencias[!is.na(agencias)])), 10)
 data.agencias <-
   na.omit(data.frame(name = names(sort(
     table(agencias), decreasing = TRUE

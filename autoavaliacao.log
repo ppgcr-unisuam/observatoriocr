@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.22)  28 AUG 2024 19:57
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.31)  1 SEP 2024 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao.tex
 (./autoavaliacao.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-07-20>
+L3 programming layer <2024-08-16>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2024/02/08 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/bk10.clo
@@ -99,7 +99,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/unicode-math/unicode-math.sty (
 /usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-07-20 L3 programming layer (loader) 
+Package: expl3 2024-08-16 L3 programming layer (loader) 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count277
@@ -114,10 +114,10 @@ ty
 Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLa
 TeX
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-05-08 L3 Experimental document command parser
+Package: xparse 2024-08-16 L3 Experimental document command parser
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.st
 y
-Package: l3keys2e 2024-05-08 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
@@ -337,7 +337,7 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 \Gin@req@height=\dimen182
 \Gin@req@width=\dimen183
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2024/08/18 v24.8 The Babel package
+Package: babel 2024/08/29 v24.9 The Babel package
 \babel@savecnt=\count312
 \U@D=\dimen184
 \l@unhyphenated=\language89
@@ -1085,7 +1085,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: draftwatermark 2024/03/04 3.3 Put a gray textual watermark on document
  pages
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
+Package: siunitx 2024-08-20 v3.3.21 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count395
 \l__siunitx_number_exponent_fixed_int=\count396
 \l__siunitx_number_min_decimal_int=\count397
@@ -2692,17 +2692,17 @@ Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1539
 [63] (./autoavaliacao.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-07-20>
+L3 programming layer <2024-08-16>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 44003 strings out of 474235
- 920670 string characters out of 5742253
+ 44002 strings out of 474235
+ 920808 string characters out of 5742253
  1972609 words of memory out of 5000000
- 66063 multiletter control sequences out of 15000+600000
+ 66062 multiletter control sequences out of 15000+600000
  568632 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,123p,1202b,1332s stack positions out of 10000i,1000n,20000p,200000b,200000s

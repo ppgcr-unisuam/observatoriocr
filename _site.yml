@@ -84,10 +84,12 @@ navbar:
           href: [pessoas.html#discentes]
         - text: "Egressos"
           href: [pessoas.html#egressos]
+        - text: "Encerrados"
+          href: [pessoas.html#encerrados]
         - text: "Bacharelado"
           href: [pessoas.html#bacharelado]
-        - text: "Formação de pessoal"
-          href: [pessoas.html#formacao-pessoal]
+        - text: "Formação continuada"
+          href: [pessoas.html#formacao-continuada]
         - text: "Grupos de pesquisa"
           href: [pessoas.html#grupos-pesquisa]
         - text: "Participantes externos"

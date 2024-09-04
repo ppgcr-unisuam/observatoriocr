@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.31)  2 SEP 2024 18:23
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.31)  4 SEP 2024 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -576,7 +576,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2024/05/29 v0.6a Insert pages of external PDF documents (AM)
+Package: pdfpages 2024/08/20 v0.6b Insert pages of external PDF documents (AM)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
@@ -588,7 +588,7 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 \AM@pageheight=\dimen309
 \AM@fboxrule=\dimen310
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/ppxetex.def
-File: ppxetex.def 2024/05/29 v0.6a Pdfpages driver for XeTeX (AM)
+File: ppxetex.def 2024/08/20 v0.6b Pdfpages driver for XeTeX (AM)
 )
 \pdfpages@includegraphics@status=\count350
 \AM@pagebox=\box100
@@ -1654,14 +1654,6 @@ ex-text;!
 [13]
 
 [14]
-
-[15]
-
-[16]
-
-[17]
-
-[18]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -1670,904 +1662,912 @@ ex-text;!
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 1902) in paragraph at lines 678--678
+Underfull \hbox (badness 1902) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO DOS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 SISTEMAS CAR-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 DIOVASCULAR E
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 678--678
+Underfull \hbox (badness 1533) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO FUN-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 CIONAL DO SIS-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TEMA MÚSCULO-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 BIOÉTICA NA PES-
  []
 
 
-Underfull \hbox (badness 7504) in paragraph at lines 678--678
+Underfull \hbox (badness 7504) in paragraph at lines 606--606
 \TU/lmr/m/n/10 QUISA COM SERES
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TICA DO ENSINO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ELABORAÇÃO DE
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 678--678
+Underfull \hbox (badness 5681) in paragraph at lines 606--606
 \TU/lmr/m/n/10 PROJETOS DE PES-
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 678--678
+Underfull \hbox (badness 1824) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 678--678
+Underfull \hbox (badness 1824) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ESTUDO DO MOVI-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 FISIOLOGIA DO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TRUMENTAÇÃO E
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 678--678
+Underfull \hbox (badness 2809) in paragraph at lines 606--606
 \TU/lmr/m/n/10 ANÁLISE DE SINAIS
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 678--678
+Underfull \hbox (badness 1102) in paragraph at lines 606--606
 \TU/lmr/m/n/10 CADA À REABILITA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 678--678
+Underfull \hbox (badness 1194) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 REABILITAÇÃO CAR-
  []
 
 
-Underfull \hbox (badness 1057) in paragraph at lines 678--678
+Underfull \hbox (badness 1057) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 REABILITAÇÃO MUS-
  []
 
 
-Underfull \hbox (badness 2980) in paragraph at lines 678--678
+Underfull \hbox (badness 2980) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 678--678
+Underfull \hbox (badness 1033) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 SEMINARS IN REHA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 BILITATION SCIEN-
  []
 
 
-Underfull \hbox (badness 5908) in paragraph at lines 678--678
+Underfull \hbox (badness 5908) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 INSTRUMENTAÇÃO
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 678--678
+Underfull \hbox (badness 4156) in paragraph at lines 606--606
 \TU/lmr/m/n/10 VIRTUAL E TECNO-
  []
 
 
-Underfull \hbox (badness 2261) in paragraph at lines 678--678
+Underfull \hbox (badness 2261) in paragraph at lines 606--606
 \TU/lmr/m/n/10 LOGIA EM REABILI-
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 678--678
+Underfull \hbox (badness 1668) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 MEDIDAS E AVALIA-
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 678--678
+Underfull \hbox (badness 1742) in paragraph at lines 606--606
 \TU/lmr/m/n/10 NO ESPORTE ADAP-
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 678--678
+Underfull \hbox (badness 1194) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 REABILITAÇÃO CAR-
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 1902) in paragraph at lines 678--678
+Underfull \hbox (badness 1902) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO DOS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 SISTEMAS CAR-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 DIOVASCULAR E
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 678--678
+Underfull \hbox (badness 1533) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 AVALIAÇÃO FUN-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 CIONAL DO SIS-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TEMA MÚSCULO-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 BIOÉTICA NA PES-
  []
 
 
-Underfull \hbox (badness 7504) in paragraph at lines 678--678
+Underfull \hbox (badness 7504) in paragraph at lines 606--606
 \TU/lmr/m/n/10 QUISA COM SERES
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TICA DO ENSINO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ELABORAÇÃO DE
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 678--678
+Underfull \hbox (badness 5681) in paragraph at lines 606--606
 \TU/lmr/m/n/10 PROJETOS DE PES-
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 678--678
+Underfull \hbox (badness 1824) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 678--678
+Underfull \hbox (badness 1824) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ESTUDO DO MOVI-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 FISIOLOGIA DO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 \TU/lmr/m/n/10 TRUMENTAÇÃO E
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 678--678
+Underfull \hbox (badness 2809) in paragraph at lines 606--606
 \TU/lmr/m/n/10 ANÁLISE DE SINAIS
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 678--678
+Underfull \hbox (badness 1102) in paragraph at lines 606--606
 \TU/lmr/m/n/10 CADA À REABILITA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
 []\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 606--606
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 606--606
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 606--606
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 606--606
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+
+[16]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 1902) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 667--667
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 667--667
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 667--667
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 667--667
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 667--667
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 667--667
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 667--667
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+> Step: build the whole table.
+
+Underfull \hbox (badness 1902) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 SISTEMAS CAR-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 DIOVASCULAR E
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 CIONAL DO SIS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TEMA MÚSCULO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 667--667
+\TU/lmr/m/n/10 QUISA COM SERES
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TICA DO ENSINO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ELABORAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 667--667
+\TU/lmr/m/n/10 PROJETOS DE PES-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 FISIOLOGIA DO
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 TRUMENTAÇÃO E
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 667--667
+\TU/lmr/m/n/10 ANÁLISE DE SINAIS
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 667--667
+\TU/lmr/m/n/10 CADA À REABILITA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 SEMINARS IN REHA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+\TU/lmr/m/n/10 BILITATION SCIEN-
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 667--667
+\TU/lmr/m/n/10 VIRTUAL E TECNO-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 667--667
+\TU/lmr/m/n/10 LOGIA EM REABILI-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 667--667
+\TU/lmr/m/n/10 NO ESPORTE ADAP-
+ []
+
+
+
+[18]
+Underfull \hbox (badness 1194) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
  []
 
 
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-
-Underfull \hbox (badness 1057) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
- []
-
-
-Underfull \hbox (badness 2980) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 SEMINARS IN REHA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-\TU/lmr/m/n/10 BILITATION SCIEN-
- []
-
-
-Underfull \hbox (badness 5908) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
- []
-
-
-Underfull \hbox (badness 4156) in paragraph at lines 678--678
-\TU/lmr/m/n/10 VIRTUAL E TECNO-
- []
-
-
-Underfull \hbox (badness 2261) in paragraph at lines 678--678
-\TU/lmr/m/n/10 LOGIA EM REABILI-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
- []
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 678--678
-\TU/lmr/m/n/10 NO ESPORTE ADAP-
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 678--678
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-
 
 [20]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Underfull \hbox (badness 1902) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 SISTEMAS CAR-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 DIOVASCULAR E
- []
-
-
-Underfull \hbox (badness 1533) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 CIONAL DO SIS-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TEMA MÚSCULO-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
- []
-
-
-Underfull \hbox (badness 7504) in paragraph at lines 739--739
-\TU/lmr/m/n/10 QUISA COM SERES
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TICA DO ENSINO
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ELABORAÇÃO DE
- []
-
-
-Underfull \hbox (badness 5681) in paragraph at lines 739--739
-\TU/lmr/m/n/10 PROJETOS DE PES-
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 FISIOLOGIA DO
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TRUMENTAÇÃO E
- []
-
-
-Underfull \hbox (badness 2809) in paragraph at lines 739--739
-\TU/lmr/m/n/10 ANÁLISE DE SINAIS
- []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 739--739
-\TU/lmr/m/n/10 CADA À REABILITA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-
-Underfull \hbox (badness 1057) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
- []
-
-
-Underfull \hbox (badness 2980) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 SEMINARS IN REHA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 BILITATION SCIEN-
- []
-
-
-Underfull \hbox (badness 5908) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
- []
-
-
-Underfull \hbox (badness 4156) in paragraph at lines 739--739
-\TU/lmr/m/n/10 VIRTUAL E TECNO-
- []
-
-
-Underfull \hbox (badness 2261) in paragraph at lines 739--739
-\TU/lmr/m/n/10 LOGIA EM REABILI-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
- []
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 739--739
-\TU/lmr/m/n/10 NO ESPORTE ADAP-
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-> Step: build the whole table.
-
-Underfull \hbox (badness 1902) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ATIVIDADES ACADÊ-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO DOS
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 SISTEMAS CAR-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 DIOVASCULAR E
- []
-
-
-Underfull \hbox (badness 1533) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO E DIAG-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 AVALIAÇÃO FUN-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 CIONAL DO SIS-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TEMA MÚSCULO-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 BIOÉTICA NA PES-
- []
-
-
-Underfull \hbox (badness 7504) in paragraph at lines 739--739
-\TU/lmr/m/n/10 QUISA COM SERES
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 DIDÁTICA E PRÁ-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TICA DO ENSINO
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ELABORAÇÃO DE
- []
-
-
-Underfull \hbox (badness 5681) in paragraph at lines 739--739
-\TU/lmr/m/n/10 PROJETOS DE PES-
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 EPIDEMIOLOGIA EM
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ESTUDO DO MOVI-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 FISIOLOGIA DO
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 TRUMENTAÇÃO E
- []
-
-
-Underfull \hbox (badness 2809) in paragraph at lines 739--739
-\TU/lmr/m/n/10 ANÁLISE DE SINAIS
- []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 739--739
-\TU/lmr/m/n/10 CADA À REABILITA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO DE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 ORIENTAÇÃO PARA
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-
-Underfull \hbox (badness 1057) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO MUS-
- []
-
-
-Underfull \hbox (badness 2980) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REDAÇÃO DE ARTI-
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 SEMINARS IN REHA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-\TU/lmr/m/n/10 BILITATION SCIEN-
- []
-
-
-Underfull \hbox (badness 5908) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 TÓPICOS ESPECIAIS
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 INSTRUMENTAÇÃO
- []
-
-
-Underfull \hbox (badness 4156) in paragraph at lines 739--739
-\TU/lmr/m/n/10 VIRTUAL E TECNO-
- []
-
-
-Underfull \hbox (badness 2261) in paragraph at lines 739--739
-\TU/lmr/m/n/10 LOGIA EM REABILI-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 MEDIDAS E AVALIA-
- []
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 739--739
-\TU/lmr/m/n/10 NO ESPORTE ADAP-
- []
-
-
 
 [22]
-Underfull \hbox (badness 1194) in paragraph at lines 739--739
-[]\TU/lmr/m/n/10 REABILITAÇÃO CAR-
- []
-
-
 
 [23]
 
@@ -2579,15 +2579,7 @@ Underfull \hbox (badness 1194) in paragraph at lines 739--739
 
 [27]
 
-[28]
-
-[29]
-
-[30]
-
-[31]
-
-[32
+[28
 
 
 
@@ -2597,11 +2589,26 @@ Underfull \hbox (badness 1194) in paragraph at lines 739--739
 
 ]
 
+[29]
+
+[30]
+
+[31]
+
+[32]
+
 [33]
 
 [34]
 
 [35]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [36]
 
@@ -2610,13 +2617,6 @@ Underfull \hbox (badness 1194) in paragraph at lines 739--739
 [38]
 
 [39]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
 
 [40]
 
@@ -2625,33 +2625,33 @@ ex-text;!
 [42]
 
 [43]
+Overfull \hbox (5.83313pt too wide) in paragraph at lines 1230--1243
+ [][] 
+ []
+
+
 
 [44]
+Overfull \hbox (183.73315pt too wide) in paragraph at lines 1255--1287
+ [][] 
+ []
+
+
 
 [45]
+Overfull \hbox (73.66313pt too wide) in paragraph at lines 1299--1321
+ [][] 
+ []
+
+
 
 [46]
 
 [47]
-Overfull \hbox (5.83313pt too wide) in paragraph at lines 1293--1306
- [][] 
- []
-
-
 
 [48]
-Overfull \hbox (183.73315pt too wide) in paragraph at lines 1318--1350
- [][] 
- []
-
-
 
 [49]
-Overfull \hbox (73.66313pt too wide) in paragraph at lines 1362--1382
- [][] 
- []
-
-
 
 [50]
 
@@ -2666,7 +2666,7 @@ Overfull \hbox (73.66313pt too wide) in paragraph at lines 1362--1382
 [55]
 
 [56]
-Overfull \hbox (27.01315pt too wide) in paragraph at lines 1452--1489
+Overfull \hbox (27.01315pt too wide) in paragraph at lines 1469--1506
  [][] 
  []
 
@@ -2675,7 +2675,7 @@ Overfull \hbox (27.01315pt too wide) in paragraph at lines 1452--1489
 [57]
 
 [58]
-Overfull \hbox (40.71313pt too wide) in paragraph at lines 1505--1539
+Overfull \hbox (40.71313pt too wide) in paragraph at lines 1522--1556
  [][] 
  []
 

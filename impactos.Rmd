@@ -101,8 +101,7 @@ turmas.raw$`Período/Ano` <-
 # remove duplicates based on selected columns
 turmas.raw <- turmas.raw[!duplicated(turmas.raw[c("Período/Ano",
                                                   "ID da Disciplina",
-                                                  "Nome da Disciplina",
-                                                  "Nível do curso")]), ]
+                                                  "ID pessoa do responsável")]), ]
 
 # select variables
 turmas <- turmas.raw %>%
@@ -182,8 +181,7 @@ turmas.raw$`Período/Ano` <-
 # remove duplicates based on selected columns
 turmas.raw <- turmas.raw[!duplicated(turmas.raw[c("Período/Ano",
                                                   "ID da Disciplina",
-                                                  "Nome da Disciplina",
-                                                  "Nível do curso")]), ]
+                                                  "ID pessoa do responsável")]), ]
 
 # select variables
 turmas <- turmas.raw %>%
@@ -272,8 +270,7 @@ turmas.raw$`Período/Ano` <-
 # remove duplicates based on selected columns
 turmas.raw <- turmas.raw[!duplicated(turmas.raw[c("Período/Ano",
                                                   "ID da Disciplina",
-                                                  "Nome da Disciplina",
-                                                  "Nível do curso")]), ]
+                                                  "ID pessoa do responsável")]), ]
 
 # select variables
 turmas <- turmas.raw %>%

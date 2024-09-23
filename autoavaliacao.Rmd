@@ -1687,7 +1687,7 @@ for (i in 1:length(ids)) {
   }
   n.auxilios <- sum(!is.na(data$Auxílio))
   if(n.auxilios > 0){
-    output$Auxílio[i] <- paste0("(", 1:n.bolsas, ") ", na.omit(tools::toTitleCase(tolower(unique(data$Auxílio)))), collapse = "; ")
+    output$Auxílio[i] <- paste0("(", 1:n.auxilios, ") ", na.omit(tools::toTitleCase(tolower(unique(data$Auxílio)))), collapse = "; ")
   } else {
     output$Auxílio[i] <- ""
   }
@@ -2866,7 +2866,8 @@ table.1d <-
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
     digits = gtsummary::everything() ~ 0,
-    sort = gtsummary::all_categorical() ~ "frequency"
+    # sort alphanumeric THIS ONLY
+    sort = gtsummary::all_categorical() ~ "alphanumeric"
   ) %>%
   gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%

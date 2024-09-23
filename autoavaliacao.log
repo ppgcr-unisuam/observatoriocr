@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.22)  22 SEP 2024 17:02
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.22)  22 SEP 2024 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1894,6 +1894,8 @@ Underfull \hbox (badness 1184) in paragraph at lines 634--634
  []
 
 
+
+[15]
 Underfull \hbox (badness 1509) in paragraph at lines 634--634
 []\TU/lmr/m/n/10 Estratégias Reabilitativas No
  []
@@ -1904,8 +1906,6 @@ Underfull \hbox (badness 1184) in paragraph at lines 634--634
  []
 
 
-
-[15]
 Underfull \hbox (badness 4621) in paragraph at lines 634--634
 []\TU/lmr/m/n/10 Intervenções Em Saúde No
  []
@@ -1964,6 +1964,8 @@ Underfull \hbox (badness 2913) in paragraph at lines 689--689
  []
 
 
+
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 689--689
 []\TU/lmr/m/n/10 Aspectos Biopsicossociais e
  []
@@ -1974,8 +1976,6 @@ Underfull \hbox (badness 3407) in paragraph at lines 689--689
  []
 
 
-
-[16]
 Underfull \hbox (badness 1072) in paragraph at lines 689--689
 []\TU/lmr/m/n/10 Avaliação Das Características
  []
@@ -2019,6 +2019,8 @@ Underfull \hbox (badness 1527) in paragraph at lines 720--720
 
 > Step: build the whole table.
 
+
+[19]
 Underfull \hbox (badness 2913) in paragraph at lines 720--720
 []\TU/lmr/m/n/10 Igor Ramathur Telles
  []
@@ -2029,8 +2031,6 @@ Underfull \hbox (badness 1527) in paragraph at lines 720--720
  []
 
 
-
-[19]
 
 [20]
 > Step: init table outer spec.
@@ -2690,7 +2690,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  44266 strings out of 474235
  927781 string characters out of 5742253
- 1772769 words of memory out of 5000000
+ 1754363 words of memory out of 5000000
  66326 multiletter control sequences out of 15000+600000
  584630 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

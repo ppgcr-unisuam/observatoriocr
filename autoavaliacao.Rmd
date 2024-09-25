@@ -2497,37 +2497,35 @@ sucupira <- sucupira[sucupira$Categoria == "PERMANENTE", ]
 sucupira$'Data de Admissão' <-
   substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento' <-
-  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"),
-         1,
-         4)
+  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
-docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Categoria", colnames(sucupira))]),]
-docentes <- docentes[order(docentes$"Nome Docente"), ]
+docentes <- docentes.quadrienio
 
 table.doc <-
   data.frame(matrix(
     NA,
-    nrow = dim(docentes)[1],
+    nrow = length(docentes),
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
+table.doc <- cbind(docentes, table.doc)
 colnames(table.doc) <-
   c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
       sucupira.list[as.character(quadrienal.vigente[j])][[1]]
     
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria == "PERMANENTE", ]
+    
     table.doc[i, j + 1] <-
-      try(sucupira.temp$'Categoria'[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)]
+      try(sucupira.temp$Categoria[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
           , silent = TRUE)
   }
 }
-table.doc.1 <- table.doc
 
 table.doc.long <-
   tidyr::gather(table.doc[, -1],
@@ -2601,37 +2599,35 @@ sucupira <- sucupira[sucupira$Categoria == "PERMANENTE", ]
 sucupira$'Data de Admissão' <-
   substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento' <-
-  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"),
-         1,
-         4)
+  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
-docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
-docentes <- docentes[order(docentes$"Nome Docente"), ]
+docentes <- docentes.quadrienio
 
 table.doc <-
   data.frame(matrix(
     NA,
-    nrow = dim(docentes)[1],
+    nrow = length(docentes),
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
+table.doc <- cbind(docentes, table.doc)
 colnames(table.doc) <-
   c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
       sucupira.list[as.character(quadrienal.vigente[j])][[1]]
     
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria == "PERMANENTE", ]
+    
     table.doc[i, j + 1] <-
-      try(sucupira.temp$'Tipo vínculo'[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)]
+      try(sucupira.temp$'Tipo vínculo'[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
           , silent = TRUE)
   }
 }
-table.doc.2 <- table.doc
 
 table.doc.long <-
   tidyr::gather(table.doc[, -1],
@@ -2702,37 +2698,35 @@ sucupira <- sucupira[sucupira$Categoria == "PERMANENTE", ]
 sucupira$'Data de Admissão' <-
   substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento' <-
-  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"),
-         1,
-         4)
+  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
-docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
-docentes <- docentes[order(docentes$"Nome Docente"), ]
+docentes <- docentes.quadrienio
 
 table.doc <-
   data.frame(matrix(
     NA,
-    nrow = dim(docentes)[1],
+    nrow = length(docentes),
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
+table.doc <- cbind(docentes, table.doc)
 colnames(table.doc) <-
   c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
       sucupira.list[as.character(quadrienal.vigente[j])][[1]]
     
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria == "PERMANENTE", ]
+    
     table.doc[i, j + 1] <-
-      try(sucupira.temp$'Regime de Trabalho'[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)]
+      try(sucupira.temp$`Regime de Trabalho`[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
           , silent = TRUE)
   }
 }
-table.doc.3 <- table.doc
 
 table.doc.long <-
   tidyr::gather(table.doc[, -1],
@@ -2808,37 +2802,35 @@ sucupira <- sucupira[sucupira$Categoria == "PERMANENTE", ]
 sucupira$'Data de Admissão' <-
   substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento' <-
-  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"),
-         1,
-         4)
+  substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <-
   "Atual"
 
-docentes <-
-  sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Carga Horária PG (Semanal)", colnames(sucupira))]),]
-docentes <- docentes[order(docentes$"Nome Docente"), ]
+docentes <- docentes.quadrienio
 
 table.doc <-
   data.frame(matrix(
     NA,
-    nrow = dim(docentes)[1],
+    nrow = length(docentes),
     ncol = length(quadrienal.vigente)
   ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
+table.doc <- cbind(docentes, table.doc)
 colnames(table.doc) <-
   c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
     sucupira.temp <-
       sucupira.list[as.character(quadrienal.vigente[j])][[1]]
     
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria == "PERMANENTE", ]
+    
     table.doc[i, j + 1] <-
-      try(sucupira.temp$"Carga Horária PG (Semanal)"[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)]
+      try(sucupira.temp$`Carga Horária PG (Semanal)`[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
           , silent = TRUE)
   }
 }
-table.doc.4 <- table.doc
 
 table.doc.long <- tidyr::gather(table.doc[, -1], "Ano", "Carga Horária PG (Semanal)", colnames(table.doc)[-1], factor_key=TRUE)
 
@@ -2970,19 +2962,29 @@ sucupira$'Data de Admissão' <- substr(as.Date(sucupira$'Data de Admissão', for
 sucupira$'Data de Desligamento' <- substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <- "Atual"
 
-# filter duplicated docentes (changes in details will be exhibited)
-docentes <- sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Área de Conhecimento Titulação", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+docentes <- docentes.quadrienio
 
-# generate tables
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = length(docentes),
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+table.doc <- cbind(docentes, table.doc)
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
-    sucupira.temp <- sucupira.list[as.character(quadrienal.vigente[j])][[1]]
-    table.doc[i, j + 1] <- try(sucupira.temp$'Área de Conhecimento Titulação'[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)], silent = TRUE)
+    sucupira.temp <-
+      sucupira.list[as.character(quadrienal.vigente[j])][[1]]
+    
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria == "PERMANENTE", ]
+    
+    table.doc[i, j + 1] <-
+      try(sucupira.temp$`Área de Conhecimento Titulação`[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
+          , silent = TRUE)
   }
 }
 
@@ -3065,19 +3067,29 @@ sucupira$'Data de Admissão' <- substr(as.Date(sucupira$'Data de Admissão', for
 sucupira$'Data de Desligamento' <- substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
 sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <- "Atual"
 
-# filter duplicated docentes (changes in details will be exhibited)
-docentes <- sucupira[!duplicated(sucupira[, match("Nome Docente", colnames(sucupira)):match("Área de Conhecimento Titulação", colnames(sucupira))]), ]
-docentes <- docentes[order(docentes$"Nome Docente"),]
+docentes <- docentes.quadrienio
 
-# generate tables
-table.doc <- data.frame(matrix(NA, nrow = dim(docentes)[1], ncol = length(quadrienal.vigente)))
+table.doc <-
+  data.frame(matrix(
+    NA,
+    nrow = length(docentes),
+    ncol = length(quadrienal.vigente)
+  ))
 rownames(table.doc) <- NULL
-table.doc <- cbind(docentes$`Nome Docente`, table.doc)
-colnames(table.doc) <- c("Nome Docente", as.character(quadrienal.vigente))
-for (i in 1:dim(docentes)[1]) {
+table.doc <- cbind(docentes, table.doc)
+colnames(table.doc) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
+for (i in 1:length(docentes)) {
   for (j in 1:length(quadrienal.vigente)) {
-    sucupira.temp <- sucupira.list[as.character(quadrienal.vigente[j])][[1]]
-    table.doc[i, j + 1] <- try(sucupira.temp$'Área de Conhecimento Titulação'[match(table.doc$`Nome Docente`[i], sucupira.temp$`Nome Docente`)], silent = TRUE)
+    sucupira.temp <-
+      sucupira.list[as.character(quadrienal.vigente[j])][[1]]
+    
+    # keep docentes permanente only
+    sucupira.temp <- sucupira.temp[sucupira.temp$Categoria != "PERMANENTE", ]
+    
+    table.doc[i, j + 1] <-
+      try(sucupira.temp$`Área de Conhecimento Titulação`[match(toupper(table.doc$`Nome Docente`[i]), sucupira.temp$`Nome Docente`)]
+          , silent = TRUE)
   }
 }
 

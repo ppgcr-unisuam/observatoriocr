@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.22)  26 SEP 2024 02:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.27)  29 SEP 2024 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao.tex
 (./autoavaliacao.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-08-30>
+L3 programming layer <2024-09-10>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2024/02/08 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/bk10.clo
@@ -99,7 +99,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/unicode-math/unicode-math.sty (
 /usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-08-30 L3 programming layer (loader) 
+Package: expl3 2024-09-10 L3 programming layer (loader) 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count277
@@ -2681,7 +2681,7 @@ Overfull \hbox (15.09442pt too wide) in paragraph at lines 1897--1931
 [73] (./autoavaliacao.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-08-30>
+L3 programming layer <2024-09-10>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2690,7 +2690,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  44266 strings out of 474235
  927781 string characters out of 5742253
- 1754362 words of memory out of 5000000
+ 1754367 words of memory out of 5000000
  66326 multiletter control sequences out of 15000+600000
  584630 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

@@ -4531,231 +4531,28 @@ if (knitr::is_html_output()) {
     format = "html",
     booktabs = TRUE,
     linesep = "",
-    caption = "Docentes Permanentes Responsáveis por Projetos"
+    caption = "Docentes Permanentes Responsáveis por Projetos, por Linha de Pesquisa"
   ) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = TRUE,
     position = "center"
-  )
+  ) %>% kableExtra::column_spec(column = 1:ncol(table.doc), width = paste0(c(0.05, rep(0.80/(length(quadrienal.vigente)), times = length(quadrienal.vigente)),0.15)*(21-3-3), "cm")) %>%
+      kableExtra::column_spec(column = 1, bold = TRUE) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
 } else {
   # use tinytable for LaTeX output
   table.doc <- data.frame(table.doc, check.names = FALSE)
   options(tinytable_print_output = "latex")
   tinytable::tt(
     table.doc,
-    width = 1,
+    width = c(0.05, rep(0.80/(length(quadrienal.vigente)), times = length(quadrienal.vigente)),0.15),
     style = "bootstrap",
     align = "l",
-    caption = ifelse(knitr::is_html_output(), "", "Docentes Permanenters Responsáveis por Projetos")
+    caption = ifelse(knitr::is_html_output(), "", "Docentes Permanentes Responsáveis por Projetos, por Linha de Pesquisa")
   ) %>%
     tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
     tinytable::style_tt(i = 0, j = 1:ncol(table.doc), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(table.doc), j = 1, bold = TRUE)
-}
-
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# Add LaTeX commands for new page and float barrier
-if(knitr::is_latex_output()) {
-  cat('\\newpage')
-}
-```
-
-```{r 2-5-2-posdoc, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-table.posdoc <-
-  data.frame(matrix(
-    NA,
-    nrow = length(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"])),
-    ncol = length(quadrienal.vigente)
-  ))
-rownames(table.posdoc) <- NULL
-table.posdoc <-
-  cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Pós-Doc"]),
-        table.posdoc)
-colnames(table.posdoc) <-
-  c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
-for (i in 1:dim(table.posdoc)[1]) {
-  for (j in 1:length(quadrienal.vigente)) {
-    data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
-    table.posdoc[i, j + 1] <-
-      try(data$`Nome do Membro do Projeto`[match(table.posdoc$`Nome do Projeto de Pesquisa`[i],
-                                                 data$`Nome do Projeto de Pesquisa`)], silent = TRUE)
-  }
-}
-
-table.posdoc.long <-
-  tidyr::gather(
-    table.posdoc[, -1],
-    "Ano",
-    "Nome do Membro do Projeto",
-    colnames(table.posdoc)[-1],
-    factor_key = TRUE
-  )
-
-# to title case
-table.posdoc.long$`Nome do Membro do Projeto` <- tools::toTitleCase(tolower(table.posdoc.long$`Nome do Membro do Projeto`))
-
-
-table.posdoc.long <- rbind(
-  table.posdoc.long,
-  data.frame(
-    "Ano" = rep(paste0(
-      min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = dim(table.posdoc)[1]),
-    "Nome do Membro do Projeto" = rep("Membros", times = dim(table.posdoc)[1]),
-    check.names = FALSE
-  )
-)
-
-my_N <- function(data, ...) {
-  gtsummary::style_number(sum(data == "Membros", na.rm = TRUE), digits = 0)
-}
-
-colnames(table.posdoc.long) <-
-  c("Ano", "Projetos de pesquisa por Pós-Doc")
-
-# change all column types to factors
-table.posdoc.long <- table.posdoc.long %>%
-  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
-
-# print tables
-table.posdoc.gt <-
-  gtsummary::tbl_summary(
-    table.posdoc.long,
-    by = "Ano",
-    statistic = list(gtsummary::all_categorical() ~ "{n}"),
-    missing = "no",
-    digits = gtsummary::everything() ~ 0
-  ) %>%
-  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
-  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-  gtsummary::bold_labels() %>%
-  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
-  gtsummary::modify_header(list(
-    add_stat_1 ~ "**Quadriênio**",
-    gtsummary::all_stat_cols() ~ "**{level}**"
-  )) %>%
-  gtsummary::remove_row_type(
-    variables = c('Projetos de pesquisa por Pós-Doc'),
-    type = "level",
-    level_value = ("Membros")
-  ) %>%
-  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
-```
-
-```{r 2-5-2-posdoutorandos, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-if(knitr::is_html_output()) {
-  cat("##### **Pós-Docs** {#posdocs-linhas-pesquisa}")
-  cat('\n\n')
-}
-
-# Print HTML table
-if (knitr::is_html_output()) {
-  print(table.posdoc.gt)
-}
-
-# Print LaTeX table
-if (knitr::is_latex_output()) {
-  cat('\\FloatBarrier')
-  # Convert gtsummary object to kableExtra object
-  kable_table <- gtsummary::as_kable_extra(
-    x = table.posdoc.gt,
-    escape = FALSE,
-    format = ifelse(knitr::is_html_output(), "html", "latex"),
-    booktabs = TRUE,
-    linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Pós-docs Responsáveis por Projetos")
-  ) %>%
-    kableExtra::kable_styling(
-      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-      latex_options = c("basic", "repeat_header", "HOLD_position"),
-      latex_table_env = "tabularx",
-      full_width = TRUE,
-      position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.65, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm"))
-  print(kable_table)
-}
-
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# Add LaTeX commands for new page and float barrier
-if(knitr::is_latex_output()) {
-  cat('\\newpage')
-}
-
-# select data
-table.projetos.posdoc <-
-  sucupira.df %>% dplyr::select(
-    "Área de Concentração",
-    "Linha de Pesquisa",
-    "Nome do Projeto de Pesquisa",
-    "Natureza do Projeto de Pesquisa",
-    "Nome do Membro do Projeto",
-    "Categoria do Membro do Projeto",
-    "Situação"
-  )
-
-# if duplicated, keep Situacão = Concluído
-table.projetos.posdoc <- table.projetos.posdoc[!duplicated(table.projetos.posdoc[1:5], fromLast = TRUE),]
-
-# select data DOCENTES
-table.posdoc <-
-  table(table.projetos.posdoc$`Nome do Membro do Projeto`[table.projetos.posdoc$`Categoria do Membro do Projeto` == "Pós-Doc"],
-        table.projetos.posdoc$`Linha de Pesquisa`[table.projetos.posdoc$`Categoria do Membro do Projeto` == "Pós-Doc"])
-
-# add row totals
-table.posdoc <- cbind(table.posdoc, rowSums(table.posdoc))
-colnames(table.posdoc) <- stringr::str_to_title(c(head(colnames(table.posdoc), -1), "Quadriênio"))
-
-# add column totals
-table.posdoc <- rbind(table.posdoc, colSums(table.posdoc))
-rownames(table.posdoc) <- stringr::str_to_title(c(head(rownames(table.posdoc), -1), "Quadriênio"))
-
-# add name column
-table.posdoc <- cbind(
-  "Nome do Membro do Projeto" = rownames(table.posdoc),
-  table.posdoc
-)
-
-table.posdoc <- cbind(
-  c(seq(1, dim(table.posdoc)[1] - 1), ""),
-  table.posdoc
-  )
-
-colnames(table.posdoc) <-
-  c("ID", colnames(table.posdoc)[-1])
-rownames(table.posdoc) <- NULL
-
-# print tables
-if (knitr::is_html_output()) {
-  # use kable for HTML output
-  knitr::kable(
-    table.posdoc,
-    align = "l",
-    escape = FALSE,
-    format = "html",
-    booktabs = TRUE,
-    linesep = "",
-    caption = "Pós-Docs Responsáveis por Projetos"
-  ) %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = TRUE,
-    position = "center"
-  )
-} else {
-  # use tinytable for LaTeX output
-  table.posdoc <- data.frame(table.posdoc, check.names = FALSE)
-  options(tinytable_print_output = "latex")
-  tinytable::tt(
-    table.posdoc,
-    width = 1,
-    style = "bootstrap",
-    align = "l",
-    caption = ifelse(knitr::is_html_output(), "", "Pós-Docs Responsáveis por Projetos")
-  ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
-    tinytable::style_tt(i = 0, j = 1:ncol(table.posdoc), bold = TRUE) %>%
-    tinytable::style_tt(i = 1:nrow(table.posdoc), j = 1, bold = TRUE)
 }
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
@@ -5551,7 +5348,7 @@ if (knitr::is_latex_output()) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    )
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1 + 1), width = paste0(c(0.50, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15, 0.15)*(21-3-3), "cm"))
   print(kable_table)
 }
 

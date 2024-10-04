@@ -4068,6 +4068,7 @@ turmas.raw$`Período/Ano` <-
 # remove duplicates based on selected columns
 turmas.raw <- turmas.raw[!duplicated(turmas.raw[c("Período/Ano",
                                                   "ID da Disciplina",
+                                                  "Nível do curso",
                                                   "ID pessoa do responsável")]), ]
 
 # select variables
@@ -4095,10 +4096,14 @@ colnames(turmas) <- c(
   "Responsável"
 )
 
+# unique disciplinas por curso por periodo/ano
+turmas.curso <- turmas %>%
+  dplyr::distinct(`Período/Ano`, `Disciplinas por curso`, `Disciplina`, .keep_all = TRUE)
+
 # generate table (total by year)
 table.part1 <-
   gtsummary::tbl_summary(
-    turmas %>% dplyr::select(
+    turmas.curso %>% dplyr::select(
       "Período/Ano",
       "Disciplinas por curso",
       "Categoria"
@@ -4156,7 +4161,7 @@ if(knitr::is_latex_output()) {
 # generate table (total by year)
 table.part2 <-
   gtsummary::tbl_summary(
-    turmas %>% dplyr::select(
+    turmas.curso %>% dplyr::select(
       "Período/Ano",
       "Disciplina"
     ),

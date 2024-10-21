@@ -100,7 +100,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 <br>
 
-## **Coordenação** {#coordenacao}
+## **Coordenação** {#coordenacao .tabset}
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
@@ -110,9 +110,9 @@ cat('<br>')
 ```
 
 ```{r coordenadores, eval = has.coordenacao}
-# Import necessary libraries with `library::function` notation
-library(readxl)
-library(kableExtra)
+cat('\n\n<!-- -->\n\n')
+cat('### **Coordenadores**')
+cat('\n\n<!-- -->\n\n')
 
 # Read Excel data
 coordenadores <- readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Coordenação")
@@ -144,6 +144,37 @@ source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(table.coord, title = "Pessoas - Coordenação")
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+cat('\n\n<!-- -->\n\n')
+cat('### **Portarias**')
+cat('\n\n<!-- -->\n\n')
+
+# Read Excel data
+portarias.raw <- readxl::read_excel("PPG/Coordenação.xlsx", sheet = "Portarias")
+
+# replace the link by a tag
+Abrir <- matrix(NA, nrow = dim(portarias.raw)[1])
+colnames(Abrir) <- "Abrir"
+# add hyperlinks
+for (i in 1:dim(portarias.raw)[1]) {
+  if (!is.na(portarias.raw[i, ncol(portarias.raw)])) {
+    Abrir[i] <-
+      paste0(
+        '<a href="',
+        portarias.raw[i, ncol(portarias.raw)],
+        '" target="_blank"',
+        '>',
+        # fontawesome icon
+        fontawesome::fa("up-right-from-square"),
+        '</a>'
+      )
+  }
+}
+portarias <- cbind(portarias.raw[, -ncol(portarias.raw)], Abrir)
+
+# print table
+source("Scripts/table-with-buttons.R", local = knitr::knit_global())
+create_dt(portarias, title = "Pessoas - Portarias")
 ```
 
 <br>

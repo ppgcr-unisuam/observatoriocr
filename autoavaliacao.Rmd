@@ -448,8 +448,8 @@ sucupira.df$`Situação` <- tools::toTitleCase(tolower(sucupira.df$`Situação`)
 # remove duplicates
 sucupira.df <- sucupira.df[!duplicated(sucupira.df),]
 
-# if still duplicated, keep Situacão = Concluído
-sucupira.df <- sucupira.df[!duplicated(sucupira.df[, 1:7], fromLast = TRUE),]
+# if duplicated, keep Situacão = Concluído
+sucupira.df <- sucupira.df[!duplicated(sucupira.df[1:7], fromLast = TRUE),]
 
 # if NA, replace values
 sucupira.df$`Área de Concentração`[is.na(sucupira.df$`Área de Concentração`)] <- "Indefinida"
@@ -484,8 +484,6 @@ sucupira <- sucupira %>%
 
 # remove duplicates
 sucupira <- lapply(sucupira, function(x) x[!duplicated(x),])
-
-# if still duplicated, keep Situacão = Concluído
 
 # match financiadores with projects
 sucupira.financiadores <- list()
@@ -3289,57 +3287,297 @@ cat("### **1.2.5 Capacidade de captação de recursos**")
 cat('\n\n')
 ```
 
-```{r auto-financiadores-docente-ano, eval = has.financiadores, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-# Read the financiadores raw data
-financiadores.raw <- readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+```{r 1-2-5-captacao-auxilios, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# filter by type of financiamento = AUXILIO
+sucupira.aux.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "OUTRO AUXÍLIO FINANCEIRO", ]
 
-# Select variables to display, by AGENCIA & ANO
-financiadores <- financiadores.raw %>% 
-  dplyr::select("Proponente", "Ano", "Total")
-
-# Drop rows with empty cells
-financiadores <- financiadores[complete.cases(financiadores),]
-
-# Order financiadores by Proponente
-financiadores <- financiadores[order(financiadores$Proponente, decreasing = TRUE),]
-
-# Filter data for the current quadrennial period
-financiadores <- financiadores[financiadores$Ano %in% quadrienal.vigente, ]
-
-# count number of unique "Docentes" in the data
-my_N <- function(data, ...) {
-  dplyr::n_distinct(data$Proponente)
+table.cap.aux <-
+  data.frame(matrix(
+    NA,
+    nrow = length(unique(sucupira.aux.df$`Nome do Membro do Projeto`)),
+    ncol = length(quadrienal.vigente)
+  ))
+rownames(table.cap.aux) <- NULL
+table.cap.aux <-
+  cbind(unique(sucupira.aux.df$`Nome do Membro do Projeto`), table.cap.aux)
+colnames(table.cap.aux) <-
+  c("Nome do Membro do Projeto", as.character(quadrienal.vigente))
+for (i in 1:dim(table.cap.aux)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    data <- sucupira.aux.df[sucupira.aux.df$Anos == quadrienal.vigente[j],]
+    table.cap.aux[i, j + 1] <-
+      try(data$`Nome do Membro do Projeto`[match(table.cap.aux$`Nome do Membro do Projeto`[i],
+                                         data$`Nome do Membro do Projeto`)], silent = TRUE)
+  }
 }
 
+table.cap.aux.long <-
+  tidyr::gather(table.cap.aux[, -1],
+                "Ano",
+                "Nome do Membro do Projeto",
+                colnames(table.cap.aux)[-1],
+                factor_key = TRUE)
+
+# to title case
+table.cap.aux.long$`Nome do Membro do Projeto` <- tools::toTitleCase(tolower(table.cap.aux.long$`Nome do Membro do Projeto`))
+
+table.cap.aux.long <- rbind(
+  table.cap.aux.long,
+  data.frame(
+    "Ano" = rep(paste0(
+      min(quadrienal.vigente), "-", max(quadrienal.vigente)
+    ), times = dim(table.cap.aux)[1]),
+    "Nome do Membro do Projeto" = rep("Financiador", times = dim(table.cap.aux)[1]),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "Financiador", na.rm = TRUE), digits = 0)
+}
+
+colnames(table.cap.aux.long) <-
+  c("Ano", "Auxílios")
+
 # change all column types to factors
-financiadores <- financiadores %>%
+table.cap.aux.long <- table.cap.aux.long %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
 
 # check for missing docentes.quadrienio
-financiadores$Proponente <- factor(
-  financiadores$Proponente,
-  levels = sort(unique(c(levels(financiadores$Proponente), docentes.quadrienio)))
+table.cap.aux.long$Auxílios <- factor(
+  table.cap.aux.long$Auxílios,
+  levels = sort(unique(c(levels(table.cap.aux.long$Auxílios), docentes.quadrienio)))
 )
 
 # print tables
-table.1.2.5 <-
+table.cap.aux.gt <-
   gtsummary::tbl_summary(
-    financiadores,
+    table.cap.aux.long,
     by = "Ano",
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
-    digits = list(gtsummary::everything() ~ 0, "Total" ~ 2)
+    digits = gtsummary::everything() ~ 0
   ) %>%
   gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
   gtsummary::bold_labels() %>%
   gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
-  gtsummary::modify_fmt_fun(update = add_stat_1 ~ function(x) gtsummary::style_number(x, digits = 0))  %>%
   gtsummary::modify_header(list(
     add_stat_1 ~ "**Quadriênio**",
     gtsummary::all_stat_cols() ~ "**{level}**"
   )) %>%
-  gtsummary::remove_row_type(variables = c("Total"), type = "all")
+  gtsummary::remove_row_type(
+    variables = c('Auxílios'),
+    type = "level",
+    level_value = ("Financiador")
+  ) %>%
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r 1-2-5-captacao-bolsas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# filter by type of financiamento = BOLSA
+sucupira.bolsa.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "BOLSA", ]
+
+table.cap.bolsa <-
+  data.frame(matrix(
+    NA,
+    nrow = length(unique(sucupira.bolsa.df$`Nome do Membro do Projeto`)),
+    ncol = length(quadrienal.vigente)
+  ))
+rownames(table.cap.bolsa) <- NULL
+table.cap.bolsa <-
+  cbind(unique(sucupira.bolsa.df$`Nome do Membro do Projeto`), table.cap.bolsa)
+colnames(table.cap.bolsa) <-
+  c("Nome do Membro do Projeto", as.character(quadrienal.vigente))
+for (i in 1:dim(table.cap.bolsa)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    data <- sucupira.bolsa.df[sucupira.bolsa.df$Anos == quadrienal.vigente[j],]
+    table.cap.bolsa[i, j + 1] <-
+      try(data$`Nome do Membro do Projeto`[match(table.cap.bolsa$`Nome do Membro do Projeto`[i],
+                                         data$`Nome do Membro do Projeto`)], silent = TRUE)
+  }
+}
+
+table.cap.bolsa.long <-
+  tidyr::gather(table.cap.bolsa[, -1],
+                "Ano",
+                "Nome do Membro do Projeto",
+                colnames(table.cap.bolsa)[-1],
+                factor_key = TRUE)
+
+# to title case
+table.cap.bolsa.long$`Nome do Membro do Projeto` <- tools::toTitleCase(tolower(table.cap.bolsa.long$`Nome do Membro do Projeto`))
+
+table.cap.bolsa.long <- rbind(
+  table.cap.bolsa.long,
+  data.frame(
+    "Ano" = rep(paste0(
+      min(quadrienal.vigente), "-", max(quadrienal.vigente)
+    ), times = dim(table.cap.bolsa)[1]),
+    "Nome do Membro do Projeto" = rep("Financiador", times = dim(table.cap.bolsa)[1]),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "Financiador", na.rm = TRUE), digits = 0)
+}
+
+colnames(table.cap.bolsa.long) <-
+  c("Ano", "Bolsas")
+
+# change all column types to factors
+table.cap.bolsa.long <- table.cap.bolsa.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# check for missing docentes.quadrienio
+table.cap.bolsa.long$Bolsas <- factor(
+  table.cap.bolsa.long$Bolsas,
+  levels = sort(unique(c(levels(table.cap.bolsa.long$Bolsas), docentes.quadrienio)))
+)
+
+# print tables
+table.cap.bolsa.gt <-
+  gtsummary::tbl_summary(
+    table.cap.bolsa.long,
+    by = "Ano",
+    statistic = list(gtsummary::all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0
+  ) %>%
+  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(list(
+    add_stat_1 ~ "**Quadriênio**",
+    gtsummary::all_stat_cols() ~ "**{level}**"
+  )) %>%
+  gtsummary::remove_row_type(
+    variables = c('Bolsas'),
+    type = "level",
+    level_value = ("Financiador")
+  ) %>%
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r 1-2-5-captacao-pq, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
+
+# keep docentes permanente only
+sucupira <- lapply(sucupira, function(x) {
+  x <- x[x$Categoria == "PERMANENTE", ]
+  return(x)
+})
+
+docentes <- toupper(docentes.quadrienio)
+
+table.cap.pq <-
+  data.frame(matrix(
+    NA,
+    nrow = length(docentes),
+    ncol = length(quadrienal.vigente)
+  ))
+rownames(table.cap.pq) <- NULL
+table.cap.pq <- cbind(docentes, table.cap.pq)
+colnames(table.cap.pq) <-
+  c("Nome Docente", as.character(quadrienal.vigente))
+for (i in 1:dim(table.cap.pq)[1]) {
+  for (j in 1:length(quadrienal.vigente)) {
+    data <- sucupira[[j]]
+    data <- data[data$`Modalidade da Bolsa CNPq` != "NA", ]
+    table.cap.pq[i, j + 1] <-
+      try(data$`Nome Docente`[match(table.cap.pq$`Nome Docente`[i],
+                                         data$`Nome Docente`)], silent = TRUE)
+  }
+}
+
+table.cap.pq.long <-
+  tidyr::gather(table.cap.pq[, -1],
+                "Ano",
+                "Modalidade da Bolsa CNPq",
+                colnames(table.cap.pq)[-1],
+                factor_key = TRUE)
+
+# to sentence format
+table.cap.pq.long$`Modalidade da Bolsa CNPq` <- stringr::str_to_title(table.cap.pq.long$`Modalidade da Bolsa CNPq`)
+
+# remove empty rows (disregard first column)
+table.cap.pq <- table.cap.pq[complete.cases(table.cap.pq[, -1]), ]
+
+table.cap.pq.long <- rbind(table.cap.pq.long,
+                        data.frame(
+                          "Ano" = rep(paste0(
+                            min(quadrienal.vigente), "-", max(quadrienal.vigente)
+                          ), times = dim(table.cap.pq)[1]),
+                          "Modalidade da Bolsa CNPq" = rep("Modalidade", times = dim(table.cap.pq)[1]),
+                          check.names = FALSE
+                        ))
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "Modalidade", na.rm = TRUE), digits = 0)
+}
+
+# change all column types to factors
+table.cap.pq.long <- table.cap.pq.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+colnames(table.cap.pq.long) <-
+  c("Ano", "Bolsa CNPq")
+
+# change all column types to factors
+table.cap.pq.long <- table.cap.pq.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# check for missing docentes.quadrienio
+table.cap.pq.long$`Bolsa CNPq` <- factor(
+  table.cap.pq.long$`Bolsa CNPq`,
+  levels = sort(unique(c(levels(table.cap.pq.long$`Bolsa CNPq`), docentes.quadrienio)))
+)
+
+table.cap.pq.gt <-
+  gtsummary::tbl_summary(
+    table.cap.pq.long,
+    by = "Ano",
+    statistic = list(gtsummary::all_categorical() ~ "{n}"),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0,
+    sort = gtsummary::all_categorical() ~ "frequency"
+  ) %>%
+  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(
+    list(
+      add_stat_1 ~ "**Quadriênio**",
+      gtsummary::all_stat_cols() ~ "**{level}**"
+    )
+  ) %>%  
+  gtsummary::remove_row_type(variables = c('Bolsa CNPq'), 
+                  type = "level", level_value = ("Modalidade")) %>%
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+```
+
+```{r 1-2-5-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# List all tables
+table.all <- list(
+  table.cap.aux.gt,
+  table.cap.bolsa.gt,
+  table.cap.pq.gt
+)
+
+# Drop empty elements from the list
+table.all <- table.all[lapply(table.all, length) > 0]
+
+table.1.2.5 <- gtsummary::tbl_stack(table.all)
 
 # Print HTML table
 if (knitr::is_html_output()) {
@@ -3356,7 +3594,7 @@ if (knitr::is_latex_output()) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Capacidade de Captação de Recursos")
+    caption = ifelse(knitr::is_html_output(), "", " Capacidade de captação de recursos")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -3364,7 +3602,7 @@ if (knitr::is_latex_output()) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(financiadores$Ano))+ 1), width = paste0(c(0.65, rep(0.20/(length(unique(financiadores$Ano))), times = length(unique(financiadores$Ano))), 0.15)*(21-3-3), "cm"))
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1 + 1), width = paste0(c(0.50, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15, 0.15)*(21-3-3), "cm"))
   print(kable_table)
 }
 
@@ -3373,12 +3611,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
   cat('\\newpage')
-}
-
-if (knitr::is_html_output()) {
-  # print end of tab rows
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
-  )
 }
 ```
 

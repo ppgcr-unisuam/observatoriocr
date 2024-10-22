@@ -493,11 +493,11 @@ periodo <- most.recent
 
 # Get docentes for the current period
 sucupira <- sucupira.list[as.character(periodo)] %>% plyr::compact()
-sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
+sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
 names(sucupira) <- names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
 
 # Keep active professors and remove duplicated data
-sucupira <- sucupira[is.na(sucupira.raw$`Data de Desligamento`),]
+sucupira <- sucupira[is.na(sucupira$`Data de Desligamento`),]
 sucupira.unique <- sucupira[!duplicated(sucupira$`Nome Docente`) & !is.na(sucupira$ORCID),]
 
 # order by name
@@ -725,6 +725,9 @@ discentes <- discentes[discentes$`Situação Discente` == "MATRICULADO", ]
 
 # dplyr::select main supervisors (NO SUPERVISORS FOR UNDERGRAD STUDENTS)
 discentes <- discentes[discentes$`Orientador Principal?` == "Sim", ]
+
+# drop rows with all NA
+discentes <- discentes[!is.na(discentes$`Identificador da Pessoa`), ]
 
 # calculate deadlines
 discentes$'Tempo em curso' <-

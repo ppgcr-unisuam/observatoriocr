@@ -93,7 +93,7 @@ names(sucupira.list) <- as.character(anos)
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
-docentes.quadrienio <- data.frame(do.call(dplyr::bind_rows, sucupira))
+docentes.quadrienio <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
 names(docentes.quadrienio) <-
   names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
 
@@ -410,7 +410,7 @@ sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
 for (i in 1:length(sucupira)) {
   sucupira[[i]] <- cbind("Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]), sucupira[[i]])
 }
-sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira))
+sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
 names(sucupira.df) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
 
 # filter docente responsável
@@ -509,7 +509,7 @@ table.ac <-
     NA,
     nrow = length(unique(sucupira.df$`Área de Concentração`)),
     ncol = length(quadrienal.vigente)
-  ))
+  ), check.names = FALSE)
 rownames(table.ac) <- NULL
 table.ac <-
   cbind(unique(sucupira.df$`Área de Concentração`), table.ac)
@@ -550,7 +550,7 @@ table.ac.doc <- table(
   sucupira.df$Anos[sucupira.df$`Categoria do Membro do Projeto` == "Docente"],
   sucupira.df$`Área de Concentração`[sucupira.df$`Categoria do Membro do Projeto` == "Docente"],
   sucupira.df$`Nome do Membro do Projeto`[sucupira.df$`Categoria do Membro do Projeto` == "Docente"]
-) %>% as.data.frame()
+) %>% as.data.frame(check.names = FALSE)
 # drop Freq = 0
 table.ac.doc <- table.ac.doc[table.ac.doc$Freq > 0, ]
 # select AC e Docentes

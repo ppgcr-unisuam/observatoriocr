@@ -4147,7 +4147,7 @@ out <- NULL
 
 for (i in 1:length(lista.kw)) {
   # Define table caption
-  caption <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(lista.kw[[i]]$`Linha 1`), ' <> ', toupper(lista.kw[[i]]$`Linha 2`))
+  caption <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(unique(lista.kw[[i]]$`Linha 1`)), ' <> ', toupper(unique(lista.kw[[i]]$`Linha 2`)))
   
   # Generate R Markdown code for this chunk
   knit_expanded <- paste0(
@@ -4199,20 +4199,20 @@ for (i in 1:length(lista.kw)) {
 }
 
 cat("
-# Parâmetros de análise de frequência de palavras-chave entre Linhas de Pesquisa:
+**Parâmetros de análise de frequência de palavras-chave entre Linhas de Pesquisa**:
 
-G2: Mede a probabilidade de que duas distribuições de palavras sejam diferentes. Sempre retorna valores positivos. 
+*G2*: Mede a probabilidade de que duas distribuições de palavras sejam diferentes. Sempre retorna valores positivos. 
 Se a frequência de uma palavra em um texto for menor do que em outro, o resultado é ajustado para indicar a direção. 
 Tende a favorecer palavras que aparecem muitas vezes.
 
-LogRatio: Compara o risco relativo de duas palavras ou grupos de palavras. É uma forma intuitiva de ver diferenças. 
+*LogRatio8*: Compara o risco relativo de duas palavras ou grupos de palavras. É uma forma intuitiva de ver diferenças. 
 É menos afetado por palavras que aparecem raramente, mas pode dar resultados enganosos para essas palavras.
 
-PositiveLRC: Uma versão que indica se há evidência de que uma palavra é mais comum em um texto do que em outro. 
+*PositiveLRC*: Uma versão que indica se há evidência de que uma palavra é mais comum em um texto do que em outro. 
 Resultados iguais ou menores que zero significam que não há evidência significativa. É útil para considerar palavras 
 que não são claramente significativas, especialmente em textos menores.
 
-Um filtro de significância é aplicado, de modo que apenas palavras com valores diferentes de zero são exibidas.
+Um filtro de significância é aplicado, de modo que apenas palavras com valores diferentes de zero (p<0,05) são exibidas.
 
 Fonte: Evert S (2023). corpora: Statistics and Data Sets for Corpus Frequency Data. R package version 0.6,
   <https://CRAN.R-project.org/package=corpora>.

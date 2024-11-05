@@ -4147,7 +4147,7 @@ out <- NULL
 
 for (i in 1:length(lista.kw)) {
   # Define table caption
-  caption <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(lista.kw$"Linha 1"[i]), ' - ', toupper(lista.kw$"Linha 2)"[i]))
+  caption <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(lista.kw[[i]]$`Linha 1`), ' <> ', toupper(lista.kw[[i]]$`Linha 2`))
   
   # Generate R Markdown code for this chunk
   knit_expanded <- paste0(
@@ -4199,6 +4199,8 @@ for (i in 1:length(lista.kw)) {
 }
 
 cat("
+# Parâmetros de análise de frequência de palavras-chave entre Linhas de Pesquisa:
+
 G2: Mede a probabilidade de que duas distribuições de palavras sejam diferentes. Sempre retorna valores positivos. 
 Se a frequência de uma palavra em um texto for menor do que em outro, o resultado é ajustado para indicar a direção. 
 Tende a favorecer palavras que aparecem muitas vezes.

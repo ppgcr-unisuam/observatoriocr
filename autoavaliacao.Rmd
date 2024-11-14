@@ -4262,6 +4262,42 @@ cat('\n\n')
 ```
 
 ```{r 2-2-1-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Produções - Autores
+sheet <- "Produções - Autores"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# Get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# Get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
+
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+
+sucupira.df.anais <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.df.anais) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+
+# get ID da Produção
+ID <- sucupira.df.anais$`ID da Produção`
+
+# filter by Subtipo = Trabalho Em Anais
+sucupira.df.anais <- sucupira.df.anais %>% 
+  dplyr::filter(`Subtipo de Produção` == "TRABALHO EM ANAIS")
+
+# filter by ID and "Categoria do Autor" == "Discente"
+sucupira.df.anais <- sucupira.df.anais %>% 
+  dplyr::filter(`Categoria do Autor` == "Discente")
+
+# get unique ID da Produção
+ID <- unique(sucupira.df.anais$`ID da Produção`)
+
 # Produções - Detalhes
 sheet <- "Produções - Detalhes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -4284,6 +4320,9 @@ for (i in 1:length(sucupira)) {
 sucupira.df.anais <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira.df.anais) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
 
+# select sucupira.df.anais with matching ID
+sucupira.df.anais <- sucupira.df.anais[sucupira.df.anais$`ID da Produção` %in% ID,]
+
 sucupira.df.anais <- sucupira.df.anais %>% 
   dplyr::select(
     "ID da Produção",
@@ -4300,10 +4339,6 @@ sucupira.df.anais$`Subtipo de Produção` <- tools::toTitleCase(tolower(sucupira
 sucupira.df.anais$`Tipo de Produção`[is.na(sucupira.df.anais$`Tipo de Produção`)] <- "Indefinido"
 sucupira.df.anais$`Subtipo de Produção`[is.na(sucupira.df.anais$`Subtipo de Produção`)] <- "Indefinido"
 sucupira.df.anais$`Categoria do Autor Principal`[is.na(sucupira.df.anais$`Categoria do Autor Principal`)] <- "Indefinido"
-
-# filter by Subtipo = Trabalho Em Anais
-sucupira.df.anais <- sucupira.df.anais %>% 
-  dplyr::filter(`Subtipo de Produção` == "Trabalho Em Anais")
 ```
 
 ```{r 2-2-1-bibliografica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
@@ -4356,7 +4391,7 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Produção", na.rm = TRUE), digits = 0)
 }
 
-colnames(table.bib.long) <- c("Ano", "Produção bibliográfica")
+colnames(table.bib.long) <- c("Ano", "Produção bibliográfica com discente")
 
 # change all column types to factors
 table.bib.long <- table.bib.long %>%
@@ -4385,90 +4420,7 @@ table.bib.gt <- gtsummary::tbl_summary(
     gtsummary::all_stat_cols() ~ "**{level}**"
   )) %>%
   gtsummary::remove_row_type(
-    variables = c('Produção bibliográfica'),
-    type = "level",
-    level_value = ("Produção")
-  ) %>%
-  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
-```
-
-```{r 2-2-1-autor-principal, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-table.aut <- data.frame(matrix(
-  NA,
-  nrow = length(unique(sucupira.df.anais$`ID da Produção`)),
-  ncol = length(quadrienal.vigente)
-))
-
-rownames(table.aut) <- NULL
-table.aut <- cbind(unique(sucupira.df.anais$`ID da Produção`), table.aut)
-colnames(table.aut) <- c("ID da Produção", as.character(quadrienal.vigente))
-
-# match ID da Produção and Ano and fill with Produção
-for(i in 1:dim(table.aut)[1]) {
-  for(j in 1:length(quadrienal.vigente)) {
-    id <- table.aut[i, 1]
-    ano <- quadrienal.vigente[j]
-    table.aut[i, j + 1] <- ifelse(
-      id %in% sucupira.df.anais$`ID da Produção`[sucupira.df.anais$Anos == ano],
-      sucupira.df.anais$`Categoria do Autor Principal`[match(sucupira.df.anais$`ID da Produção`[i], sucupira.df.anais$`ID da Produção`)],
-      NA
-    )
-  }
-}
-
-table.aut.long <- tidyr::gather(
-  table.aut[, -1],
-  "Ano",
-  "Categoria do Autor Principal",
-  colnames(table.aut)[-1],
-  factor_key = TRUE
-)
-
-table.aut.long <- rbind(
-  table.aut.long,
-  data.frame(
-    "Ano" = rep(paste0(
-      min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = sum(!is.na(table.aut[, -1]))),
-    "Categoria do Autor Principal" = rep("Produção", times = sum(!is.na(table.aut[, -1]))),
-    check.names = FALSE
-  )
-)
-
-my_N <- function(data, ...) {
-  gtsummary::style_number(sum(data == "Produção", na.rm = TRUE), digits = 0)
-}
-
-colnames(table.aut.long) <- c("Ano", "Categoria do Autor Principal")
-
-# change all column types to factors
-table.aut.long <- table.aut.long %>%
-  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
-
-# Print tables
-table.aut.gt <- gtsummary::tbl_summary(
-  table.aut.long,
-  by = "Ano",
-  statistic = list(gtsummary::all_categorical() ~ "{n}"),
-  missing = "no",
-  digits = gtsummary::everything() ~ 0,
-  sort = gtsummary::all_categorical() ~ "frequency"
-  ) %>%
-  gtsummary::add_overall(
-    last = TRUE,
-    col_label = "**Subtotal**",
-    statistic = gtsummary::everything() ~ "{n}"
-  ) %>%
-  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
-  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-  gtsummary::bold_labels() %>%
-  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
-  gtsummary::modify_header(list(
-    add_stat_1 ~ "**Quadriênio**",
-    gtsummary::all_stat_cols() ~ "**{level}**"
-  )) %>%
-  gtsummary::remove_row_type(
-    variables = c('Categoria do Autor Principal'),
+    variables = c('Produção bibliográfica com discente'),
     type = "level",
     level_value = ("Produção")
   ) %>%
@@ -4519,7 +4471,7 @@ table.nat.long <- rbind(
   data.frame(
     "Ano" = rep(paste0(
       min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = sum(!is.na(table.aut[, -1]))),
+    ), times = sum(!is.na(table.nat[, -1]))),
     "Natureza" = rep("Natureza", times = sum(!is.na(table.nat[, -1]))),
     check.names = FALSE
   )
@@ -4529,7 +4481,7 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Natureza", na.rm = TRUE), digits = 0)
 }
 
-colnames(table.nat.long) <- c("Ano", "Natureza")
+colnames(table.nat.long) <- c("Ano", "Natureza da produção")
 
 # change all column types to factors
 table.nat.long <- table.nat.long %>%
@@ -4558,7 +4510,7 @@ table.nat.gt <- gtsummary::tbl_summary(
     gtsummary::all_stat_cols() ~ "**{level}**"
   )) %>%
   gtsummary::remove_row_type(
-    variables = c('Natureza'),
+    variables = c('Natureza da produção'),
     type = "level",
     level_value = ("Natureza")
   ) %>%
@@ -4609,7 +4561,7 @@ table.local.long <- rbind(
   data.frame(
     "Ano" = rep(paste0(
       min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = sum(!is.na(table.aut[, -1]))),
+    ), times = sum(!is.na(table.local[, -1]))),
     "País" = rep("País", times = sum(!is.na(table.local[, -1]))),
     check.names = FALSE
   )
@@ -4660,8 +4612,7 @@ table.local.gt <- gtsummary::tbl_summary(
 table.all <- list(
   table.bib.gt,
   table.nat.gt,
-  table.local.gt,
-  table.aut.gt
+  table.local.gt
 )
 
 # Drop empty elements from the list

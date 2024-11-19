@@ -4362,7 +4362,7 @@ for(i in 1:dim(table.bib)[1]) {
     ano <- quadrienal.vigente[j]
     table.bib[i, j + 1] <- ifelse(
       id %in% sucupira.df.bib$`ID da Produção`[sucupira.df.bib$Anos == ano],
-      sucupira.df.bib$`Subtipo de Produção`[match(sucupira.df.bib$`ID da Produção`[i], sucupira.df.bib$`ID da Produção`)],
+      sucupira.df.bib$`Subtipo de Produção`[match(id, sucupira.df.bib$`ID da Produção`)],
       NA
     )
   }
@@ -4447,7 +4447,7 @@ for(i in 1:dim(table.nat)[1]) {
     ano <- quadrienal.vigente[j]
     table.nat[i, j + 1] <- ifelse(
       id %in% sucupira.df.nat$`ID da Produção`[sucupira.df.nat$Anos == ano],
-      sucupira.df.nat$`Valor do Item de Detalhamento`[match(sucupira.df.nat$`ID da Produção`[i], sucupira.df.nat$`ID da Produção`)],
+      sucupira.df.nat$`Valor do Item de Detalhamento`[match(id, sucupira.df.nat$`ID da Produção`)],
       NA
     )
   }
@@ -4532,7 +4532,7 @@ for(i in 1:dim(table.local)[1]) {
     ano <- quadrienal.vigente[j]
     table.local[i, j + 1] <- ifelse(
       id %in% sucupira.df.local$`ID da Produção`[sucupira.df.local$Anos == ano],
-      sucupira.df.local$`Valor do Item de Detalhamento`[match(sucupira.df.local$`ID da Produção`[i], sucupira.df.local$`ID da Produção`)],
+      sucupira.df.local$`Valor do Item de Detalhamento`[match(id, sucupira.df.local$`ID da Produção`)],
       NA
     )
   }
@@ -4629,9 +4629,9 @@ table.disc <- data.frame(matrix(
 
 rownames(table.disc) <- NULL
 table.disc <- cbind(unique(sucupira.df.disc$`Identificador do Discente`), table.disc)
-colnames(table.disc) <- c("ID da Produção", as.character(quadrienal.vigente))
+colnames(table.disc) <- c("ID", as.character(quadrienal.vigente))
 
-# match ID da Produção and Ano and fill with Produção
+# match ID and Ano and fill with Discente
 for(i in 1:dim(table.disc)[1]) {
   for(j in 1:length(quadrienal.vigente)) {
     id <- table.disc[i, 1]
@@ -4707,16 +4707,16 @@ table.nivel <- data.frame(matrix(
 
 rownames(table.nivel) <- NULL
 table.nivel <- cbind(unique(sucupira.df.disc$`Identificador do Discente`), table.nivel)
-colnames(table.nivel) <- c("ID da Produção", as.character(quadrienal.vigente))
+colnames(table.nivel) <- c("ID", as.character(quadrienal.vigente))
 
-# match ID da Produção and Ano and fill with Produção
+# match ID and Ano and fill with Nivel
 for(i in 1:dim(table.nivel)[1]) {
   for(j in 1:length(quadrienal.vigente)) {
     id <- table.nivel[i, 1]
     ano <- quadrienal.vigente[j]
     table.nivel[i, j + 1] <- ifelse(
       id %in% sucupira.df.disc$`Identificador do Discente`[sucupira.df.disc$Anos == ano],
-      sucupira.df.disc$`Nível Discente`[match(sucupira.df.disc$`Identificador do Discente`[i], sucupira.df.disc$`Identificador do Discente`)],
+      sucupira.df.disc$`Nível Discente`[match(id, sucupira.df.disc$`Identificador do Discente`)],
       NA
     )
   }
@@ -6123,7 +6123,7 @@ for(i in 1:dim(table.prd)[1]) {
     ano <- quadrienal.vigente[j]
     table.prd[i, j + 1] <- ifelse(
       id %in% sucupira.df$`ID da Produção`[sucupira.df$Anos == ano],
-      sucupira.df$`Tipo de Produção`[match(table.prd$`ID da Produção`[i], sucupira.df$`ID da Produção`)],
+      sucupira.df$`Tipo de Produção`[match(id, sucupira.df$`ID da Produção`)],
       NA
     )
   }
@@ -6209,7 +6209,7 @@ for(i in 1:dim(table.bib)[1]) {
     ano <- quadrienal.vigente[j]
     table.bib[i, j + 1] <- ifelse(
       id %in% sucupira.df.bib$`ID da Produção`[sucupira.df.bib$Anos == ano],
-      sucupira.df.bib$`Subtipo de Produção`[match(sucupira.df.bib$`ID da Produção`[i], sucupira.df.bib$`ID da Produção`)],
+      sucupira.df.bib$`Subtipo de Produção`[match(id, sucupira.df.bib$`ID da Produção`)],
       NA
     )
   }
@@ -6295,7 +6295,7 @@ for(i in 1:dim(table.tec)[1]) {
     ano <- quadrienal.vigente[j]
     table.tec[i, j + 1] <- ifelse(
       id %in% sucupira.df.tec$`ID da Produção`[sucupira.df.tec$Anos == ano],
-      sucupira.df.tec$`Subtipo de Produção`[match(sucupira.df.tec$`ID da Produção`[i], sucupira.df.tec$`ID da Produção`)],
+      sucupira.df.tec$`Subtipo de Produção`[match(id, sucupira.df.tec$`ID da Produção`)],
       NA
     )
   }
@@ -6378,7 +6378,7 @@ for(i in 1:dim(table.tcc)[1]) {
     ano <- quadrienal.vigente[j]
     table.tcc[i, j + 1] <- ifelse(
       id %in% sucupira.df$`ID da Produção`[sucupira.df$Anos == ano],
-      sucupira.df$`Produção vinculada a TCC concluído`[match(sucupira.df$`ID da Produção`[i], sucupira.df$`ID da Produção`)],
+      sucupira.df$`Produção vinculada a TCC concluído`[match(id, sucupira.df$`ID da Produção`)],
       NA
     )
   }
@@ -6469,7 +6469,7 @@ for(i in 1:dim(table.ac)[1]) {
     ano <- quadrienal.vigente[j]
     table.ac[i, j + 1] <- ifelse(
       id %in% sucupira.df$`ID da Produção`[sucupira.df$Anos == ano],
-      sucupira.df$`Área de Concentração`[match(sucupira.df$`ID da Produção`[i], sucupira.df$`ID da Produção`)],
+      sucupira.df$`Área de Concentração`[match(id, sucupira.df$`ID da Produção`)],
       NA
     )
   }
@@ -6552,7 +6552,7 @@ for(i in 1:dim(table.lp)[1]) {
     ano <- quadrienal.vigente[j]
     table.lp[i, j + 1] <- ifelse(
       id %in% sucupira.df$`ID da Produção`[sucupira.df$Anos == ano],
-      sucupira.df$`Linha de Pesquisa`[match(sucupira.df$`ID da Produção`[i], sucupira.df$`ID da Produção`)],
+      sucupira.df$`Linha de Pesquisa`[match(id, sucupira.df$`ID da Produção`)],
       NA
     )
   }
@@ -6635,7 +6635,7 @@ for(i in 1:dim(table.aut)[1]) {
     ano <- quadrienal.vigente[j]
     table.aut[i, j + 1] <- ifelse(
       id %in% sucupira.df$`ID da Produção`[sucupira.df$Anos == ano],
-      sucupira.df$`Categoria do Autor Principal`[match(sucupira.df$`ID da Produção`[i], sucupira.df$`ID da Produção`)],
+      sucupira.df$`Categoria do Autor Principal`[match(id, sucupira.df$`ID da Produção`)],
       NA
     )
   }

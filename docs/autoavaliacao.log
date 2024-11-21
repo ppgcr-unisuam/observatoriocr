@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.19)  19 NOV 2024 19:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.21)  21 NOV 2024 04:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -913,7 +913,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty
 Package: draftwatermark 2024/03/04 3.3 Put a gray textual watermark on document pages
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-11-15 v3.3.23 A comprehensive (SI) units package
+Package: siunitx 2024-11-19 v3.3.24 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count395
 \l__siunitx_number_exponent_fixed_int=\count396
 \l__siunitx_number_min_decimal_int=\count397
@@ -2652,7 +2652,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  41624 strings out of 475978
  869541 string characters out of 5777099
- 1663420 words of memory out of 5000000
+ 1663419 words of memory out of 5000000
  63840 multiletter control sequences out of 15000+600000
  593173 words of font info for 111 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191

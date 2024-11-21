@@ -805,3 +805,32 @@ sessioninfo::session_info() %>%
   details::details(summary = 'Current session info',
                    open = FALSE)
 ```
+
+## **Relatórios de autoavaliação**
+
+```{r autoavaliacao, eval = TRUE}
+# trienal/quadrienal CAPES
+periodos <- c("2013-2016", "2017-2020", "2021-2024")
+# spam periods by vector element in a new list
+spam.periodos <- list()
+for (periodo in periodos) {
+  spam.periodos[[periodo]] <- seq(as.numeric(strsplit(periodo, "-")[[1]][1]), as.numeric(strsplit(periodo, "-")[[1]][2]))
+}
+
+# get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+anos <- as.character(anos)
+
+# get spam.periodos elements that have anos in range
+periodos <- names(spam.periodos)[sapply(spam.periodos, function(x) any(x %in% anos))]
+
+# create Rmd files
+for (periodo in periodos) {
+  # read Rmd header
+  rmd <- readLines(paste0("autoavaliacao.Rmd"))
+  # replace period
+  rmd <- gsub("2021;2022;2023;2024", paste0(as.numeric(strsplit(periodo, "-")[[1]][1]):as.numeric(strsplit(periodo, "-")[[1]][2]), collapse = ";"), rmd)
+  # write Rmd
+  writeLines(rmd, paste0("autoavaliacao ", periodo, ".Rmd"))
+}
+```

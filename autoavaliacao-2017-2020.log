@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.24)  24 NOV 2024 19:33
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.28)  28 NOV 2024 20:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao-2017-2020.tex
 (./autoavaliacao-2017-2020.tex
-LaTeX2e <2024-11-01>
+LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
@@ -3130,7 +3130,7 @@ Overfull \hbox (15.09442pt too wide) in paragraph at lines 1896--1933
 
 [78] (./autoavaliacao-2017-2020.aux)
  ***********
-LaTeX2e <2024-11-01>
+LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
  ***********
 
@@ -3138,10 +3138,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 41750 strings out of 475978
- 873791 string characters out of 5777099
- 1924639 words of memory out of 5000000
- 63966 multiletter control sequences out of 15000+600000
+ 41733 strings out of 475948
+ 873558 string characters out of 5775956
+ 1924786 words of memory out of 5000000
+ 63973 multiletter control sequences out of 15000+600000
  600172 words of font info for 120 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,19n,123p,1140b,1272s stack positions out of 10000i,1000n,20000p,200000b,200000s

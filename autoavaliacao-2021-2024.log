@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.3)  3 JAN 2025 13:44
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.6)  6 FEB 2025 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao-2021-2024.tex
 (./autoavaliacao-2021-2024.tex
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-12-09>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
@@ -98,7 +98,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-12-09 L3 programming layer (loader) 
+Package: expl3 2025-01-18 L3 programming layer (loader) 
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count279
@@ -293,7 +293,7 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 \Gin@req@height=\dimen181
 \Gin@req@width=\dimen182
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/01/01 v25.1 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
+Package: babel 2025/02/02 v25.3 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
 \babel@savecnt=\count312
 \U@D=\dimen183
 \l@unhyphenated=\language6
@@ -514,7 +514,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 )) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2024/10/28 v0.6c Insert pages of external PDF documents (AM)
+Package: pdfpages 2025/01/30 v0.6e Insert pages of external PDF documents (AM)
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/eso-pic/eso-pic.sty
@@ -526,7 +526,7 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 \AM@pageheight=\dimen308
 \AM@fboxrule=\dimen309
 (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/pdfpages/ppxetex.def
-File: ppxetex.def 2024/10/28 v0.6c Pdfpages driver for XeTeX (AM)
+File: ppxetex.def 2025/01/30 v0.6e Pdfpages driver for XeTeX (AM)
 )
 \pdfpages@includegraphics@status=\count350
 \AM@pagebox=\box99
@@ -769,7 +769,7 @@ Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 \tcb@temp=\box120
 \tcb@temp=\box121
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2023/10/27 v2.16 Sectioning titles
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box122
 \beforetitleunit=\skip69
 \aftertitleunit=\skip70
@@ -910,10 +910,8 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip105
-) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty
-Package: draftwatermark 2024/03/04 3.3 Put a gray textual watermark on document pages
 ) (/Users/asferreira/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-12-06 v3.4.0 A comprehensive (SI) units package
+Package: siunitx 2025-01-21 v3.4.4 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count395
 \l__siunitx_number_exponent_fixed_int=\count396
 \l__siunitx_number_min_decimal_int=\count397
@@ -1283,8 +1281,6 @@ Package hyperref Info: Link coloring OFF on input line 177.
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf>
-File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-1.pdf, page 1>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-1.pdf, page 1>
@@ -1301,8 +1297,6 @@ File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
 
 
 ]
-File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
 <use PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
@@ -2770,20 +2764,20 @@ Overfull \hbox (15.09442pt too wide) in paragraph at lines 1793--1830
 
 [73] (./autoavaliacao-2021-2024.aux)
  ***********
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-12-09>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 41631 strings out of 475872
- 869540 string characters out of 5774151
- 1688036 words of memory out of 5000000
- 63949 multiletter control sequences out of 15000+600000
- 593583 words of font info for 113 fonts, out of 8000000 for 9000
+ 41561 strings out of 475830
+ 867619 string characters out of 5773047
+ 1687445 words of memory out of 5000000
+ 63926 multiletter control sequences out of 15000+600000
+ 594343 words of font info for 112 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,19n,123p,919b,1295s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,114p,756b,1301s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on autoavaliacao-2021-2024.pdf (76 pages).

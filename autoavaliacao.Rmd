@@ -45,7 +45,6 @@ knitr::opts_chunk$set(
   webshot = "webshot",
   dev = "png"
 )
-nome.IES <- "NOME"
 ```
 
 <!--load caches-->
@@ -5894,13 +5893,161 @@ cat("### **2.5.3 Orientação no PPG**")
 cat('\n\n')
 ```
 
+```{r 2-5-3-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Produções - Autores
+sheet <- "Discentes - Orientadores"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-<!-- EM CONSTRUÇÃO -->
+# Get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
 
+# Get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
 
-```{=latex}
-\newpage
-\FloatBarrier
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+
+sucupira.df.orient <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.df.orient) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+
+# filter by Nível Discente
+sucupira.df.orient <- sucupira.df.orient %>% 
+  dplyr::filter(`Nível Discente` != "Bacharelado")
+
+sucupira.df.orient <- sucupira.df.orient %>% 
+  dplyr::select(
+    "Anos",
+    "Identificador do Discente",
+    "Nome Discente",
+    "Situação Discente",
+    "Identificador do Orientador",
+    "Nome do Orientador",
+    "Tipo de Orientador",
+    "Orientador Principal?"
+  )
+sucupira.df.orient$`Nome do Orientador` <- tools::toTitleCase(tolower(sucupira.df.orient$`Nome do Orientador`))
+```
+
+```{r 2-5-3-orient-matr, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# filter sucupira.df.princ by "Orientador Principal?" == "Sim"
+sucupira.df.princ <- unique(sucupira.df.orient[sucupira.df.orient$`Orientador Principal?` == "Sim", ])
+
+# filter sucupira.df.princ by "Situação Discente" == "Matriculado"
+sucupira.df.princ <- sucupira.df.princ[sucupira.df.princ$`Situação Discente` == "MATRICULADO", ]
+
+table.princ <- data.frame(matrix(
+  NA,
+  nrow = length(unique(sucupira.df.princ$`Identificador do Orientador`)),
+  ncol = length(quadrienal.vigente)
+))
+
+table.princ <- table(sucupira.df.princ$`Identificador do Orientador`, sucupira.df.princ$Anos)
+
+# match Identificador do Orientador to Nome do Orientador
+for(i in 1:dim(table.princ)[1]) {
+  rownames(table.princ)[i] <- sucupira.df.princ$`Nome do Orientador`[which(sucupira.df.princ$`Identificador do Orientador` == rownames(table.princ)[i])]
+}
+
+# convert to data.frame
+table.princ <- as.data.frame(table.princ)
+# rename columns
+colnames(table.princ) <- c("Nome do Orientador", "Ano", "Orientandos")
+
+# replicate each Nome do Orientador by the value of Orientandos
+table.princ.long <- data.frame(
+  "Ano" = rep(table.princ$Ano, times = table.princ$Orientandos),
+  "Nome do Orientador" = rep(table.princ$`Nome do Orientador`, times = table.princ$Orientandos),
+  "Orientandos" = rep(table.princ$Orientandos, times = table.princ$Orientandos),
+  check.names = FALSE
+)
+
+# drop Orientandos column
+table.princ.long <- table.princ.long[, -3]
+
+table.princ.long <- rbind(
+  table.princ.long,
+  data.frame(
+    "Ano" = rep(paste0(
+      min(quadrienal.vigente), "-", max(quadrienal.vigente)
+    ), times =  length(unique(sucupira.df.princ$`Identificador do Discente`))),
+    "Nome do Orientador" = rep("Orientador", times = length(unique(sucupira.df.princ$`Identificador do Discente`))),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "Orientador", na.rm = TRUE), digits = 0)
+}
+
+colnames(table.princ.long) <- c("Ano", "Relação Orientadores - Matriculados")
+
+# change all column types to factors
+table.princ.long <- table.princ.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# Print tables
+table.princ.gt <- gtsummary::tbl_summary(
+  table.princ.long,
+  by = "Ano",
+  statistic = list(gtsummary::all_categorical() ~ "{n}"),
+  missing = "no",
+  digits = gtsummary::everything() ~ 0,
+  sort = gtsummary::all_categorical() ~ "alphanumeric"
+  ) %>%
+  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(list(
+    add_stat_1 ~ "**Quadriênio**",
+    gtsummary::all_stat_cols() ~ "**{level}**"
+  )) %>%
+  gtsummary::remove_row_type(
+    variables = c('Relação Orientadores - Matriculados'),
+    type = "level",
+    level_value = ("Orientador")
+  ) %>%
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.princ.gt)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.princ.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Relação de orientadores com alunos matriculados por ano."),
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.65, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
 ```
 
 <br>
@@ -5917,13 +6064,120 @@ cat("### **2.5.4 Titulação no PPG**")
 cat('\n\n')
 ```
 
+```{r 2-5-4-orient-tit, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# filter sucupira.df.princ by "Orientador Principal?" == "Sim"
+sucupira.df.princ <- unique(sucupira.df.orient[sucupira.df.orient$`Orientador Principal?` == "Sim", ])
 
-<!-- EM CONSTRUÇÃO -->
+# filter sucupira.df.princ by "Situação Discente" == "Matriculado"
+sucupira.df.princ <- sucupira.df.princ[sucupira.df.princ$`Situação Discente` == "TITULADO", ]
 
+table.princ <- data.frame(matrix(
+  NA,
+  nrow = length(unique(sucupira.df.princ$`Identificador do Orientador`)),
+  ncol = length(quadrienal.vigente)
+))
 
-```{=latex}
-\newpage
-\FloatBarrier
+table.princ <- table(sucupira.df.princ$`Identificador do Orientador`, sucupira.df.princ$Anos)
+
+# match Identificador do Orientador to Nome do Orientador
+for(i in 1:dim(table.princ)[1]) {
+  rownames(table.princ)[i] <- sucupira.df.princ$`Nome do Orientador`[which(sucupira.df.princ$`Identificador do Orientador` == rownames(table.princ)[i])]
+}
+
+# convert to data.frame
+table.princ <- as.data.frame(table.princ)
+# rename columns
+colnames(table.princ) <- c("Nome do Orientador", "Ano", "Titulados")
+
+# replicate each Nome do Orientador by the value of Titulados
+table.princ.long <- data.frame(
+  "Ano" = rep(table.princ$Ano, times = table.princ$Titulados),
+  "Nome do Orientador" = rep(table.princ$`Nome do Orientador`, times = table.princ$Titulados),
+  "Titulados" = rep(table.princ$Titulados, times = table.princ$Titulados),
+  check.names = FALSE
+)
+
+# drop Titulados column
+table.princ.long <- table.princ.long[, -3]
+
+table.princ.long <- rbind(
+  table.princ.long,
+  data.frame(
+    "Ano" = rep(paste0(
+      min(quadrienal.vigente), "-", max(quadrienal.vigente)
+    ), times =  length(unique(sucupira.df.princ$`Identificador do Discente`))),
+    "Nome do Orientador" = rep("Orientador", times = length(unique(sucupira.df.princ$`Identificador do Discente`))),
+    check.names = FALSE
+  )
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "Orientador", na.rm = TRUE), digits = 0)
+}
+
+colnames(table.princ.long) <- c("Ano", "Relação Orientadores - Titulados")
+
+# change all column types to factors
+table.princ.long <- table.princ.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# Print tables
+table.princ.gt <- gtsummary::tbl_summary(
+  table.princ.long,
+  by = "Ano",
+  statistic = list(gtsummary::all_categorical() ~ "{n}"),
+  missing = "no",
+  digits = gtsummary::everything() ~ 0,
+  sort = gtsummary::all_categorical() ~ "alphanumeric"
+  ) %>%
+  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+  gtsummary::bold_labels() %>%
+  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+  gtsummary::modify_header(list(
+    add_stat_1 ~ "**Quadriênio**",
+    gtsummary::all_stat_cols() ~ "**{level}**"
+  )) %>%
+  gtsummary::remove_row_type(
+    variables = c('Relação Orientadores - Titulados'),
+    type = "level",
+    level_value = ("Orientador")
+  ) %>%
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+
+# Print HTML table
+if (knitr::is_html_output()) {
+  print(table.princ.gt)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output()) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.princ.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Relação de orientadores com alunos titulados por ano."),
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.65, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
 ```
 
 <br>

@@ -35,6 +35,27 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/pdfmake-1.13.6/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.13.6/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="site_libs/dt-ext-responsive-1.13.6/css/responsive.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-responsive-1.13.6/js/dataTables.responsive.min.js"></script>
+<link href="site_libs/dt-plugin-searchhighlight-1.13.6/source.css" rel="stylesheet" />
+<script src="site_libs/dt-plugin-searchhighlight-1.13.6/jquery.highlight.js"></script>
+<script src="site_libs/dt-plugin-searchhighlight-1.13.6/source.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
@@ -25989,12 +26010,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="label">
 <span class="gt_from_md"><strong>Discentes matriculados</strong></span>
 </th>
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="**Doutorado**">
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="level 1; stat_1_1">
 <div class="gt_column_spanner">
 <span class="gt_from_md"><strong>Doutorado</strong></span>
 </div>
 </th>
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="**Mestrado**">
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="level 1; stat_1_2">
 <div class="gt_column_spanner">
 <span class="gt_from_md"><strong>Mestrado</strong></span>
 </div>
@@ -26993,12 +27014,12 @@ style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;o
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="label">
 <span class="gt_from_md"><strong>Discentes titulados</strong></span>
 </th>
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="**Doutorado**">
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="level 1; stat_1_1">
 <div class="gt_column_spanner">
 <span class="gt_from_md"><strong>Doutorado</strong></span>
 </div>
 </th>
-<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="**Mestrado**">
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="level 1; stat_1_2">
 <div class="gt_column_spanner">
 <span class="gt_from_md"><strong>Mestrado</strong></span>
 </div>
@@ -29787,6 +29808,46 @@ X
 </td>
 <td headers="stat_0" class="gt_row gt_center">
 5 (1-161)
+</td>
+</tr>
+<tr>
+<td headers="label" class="gt_row gt_left" style="font-weight: bold;">
+BlueSky
+</td>
+<td headers="stat_1" class="gt_row gt_center">
+<br />
+</td>
+<td headers="stat_2" class="gt_row gt_center">
+<br />
+</td>
+<td headers="stat_3" class="gt_row gt_center">
+<br />
+</td>
+<td headers="stat_4" class="gt_row gt_center">
+<br />
+</td>
+<td headers="stat_0" class="gt_row gt_center">
+<br />
+</td>
+</tr>
+<tr>
+<td headers="label" class="gt_row gt_left">
+    0
+</td>
+<td headers="stat_1" class="gt_row gt_center">
+37
+</td>
+<td headers="stat_2" class="gt_row gt_center">
+38
+</td>
+<td headers="stat_3" class="gt_row gt_center">
+45
+</td>
+<td headers="stat_4" class="gt_row gt_center">
+15
+</td>
+<td headers="stat_0" class="gt_row gt_center">
+135
 </td>
 </tr>
 <tr>

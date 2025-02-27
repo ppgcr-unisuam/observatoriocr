@@ -2872,12 +2872,12 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
 }
 
+# rename table.doc.long
+colnames(table.doc.long)[2] <- "Docentes Permanentes"
+
 # change all column types to factors
 table.doc.long <- table.doc.long %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
-
-# rename table.doc.long
-colnames(table.doc.long)[2] <- "Docentes Permanentes"
 
 # print tables
 table.1.2.2.doc <- gtsummary::tbl_summary(
@@ -2979,12 +2979,12 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
 }
 
+# rename table.doc.long
+colnames(table.doc.long)[2] <- "Docentes Colaboradores e Visitantes"
+
 # change all column types to factors
 table.doc.long <- table.doc.long %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
-
-# rename table.doc.long
-colnames(table.doc.long)[2] <- "Docentes Colaboradores e Visitantes"
 
 # print tables
 if(nrow(table.doc.long) > 0) {
@@ -3631,10 +3631,6 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Modalidade", na.rm = TRUE), digits = 0)
 }
 
-# change all column types to factors
-table.cap.pq.long <- table.cap.pq.long %>%
-  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
-
 colnames(table.cap.pq.long) <-
   c("Ano", "Bolsa CNPq")
 
@@ -3773,14 +3769,174 @@ cat("### **1.3.2 Adequação do planejamento**")
 cat('\n\n')
 ```
 
+\blandscape
 
-<!-- EM CONSTRUÇÃO -->
+```{r 1-4-perfil-discente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Discentes
+sheet <- "Discentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-<br>
+# Get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
 
-```{=latex}
-\newpage
+# Get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
+
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+
+sucupira.perfil.disc <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.perfil.disc) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+
+# filter columns
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::select(
+    "Anos",
+    "Nível Discente",
+    "Gênero",
+    "Data de Nascimento",
+    "Raça/Cor",
+    "Portador de Deficiência"
+  )
+
+# compute age for the current period
+sucupira.perfil.disc$Idade <- as.numeric(sucupira.perfil.disc$Anos) - as.numeric(substr(
+  as.Date(sucupira.perfil.disc$`Data de Nascimento`, format = "%d/%m/%Y"),
+  1,
+  4
+))
+
+# compute Adulto vs Idoso
+sucupira.perfil.disc$`Grupo etário` <- ifelse(sucupira.perfil.disc$Idade >= 65, "Pessoa idosa", "Adulto")
+
+# drop Data de Nascimento
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::select(
+    -"Data de Nascimento"
+  )
+
+# reorder levels of Raça/Cor: "Nào declarado" and "Não dispõe da informação" should be the last levels
+sucupira.perfil.disc$`Raça/Cor` <- factor(
+  sucupira.perfil.disc$`Raça/Cor`,
+  levels = c(
+    "Branca",
+    "Preta",
+    "Parda",
+    "Amarela",
+    "Indígena",
+    "Não declarado",
+    "Não dispõe da informação"
+  )
+)
+
+# try replacing Bacharelado por Graduação
+try(sucupira.perfil.disc$`Nível Discente`[sucupira.perfil.disc$`Nível Discente` == "Bacharelado"] <- "Graduação", silent = TRUE)
+
+# reorder levels of Nível Discente: "Bacharelado", "Mestrado" and "Doutorado"
+sucupira.perfil.disc$`Nível Discente` <- factor(
+  sucupira.perfil.disc$`Nível Discente`,
+  levels = c(
+    "Graduação",
+    "Mestrado",
+    "Doutorado"
+  )
+)
+
+# rename Portador de Deficiência por "Pessoa com Deficiência"
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::rename("Pessoa com Deficiência" = "Portador de Deficiência")
+
+# rename Gênero por Sexo Biológico
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::rename("Sexo Biológico" = "Gênero")
+
+# change all column types to factors
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::mutate(dplyr::across(where(is.character), as.factor))
+
+# check nlevels of Nível Discente
+if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
+  if (nlevels(sucupira.perfil.disc$`Nível Discente`) == 1) {
+    # Mestrado OU Doutorado OU Bacharelado
+    # Print tables
+    table.matr.gt <- sucupira.perfil.disc |>
+#      dplyr::select('Anos', 'Nome do Orientador') |>
+      gtsummary::tbl_summary(
+        by = Anos,
+        statistic = list(gtsummary::all_categorical() ~ "{n} ({p}%)"),
+        missing = "no",
+        digits = gtsummary::everything() ~ 0,
+        sort = gtsummary::all_categorical() ~ "alphanumeric"
+      ) %>%
+#      gtsummary::modify_header(label = "**Nome do Orientador**") %>%
+      gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+      gtsummary::bold_labels()
+  } else if (nlevels(sucupira.perfil.disc$`Nível Discente`) >= 2) {
+    # Bacharelado, Mestrado, Doutorado
+    # Print tables
+    table.matr.gt <- sucupira.perfil.disc |>
+#      dplyr::select('Anos', 'Nome do Orientador', 'Nível Discente') |>
+      gtsummary::tbl_strata(
+        strata = 'Nível Discente',
+        .tbl_fun =
+          ~ .x |>
+          gtsummary::tbl_summary(
+            by = Anos,
+        statistic = list(gtsummary::all_categorical() ~ "{n} ({p}%)"),
+            missing = "no",
+            digits = gtsummary::everything() ~ 0,
+            sort = gtsummary::all_categorical() ~ "alphanumeric"
+          ) %>%
+          gtsummary::modify_header(label = "**Discentes matriculados**") %>%
+          gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+          gtsummary::bold_labels(),
+        .header = paste0("**{strata}**")
+      )
+  }
+  
+  # Print HTML table
+  if (knitr::is_html_output() && !sjmisc::is_empty(sucupira.perfil.disc)) {
+    print(table.matr.gt)
+  }
+  
+  # Print LaTeX table
+  if (knitr::is_latex_output() && !sjmisc::is_empty(sucupira.perfil.disc)) {
+    cat('\\FloatBarrier')
+    # Convert gtsummary object to kableExtra object
+    kable_table <- gtsummary::as_kable_extra(
+      x = table.matr.gt,
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", "Relação de orientadores com alunos matriculados por ano"),
+    ) %>%
+      kableExtra::kable_styling(
+        bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+        latex_options = c("basic", "repeat_header", "HOLD_position"),
+        latex_table_env = "tabularx",
+        full_width = TRUE,
+        position = "center"
+      ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), width = paste0(c(0.55, rep(0.45/(length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), times = length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")))*(29-3-3), "cm"))
+    print(kable_table)
+  }
+  
+  source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
 ```
+
+\elandscape
 
 ```{r 1-4-1, eval = knitr::is_html_output()}
 cat("### **1.4.1**")
@@ -3931,6 +4087,8 @@ for (j in 1:length(abas)) {
 ```{=latex}
 \newpage
 ```
+
+<br>
 
 <br>
 
@@ -4147,7 +4305,7 @@ if (!sjmisc::is_empty(id.TCC)) {
   table.bancas.long <- table.bancas.long %>%
     dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
   
-  # reoder factor Ano
+  # reorder factor Ano
   table.bancas.long$Ano <- factor(table.bancas.long$Ano, levels = c(quadrienal.vigente, paste0(
     min(quadrienal.vigente), "-", max(quadrienal.vigente)
   )))
@@ -4928,12 +5086,12 @@ quadrienal.value <- razao.ano$Razão[!razao.ano$Ano %in% quadrienal.vigente]
 # keep only Anos in quadrienal.vigente
 razao.ano <- razao.ano[razao.ano$Ano %in% quadrienal.vigente, ]
 
-# rename columns
-colnames(razao.ano) <- c("Ano", "Razão (trabalhos publicados em Anais por discente)")
-
 my_N <- function(...) {
   gtsummary::style_number(quadrienal.value, digits = 2)
 }
+
+# rename columns
+colnames(razao.ano) <- c("Ano", "Razão (trabalhos publicados em Anais por discente)")
 
 # change all column types to factors
 table.razao.long <- razao.ano %>%
@@ -7218,6 +7376,7 @@ table.3.2.1 <-
       "Reddit" ~ "continuous",
       "Stack Exchange" ~ "continuous",
       "X" ~ "continuous",
+      "BlueSky" ~ "continuous",
       "Wikipedia" ~ "continuous",
       "Policies" ~ "continuous",
       "Patentes" ~ "continuous",

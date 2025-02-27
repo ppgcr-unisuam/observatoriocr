@@ -277,45 +277,6 @@ cat('\n\n')
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
 
-```{r sintese-projetos-cloud, include = FALSE, eval = has.sucupira.files}
-# projetos
-sheet <- "Projetos"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-# delete duplicates based on ID
-sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw$`Identificador do Projeto de Pesquisa`),]
-data.to.cloud <- sucupira.raw$`Nome do Projeto de Pesquisa`
-cloud.title <- "Projetos"
-clean.text <- TRUE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-plot(wordcloud)
-
-# dissertações e teses
-sheet <- "TCC"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-# delete duplicates based on ID da Produção
-sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw$`Identificador do Trabalho de Conclusão`),]
-data.to.cloud <- sucupira.raw$`Nome do Trabalho de Conclusão`
-cloud.title <- "Dissertações e Teses"
-clean.text <- TRUE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-plot(wordcloud)
-```
-
-```{r sintese-projetos-cloud-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', eval = has.sucupira.files, out.width = "70%"}
-cat('<br>')
-cat('<br>')
-
-# show sintese-projetos-cloud-1
-knitr::include_graphics("index_files/figure-html/sintese-projetos-cloud-1.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# show sintese-projetos-cloud-2
-knitr::include_graphics("index_files/figure-html/sintese-projetos-cloud-2.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-```
-
 ```{r sintese-projetos, include = FALSE, eval = has.sucupira.files}
 # projetos - membros
 sheet <- "Projetos - Membros"
@@ -1190,58 +1151,6 @@ cat('<br>')
 
 # show sintese-financiadores-1
 knitr::include_graphics("index_files/figure-html/sintese-financiadores-1.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-```
-
-```{r sintese-producoes-cloud, include = FALSE, eval = has.sucupira.files}
-# produções
-sheet <- "Produções"
-source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
-# delete duplicates based on ID da Produção
-sucupira.raw <- sucupira.raw[!duplicated(sucupira.raw$`ID da Produção`),]
-
-data.to.cloud <- sucupira.raw$`Nome da Produção`
-cloud.title <- "Produção"
-clean.text <- TRUE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-plot(wordcloud)
-  
-# filter produção bibliográfica
-sucupira <- sucupira.raw[sucupira.raw$`Tipo de Produção` == "BIBLIOGRÁFICA",]
-data.to.cloud <- sucupira$`Subtipo de Produção`
-sheet <- "Produção bibliográfica"
-cloud.title <- "Produção bibliográfica"
-clean.text <- FALSE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-plot(wordcloud)
-
-# filter produção bibliográfica
-sucupira <- sucupira.raw[sucupira.raw$`Tipo de Produção` == "TÉCNICA",]
-data.to.cloud <- sucupira$`Subtipo de Produção`
-sheet <- "Produção técnica"
-cloud.title <- "Produção técnica"
-clean.text <- FALSE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-plot(wordcloud)
-```
-
-```{r sintese-producoes-cloud-carousel, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', eval = has.sucupira.files, out.width = "70%"}
-cat('<br>')
-cat('<br>')
-
-# show sintese-producoes-cloud-1
-knitr::include_graphics("index_files/figure-html/sintese-producoes-cloud-1.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# show sintese-producoes-cloud-2
-knitr::include_graphics("index_files/figure-html/sintese-producoes-cloud-2.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# show sintese-producoes-cloud-3
-knitr::include_graphics("index_files/figure-html/sintese-producoes-cloud-3.png")
 cat('\n\n')
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
@@ -3418,8 +3327,6 @@ title(main = "Membros de Projetos de Pesquisa",
       outer = TRUE,
       cex.main = 1.7)
 
-# plot 2
-
 # IES participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -3439,28 +3346,6 @@ IES.nac <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Institu
 IES.nac <- IES.nac[!is.na(IES.nac)]
 IES.inter <- sucupira.raw$`Instituição de Origem`[sucupira.raw$`País da Instituição de Origem` != "Brasil"]
 IES.inter <- IES.inter[!is.na(IES.inter)]
-
-# get initials
-data.to.abbrev <- IES
-abbrev <- abbreviate(data.to.abbrev)
-
-ranked.ies <- c()
-for (i in 1:length(sort(table(abbrev), decreasing = FALSE))) {
-  ranked.ies <-
-    c(ranked.ies, rep(names(sort(table(
-      abbrev
-    ))[i]), match(sort(table(
-      abbrev
-    ))[i][[1]], unique(sort(
-      table(abbrev)
-    )))))
-}
-data.to.cloud <- ranked.ies
-cloud.title <- "Instituições"
-clean.text <- TRUE
-source("Scripts/docs-to-wordcloud.R", local = knitr::knit_global())
-# show the wordcloud
-plot(wordcloud)
 
 # plot 3
 
@@ -3771,11 +3656,6 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 # show sintese-rede-2
 knitr::include_graphics("index_files/figure-html/sintese-rede-2.png")
-cat('\n\n')
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# show sintese-rede-3
-knitr::include_graphics("index_files/figure-html/sintese-rede-3.png")
 cat('\n\n')
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```

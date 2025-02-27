@@ -6059,12 +6059,6 @@ sucupira.df.orient <- sucupira.df.orient %>%
 sucupira.df.orient$`Nome do Orientador`[is.na(sucupira.df.orient$`Nome do Orientador`)] <- "Indefinido"
 sucupira.df.orient$`Orientador Principal?`[is.na(sucupira.df.orient$`Orientador Principal?`)] <- "Indefinido"
 
-# check for missing docentes.quadrienio
-sucupira.df.orient$`Nome do Orientador` <- factor(
-  sucupira.df.orient$`Nome do Orientador`,
-  levels = sort(unique(c("Docentes", levels(factor(sucupira.df.orient$`Nome do Orientador`)), docentes.quadrienio)))
-)
-
 sucupira.df.orient$`Nome do Orientador` <- tools::toTitleCase(tolower(sucupira.df.orient$`Nome do Orientador`))
 sucupira.df.orient$`Nível Discente` <- tools::toTitleCase(tolower(sucupira.df.orient$`Nível Discente`))
 ```
@@ -6079,6 +6073,12 @@ sucupira.df.matr <- sucupira.df.matr[sucupira.df.matr$`Situação Discente` == "
 # change all column types to factors
 sucupira.df.matr <- sucupira.df.matr %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# check for missing docentes.quadrienio
+sucupira.df.matr$`Nome do Orientador` <- factor(
+  sucupira.df.matr$`Nome do Orientador`,
+  levels = sort(unique(c(levels(factor(sucupira.df.matr$`Nome do Orientador`)), docentes.quadrienio)))
+)
 
 # check nlevels of Nível Discente
 if (nlevels(sucupira.df.matr$`Nível Discente`) != 0) {
@@ -6180,6 +6180,12 @@ sucupira.df.tit <- sucupira.df.tit[sucupira.df.tit$`Situação Discente` == "TIT
 # change all column types to factors
 sucupira.df.tit <- sucupira.df.tit %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# check for missing docentes.quadrienio
+sucupira.df.tit$`Nome do Orientador` <- factor(
+  sucupira.df.tit$`Nome do Orientador`,
+  levels = sort(unique(c(levels(factor(sucupira.df.tit$`Nome do Orientador`)), docentes.quadrienio)))
+)
 
 # check nlevels of Nível Discente
 if (nlevels(sucupira.df.tit$`Nível Discente`) != 0) {

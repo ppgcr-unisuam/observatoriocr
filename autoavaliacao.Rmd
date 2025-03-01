@@ -3812,29 +3812,6 @@ sucupira.perfil.disc$Idade <- as.numeric(sucupira.perfil.disc$Anos) - as.numeric
   4
 ))
 
-# compute Adulto vs Idoso
-sucupira.perfil.disc$`Grupo etário` <- ifelse(sucupira.perfil.disc$Idade >= 65, "Pessoa idosa", "Adulto")
-
-# drop Data de Nascimento
-sucupira.perfil.disc <- sucupira.perfil.disc %>%
-  dplyr::select(
-    -"Data de Nascimento"
-  )
-
-# reorder levels of Raça/Cor: "Nào declarado" and "Não dispõe da informação" should be the last levels
-sucupira.perfil.disc$`Raça/Cor` <- factor(
-  sucupira.perfil.disc$`Raça/Cor`,
-  levels = c(
-    "Branca",
-    "Preta",
-    "Parda",
-    "Amarela",
-    "Indígena",
-    "Não declarado",
-    "Não dispõe da informação"
-  )
-)
-
 # try replacing Bacharelado por Graduação
 try(sucupira.perfil.disc$`Nível Discente`[sucupira.perfil.disc$`Nível Discente` == "Bacharelado"] <- "Graduação", silent = TRUE)
 
@@ -3848,17 +3825,64 @@ sucupira.perfil.disc$`Nível Discente` <- factor(
   )
 )
 
-# rename Portador de Deficiência por "Pessoa com Deficiência"
-sucupira.perfil.disc <- sucupira.perfil.disc %>%
-  dplyr::rename("Pessoa com Deficiência" = "Portador de Deficiência")
-
 # rename Gênero por Sexo Biológico
 sucupira.perfil.disc <- sucupira.perfil.disc %>%
   dplyr::rename("Sexo Biológico" = "Gênero")
 
-# change all column types to factors
+# reorder Sexo BIológico as factor
+sucupira.perfil.disc$`Sexo Biológico` <- factor(
+  sucupira.perfil.disc$`Sexo Biológico`,
+  levels = c(
+    "Feminino",
+    "Masculino",
+    "Não Informado"
+  )
+)
+
+# reorder levels of Raça/Cor: "Nào declarado" and "Não dispõe da informação" should be the last levels
+sucupira.perfil.disc$`Raça/Cor` <- factor(
+  sucupira.perfil.disc$`Raça/Cor`,
+  levels = c(
+    "Amarela",
+    "Branca",
+    "Indígena",
+    "Parda",
+    "Preta",
+    "Não declarado",
+    "Não dispõe da informação"
+  )
+)
+
+# rename Portador de Deficiência por "Pessoa com Deficiência"
 sucupira.perfil.disc <- sucupira.perfil.disc %>%
-  dplyr::mutate(dplyr::across(where(is.character), as.factor))
+  dplyr::rename("Pessoa com Deficiência" = "Portador de Deficiência")
+
+# reorder levels of Pessoa com Deficiência
+sucupira.perfil.disc$`Pessoa com Deficiência` <- factor(
+  sucupira.perfil.disc$`Pessoa com Deficiência`,
+  levels = c(
+    "Sim",
+    "Não"
+  )
+)
+
+# compute Adulto vs Idoso
+sucupira.perfil.disc$`Grupo etário` <- ifelse(sucupira.perfil.disc$Idade >= 65, "Pessoa idosa", "Adulto")
+
+# reorder levels of Grupo Etário
+sucupira.perfil.disc$`Grupo etário` <- factor(
+  sucupira.perfil.disc$`Grupo etário`,
+  levels = c(
+    "Adulto",
+    "Pessoa idosa"
+  )
+)
+
+# drop Data de Nascimento
+sucupira.perfil.disc <- sucupira.perfil.disc %>%
+  dplyr::select(
+    -"Data de Nascimento"
+  )
 
 # check nlevels of Nível Discente
 if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
@@ -3866,15 +3890,23 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
     # Mestrado OU Doutorado OU Bacharelado
     # Print tables
     table.matr.gt <- sucupira.perfil.disc |>
-#      dplyr::select('Anos', 'Nome do Orientador') |>
       gtsummary::tbl_summary(
         by = Anos,
-        statistic = list(gtsummary::all_categorical() ~ "{n} ({p}%)"),
+        type = list(
+          "Sexo Biológico" ~ "categorical",
+          "Raça/Cor" ~ "categorical",
+          "Pessoa com Deficiência" ~ "categorical",
+          "Idade" ~ "continuous",
+          "Grupo etário" ~ "categorical"
+        ),
+        statistic = list(
+          gtsummary::all_categorical() ~ "{n} ({p}%)",
+          gtsummary::all_continuous() ~ "{median} ({p25}-{p75})"
+          ),
         missing = "no",
         digits = gtsummary::everything() ~ 0,
         sort = gtsummary::all_categorical() ~ "alphanumeric"
       ) %>%
-#      gtsummary::modify_header(label = "**Nome do Orientador**") %>%
       gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
       gtsummary::bold_labels()
   } else if (nlevels(sucupira.perfil.disc$`Nível Discente`) >= 2) {
@@ -3888,7 +3920,17 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
           ~ .x |>
           gtsummary::tbl_summary(
             by = Anos,
-        statistic = list(gtsummary::all_categorical() ~ "{n} ({p}%)"),
+            type = list(
+              "Sexo Biológico" ~ "categorical",
+              "Raça/Cor" ~ "categorical",
+              "Pessoa com Deficiência" ~ "categorical",
+              "Idade" ~ "continuous",
+              "Grupo etário" ~ "categorical"
+            ),
+            statistic = list(
+              gtsummary::all_categorical() ~ "{n} ({p}%)",
+              gtsummary::all_continuous() ~ "{median} ({p25}-{p75})"
+            ),
             missing = "no",
             digits = gtsummary::everything() ~ 0,
             sort = gtsummary::all_categorical() ~ "alphanumeric"
@@ -3915,15 +3957,15 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
       format = ifelse(knitr::is_html_output(), "html", "latex"),
       booktabs = TRUE,
       linesep = "",
-      caption = ifelse(knitr::is_html_output(), "", "Relação de orientadores com alunos matriculados por ano"),
+      caption = ifelse(knitr::is_html_output(), "", "Perfil sociodemiográfico dos discentes/egressos por ano"),
     ) %>%
       kableExtra::kable_styling(
         bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-        latex_options = c("basic", "repeat_header", "HOLD_position"),
+        latex_options = c("basic", "repeat_header", "HOLD_position", "scale_down"), # scla_down added to fit page width
         latex_table_env = "tabularx",
         full_width = TRUE,
         position = "center"
-      ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), width = paste0(c(0.55, rep(0.45/(length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), times = length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")))*(29-3-3), "cm"))
+      ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), width = paste0(c(0.15, rep(0.85/(length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")), times = length(unique(sucupira.perfil.disc$Anos))*nlevels(sucupira.perfil.disc$"Nível Discente")))*(29-3-3), "cm"))
     print(kable_table)
   }
   
@@ -5919,7 +5961,6 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(turmas.posdoc)) {
 if(knitr::is_latex_output() && !sjmisc::is_empty(turmas.posdoc)) {
   cat('\\newpage')
 }
-
 ```
 
 \elandscape
@@ -7403,6 +7444,7 @@ table.3.2.1 <-
       "Reddit" ~ 0,
       "Stack Exchange" ~ 0,
       "X" ~ 0,
+      "BlueSky" ~ 0,
       "Wikipedia" ~ 0,
       "Policies" ~ 0,
       "Patentes" ~ 0,

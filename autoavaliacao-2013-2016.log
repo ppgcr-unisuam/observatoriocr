@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  28 FEB 2025 20:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  6 MAR 2025 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1156,7 +1156,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip108
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2025-02-19 v3.4.5 A comprehensive (SI) units package
+Package: siunitx 2025-02-27 v3.4.6 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count407
 \l__siunitx_number_exponent_fixed_int=\count408
 \l__siunitx_number_min_decimal_int=\count409
@@ -1735,149 +1735,112 @@ Overfull \hbox (1.69751pt too wide) in paragraph at lines 361--361
 
 
 [4]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 382--382
-[]\TU/lmr/bx/n/10 2013|  
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 381--381
+[]\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 382--382
-[]\TU/lmr/bx/n/10 2014|  
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 381--381
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 381--381
+[]\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 382--382
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 382--382
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 373--383
- [][] 
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 381--381
+[]\TU/lmr/bx/n/10 Mestrado 
  []
 
 
 
 [5]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 402--402
-[]\TU/lmr/m/n/10 01/01/2010 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 402--402
+[]\TU/lmr/bx/n/10 2013|  
  []
 
-> Step: build the whole table.
 
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 402--402
-[]\TU/lmr/m/n/10 01/01/2010 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 402--402
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 402--402
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 402--402
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 393--403
+ [][] 
  []
 
 
 
 [6]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 433--433
-[]\TU/lmr/bx/n/10 2013|  
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 422--422
+[]\TU/lmr/m/n/10 01/01/2010 
  []
 
+> Step: build the whole table.
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 433--433
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 433--433
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 433--433
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 414--434
- [][] 
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 422--422
+[]\TU/lmr/m/n/10 01/01/2010 
  []
 
 
 
 [7]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 455--455
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-
-[8]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 493--493
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 453--453
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 493--493
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 453--453
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 493--493
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 453--453
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 493--493
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 453--453
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 467--494
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 434--454
  [][] 
  []
 
 
 
-[9]
+[8]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -1886,263 +1849,331 @@ Overfull \hbox (15.0944pt too wide) in paragraph at lines 467--494
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 7558) in paragraph at lines 546--546
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 475--475
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+
+[9]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 513--513
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 513--513
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 513--513
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 513--513
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 487--514
+ [][] 
+ []
+
+
+
+[10]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 7558) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 7558) in paragraph at lines 546--546
+Underfull \hbox (badness 7558) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 \TU/lmr/m/n/10 tabólico Máximo (Metmáx)
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 546--546
+Underfull \hbox (badness 1348) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Exercício a Partir Do Valor
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 546--546
+Underfull \hbox (badness 1546) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Influência Da Imagética Mo-
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Estimulação Transcraniana
  []
 
 
-Underfull \hbox (badness 6268) in paragraph at lines 546--546
+Underfull \hbox (badness 6268) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Por Corrente Contínua Na
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Acidente Vascular Cerebral
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 546--546
+Underfull \hbox (badness 2443) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Unilateral Em Um Paciente
  []
 
 
-Underfull \hbox (badness 3792) in paragraph at lines 546--546
+Underfull \hbox (badness 3792) in paragraph at lines 566--566
 \TU/lmr/m/n/10 cionais De Hipertensão Por
  []
 
 
-Underfull \hbox (badness 3138) in paragraph at lines 546--546
+Underfull \hbox (badness 3138) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Impacto Da Inomogeneidade
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 546--546
+Underfull \hbox (badness 2809) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Impacto Da Variabilidade e
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 546--546
+Underfull \hbox (badness 5681) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Impacto De Um Programa
  []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 546--546
+Underfull \hbox (badness 3428) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 546--546
+Underfull \hbox (badness 1158) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 546--546
+Underfull \hbox (badness 2096) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Intervenção Das Disfunções
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 546--546
+Underfull \hbox (badness 3417) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Terapia Cognitiva Funcional:
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 546--546
+Underfull \hbox (badness 2951) in paragraph at lines 566--566
 \TU/lmr/m/n/10 ”Changing Beliefs for Chan-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 \TU/lmr/m/n/10 ging Movement and Pain:
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 546--546
+Underfull \hbox (badness 3396) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Functional Therapy (Cbecft)
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 546--546
+Underfull \hbox (badness 1286) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Treino Em Esteira Com Su-
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 7558) in paragraph at lines 546--546
+Underfull \hbox (badness 7558) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 7558) in paragraph at lines 546--546
+Underfull \hbox (badness 7558) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 \TU/lmr/m/n/10 tabólico Máximo (Metmáx)
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 546--546
+Underfull \hbox (badness 1348) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Exercício a Partir Do Valor
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 546--546
+Underfull \hbox (badness 1546) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Influência Da Imagética Mo-
  []
 
 
 
-[10
+[11
 
 ]
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 6268) in paragraph at lines 546--546
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 546--546
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-Underfull \hbox (badness 2443) in paragraph at lines 546--546
-\TU/lmr/m/n/10 Unilateral Em Um Paciente
  []
 
 
 
 [12]
-Underfull \hbox (badness 3792) in paragraph at lines 546--546
-\TU/lmr/m/n/10 cionais De Hipertensão Por
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
  []
 
 
-Underfull \hbox (badness 3138) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
+Underfull \hbox (badness 6268) in paragraph at lines 566--566
+\TU/lmr/m/n/10 Por Corrente Contínua Na
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Impacto Da Variabilidade e
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Impacto De Um Programa
+Underfull \hbox (badness 1184) in paragraph at lines 566--566
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 546--546
-\TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-Underfull \hbox (badness 2096) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Miriam Raquel Meira
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
-[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+Underfull \hbox (badness 2443) in paragraph at lines 566--566
+\TU/lmr/m/n/10 Unilateral Em Um Paciente
  []
 
 
 
 [13]
-Underfull \hbox (badness 3417) in paragraph at lines 546--546
+Underfull \hbox (badness 3792) in paragraph at lines 566--566
+\TU/lmr/m/n/10 cionais De Hipertensão Por
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Impacto Da Variabilidade e
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Impacto De Um Programa
+ []
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 566--566
+\TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Miriam Raquel Meira
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
+[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+ []
+
+
+
+[14]
+Underfull \hbox (badness 3417) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Terapia Cognitiva Funcional:
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 546--546
+Underfull \hbox (badness 2951) in paragraph at lines 566--566
 \TU/lmr/m/n/10 ”Changing Beliefs for Chan-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--546
+Underfull \hbox (badness 10000) in paragraph at lines 566--566
 \TU/lmr/m/n/10 ging Movement and Pain:
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 546--546
+Underfull \hbox (badness 3396) in paragraph at lines 566--566
 \TU/lmr/m/n/10 Functional Therapy (Cbecft)
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 546--546
+Underfull \hbox (badness 1286) in paragraph at lines 566--566
 []\TU/lmr/m/n/10 Treino Em Esteira Com Su-
  []
 
@@ -2154,260 +2185,260 @@ Underfull \hbox (badness 1286) in paragraph at lines 546--546
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 598--598
+Underfull \hbox (badness 1127) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Análise Da Variabilidade Da
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 598--598
+Underfull \hbox (badness 1184) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 598--598
+Underfull \hbox (badness 1325) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Avaliação De Pacientes Com
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 598--598
+Underfull \hbox (badness 1527) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1308) in paragraph at lines 598--598
+Underfull \hbox (badness 1308) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Caracterização Das Unidades
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 598--598
+Underfull \hbox (badness 3713) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Correlação Entre Deficiência
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 598--598
+Underfull \hbox (badness 2020) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Desenvolvimento e Validação
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 598--598
+Underfull \hbox (badness 4846) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Otimização Do Treinamento
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 618--618
 \TU/lmr/m/n/10 Paradesportivo Através Da
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 598--598
+Underfull \hbox (badness 1755) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Saúde Funcional - Avaliação
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 > Step: build the whole table.
 
 
-[14]
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+[15]
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 598--598
+Underfull \hbox (badness 1127) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Análise Da Variabilidade Da
  []
 
 
 
-[15]
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
+[16]
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 598--598
+Underfull \hbox (badness 1184) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-
-[16]
-Underfull \hbox (badness 1325) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Avaliação De Pacientes Com
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
 
 [17]
-Underfull \hbox (badness 1527) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+Underfull \hbox (badness 1325) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Avaliação De Pacientes Com
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
 
 [18]
-Underfull \hbox (badness 1308) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Caracterização Das Unidades
+Underfull \hbox (badness 1527) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 598--598
+Underfull \hbox (badness 10000) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Correlação Entre Deficiência
- []
-
-
-
-[19]
-Underfull \hbox (badness 2020) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
- []
-
-
-Underfull \hbox (badness 4846) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Otimização Do Treinamento
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 598--598
-\TU/lmr/m/n/10 Paradesportivo Através Da
- []
-
-
-
-[20]
-Underfull \hbox (badness 1755) in paragraph at lines 598--598
-[]\TU/lmr/m/n/10 Saúde Funcional - Avaliação
- []
-
-
-Underfull \hbox (badness 2096) in paragraph at lines 598--598
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
 
+[19]
+Underfull \hbox (badness 1308) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Caracterização Das Unidades
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
+ []
+
+
+Underfull \hbox (badness 3713) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Correlação Entre Deficiência
+ []
+
+
+
+[20]
+Underfull \hbox (badness 2020) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Otimização Do Treinamento
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 618--618
+\TU/lmr/m/n/10 Paradesportivo Através Da
+ []
+
+
+
 [21]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Underfull \hbox (badness 4391) in paragraph at lines 627--627
-\TU/lmr/m/n/10 turais Domiciliares e Dores
+Underfull \hbox (badness 1755) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Saúde Funcional - Avaliação
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 627--627
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
- []
-
-
-Underfull \hbox (badness 2744) in paragraph at lines 627--627
-[]\TU/lmr/m/n/10 Mapeamento Do Centro De
- []
-
-> Step: build the whole table.
-
-Underfull \hbox (badness 4391) in paragraph at lines 627--627
-\TU/lmr/m/n/10 turais Domiciliares e Dores
- []
-
-
-Underfull \hbox (badness 2020) in paragraph at lines 627--627
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+Underfull \hbox (badness 2096) in paragraph at lines 618--618
+[]\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
 
 [22]
-Underfull \hbox (badness 2744) in paragraph at lines 627--627
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 4391) in paragraph at lines 647--647
+\TU/lmr/m/n/10 turais Domiciliares e Dores
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 647--647
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 647--647
+[]\TU/lmr/m/n/10 Mapeamento Do Centro De
+ []
+
+> Step: build the whole table.
+
+Underfull \hbox (badness 4391) in paragraph at lines 647--647
+\TU/lmr/m/n/10 turais Domiciliares e Dores
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 647--647
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+
+[23]
+Underfull \hbox (badness 2744) in paragraph at lines 647--647
 []\TU/lmr/m/n/10 Mapeamento Do Centro De
  []
 
@@ -2421,49 +2452,35 @@ Underfull \hbox (badness 2744) in paragraph at lines 627--627
 > Step: build the whole table.
 
 
-[23]
-
 [24]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 671--671
-[]\TU/lmr/bx/n/10 Doutorado 
+[25]
+Overfull \hbox (8.67769pt too wide) in paragraph at lines 810--810
+[]\TU/lmr/bx/n/10 Abordagem 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 671--671
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 671--671
-[]\TU/lmr/bx/n/10 Doutorado 
+Overfull \hbox (12.1677pt too wide) in paragraph at lines 810--810
+[]\TU/lmr/bx/n/10 Reabilitação 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 671--671
-[]\TU/lmr/bx/n/10 Mestrado 
- []
+Overfull \vbox (6613.57317pt too high) has occurred while \output is active []
 
 
 
-[25
+[26]
 
-]
-Overfull \hbox (3.09442pt too wide) in paragraph at lines 683--702
+[27]
+Overfull \hbox (3.09442pt too wide) in paragraph at lines 828--847
  [][] 
  []
 
 
 
-[26]
+[28
+
+]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2472,102 +2489,98 @@ Overfull \hbox (3.09442pt too wide) in paragraph at lines 683--702
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 741--741
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Periodicidade 
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 741--741
+Underfull \hbox (badness 1406) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Introdução à Instrumentação e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--741
+Underfull \hbox (badness 10000) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 741--741
+Underfull \hbox (badness 1406) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Introdução à Instrumentação e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--741
+Underfull \hbox (badness 10000) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 741--741
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Periodicidade 
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 741--741
+Underfull \hbox (badness 1406) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Introdução à Instrumentação e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--741
+Underfull \hbox (badness 10000) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 741--741
+Underfull \hbox (badness 1406) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Introdução à Instrumentação e
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--741
+Underfull \hbox (badness 10000) in paragraph at lines 886--886
 []\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
  []
 
 
-
-[27]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 1406) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Introdução à Instrumentação e
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 1406) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Introdução à Instrumentação e
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 783--783
-[]\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
- []
-
-
-
-[28]
 
 [29]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Introdução à Instrumentação e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Introdução à Instrumentação e
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 928--928
+[]\TU/lmr/bx/n/10 Reabilitação Cardiovascular e
+ []
+
+
 
 [30]
 
@@ -2582,176 +2595,180 @@ Underfull \hbox (badness 10000) in paragraph at lines 783--783
 [35]
 
 [36]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1076--1076
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1076--1076
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1076--1076
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1076--1076
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1061--1077
- [][] 
- []
-
-
 
 [37]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1109--1109
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1109--1109
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1109--1109
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1109--1109
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1093--1110
- [][] 
- []
-
-
 
 [38]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1153--1153
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1221--1221
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1153--1153
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1221--1221
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1153--1153
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1221--1221
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1153--1153
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1221--1221
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1125--1154
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1206--1222
  [][] 
  []
 
 
 
 [39]
-
-[40]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1199--1199
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1254--1254
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1199--1199
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1254--1254
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1199--1199
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1254--1254
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1199--1199
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1254--1254
 []\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1238--1255
+ [][] 
+ []
+
+
+
+[40]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1298--1298
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1298--1298
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1298--1298
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1298--1298
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1270--1299
+ [][] 
  []
 
 
 
 [41]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1236--1236
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1236--1236
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1236--1236
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1236--1236
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
 
 [42]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1273--1273
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1344--1344
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1273--1273
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1344--1344
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1273--1273
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1344--1344
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1273--1273
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1344--1344
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
 
 [43]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1381--1381
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1381--1381
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1381--1381
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1381--1381
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
 
 [44]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1418--1418
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1418--1418
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1418--1418
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1418--1418
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
 
 [45]
 
-[46
+[46]
+
+[47]
+
+[48
 
 ]
 
-[47
+[49
 
 ]
 
-[48]
+[50]
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 
 
-[49]
+[51]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2760,265 +2777,265 @@ ex-text;!
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 7558) in paragraph at lines 1465--1465
+Underfull \hbox (badness 7558) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 7558) in paragraph at lines 1465--1465
+Underfull \hbox (badness 7558) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 tabólico Máximo (Metmáx)
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1348) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Exercício a Partir Do Valor
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1546) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Influência Da Imagética Mo-
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Estimulação Transcraniana
  []
 
 
-Underfull \hbox (badness 6268) in paragraph at lines 1465--1465
+Underfull \hbox (badness 6268) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Por Corrente Contínua Na
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Acidente Vascular Cerebral
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 1465--1465
+Underfull \hbox (badness 2443) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Unilateral Em Um Paciente
  []
 
 
-Underfull \hbox (badness 3792) in paragraph at lines 1465--1465
+Underfull \hbox (badness 3792) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 cionais De Hipertensão Por
  []
 
 
-Underfull \hbox (badness 3138) in paragraph at lines 1465--1465
+Underfull \hbox (badness 3138) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Impacto Da Inomogeneidade
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 1465--1465
+Underfull \hbox (badness 2809) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Impacto Da Variabilidade e
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 1465--1465
+Underfull \hbox (badness 5681) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Impacto De Um Programa
  []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 1465--1465
+Underfull \hbox (badness 3428) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1158) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 1465--1465
+Underfull \hbox (badness 2096) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Intervenção Das Disfunções
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 1465--1465
+Underfull \hbox (badness 3417) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Terapia Cognitiva Funcional:
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 1465--1465
+Underfull \hbox (badness 2951) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 ”Changing Beliefs for Chan-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 ging Movement and Pain:
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 1465--1465
+Underfull \hbox (badness 3396) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Functional Therapy (Cbecft)
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1286) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Treino Em Esteira Com Su-
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 7558) in paragraph at lines 1465--1465
+Underfull \hbox (badness 7558) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 7558) in paragraph at lines 1465--1465
+Underfull \hbox (badness 7558) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 tabólico Máximo (Metmáx)
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1348) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Exercício a Partir Do Valor
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1546) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 Influência Da Imagética Mo-
  []
 
 
 
-[50
+[52
 
 ]
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
 \TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-
-[51]
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 6268) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-
-[52]
-Underfull \hbox (badness 2443) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 Unilateral Em Um Paciente
- []
-
-
-Underfull \hbox (badness 3792) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 cionais De Hipertensão Por
- []
-
-
-Underfull \hbox (badness 3138) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
- []
-
-
-Underfull \hbox (badness 2809) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Impacto Da Variabilidade e
- []
-
-
-Underfull \hbox (badness 5681) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Impacto De Um Programa
- []
-
-
-Underfull \hbox (badness 3428) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-Underfull \hbox (badness 2096) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 1465--1465
-[]\TU/lmr/m/n/10 Terapia Cognitiva Funcional:
+Underfull \hbox (badness 6268) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 Por Corrente Contínua Na
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 ”Changing Beliefs for Chan-
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 ging Movement and Pain:
- []
-
-
-Underfull \hbox (badness 3396) in paragraph at lines 1465--1465
-\TU/lmr/m/n/10 Functional Therapy (Cbecft)
+Underfull \hbox (badness 1184) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
 
 [54]
-Underfull \hbox (badness 1286) in paragraph at lines 1465--1465
+Underfull \hbox (badness 2443) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 Unilateral Em Um Paciente
+ []
+
+
+Underfull \hbox (badness 3792) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 cionais De Hipertensão Por
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Impacto Da Variabilidade e
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Impacto De Um Programa
+ []
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 Cinesioterápico De Fortaleci-
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Miriam Raquel Meira
+ []
+
+
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+ []
+
+
+Underfull \hbox (badness 3417) in paragraph at lines 1610--1610
+[]\TU/lmr/m/n/10 Terapia Cognitiva Funcional:
+ []
+
+
+Underfull \hbox (badness 2951) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 ”Changing Beliefs for Chan-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 ging Movement and Pain:
+ []
+
+
+Underfull \hbox (badness 3396) in paragraph at lines 1610--1610
+\TU/lmr/m/n/10 Functional Therapy (Cbecft)
+ []
+
+
+
+[56]
+Underfull \hbox (badness 1286) in paragraph at lines 1610--1610
 []\TU/lmr/m/n/10 Treino Em Esteira Com Su-
  []
 
@@ -3030,217 +3047,217 @@ Underfull \hbox (badness 1286) in paragraph at lines 1465--1465
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1127) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Análise Da Variabilidade Da
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1184) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1325) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Avaliação De Pacientes Com
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1527) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1517
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1308) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1308) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Caracterização Das Unidades
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 1517--1517
+Underfull \hbox (badness 3713) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Correlação Entre Deficiência
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 1517--1517
+Underfull \hbox (badness 2020) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Desenvolvimento e Validação
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 1517--1517
+Underfull \hbox (badness 4846) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Otimização Do Treinamento
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1517
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1662
 \TU/lmr/m/n/10 Paradesportivo Através Da
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1755) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Saúde Funcional - Avaliação
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1127) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Análise Da Variabilidade Da
  []
 
 
 
-[55]
+[57]
 
-[56]
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
+[58]
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1184) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Marco Antonio Orsini
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1325) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Avaliação De Pacientes Com
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-
-[57]
-Underfull \hbox (badness 1527) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
- []
-
-
-
-[58]
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Miriam Raquel Meira
- []
-
-
-Underfull \hbox (badness 1308) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Caracterização Das Unidades
- []
-
-
-Underfull \hbox (badness 1158) in paragraph at lines 1517--1517
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
 
 [59]
-Underfull \hbox (badness 3713) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Correlação Entre Deficiência
+Underfull \hbox (badness 1527) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Avaliação Quanti-Qualitativa
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
 
 [60]
-Underfull \hbox (badness 4846) in paragraph at lines 1517--1517
-[]\TU/lmr/m/n/10 Otimização Do Treinamento
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1517
-\TU/lmr/m/n/10 Paradesportivo Através Da
+Underfull \hbox (badness 1308) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Caracterização Das Unidades
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 (1) Sociedade Unificada De
  []
 
 
 
 [61]
-Underfull \hbox (badness 1755) in paragraph at lines 1517--1517
+Underfull \hbox (badness 3713) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Correlação Entre Deficiência
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+
+[62]
+Underfull \hbox (badness 4846) in paragraph at lines 1662--1662
+[]\TU/lmr/m/n/10 Otimização Do Treinamento
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1662
+\TU/lmr/m/n/10 Paradesportivo Através Da
+ []
+
+
+
+[63]
+Underfull \hbox (badness 1755) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Saúde Funcional - Avaliação
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
+Underfull \hbox (badness 2096) in paragraph at lines 1662--1662
 []\TU/lmr/m/n/10 Miriam Raquel Meira
  []
 
@@ -3252,35 +3269,35 @@ Underfull \hbox (badness 2096) in paragraph at lines 1517--1517
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 4391) in paragraph at lines 1546--1546
+Underfull \hbox (badness 4391) in paragraph at lines 1691--1691
 \TU/lmr/m/n/10 turais Domiciliares e Dores
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 1546--1546
+Underfull \hbox (badness 2020) in paragraph at lines 1691--1691
 []\TU/lmr/m/n/10 Desenvolvimento e Validação
  []
 
 
-Underfull \hbox (badness 2744) in paragraph at lines 1546--1546
+Underfull \hbox (badness 2744) in paragraph at lines 1691--1691
 []\TU/lmr/m/n/10 Mapeamento Do Centro De
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 4391) in paragraph at lines 1546--1546
+Underfull \hbox (badness 4391) in paragraph at lines 1691--1691
 \TU/lmr/m/n/10 turais Domiciliares e Dores
  []
 
 
 
-[62]
-Underfull \hbox (badness 2020) in paragraph at lines 1546--1546
+[64]
+Underfull \hbox (badness 2020) in paragraph at lines 1691--1691
 []\TU/lmr/m/n/10 Desenvolvimento e Validação
  []
 
 
-Underfull \hbox (badness 2744) in paragraph at lines 1546--1546
+Underfull \hbox (badness 2744) in paragraph at lines 1691--1691
 []\TU/lmr/m/n/10 Mapeamento Do Centro De
  []
 
@@ -3294,99 +3311,70 @@ Underfull \hbox (badness 2744) in paragraph at lines 1546--1546
 > Step: build the whole table.
 
 
-[63]
-
-[64]
-
-[65
-
-]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1603--1603
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1603--1603
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1603--1603
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1603--1603
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1622--1622
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1622--1622
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1622--1622
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1622--1622
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1637--1637
-[]\TU/lmr/bx/n/10 2013|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1637--1637
-[]\TU/lmr/bx/n/10 2014|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1637--1637
-[]\TU/lmr/bx/n/10 2015|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1637--1637
-[]\TU/lmr/bx/n/10 2016|  
- []
-
-
+[65]
 
 [66]
 
-[67]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1680--1680
+[67
+
+]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1748--1748
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1680--1680
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1748--1748
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1680--1680
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1748--1748
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1680--1680
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1748--1748
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1660--1681
- [][] 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1767--1767
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1767--1767
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1767--1767
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1767--1767
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1782--1782
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1782--1782
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1782--1782
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1782--1782
+[]\TU/lmr/bx/n/10 2016|  
  []
 
 
@@ -3394,138 +3382,167 @@ Overfull \hbox (15.0944pt too wide) in paragraph at lines 1660--1681
 [68]
 
 [69]
-
-[70]
-Overfull \hbox (31.17876pt too wide) in paragraph at lines 1712--1723
- [][] 
- []
-
-
-
-[71
-
-]
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2013/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2013/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2014/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2014/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2015/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2015/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2016/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1757--1757
-[]\TU/lmr/bx/n/10 2016/2|  
- []
-
-
-Overfull \hbox (31.1762pt too wide) in paragraph at lines 1733--1758
- [][] 
- []
-
-
-
-[72]
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2013/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2013/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2014/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2014/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2015/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2015/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2016/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 1792--1792
-[]\TU/lmr/bx/n/10 2016/2|  
- []
-
-
-Overfull \hbox (31.1762pt too wide) in paragraph at lines 1768--1793
- [][] 
- []
-
-
-
-[73]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1834--1834
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1825--1825
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1834--1834
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1825--1825
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1834--1834
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1825--1825
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1834--1834
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1825--1825
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1810--1835
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1805--1826
  [][] 
  []
 
 
 
-[74
+[70]
+
+[71]
+
+[72]
+Overfull \hbox (31.17876pt too wide) in paragraph at lines 1857--1868
+ [][] 
+ []
+
+
+
+[73
+
+]
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2013/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2013/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2014/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2014/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2015/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2015/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2016/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1902--1902
+[]\TU/lmr/bx/n/10 2016/2|  
+ []
+
+
+Overfull \hbox (31.1762pt too wide) in paragraph at lines 1878--1903
+ [][] 
+ []
+
+
+
+[74]
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2013/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2013/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2014/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2014/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2015/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2015/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2016/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 1937--1937
+[]\TU/lmr/bx/n/10 2016/2|  
+ []
+
+
+Overfull \hbox (31.1762pt too wide) in paragraph at lines 1913--1938
+ [][] 
+ []
+
+
+
+[75]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1979--1979
+[]\TU/lmr/bx/n/10 2013|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1979--1979
+[]\TU/lmr/bx/n/10 2014|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1979--1979
+[]\TU/lmr/bx/n/10 2015|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1979--1979
+[]\TU/lmr/bx/n/10 2016|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1955--1980
+ [][] 
+ []
+
+
+
+[76
 
 ]
 > Step: init table outer spec.
@@ -3536,321 +3553,321 @@ Overfull \hbox (15.0944pt too wide) in paragraph at lines 1810--1835
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 2556) in paragraph at lines 1872--1872
+Underfull \hbox (badness 2556) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Nome do Membro do
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Abordagem
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Terapêutica
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 1872--1872
+Underfull \hbox (badness 5460) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Em Reabili-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 liação Fun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 cional Em
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 1872--1872
+Underfull \hbox (badness 3849) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 bilitação No
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Esporte E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 No Esporte
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 1872--1872
+Underfull \hbox (badness 5460) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Em Reabili-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Reabilitação
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 No Esporte
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 1872--1872
+Underfull \hbox (badness 1769) in paragraph at lines 2017--2017
 []\TU/lmr/m/n/10 Erika De Carvalho Rodri-
  []
 
 
-Underfull \hbox (badness 2653) in paragraph at lines 1872--1872
+Underfull \hbox (badness 2653) in paragraph at lines 2017--2017
 []\TU/lmr/m/n/10 Leandro Alberto Calazans
  []
 
 > Step: build the whole table.
 
-Underfull \hbox (badness 2556) in paragraph at lines 1872--1872
+Underfull \hbox (badness 2556) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Nome do Membro do
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Abordagem
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Terapêutica
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 1872--1872
+Underfull \hbox (badness 5460) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Em Reabili-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 liação Fun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 cional Em
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 1872--1872
+Underfull \hbox (badness 6876) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Atividade
  []
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 1872--1872
+Underfull \hbox (badness 3849) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 bilitação No
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Esporte E
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 No Esporte
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Avaliação
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Funcional
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 1872--1872
+Underfull \hbox (badness 5460) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 Em Reabili-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 []\TU/lmr/bx/n/10 Reabilitação
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1872
+Underfull \hbox (badness 10000) in paragraph at lines 2017--2017
 \TU/lmr/bx/n/10 No Esporte
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 1872--1872
+Underfull \hbox (badness 1769) in paragraph at lines 2017--2017
 []\TU/lmr/m/n/10 Erika De Carvalho Rodri-
  []
 
 
-Underfull \hbox (badness 2653) in paragraph at lines 1872--1872
+Underfull \hbox (badness 2653) in paragraph at lines 2017--2017
 []\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-
-[75
-
-]
-
-[76]
-Overfull \hbox (31.17657pt too wide) in paragraph at lines 1889--1916
- [][] 
  []
 
 
 
 [77
 
-
 ]
 
 [78]
+Overfull \hbox (31.17657pt too wide) in paragraph at lines 2034--2061
+ [][] 
+ []
+
+
 
 [79
+
 
 ]
 
 [80]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2031--2031
+
+[81
+
+]
+
+[82]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
 []\TU/lmr/bx/n/10 2013|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2031--2031
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
 []\TU/lmr/bx/n/10 2014|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2031--2031
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
 []\TU/lmr/bx/n/10 2015|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2031--2031
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
 []\TU/lmr/bx/n/10 2016|  
  []
 
 
-Overfull \hbox (27.09439pt too wide) in paragraph at lines 1989--2032
+Overfull \hbox (27.09439pt too wide) in paragraph at lines 2134--2177
  [][] 
  []
 
 
-
-[81]
-Overfull \hbox (15.09442pt too wide) in paragraph at lines 2048--2086
- [][] 
- []
-
-
-
-[82]
 
 [83]
+Overfull \hbox (15.09442pt too wide) in paragraph at lines 2193--2231
+ [][] 
+ []
+
+
 
 [84]
 
-[85] (./autoavaliacao-2013-2016.aux)
+[85]
+
+[86]
+
+[87] (./autoavaliacao-2013-2016.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -3860,12 +3877,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 44629 strings out of 473840
- 936415 string characters out of 5729724
- 2194758 words of memory out of 5000000
- 67066 multiletter control sequences out of 15000+600000
+ 44797 strings out of 473840
+ 938213 string characters out of 5729724
+ 2295793 words of memory out of 5000000
+ 67234 multiletter control sequences out of 15000+600000
  605048 words of font info for 118 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,1412s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2013-2016.pdf (88 pages).
+Output written on autoavaliacao-2013-2016.pdf (90 pages).

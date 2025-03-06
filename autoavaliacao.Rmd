@@ -216,18 +216,18 @@ for (j in 1:length(abas)) {
 ```
 
 ```{r, eval = all(knitr::is_html_output(), has.sucupira.files)}
-cat("## **Dados do Coleta", paste0(quadrienal.vigente[1], "-", quadrienal.vigente[length(quadrienal.vigente)], "** {#coleta .tabset}"))
+cat("## **Preenchimento do Coleta {#coleta .tabset}**")
 ```
 
 ```{r, eval = all(!knitr::is_html_output(), has.sucupira.files)}
-cat("## **Dados do Coleta", paste0(quadrienal.vigente[1], "-", quadrienal.vigente[length(quadrienal.vigente)], "** {#coleta .tabset}"))
+cat("## **Preenchimento do Coleta**")
 cat('\n\n')
 ```
 
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r descritivo, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r preenchimento-coleta, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
@@ -237,7 +237,7 @@ source("Scripts/get-sucupira-sheets-names.R", local = knitr::knit_global())
 summ.df <- data.frame(
   "Ano" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
   "Aba" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
-  "Dimensão (L x C)" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
+  "Dimensão (Linhas)" = rep(NA, length(quadrienal.vigente) * length(sucupira.sheets)),
   check.names = FALSE
 )
 
@@ -252,12 +252,8 @@ if (has.sucupira.files) {
       ano <- quadrienal.vigente[COL]
       summ.df$Ano[COL + length(quadrienal.vigente)*(ROW - 1)] <- ano
       summ.df$Aba[COL + length(quadrienal.vigente)*(ROW - 1)] <- sheet
-      summ.df$`Dimensão (L x C)`[COL + length(quadrienal.vigente)*(ROW - 1)] <-
-        paste0(
-        nrow(!is.na(sucupira.list[[as.character(ano)]])),
-        " x ",
-        ncol(!is.na(sucupira.list[[as.character(ano)]]))
-        )
+      summ.df$`Dimensão (Linhas)`[COL + length(quadrienal.vigente)*(ROW - 1)] <-
+        nrow(!is.na(sucupira.list[[as.character(ano)]]))
     }
   }
 }
@@ -266,7 +262,7 @@ if (has.sucupira.files) {
 summ.df <- tidyr::pivot_wider(
   data = summ.df,
   names_from = Ano,
-  values_from = `Dimensão (L x C)`
+  values_from = `Dimensão (Linhas)`
 )
 
 # print tables
@@ -279,7 +275,7 @@ if (knitr::is_html_output()) {
     format = "html",
     booktabs = TRUE,
     linesep = "",
-    caption = "Dados do Coleta por aba (linhas x colunas)"
+    caption = "Prenchimento do Coleta - Quantidade de dados por aba, por ano"
   ) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = TRUE,
@@ -296,7 +292,7 @@ if (knitr::is_html_output()) {
     width = c(0.60, rep(0.40/(length(quadrienal.vigente)), times = length(quadrienal.vigente)))*(21-3-3),
     style = "bootstrap",
     align = "l",
-    caption = ifelse(knitr::is_html_output(), "", "Dados do Coleta por aba (linhas x colunas)")
+    caption = ifelse(knitr::is_html_output(), "", "Prenchimento do Coleta - Quantidade de dados por aba, por ano")
   ) %>%
     tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
     tinytable::style_tt(i = 0, j = 1:ncol(summ.df), bold = TRUE) %>%
@@ -315,10 +311,6 @@ if(knitr::is_latex_output()) {
 
 ```{=latex}
 \newpage
-```
-
-```{r, eval = knitr::is_html_output()}
-cat("## **Ficha de Avaliação** {#ficha-avaliacao}")
 ```
 
 <!--script for generating HORIZONTAL LINE-->
@@ -382,6 +374,61 @@ if (knitr::is_html_output()) {
     style = "bootstrap",
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Objetivos do Curso")
+  ) %>%
+    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(cursos), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(cursos), j = 1, bold = TRUE)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+```{r cursos-egressos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+if(knitr::is_html_output()) {
+  cat("##### **Perfil de egressos**")
+  cat('\n\n')
+}
+
+cursos.raw <-
+  readxl::read_excel("PPG/Dados Cadastrais.xlsx",
+                     sheet = "Perfil de Egressos",
+                     col_types = c("text"))
+
+cursos <- dplyr::select(cursos.raw, c("Nível", "Perfil de Egressos"))
+
+# print tables
+if (knitr::is_html_output()) {
+  # use kable for HTML output
+  knitr::kable(
+    cursos,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = "Perfil de Egressos"
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  ) %>% kableExtra::column_spec(column = 1:ncol(cursos), width = paste0(c(0.10,0.90)*(21-3-3), "cm")) %>%
+      kableExtra::column_spec(column = 1, bold = TRUE) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
+} else {
+  # use tinytable for LaTeX output
+  cursos <- data.frame(cursos, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    cursos,
+    width = c(0.10,0.90)*(21-3-3),
+    style = "bootstrap",
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", "Perfil de Egressos")
   ) %>%
     tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
     tinytable::style_tt(i = 0, j = 1:ncol(cursos), bold = TRUE) %>%
@@ -1650,6 +1697,82 @@ for (i in 1:length(lista.AC.LP)) {
 <!--- knit those table chunk statements --> 
 `r if(has.sucupira.files){paste(knitr::knit(text = out), collapse = '\n\n')}`
 
+\newpage
+
+```{r coerencia-abrangencia-ac-lp-pp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+if(knitr::is_html_output()) {
+  cat("##### **Coerência e Abrangência** {#coerencia-abrangencia}")
+  cat('\n\n')
+}
+
+# tabela com lista de AC, LP e PP (títulos apenas)
+coerencia <- sucupira.df %>% dplyr::select("Área de Concentração", "Linha de Pesquisa", "Nome do Projeto de Pesquisa")
+
+# remove duplicates
+coerencia <- coerencia[!duplicated(coerencia),]
+
+# change all column types to factors
+coerencia <- coerencia %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print tables tbl_cross with thee levels
+coerencia.gt <- coerencia |>
+  gtsummary::tbl_strata(
+    strata = 'Área de Concentração',
+    .tbl_fun =
+      ~ .x |>
+      gtsummary::tbl_summary(
+        by = 'Linha de Pesquisa',
+        statistic = list(
+          gtsummary::all_categorical() ~ "{n}"
+        ),
+        missing = "no",
+        digits = gtsummary::everything() ~ 0,
+        sort = gtsummary::all_categorical() ~ "alphanumeric"
+      ) %>%
+      gtsummary::modify_header(label = "**Coerência e Abrangência**") %>%
+      gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+      gtsummary::bold_labels(),
+    .header = paste0("**{strata}**")
+  )
+
+# remove 0s from gtsummary
+coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
+  dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("^0.*", "",.)))
+# replace non-0 values with "check"
+coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
+  dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("\\d+", ifelse(knitr::is_html_output(), fontawesome::fa("check"), "**X**"),.)))
+
+# Print HTML table
+if (knitr::is_html_output() && !sjmisc::is_empty(coerencia)) {
+  print(coerencia.gt)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output() && !sjmisc::is_empty(coerencia)) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = coerencia.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Coerência e abrangência conceitual - Área de concentracão -> Linha de Pesquisa -> Projeto de Pesquisa"),
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), width = paste0(c(0.30, rep(0.70/(nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), times = nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)))*(21-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+```
+
 \elandscape
 
 <br>
@@ -1664,61 +1787,6 @@ cat('\n\n')
 ```{r, eval = !knitr::is_html_output()}
 cat("### **1.1.2 Proposta Curricular do Programa**")
 cat('\n\n')
-```
-
-```{r cursos-egressos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-if(knitr::is_html_output()) {
-  cat("##### **Perfil do egresso**")
-  cat('\n\n')
-}
-
-cursos.raw <-
-  readxl::read_excel("PPG/Dados Cadastrais.xlsx",
-                     sheet = "Egressos",
-                     col_types = c("text"))
-
-cursos <- dplyr::select(cursos.raw, c("Nível", "Objetivos"))
-
-# print tables
-if (knitr::is_html_output()) {
-  # use kable for HTML output
-  knitr::kable(
-    cursos,
-    align = "l",
-    escape = FALSE,
-    format = "html",
-    booktabs = TRUE,
-    linesep = "",
-    caption = "Perfil do Egresso"
-  ) %>% kableExtra::kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-    full_width = TRUE,
-    position = "center"
-  ) %>% kableExtra::column_spec(column = 1:ncol(cursos), width = paste0(c(0.10,0.90)*(21-3-3), "cm")) %>%
-      kableExtra::column_spec(column = 1, bold = TRUE) %>%
-      kableExtra::row_spec(row = 0, bold = TRUE)
-} else {
-  # use tinytable for LaTeX output
-  cursos <- data.frame(cursos, check.names = FALSE)
-  options(tinytable_print_output = "latex")
-  tinytable::tt(
-    cursos,
-    width = c(0.10,0.90)*(21-3-3),
-    style = "bootstrap",
-    align = "l",
-    caption = ifelse(knitr::is_html_output(), "", "Perfil do Egresso")
-  ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
-    tinytable::style_tt(i = 0, j = 1:ncol(cursos), bold = TRUE) %>%
-    tinytable::style_tt(i = 1:nrow(cursos), j = 1, bold = TRUE)
-}
-
-source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
-
-# Add LaTeX commands for new page and float barrier
-if(knitr::is_latex_output()) {
-  cat('\\newpage')
-}
 ```
 
 ```{r 1-1-2-quanti, eval = has.sucupira.files,, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
@@ -3961,7 +4029,7 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0) {
     ) %>%
       kableExtra::kable_styling(
         bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-        latex_options = c("basic", "repeat_header", "HOLD_position", "scale_down"), # scla_down added to fit page width
+        latex_options = c("basic", "repeat_header", "HOLD_position", "scale_down"), # scale_down added to fit page width
         latex_table_env = "tabularx",
         full_width = TRUE,
         position = "center"

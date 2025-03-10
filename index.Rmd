@@ -48,7 +48,7 @@ title: "OBSERVATÓRIO `r ifelse(magrittr::and(has.dados.cadastrais, has.sucupira
 
 ```{r logo-ppg}
 if(file.exists("PPG/Images/logo-programa.png")) {
-  cat('<img src=\"PPG/Images/logo-programa.png\" height="100px" align=\"center\"/>')
+  cat('<img src=\"PPG/Images/logo-programa.png\" height="50vw" align=\"center\"/>')
   has.logo.ppg <- TRUE
 } else {
   has.logo.ppg <- FALSE
@@ -323,13 +323,14 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Projetos por Área de Concentração",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(projetos.ac$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -353,7 +354,7 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 2 (total de projetos por linha, por ano)
 
@@ -387,13 +388,14 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Projetos por Linha de Pesquisa",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(projetos.lp$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -417,7 +419,7 @@ plot.2 <- plot.2 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 3 (total de projetos por situação, por ano)
 
@@ -451,13 +453,14 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Projetos por Situação",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(projetos.situacao$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -481,7 +484,7 @@ plot.3 <- plot.3 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 4 (total de projetos por Natureza do Projeto de Pesquisa, por ano)
 
@@ -515,13 +518,14 @@ plot.4 <- plot.4 %>% plotly::layout(
     text = "Projetos por Natureza",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(projetos.natureza$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -545,7 +549,7 @@ plot.4 <- plot.4 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 5 (total de projetos por categoria de membro, por ano)
 
@@ -579,13 +583,14 @@ plot.5 <- plot.5 %>% plotly::layout(
     text = "Categoria dos Membros dos Projetos",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(projetos.categoria$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -609,7 +614,7 @@ plot.5 <- plot.5 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 6 (summary table in plot)
 summ.table.projetos <- data.frame()
@@ -752,7 +757,7 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Editais por Agências Financiadoras",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
@@ -782,7 +787,7 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # generate cross-table
@@ -831,7 +836,7 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Valores por Agências Financiadoras",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
@@ -861,7 +866,7 @@ plot.2 <- plot.2 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # generate cross-table
 professores.ano <-
@@ -897,7 +902,7 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Docentes com Financiamentos",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
@@ -915,7 +920,8 @@ plot.3 <- plot.3 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
+
 
 editais <- financiadores$Programa
 top <- min(length(editais[which(!is.na(editais))]), 10)
@@ -961,7 +967,7 @@ plot.4 <- plot.4 %>% plotly::layout(
     text = paste0("Top-", top, " Editais Financiados"),
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "N",
@@ -981,7 +987,8 @@ plot.4 <- plot.4 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
+
 
 agencias <- financiadores$Agência
 top <- min(length(agencias[which(!is.na(agencias))]), 10)
@@ -1027,7 +1034,7 @@ plot.5 <- plot.5 %>% plotly::layout(
     text = paste0("Top-", top, " Agências Financiadoras"),
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "N",
@@ -1047,7 +1054,8 @@ plot.5 <- plot.5 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
+
 
 # calculate summary statistics for financiamentos
 summ.table.financiadores <- matrix(0, nrow = 1, ncol = 5)
@@ -1209,13 +1217,14 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Produção Total",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1239,7 +1248,7 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # select products
 produtos.bib <- produtos[produtos$`Tipo de Produção` == "BIBLIOGRÁFICA", ]
@@ -1279,13 +1288,14 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Produção Bibliográfica",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1309,7 +1319,7 @@ plot.2 <- plot.2 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # select products
@@ -1350,13 +1360,14 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Produção Técnica",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1478,13 +1489,14 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Métricas da Produção (Qualis)",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1508,10 +1520,10 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
-# plot 2 (violin plot of SJR por ano)
+# plot 2 (boxplot of SJR por ano)
 
 # plot area setup
 layout.m <- c(1)
@@ -1540,13 +1552,14 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Métricas da Produção (SJR)",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "SciMAGO Journal Rank (SJR)",
@@ -1558,16 +1571,16 @@ plot.2 <- plot.2 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
-# plot 3 (violin plot of CiteScore por ano)
+# plot 3 (boxplot of CiteScore por ano)
 
 # plot area setup
 layout.m <- c(1)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 # Define colors using RColorBrewer
-colors <- RColorBrewer::brewer.pal(n = length(estratos), name = "Blues")
+colors <- RColorBrewer::brewer.pal(n = 9, name = "Set3")
 
 # Reshape data for Plotly
 data_long <- reshape2::melt(table.4, id.vars = "metricas_artigos..Ano.da.Produção.", value.name = "CiteScore")
@@ -1590,13 +1603,13 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Métricas da Produção (CiteScore)",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano)
   ),
   yaxis = list(
     title = "CiteScore",
@@ -1608,7 +1621,7 @@ plot.3 <- plot.3 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 journals.SJR <- unique(table.5)
@@ -1656,7 +1669,7 @@ plot.4 <- plot.4 %>% plotly::layout(
     text = paste0("Top-", top, " Periódicos (SJR)"),
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "N",
@@ -1676,7 +1689,7 @@ plot.4 <- plot.4 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # plot 5 (summary table in plot)
@@ -1831,19 +1844,19 @@ source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 table.1 <- data.frame(metricas_artigos$"Ano da Produção", metricas_artigos$altmetric_score)
 
-# plot 1 (violin plot of Altmetric por ano)
-
-# Reshape data for Plotly
-data_long <- reshape2::melt(table.1, id.vars = "metricas_artigos..Ano.da.Produção.", value.name = "Altmetric")
-data_long <- data.frame(data_long, stringsAsFactors = FALSE)
-data_long <- data_long[, -2]
-colnames(data_long) <- c("Ano", "Altmetric")
+# plot 1 (boxplot of Altmetric por ano)
 
 # plot area setup
 layout.m <- c(1)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 # Define colors using RColorBrewer
 colors <- RColorBrewer::brewer.pal(n = 9, name = "Set3")
+
+# Reshape data for Plotly
+data_long <- reshape2::melt(table.1, id.vars = "metricas_artigos..Ano.da.Produção.", value.name = "Altmetric")
+data_long <- data.frame(data_long, stringsAsFactors = FALSE)
+data_long <- data_long[, -2]
+colnames(data_long) <- c("Ano", "Altmetric")
 
 plot.1 <- plotly::plot_ly(
   data = data_long,
@@ -1860,26 +1873,26 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Atenção e Visibilidade (Altmetric attention score)",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
-    title = "Altmetric Score",
+    title = "Altmetric Attention Score",
     titlefont = list(color = 'white'),
-    tickfont = list(color = 'white'),
-    type = "log"
+    tickfont = list(color = 'white')
   ),
   plot_bgcolor = 'black',
   paper_bgcolor = 'black',
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 2 (Altmetric breakdown)
 
@@ -1922,16 +1935,16 @@ colnames(table.2) <-
     "Mendeley"
   )
 
-# Reshape data for Plotly
-data_long <- reshape2::melt(table.2, id.vars = "Ano", value.name = "Frequência")
-data_long <- data.frame(data_long, stringsAsFactors = FALSE, check.names = FALSE)
-colnames(data_long) <- c("Ano", "Altmetric", "Frequência")
-
 # plot area setup
 layout.m <- c(1)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 # Define colors using RColorBrewer
 colors <- RColorBrewer::brewer.pal(n = 9, name = "Set3")
+
+# Reshape data for Plotly
+data_long <- reshape2::melt(table.2, id.vars = "Ano", value.name = "Frequência")
+data_long <- data.frame(data_long, stringsAsFactors = FALSE, check.names = FALSE)
+colnames(data_long) <- c("Ano", "Altmetric", "Frequência")
 
 plot.2 <- plotly::plot_ly(
   data = data_long,
@@ -1948,13 +1961,14 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Altmetric Attention Score (breakdown)",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1978,7 +1992,7 @@ plot.2 <- plot.2 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # plot 3 (IS_OA in plot)
 
@@ -2010,7 +2024,7 @@ colnames(data_long) <- c("Acesso", "Ano", "Frequência")
 # convert absolute to relative frequency
 data_long <- data_long %>%
   dplyr::group_by(Ano) %>%
-  dplyr::mutate(Frequência = Frequência / sum(Frequência, na.rm = TRUE))
+  dplyr::mutate(Frequência = Frequência / sum(Frequência * 100, na.rm = TRUE))
 
 plot.3 <- plotly::plot_ly(
   data = data_long,
@@ -2027,16 +2041,17 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Acesso",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
-    title = "N",
+    title = "%",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white')
   ),
@@ -2057,7 +2072,7 @@ plot.3 <- plot.3 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # plot 4 (CITATIONS in plot)
@@ -2102,13 +2117,14 @@ plot.4 <- plot.4 %>% plotly::layout(
     text = "Citações",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -2120,7 +2136,7 @@ plot.4 <- plot.4 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = FALSE
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # plot 5 (summay table for Altmetric breackdown)
@@ -2571,13 +2587,14 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Discentes",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -2601,7 +2618,7 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # get number of discentes by year from sucupira.list
@@ -2655,13 +2672,14 @@ plot.2 <- plot.2 %>% plotly::layout(
     text = "Discentes",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -2685,7 +2703,7 @@ plot.2 <- plot.2 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 # Discentes - Orientadores
 sheet <- "Discentes - Orientadores"
@@ -2761,13 +2779,14 @@ plot.3 <- plot.3 %>% plotly::layout(
     text = "Egressos",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -2791,10 +2810,10 @@ plot.3 <- plot.3 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
-# plot 4 (violin plot of Tempo de Curso por ano)
+# plot 4 (boxplot of Tempo de Curso por ano)
 
 # plot area setup
 layout.m <- c(1)
@@ -2824,19 +2843,19 @@ plot.4 <- plot.4 %>% plotly::layout(
     text = "Tempo de Curso",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "Meses",
     titlefont = list(color = 'white'),
-    tickfont = list(color = 'white'),
-    type = "log"
+    tickfont = list(color = 'white')
   ),
   legend = list(
     title = 'Legenda',
@@ -2854,7 +2873,8 @@ plot.4 <- plot.4 %>% plotly::layout(
   font = list(color = 'white'),
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE
-)
+) %>% plotly::config(displayModeBar = FALSE)
+
 
 # plot 5(summary table in plot)
 
@@ -3043,13 +3063,13 @@ plot.1 <- plot.1 %>% plotly::layout(
     text = "Estágio Pós-Doutoral",
     x = 0.5,
     xanchor = 'center',
-    font = list(size = 24, color = 'white')
+    font = list(size = '100vw', color = 'white')
   ),
   xaxis = list(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = anos,
+    tickvals = unique(data_long$Ano),
     range = anos
   ),
   yaxis = list(
@@ -3075,7 +3095,7 @@ plot.1 <- plot.1 %>% plotly::layout(
   margin = list(l = 60, r = 60, t = 60, b = 60),
   showlegend = TRUE,
   barmode = 'stack'
-)
+) %>% plotly::config(displayModeBar = FALSE)
 
 
 # frequency table of posdocs per country (list element)
@@ -3388,7 +3408,7 @@ if (length(IES.nac) > 0) {
       text = paste0("Top-", top, " Nacionais"),
       x = 0.5,
       xanchor = 'center',
-      font = list(size = 24, color = 'white')
+      font = list(size = '100vw', color = 'white')
     ),
     xaxis = list(
       title = "N",
@@ -3408,7 +3428,7 @@ if (length(IES.nac) > 0) {
     font = list(color = 'white'),
     margin = list(l = 60, r = 60, t = 60, b = 60),
     showlegend = FALSE
-  )
+  ) %>% plotly::config(displayModeBar = FALSE)
 }
 
 # plot 4
@@ -3452,7 +3472,7 @@ if (length(IES.inter) > 0) {
       text = paste0("Top-", top, " Internacionais"),
       x = 0.5,
       xanchor = 'center',
-      font = list(size = 24, color = 'white')
+      font = list(size = '100vw', color = 'white')
     ),
     xaxis = list(
       title = "N",
@@ -3472,8 +3492,9 @@ if (length(IES.inter) > 0) {
     font = list(color = 'white'),
     margin = list(l = 60, r = 60, t = 60, b = 60),
     showlegend = FALSE
-  )
+  ) %>% plotly::config(displayModeBar = FALSE)
 }
+
 
 # plot 5
 
@@ -3510,7 +3531,7 @@ if (length(mundo) > 0) {
       text = paste0("Top-", top, " Países"),
       x = 0.5,
       xanchor = 'center',
-      font = list(size = 24, color = 'white')
+      font = list(size = '100vw', color = 'white')
     ),
     xaxis = list(
       title = "N",
@@ -3530,7 +3551,7 @@ if (length(mundo) > 0) {
     font = list(color = 'white'),
     margin = list(l = 60, r = 60, t = 60, b = 60),
     showlegend = FALSE
-  )
+  ) %>% plotly::config(displayModeBar = FALSE)
 }
   
 # check if there are mundo

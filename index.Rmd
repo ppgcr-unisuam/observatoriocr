@@ -315,7 +315,7 @@ plot.1 <- plotly::plot_ly(
   color = ~`Área de Concentração`,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -379,7 +379,7 @@ plot.2 <- plotly::plot_ly(
   color = ~`Linha de Pesquisa`,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -443,7 +443,7 @@ plot.3 <- plotly::plot_ly(
   color = ~Situação,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -507,7 +507,7 @@ plot.4 <- plotly::plot_ly(
   color = ~`Natureza do Projeto de Pesquisa`,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.4 <- plot.4 %>% plotly::layout(
@@ -571,7 +571,7 @@ plot.5 <- plotly::plot_ly(
   color = ~`Categoria do Membro do Projeto`,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.5 <- plot.5 %>% plotly::layout(
@@ -744,7 +744,7 @@ plot.1 <- plotly::plot_ly(
   color = ~Agência,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -823,7 +823,7 @@ plot.2 <- plotly::plot_ly(
   color = ~Agência,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -889,7 +889,7 @@ plot.3 <- plotly::plot_ly(
   color = colors[1],
   type = 'bar',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -953,7 +953,7 @@ plot.4 <- plotly::plot_ly(
   color = colors[1],
   type = 'bar',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.4 <- plot.4 %>% plotly::layout(
@@ -1019,7 +1019,7 @@ plot.5 <- plotly::plot_ly(
   color = colors[1],
   type = 'bar',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.5 <- plot.5 %>% plotly::layout(
@@ -1201,7 +1201,7 @@ plot.1 <- plotly::plot_ly(
   color = ~Tipo,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -1271,7 +1271,7 @@ plot.2 <- plotly::plot_ly(
   color = ~Subtipo,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -1342,7 +1342,7 @@ plot.3 <- plotly::plot_ly(
   color = ~Subtipo,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -1470,7 +1470,7 @@ plot.1 <- plotly::plot_ly(
   color = ~Estrato,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -1532,7 +1532,7 @@ plot.2 <- plotly::plot_ly(
   color = colors[1],
   type = 'box',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -1582,7 +1582,7 @@ plot.3 <- plotly::plot_ly(
   color = colors[1],
   type = 'box',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -1648,7 +1648,7 @@ plot.4 <- plotly::plot_ly(
   color = colors[1],
   type = 'bar',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.4 <- plot.4 %>% plotly::layout(
@@ -1852,7 +1852,7 @@ plot.1 <- plotly::plot_ly(
   color = colors[1],
   type = 'box',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -1940,7 +1940,7 @@ plot.2 <- plotly::plot_ly(
   color = ~Altmetric,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -2019,7 +2019,7 @@ plot.3 <- plotly::plot_ly(
   color = ~Acesso,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -2094,7 +2094,7 @@ plot.4 <- plotly::plot_ly(
   color = colors[1],
   type = 'bar',
   colors = colors[1],
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.4 <- plot.4 %>% plotly::layout(
@@ -2563,7 +2563,7 @@ plot.1 <- plotly::plot_ly(
   color = ~Nível,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -2647,7 +2647,7 @@ plot.2 <- plotly::plot_ly(
   color = ~Situação,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.2 <- plot.2 %>% plotly::layout(
@@ -2753,7 +2753,7 @@ plot.3 <- plotly::plot_ly(
   color = ~Nível,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.3 <- plot.3 %>% plotly::layout(
@@ -2816,7 +2816,7 @@ plot.4 <- plotly::plot_ly(
   color = ~`Nível Discente`,
   type = 'box',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.4 <- plot.4 %>% plotly::layout(
@@ -3035,7 +3035,7 @@ plot.1 <- plotly::plot_ly(
   color = ~`Nacionalidade`,
   type = 'bar',
   colors = colors,
-  height = "50vw"
+  height = "50vmin"
 )
 
 plot.1 <- plot.1 %>% plotly::layout(
@@ -3380,7 +3380,7 @@ if (length(IES.nac) > 0) {
     color = colors[1],
     type = 'bar',
     colors = colors[1],
-    height = "50vw"
+    height = "50vmin"
   )
   
   plot.3 <- plot.3 %>% plotly::layout(
@@ -3444,7 +3444,7 @@ if (length(IES.inter) > 0) {
     color = colors[1],
     type = 'bar',
     colors = colors[1],
-    height = "50vw"
+    height = "50vmin"
   )
   
   plot.4 <- plot.4 %>% plotly::layout(
@@ -3502,7 +3502,7 @@ if (length(mundo) > 0) {
     color = colors[1],
     type = 'bar',
     colors = colors[1],
-    height = "50vw"
+    height = "50vmin"
   )
   
   plot.5 <- plot.5 %>% plotly::layout(

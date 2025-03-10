@@ -48,7 +48,7 @@ title: "OBSERVATÓRIO `r ifelse(magrittr::and(has.dados.cadastrais, has.sucupira
 
 ```{r logo-ppg}
 if(file.exists("PPG/Images/logo-programa.png")) {
-  cat('<img src=\"PPG/Images/logo-programa.png\" height="50vw" align=\"center\"/>')
+  cat('<img src=\"PPG/Images/logo-programa.png\" width="100vmax" align=\"center\"/>')
   has.logo.ppg <- TRUE
 } else {
   has.logo.ppg <- FALSE
@@ -1870,7 +1870,7 @@ plot.1 <- plotly::plot_ly(
 
 plot.1 <- plot.1 %>% plotly::layout(
   title = list(
-    text = "Atenção e Visibilidade (Altmetric attention score)",
+    text = "Atenção e Visibilidade",
     x = 0.5,
     xanchor = 'center',
     font = list(size = '100vw', color = 'white')
@@ -1898,7 +1898,7 @@ plot.1 <- plot.1 %>% plotly::layout(
 
 table.2 <- metricas_artigos %>% dplyr::select(
     "Ano da Produção",
-    "altmetric_score",
+#    "altmetric_score",
     "cited_by_fbwalls_count",
     "cited_by_feeds_count",
     "cited_by_gplus_count",
@@ -1918,7 +1918,7 @@ table.2 <- metricas_artigos %>% dplyr::select(
 colnames(table.2) <- 
   c(
     "Ano",
-    "Altmetric \n score",
+#    "Altmetric \n score",
     "Facebook",
     "Blogs",
     "Google+",
@@ -2024,7 +2024,7 @@ colnames(data_long) <- c("Acesso", "Ano", "Frequência")
 # convert absolute to relative frequency
 data_long <- data_long %>%
   dplyr::group_by(Ano) %>%
-  dplyr::mutate(Frequência = Frequência / sum(Frequência * 100, na.rm = TRUE))
+  dplyr::mutate(Frequência = Frequência / sum(Frequência / 100, na.rm = TRUE))
 
 plot.3 <- plotly::plot_ly(
   data = data_long,
@@ -2139,28 +2139,32 @@ plot.4 <- plot.4 %>% plotly::layout(
 ) %>% plotly::config(displayModeBar = FALSE)
 
 
-# plot 5 (summay table for Altmetric breackdown)
+# plot 5 (summary table for Altmetric breakdown)
 
 # convert to numeric and get total of each column
 table.2.sum <- data.frame(lapply(table.2, type.convert, as.is = TRUE))
 table.2.sum <- colSums(table.2.sum, na.rm = TRUE)
 # drop Ano
 table.2.sum <- table.2.sum[-1]
+# add Altmetric total as first value
+table.2.sum <- c(sum(table.1$Altmetric, na.rm = TRUE), table.2.sum)
+
 # rename columns
 names(table.2.sum) <-
   c(
+    "Altmetric \n score",
     "Facebook",
     "Blogs",
     "Google+",
     "Notícias",
     "Reddit",
-    "Stack Exchange",
+    "Stack \n Exchange",
     "X",
     "BlueSky",
     "Wikipedia",
     "Policies",
     "Patentes",
-    "YouTube/Vimeo",
+    "YouTube \n Vimeo",
     "Posts",
     "Mendeley"
   )

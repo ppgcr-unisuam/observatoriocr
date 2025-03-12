@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.19)  12 MAR 2025 00:44
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  12 MAR 2025 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1156,7 +1156,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip108
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2025-01-21 v3.4.4 A comprehensive (SI) units package
+Package: siunitx 2025-02-27 v3.4.6 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count407
 \l__siunitx_number_exponent_fixed_int=\count408
 \l__siunitx_number_min_decimal_int=\count409
@@ -3002,7 +3002,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  44562 strings out of 473840
  934522 string characters out of 5729724
- 1789023 words of memory out of 5000000
+ 1789026 words of memory out of 5000000
  66999 multiletter control sequences out of 15000+600000
  594343 words of font info for 112 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

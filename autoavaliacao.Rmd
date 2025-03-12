@@ -28,6 +28,7 @@ always_allow_html: true
 tables: true
 params:
   quadrienal.vigente: 2025;2026;2027;2028
+  render_document: FALSE
 ---
 
 <!--set up-->
@@ -45,6 +46,8 @@ knitr::opts_chunk$set(
   webshot = "webshot",
   dev = "png"
 )
+
+render_document <- params$render_document 
 ```
 
 <!--load caches-->
@@ -64,7 +67,7 @@ $(document).ready(function() {
 
 <!--script for sharing-->
 <p align="right">
-```{r share, eval = knitr::is_html_output()}
+```{r share, eval = all(render_document, knitr::is_html_output())}
 home <- metadata$repository_url
 source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
@@ -72,7 +75,7 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 
 <br>
 
-```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE, eval = has.sucupira.files}
+```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE, eval = all(render_document, has.sucupira.files)}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
@@ -114,7 +117,7 @@ docentes.quadrienio <- docentes.quadrienio[!duplicated(docentes.quadrienio),]
 docentes.quadrienio <- sort(tools::toTitleCase(tolower(docentes.quadrienio)))
 ```
 
-```{r cover-one, echo = FALSE, include = FALSE, eval = knitr::is_html_output()}
+```{r cover-one, echo = FALSE, include = FALSE, eval = all(render_document, knitr::is_html_output())}
 source("Scripts/cover-1.R", local = knitr::knit_global())
 source("Scripts/cover-2.R", local = knitr::knit_global())
 ```
@@ -129,11 +132,11 @@ source("Scripts/cover-2.R", local = knitr::knit_global())
 \EnableFootNotes
 ```
 
-```{r, eval = knitr::is_html_output()}
+```{r, eval = all(render_document, knitr::is_html_output())}
 cat("## **Avaliação CAPES** {#avalicao-capes .tabset}")
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("## **Avaliação CAPES**")
 cat('\n\n')
 ```
@@ -141,11 +144,11 @@ cat('\n\n')
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r, eval = !has.avaliacao}
+```{r, eval = all(render_document, !has.avaliacao)}
 cat('<br>')
 ```
 
-```{r avaliacao, eval = has.avaliacao, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r avaliacao, eval = all(render_document, has.avaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Avaliação.xlsx")
 
@@ -215,11 +218,11 @@ for (j in 1:length(abas)) {
 \newpage
 ```
 
-```{r, eval = all(knitr::is_html_output(), has.sucupira.files)}
+```{r, eval = all(render_document, knitr::is_html_output(), has.sucupira.files)}
 cat("## **Preenchimento do Coleta {#coleta .tabset}**")
 ```
 
-```{r, eval = all(!knitr::is_html_output(), has.sucupira.files)}
+```{r, eval = all(render_document, !knitr::is_html_output(), has.sucupira.files)}
 cat("## **Preenchimento do Coleta**")
 cat('\n\n')
 ```
@@ -227,7 +230,7 @@ cat('\n\n')
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r preenchimento-coleta, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r preenchimento-coleta, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # get years
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
@@ -321,19 +324,19 @@ if(knitr::is_latex_output()) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r 1-1-1, eval = knitr::is_html_output()}
+```{r 1-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.1.1**")
 cat('\n\n')
 cat("#### **Estrutura Acadêmica do Programa** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.1.1 Estrutura Acadêmica do Programa**")
 cat('\n\n')
 ```
 
-```{r cursos-objetivos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r cursos-objetivos, eval = all(render_document, has.dados.cadastrais), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **Objetivos do curso**")
   cat('\n\n')
@@ -388,7 +391,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r cursos-egressos, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r cursos-egressos, eval = all(render_document, has.dados.cadastrais), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **Perfil de egressos**")
   cat('\n\n')
@@ -443,7 +446,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-1-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-data, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # projetos - membros
 sheet <- "Projetos - Membros"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -551,7 +554,7 @@ sucupira.financiadores.df <- sucupira.financiadores.df[!duplicated(sucupira.fina
 sucupira.financiadores.df$`Data Fim Financiador`[is.na(sucupira.financiadores.df$`Data Fim Financiador`)] <- "Atual"
 ```
 
-```{r 1-1-1-ac, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-ac, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # áreas de concentração
 table.ac <-
   data.frame(matrix(
@@ -693,7 +696,7 @@ table.ac.doc.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-AC, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-AC, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **AC** {#descricao-ac}")
   cat('\n\n')
@@ -748,7 +751,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-1-AC-detalhes, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-AC-detalhes, eval = all(render_document, has.dados.cadastrais), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # read data
 area.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
@@ -815,7 +818,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-1-lp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-lp, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.lp <-
   data.frame(matrix(
     NA,
@@ -952,7 +955,7 @@ table.lp.doc.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-LP, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-LP, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **LP** {#descricao-lp}")
   cat('\n\n')
@@ -1007,7 +1010,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-1-LP-detalhes, eval = has.dados.cadastrais, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-LP-detalhes, eval = all(render_document, has.dados.cadastrais), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # read data
 linhas.raw <-
   readxl::read_excel("PPG/Dados Cadastrais.xlsx",
@@ -1074,7 +1077,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-1-pp-lp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-pp-lp, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.pp <-
   data.frame(matrix(
     NA,
@@ -1153,7 +1156,7 @@ table.pp.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-pp-natureza, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-pp-natureza, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.pp.nt <-
   data.frame(matrix(
     NA,
@@ -1227,7 +1230,7 @@ table.pp.nt.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-pp-membro, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-pp-membro, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.pp.membro <-
   data.frame(matrix(
     NA,
@@ -1305,7 +1308,7 @@ table.pp.membro.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-pp-auxilios, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-pp-auxilios, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter by type of financiamento = AUXILIO
 sucupira.aux.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "OUTRO AUXÍLIO FINANCEIRO", ]
 
@@ -1386,7 +1389,7 @@ table.pp.auxilio.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-pp-bolsas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-pp-bolsas, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter by type of financiamento = BOLSA
 sucupira.bolsas.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "BOLSA", ]
 
@@ -1467,7 +1470,7 @@ table.pp.bolsa.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 1-1-1-PP-DP, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-PP-DP, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **PP** {#descricao-pp}")
   cat('\n\n')
@@ -1527,7 +1530,7 @@ if(knitr::is_latex_output()) {
 
 \blandscape
 
-```{r 1-1-1-PP-DP-landscape, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-1-PP-DP-landscape, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # select data
 table.projetos <- dplyr::select(
   sucupira.financiadores.df,
@@ -1634,7 +1637,7 @@ for (item in 1:dim(AC.LP)[1]) {
 }
 ```
 
-```{r create-markdown-chunks-dynamically, eval = has.sucupira.files}
+```{r create-markdown-chunks-dynamically, eval = all(render_document, has.sucupira.files)}
 # Create R Markdown chunks dynamically because projetos can be very large tables
 
 out <- NULL
@@ -1648,7 +1651,7 @@ for (i in 1:length(lista.AC.LP)) {
   
   # Generate R Markdown code for this chunk
   knit_expanded <- paste0(
-    "\n```{r, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
+    "\n```{r, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
     "cat('\\n\\n<!-- -->\\n\\n')\n",
     "# print tables\n",
     "if (knitr::is_html_output()) {\n",
@@ -1699,7 +1702,7 @@ for (i in 1:length(lista.AC.LP)) {
 
 \newpage
 
-```{r coerencia-abrangencia-ac-lp-pp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r coerencia-abrangencia-ac-lp-pp, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **Coerência e Abrangência** {#coerencia-abrangencia}")
   cat('\n\n')
@@ -1774,19 +1777,19 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 <br>
 
-```{r 1-1-2, eval = knitr::is_html_output()}
+```{r 1-1-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.1.2**")
 cat('\n\n')
 cat("#### **Proposta Curricular do Programa** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.1.2 Proposta Curricular do Programa**")
 cat('\n\n')
 ```
 
-```{r 1-1-2-quanti, eval = has.sucupira.files,, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-2-quanti, eval = all(render_document, has.sucupira.files),, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat('##### *Quantitativa*')
   cat('\n\n')
@@ -1892,7 +1895,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-2-disciplinas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-2-disciplinas, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Load discipline data
 sheet <- "Disciplinas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2003,7 +2006,7 @@ has.table.msc <- is_valid(table.msc)
 has.table.dsc <- is_valid(table.dsc)
 ```
 
-```{r turmas-periodicidade, eval = has.table.msc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r turmas-periodicidade, eval = all(render_document, has.table.msc), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # turmas
 sheet <- "Turmas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2070,7 +2073,7 @@ turmas.dsc <-
   turmas[stringr::str_detect(turmas$`Disciplinas por curso`, course.level),]
 ```
 
-```{r 1-1-2-disciplinas-msc, eval = has.table.msc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-2-disciplinas-msc, eval = all(render_document, has.table.msc), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if (knitr::is_html_output()) {
   cat('##### *Qualitativa (Mestrado)*')
   cat('\n\n')
@@ -2160,7 +2163,7 @@ if(knitr::is_latex_output()) {
 }
 ```
 
-```{r 1-1-2-disciplinas-dsc, eval = has.table.dsc, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-2-disciplinas-dsc, eval = all(render_document, has.table.dsc), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if (knitr::is_html_output()) {
   cat('##### *Qualitativa (Doutorado)*')
   cat('\n\n')
@@ -2252,19 +2255,19 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 1-1-3, eval = knitr::is_html_output()}
+```{r 1-1-3, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.1.3**")
 cat('\n\n')
 cat("#### **Infraestrutura** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat('### **1.1.3 Infraestrutura**')
 cat('\n\n')
 ```
 
-```{r 1-1-3-laboratorios-equipamentos, eval = has.laboratorios, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-1-3-laboratorios-equipamentos, eval = all(render_document, has.laboratorios), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Initialize all sheets
 abas <- readxl::excel_sheets("PPG/Laboratórios.xlsx")
 abas <- abas[order(abas, decreasing = FALSE)]
@@ -2382,19 +2385,19 @@ if (knitr::is_html_output()) {
 
 <br>
 
-```{r 1-2-1, eval = knitr::is_html_output()}
+```{r 1-2-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.1**")
 cat('\n\n')
 cat("#### **Dimensão do corpo Docente Permanente** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.2.1 Dimensão do corpo Docente Permanente**")
 cat('\n\n')
 ```
 
-```{r categoria-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r categoria-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -2495,7 +2498,7 @@ table.1a <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r vinculacao-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r vinculacao-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2594,7 +2597,7 @@ table.1b <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r regime-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r regime-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2698,7 +2701,7 @@ table.1c <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r carga-horaria-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r carga-horaria-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2798,7 +2801,7 @@ table.1d <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r dimensao-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r dimensao-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # list all tables
 table.1.1.1.dim <- 
   list(table.1a,
@@ -2851,19 +2854,19 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 1-2-2, eval = knitr::is_html_output()}
+```{r 1-2-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.2**")
 cat('\n\n')
 cat("#### **Coerência acadêmica do Corpo Docente à proposta do PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.2.2 Coerência acadêmica do Corpo Docente à proposta do PPG**")
 cat('\n\n')
 ```
 
-```{r coerencia-docente-permanente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r coerencia-docente-permanente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -2967,7 +2970,7 @@ table.1.2.2.doc <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r coerencia-docente-colaborador, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r coerencia-docente-colaborador, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -3078,7 +3081,7 @@ if(nrow(table.doc.long) > 0) {
 }
 ```
 
-```{r coerencia, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r coerencia, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # List all tables
 table.1.2.2 <- list(
   table.1.2.2.doc,
@@ -3130,19 +3133,19 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 1-2-3, eval = knitr::is_html_output()}
+```{r 1-2-3, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.3**")
 cat('\n\n')
 cat("#### **Estabilidade do corpo docente permanente** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.2.3 Estabilidade do corpo docente permanente**")
 cat('\n\n')
 ```
 
-```{r estabilidade-corpo-docente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r estabilidade-corpo-docente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -3340,14 +3343,14 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 1-2-4, eval = knitr::is_html_output()}
+```{r 1-2-4, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.4**")
 cat('\n\n')
 cat("#### **Percentual de docentes permanentes com dedicação exclusiva ao PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.2.4 Percentual de docentes permanentes com dedicação exclusiva ao PPG**")
 cat('\n\n')
 ```
@@ -3360,19 +3363,19 @@ cat('\n\n')
 \newpage
 ```
 
-```{r 1-2-5, eval = knitr::is_html_output()}
+```{r 1-2-5, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.5**")
 cat('\n\n')
 cat("#### **Capacidade de captação de recursos** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.2.5 Capacidade de captação de recursos**")
 cat('\n\n')
 ```
 
-```{r 1-2-5-captacao-auxilios, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-2-5-captacao-auxilios, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter by type of financiamento = AUXILIO
 sucupira.aux.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "OUTRO AUXÍLIO FINANCEIRO", ]
 
@@ -3502,7 +3505,7 @@ if(knitr::is_latex_output() && !sjmisc::is_empty(table.cap.aux)) {
 }
 ```
 
-```{r 1-2-5-captacao-bolsas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-2-5-captacao-bolsas, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter by type of financiamento = BOLSA
 sucupira.bolsa.df <- sucupira.financiadores.df[sucupira.financiadores.df$`Natureza do Financiador` == "BOLSA", ]
 
@@ -3632,7 +3635,7 @@ if(knitr::is_latex_output() && !sjmisc::is_empty(table.cap.bolsa)) {
 }
 ```
 
-```{r 1-2-5-captacao-pq, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-2-5-captacao-pq, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -3775,19 +3778,19 @@ if(knitr::is_latex_output() && !sjmisc::is_empty(table.cap.pq)) {
 
 <br>
 
-```{r 1-3-1, eval = knitr::is_html_output()}
+```{r 1-3-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.3.1**")
 cat('\n\n')
 cat("#### **Adequação da proposta ao Plano Institucional da IES** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.3.1 Adequação da proposta ao Plano Institucional da IES**")
 cat('\n\n')
 ```
 
-```{r planejamento, eval = all(has.planejamento, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r planejamento, eval = all(render_document, has.planejamento, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Initialize all sheets
 abas <- readxl::excel_sheets("PPG/Planejamento estratégico.xlsx")
 
@@ -3822,21 +3825,21 @@ for (i in 1:length(abas)) {
 
 <br>
 
-```{r 1-3-2, eval = knitr::is_html_output()}
+```{r 1-3-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.3.2**")
 cat('\n\n')
 cat("#### **Adequação do planejamento** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.3.2 Adequação do planejamento**")
 cat('\n\n')
 ```
 
 \blandscape
 
-```{r 1-4-perfil-discente, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-4-perfil-discente, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Discentes
 sheet <- "Discentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -4045,14 +4048,14 @@ if(knitr::is_latex_output()) {
 
 \elandscape
 
-```{r 1-4-1, eval = knitr::is_html_output()}
+```{r 1-4-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.4.1**")
 cat('\n\n')
 cat("#### **Adequação dos processos e procedimentos utilizados para a autoavaliação** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **1.4.1 Adequação dos processos e procedimentos utilizados para a autoavaliação**")
 cat('\n\n')
 ```
@@ -4124,7 +4127,7 @@ for (j in 1:length(abas)) {
 }
 ```
 
-```{r 1-4-1-resultados, eval = has.autoavaliacao, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-4-1-resultados, eval = all(render_document, has.autoavaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Autoavaliação.xlsx")
 
@@ -4206,19 +4209,19 @@ for (j in 1:length(abas)) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r 2-1-1, eval = knitr::is_html_output()}
+```{r 2-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.1.1**")
 cat('\n\n')
 cat("#### **Coerência do produto final** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.1.1 Coerência do produto final**")
 cat('\n\n')
 ```
 
-```{r 2-1-1-coerencia, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-1-1-coerencia, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # TCC - Banca
 sheet <- "TCC - Banca"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -4502,7 +4505,7 @@ if (!sjmisc::is_empty(table.bancas.long)) {
 }
 ```
 
-```{r 2.1.1-detalhe, eval = has.sucupira.files}
+```{r 2.1.1-detalhe, eval = all(render_document, has.sucupira.files)}
 if (!sjmisc::is_empty(table.bancas.long)) {
   # Create R Markdown chunks dynamically because projetos can be very large tables
   
@@ -4514,7 +4517,7 @@ if (!sjmisc::is_empty(table.bancas.long)) {
     
     # Generate R Markdown code for this chunk
     knit_expanded <- paste0(
-      "\n```{r, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
+      "\n```{r, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
       "cat('\\n\\n<!-- -->\\n\\n')\n",
       "# print tables\n",
       "if (knitr::is_html_output()) {\n",
@@ -4590,14 +4593,14 @@ Fonte: Evert S (2023). corpora: Statistics and Data Sets for Corpus Frequency Da
 
 <br>
 
-```{r 2-1-2, eval = knitr::is_html_output()}
+```{r 2-1-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.1.2**")
 cat('\n\n')
 cat("#### **Qualidade do produto final** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.1.2 Qualidade do produto final**")
 cat('\n\n')
 ```
@@ -4613,19 +4616,19 @@ cat('\n\n')
 
 <br>
 
-```{r 2-2-1, eval = knitr::is_html_output()}
+```{r 2-2-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.2.1**")
 cat('\n\n')
 cat("#### **Produção do corpo discente em eventos científicos** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.2.1 Produção do corpo discente em eventos científicos**")
 cat('\n\n')
 ```
 
-```{r 2-2-1-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-data, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Produções - Autores
 sheet <- "Produções - Autores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -4705,7 +4708,7 @@ sucupira.df.anais$`Subtipo de Produção`[is.na(sucupira.df.anais$`Subtipo de Pr
 sucupira.df.anais$`Categoria do Autor Principal`[is.na(sucupira.df.anais$`Categoria do Autor Principal`)] <- "Indefinido"
 ```
 
-```{r 2-2-1-bibliografica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-bibliografica, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter sucupira.df.anais by "Tipo de Produção" == "Bibliográfica"
 sucupira.df.bib <- unique(sucupira.df.anais[sucupira.df.anais$`Tipo de Produção` == "Bibliográfica", ])
 
@@ -4791,7 +4794,7 @@ if(nrow(sucupira.df.bib) > 0) {
 }
 ```
 
-```{r 2-2-1-natureza, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-natureza, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter `Item de Detalhamento` = "Natureza"
 sucupira.df.nat <- sucupira.df.anais %>%
   dplyr::filter(`Item de Detalhamento` == "Natureza")
@@ -4881,7 +4884,7 @@ if(nrow(sucupira.df.nat) > 0) {
 }
 ```
 
-```{r 2-2-1-local, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-local, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter `Item de Detalhamento` = "Natureza"
 sucupira.df.local <- sucupira.df.anais %>%
   dplyr::filter(`Item de Detalhamento` == "País")
@@ -4970,7 +4973,7 @@ if(nrow(sucupira.df.local) > 0) {
 }
 ```
 
-```{r 2-2-1-discentes-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-discentes-data, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Discentes
 sheet <- "Discentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -4998,7 +5001,7 @@ sucupira.df.disc <- sucupira.df.disc %>%
   dplyr::filter(`Nível Discente` != "Bacharelado")
 ```
 
-```{r 2-2-1-discentes-total, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-discentes-total, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.disc <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df.disc$`Identificador do Discente`)),
@@ -5080,7 +5083,7 @@ if(nrow(table.disc.long) > 0) {
 }
 ```
 
-```{r 2-2-1-discentes-nivel, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-discentes-nivel, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.nivel <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df.disc$`Identificador do Discente`)),
@@ -5162,7 +5165,7 @@ if(nrow(table.nivel.long) > 0){
 }
 ```
 
-```{r 2-2-1-razao, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-razao, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # proporção entre total de produção e total de discentes por ano 
 producao.ano <- table.bib.long %>%
   na.omit() %>%
@@ -5230,7 +5233,7 @@ if(nrow(table.razao.long) > 0) {
 }
 ```
 
-```{r 2-2-1-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-2-1-list-tables, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # producão
 # List all tables
 table.2.2.1.a <- list(
@@ -5367,14 +5370,14 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 2-2-2, eval = knitr::is_html_output()}
+```{r 2-2-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.2.2**")
 cat('\n\n')
 cat("#### **Produção bibliográfica dos discentes/egressos – Acadêmico** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.2.2 Produção bibliográfica dos discentes/egressos – Acadêmico**")
 cat('\n\n')
 ```
@@ -5390,19 +5393,19 @@ cat('\n\n')
 
 <br>
 
-```{r 2-3-1, eval = knitr::is_html_output()}
+```{r 2-3-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.3.1**")
 cat('\n\n')
 cat("#### **Atuação dos Egressos** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.3.1 Atuação dos Egressos**")
 cat('\n\n')
 ```
 
-```{r 2-3-1-formacao-continuada, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-3-1-formacao-continuada, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Discentes
 sheet <- "Discentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -5678,14 +5681,14 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 2-3-2, eval = knitr::is_html_output()}
+```{r 2-3-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.3.2**")
 cat('\n\n')
 cat("#### **Egressos de destaque na sociedade** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.3.2 Egressos de destaque na sociedade**")
 cat('\n\n')
 ```
@@ -5701,14 +5704,14 @@ cat('\n\n')
 
 <br>
 
-```{r 2-4-1, eval = knitr::is_html_output()}
+```{r 2-4-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.4.1**")
 cat('\n\n')
 cat("#### **Produção bibliográfica total do Programa – Acadêmico** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.4.1 Produção bibliográfica total do Programa – Acadêmico**")
 cat('\n\n')
 ```
@@ -5726,19 +5729,19 @@ cat('\n\n')
 
 \blandscape
 
-```{r 2-5-1, eval = knitr::is_html_output()}
+```{r 2-5-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.5.1**")
 cat('\n\n')
 cat("#### **Atividades de ensino nas disciplinas do PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.5.1 Atividades de ensino nas disciplinas do PPG**")
 cat('\n\n')
 ```
 
-```{r turmas, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r turmas, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 sheet <- "Turmas"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -6032,19 +6035,19 @@ if(knitr::is_latex_output() && !sjmisc::is_empty(turmas.posdoc)) {
 
 <br>
 
-```{r 2-5-2, eval = knitr::is_html_output()}
+```{r 2-5-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.5.2**")
 cat('\n\n')
 cat("#### **Responsabilidade por PP/PTT** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.5.2 Responsabilidade por PP/PTT**")
 cat('\n\n')
 ```
 
-```{r 2-5-2-doc, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-2-doc, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.doc <-
   data.frame(matrix(
     NA,
@@ -6128,7 +6131,7 @@ table.doc.gt <-
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 2-5-2-docentes, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-2-docentes, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 if(knitr::is_html_output()) {
   cat("##### **Docentes** {#docentes-linhas-pesquisa}")
   cat('\n\n')
@@ -6267,19 +6270,19 @@ if(knitr::is_latex_output()) {
 
 \blandscape
 
-```{r 2-5-3, eval = knitr::is_html_output()}
+```{r 2-5-3, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.5.3**")
 cat('\n\n')
 cat("#### **Orientação no PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.5.3 Orientação no PPG**")
 cat('\n\n')
 ```
 
-```{r 2-5-3-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-3-data, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Discentes - Orientadores
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -6327,7 +6330,7 @@ sucupira.df.orient$`Nome do Orientador` <- tools::toTitleCase(tolower(sucupira.d
 sucupira.df.orient$`Nível Discente` <- tools::toTitleCase(tolower(sucupira.df.orient$`Nível Discente`))
 ```
 
-```{r 2-5-3-orient-matr, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-3-orient-matr, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter sucupira.df.orient by "Orientador Principal?" == "Sim"
 sucupira.df.matr <- sucupira.df.orient[sucupira.df.orient$`Orientador Principal?` == "Sim", ]
 
@@ -6422,19 +6425,19 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 2-5-4, eval = knitr::is_html_output()}
+```{r 2-5-4, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.5.4**")
 cat('\n\n')
 cat("#### **Titulação no PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.5.4 Titulação no PPG**")
 cat('\n\n')
 ```
 
-```{r 2-5-4-orient-tit, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-4-orient-tit, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter sucupira.df.orient by "Orientador Principal?" == "Sim"
 sucupira.df.tit <- sucupira.df.orient[sucupira.df.orient$`Orientador Principal?` == "Sim", ]
 
@@ -6533,19 +6536,19 @@ if(knitr::is_latex_output()) {
 
 \blandscape
 
-```{r 2-5-5, eval = knitr::is_html_output()}
+```{r 2-5-5, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.5.5**")
 cat('\n\n')
 cat("#### **Orientação na graduação** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **2.5.5 Orientação na graduação**")
 cat('\n\n')
 ```
 
-```{r 2-5-5-grad, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-5-grad, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Docentes
 sheet <- "Docentes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -6589,7 +6592,7 @@ dplyr::select(
 sucupira.df.grad$`Nome Docente` <- tools::toTitleCase(tolower(sucupira.df.grad$`Nome Docente`))
 ```
 
-```{r 2-5-5-orient-grad, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 2-5-5-orient-grad, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Create table
 table.mono <- sucupira.df.grad %>% 
   dplyr::select(
@@ -6794,14 +6797,14 @@ if(knitr::is_latex_output()) {
 <!--script for generating HORIZONTAL LINE-->
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 
-```{r 3-1-1, eval = knitr::is_html_output()}
+```{r 3-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.1.1**")
 cat('\n\n')
 cat("#### **Produção bibliográfica indicada dos DP – Acadêmico** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.1.1 Produção bibliográfica indicada dos DP – Acadêmico**")
 cat('\n\n')
 ```
@@ -6817,19 +6820,19 @@ cat('\n\n')
 
 <br>
 
-```{r 3-1-2, eval = knitr::is_html_output()}
+```{r 3-1-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.1.2**")
 cat('\n\n')
 cat("#### **Produção do Programa** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.1.2 Produção do Programa**")
 cat('\n\n')
 ```
 
-```{r 3-1-2-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-data, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # Produções - Detalhes
 sheet <- "Produções - Detalhes"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
@@ -6878,7 +6881,7 @@ sucupira.df$`Subtipo de Produção`[is.na(sucupira.df$`Subtipo de Produção`)] 
 sucupira.df$`Categoria do Autor Principal`[is.na(sucupira.df$`Categoria do Autor Principal`)] <- "Indefinido"
 ```
 
-```{r 3-1-2-total, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-total, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.total <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -6961,7 +6964,7 @@ table.tot.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-producao, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-producao, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.prd <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -7044,7 +7047,7 @@ table.prd.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-bibliografica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-bibliografica, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter sucupira.df by "Tipo de Produção" == "Bibliográfica"
 sucupira.df.bib <- unique(sucupira.df[sucupira.df$`Tipo de Produção` == "Bibliográfica", ])
 
@@ -7130,7 +7133,7 @@ table.bib.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-tecnica, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-tecnica, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # filter sucupira.df by "Tipo de Produção" == "Técnica"
 sucupira.df.tec <- unique(sucupira.df[sucupira.df$`Tipo de Produção` == "Técnica", ])
 
@@ -7216,7 +7219,7 @@ table.tec.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-tcc, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-tcc, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.tcc <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -7307,7 +7310,7 @@ table.tcc.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-ac, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-ac, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.ac <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -7390,7 +7393,7 @@ table.ac.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-lp, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-lp, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.lp <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -7473,7 +7476,7 @@ table.lp.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-autor-principal, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-autor-principal, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 table.aut <- data.frame(matrix(
   NA,
   nrow = length(unique(sucupira.df$`ID da Produção`)),
@@ -7556,7 +7559,7 @@ table.aut.gt <- gtsummary::tbl_summary(
   gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 ```
 
-```{r 3-1-2-list-tables, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-1-2-list-tables, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # List all tables
 table.3.1.2 <- list(
   table.tot.gt,
@@ -7614,19 +7617,19 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 3-2-1, eval = knitr::is_html_output()}
+```{r 3-2-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.2.1**")
 cat('\n\n')
 cat("#### **Avaliação quantitativa dos impactos do PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.2.1 Avaliação quantitativa dos impactos do PPG**")
 cat('\n\n')
 ```
 
-```{r 3-2-1-data, eval = any(has.metricas.doi.ppg, has.metricas.doi.sucupira), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 3-2-1-data, eval = all(render_document, any(has.metricas.doi.ppg, has.metricas.doi.sucupira)), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 metricas_all_ID <- metricas_all[!duplicated(metricas_all$"ID da Produção"),]
 
 metricas_all_ID$Qualis[is.na(metricas_all_ID$Qualis)] <- "Não classificado"
@@ -7814,14 +7817,14 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-```{r 3-2-2, eval = knitr::is_html_output()}
+```{r 3-2-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.2.2**")
 cat('\n\n')
 cat("#### **Avaliação qualitativa dos impactos do PPG** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.2.2 Avaliação qualitativa dos impactos do PPG**")
 cat('\n\n')
 ```
@@ -7837,14 +7840,14 @@ cat('\n\n')
 
 <br>
 
-```{r 3-3-1, eval = knitr::is_html_output()}
+```{r 3-3-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.3.1**")
 cat('\n\n')
 cat("#### **Visibilidade** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.3.1 Visibilidade**")
 cat('\n\n')
 ```
@@ -7860,14 +7863,14 @@ cat('\n\n')
 
 <br>
 
-```{r 3-3-2, eval = knitr::is_html_output()}
+```{r 3-3-2, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.3.2**")
 cat('\n\n')
 cat("#### **Internacionalização e Inserção** {.tabset}")
 cat('\n\n')
 ```
 
-```{r, eval = !knitr::is_html_output()}
+```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("### **3.3.2 Internacionalização e Inserção**")
 cat('\n\n')
 ```

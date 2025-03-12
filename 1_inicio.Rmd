@@ -830,7 +830,8 @@ for (periodo in periodos) {
     output_format = "all",
     output_file = paste0("autoavaliacao-", periodo),
     params = list(
-      quadrienal.vigente = paste0(as.numeric(strsplit(periodo, "-")[[1]][1]):as.numeric(strsplit(periodo, "-")[[1]][2]), collapse = ";")
+      quadrienal.vigente = paste0(as.numeric(strsplit(periodo, "-")[[1]][1]):as.numeric(strsplit(periodo, "-")[[1]][2]), collapse = ";"),
+      render_document = TRUE
     )
   )
 }

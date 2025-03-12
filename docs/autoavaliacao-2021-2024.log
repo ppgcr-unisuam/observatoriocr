@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.19)  10 MAR 2025 17:48
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.19)  12 MAR 2025 00:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2134,7 +2134,7 @@ Underfull \hbox (badness 1939) in paragraph at lines 594--594
 
 
 [17]
-Overfull \vbox (1138.1576pt too high) has occurred while \output is active []
+Overfull \vbox (627.1277pt too high) has occurred while \output is active []
 
 
 
@@ -2927,40 +2927,58 @@ Overfull \hbox (31.17657pt too wide) in paragraph at lines 1902--1927
 
 
 [66]
+Overfull \hbox (2.10915pt too wide) in paragraph at lines 1971--1971
+ []\TU/lmr/bx/n/10 Total| 
+ []
+
+
+Overfull \hbox (2.10915pt too wide) in paragraph at lines 1971--1971
+ []\TU/lmr/bx/n/10 Total| 
+ []
+
+
+Overfull \hbox (6.32567pt too wide) in paragraph at lines 1946--1972
+ [][] 
+ []
+
+
 
 [67
 
+
 ]
 
-[68]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2003--2003
+[68
+
+]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2042--2042
 []\TU/lmr/bx/n/10 2021|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2003--2003
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2042--2042
 []\TU/lmr/bx/n/10 2022|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2003--2003
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2042--2042
 []\TU/lmr/bx/n/10 2023|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2003--2003
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2042--2042
 []\TU/lmr/bx/n/10 2024|  
  []
 
 
-Overfull \hbox (27.09439pt too wide) in paragraph at lines 1960--2004
+Overfull \hbox (27.09439pt too wide) in paragraph at lines 1999--2043
  [][] 
  []
 
 
 
 [69]
-Overfull \hbox (15.09442pt too wide) in paragraph at lines 2020--2058
+Overfull \hbox (15.09442pt too wide) in paragraph at lines 2059--2097
  [][] 
  []
 
@@ -2982,10 +3000,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 44561 strings out of 473840
- 934499 string characters out of 5729724
- 1788979 words of memory out of 5000000
- 66998 multiletter control sequences out of 15000+600000
+ 44562 strings out of 473840
+ 934522 string characters out of 5729724
+ 1789023 words of memory out of 5000000
+ 66999 multiletter control sequences out of 15000+600000
  594343 words of font info for 112 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,1314s stack positions out of 10000i,1000n,20000p,200000b,200000s

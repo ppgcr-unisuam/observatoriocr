@@ -1737,11 +1737,8 @@ coerencia.gt <- coerencia |>
   )
 
 # remove 0s from gtsummary
-coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
-  dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("^0.*", "",.)))
-# replace non-0 values with "check"
-coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
-  dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("\\d+", ifelse(knitr::is_html_output(), fontawesome::fa("check"), "**X**"),.)))
+# coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
+#   dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("^0.*", "",.)))
 
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(coerencia)) {
@@ -1766,7 +1763,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(coerencia)) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), width = paste0(c(0.30, rep(0.70/(nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), times = nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)))*(21-3-3), "cm"))
+    ) %>% kableExtra::column_spec(column = 1:(1 + nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), width = paste0(c(0.30, rep(0.70/(nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), times = nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)))*(29-3-3), "cm"))
   print(kable_table)
 }
 
@@ -6283,7 +6280,7 @@ cat('\n\n')
 ```
 
 ```{r 2-5-3-data, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-# Produções - Autores
+# Discentes - Orientadores
 sheet <- "Discentes - Orientadores"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
@@ -6534,6 +6531,8 @@ if(knitr::is_latex_output()) {
 
 <br>
 
+\blandscape
+
 ```{r 2-5-5, eval = knitr::is_html_output()}
 cat("### **2.5.5**")
 cat('\n\n')
@@ -6546,14 +6545,247 @@ cat("### **2.5.5 Orientação na graduação**")
 cat('\n\n')
 ```
 
+```{r 2-5-5-grad, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Docentes
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
-<!-- EM CONSTRUÇÃO -->
+# Get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
 
+# Get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
 
-```{=latex}
-\newpage
-\FloatBarrier
+# keep docentes permanente only
+sucupira <- lapply(sucupira, function(x) {
+  x <- x[x$Categoria == "PERMANENTE", ]
+  return(x)
+})
+
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+
+sucupira.df.grad <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.df.grad) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+
+# inserção na graduação
+sucupira.df.grad <- sucupira.df.grad %>% 
+dplyr::select(
+  "Anos",
+  "Nome Docente",
+  "Orientações de Monografia",
+  "Número de Disciplinas da Graduação",
+  "Orientações de Iniciação Científica",
+  "Orientações de Tutoria",
+  "Carga Horária na Graduação (Anual)"
+)
+
+sucupira.df.grad$`Nome Docente` <- tools::toTitleCase(tolower(sucupira.df.grad$`Nome Docente`))
 ```
+
+```{r 2-5-5-orient-grad, eval = has.sucupira.files, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Create table
+table.mono <- sucupira.df.grad %>% 
+  dplyr::select(
+    "Anos",
+    "Nome Docente",
+    "Orientações de Monografia"
+  )
+
+# drop rows with 0 values
+table.mono <- table.mono %>%
+  dplyr::filter(`Orientações de Monografia` > 0)
+
+# check for missing docentes.quadrienio
+table.mono$"Nome Docente" <- factor(
+  table.mono$"Nome Docente",
+  levels = sort(unique(c("Docentes", levels(table.mono$"Nome Docente"), docentes.quadrienio)))
+)
+
+# check for missing anos in table.mono
+table.mono$"Anos" <- factor(
+  table.mono$"Anos",
+  levels = sort(quadrienal.vigente)
+)
+
+# change all column types to factors
+table.mono <- table.mono %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print tables tbl_cross with thee levels
+if(!sjmisc::is_empty(table.mono)){
+  table.mono.gt <- table.mono |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Anos",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = "column"
+    ) %>%
+    gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() 
+} else {
+  table.mono.gt <- list()
+}
+
+# Create table
+table.ic <- sucupira.df.grad %>% 
+  dplyr::select(
+    "Anos",
+    "Nome Docente",
+    "Orientações de Iniciação Científica"
+  )
+
+# drop rows with 0 values
+table.ic <- table.ic %>%
+  dplyr::filter(`Orientações de Iniciação Científica` > 0)
+
+# check for missing docentes.quadrienio
+table.ic$"Nome Docente" <- factor(
+  table.ic$"Nome Docente",
+  levels = sort(unique(c("Docentes", levels(table.ic$"Nome Docente"), docentes.quadrienio)))
+)
+
+# check for missing anos in table.ic
+table.ic$"Anos" <- factor(
+  table.ic$"Anos",
+  levels = sort(quadrienal.vigente)
+)
+
+# change all column types to factors
+table.ic <- table.ic %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print tables tbl_cross with thee levels
+if(!sjmisc::is_empty(table.ic)){
+  table.ic.gt <- table.ic |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Anos",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = "column"
+    ) %>%
+    gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels()
+} else {
+  table.ic.gt <- list()
+}
+
+# Create table
+table.tut <- sucupira.df.grad %>% 
+  dplyr::select(
+    "Anos",
+    "Nome Docente",
+    "Orientações de Tutoria"
+  )
+
+# drop rows with 0 values
+table.tut <- table.tut %>%
+  dplyr::filter(`Orientações de Tutoria` > 0)
+
+# check for missing docentes.quadrienio
+table.tut$"Nome Docente" <- factor(
+  table.tut$"Nome Docente",
+  levels = sort(unique(c("Docentes", levels(table.tut$"Nome Docente"), docentes.quadrienio)))
+)
+
+# check for missing anos in table.tut
+table.tut$"Anos" <- factor(
+  table.tut$"Anos",
+  levels = sort(quadrienal.vigente)
+)
+
+# change all column types to factors
+table.tut <- table.tut %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print tables tbl_cross with thee levels
+if(!sjmisc::is_empty(table.tut)){
+  table.tut.gt <- table.tut |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Anos",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = "column"
+    ) %>%
+    gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels()
+} else {
+  table.tut.gt <- list()
+}
+
+# List all tables
+table.2.5.5 <- list(
+  table.mono.gt,
+  table.ic.gt,
+  table.tut.gt
+)
+
+# Drop empty elements from the list
+table.2.5.5 <- table.2.5.5[lapply(table.2.5.5, length) > 0]
+
+spann <- c("**Orientações de Monografia**", "**Orientações de Iniciação Científica**", "**Orientações de Tutoria**")
+spann <- spann[which(lapply(table.2.5.5, length) > 0)]
+
+if(any(lapply(table.2.5.5, length) > 0)){
+  table.2.5.5 <- gtsummary::tbl_merge(
+    tbls = table.2.5.5,
+    tab_spanner = spann
+  )
+} else {
+  table.2.5.5 <- NULL
+}
+
+# Print HTML table
+if (knitr::is_html_output() && !sjmisc::is_empty(table.2.5.5)) {
+  print(table.2.5.5)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.5.5)) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.2.5.5,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Produção do Programa")
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(sucupira.df.grad$Anos))*nlevels(sucupira.df.grad$"Nível Discente")), width = paste0(c(0.55, rep(0.45/(length(unique(sucupira.df.grad$Anos))*length(spann)), times = length(unique(sucupira.df.grad$Anos))*length(spann)))*(29-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+\elandscape
 
 <br>
 

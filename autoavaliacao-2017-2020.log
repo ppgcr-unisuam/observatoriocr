@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.19)  10 MAR 2025 17:27
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.19)  12 MAR 2025 00:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2383,12 +2383,7 @@ Underfull \hbox (badness 1527) in paragraph at lines 668--668
 
 
 [25]
-Overfull \hbox (2.20906pt too wide) in paragraph at lines 764--764
-[]\TU/lmr/bx/n/10 Reabilitação 
- []
-
-
-Overfull \vbox (3683.57562pt too high) has occurred while \output is active []
+Overfull \vbox (2256.42583pt too high) has occurred while \output is active []
 
 
 
@@ -3593,40 +3588,58 @@ Overfull \hbox (31.17657pt too wide) in paragraph at lines 2074--2100
 
 
 [82]
+Overfull \hbox (2.10915pt too wide) in paragraph at lines 2145--2145
+ []\TU/lmr/bx/n/10 Total| 
+ []
+
+
+Overfull \hbox (2.10915pt too wide) in paragraph at lines 2145--2145
+ []\TU/lmr/bx/n/10 Total| 
+ []
+
+
+Overfull \hbox (6.32567pt too wide) in paragraph at lines 2119--2146
+ [][] 
+ []
+
+
 
 [83
 
+
 ]
 
-[84]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
+[84
+
+]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2216--2216
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2216--2216
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2216--2216
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2176--2176
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2216--2216
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (27.09439pt too wide) in paragraph at lines 2133--2177
+Overfull \hbox (27.09439pt too wide) in paragraph at lines 2173--2217
  [][] 
  []
 
 
 
 [85]
-Overfull \hbox (15.09442pt too wide) in paragraph at lines 2193--2231
+Overfull \hbox (15.09442pt too wide) in paragraph at lines 2233--2271
  [][] 
  []
 
@@ -3648,10 +3661,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 44779 strings out of 473840
- 939775 string characters out of 5729724
- 2058000 words of memory out of 5000000
- 67216 multiletter control sequences out of 15000+600000
+ 44780 strings out of 473840
+ 939798 string characters out of 5729724
+ 2060043 words of memory out of 5000000
+ 67217 multiletter control sequences out of 15000+600000
  607834 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,1412s stack positions out of 10000i,1000n,20000p,200000b,200000s

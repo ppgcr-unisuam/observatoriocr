@@ -218,6 +218,9 @@ navbar:
           href: [autoavaliacao.html#impacto]
     - text: "Relatórios"
       menu:
+        - text: "2025-2028"
+          icon: "fa-file-pdf"
+          href: [autoavaliacao-2025-2028.pdf]
         - text: "2021-2024"
           icon: "fa-file-pdf"
           href: [autoavaliacao-2021-2024.pdf]

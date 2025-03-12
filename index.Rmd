@@ -48,7 +48,7 @@ title: "OBSERVATÓRIO `r ifelse(magrittr::and(has.dados.cadastrais, has.sucupira
 
 ```{r logo-ppg}
 if(file.exists("PPG/Images/logo-programa.png")) {
-  cat('<img src=\"PPG/Images/logo-programa.png\" width="100vmax" align=\"center\"/>')
+  cat('<img src=\"PPG/Images/logo-programa.png\" max-width=\"500px\" height=\"auto\" align=\"center\"/>')
   has.logo.ppg <- TRUE
 } else {
   has.logo.ppg <- FALSE
@@ -763,7 +763,8 @@ plot.1 <- plot.1 %>% plotly::layout(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = unique(data_long$Ano)
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -842,7 +843,8 @@ plot.2 <- plot.2 %>% plotly::layout(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = unique(data_long$Ano)
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "R$",
@@ -908,7 +910,8 @@ plot.3 <- plot.3 %>% plotly::layout(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = unique(data_long$Ano)
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "N",
@@ -1564,7 +1567,9 @@ plot.2 <- plot.2 %>% plotly::layout(
   yaxis = list(
     title = "SciMAGO Journal Rank (SJR)",
     titlefont = list(color = 'white'),
-    tickfont = list(color = 'white')
+    tickfont = list(color = 'white'),
+    # discrete ticks
+    tickformat = ".0d"
   ),
   plot_bgcolor = 'black',
   paper_bgcolor = 'black',
@@ -1609,12 +1614,15 @@ plot.3 <- plot.3 %>% plotly::layout(
     title = "",
     titlefont = list(color = 'white'),
     tickfont = list(color = 'white'),
-    tickvals = unique(data_long$Ano)
+    tickvals = unique(data_long$Ano),
+    range = anos
   ),
   yaxis = list(
     title = "CiteScore",
     titlefont = list(color = 'white'),
-    tickfont = list(color = 'white')
+    tickfont = list(color = 'white'),
+    # discrete ticks
+    tickformat = ".0d"
   ),
   plot_bgcolor = 'black',
   paper_bgcolor = 'black',
@@ -1885,7 +1893,8 @@ plot.1 <- plot.1 %>% plotly::layout(
   yaxis = list(
     title = "Altmetric Attention Score",
     titlefont = list(color = 'white'),
-    tickfont = list(color = 'white')
+    tickfont = list(color = 'white'),
+    type = "log"
   ),
   plot_bgcolor = 'black',
   paper_bgcolor = 'black',
@@ -2147,7 +2156,7 @@ table.2.sum <- colSums(table.2.sum, na.rm = TRUE)
 # drop Ano
 table.2.sum <- table.2.sum[-1]
 # add Altmetric total as first value
-table.2.sum <- c(sum(table.1$Altmetric, na.rm = TRUE), table.2.sum)
+table.2.sum <- c(sum(metricas_artigos$altmetric_score, na.rm = TRUE), table.2.sum)
 
 # rename columns
 names(table.2.sum) <-

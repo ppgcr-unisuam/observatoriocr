@@ -48,7 +48,7 @@ title: "OBSERVATÓRIO `r ifelse(magrittr::and(has.dados.cadastrais, has.sucupira
 
 ```{r logo-ppg}
 if(file.exists("PPG/Images/logo-programa.png")) {
-  cat('<img src=\"PPG/Images/logo-programa.png\" max-width=\"500px\" height=\"auto\" align=\"center\"/>')
+  cat('<img src=\"PPG/Images/logo-programa.png\" width=\"600px\" height=\"auto\" align=\"center\"/>')
   has.logo.ppg <- TRUE
 } else {
   has.logo.ppg <- FALSE

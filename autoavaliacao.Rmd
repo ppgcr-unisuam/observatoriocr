@@ -219,7 +219,7 @@ for (j in 1:length(abas)) {
 ```
 
 ```{r, eval = all(render_document, knitr::is_html_output(), has.sucupira.files)}
-cat("## **Preenchimento do Coleta {#coleta .tabset}**")
+cat("## **Preenchimento do Coleta** {#coleta .tabset}")
 ```
 
 ```{r, eval = all(render_document, !knitr::is_html_output(), has.sucupira.files)}
@@ -4060,7 +4060,7 @@ cat("### **1.4.1 Adequação dos processos e procedimentos utilizados para a aut
 cat('\n\n')
 ```
 
-```{r 1-4-1-metodologia, eval = has.metodologia, echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r 1-4-1-metodologia, eval = all(render_document, has.metodologia), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 

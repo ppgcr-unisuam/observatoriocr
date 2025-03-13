@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  12 MAR 2025 22:36
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  13 MAR 2025 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2370,11 +2370,11 @@ Underfull \hbox (badness 1939) in paragraph at lines 1462--1462
 
 ]
 
-[63
+[63]
+
+[64
 
 ]
-
-[64]
 
 [65]
 
@@ -2382,7 +2382,9 @@ Underfull \hbox (badness 1939) in paragraph at lines 1462--1462
 
 [67]
 
-[68] (./autoavaliacao-2025-2028.aux)
+[68]
+
+[69] (./autoavaliacao-2025-2028.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2400,4 +2402,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,1315s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2025-2028.pdf (71 pages).
+Output written on autoavaliacao-2025-2028.pdf (72 pages).

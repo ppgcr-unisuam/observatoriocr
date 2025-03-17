@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  16 MAR 2025 20:49
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.16)  17 MAR 2025 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1238,9 +1238,6 @@ LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
 LaTeX Warning: Label `tab:1-4-1-resultados' multiply defined.
 
 
-LaTeX Warning: Label `tab:2-2-1-list-tables' multiply defined.
-
-
 LaTeX Warning: Label `tab:turmas' multiply defined.
 
 
@@ -2410,7 +2407,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  44540 strings out of 473840
  932476 string characters out of 5729724
- 1669615 words of memory out of 5000000
+ 1669596 words of memory out of 5000000
  66974 multiletter control sequences out of 15000+600000
  590353 words of font info for 112 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

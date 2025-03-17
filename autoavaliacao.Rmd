@@ -73,6 +73,15 @@ source("Scripts/social-media-sharing.R", local = knitr::knit_global())
 ```
 </p>
 
+```{r, eval = all(!render_document, knitr::is_html_output())}
+cat('<div class="d-grid gap-2">
+  <button class="btn btn-lg btn-primary" type="button">Quadrienal 2025-2028</button>
+  <button class="btn btn-lg btn-primary" type="button">Quadrienal 2021-2024</button>
+  <button class="btn btn-lg btn-primary" type="button">Quadrienal 2017-2020</button>
+  <button class="btn btn-lg btn-primary" type="button">Quadrienal 2013-2016</button>
+</div>')
+```
+
 <br>
 
 ```{r quadrienal-vigente, results = "hide", echo = FALSE, include = FALSE, eval = all(render_document, has.sucupira.files)}
@@ -134,15 +143,15 @@ source("Scripts/cover-2.R", local = knitr::knit_global())
 
 ```{r, eval = all(render_document, knitr::is_html_output())}
 cat("## **Avaliação CAPES** {#avalicao-capes .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
 ```
 
 ```{r, eval = all(render_document, !knitr::is_html_output())}
 cat("## **Avaliação CAPES**")
 cat('\n\n')
 ```
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r, eval = all(render_document, !has.avaliacao)}
 cat('<br>')
@@ -220,15 +229,15 @@ for (j in 1:length(abas)) {
 
 ```{r, eval = all(render_document, knitr::is_html_output(), has.sucupira.files)}
 cat("## **Preenchimento do Coleta** {#coleta .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
 ```
 
 ```{r, eval = all(render_document, !knitr::is_html_output(), has.sucupira.files)}
 cat("## **Preenchimento do Coleta**")
 cat('\n\n')
 ```
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r preenchimento-coleta, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # get years
@@ -314,15 +323,18 @@ if(knitr::is_latex_output()) {
 
 ```{=latex}
 \newpage
+\vspace*{\fill}
+\section{\textbf{1. Programa}}
+\vspace*{\fill}
+\newpage
 ```
 
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
-
-## **1. Programa** {#programa .tabset}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
+```{r 1-Programa, eval = all(render_document, knitr::is_html_output())}
+cat("## **1. Programa** {#programa .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
+```
 
 ```{r 1-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.1.1**")
@@ -4194,20 +4206,26 @@ for (j in 1:length(abas)) {
 }
 ```
 
+<br>
+
+<br>
+
 ```{=latex}
+\newpage
+\vspace*{\fill}
+\section{\textbf{2. Formação}}
+\vspace*{\fill}
 \newpage
 ```
 
-<br>
-
-<br>
+```{r 2-Formacao, eval = all(render_document, knitr::is_html_output())}
+cat("## **2. Formação** {#formacao .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
+```
 
 \blandscape
-
-## **2. Formação** {#formacao .tabset}
-
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
 
 ```{r 2-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **2.1.1**")
@@ -6941,10 +6959,20 @@ if(knitr::is_latex_output()) {
 
 <br>
 
-## **3. Impacto na sociedade** {#impacto .tabset}
+```{=latex}
+\newpage
+\vspace*{\fill}
+\section{\textbf{3. Impacto}}
+\vspace*{\fill}
+\newpage
+```
 
-<!--script for generating HORIZONTAL LINE-->
-<hr style="height:2px;border-width:0;color:black;background-color:black">
+```{r 3-Impacto, eval = all(render_document, knitr::is_html_output())}
+cat("## **3. Impacto** {#impacto .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
+```
 
 ```{r 3-1-1, eval = all(render_document, knitr::is_html_output())}
 cat("### **3.1.1**")

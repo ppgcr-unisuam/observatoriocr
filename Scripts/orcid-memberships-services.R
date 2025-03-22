@@ -1,3 +1,6 @@
+# test
+# my_orcid <- "0000-0001-7014-2002"
+
 member <- c()
 
 # get invited positions data
@@ -9,40 +12,30 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
   memberships <- res[[1]]$`affiliation-group`$summaries
   n.pos <- length(memberships)
   
-  member <- as.data.frame(matrix(NA, ncol = 2, nrow = n.pos), check.names = FALSE)
+  # associações
+  member <- as.data.frame(matrix(NA, ncol = 6, nrow = n.pos), check.names = FALSE)
   for (i in 1:n.pos) {
-    # periódico
-    member[i, 1] <-
-      memberships[[i]][['membership-summary.organization.name']]
-    member[i, 2] <-
-      memberships[[i]][['membership-summary.role-title']]
+    # get ano inicial
+    try(member[i, 1] <- 
+      memberships[[i]][['membership-summary.start-date.year.value']], silent = TRUE)
+    # get ano final
+    try(member[i, 2] <-
+      memberships[[i]][['membership-summary.end-date']], silent = TRUE)
+    if(is.na(member[i, 2])){member[i, 2] <- "Atual"}
+    # get name
+    try(member[i, 3] <-
+      memberships[[i]][['membership-summary.source.source-name.value']], silent = TRUE)
+    # get afiliação
+    try(member[i, 4] <-
+      memberships[[i]][['membership-summary.organization.name']], silent = TRUE)
+    # get atuação
+    try(member[i, 5] <-
+      memberships[[i]][['membership-summary.role-title']], silent = TRUE)
+    # get país
+    try( member[i, 6] <- 
+      memberships[[i]][['membership-summary.organization.address.country']], silent = TRUE)
   }
-  colnames(member) <- c("Afiliação", "Atuação")
-  
-  # print table (reviewed journals)
-  print(
-    knitr::kable(
-      member,
-      align = "l",
-      format = ifelse(knitr::is_html_output(), "html", "latex"),
-      escape = FALSE
-    ) %>%
-      kableExtra::kable_styling(
-        bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-        full_width = T,
-        position = "center"
-      ) %>%
-      kableExtra::row_spec(
-        0,
-        background = main.color,
-        bold = TRUE,
-        color = "white"
-      ),
-    row.names = NULL
-  )
-  cat("**Fontes**: [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/), [**ORCID**](https://orcid.org)")
-  cat('<br>')
-  cat('<br>')
+  colnames(member) <- c("Ano (início)", "Ano (fim)", "Docente", "Afiliação", "Atuação", "País")
 }
 
 # ################################
@@ -58,38 +51,28 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
   services.res <- res[[1]]$`affiliation-group`$summaries
   n.pos <- length(services.res)
   
+  # periódicos
   services <- as.data.frame(matrix(NA, ncol = 2, nrow = n.pos), check.names = FALSE)
   for (i in 1:n.pos) {
-    # periódico
-    services[i, 1] <-
-      services.res[[i]][['service-summary.organization.name']]
-    services[i, 2] <-
-      services.res[[i]][['service-summary.role-title']]
+    # get ano inicial
+    try(services[i, 1] <- 
+      services.res[[i]][['service-summary.start-date.year.value']], silent = TRUE)
+    # get ano final
+    try(services[i, 2] <-
+      services.res[[i]][['service-summary.end-date.year.value']], silent = TRUE)
+    if(is.na(services[i, 2])){services[i, 2] <- "Atual"}
+    # get name
+    try(services[i, 3] <-
+      services.res[[i]][['service-summary.source.source-name.value']], silent = TRUE)
+    # get organization
+    try(services[i, 4] <-
+      services.res[[i]][['service-summary.organization.name']], silent = TRUE)
+    # get atuação 
+    try(services[i, 5] <-
+      services.res[[i]][['service-summary.role-title']], silent = TRUE)
+    # get pais
+    try(services[i, 6] <- 
+      services.res[[i]][['service-summary.organization.address.country']], silent = TRUE)
   }
-  colnames(services) <- c("Afiliação", "Atuação")
-  
-  # print table (reviewed journals)
-  print(
-    knitr::kable(
-      services,
-      align = "l",
-      format = ifelse(knitr::is_html_output(), "html", "latex"),
-      escape = FALSE
-    ) %>%
-      kableExtra::kable_styling(
-        bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-        full_width = T,
-        position = "center"
-      ) %>%
-      kableExtra::row_spec(
-        0,
-        background = main.color,
-        bold = TRUE,
-        color = "white"
-      ),
-    row.names = NULL
-  )
-  cat("**Fontes**: [**Plataforma Sucupira**](https://sucupira.capes.gov.br/sucupira/), [**ORCID**](https://orcid.org)")
-  cat('<br>')
-  cat('<br>')
+  colnames(services) <- c("Ano (início)", "Ano (fim)", "Docente", "Organização", "Atuação", "País")
 }

@@ -3,6 +3,7 @@
 
 # periódico
 invited.pos <- c()
+labels <- c("Ano (início)", "Ano (fim)", "Docente", "Periódico", "Atuação", "País")
 
 # get invited positions data
 res <- rorcid::orcid_invited_positions(my_orcid)
@@ -13,7 +14,7 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
   affiliations <- res[[1]]$`affiliation-group`$summaries
   n.pos <- length(affiliations)
   
-  invited.pos <- as.data.frame(matrix(NA, ncol = 8, nrow = n.pos), check.names = FALSE)
+  invited.pos <- as.data.frame(matrix(NA, ncol = length(labels), nrow = n.pos), check.names = FALSE)
   for (i in 1:n.pos) {
     # get ano inicio
     try(invited.pos[i, 1] <-
@@ -41,7 +42,5 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
     try(invited.pos[i, 6] <-
       affiliations[[i]][['invited-position-summary.organization.address.country']], silent = TRUE)
   }
-  colnames(invited.pos) <- c("Ano (início)", "Ano (fim)", "Docente", "Periódico", "Atuação", "País")
-  
-  invited.pos <- cbind(invited.pos)
+  colnames(invited.pos) <- labels
 }

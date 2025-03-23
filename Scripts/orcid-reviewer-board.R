@@ -80,11 +80,7 @@ if (is.null(res[[1]]$group$`external-ids.external-id`)) {
       "Pareceres" = pareceres.all,
       "País" = paises.all,
       check.names = FALSE)
-  peer.review <-
-    peer.review[order(as.numeric(SJR), as.numeric(CiteScore), decreasing = TRUE), ]
   
-  # remove rows with incomplete data
-  peer.review <- peer.review[complete.cases(peer.review), ]
   rownames(peer.review) <- c()
   
   # remove duplicates

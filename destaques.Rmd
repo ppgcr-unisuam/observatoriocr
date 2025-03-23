@@ -467,6 +467,7 @@ orcids <- gsub("(.{14})(.*)$", "\\1-\\2",
 editor.name.all <- c()
 for (id in 1:length(orcids)) {
   my_orcid <- orcids[id]
+  docente.name <- sucupira.unique$`Nome Docente`[id]
   source("Scripts/orcid-invited-positions.R", local = knitr::knit_global())
   editor.name.all <- rbind(editor.name.all, invited.pos)
 }
@@ -503,6 +504,7 @@ orcids <- gsub("(.{14})(.*)$", "\\1-\\2",
 peer.review.all <- c()
 for (id in 1:length(orcids)) {
   my_orcid <- orcids[id]
+  docente.name <- sucupira.unique$`Nome Docente`[id]
   source("Scripts/orcid-reviewer-board.R", local = knitr::knit_global())
   peer.review.all <- rbind(peer.review.all, peer.review)
 }

@@ -3,6 +3,9 @@
 
 member <- c()
 
+labels.1 <- c("Ano (início)", "Ano (fim)", "Docente", "Afiliação", "Atuação", "País")
+labels.2 <- c("Ano (início)", "Ano (fim)", "Docente", "Organização", "Atuação", "País")
+
 # get invited positions data
 res <- rorcid::orcid_memberships(my_orcid)
 
@@ -13,7 +16,7 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
   n.pos <- length(memberships)
   
   # associações
-  member <- as.data.frame(matrix(NA, ncol = 6, nrow = n.pos), check.names = FALSE)
+  member <- as.data.frame(matrix(NA, ncol = length(labels.1), nrow = n.pos), check.names = FALSE)
   for (i in 1:n.pos) {
     # get ano inicial
     try(member[i, 1] <- 
@@ -32,10 +35,10 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
     try(member[i, 5] <-
       memberships[[i]][['membership-summary.role-title']], silent = TRUE)
     # get país
-    try( member[i, 6] <- 
+    try(member[i, 6] <- 
       memberships[[i]][['membership-summary.organization.address.country']], silent = TRUE)
   }
-  colnames(member) <- c("Ano (início)", "Ano (fim)", "Docente", "Afiliação", "Atuação", "País")
+  colnames(member) <- labels.1
 }
 
 # ################################
@@ -52,7 +55,7 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
   n.pos <- length(services.res)
   
   # periódicos
-  services <- as.data.frame(matrix(NA, ncol = 2, nrow = n.pos), check.names = FALSE)
+  services <- as.data.frame(matrix(NA, ncol = length(labels.2), nrow = n.pos), check.names = FALSE)
   for (i in 1:n.pos) {
     # get ano inicial
     try(services[i, 1] <- 
@@ -74,5 +77,5 @@ if (is.null(res[[1]]$`affiliation-group`$summaries)) {
     try(services[i, 6] <- 
       services.res[[i]][['service-summary.organization.address.country']], silent = TRUE)
   }
-  colnames(services) <- c("Ano (início)", "Ano (fim)", "Docente", "Organização", "Atuação", "País")
+  colnames(services) <- labels.2
 }

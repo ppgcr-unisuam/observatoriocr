@@ -3447,6 +3447,8 @@ if(knitr::is_latex_output()) {
 
 <br>
 
+\blandscape
+
 ```{r 1-2-4, eval = all(render_document, knitr::is_html_output())}
 cat("### **1.2.4**")
 cat('\n\n')
@@ -3459,7 +3461,161 @@ cat("### **1.2.4 Percentual de docentes permanentes com dedicação exclusiva ao
 cat('\n\n')
 ```
 
-<!-- EM CONSTRUÇÃO -->
+```{r 1-2-4-exclusividade, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Docentes
+sheet <- "Docentes"
+source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
+
+# Get years
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
+# Get data for the current period
+sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+  plyr::compact()
+
+# keep docentes permanente only
+sucupira <- lapply(sucupira, function(x) {
+  x <- x[x$Categoria == "PERMANENTE", ]
+  return(x)
+})
+
+for (i in 1:length(sucupira)) {
+  sucupira[[i]] <- cbind(
+    "Anos" = rep(quadrienal.vigente[i], times = dim(sucupira[[i]])[1]),
+    sucupira[[i]]
+  )
+}
+
+sucupira.df.ext <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira.df.ext) <- names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+
+# participações externas ao PPG
+sucupira.df.ext <- sucupira.df.ext %>% dplyr::select(
+  "Nome Docente",
+  "Orientações Externas de Mestrado",
+  "Orientações Externas de Mestrado Profissional",
+  "Orientações Externas de Doutorado",
+  "Orientações Externas de Doutorado Profissional",
+  "Coorientações Externas de Mestrado",
+  "Coorientações Externas de Mestrado Profissional",
+  "Coorientações Externas de Doutorado",
+  "Coorientações Externas de Doutorado Profissional"
+)
+sucupira.df.ext$`Nome Docente` <- tools::toTitleCase(tolower(sucupira.df.ext$`Nome Docente`))
+```
+
+```{r 1-2-4-exclusividade-tabela, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Create table
+table.excl <- sucupira.df.ext
+
+# as numeric
+table.excl[, 2:9] <- lapply(table.excl[, 2:9], as.numeric)
+
+# sum columns by Nome docente
+table.excl <- table.excl %>% 
+  dplyr::mutate(
+    `Exclusividade` = rowSums(dplyr::select(., -`Nome Docente`))
+  )
+
+# drop rows with 0 values
+table.excl <- table.excl %>%
+  dplyr::filter(
+    `Exclusividade` == 0
+  )
+
+# drop Exclusividade
+table.excl <- table.excl %>%
+  dplyr::select(
+    -"Exclusividade"
+)
+
+# to long table, by Nome Docente
+table.excl <- table.excl %>%
+  tidyr::pivot_longer(
+    cols = -c("Nome Docente"),
+    names_to = "Exclusividade"
+  )
+
+# filter values > 0
+table.excl <- table.excl %>%
+  dplyr::filter(value == 0)
+
+# drop value
+table.excl <- table.excl %>%
+  dplyr::select(
+    "Nome Docente",
+    "Exclusividade"
+  )
+
+# remove duplicates
+table.excl <- table.excl %>%
+  dplyr::distinct()
+
+# check for missing docentes.quadrienio
+table.excl$"Nome Docente" <- factor(
+  table.excl$"Nome Docente",
+  levels = sort(unique(c("Docentes", levels(table.excl$"Nome Docente"), docentes.quadrienio)))
+)
+
+# change all column types to factors
+table.excl.long <- table.excl %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print table
+if(!sjmisc::is_empty(table.excl.long)){
+  table.excl.gt <- table.excl.long |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Exclusividade",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = "column"
+    ) %>%
+    gtsummary::modify_header(label = "Exclusividade no PPG", stat_0 = "Total") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() 
+} else {
+  table.excl.gt <- list()
+}
+
+# Print HTML table
+if (knitr::is_html_output() && !sjmisc::is_empty(table.excl.gt)) {
+  print(table.excl.gt)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output() && !sjmisc::is_empty(table.excl.gt)) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.excl.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Exclusividade no PPG - Total"),
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + (length(unique(table.excl.gt$`Exclusividade`))+1)), width = paste0(c(0.40, rep(0.60/(length(unique(table.excl.gt$`Exclusividade`))+1), times = (length(unique(table.excl.gt$`Exclusividade`))+1)))*(29-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+\elandscape
 
 <br>
 
@@ -7065,6 +7221,126 @@ if(knitr::is_latex_output()) {
 ```
 
 \elandscape
+
+```{r 2-5-5-insercao-grad, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# Create table
+table.insercao <- sucupira.df.grad
+
+# drop year column
+table.insercao <- table.insercao %>% dplyr::select(
+  "Nome Docente",
+  "Orientações de Monografia",
+  "Orientações de Iniciação Científica",
+  "Orientações de Tutoria",
+  "Número de Disciplinas da Graduação",
+  "Carga Horária na Graduação (Anual)"
+)
+
+# as numeric
+table.insercao[, 2:6] <- lapply(table.insercao[, 2:6], as.numeric)
+
+# sum columns by Nome docente
+table.insercao <- table.insercao %>% 
+  dplyr::mutate(
+    `Inserção na Graduação` = rowSums(dplyr::select(., -`Nome Docente`))
+  )
+
+# drop rows with 0 values
+table.insercao <- table.insercao %>%
+  dplyr::filter(
+    `Inserção na Graduação` > 0
+  )
+
+# drop Inserção na Graduação
+table.insercao <- table.insercao %>%
+  dplyr::select(
+    -"Inserção na Graduação"
+)
+
+# to long table, by Nome Docente
+table.insercao <- table.insercao %>%
+  tidyr::pivot_longer(
+    cols = -c("Nome Docente"),
+    names_to = "Inserção na Graduação"
+  )
+
+# filter values > 0
+table.insercao <- table.insercao %>%
+  dplyr::filter(value > 0)
+
+# drop value
+table.insercao <- table.insercao %>%
+  dplyr::select(
+    "Nome Docente",
+    "Inserção na Graduação"
+  )
+
+# remove duplicates
+table.insercao <- table.insercao %>%
+  dplyr::distinct()
+
+# check for missing docentes.quadrienio
+table.insercao$"Nome Docente" <- factor(
+  table.insercao$"Nome Docente",
+  levels = sort(unique(c("Docentes", levels(table.insercao$"Nome Docente"), docentes.quadrienio)))
+)
+
+# change all column types to factors
+table.insercao.long <- table.insercao %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+
+# print table
+if(!sjmisc::is_empty(table.insercao.long)){
+  table.insercao.gt <- table.insercao.long |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Inserção na Graduação",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = "column"
+    ) %>%
+    gtsummary::modify_header(label = "**Disciplinas na Graduação - Inserção**", stat_0 = "Total") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() 
+} else {
+  table.insercao.gt <- list()
+}
+
+# Print HTML table
+if (knitr::is_html_output() && !sjmisc::is_empty(table.insercao.gt)) {
+  print(table.insercao.gt)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output() && !sjmisc::is_empty(table.insercao.gt)) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.insercao.gt,
+    escape = FALSE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Inserção na Graduação - Total"),
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + (length(unique(table.insercao$`Inserção na Graduação`))+1)), width = paste0(c(0.40, rep(0.60/(length(unique(table.insercao$`Inserção na Graduação`))+1), times = (length(unique(table.insercao$`Inserção na Graduação`))+1)))*(29-3-3), "cm"))
+  print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
 
 <br>
 

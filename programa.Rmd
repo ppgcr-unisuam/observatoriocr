@@ -724,6 +724,7 @@ financiadores.sub <-
                                "Edital",
                                "Processo No.",
                                "Título do projeto",
+                               "Proponente",
                                "Programa",
                                "País")
 fonte.sub <- financiadores.raw %>% dplyr::select("Fonte")
@@ -755,7 +756,7 @@ if (dim(financiadores)[1] != 0) {
     financiadores[order(financiadores$Ano, decreasing = TRUE), ]
 }
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(financiadores, title = "Programa - Financiadores - 2024-2021")
+create_dt(financiadores, title = "Programa - Financiadores - Detalhamento")
 
 cat('\n\n')
 cat(

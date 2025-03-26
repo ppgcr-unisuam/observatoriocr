@@ -287,6 +287,7 @@ turmas.curso <- turmas %>%
   dplyr::distinct(`Período/Ano`, `Disciplinas por curso`, `Disciplina`, .keep_all = TRUE)
 
 # generate table (total by year)
+if(!sjmisc::is_empty(turmas.curso)){
 table.part1 <-
   gtsummary::tbl_summary(
     turmas.curso %>% dplyr::select(
@@ -308,6 +309,9 @@ table.part1 <-
   gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
   gtsummary::bold_labels()
+} else {
+  table.part1 <- list()
+}
 
 # Print HTML table
 if (knitr::is_html_output()) {
@@ -376,6 +380,7 @@ turmas.curso <- turmas %>%
   dplyr::distinct(`Período/Ano`, `Disciplinas por curso`, `Disciplina`, .keep_all = TRUE)
 
 # generate table (total by year)
+if(!sjmisc::is_empty(turmas.curso)){
 table.part2 <-
   gtsummary::tbl_summary(
     turmas.curso %>% dplyr::select(
@@ -394,6 +399,9 @@ table.part2 <-
   gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
   gtsummary::bold_labels()
+} else {
+  table.part2 <- list()
+}
 
 # Print HTML table
 if (knitr::is_html_output()) {
@@ -463,12 +471,8 @@ turmas.doc <- turmas[turmas$Responsável == "Sim" & turmas$Categoria == "Docente
 # as factor
 turmas.doc$`Docente responsável` <- factor(turmas.doc$`Docente responsável`)
 
-# check for missing docentes.quadrienio
-turmas.doc$`Docente responsável` <- factor(
-  turmas.doc$`Docente responsável`,
-  levels = sort(unique(c(levels(turmas.doc$`Docente responsável`), docentes.quadrienio)))
-)
-
+# generate table (total by year)
+if(!sjmisc::is_empty(turmas.doc)){
 table.part3 <- 
 gtsummary::tbl_summary(
     turmas.doc %>% dplyr::select(
@@ -487,7 +491,9 @@ gtsummary::tbl_summary(
   gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
   gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
   gtsummary::bold_labels()
-
+} else {
+  table.part3 <- list()
+}
 # Print HTML table
 if (knitr::is_html_output()) {
   print(table.part3)
@@ -518,6 +524,8 @@ if(!sjmisc::is_empty(turmas.posdoc)){
     gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
+} else {
+  table.part4 <- list()
 }
 
 # Print HTML table
@@ -556,6 +564,7 @@ for (i in 1:length(sucupira)) {
     sucupira[[i]]
   )
 }
+
 
 sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira))
 names(sucupira.df) <- names(sucupira[[as.character(max(as.numeric(periodo.vigente)))]])

@@ -156,14 +156,14 @@ source("Scripts/cover-2.R", local = knitr::knit_global())
 \EnableFootNotes
 ```
 
-```{r, eval = all(render_document, knitr::is_html_output())}
+```{r, eval = all(render_document, knitr::is_html_output(), has.avaliacao)}
 cat("## **Avaliação CAPES** {#avalicao-capes .tabset}")
 cat('\n\n')
 cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
 cat('\n\n')
 ```
 
-```{r, eval = all(render_document, !knitr::is_html_output())}
+```{r, eval = all(render_document, !knitr::is_html_output(), has.avaliacao)}
 cat("## **Avaliação CAPES**")
 cat('\n\n')
 ```
@@ -172,9 +172,9 @@ cat('\n\n')
 cat('<br>')
 ```
 
-```{r avaliacao, eval = all(render_document, has.avaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+```{r avaliacao-capes, eval = all(render_document, has.avaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
-abas <- readxl::excel_sheets("PPG/Avaliação.xlsx")
+abas <- readxl::excel_sheets("PPG/Avaliação CAPES.xlsx")
 
 # display each sheet in a tab
 for (j in 1:length(abas)) {
@@ -182,7 +182,179 @@ for (j in 1:length(abas)) {
   cat(paste0('### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
   avaliacao.raw <-
-    readxl::read_excel("PPG/Avaliação.xlsx",
+    readxl::read_excel("PPG/Avaliação CAPES.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
+  
+  # replace the link by a tag
+  Abrir <- matrix(NA, nrow = dim(avaliacao.raw)[1])
+  colnames(Abrir) <- "Abrir"
+
+  # add hyperlinks
+  for (i in 1:dim(avaliacao.raw)[1]) {
+    if (knitr::is_html_output()) {
+      if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+        Abrir[i] <-
+          paste0('<a href="',avaliacao.raw[i, ncol(avaliacao.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+        }
+      } else {
+        if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+          Abrir[i] <-
+            paste0('\\url{', avaliacao.raw[i, ncol(avaliacao.raw)],'}')
+        }
+      }
+    }
+  
+  avaliacao <- cbind(avaliacao.raw[, -ncol(avaliacao.raw)], Abrir)
+  table <- avaliacao
+  
+  cat(knitr::knit_print(
+    knitr::kable(
+      x = table,
+      align = "l",
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", abas[j])
+    ) %>% kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      latex_options = c("striped", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:ncol(table), width = paste0(c(0.10,0.45,0.45)*(21-3-3), "cm")) %>%
+      kableExtra::column_spec(column = 1, bold = TRUE) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
+  ))
+    
+  if (knitr::is_html_output()) {
+    # print end of tab rows
+    cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
+    )
+  }
+}
+```
+
+<br>
+
+```{=latex}
+\newpage
+```
+
+```{r, eval = all(render_document, knitr::is_html_output(), has.autoavaliacao)}
+cat("## **Autoavaliação PPG** {#autoavalicao-ppg .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
+```
+
+```{r, eval = all(render_document, !knitr::is_html_output(), has.autoavaliacao)}
+cat("## **Autoavaliação PPG**")
+cat('\n\n')
+```
+
+```{r, eval = all(render_document, !has.autoavaliacao)}
+cat('<br>')
+```
+
+```{r autoavaliacao-ppg, eval = all(render_document, has.autoavaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# initialize all sheets
+abas <- readxl::excel_sheets("PPG/Autoavaliação PPG.xlsx")
+
+# display each sheet in a tab
+for (j in 1:length(abas)) {
+  cat('\n\n<!-- -->\n\n')
+  cat(paste0('### **', abas[j], '**'))
+  cat('\n\n<!-- -->\n\n')
+  avaliacao.raw <-
+    readxl::read_excel("PPG/Autoavaliação PPG.xlsx",
+                       sheet = abas[j],
+                       col_types = c("text"))
+  
+  # replace the link by a tag
+  Abrir <- matrix(NA, nrow = dim(avaliacao.raw)[1])
+  colnames(Abrir) <- "Abrir"
+
+  # add hyperlinks
+  for (i in 1:dim(avaliacao.raw)[1]) {
+    if (knitr::is_html_output()) {
+      if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+        Abrir[i] <-
+          paste0('<a href="',avaliacao.raw[i, ncol(avaliacao.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+        }
+      } else {
+        if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+          Abrir[i] <-
+            paste0('\\url{', avaliacao.raw[i, ncol(avaliacao.raw)],'}')
+        }
+      }
+    }
+  
+  avaliacao <- cbind(avaliacao.raw[, -ncol(avaliacao.raw)], Abrir)
+  table <- avaliacao
+  
+  cat(knitr::knit_print(
+    knitr::kable(
+      x = table,
+      align = "l",
+      escape = FALSE,
+      format = ifelse(knitr::is_html_output(), "html", "latex"),
+      booktabs = TRUE,
+      linesep = "",
+      caption = ifelse(knitr::is_html_output(), "", abas[j])
+    ) %>% kableExtra::kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      latex_options = c("striped", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:ncol(table), width = paste0(c(0.10,0.45,0.45)*(21-3-3), "cm")) %>%
+      kableExtra::column_spec(column = 1, bold = TRUE) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
+  ))
+    
+  if (knitr::is_html_output()) {
+    # print end of tab rows
+    cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
+    )
+  }
+}
+```
+
+<br>
+
+```{=latex}
+\newpage
+```
+
+```{r, eval = all(render_document, knitr::is_html_output(), has.planejamento)}
+cat("## **Planejamento estratégico** {#planejamento-estrategico .tabset}")
+cat('\n\n')
+cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
+cat('\n\n')
+```
+
+```{r, eval = all(render_document, !knitr::is_html_output(), has.planejamento)}
+cat("## **Planejamento estratégico**")
+cat('\n\n')
+```
+
+```{r, eval = all(render_document, !has.planejamento)}
+cat('<br>')
+```
+
+```{r planejamento, eval = all(render_document, has.planejamento), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# initialize all sheets
+abas <- readxl::excel_sheets("PPG/Planejamento estratégico.xlsx")
+
+# display each sheet in a tab
+for (j in 1:length(abas)) {
+  cat('\n\n<!-- -->\n\n')
+  cat(paste0('### **', abas[j], '**'))
+  cat('\n\n<!-- -->\n\n')
+  avaliacao.raw <-
+    readxl::read_excel("PPG/Planejamento estratégico.xlsx",
                        sheet = abas[j],
                        col_types = c("text"))
   
@@ -1775,7 +1947,7 @@ if(!sjmisc::is_empty(lista.AC.LP)){
 ```
  
 <!--- knit those table chunk statements --> 
-`r if(all(render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
+`r if(all(!sjmisc::is_empty(out), render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
 
 \newpage
 
@@ -4119,34 +4291,9 @@ cat("### **1.3.1 Adequação da proposta ao Plano Institucional da IES**")
 cat('\n\n')
 ```
 
-```{r planejamento, eval = all(render_document, has.planejamento, knitr::is_html_output()), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-# Initialize all sheets
-abas <- readxl::excel_sheets("PPG/Planejamento estratégico.xlsx")
 
-# Display each sheet in a tab
-for (i in 1:length(abas)) {
-  cat('\n\n<!-- -->\n\n')
-  cat(paste0('##### **', abas[i], '**'))
-  cat('\n\n<!-- -->\n\n')
-  
-  # Read data from Excel sheet
-  planejamento <- readxl::read_excel("PPG/Planejamento estratégico.xlsx",
-                                     sheet = abas[i],
-                                     col_types = c("text"))
-  
-  # Display sheet content in an iframe
-  cat(
-    paste0(
-      '<iframe src="',
-      planejamento[1],
-      '/preview" style=\"width:100%; height:600px; border:2px solid black;\"></iframe>'
-    )
-  )
-  
-  # Print end of tab rows
-  cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
-}
-```
+<!-- EM CONSTRUÇÃO -->
+
 
 ```{=latex}
 \newpage
@@ -4464,7 +4611,7 @@ for (j in 1:length(abas)) {
 
 ```{r 1-4-1-resultados, eval = all(render_document, has.autoavaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
-abas <- readxl::excel_sheets("PPG/Autoavaliação.xlsx")
+abas <- readxl::excel_sheets("PPG/Autoavaliação PPG.xlsx")
 
 # display each sheet in a tab
 for (j in 1:length(abas)) {
@@ -4472,7 +4619,7 @@ for (j in 1:length(abas)) {
   cat(paste0('##### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
   autoavaliacao.raw <-
-    readxl::read_excel("PPG/Autoavaliação.xlsx",
+    readxl::read_excel("PPG/Autoavaliação PPG.xlsx",
                        sheet = abas[j],
                        col_types = c("text"))
   
@@ -4929,7 +5076,7 @@ Fonte: Evert S (2023). corpora: Statistics and Data Sets for Corpus Frequency Da
 ```
 
 <!--- knit those table chunk statements --> 
-`r if(all(render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
+`r if(all(!sjmisc::is_empty(out), render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
 
 \elandscape
 
@@ -6164,6 +6311,8 @@ if(!sjmisc::is_empty(turmas.curso)){
     gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
+} else {
+  table.part1 <- list()
 }
 
 # Print HTML table
@@ -6220,6 +6369,8 @@ if(!sjmisc::is_empty(turmas.curso)){
     gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
+} else {
+  table.part2 <- list()
 }
 
 # Print HTML table
@@ -6288,6 +6439,8 @@ if(!sjmisc::is_empty(turmas.doc)){
     gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
+} else {
+  table.part3 <- list()
 }
 
 # Print HTML table
@@ -6347,6 +6500,8 @@ if(!sjmisc::is_empty(turmas.posdoc)){
     gtsummary::modify_header(label = "**Período/Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
+} else {
+  table.part4 <- list()
 }
 
 # Print HTML table
@@ -6576,7 +6731,7 @@ if(knitr::is_latex_output()) {
 }
 
 # print tables
-if (knitr::is_html_output()) {
+if (knitr::is_html_output() && !sjmisc::is_empty(table.projetos.doc)) {
   # use kable for HTML output
   knitr::kable(
     table.doc,
@@ -6593,7 +6748,7 @@ if (knitr::is_html_output()) {
   ) %>% kableExtra::column_spec(column = 1:(length(unique(table.projetos.doc$`Linha de Pesquisa`))+1), width = paste0(c(0.25, rep(0.65/length(unique(table.projetos.doc$`Linha de Pesquisa`)), times = length(unique(table.projetos.doc$`Linha de Pesquisa`))), 0.10)*(29-3-3), "cm")) %>%
       kableExtra::column_spec(column = 1, bold = TRUE) %>%
       kableExtra::row_spec(row = 0, bold = TRUE)
-} else {
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(table.projetos.doc)){
   # use tinytable for LaTeX output
   table.doc <- data.frame(table.doc, check.names = FALSE)
   options(tinytable_print_output = "latex")

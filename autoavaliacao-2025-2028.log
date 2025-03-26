@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.24)  26 MAR 2025 02:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.24)  26 MAR 2025 11:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1241,13 +1241,31 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
 (babel)             Reported  on input line 8.
 
-LaTeX Warning: Label `tab:avaliacao' multiply defined.
+LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
 
 
-LaTeX Warning: Label `tab:avaliacao' multiply defined.
+LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
 
 
-LaTeX Warning: Label `tab:avaliacao' multiply defined.
+LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
+
+
+LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
+
+
+LaTeX Warning: Label `tab:autoavaliacao-ppg' multiply defined.
+
+
+LaTeX Warning: Label `tab:autoavaliacao-ppg' multiply defined.
+
+
+LaTeX Warning: Label `tab:planejamento' multiply defined.
+
+
+LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
+
+
+LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
 
 
 LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
@@ -1265,10 +1283,7 @@ LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
 LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
 
 
-LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
-
-
-LaTeX Warning: Label `tab:1-1-3-laboratorios-equipamentos' multiply defined.
+LaTeX Warning: Label `tab:1-4-1-resultados' multiply defined.
 
 
 LaTeX Warning: Label `tab:1-4-1-resultados' multiply defined.
@@ -1718,10 +1733,6 @@ Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
 
 
 [1
@@ -1729,287 +1740,301 @@ ex-text;!
 
 
 ]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [2]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [3]
 
 [4]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 366--366
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 366--366
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 366--366
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 366--366
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
 
 [5]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 386--386
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 386--386
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 386--386
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 386--386
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
 
 [6]
 
 [7]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 427--427
-[]\TU/lmr/m/n/10 01/01/2010 
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 492--492
+[]\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 427--427
-[]\TU/lmr/m/n/10 01/01/2010 
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 492--492
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 492--492
+[]\TU/lmr/bx/n/10 Doutorado 
+ []
+
+
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 492--492
+[]\TU/lmr/bx/n/10 Mestrado 
  []
 
 
 
 [8]
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 512--512
+[]\TU/lmr/bx/n/10 Doutorado 
+ []
+
+
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 512--512
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 512--512
+[]\TU/lmr/bx/n/10 Doutorado 
+ []
+
+
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 512--512
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+
 
 [9]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 474--474
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
 
 [10]
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 553--553
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 553--553
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
 
 [11]
-Underfull \hbox (badness 1527) in paragraph at lines 541--541
-\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+
+[12]
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 541--541
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 541--541
-[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 541--541
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 541--541
-\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 541--541
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-
-[12
-
-]
-Underfull \hbox (badness 1509) in paragraph at lines 541--541
-[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 541--541
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 600--600
+[]\TU/lmr/m/n/10 01/01/2014 
  []
 
 
 
 [13]
-Underfull \hbox (badness 2913) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Avaliação Das Características
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 571--571
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Avaliação Das Características
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 571--571
-[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 571--571
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
 
 [14]
+Underfull \hbox (badness 1527) in paragraph at lines 667--667
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
 
-[15]
-Underfull \hbox (badness 2913) in paragraph at lines 593--593
+
+Underfull \hbox (badness 2913) in paragraph at lines 667--667
 []\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 593--593
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+Underfull \hbox (badness 1509) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 593--593
-[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+Underfull \hbox (badness 1184) in paragraph at lines 667--667
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 593--593
+Underfull \hbox (badness 1527) in paragraph at lines 667--667
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 667--667
 []\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 593--593
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+
+[15
+
+]
+Underfull \hbox (badness 1509) in paragraph at lines 667--667
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 593--593
-[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+Underfull \hbox (badness 1184) in paragraph at lines 667--667
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
 
 [16]
-Overfull \vbox (430.84802pt too high) has occurred while \output is active []
+Underfull \hbox (badness 2913) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Avaliação Das Características
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 697--697
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Avaliação Das Características
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 697--697
+[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 697--697
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+ []
 
 
 
 [17]
 
 [18]
-
-[19
-
-]
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 726--726
-[]\TU/lmr/bx/n/10 Periodicidade 
+Underfull \hbox (badness 2913) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 726--726
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+Underfull \hbox (badness 1527) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
  []
 
 
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 726--726
-[]\TU/lmr/bx/n/10 Periodicidade 
+Underfull \hbox (badness 1939) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 726--726
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+Underfull \hbox (badness 2913) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
  []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 719--719
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+ []
+
+
+
+[19]
+Overfull \vbox (430.84802pt too high) has occurred while \output is active []
 
 
 
 [20]
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 776--776
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 3557) in paragraph at lines 776--776
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
- []
-
-
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 776--776
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 3557) in paragraph at lines 776--776
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
- []
-
-
 
 [21]
 
-[22]
+[22
+
+]
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 852--852
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 852--852
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 852--852
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 852--852
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
 
 [23]
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 902--902
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 902--902
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 902--902
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 902--902
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
 
 [24]
 
@@ -2030,296 +2055,294 @@ Underfull \hbox (badness 3557) in paragraph at lines 776--776
 [32]
 
 [33]
-Overfull \hbox (58.36667pt too wide) in paragraph at lines 1179--1179
+
+[34]
+
+[35]
+
+[36]
+Overfull \hbox (58.36667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 Orientações 
  []
 
 
-Overfull \hbox (20.92667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (20.92667pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 Ex- 
  []
 
 
-Overfull \hbox (21.08667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (21.08667pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 ter- 
  []
 
 
-Overfull \hbox (21.67667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (21.67667pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 nas 
  []
 
 
-Overfull \hbox (17.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (17.17667pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 de 
  []
 
 
-Overfull \hbox (26.38667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (26.38667pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 Mes- 
  []
 
 
-Overfull \hbox (30.54666pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (30.54666pt too wide) in paragraph at lines 1305--1305
  \TU/lmr/m/n/10 trado| 
  []
 
 
-Overfull \hbox (7.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (7.17667pt too wide) in paragraph at lines 1305--1305
  []| 
  []
 
 
-Overfull \hbox (11.67667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (11.67667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 1| 
  []
 
 
-Overfull \hbox (11.67667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (11.67667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 1| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (11.67667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (11.67667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 1| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (12.17667pt too wide) in paragraph at lines 1179--1179
+Overfull \hbox (12.17667pt too wide) in paragraph at lines 1305--1305
  []\TU/lmr/m/n/10 0| 
  []
 
 
-Overfull \hbox (7.17667pt too wide) in paragraph at lines 1157--1180
+Overfull \hbox (7.17667pt too wide) in paragraph at lines 1283--1306
  [][] 
  []
 
 
 
-[34
+[37
 
 ]
 
-[35
+[38
 
 ]
-
-[36]
-
-[37]
-
-[38]
 
 [39]
 
-[40
+[40]
 
-]
-
-[41
-
-]
+[41]
 
 [42]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
 
-
-[43]
-
-[44]
-Underfull \hbox (badness 1527) in paragraph at lines 1463--1463
-\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 1463--1463
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-Underfull \hbox (badness 1509) in paragraph at lines 1463--1463
-[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 1463--1463
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-Underfull \hbox (badness 1527) in paragraph at lines 1463--1463
-\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 1463--1463
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-
-[45
+[43
 
 ]
-Underfull \hbox (badness 1509) in paragraph at lines 1463--1463
-[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
- []
 
+[44
 
-Underfull \hbox (badness 1184) in paragraph at lines 1463--1463
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
+]
 
+[45]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
 
 
 [46]
-Underfull \hbox (badness 2913) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Avaliação Das Características
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 1493--1493
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Igor Ramathur Telles
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Avaliação Das Características
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 1493--1493
-[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
- []
-
-
-Underfull \hbox (badness 1184) in paragraph at lines 1493--1493
-\TU/lmr/m/n/10 vimento Cientifico e Tecno-
- []
-
-
 
 [47]
 
 [48]
-Underfull \hbox (badness 2913) in paragraph at lines 1515--1515
+Underfull \hbox (badness 1527) in paragraph at lines 1607--1607
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 1607--1607
 []\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 1515--1515
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+Underfull \hbox (badness 1509) in paragraph at lines 1607--1607
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 1515--1515
-[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+Underfull \hbox (badness 1184) in paragraph at lines 1607--1607
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 1515--1515
+Underfull \hbox (badness 1527) in paragraph at lines 1607--1607
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 1607--1607
 []\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 1515--1515
-[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
- []
 
-
-Underfull \hbox (badness 1939) in paragraph at lines 1515--1515
-[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
- []
-
-
-
-[49]
-
-[50
+[49
 
 ]
+Underfull \hbox (badness 1509) in paragraph at lines 1607--1607
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 1607--1607
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+ []
+
+
+
+[50]
+Underfull \hbox (badness 2913) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Avaliação Das Características
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 1637--1637
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Avaliação Das Características
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 1637--1637
+[]\TU/lmr/m/n/10 Avaliação Funcional No Con-
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 1637--1637
+\TU/lmr/m/n/10 vimento Cientifico e Tecno-
+ []
+
+
 
 [51]
 
 [52]
+Underfull \hbox (badness 2913) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Avaliação Fisiológica, Bioquí-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 1659--1659
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+ []
+
+
 
 [53]
 
-[54]
+[54
+
+]
 
 [55]
 
-[56
-
-]
+[56]
 
 [57]
 
@@ -2330,52 +2353,62 @@ Underfull \hbox (badness 1939) in paragraph at lines 1515--1515
 [60
 
 ]
-Underfull \hbox (badness 1314) in paragraph at lines 1779--1779
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
 
+[61]
 
-Underfull \hbox (badness 1314) in paragraph at lines 1779--1779
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
-
-
-
-[61
-
-]
-
-[62
-
-
-]
+[62]
 
 [63]
 
 [64
 
+]
+Underfull \hbox (badness 1314) in paragraph at lines 1923--1923
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 1923--1923
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+
+[65
 
 ]
 
-[65]
+[66
 
-[66]
-
-[67
 
 ]
 
-[68]
+[67]
+
+[68
+
+
+]
 
 [69]
 
 [70]
 
-[71]
+[71
+
+]
 
 [72]
 
-[73] (./autoavaliacao-2025-2028.aux)
+[73]
+
+[74]
+
+[75]
+
+[76]
+
+[77] (./autoavaliacao-2025-2028.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2385,12 +2418,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 46290 strings out of 473832
- 969388 string characters out of 5729481
- 1586860 words of memory out of 5000000
- 68725 multiletter control sequences out of 15000+600000
+ 46309 strings out of 473832
+ 969689 string characters out of 5729481
+ 1588643 words of memory out of 5000000
+ 68744 multiletter control sequences out of 15000+600000
  590336 words of font info for 112 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,3366s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2025-2028.pdf (76 pages).
+Output written on autoavaliacao-2025-2028.pdf (80 pages).

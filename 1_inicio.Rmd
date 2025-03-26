@@ -194,13 +194,13 @@ has.area.capes <-
 
 ```{r try-autoavaliacoes}
 has.autoavaliacao <-
-  !BBmisc::is.error(try(readxl::read_excel("PPG/Autoavaliação.xlsx", sheet = 1),
+  !BBmisc::is.error(try(readxl::read_excel("PPG/Autoavaliação PPG.xlsx", sheet = 1),
                 silent = TRUE))
 ```
 
 ```{r try-avaliacao}
 has.avaliacao <-
-  !BBmisc::is.error(try(readxl::read_excel("PPG/Avaliação.xlsx", sheet = 1),
+  !BBmisc::is.error(try(readxl::read_excel("PPG/Avaliação CAPES.xlsx", sheet = 1),
                 silent = TRUE))
 ```
 

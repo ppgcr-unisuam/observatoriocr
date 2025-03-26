@@ -47,7 +47,7 @@ knitr::opts_chunk$set(
   dev = "png"
 )
 
-render_document <- params$render_document 
+render_document <- params$render_document
 ```
 
 <!--load caches-->
@@ -1726,47 +1726,47 @@ if(!sjmisc::is_empty(lista.AC.LP)){
     
     # Generate R Markdown code for this chunk
     knit_expanded <- paste0(
-      "\n```{r, eval = all(!sjmisc::is_empty(lista.AC.LP), render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
-      "cat('\\n\\n<!-- -->\\n\\n')\n",
-      "# print tables\n",
-      "if (knitr::is_html_output()) {\n",
-      "  # use kable for HTML output\n",
-      "  knitr::kable(\n",
-      "    lista.AC.LP[[", i, "]],\n",
-      "    align = 'l',\n",
-      "    escape = FALSE,\n",
-      "    format = 'html',\n",
-      "    booktabs = TRUE,\n",
-      "    linesep = '',\n",
-      "    caption = '", caption, "',\n",
-      "    row.names = FALSE) %>% \n",
-      "    kableExtra::kable_styling(\n",
-      "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n",
-      "      full_width = TRUE,\n",
-      "      position = 'center'\n",
-      "    ) %>% \n",
-      "    kableExtra::column_spec(column = 1:ncol(lista.AC.LP[[", i, "]]), width = paste0(c(0.02,0.21,0.08,0.16,0.20,0.20,0.13)*(29-3-3), 'cm')) %>% \n",
-      "    kableExtra::column_spec(column = 1, bold = TRUE) %>% \n",
-      "    kableExtra::row_spec(row = 0, bold = TRUE)\n",
-      "} else {\n",
-      "  # use tinytable for LaTeX output\n",
-      "  linhas.atual <- data.frame(lista.AC.LP[[", i, "]], check.names = FALSE)\n",
-      "  options(tinytable_print_output = 'latex')\n",
-      "  tinytable::tt(\n",
-      "    linhas.atual,\n",
-      "    width = c(0.02,0.21,0.08,0.16,0.20,0.20,0.13)*(29-3-3),\n",
-      "    style = 'bootstrap',\n",
-      "    align = 'l',\n",
-      "    caption = '", caption, "',\n",
-      "    row.names = FALSE\n",
-      "  ) %>% \n",
-      "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n",
-      "    tinytable::style_tt(i = 0, j = 1:ncol(lista.AC.LP[[", i, "]]), bold = TRUE) %>% \n",
-      "    tinytable::style_tt(i = 1:nrow(lista.AC.LP[[", i, "]]), j = 1, bold = TRUE)\n",
-      "}\n",
-      "source('Scripts/fonte-sucupira.R', local = knitr::knit_global())\n",
-      "cat('\\newpage')",
-      "\n```"
+      "\n\n```{r, eval = all(!sjmisc::is_empty(lista.AC.LP), render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n\n",
+      "cat('\\n\n\\n\n<!-- -->\\n\\n')\n\n",
+      "# print tables\n\n",
+      "if (knitr::is_html_output()) {\n\n",
+      "  # use kable for HTML output\n\n",
+      "  knitr::kable(\n\n",
+      "    lista.AC.LP[[", i, "]],\n\n",
+      "    align = 'l',\n\n",
+      "    escape = FALSE,\n\n",
+      "    format = 'html',\n\n",
+      "    booktabs = TRUE,\n\n",
+      "    linesep = '',\n\n",
+      "    caption = '", caption, "',\n\n",
+      "    row.names = FALSE) %>% \n\n",
+      "    kableExtra::kable_styling(\n\n",
+      "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n\n",
+      "      full_width = TRUE,\n\n",
+      "      position = 'center'\n\n",
+      "    ) %>% \n\n",
+      "    kableExtra::column_spec(column = 1:ncol(lista.AC.LP[[", i, "]]), width = paste0(c(0.02,0.21,0.08,0.16,0.20,0.20,0.13)*(29-3-3), 'cm')) %>% \n\n",
+      "    kableExtra::column_spec(column = 1, bold = TRUE) %>% \n\n",
+      "    kableExtra::row_spec(row = 0, bold = TRUE)\n\n",
+      "} else {\n\n",
+      "  # use tinytable for LaTeX output\n\n",
+      "  linhas.atual <- data.frame(lista.AC.LP[[", i, "]], check.names = FALSE)\n\n",
+      "  options(tinytable_print_output = 'latex')\n\n",
+      "  tinytable::tt(\n\n",
+      "    linhas.atual,\n\n",
+      "    width = c(0.02,0.21,0.08,0.16,0.20,0.20,0.13)*(29-3-3),\n\n",
+      "    style = 'bootstrap',\n\n",
+      "    align = 'l',\n\n",
+      "    caption = '", caption, "',\n\n",
+      "    row.names = FALSE\n\n",
+      "  ) %>% \n\n",
+      "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n\n",
+      "    tinytable::style_tt(i = 0, j = 1:ncol(lista.AC.LP[[", i, "]]), bold = TRUE) %>% \n\n",
+      "    tinytable::style_tt(i = 1:nrow(lista.AC.LP[[", i, "]]), j = 1, bold = TRUE)\n\n",
+      "}\n\n",
+      "source('Scripts/fonte-sucupira.R', local = knitr::knit_global())\n\n",
+      "cat('\\\\newpage')\n\n",
+      "\n\n```"
     )
     
     out <- c(out, knit_expanded)
@@ -1775,9 +1775,7 @@ if(!sjmisc::is_empty(lista.AC.LP)){
 ```
  
 <!--- knit those table chunk statements --> 
-```{r, eval = all(FALSE, render_document, has.sucupira.files), results = "asis"}
-glue::glue(knitr::knit(text = out), collapse = '\n\n')
-```
+`r if(all(render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
 
 \newpage
 
@@ -3544,37 +3542,33 @@ table.excl[, 2:ncol(table.excl)] <- lapply(table.excl[, 2:ncol(table.excl)], as.
 # sum columns by Nome docente
 table.excl <- table.excl %>% 
   dplyr::mutate(
-    `Exclusividade` = rowSums(dplyr::select(., -`Nome Docente`))
+    `Atuação externa` = rowSums(dplyr::select(., -`Nome Docente`))
   )
 
 # drop rows with 0 values
 table.excl <- table.excl %>%
   dplyr::filter(
-    `Exclusividade` > 0
+    `Atuação externa` > 0
   )
 
-# drop Exclusividade
+# drop Atuação externa
 table.excl <- table.excl %>%
   dplyr::select(
-    -"Exclusividade"
+    -"Atuação externa"
 )
 
 # to long table, by Nome Docente
 table.excl <- table.excl %>%
   tidyr::pivot_longer(
     cols = -c("Nome Docente"),
-    names_to = "Exclusividade"
+    names_to = "Atuação externa"
   )
-
-# filter values > 0
-table.excl <- table.excl %>%
-  dplyr::filter(value > 0)
 
 # drop value
 table.excl <- table.excl %>%
   dplyr::select(
     "Nome Docente",
-    "Exclusividade"
+    "Atuação externa"
   )
 
 # remove duplicates
@@ -3584,7 +3578,7 @@ table.excl <- table.excl %>%
 # check for missing docentes.quadrienio
 table.excl$"Nome Docente" <- factor(
   table.excl$"Nome Docente",
-  levels = sort(unique(c(levels(table.excl$"Nome Docente"), docentes.quadrienio)))
+  levels = sort(unique(c(levels(sucupira.df.ext$`Nome Docente`), docentes.quadrienio)))
 )
 
 # change all column types to factors
@@ -3593,20 +3587,66 @@ table.excl.long <- table.excl %>%
 
 # print table
 if(!sjmisc::is_empty(table.excl.long)){
-  table.excl.gt <- table.excl.long |>
+  table.excl.gt.1 <- table.excl.long |>
     gtsummary::tbl_cross(
       row = 'Nome Docente',
-      col = "Exclusividade",
+      col = "Atuação externa",
       statistic = "{n}",
       missing = "no",
       digits = 0,
-      margin = "column"
+      margin = NULL
     ) %>%
-    gtsummary::modify_header(label = "Docentes permanentes com atuação externa ao PPG", stat_0 = "Total") %>%
+    gtsummary::modify_header(label = "Docentes permanentes com atuação externa ao PPG", stat_0 = "Atuação externa") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels() 
 } else {
-  table.excl.gt <- list()
+  table.excl.gt.1 <- list()
+}
+
+# sum rowns of sucupira.df.ext by Nome Docente
+table.excl.2 <- sucupira.df.ext %>%
+  aggregate(. ~ `Nome Docente`, data = ., sum)
+
+# create atuação externa data.frame
+table.excl.2 <- data.frame(
+  "Nome Docente" = table.excl.2$"Nome Docente",
+  "Atuação exclusiva" = ifelse(rowSums(table.excl.2[, 2:ncol(sucupira.df.ext)]) == 0, "Sim", "Não"),
+  check.names = FALSE
+)
+
+# print table
+if(!sjmisc::is_empty(table.excl.2)){
+  table.excl.gt.2 <- table.excl.2 |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Atuação exclusiva",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = NULL
+    ) %>%
+    gtsummary::modify_header(label = "Docentes permanentes com atuação externa ao PPG", stat_0 = "Atuação externa") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() 
+} else {
+  table.excl.gt.2 <- list()
+}
+
+# create list of gtsummary tables
+table.excl.list <- list(table.excl.gt.2, table.excl.gt.1)
+# remove empty list elements
+table.excl.list <- table.excl.list[!sapply(table.excl.list, sjmisc::is_empty)]
+
+spann <- c("**Atuação exclusiva**", "**Atividades externas ao PPG**")
+spann <- spann[which(lapply(table.excl.list, length) > 0)]
+
+if(any(lapply(table.excl.list, length) > 0)){
+  table.excl.gt <- gtsummary::tbl_merge(
+    tbls = table.excl.list,
+    tab_spanner = spann
+  )
+} else {
+  table.excl.gt <- NULL
 }
 
 # Print HTML table
@@ -3632,7 +3672,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.excl.gt)) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + (length(unique(table.excl$`Exclusividade`))+1)), width = paste0(c(0.40, rep(0.60/(length(unique(table.excl$`Exclusividade`))+1), times = (length(unique(table.excl$`Exclusividade`))+1)))*(29-3-3), "cm"))
+    ) %>% kableExtra::column_spec(column = 1:(1 + (length(unique(table.excl$`Atuação externa`))+1)), width = paste0(c(0.40, rep(0.60/(length(unique(table.excl$`Atuação externa`))+1), times = (length(unique(table.excl$`Atuação externa`))+1)))*(29-3-3), "cm"))
   print(kable_table)
 }
 
@@ -4806,7 +4846,7 @@ if (!sjmisc::is_empty(id.TCC)) {
 }
 ```
 
-```{r 2.1.1-detalhe, eval = all(render_document, has.sucupira.files, !sjmisc::is_empty(id.TCC))}
+```{r 2.1.1-detalhe, eval = all(render_document, has.sucupira.files)}
 if (!sjmisc::is_empty(id.TCC)) {
   # Create R Markdown chunks dynamically because projetos can be very large tables
   
@@ -4818,49 +4858,49 @@ if (!sjmisc::is_empty(id.TCC)) {
     
     # Generate R Markdown code for this chunk
     knit_expanded <- paste0(
-      "\n```{r, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n",
-      "cat('\\n\\n<!-- -->\\n\\n')\n",
-      "# print tables\n",
-      "if (knitr::is_html_output()) {\n",
-      "  # use kable for HTML output\n",
-      "  knitr::kable(\n",
-      "    lista.kw[[", i, "]],\n",
-      "    align = 'l',\n",
-      "    escape = FALSE,\n",
-      "    format = 'html',\n",
-      "    booktabs = TRUE,\n",
-      "    linesep = '',\n",
-      "    caption = '", caption, "',\n",
-      "    row.names = FALSE) %>% \n",
-      "    kableExtra::kable_styling(\n",
-      "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n",
-      "      full_width = TRUE,\n",
-      "      position = 'center'\n",
-      "    ) %>% \n",
-      "    kableExtra::column_spec(column = 1:ncol(lista.kw[[", i, "]]), width = paste0(c(0.23, 0.23, 0.15, 0.09, 0.09, 0.05, 0.08, 0.08)*(29-3-3), 'cm')) %>% \n",
-      "    kableExtra::column_spec(column = 1, bold = TRUE) %>% \n",
-      "    kableExtra::column_spec(column = 2, bold = TRUE) %>% \n",
-      "    kableExtra::row_spec(row = 0, bold = TRUE)\n",
-      "} else {\n",
-      "  # use tinytable for LaTeX output\n",
-      "  linhas.atual <- data.frame(lista.kw[[", i, "]], check.names = FALSE)\n",
-      "  options(tinytable_print_output = 'latex')\n",
-      "  tinytable::tt(\n",
-      "    linhas.atual,\n",
-      "    width = c(0.23, 0.23, 0.15, 0.09, 0.09, 0.05, 0.08, 0.08)*(29-3-3),\n",
-      "    style = 'bootstrap',\n",
-      "    align = 'l',\n",
-      "    caption = '", caption, "',\n",
-      "    row.names = FALSE\n",
-      "  ) %>% \n",
-      "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n",
-      "    tinytable::style_tt(i = 0, j = 1:ncol(lista.kw[[", i, "]]), bold = TRUE) %>% \n",
-      "    tinytable::style_tt(i = 1:nrow(lista.kw[[", i, "]]), j = 1, bold = TRUE) %>% \n",
-      "    tinytable::style_tt(i = 1:nrow(lista.kw[[", i, "]]), j = 2, bold = TRUE)\n",
-      "}\n",
-      "source('Scripts/fonte-sucupira.R', local = knitr::knit_global())\n",
-      "cat('\\newpage')",
-      "\n```"
+      "\n\n```{r, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n\n",
+      "cat('\\n\n\\n\n<!-- -->\\n\n\\n\n')\n\n",
+      "# print tables\n\n",
+      "if (knitr::is_html_output()) {\n\n",
+      "  # use kable for HTML output\n\n",
+      "  knitr::kable(\n\n",
+      "    lista.kw[[", i, "]],\n\n",
+      "    align = 'l',\n\n",
+      "    escape = FALSE,\n\n",
+      "    format = 'html',\n\n",
+      "    booktabs = TRUE,\n\n",
+      "    linesep = '',\n\n",
+      "    caption = '", caption, "',\n\n",
+      "    row.names = FALSE) %>% \n\n",
+      "    kableExtra::kable_styling(\n\n",
+      "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n\n",
+      "      full_width = TRUE,\n\n",
+      "      position = 'center'\n\n",
+      "    ) %>% \n\n",
+      "    kableExtra::column_spec(column = 1:ncol(lista.kw[[", i, "]]), width = paste0(c(0.23, 0.23, 0.15, 0.09, 0.09, 0.05, 0.08, 0.08)*(29-3-3), 'cm')) %>% \n\n",
+      "    kableExtra::column_spec(column = 1, bold = TRUE) %>% \n\n",
+      "    kableExtra::column_spec(column = 2, bold = TRUE) %>% \n\n",
+      "    kableExtra::row_spec(row = 0, bold = TRUE)\n\n",
+      "} else {\n\n",
+      "  # use tinytable for LaTeX output\n\n",
+      "  linhas.atual <- data.frame(lista.kw[[", i, "]], check.names = FALSE)\n\n",
+      "  options(tinytable_print_output = 'latex')\n\n",
+      "  tinytable::tt(\n\n",
+      "    linhas.atual,\n\n",
+      "    width = c(0.23, 0.23, 0.15, 0.09, 0.09, 0.05, 0.08, 0.08)*(29-3-3),\n\n",
+      "    style = 'bootstrap',\n\n",
+      "    align = 'l',\n\n",
+      "    caption = '", caption, "',\n\n",
+      "    row.names = FALSE\n\n",
+      "  ) %>% \n\n",
+      "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n\n",
+      "    tinytable::style_tt(i = 0, j = 1:ncol(lista.kw[[", i, "]]), bold = TRUE) %>% \n\n",
+      "    tinytable::style_tt(i = 1:nrow(lista.kw[[", i, "]]), j = 1, bold = TRUE) %>% \n\n",
+      "    tinytable::style_tt(i = 1:nrow(lista.kw[[", i, "]]), j = 2, bold = TRUE)\n\n",
+      "}\n\n",
+      "source('Scripts/fonte-sucupira.R', local = knitr::knit_global())\n\n",
+      "cat('\\\\newpage')\n\n",
+      "\n\n```"
     )
     
     out <- c(out, knit_expanded)
@@ -4889,9 +4929,7 @@ Fonte: Evert S (2023). corpora: Statistics and Data Sets for Corpus Frequency Da
 ```
 
 <!--- knit those table chunk statements --> 
-```{r, eval = all(FALSE, render_document, has.sucupira.files), results = 'asis'}
-glue::glue(knitr::knit(text = out), collapse = '\n\n')
-```
+`r if(all(render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
 
 \elandscape
 

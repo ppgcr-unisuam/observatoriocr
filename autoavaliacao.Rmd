@@ -353,32 +353,32 @@ for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
   cat(paste0('### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
-  avaliacao.raw <-
+  planejamento.raw <-
     readxl::read_excel("PPG/Planejamento estratégico.xlsx",
                        sheet = abas[j],
                        col_types = c("text"))
   
   # replace the link by a tag
-  Abrir <- matrix(NA, nrow = dim(avaliacao.raw)[1])
+  Abrir <- matrix(NA, nrow = dim(planejamento.raw)[1])
   colnames(Abrir) <- "Abrir"
 
   # add hyperlinks
-  for (i in 1:dim(avaliacao.raw)[1]) {
+  for (i in 1:dim(planejamento.raw)[1]) {
     if (knitr::is_html_output()) {
-      if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+      if (!is.na(planejamento.raw[i, ncol(planejamento.raw)])) {
         Abrir[i] <-
-          paste0('<a href="',avaliacao.raw[i, ncol(avaliacao.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
+          paste0('<a href="',planejamento.raw[i, ncol(planejamento.raw)],'" target="_blank"', '>', fontawesome::fa("up-right-from-square"), '</a>')
         }
       } else {
-        if (!is.na(avaliacao.raw[i, ncol(avaliacao.raw)])) {
+        if (!is.na(planejamento.raw[i, ncol(planejamento.raw)])) {
           Abrir[i] <-
-            paste0('\\url{', avaliacao.raw[i, ncol(avaliacao.raw)],'}')
+            paste0('\\url{', planejamento.raw[i, ncol(planejamento.raw)],'}')
         }
       }
     }
   
-  avaliacao <- cbind(avaliacao.raw[, -ncol(avaliacao.raw)], Abrir)
-  table <- avaliacao
+  planejamento <- cbind(planejamento.raw[, -ncol(planejamento.raw)], Abrir)
+  table <- planejamento
   
   cat(knitr::knit_print(
     knitr::kable(
@@ -404,7 +404,7 @@ for (j in 1:length(abas)) {
     # print end of tab rows
     cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
     )
-  }
+  } 
 }
 ```
 
@@ -1886,18 +1886,18 @@ if(!sjmisc::is_empty(ids)){
 ```{r, eval = all(render_document, has.sucupira.files)}
 # Create R Markdown chunks dynamically because projetos can be very large tables
 
-out <- NULL
+out.1 <- NULL
 
 if(!sjmisc::is_empty(lista.AC.LP)){
   for (i in 1:length(lista.AC.LP)) {
     # Define table caption
-    caption <- paste0('Projetos Liderados por Docentes Permanentes - Área de Concentração: ', toupper(AC.LP[i,1]), ' - ', 'Linha de Pesquisa: ', toupper(AC.LP[i,2]))
+    caption.1 <- paste0('Projetos Liderados por Docentes Permanentes - Área de Concentração: ', toupper(AC.LP[i,1]), ' - ', 'Linha de Pesquisa: ', toupper(AC.LP[i,2]))
     
     # drop columns Area de Concentração, Linha de Pesquisa
     lista.AC.LP[[i]] <- dplyr::select(lista.AC.LP[[i]], -c('Área de Concentração', 'Linha de Pesquisa'))
     
     # Generate R Markdown code for this chunk
-    knit_expanded <- paste0(
+    knit_expanded.1 <- paste0(
       "\n\n```{r, eval = all(!sjmisc::is_empty(lista.AC.LP), render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n\n",
       "cat('\\n\n\\n\n<!-- -->\\n\\n')\n\n",
       "# print tables\n\n",
@@ -1910,7 +1910,7 @@ if(!sjmisc::is_empty(lista.AC.LP)){
       "    format = 'html',\n\n",
       "    booktabs = TRUE,\n\n",
       "    linesep = '',\n\n",
-      "    caption = '", caption, "',\n\n",
+      "    caption = '", caption.1, "',\n\n",
       "    row.names = FALSE) %>% \n\n",
       "    kableExtra::kable_styling(\n\n",
       "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n\n",
@@ -1929,7 +1929,7 @@ if(!sjmisc::is_empty(lista.AC.LP)){
       "    width = c(0.02,0.21,0.08,0.16,0.20,0.20,0.13)*(29-3-3),\n\n",
       "    style = 'bootstrap',\n\n",
       "    align = 'l',\n\n",
-      "    caption = '", caption, "',\n\n",
+      "    caption = '", caption.1, "',\n\n",
       "    row.names = FALSE\n\n",
       "  ) %>% \n\n",
       "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n\n",
@@ -1941,13 +1941,13 @@ if(!sjmisc::is_empty(lista.AC.LP)){
       "\n\n```"
     )
     
-    out <- c(out, knit_expanded)
+    out.1 <- c(out.1, knit_expanded.1)
   }
 }
 ```
  
 <!--- knit those table chunk statements --> 
-`r if(all(!sjmisc::is_empty(out), render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
+`r if(all(is.null("out.1"), render_document, has.sucupira.files)){paste(knitr::knit(text = out.1), collapse = '\n\n')}`
 
 \newpage
 
@@ -2657,6 +2657,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -2763,6 +2764,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -2866,6 +2868,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -2974,6 +2977,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -3144,7 +3148,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get docentes for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -3252,7 +3256,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get docentes for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -3427,7 +3431,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get data for the quadrienio.vigente
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -3643,7 +3647,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -3844,7 +3848,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.excl.gt)) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + (length(unique(table.excl$`Atuação externa`))+1)), width = paste0(c(0.40, rep(0.60/(length(unique(table.excl$`Atuação externa`))+1), times = (length(unique(table.excl$`Atuação externa`))+1)))*(29-3-3), "cm"))
+    ) %>% kableExtra::column_spec(column = 1:(1 + (nlevels(factor(table.excl$`Atuação exclusiva`))+nlevels(factor(table.excl$table.excl.long)))), width = paste0(c(0.40, rep(0.60/((nlevels(factor(table.excl$`Atuação exclusiva`))+nlevels(factor(table.excl$table.excl.long)))), times = ((nlevels(factor(table.excl$`Atuação exclusiva`))+nlevels(factor(table.excl$table.excl.long))))))*(29-3-3), "cm"))
   print(kable_table)
 }
 
@@ -4143,6 +4147,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -4324,7 +4329,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -4542,6 +4547,10 @@ cat("### **1.4.1 Adequação dos processos e procedimentos utilizados para a aut
 cat('\n\n')
 ```
 
+```{r, eval = all(render_document, !has.metodologia)}
+cat('<br>')
+```
+
 ```{r 1-4-1-metodologia, eval = all(render_document, has.metodologia), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
@@ -4549,7 +4558,7 @@ abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 # display each sheet in a tab
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
-  cat(paste0('##### **', abas[j], '**'))
+  cat(paste0('#### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
   metodologia.raw <-
     readxl::read_excel("PPG/Metodologia.xlsx",
@@ -4603,9 +4612,6 @@ for (j in 1:length(abas)) {
     cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
     )
   }
-  if (knitr::is_latex_output()) {
-    cat("\\newpage")
-  }
 }
 ```
 
@@ -4616,7 +4622,7 @@ abas <- readxl::excel_sheets("PPG/Autoavaliação PPG.xlsx")
 # display each sheet in a tab
 for (j in 1:length(abas)) {
   cat('\n\n<!-- -->\n\n')
-  cat(paste0('##### **', abas[j], '**'))
+  cat(paste0('#### **', abas[j], '**'))
   cat('\n\n<!-- -->\n\n')
   autoavaliacao.raw <-
     readxl::read_excel("PPG/Autoavaliação PPG.xlsx",
@@ -4670,9 +4676,6 @@ for (j in 1:length(abas)) {
     cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>'
     )
   }
-  if (knitr::is_latex_output()) {
-    cat("\\newpage")
-  }
 }
 ```
 
@@ -4714,13 +4717,15 @@ cat('\n\n')
 sheet <- "TCC - Banca"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
+names(sucupira.list) <- as.character(anos)
+
 # get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
-sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
-names(sucupira) <-
-  names(sucupira[[as.character(max(as.numeric(quadrienal.vigente)))]])
+sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira))
+names(sucupira) <- names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
 
 # make unique ID
 id.TCC <- sucupira$"Identificador do Trabalho de Conclusão"
@@ -4734,6 +4739,7 @@ bancas <- data.frame(
   check.names = FALSE
 )
 
+# define new function
 create_keyness_pairs <- function(data, col1, col2) {
   # keep rows where n1 + n2 >= 1
   data <- data[rowSums(data[, c(col1, col2)]) >= 1, ]
@@ -4743,12 +4749,39 @@ create_keyness_pairs <- function(data, col1, col2) {
   
   kw <- transform(
     dplyr::select(data, word = word, col1, col2),
-    G2 = corpora::keyness(data[[col1]], n1, data[[col2]], n2, measure = "G2",
-                          conf.level = 0.95, alpha = 0.05, p.adjust = FALSE, lambda = 1),
-    LogRatio = corpora::keyness(data[[col1]], n1, data[[col2]], n2, measure = "LogRatio",
-                                conf.level = 0.95, alpha = 0.05, p.adjust = FALSE, lambda = 1),
-    PositiveLRC = corpora::keyness(data[[col1]], n1, data[[col2]], n2, measure = "PositiveLRC",
-                                   conf.level = 0.95, alpha = 0.05, p.adjust = FALSE, lambda = 1)
+    G2 = corpora::keyness(
+      data[[col1]],
+      n1,
+      data[[col2]],
+      n2,
+      measure = "G2",
+      conf.level = 0.95,
+      alpha = 0.05,
+      p.adjust = FALSE,
+      lambda = 1
+    ),
+    LogRatio = corpora::keyness(
+      data[[col1]],
+      n1,
+      data[[col2]],
+      n2,
+      measure = "LogRatio",
+      conf.level = 0.95,
+      alpha = 0.05,
+      p.adjust = FALSE,
+      lambda = 1
+    ),
+    PositiveLRC = corpora::keyness(
+      data[[col1]],
+      n1,
+      data[[col2]],
+      n2,
+      measure = "PositiveLRC",
+      conf.level = 0.95,
+      alpha = 0.05,
+      p.adjust = FALSE,
+      lambda = 1
+    )
   )
   
   kw <- kw[order(-kw$LogRatio), ]
@@ -4873,12 +4906,13 @@ if (!sjmisc::is_empty(id.TCC)) {
   # as data.frame
   all.kw <- dplyr::bind_rows(all.kw)
   
+  if(length(all.kw) > 0){
   # check which bancas$Título have all.kw$Termo
   for (i in 1:dim(bancas)[1]){
     for(j in 1:dim(all.kw)[1]){
-      if(grepl(tolower(all.kw$Termo[j]), tolower(bancas$Título[i]))){
+      try(if(grepl(tolower(all.kw$Termo[j]), tolower(bancas$Título[i]))){
         bancas.with.words <- c(bancas.with.words, i)
-      }
+      }, silent = TRUE)
     }
   }
   bancas.with.words <- unique(bancas.with.words)
@@ -4932,7 +4966,7 @@ tbl_fix_order <- function(x) {
   x  
 }
 
-if (!sjmisc::is_empty(id.TCC)) {
+if (!sjmisc::is_empty(table.bancas.long)) {
   # print tables
   table.2.1.1 <- gtsummary::tbl_summary(
     dplyr::select(table.bancas.long, "Ano", "Linha de Pesquisa", "Tipo"),
@@ -4956,14 +4990,17 @@ if (!sjmisc::is_empty(id.TCC)) {
     gtsummary::remove_row_type(variables = c('Linha de Pesquisa'), type = "level", level_value = ("Data1")) %>%
     gtsummary::remove_row_type(variables = c('Tipo'), type = "level", level_value = ("Data2")) %>%
     gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+} else {
+  table.2.1.1 <- list()
+}
   
   # Print HTML table
-  if (knitr::is_html_output() && !sjmisc::is_empty(table.2.1.1)) {
+  if (knitr::is_html_output() && !sjmisc::is_empty(table.bancas.long)) {
     print(table.2.1.1)
   }
   
   # Print LaTeX table
-  if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.1.1)) {
+  if (knitr::is_latex_output() && !sjmisc::is_empty(table.bancas.long)) {
     cat('\\FloatBarrier')
     # Convert gtsummary object to kableExtra object
     kable_table <- gtsummary::as_kable_extra(
@@ -4994,17 +5031,17 @@ if (!sjmisc::is_empty(id.TCC)) {
 ```
 
 ```{r 2.1.1-detalhe, eval = all(render_document, has.sucupira.files)}
-if (!sjmisc::is_empty(id.TCC)) {
+if (!sjmisc::is_empty(lista.kw)) {
   # Create R Markdown chunks dynamically because projetos can be very large tables
   
-  out <- NULL
+  out.2 <- NULL
   
   for (i in 1:length(lista.kw)) {
     # Define table caption
-    caption <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(unique(lista.kw[[i]]$`Linha 1`)), ' <> ', toupper(unique(lista.kw[[i]]$`Linha 2`)))
+    caption.2 <- paste0('Palavras-chave mais frequentes por Linha de Pesquisa - Linhas de Pesquisa: ', toupper(unique(lista.kw[[i]]$`Linha 1`)), ' <> ', toupper(unique(lista.kw[[i]]$`Linha 2`)))
     
     # Generate R Markdown code for this chunk
-    knit_expanded <- paste0(
+    knit_expanded.2 <- paste0(
       "\n\n```{r, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}\n\n",
       "cat('\\n\n\\n\n<!-- -->\\n\n\\n\n')\n\n",
       "# print tables\n\n",
@@ -5017,7 +5054,7 @@ if (!sjmisc::is_empty(id.TCC)) {
       "    format = 'html',\n\n",
       "    booktabs = TRUE,\n\n",
       "    linesep = '',\n\n",
-      "    caption = '", caption, "',\n\n",
+      "    caption = '", caption.2, "',\n\n",
       "    row.names = FALSE) %>% \n\n",
       "    kableExtra::kable_styling(\n\n",
       "      bootstrap_options = c('striped', 'hover', 'condensed', 'responsive'),\n\n",
@@ -5037,7 +5074,7 @@ if (!sjmisc::is_empty(id.TCC)) {
       "    width = c(0.23, 0.23, 0.15, 0.09, 0.09, 0.05, 0.08, 0.08)*(29-3-3),\n\n",
       "    style = 'bootstrap',\n\n",
       "    align = 'l',\n\n",
-      "    caption = '", caption, "',\n\n",
+      "    caption = '", caption.2, "',\n\n",
       "    row.names = FALSE\n\n",
       "  ) %>% \n\n",
       "    tinytable::theme_tt('multipage', rowhead = 1, latex_float = 'H') %>% \n\n",
@@ -5050,7 +5087,7 @@ if (!sjmisc::is_empty(id.TCC)) {
       "\n\n```"
     )
     
-    out <- c(out, knit_expanded)
+    out.2 <- c(out.2, knit_expanded.2)
   }
   
   cat("
@@ -5076,7 +5113,7 @@ Fonte: Evert S (2023). corpora: Statistics and Data Sets for Corpus Frequency Da
 ```
 
 <!--- knit those table chunk statements --> 
-`r if(all(!sjmisc::is_empty(out), render_document, has.sucupira.files)){paste(knitr::knit(text = out), collapse = '\n\n')}`
+`r if(all(is.null("out.2"), render_document, has.sucupira.files)){paste(knitr::knit(text = out.2), collapse = '\n\n')}`
 
 \elandscape
 
@@ -5126,7 +5163,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -5162,7 +5199,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -5471,7 +5508,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -6802,7 +6839,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -7068,7 +7105,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
@@ -7631,7 +7668,7 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# Get data for the current period
+# get data for the current period
 sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 

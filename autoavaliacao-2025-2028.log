@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.28)  28 MAR 2025 13:39
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.29)  29 MAR 2025 07:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1022,7 +1022,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip109
 ) (/Users/arthurdesaferreira1/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2025-03-17 v3.4.7 A comprehensive (SI) units package
+Package: siunitx 2025-03-26 v3.4.8 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count421
 \l__siunitx_number_exponent_fixed_int=\count422
 \l__siunitx_number_min_decimal_int=\count423
@@ -1105,6 +1105,12 @@ LaTeX Warning: Label `tab:1-4-1-resultados' multiply defined.
 
 
 LaTeX Warning: Label `tab:1-4-1-resultados' multiply defined.
+
+
+LaTeX Warning: Label `tab:2-2-2-list-tables' multiply defined.
+
+
+LaTeX Warning: Label `tab:2-2-2-list-tables' multiply defined.
 
 
 LaTeX Warning: Label `tab:turmas' multiply defined.
@@ -1635,61 +1641,109 @@ Overfull \hbox (7.62837pt too wide) in paragraph at lines 595--595
 [13]
 
 [14]
+Underfull \hbox (badness 1454) in paragraph at lines 662--662
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 662--662
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1509) in paragraph at lines 662--662
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 662--662
+\TU/lmr/m/n/10 ção Fisioterapêutica Na Dor
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 662--662
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
 
 [15
 
 ]
-Overfull \vbox (430.84802pt too high) has occurred while \output is active []
+Underfull \hbox (badness 1509) in paragraph at lines 662--662
+[]\TU/lmr/m/n/10 Estratégias Reabilitativas No
+ []
 
 
 
 [16]
+Underfull \hbox (badness 2913) in paragraph at lines 692--692
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--692
+[]\TU/lmr/m/n/10 Aspectos Biopsicossociais e
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 692--692
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--692
+[]\TU/lmr/m/n/10 Aspectos Biopsicossociais e
+ []
+
+
 
 [17]
 
-[18
-
-]
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 765--765
-[]\TU/lmr/bx/n/10 Periodicidade 
+[18]
+Underfull \hbox (badness 1584) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Avaliação De Incidências De
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 765--765
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+Underfull \hbox (badness 2469) in paragraph at lines 714--714
+\TU/lmr/m/n/10 Lesões Osteomioarticulares e
  []
 
 
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 765--765
-[]\TU/lmr/bx/n/10 Periodicidade 
+Underfull \hbox (badness 2913) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
  []
 
 
-Underfull \hbox (badness 3557) in paragraph at lines 765--765
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+Underfull \hbox (badness 1043) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
+ []
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Avaliação De Incidências De
+ []
+
+
+Underfull \hbox (badness 2469) in paragraph at lines 714--714
+\TU/lmr/m/n/10 Lesões Osteomioarticulares e
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Igor Ramathur Telles
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 714--714
+[]\TU/lmr/m/n/10 Diferentes Modalidades Tera-
  []
 
 
 
 [19]
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 815--815
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 3557) in paragraph at lines 815--815
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
- []
-
-
-Overfull \hbox (4.77612pt too wide) in paragraph at lines 815--815
-[]\TU/lmr/bx/n/10 Periodicidade 
- []
-
-
-Underfull \hbox (badness 3557) in paragraph at lines 815--815
-[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
- []
+Overfull \vbox (430.84802pt too high) has occurred while \output is active []
 
 
 
@@ -1697,9 +1751,51 @@ Underfull \hbox (badness 3557) in paragraph at lines 815--815
 
 [21]
 
-[22]
+[22
+
+]
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 847--847
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 847--847
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 847--847
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 847--847
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
 
 [23]
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 897--897
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 897--897
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
+Overfull \hbox (4.77612pt too wide) in paragraph at lines 897--897
+[]\TU/lmr/bx/n/10 Periodicidade 
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 897--897
+[]\TU/lmr/bx/n/10 Reabilitação Cardiopulmonar e
+ []
+
+
 
 [24]
 
@@ -1717,13 +1813,9 @@ Underfull \hbox (badness 3557) in paragraph at lines 815--815
 
 [31]
 
-[32
+[32]
 
-]
-
-[33
-
-]
+[33]
 
 [34]
 
@@ -1731,58 +1823,60 @@ Underfull \hbox (badness 3557) in paragraph at lines 815--815
 
 [36]
 
-[37]
+[37
+
+]
 
 [38
 
 ]
-Overfull \hbox (16.3139pt too wide) in paragraph at lines 1435--1435
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
- []
 
-
-Overfull \hbox (2.9739pt too wide) in paragraph at lines 1435--1435
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
- []
-
-
-Overfull \hbox (14.2639pt too wide) in paragraph at lines 1435--1435
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=tex-text;!
-
-
-[39
-
-]
+[39]
 
 [40]
 
 [41]
 
-[42
-
-]
+[42]
 
 [43
 
 ]
+Overfull \hbox (16.3139pt too wide) in paragraph at lines 1571--1571
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
+ []
 
-[44]
+
+Overfull \hbox (2.9739pt too wide) in paragraph at lines 1571--1571
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
+ []
+
+
+Overfull \hbox (14.2639pt too wide) in paragraph at lines 1571--1571
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[]|  
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[44
+
+]
 
 [45]
 
 [46]
 
-[47]
-
-[48]
-
-[49
+[47
 
 ]
+
+[48
+
+]
+
+[49]
 
 [50]
 
@@ -1790,55 +1884,67 @@ Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 
 [52]
 
-[53
-
-]
-Underfull \hbox (badness 1314) in paragraph at lines 1747--1747
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
-
-
-Underfull \hbox (badness 1314) in paragraph at lines 1747--1747
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
-
-
+[53]
 
 [54
 
 ]
 
-[55
-
-
-]
+[55]
 
 [56]
 
-[57
+[57]
 
+[58
+
+]
+Underfull \hbox (badness 1314) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+
+[59
 
 ]
 
-[58]
-
-[59]
-
 [60
+
 
 ]
 
 [61]
 
-[62]
+[62
+
+
+]
 
 [63]
 
 [64]
 
-[65]
+[65
 
-[66] (./autoavaliacao-2025-2028.aux)
+]
+
+[66]
+
+[67]
+
+[68]
+
+[69]
+
+[70]
+
+[71] (./autoavaliacao-2025-2028.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1848,12 +1954,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 43180 strings out of 475832
- 903429 string characters out of 5772402
- 1480588 words of memory out of 5000000
- 65538 multiletter control sequences out of 15000+600000
- 577784 words of font info for 94 fonts, out of 8000000 for 9000
+ 43433 strings out of 475832
+ 908920 string characters out of 5772402
+ 1480802 words of memory out of 5000000
+ 65789 multiletter control sequences out of 15000+600000
+ 584068 words of font info for 104 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,19n,114p,554b,3346s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2025-2028.pdf (69 pages).
+Output written on autoavaliacao-2025-2028.pdf (74 pages).

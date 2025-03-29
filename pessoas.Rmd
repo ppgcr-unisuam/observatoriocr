@@ -139,6 +139,9 @@ for (i in 1:dim(coordenadores)[1]) {
 colnames(table.coord) <- c("Nome", "Categoria", "Vigência")
 rownames(table.coord) <- NULL
 
+# order by last column
+table.coord <- table.coord[order(table.coord$'Vigência', decreasing = FALSE),]
+
 # Print tables
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(table.coord, title = "Pessoas - Coordenação")
@@ -854,6 +857,10 @@ if (dim(egressos)[1] != 0) {
     egressos$'Nome Discente'
     )
 }
+
+# order by 3rd and 2 columns
+egressos <- egressos[order(egressos$'Data Situação', egressos$'Nome'), ]
+
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(egressos, title = "Pessoas - Egressos - Titulados")
 
@@ -911,6 +918,10 @@ if (dim(egressos)[1] != 0) {
     egressos$'Nome Discente'
     )
 }
+
+# order by 3rd and 2 columns
+egressos <- egressos[order(egressos$'Data Situação', egressos$'Nome'), ]
+
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(egressos, title = "Pessoas - Egressos - 5 anos")
 
@@ -968,6 +979,10 @@ if (dim(egressos)[1] != 0) {
     egressos$'Nome Discente'
     )
 }
+
+# order by 3rd and 2 columns
+egressos <- egressos[order(egressos$'Data Situação', egressos$'Nome'), ]
+
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(egressos, title = "Pessoas - Egressos - 10 anos")
 
@@ -1024,6 +1039,10 @@ if (dim(egressos)[1] != 0) {
     egressos$'Nome Discente'
     )
 }
+
+# order by 3rd and 2 columns
+egressos <- egressos[order(egressos$'Data Situação', egressos$'Nome'), ]
+
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
 create_dt(egressos, title = "Pessoas - Egressos - Histórico")
 

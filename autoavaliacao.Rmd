@@ -2181,9 +2181,6 @@ table.msc <-
   )
 colnames(table.msc) <- c("ID", "Disciplina", "Obrigatória", "CR", "CH", "Início", "Fim")
 
-# to title case
-table.msc$Disciplina <- tools::toTitleCase(tolower(table.msc$Disciplina))
-
 # merge CR (CH)
 table.msc <- table.msc %>%
   dplyr::mutate(CR = ifelse(is.na(CR), "", ifelse(is.na(CH), CR, paste0(CR, " (", CH, ")")))) %>%
@@ -2219,9 +2216,6 @@ table.dsc <-
     substr(as.Date(disciplinas.dsc$`Data de fim`, format = "%d/%m/%Y"), 1, 4)
   )
 colnames(table.dsc) <- c("ID", "Disciplina", "Obrigatória", "CR", "CH", "Início", "Fim")
-
-# to title case
-table.dsc$Disciplina <- tools::toTitleCase(tolower(table.dsc$Disciplina))
 
 # merge CR (CH)
 table.dsc <- table.dsc %>%
@@ -2300,7 +2294,6 @@ turmas <- turmas.raw %>%
 turmas <- turmas[turmas$`Indicador de responsável principal` == "Sim",]
 
 # change to title case
-turmas$`Nome da Disciplina` <- tools::toTitleCase(tolower(turmas$`Nome da Disciplina`))
 turmas$`Nome do responsável` <- tools::toTitleCase(tolower(turmas$`Nome do responsável`))
 
 # rename
@@ -2557,6 +2550,7 @@ if(!sjmisc::is_empty(bibliografia.raw)){
       update = stat_0 ~ "**Total**",
       gtsummary::all_stat_cols() ~ "**{level}**"
     ) %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels()
 } else {
   table.refs <- list()
@@ -3529,150 +3523,195 @@ sucupira <- lapply(sucupira, function(x) {
   return(x)
 })
 
-# loop for across the list to get docente, data de admissão e data de desligamento 
-table.doc <- lapply(sucupira, function(x) {
-  x <- x %>%
-    dplyr::select("Nome Docente", "Data de Admissão", "Data de Desligamento")
-  return(x)
-})
-
-# convert date dd/mm/yyy to yyyy
-for(i in 1:length(table.doc)) {
-  table.doc[[i]]$"Data de Admissão" <- as.numeric(format(as.Date(table.doc[[i]]$"Data de Admissão", format = "%d/%m/%Y"), "%Y"))
-  table.doc[[i]]$"Data de Desligamento" <- as.numeric(format(as.Date(table.doc[[i]]$"Data de Desligamento", format = "%d/%m/%Y"), "%Y"))
-}
-
 # name list elements by ano
-names(table.doc) <- quadrienal.vigente
+names(sucupira) <- quadrienal.vigente
 
 # add a new column with ano as value to each element in the data.frame
-for(i in 1:length(table.doc)) {
-  table.doc[[i]]$"Ano" <- quadrienal.vigente[i]
+for(i in 1:length(sucupira)) {
+  sucupira[[i]]$"Ano" <- quadrienal.vigente[i]
 }
-table.doc.6 <- table.doc
 
 # rbind the list elements
-table.doc.long <- do.call(rbind, table.doc)
+table.doc.long <- do.call(rbind, sucupira)
 
-# get docentes with Data Admissão within the quadrienio.vigente
-credenciados <- table.doc.long %>%
-  dplyr::filter(`Data de Admissão` %in% quadrienal.vigente) %>%
-  dplyr::distinct(`Nome Docente`, .keep_all = TRUE)
-
-descredenciados <- table.doc.long %>%
-  dplyr::filter(`Data de Desligamento` %in% quadrienal.vigente) %>%
-  dplyr::distinct(`Nome Docente`, .keep_all = TRUE)
+# select Nome Docente e Ano
+table.doc.long <- table.doc.long[, c("Ano", "Nome Docente")]
 
 # to title case
 table.doc.long$"Nome Docente" <- tools::toTitleCase(tolower(table.doc.long$"Nome Docente"))
-table.doc.long$Estabilidade <- NA
 
-# calculate number of docentes per year
-table.doc.7 <- table.doc.long %>%
-  dplyr::group_by(Ano) %>%
-  dplyr::summarise(n = dplyr::n_distinct(`Nome Docente`))
+# remove row names
+rownames(table.doc.long) <- NULL
 
-table.doc.long <- dplyr::select(table.doc.long, "Ano", "Nome Docente", "Estabilidade")
+# change all column types to factors
+table.doc.long <- table.doc.long %>%
+  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
 
-table.doc.long <- rbind(
-  table.doc.long,
-  data.frame(
-    "Ano" = rep(paste0("Z", min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(unique(table.doc.long$"Nome Docente"))),
-    "Nome Docente" = rep("Docentes", times = length(unique(table.doc.long$"Nome Docente"))),
-    "Estabilidade" = rep(NA, times = length(unique(table.doc.long$"Nome Docente"))),
-    check.names = FALSE
-  )
-)
-
-# create a new row total for each year
-for(i in 1:dim(table.doc.7)[1]){
-  table.doc.long <- rbind(
-    table.doc.long,
-    data.frame(
-      "Ano" = rep(table.doc.7$Ano[i], times = table.doc.7$n[i]),
-      "Nome Docente" = rep(NA, times = table.doc.7$n[i]),
-      "Estabilidade" = rep("Total", times = table.doc.7$n[i]),
-      check.names = FALSE
-    )
-  )
+# print table
+if(!sjmisc::is_empty(table.doc.long)){
+  table.doc.gt.1 <- table.doc.long |>
+    gtsummary::tbl_cross(
+      row = 'Nome Docente',
+      col = "Ano",
+      statistic = "{n}",
+      missing = "no",
+      digits = 0,
+      margin = NULL
+    ) %>%
+    gtsummary::modify_header(label = "Estabilidade do corpo docente permanente", stat_0 = "Atuação externa") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() 
+} else {
+  table.doc.gt.1 <- list()
 }
 
-# create a new row total for credenciados for each year
-table.doc.long <- rbind(
-  table.doc.long,
+# Função para contar os docentes novos por ano
+novos_docentes_por_ano <- function(data) {
+  # Lista para armazenar o número de novos docentes por ano
+  novos_por_ano <- as.numeric(length(unique(data$Ano)))
+  # Ordenar os dados por ano e nome do docente
+  data <- data[order(data$Ano, data$"Nome Docente"), ]
+  # Lista para armazenar docentes já credenciados
+  docentes_credenciados <- character(0)
+  # Para cada ano, contar quantos docentes novos foram credenciados
+  for (ano in unique(data$Ano)) {
+    # Selecionar docentes daquele ano
+    docentes_ano <- data[data$Ano == ano, "Nome Docente"]
+    # Filtrar os docentes que ainda não foram credenciados em anos anteriores
+    novos_docentes <- setdiff(docentes_ano, docentes_credenciados)
+    # Armazenar a quantidade de docentes novos
+    novos_por_ano[which(unique(data$Ano) == ano)] <- length(novos_docentes)
+    # Atualizar a lista de docentes credenciados até aquele ano
+    docentes_credenciados <- c(docentes_credenciados, novos_docentes)
+    # Para o 1o ano, não considerar nenhum docente como "novo"
+    if (ano == data$Ano[1]) {
+      novos_por_ano[which(unique(data$Ano) == ano)] <- 0
+    }
+  }
+  # Criar tabela final com os resultados
+  names(novos_por_ano) <- unique(data$Ano)
+  return(novos_por_ano)
+}
+
+# Função para contar os docentes descredenciados por ano
+descredenciados_por_ano <- function(data) {
+  # Lista para armazenar o número de docentes descredenciados por ano
+  descredenciados_por_ano <- as.numeric(length(unique(data$Ano)))
+  # Ordenar os dados por ano e nome do docente
+  data <- data[order(data$Ano, data$"Nome Docente"), ]
+  # Lista para armazenar docentes credenciados
+  docentes_credenciados <- character(0)
+  # Para cada ano, contar quantos docentes foram descredenciados
+  for (ano in unique(data$Ano)) {
+    # Selecionar docentes daquele ano
+    docentes_ano <- data[data$Ano == ano, "Nome Docente"]
+    # Identificar docentes que foram descredenciados (não estão no ano seguinte)
+    if (ano != max(as.numeric(data$Ano))) {  # Não há ano seguinte para o último ano
+      docentes_ano_seguinte <- data[data$Ano == (as.numeric(ano) + 1), "Nome Docente"]
+      descredenciados <- setdiff(docentes_ano, docentes_ano_seguinte)
+    } else {
+      descredenciados <- docentes_ano  # Para o último ano, todos são descredenciados
+    }
+    # Armazenar a quantidade de docentes descredenciados
+    descredenciados_por_ano[which(unique(data$Ano) == ano)] <- length(descredenciados)
+    # Atualizar a lista de docentes credenciados até aquele ano
+    docentes_credenciados <- c(docentes_credenciados, docentes_ano)
+    # Para o último ano, não considerar nenhum docente como "descredenciado"
+    if (ano == data$Ano[length(data$Ano)]) {
+      descredenciados_por_ano[which(unique(data$Ano) == ano)] <- 0
+    }
+  }
+  # Criar tabela final com os resultados
+  names(descredenciados_por_ano) <- unique(data$Ano)
+  return(descredenciados_por_ano)
+}
+
+# Calcular os docentes novos por ano
+credenciados <- novos_docentes_por_ano(table.doc.long)
+
+# Calcular os docentes descredenciados por ano
+descredenciados <- descredenciados_por_ano(table.doc.long)
+
+# Calcular o total de docentes em cada elemento da listas sucupira
+total <- sapply(sucupira, function(x) length(unique(x$"Nome Docente")))
+
+df.estabilidade <- data.frame(
+  "Ano" = unique(table.doc.long$Ano),
+  "Docentes credenciados" = credenciados,
+  "Docentes descredenciados" = descredenciados,
+  "Total de docentes" = total,
+  check.names = FALSE
+)
+
+# mat to long format
+df.estabilidade.long <- df.estabilidade %>%
+  tidyr::pivot_longer(cols = c("Docentes credenciados", "Docentes descredenciados", "Total de docentes"),
+               names_to = "Tipo",
+               values_to = "Quantidade")
+
+# repeat each tipo by Quantidade
+df.estabilidade.long <- df.estabilidade.long[rep(row.names(df.estabilidade.long), df.estabilidade.long$Quantidade),]
+
+# drop Quantidade
+df.estabilidade.long <- df.estabilidade.long[, -ncol(df.estabilidade.long)]
+
+df.estabilidade.long <- rbind(
+  df.estabilidade.long,
   data.frame(
-    "Ano" = rep(credenciados$Ano),
-    "Nome Docente" = rep(NA, times = nrow(credenciados)),
-    "Estabilidade" = rep("Credenciados", times = nrow(credenciados)),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(unique(table.doc.long$`Nome Docente`))),
+    "Tipo" = rep("Estabilidade", times = length(unique(table.doc.long$`Nome Docente`))),
     check.names = FALSE
   )
 )
-
-# create a new row total for descredenciados for each year
-table.doc.long <- rbind(
-  table.doc.long,
-  data.frame(
-    "Ano" = rep(descredenciados$Ano),
-    "Nome Docente" = rep(NA, times = nrow(descredenciados)),
-    "Estabilidade" = rep("Descredenciados", times = nrow(descredenciados)),
-    check.names = FALSE
-  )
-)
-
-# reorder columns
-table.doc.long <- table.doc.long %>%
-  dplyr::select("Ano", "Estabilidade", "Nome Docente")
 
 my_N <- function(data, ...) {
-  gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
+  gtsummary::style_number(sum(data == "Estabilidade", na.rm = TRUE), digits = 0)
 }
 
-# check for missing docentes.quadrienio
-table.doc.long$"Nome Docente" <- factor(
-  table.doc.long$"Nome Docente",
-  levels = sort(unique(c("Docentes", levels(table.doc.long$"Nome Docente"), docentes.quadrienio)))
-)
-
-# bug report
-# https://stackoverflow.com/questions/78811916/gtsummary-tbl-summary-sorting-of-stratify-variable/78812588
-tbl_fix_order <- function(x) {
-  nms <- names(x$table_body)
-  is_stat_cols <- grepl("^stat_", nms)
-  non_stat_cols <- nms[!is_stat_cols]
-  stat_cols <- nms[is_stat_cols]
-  stat_cols <- stat_cols[
-    order(as.integer(gsub("^.*?(\\d+)$", "\\1", stat_cols)))
-  ]
-  x$table_body <- x$table_body[c(non_stat_cols, stat_cols)]
-  
-  x  
-}
-
-# print tables
-if(!sjmisc::is_empty(table.doc)){
-table.1.2.3 <- gtsummary::tbl_summary(
-  table.doc.long,
-  by = "Ano",
-  statistic = list(gtsummary::all_categorical() ~ "{n}"),
-  missing = "no",
-  digits = gtsummary::everything() ~ 0,
-    sort = gtsummary::all_categorical() ~ "alphanumeric"
-  ) %>%
-  gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
-  gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-  gtsummary::bold_labels() %>%
-  tbl_fix_order() %>%
-  gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
-  gtsummary::modify_header(
-    list(
+# print table
+if(!sjmisc::is_empty(df.estabilidade.long)) {
+  # print tables
+  table.doc.gt.2 <-
+    gtsummary::tbl_summary(
+      df.estabilidade.long,
+      by = "Ano",
+      statistic = list(gtsummary::all_categorical() ~ "{n}"),
+      missing = "no",
+      digits = gtsummary::everything() ~ 0,
+      sort = gtsummary::all_categorical() ~ "alphanumeric"
+    ) %>%
+    gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() %>%
+    gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+    gtsummary::modify_header(list(
       add_stat_1 ~ "**Quadriênio**",
       gtsummary::all_stat_cols() ~ "**{level}**"
-    )
-  ) %>%
-  gtsummary::remove_row_type(variables = c('Nome Docente'), type = "level", level_value = ("Docentes")) %>%
-  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+    )) %>%
+    gtsummary::remove_row_type(
+      variables = c('Tipo'),
+      type = "level",
+      level_value = ("Estabilidade")
+    ) %>%
+    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(
+      quadrienal.vigente
+    ) + 1)))} else {
+  table.doc.gt.2 <- list()
+}
+
+# producão
+# List all tables
+table.1.2.3 <- list(
+  table.doc.gt.2,
+  table.doc.gt.1
+)
+
+# Drop empty elements from the list
+table.1.2.3 <- table.1.2.3[lapply(table.1.2.3, length) > 0]
+if(any(lapply(table.1.2.3, length) > 0)){
+  table.1.2.3 <- gtsummary::tbl_stack(table.1.2.3)
 } else {
-  table.1.2.3 <- list()
+  table.1.2.3 <- NULL
 }
 
 # Print HTML table
@@ -3690,7 +3729,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.3)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Estabilidade do Corpo Docente Permanente")
+    caption = ifelse(knitr::is_html_output(), "", "Estabilidade do corpo docente permanente"),
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -3705,7 +3744,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.3)) {
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 
 # Add LaTeX commands for new page and float barrier
-if(knitr::is_latex_output()) {
+if(knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.3)) {
   cat('\\newpage')
 }
 ```
@@ -4639,6 +4678,11 @@ cat('<br>')
 ```
 
 ```{r 1-4-1-metodologia, eval = all(render_document, has.metodologia), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+if(knitr::is_html_output()) {
+  cat('##### *Formulários*')
+  cat('\n\n')
+}
+
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Metodologia.xlsx")
 
@@ -4703,6 +4747,11 @@ for (j in 1:length(abas)) {
 ```
 
 ```{r 1-4-1-resultados, eval = all(render_document, has.autoavaliacao), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+if(knitr::is_html_output()) {
+  cat('##### *Resultados*')
+  cat('\n\n')
+}
+
 # initialize all sheets
 abas <- readxl::excel_sheets("PPG/Autoavaliação PPG.xlsx")
 
@@ -4765,8 +4814,6 @@ for (j in 1:length(abas)) {
   }
 }
 ```
-
-<br>
 
 <br>
 

@@ -493,7 +493,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(summ.df)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Prenchimento do Coleta - Quantidade de dados por aba, por ano")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(summ.df), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(summ.df), j = 1, bold = TRUE)
 }
@@ -577,7 +577,7 @@ if (knitr::is_html_output() & !sjmisc::is_empty(cursos)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Objetivos do Curso")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(cursos), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(cursos), j = 1, bold = TRUE)
 }
@@ -632,7 +632,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Perfil de Egressos")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(cursos), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(cursos), j = 1, bold = TRUE)
 }
@@ -1015,7 +1015,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Áreas de Concentração")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(area.ativas), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(area.ativas), j = 1, bold = TRUE)
 }
@@ -1285,7 +1285,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Linhas de Pesquisa")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(linhas.atual), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(linhas.atual), j = 1, bold = TRUE)
 }
@@ -1963,67 +1963,70 @@ coerencia <- sucupira.df %>% dplyr::select("Área de Concentração", "Linha de 
 # remove duplicates
 coerencia <- coerencia[!duplicated(coerencia),]
 
-# change all column types to factors
-coerencia <- coerencia %>%
-  dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
+# convert to horizonta table
+coerencia.tbl <- matrix(NA, nrow = 0, ncol = length(unique(coerencia$`Área de Concentração`))*length(unique(coerencia$`Linha de Pesquisa`)))
+colnames(coerencia.tbl) <- paste0("AC: ", rep(unique(coerencia$`Área de Concentração`), each = length(unique(coerencia$`Linha de Pesquisa`))), " - ", "LP: ", rep(unique(coerencia$`Linha de Pesquisa`), times = length(unique(coerencia$`Área de Concentração`))))
 
-if(!sjmisc::is_empty(coerencia)){
-  # print tables tbl_cross with thee levels
-  coerencia.gt <- coerencia |>
-    gtsummary::tbl_strata(
-      strata = 'Área de Concentração',
-      .tbl_fun =
-        ~ .x |>
-        gtsummary::tbl_summary(
-          by = 'Linha de Pesquisa',
-          statistic = list(
-            gtsummary::all_categorical() ~ "{n}"
-          ),
-          missing = "no",
-          digits = gtsummary::everything() ~ 0,
-          sort = gtsummary::all_categorical() ~ "alphanumeric"
-        ) %>%
-        gtsummary::modify_header(label = "**Coerência e Abrangência**") %>%
-        gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-        gtsummary::bold_labels(),
-      .header = paste0("**{strata}**")
-    )
-} else {
-  coerencia.gt <- list()
+coerencia.tbl <- coerencia.tbl %>% as.data.frame(check.names = FALSE)
+
+# rbind Nome do Projeto to the respective column
+for(i in 1:dim(coerencia)[1]){
+  which.col <- which(colnames(coerencia.tbl) == paste0("AC: ", coerencia$`Área de Concentração`[i], " - ", "LP: ", coerencia$`Linha de Pesquisa`[i]))
+  coerencia.tbl[i, which.col] <- coerencia$`Nome do Projeto de Pesquisa`[i]
 }
 
-# remove 0s from gtsummary
-# coerencia.gt[1]$table_body <- coerencia.gt[1]$table_body %>% 
-#   dplyr::mutate(dplyr::across(sprintf("stat_%d_1", 1:nlevels(coerencia$`Linha de Pesquisa`)), ~gsub("^0.*", "",.)))
+# sort each column
+coerencia.tbl <- coerencia.tbl %>% dplyr::mutate(across(everything(), ~sort(., na.last = TRUE)))
 
-# Print HTML table
-if (knitr::is_html_output() && !sjmisc::is_empty(coerencia)) {
-  print(coerencia.gt)
+# keep rows with at least 1 non-NA value
+coerencia.tbl <- coerencia.tbl[rowSums(!is.na(coerencia.tbl)) > 0,]
+
+# loop across columns to numerate projects with sprintf
+for(i in 1:ncol(coerencia.tbl)){
+  coerencia.tbl[!is.na(coerencia.tbl[,i]),i] <- sprintf("(%d) %s", seq_along(coerencia.tbl[!is.na(coerencia.tbl[,i]),i]), coerencia.tbl[!is.na(coerencia.tbl[,i]),i])
 }
 
-# Print LaTeX table
-if (knitr::is_latex_output() && !sjmisc::is_empty(coerencia)) {
-  cat('\\FloatBarrier')
-  # Convert gtsummary object to kableExtra object
-  kable_table <- gtsummary::as_kable_extra(
-    x = coerencia.gt,
+# replace NA with ""
+coerencia.tbl[is.na(coerencia.tbl)] <- ""
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(coerencia.tbl)) {
+  # use kable for HTML output
+  knitr::kable(
+    coerencia.tbl,
+    align = "l",
     escape = FALSE,
-    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    format = "html",
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Coerência e abrangência conceitual - Área de concentracão -> Linha de Pesquisa -> Projeto de Pesquisa"),
+    caption = "Coerência e abrangência (AC > LP > PP)"
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  ) %>% kableExtra::column_spec(column = 1:ncol(coerencia.tbl), width = paste0(c(rep(1.00/ncol(coerencia.tbl)))*(21-3-3), "cm")) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(coerencia.tbl)){
+  # use tinytable for LaTeX output
+  coerencia.tbl <- data.frame(coerencia.tbl, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    coerencia.tbl,
+    width = c(rep(1.00/ncol(coerencia.tbl)))*(21-3-3),
+    style = "bootstrap",
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", "Coerência e abrangência (AC > LP > PP)")
   ) %>%
-    kableExtra::kable_styling(
-      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
-      latex_options = c("basic", "repeat_header", "HOLD_position"),
-      latex_table_env = "tabularx",
-      full_width = TRUE,
-      position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), width = paste0(c(0.30, rep(0.70/(nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)), times = nlevels(coerencia$`Área de Concentração`)*nlevels(coerencia$`Linha de Pesquisa`)))*(29-3-3), "cm"))
-  print(kable_table)
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(coerencia.tbl), bold = TRUE)
 }
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
 ```
 
 \elandscape
@@ -2396,7 +2399,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Disciplinas de Mestrado")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(table.msc), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(table.msc), j = 1, bold = TRUE)
 }
@@ -2486,7 +2489,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Disciplinas de Doutorado")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(table.dsc), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(table.dsc), j = 1, bold = TRUE)
 }
@@ -5832,7 +5835,7 @@ producao.ano <- table.bib.long %>%
   na.omit() %>%
   dplyr::filter(Ano != "Ano") %>%
   dplyr::count(Ano)
-colnames(producao.ano) <- c("Ano", "Número de trabalhos de discentes publicados em anais (resumo ou resumo expandido)")
+colnames(producao.ano) <- c("Ano", "Número de trabalhos de discentes publicados em Anais (resumo ou resumo expandido)")
 
 alunos.ano <- table.disc.long %>%
   na.omit() %>%
@@ -5846,7 +5849,7 @@ razao.ano <- dplyr::full_join(producao.ano, alunos.ano, by = "Ano")
 razao.ano[is.na(razao.ano)] <- 0
 
 # calculate ratio
-razao.ano$Razão <- razao.ano$`Número de trabalhos de discentes publicados em anais (resumo ou resumo expandido)` / razao.ano$`Número de discentes do Programa`
+razao.ano$Razão <- razao.ano$`Número de trabalhos de discentes publicados em Anais (resumo ou resumo expandido)` / razao.ano$`Número de discentes do Programa`
 
 # keep razao only
 razao.ano <- razao.ano[, c("Ano", "Razão")]
@@ -6596,7 +6599,7 @@ producao.ano <- table.bib.long %>%
   na.omit() %>%
   dplyr::filter(Ano != "Ano") %>%
   dplyr::count(Ano)
-colnames(producao.ano) <- c("Ano", "Número de trabalhos de discentes publicados em artigos/livros/capítulos")
+colnames(producao.ano) <- c("Ano", "Número de artigos/livros/capítulos publicados por discentes/egressos")
 
 egressos.ano <- table.disc.long %>%
   na.omit() %>%
@@ -6610,7 +6613,7 @@ razao.ano <- dplyr::full_join(producao.ano, egressos.ano, by = "Ano")
 razao.ano[is.na(razao.ano)] <- 0
 
 # calculate ratio
-razao.ano$Razão <- razao.ano$`Número de trabalhos de discentes publicados em artigos/livros/capítulos` / razao.ano$`Número de titulações do Programa`
+razao.ano$Razão <- razao.ano$`Número de artigos/livros/capítulos publicados por discentes/egressos` / razao.ano$`Número de titulações do Programa`
 
 # keep razao only
 razao.ano <- razao.ano[, c("Ano", "Razão")]
@@ -6626,13 +6629,13 @@ my_N <- function(...) {
 }
 
 # rename columns
-colnames(razao.ano) <- c("Ano", "Razão (trabalhos publicados artigos/livros/capítulos por titulação)")
+colnames(razao.ano) <- c("Ano", "Razão (artigos/livros/capítulos publicados por discentes/egressos por titulação)")
 
 # change all column types to factors
 table.razao.long <- razao.ano %>%
   dplyr::mutate(dplyr::across(Ano, as.factor))
 table.razao.long <- razao.ano %>%
-  dplyr::mutate(dplyr::across("Razão (trabalhos publicados artigos/livros/capítulos por titulação)", as.numeric))
+  dplyr::mutate(dplyr::across("Razão (artigos/livros/capítulos publicados por discentes/egressos por titulação)", as.numeric))
 
 if(!sjmisc::is_empty(producao.ano) && !sjmisc::is_empty(alunos.ano)) {
   # Print tables
@@ -6690,7 +6693,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.2.a)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Número de trabalhos de discentes publicados (artigos/livros/capítulos)")
+    caption = ifelse(knitr::is_html_output(), "", "Número de trabalhos de discentes/egressos publicados (artigos/livros/capítulos)")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -6773,7 +6776,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.2.c)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Razão (trabalhos publicados em artigos/livros/capítulos por titulação)")
+    caption = ifelse(knitr::is_html_output(), "", "Razão (trabalhos de discentes/egressos publicados [artigos/livros/capítulos] por titulação)")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -7672,7 +7675,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.projetos.doc)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Docentes Permanentes Responsáveis por Projetos, por Linha de Pesquisa")
   ) %>%
-    tinytable::theme_tt("multipage", rowhead = 1, latex_float = "H") %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(table.doc), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(table.doc), j = 1, bold = TRUE)
 }

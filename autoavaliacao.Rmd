@@ -4411,6 +4411,104 @@ if(knitr::is_latex_output() && !sjmisc::is_empty(table.cap.pq)) {
 }
 ```
 
+\blandscape
+
+```{r 1.2.5-detalhes, eval = all(render_document, has.financiadores)}
+financiadores.raw <-
+  readxl::read_excel("PPG/Financiadores.xlsx", sheet = "financiadores")
+
+financiadores.sub <-
+  financiadores.raw %>% dplyr::select("Ano",
+                               "Agência",
+                               "Edital",
+                               "Processo No.",
+                               "Título do projeto",
+                               "Proponente",
+                               "Programa",
+                               "País")
+fonte.sub <- financiadores.raw %>% dplyr::select("Fonte")
+
+financiadores <-
+  financiadores.sub[complete.cases(financiadores.sub), ]
+fonte <- fonte.sub[complete.cases(financiadores.sub), ]
+
+if (dim(financiadores)[1] != 0) {
+  Abrir <- matrix(NA, nrow = dim(financiadores)[1])
+  colnames(Abrir) <- "Abrir"
+  # add hyperlinks
+  for (i in 1:dim(fonte)[1])
+  {
+    if (!is.na(fonte[i, 1]))
+    {
+      Abrir[i] <-
+        paste0('<a href="',
+               fonte[i, 1],
+               '" target="_blank"',
+               '>',
+               # fontawesome icon
+               fontawesome::fa("up-right-from-square"),
+               '</a>')
+    }
+  }
+  financiadores <- cbind(financiadores, Abrir)
+  financiadores <-
+    financiadores[order(financiadores$Ano, decreasing = TRUE), ]
+}
+
+# filter Ano in quadrienal.vitgente
+financiadores <- financiadores[financiadores$Ano %in% quadrienal.vigente, ]
+
+# drop Abrir
+financiadores <- financiadores %>%
+  dplyr::select(-"Abrir")
+
+# sort by Proponente
+financiadores <- financiadores[order(financiadores$Proponente), ]
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(financiadores)) {
+  # use kable for HTML output
+  knitr::kable(
+    financiadores,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = "Capacidade de captação de recursos - Detalhes dos financiadores"
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  ) %>% kableExtra::column_spec(column = 1:ncol(financiadores), width = paste0(c(0.05,0.05,0.10,0.15,0.20,0.20,0.20,0.05)*(29-3-3), "cm")) %>%
+      kableExtra::column_spec(column = 1, bold = TRUE) %>%
+      kableExtra::row_spec(row = 0, bold = TRUE)
+} else {
+  # use tinytable for LaTeX output
+  financiadores <- data.frame(financiadores, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    financiadores,
+    width = c(0.05,0.05,0.10,0.15,0.20,0.20,0.20,0.05)*(29-3-3),
+    style = "bootstrap",
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", "Capacidade de captação de recursos - Detalhes dos financiadores")
+  ) %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(financiadores), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(financiadores), j = 1, bold = TRUE)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+\elandscape
+
 <br>
 
 ```{r 1-3-1, eval = all(render_document, knitr::is_html_output())}
@@ -7078,6 +7176,68 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.3.1)) {
       position = "center"
     ) %>% kableExtra::column_spec(column = 1:(1 + length(unique(table.continuada.part$Ano))+ 1), width = paste0(c(0.65, rep(0.20/(length(quadrienal.vigente)), times = length(unique(table.continuada.part$Ano))), 0.15)*(21-3-3), "cm"))
   print(kable_table)
+}
+
+source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+
+# retrieve data to print details with atuações > 1
+table.continuada.2 <- table.continuada %>%
+  dplyr::filter(Atuações > 1)
+
+# paste rows with Ano based on same Nome
+table.continuada.2 <- table.continuada.2 %>%
+  dplyr::group_by(Nome) %>%
+  dplyr::summarise(
+    Atuações = sum(Atuações),
+    Nível = paste(Nível, collapse = " - "),
+    Formação = paste(Formação, collapse = " - "),
+    Ano = paste(Ano, collapse = " - ")
+  )
+
+# drop formação
+table.continuada.2 <- table.continuada.2 %>%
+  dplyr::select(-Atuações, -Formação)
+
+# Nome to title case
+table.continuada.2$Nome <- tools::toTitleCase(tolower(table.continuada.2$Nome))
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(table.continuada.2)) {
+  # use kable for HTML output
+  knitr::kable(
+    table.continuada.2,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = "Formação continuada no Programa - Detalhes"
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )  %>% kableExtra::column_spec(column = 1:dim(table.continuada.2)[2], width = paste0(c(0.60,0.25,0.15)*(21-3-3), "cm")) %>%
+  kableExtra::column_spec(column = 1, bold = TRUE) %>%
+  kableExtra::row_spec(row = 0, bold = TRUE)
+} else {
+  # use tinytable for LaTeX output
+  summ.df <- data.frame(table.continuada.2, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    table.continuada.2,
+    width = c(0.60,0.25,0.15)*(21-3-3),
+    style = "bootstrap",
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", "Formação continuada no Programa - Detalhes")
+  ) %>%
+    tinytable::theme_tt("multipage", rowhead = 1) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(table.continuada.2), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(table.continuada.2), j = 1, bold = TRUE)
 }
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())

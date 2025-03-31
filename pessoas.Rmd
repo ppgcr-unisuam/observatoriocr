@@ -1318,7 +1318,7 @@ for (j in 1:length(abas)) {
 
 ### **Participantes** {#participantes .tabset}
 
-```{r externos-nacionais, eval = has.sucupira.files}
+```{r externos, eval = has.sucupira.files}
 # participantes externos
 sheet <- "Participante Externo"
 source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())

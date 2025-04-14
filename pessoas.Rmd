@@ -818,7 +818,7 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 # periodo max
-periodo <- as.numeric(max(as.numeric(names(anos))))
+periodo <- max(as.numeric(anos))
 
 # egressos
 sheet <- "Discentes - Orientadores"
@@ -876,8 +876,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 # periodo
-n.end <- as.numeric(format(Sys.Date(), "%Y")) - 0
-n.start <- as.numeric(format(Sys.Date(), "%Y")) - 5
+n.end <- max(as.numeric(anos)) - 1
+n.start <- max(as.numeric(anos)) - 5
 # egressos dos últimos 5 anos
 periodo <- n.start:n.end
 periodo <- periodo[periodo %in% anos]
@@ -939,8 +939,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 # periodo
-n.end <- as.numeric(format(Sys.Date(), "%Y")) - 5
-n.start <- as.numeric(format(Sys.Date(), "%Y")) - 10
+n.end <- max(as.numeric(anos)) - 6
+n.start <- max(as.numeric(anos)) - 10
 # egressos dos últimos 5 anos
 periodo <- n.start:n.end
 periodo <- periodo[periodo %in% anos]
@@ -1002,8 +1002,8 @@ source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 # periodo
-n.end <- as.numeric(format(Sys.Date(), "%Y")) - 10
-n.start <- as.numeric(format(Sys.Date(), "%Y")) - 15
+n.end <- max(as.numeric(anos)) - 11
+n.start <- max(as.numeric(anos)) - 15
 # egressos dos últimos 5 anos
 periodo <- n.start:n.end
 periodo <- periodo[periodo %in% anos]

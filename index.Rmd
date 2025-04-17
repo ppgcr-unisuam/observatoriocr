@@ -2320,9 +2320,9 @@ discentes.raw <-
   )
 discentes.raw <- discentes.raw[discentes.raw$País == "Brasil",]
 discentes.raw$'Data Matrícula' <-
-  as.Date(discentes.raw$'Data Matrícula', format = "%d/%m/%Y")
+  as.Date(openxlsx::convertToDate(discentes.raw$`Data Matrícula`), format = "%d/%m/%Y")
 discentes.raw$'Data Situação' <-
-  as.Date(discentes.raw$'Data Situação', format = "%d/%m/%Y")
+  as.Date(openxlsx::convertToDate(discentes.raw$`Data Situação`), format = "%d/%m/%Y")
 discentes.raw$'Ano Titulação' <-
   substr(as.Date(discentes.raw$'Data Situação', format = "%d/%m/%Y"), 1, 4)
 # tempo de curso

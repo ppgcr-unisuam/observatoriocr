@@ -565,7 +565,6 @@ for (i in 1:length(sucupira)) {
   )
 }
 
-
 sucupira.df <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
 names(sucupira.df) <- names(sucupira[[as.character(max(as.numeric(periodo.vigente)))]])
 

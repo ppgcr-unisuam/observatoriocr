@@ -7933,12 +7933,29 @@ rownames(table.docente) <- NULL
 table.docente <- cbind(unique(sucupira.df.autor$`ID da Produção`), table.docente)
 colnames(table.docente) <- c("ID da Produção", as.character(quadrienal.vigente))
 
+# produção detalhes
+produtos.detalhes <- metricas_all
+
 # check protagonismo docente in sucupira.df.bibl$"Número de Ordem do Autor": 1st, 2nd, 2nd last, last
+# initialize data
+protagonismo <- data.frame(
+  `ID da Produção` = ID,
+  Protagonista = rep(NA, times = length(unique(sucupira.df.autor$`ID da Produção`))),
+  Citação = rep(NA, times = length(unique(sucupira.df.autor$`ID da Produção`))),
+  check.names = FALSE
+)
 # loop across ID
 for(i in 1:length(ID)){
   subset <- sucupira.df.autor[sucupira.df.autor$`ID da Produção` == ID[i], ]
   coluna <- which(unique(subset$Anos) == quadrienal.vigente)
-  # separate checks for 2 authors, 3 authors, 4 authors, and 5 or more authors
+  # separate checks for 1 author, 2 authors, 3 authors, 4 authors, and 5 or more authors
+  # if authors == 1
+  if(dim(subset)[1] == 1){
+    protagonista <- which(subset$`Nome do Autor` %in% docentes.quadrienio == TRUE)
+    if(!sjmisc::is_empty(protagonista)){
+      table.docente[i, coluna + 1] <- subset$`Nome do Autor`[protagonista]
+    }
+  }
   # if authors == 2
   if(dim(subset)[1] == 2){
     protagonista <- which(subset$`Nome do Autor` %in% docentes.quadrienio == TRUE)
@@ -7988,6 +8005,47 @@ for(i in 1:length(ID)){
         }
       }
     }
+  }
+  # get name of protagonista
+  protagonismo$Protagonista[i] <- table.docente[i, coluna + 1]
+  # format citation
+  if(!is.na(table.docente[i, coluna + 1])){
+    id <- ID[i]
+    produtos.id <- sucupira.df.autor[sucupira.df.autor$"ID da Produção" == id,]
+    for (j in 1:length(produtos.id$"Nome do Autor")) {
+      try(if (produtos.id$"Categoria do Autor"[j] == "Discente") {
+        produtos.id$"Nome do Autor"[j] <-
+          paste0("<b>", produtos.id$"Nome do Autor"[j], "¹", "</b>")
+      }, silent = TRUE)
+      try(if (produtos.id$"Categoria do Autor"[j] == "Egresso") {
+        produtos.id$"Nome do Autor"[j] <-
+          paste0("<b>", produtos.id$"Nome do Autor"[j], "²", "</b>")
+      }, silent = TRUE)
+      try(if (produtos.id$"Categoria do Autor"[j] == "Docente") {
+        produtos.id$"Nome do Autor"[j] <-
+          paste0("<b>", produtos.id$"Nome do Autor"[j], "³", "</b>")
+      }, silent = TRUE)
+    }
+    # get product metadata
+    source("Scripts/get-producao-metadata.R", local = knitr::knit_global())
+    metadata <- get_id_metadata(id = id, subtipo = "ARTIGO EM PERIÓDICO", produtos.detalhes = produtos.detalhes)
+    protagonismo$Citação[i] <- paste0(
+      paste0(
+        # remove NA values from Nome do Autor
+        produtos.id$"Nome do Autor"[!is.na(produtos.id$"Nome do Autor")],
+        collapse = "; "
+      ),
+      " (", sucupira.df.autor$"Ano da Produção"[sucupira.df.autor$"ID da Produção" == id], ") ",
+      sucupira.df.autor$"Nome da Produção"[sucupira.df.autor$"ID da Produção" == id],
+      metadata$detalhamento[1],
+      " (",
+      paste0("Altmetric: ", unique(produtos.detalhes$altmetric_score[produtos.detalhes$"ID da Produção" == id]), " | "),
+      paste0("CiteScore: ", unique(produtos.detalhes$SJR[produtos.detalhes$"ID da Produção" == id]), " | "),
+      paste0("SJR: ", unique(produtos.detalhes$CiteScore[produtos.detalhes$"ID da Produção" == id]), " | "),
+      paste0("Qualis: ", unique(produtos.detalhes$Qualis[produtos.detalhes$"ID da Produção" == id]), " | "),
+      paste0("Citações: ", unique(produtos.detalhes$citations[produtos.detalhes$"ID da Produção" == id])),
+      ")"
+    )
   }
 }
 
@@ -8109,6 +8167,73 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.4.1.a)) {
 if(knitr::is_latex_output()) {
   cat('\\newpage')
 }
+
+# # drop first column
+# protagonismo <- protagonismo[, -1]
+# 
+# # sort by protagonista
+# protagonismo <- dplyr::arrange(protagonismo, Protagonista)
+# 
+# # escape special characters for LATEX
+# # Escape characters in table data & % $ # _ { }
+# if(knitr::is_latex_output()) {
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\&", "\\\\&", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\%", "\\\\%", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\$", "\\\\$", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\#", "\\\\#", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\_", "\\\\_", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\{", "\\\\{", x)), silent = TRUE)
+#   try(protagonismo <- apply(protagonismo, 2, function(x) gsub("\\}", "\\\\}", x)), silent = TRUE)
+# }
+# 
+# # print long table of protagonismo
+# # print tables
+# if (knitr::is_html_output() && !sjmisc::is_empty(protagonismo)) {
+#   # use kable for HTML output
+#   knitr::kable(
+#     protagonismo,
+#     align = "l",
+#     escape = FALSE,
+#     format = "html",
+#     booktabs = TRUE,
+#     linesep = "",
+#     caption = "Produção bibliográfica (artigos/livros/capítulos) dos Docentes Permanentes produzidos em coautoria com os discentes/egressos - Protagonismo"
+#   ) %>% kableExtra::kable_styling(
+#     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+#     full_width = TRUE,
+#     position = "center"
+#   ) %>% kableExtra::column_spec(column = 1:2, width = paste0(c(0.10, 0.90)*(21-3-3), "cm")) %>%
+#     kableExtra::column_spec(column = 1, bold = TRUE) %>%
+#     kableExtra::row_spec(row = 0, bold = TRUE) %>%
+#     kableExtra::footnote(
+#       general_title = "<strong>Fontes</strong>: ",
+#       general = c(
+#         "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+#       ),
+#       escape = FALSE)
+# } else if (knitr::is_latex_output() && !sjmisc::is_empty(protagonismo)) {
+#   # use tinytable for LaTeX output
+#   protagonismo <- data.frame(protagonismo, check.names = FALSE)
+#   options(tinytable_print_output = "latex")
+#   tinytable::tt(
+#     protagonismo,
+#     width = c(0.10, 0.90)*(21-3-3),
+#     style = "bootstrap",
+#     align = "l",
+#     caption = ifelse(knitr::is_html_output(), "", "Produção bibliográfica (artigos/livros/capítulos) dos Docentes Permanentes produzidos em coautoria com os discentes/egressos - Protagonismo"),
+#     notes = list(
+#       "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+#     )
+#   ) %>%
+#     tinytable::theme_tt("multipage", rowhead = 1) %>%
+#     tinytable::style_tt(i = 0, j = 1:ncol(protagonismo), bold = TRUE) %>%
+#     tinytable::style_tt(i = 1:nrow(protagonismo), j = 1, bold = TRUE)
+# }
+# 
+# # Add LaTeX commands for new page and float barrier
+# if(knitr::is_latex_output()) {
+#   cat('\\newpage')
+# }
 ```
 
 <br>

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.15)  20 MAY 2025 08:58
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.15)  29 MAY 2025 07:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,7 +465,7 @@ Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 \everycr=\toks30
 \minrowclearance=\skip68
 \rownum=\count338
@@ -750,7 +750,7 @@ Package shellesc Info: Restricted shell escape enabled on input line 77.
 \svg@box=\box154
 \c@svg@param@currpage=\count392
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
+Package: tcolorbox 2025/05/20 version 6.5.0 text color boxes
 (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/
 local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texl
 ive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -1104,7 +1104,7 @@ Package tocloft Warning: \@starttoc has already been redefined; tocloft bailing
  out. on input line 1156.
 
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+Package: hyperref 2025-05-20 v7.01m Hypertext links for LaTeX
 (/usr/local/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
@@ -1129,13 +1129,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Hy@linkcounter=\count421
 \Hy@pagecounter=\count422
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-05-20 v7.01m Hyperref: PDFDocEncoding definition (HO)
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count423
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-05-20 v7.01m Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `unicode' set `true' on input line 4040.
 Package hyperref Info: Hyper figures OFF on input line 4157.
@@ -1178,7 +1178,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
+File: hxetex.def 2025-05-20 v7.01m Hyperref driver for XeTeX
 \pdfm@box=\box176
 \c@Hy@AnnotLevel=\count429
 \HyField@AnnotCount=\count430
@@ -1200,7 +1200,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip110
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2025-05-17 v3.4.11 A comprehensive (SI) units package
+Package: siunitx 2025-05-22 v3.4.12 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count433
 \l__siunitx_number_exponent_fixed_int=\count434
 \l__siunitx_number_min_decimal_int=\count435
@@ -1242,6 +1242,9 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (./autoavaliacao-2025-2028.aux
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
 (babel)             Reported  on input line 8.
+
+LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
+
 
 LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
 
@@ -1759,10 +1762,6 @@ Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
 
 
 [1
@@ -1778,16 +1777,20 @@ Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
 
 
 [2]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
 
 [3]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [4]
 
@@ -1796,174 +1799,174 @@ ex-text;!
 [6]
 
 [7]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 516--516
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 516--516
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 516--516
-[]\TU/lmr/bx/n/10 Doutorado 
- []
-
-
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 516--516
-[]\TU/lmr/bx/n/10 Mestrado 
- []
-
-
 
 [8]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 533--533
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 542--542
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 533--533
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 542--542
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 533--533
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 542--542
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 533--533
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 542--542
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
 
 [9]
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 559--559
+[]\TU/lmr/bx/n/10 Doutorado 
+ []
+
+
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 559--559
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 559--559
+[]\TU/lmr/bx/n/10 Doutorado 
+ []
+
+
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 559--559
+[]\TU/lmr/bx/n/10 Mestrado 
+ []
+
+
 
 [10]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 570--570
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 570--570
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
 
 [11]
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 596--596
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 596--596
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
 
 [12]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 613--613
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
 
 [13]
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 639--639
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
 
 [14]
-Underfull \hbox (badness 1360) in paragraph at lines 683--683
+
+[15]
+Underfull \hbox (badness 1360) in paragraph at lines 709--709
 []\TU/lmr/m/n/10 Estratégias De Tratamento Fisioterapêutico Para
  []
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 683--683
+Underfull \hbox (badness 1360) in paragraph at lines 709--709
 []\TU/lmr/m/n/10 Estratégias De Tratamento Fisioterapêutico Para
  []
 
 
-
-[15
-
-]
 
 [16
 
 ]
-Underfull \hbox (badness 1917) in paragraph at lines 763--763
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 763--763
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 763--763
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 763--763
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
 
 [17
 
 ]
-
-[18]
-Underfull \hbox (badness 1917) in paragraph at lines 810--810
+Underfull \hbox (badness 1917) in paragraph at lines 789--789
 []\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--810
+Underfull \hbox (badness 10000) in paragraph at lines 789--789
 []\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 810--810
+Underfull \hbox (badness 1917) in paragraph at lines 789--789
 []\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 789--789
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+
+[18
+
+]
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 810--810
+Underfull \hbox (badness 1917) in paragraph at lines 836--836
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 836--836
 []\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 836--836
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
 
 [20]
+Underfull \hbox (badness 10000) in paragraph at lines 836--836
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
 
-[21
+
+
+[21]
+
+[22
 
 ]
-
-[22]
 
 [23]
 
@@ -1985,101 +1988,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 810--810
 
 [32]
 
-[33
-
-]
+[33]
 
 [34
 
 ]
 
-[35]
-
-[36]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/bx/n/10 Agência 
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/bx/n/10 Agência 
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1379--1379
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-
-[37
+[35
 
 ]
+
+[36]
+
+[37]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/bx/n/10 Agência 
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/bx/n/10 Agência 
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [38
 
 ]
 
-[39]
+[39
 
-[40
+]
 
-] [41
+[40]
+
+[41
+
+] [42
 
 ]
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
-
-
-[42]
-
 [43]
 
-[44
+[44]
+
+[45]
+
+[46
 
 ]
 
-[45
+[47
 
 ]
-
-[46]
-
-[47]
 
 [48]
 
@@ -2089,40 +2090,37 @@ ex-text;!
 
 [51]
 
-[52
-
-]
+[52]
 
 [53]
 
-[54]
+[54
+
+]
 
 [55]
 
-[56
+[56]
 
-]
-Underfull \hbox (badness 1314) in paragraph at lines 2014--2014
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
-
-
-Underfull \hbox (badness 1314) in paragraph at lines 2014--2014
-[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
- []
-
-
-
-[57
-
-]
+[57]
 
 [58
 
+]
+Underfull \hbox (badness 1314) in paragraph at lines 2052--2052
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 2052--2052
+[]\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
+ []
+
+
+
+[59
 
 ]
-
-[59]
 
 [60
 
@@ -2133,173 +2131,180 @@ Underfull \hbox (badness 1314) in paragraph at lines 2014--2014
 
 [62
 
+
 ]
 
 [63]
 
-[64]
+[64
+
+]
 
 [65]
 
 [66]
+
+[67]
+
+[68]
 File: site.png Graphic file (type bmp)
 <site.png>
 
 
-[67]
+[69]
 File: observatorio.png Graphic file (type bmp)
 <observatorio.png>
 
 
-[68]
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+[70]
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 2374--2374
+Underfull \hbox (badness 3746) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
 
-[69
+[71
 
 ]
-Underfull \hbox (badness 3746) in paragraph at lines 2374--2374
+Underfull \hbox (badness 3746) in paragraph at lines 2412--2412
 []\TU/lmr/m/n/10 Emirados Ára-
- []
-
-
-
-[70]
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-
-[71]
-Underfull \hbox (badness 10000) in paragraph at lines 2374--2374
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
 
 [72]
-Underfull \hbox (badness 2111) in paragraph at lines 2396--2396
-[]\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2396--2396
-[]\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 2396--2396
-[]\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2396--2396
-[]\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
 
 [73]
-Underfull \hbox (badness 1755) in paragraph at lines 2429--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2412
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[74]
+Underfull \hbox (badness 2111) in paragraph at lines 2434--2434
+[]\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2434--2434
+[]\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 2434--2434
+[]\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2434--2434
+[]\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
+ []
+
+
+
+[75]
+Underfull \hbox (badness 1755) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Senior Editorial Bo-
  []
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 2429--2429
+Underfull \hbox (badness 3701) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Journal of Physical
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Editorial Bo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Membro do Corpo
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 2429--2429
+Underfull \hbox (badness 1755) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Senior Editorial Bo-
  []
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 2429--2429
+Underfull \hbox (badness 3701) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Journal of Physical
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Editorial Bo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2429
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2467
 []\TU/lmr/m/n/10 Membro do Corpo
  []
 
@@ -2308,1061 +2313,1061 @@ Overfull \vbox (2.62318pt too high) has occurred while \output is active []
 
 
 
-[74]
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 4391) in paragraph at lines 2577--2577
+Underfull \hbox (badness 4391) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 International Journal of Osteo-
  []
 
 
-Underfull \hbox (badness 5105) in paragraph at lines 2577--2577
+Underfull \hbox (badness 5105) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 Exercise Me-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 Engineering
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2334) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 European Journal of Physiothe-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 Manipulative
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2334) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 European Journal of Physiothe-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2564) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2564) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
  []
 
 
-Underfull \hbox (badness 2564) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2564) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 2577--2577
+Underfull \hbox (badness 5726) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 4391) in paragraph at lines 2577--2577
+Underfull \hbox (badness 4391) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 International Journal of Osteo-
- []
-
-
-
-[75]
-Underfull \hbox (badness 5105) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 Exercise Me-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 Engineering
- []
-
-
-
-[76]
-Underfull \hbox (badness 2334) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 European Journal of Physiothe-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 Manipulative
  []
 
 
 
 [77]
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 5105) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 Exercise Me-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 Engineering
  []
 
 
 
 [78]
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 2334) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 European Journal of Physiothe-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 Manipulative
  []
 
 
 
 [79]
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2334) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 European Journal of Physiothe-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2564) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
- []
-
-
-Underfull \hbox (badness 2564) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
- []
-
-
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
- []
-
-
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
 
 [80]
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 2577--2577
-[]\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
 
 [81]
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 European Journal of Physiothe-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2564) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
+ []
+
+
+Underfull \hbox (badness 2564) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 THIAGO LEMOS DE CARVA-
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
+ []
+
+
 
 [82]
-Underfull \hbox (badness 10000) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 Exercise
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Overfull \hbox (9.26544pt too wide) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 Engineering
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Overfull \hbox (14.93544pt too wide) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 Manipulative
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 International Journal of Human-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 2772) in paragraph at lines 2615--2615
+[]\TU/lmr/m/n/10 NEY ARMANDO DE MELLO
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 6741) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 IGOR RAMATHUR TELLES
- []
-
-
-Underfull \hbox (badness 1831) in paragraph at lines 2727--2727
+Underfull \hbox (badness 5726) in paragraph at lines 2615--2615
 []\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
  []
 
 
 
 [83]
-Underfull \hbox (badness 10000) in paragraph at lines 2727--2727
+
+[84]
+Underfull \hbox (badness 10000) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 Exercise
  []
 
 
-Overfull \hbox (9.26544pt too wide) in paragraph at lines 2727--2727
+Overfull \hbox (9.26544pt too wide) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 Engineering
  []
 
 
-
-[84]
-Overfull \hbox (14.93544pt too wide) in paragraph at lines 2727--2727
+Overfull \hbox (14.93544pt too wide) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 Manipulative
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2727--2727
+Underfull \hbox (badness 10000) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 International Journal of Human-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 6741) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 IGOR RAMATHUR TELLES
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
  []
 
 
 
 [85]
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+Underfull \hbox (badness 10000) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 Exercise
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
- []
-
-
-Underfull \hbox (badness 1371) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Overfull \hbox (9.26544pt too wide) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 Engineering
  []
 
 
 
 [86]
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Overfull \hbox (14.93544pt too wide) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 Manipulative
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+Underfull \hbox (badness 10000) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 International Journal of Human-
  []
 
 
 
 [87]
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 PATRICIA DOS SANTOS VI-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2727--2727
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
 
 [88]
-Underfull \hbox (badness 6741) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 IGOR RAMATHUR TELLES
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 1831) in paragraph at lines 2727--2727
-[]\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
 
 [89]
-Underfull \hbox (badness 4556) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 tory Pathophysiology
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Editor for the
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 Evidence-Based Com-
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 plementary and
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 tory Pathophysiology
- []
-
-
-Underfull \hbox (badness 2245) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
- []
-
-
-Underfull \hbox (badness 2245) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2749--2749
-[]\TU/lmr/m/n/10 Editor for the
- []
-
-
-Underfull \hbox (badness 2213) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 Evidence-Based Com-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2749--2749
-\TU/lmr/m/n/10 plementary and
+Underfull \hbox (badness 2302) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
 
 [90]
+Underfull \hbox (badness 6741) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 IGOR RAMATHUR TELLES
+ []
 
-[91] (./autoavaliacao-2025-2028.aux)
+
+Underfull \hbox (badness 1831) in paragraph at lines 2765--2765
+[]\TU/lmr/m/n/10 LUIS FELIPE DA FONSECA
+ []
+
+
+
+[91]
+Underfull \hbox (badness 4556) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 tory Pathophysiology
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Editor for the
+ []
+
+
+Underfull \hbox (badness 2213) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 Evidence-Based Com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 plementary and
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 tory Pathophysiology
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2787--2787
+[]\TU/lmr/m/n/10 Editor for the
+ []
+
+
+Underfull \hbox (badness 2213) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 Evidence-Based Com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2787--2787
+\TU/lmr/m/n/10 plementary and
+ []
+
+
+
+[92]
+
+[93] (./autoavaliacao-2025-2028.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-29>
@@ -3372,12 +3377,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 54663 strings out of 470231
- 1157064 string characters out of 5484001
- 1946434 words of memory out of 5000000
- 80687 multiletter control sequences out of 15000+600000
+ 54667 strings out of 470231
+ 1157118 string characters out of 5484001
+ 1946494 words of memory out of 5000000
+ 80691 multiletter control sequences out of 15000+600000
  703691 words of font info for 132 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1212b,20939s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2025-2028.pdf (95 pages).
+Output written on autoavaliacao-2025-2028.pdf (97 pages).

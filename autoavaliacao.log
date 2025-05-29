@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.15)  20 MAY 2025 08:59
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.15)  29 MAY 2025 07:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,7 +465,7 @@ Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 \everycr=\toks30
 \minrowclearance=\skip68
 \rownum=\count338
@@ -750,7 +750,7 @@ Package shellesc Info: Restricted shell escape enabled on input line 77.
 \svg@box=\box154
 \c@svg@param@currpage=\count392
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
+Package: tcolorbox 2025/05/20 version 6.5.0 text color boxes
 (/usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/
 local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texl
 ive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -1104,7 +1104,7 @@ Package tocloft Warning: \@starttoc has already been redefined; tocloft bailing
  out. on input line 1156.
 
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+Package: hyperref 2025-05-20 v7.01m Hypertext links for LaTeX
 (/usr/local/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
@@ -1129,13 +1129,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Hy@linkcounter=\count421
 \Hy@pagecounter=\count422
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-05-20 v7.01m Hyperref: PDFDocEncoding definition (HO)
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count423
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-05-20 v7.01m Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `unicode' set `true' on input line 4040.
 Package hyperref Info: Hyper figures OFF on input line 4157.
@@ -1178,7 +1178,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
+File: hxetex.def 2025-05-20 v7.01m Hyperref driver for XeTeX
 \pdfm@box=\box176
 \c@Hy@AnnotLevel=\count429
 \HyField@AnnotCount=\count430
@@ -1657,10 +1657,10 @@ L3 programming layer <2025-04-29>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 40171 strings out of 470231
- 796578 string characters out of 5484001
- 1372695 words of memory out of 5000000
- 66220 multiletter control sequences out of 15000+600000
+ 40173 strings out of 470231
+ 796614 string characters out of 5484001
+ 1372697 words of memory out of 5000000
+ 66222 multiletter control sequences out of 15000+600000
  630460 words of font info for 72 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,114p,1202b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s

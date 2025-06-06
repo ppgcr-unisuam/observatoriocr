@@ -3547,7 +3547,65 @@ if(!sjmisc::is_empty(table.doc)){
 } else {
   table.1.2.2.perm.compl <- list()
 }
+
+# List all tables
+table.1.2.2 <- list(
+  table.1.2.2.perm,
+  table.1.2.2.perm.compl
+)
+
+# Drop empty elements from the list
+table.1.2.2 <- table.1.2.2[lapply(table.1.2.2, length) > 0]
+if(any(lapply(table.1.2.2, length) > 0)){
+  table.1.2.2 <- gtsummary::tbl_stack(table.1.2.2)
+} else {
+  table.1.2.2 <- list()
+}
+
+# Print HTML table
+if (knitr::is_html_output() && !sjmisc::is_empty(table.1.2.2)) {
+  table.1.2.2 <- table.1.2.2 %>%
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+  
+  print(table.1.2.2)
+}
+
+# Print LaTeX table
+if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
+  cat('\\FloatBarrier')
+  # Convert gtsummary object to kableExtra object
+  kable_table <- gtsummary::as_kable_extra(
+    x = table.1.2.2,
+    escape = FALSE, addtl_fmt = TRUE,
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    linesep = "",
+    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Permanente à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = c("basic", "repeat_header", "HOLD_position"),
+      latex_table_env = "tabularx",
+      full_width = TRUE,
+      position = "center"
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.45, rep(0.40/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm")) %>%
+    kableExtra::footnote(
+      general_title = "\\\\textbf{Fontes}:",
+      general = c(
+        "\\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      ),
+      escape = FALSE
+    )
+  print(kable_table)
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
 ```
+
+<br>
 
 ```{r coerencia-docente-colaborador, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # docentes
@@ -3739,13 +3797,9 @@ if(!sjmisc::is_empty(table.doc)){
 } else {
   table.1.2.2.col.compl <- list()
 }
-```
 
-```{r coerencia, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # List all tables
 table.1.2.2 <- list(
-  table.1.2.2.perm,
-  table.1.2.2.perm.compl,
   table.1.2.2.col,
   table.1.2.2.col.compl
 )
@@ -3776,7 +3830,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
+    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Colaborador à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),

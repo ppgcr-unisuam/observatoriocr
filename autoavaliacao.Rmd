@@ -8,6 +8,7 @@ output:
     includes:
       in_header: tex/preamble.tex
       before_body: [tex/cover-1.tex, tex/cover-2.tex]
+    dev: cairo_pdf
     latex_engine: xelatex
     keep_tex: false
   html_document:
@@ -47,8 +48,6 @@ knitr::opts_chunk$set(
   dev = "png"
 )
 
-render_document <- params$render_document
-
 # get from params (header)
 quadrienal.vigente <- as.numeric(strsplit(params$quadrienal.vigente, ";")[[1]])
 
@@ -59,6 +58,8 @@ if(has.sucupira.files){
   # ajusta para pastas Sucupira
   quadrienal.vigente <- anos[anos %in% quadrienal.vigente]
 }
+
+render_document <- params$render_document
 ```
 
 <!--load caches-->
@@ -136,7 +137,7 @@ docentes.quadrienio <-
     "Nome Docente"
   )
 
-# remove duplicates
+# remove duplicates across years
 docentes.quadrienio <- docentes.quadrienio[!duplicated(docentes.quadrienio),]
 
 # to title case
@@ -3365,22 +3366,22 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get data for the current period
-sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+# keep sucupira.list only in quadrienal.vigente
+sucupira.list <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
-sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
-names(sucupira) <- names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
-
 # keep docentes permanente only
-sucupira <- sucupira[sucupira$Categoria == "PERMANENTE", ]
+sucupira.list <- lapply(sucupira.list, function(x) {
+  x[x$Categoria == "PERMANENTE", ]
+})
 
-# recode
-sucupira$'Data de Admissão' <- substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
-sucupira$'Data de Desligamento' <- substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
-sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <- "Atual"
-
-docentes <- docentes.quadrienio
+docentes <- unique(
+  unlist(
+    lapply(sucupira.list, function(x) {
+      x$`Nome Docente`
+    })
+  )
+)
 
 table.doc <-
   data.frame(matrix(
@@ -3406,7 +3407,7 @@ for (i in 1:length(docentes)) {
   }
 }
 
-table.doc.long <-
+table.perm.long <-
   tidyr::gather(dplyr::select(table.doc, -1),
                 "Ano",
                 "Área de Conhecimento Titulação",
@@ -3415,10 +3416,10 @@ table.doc.long <-
   )
 
 # to title case
-table.doc.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower(table.doc.long$"Área de Conhecimento Titulação"))
+table.perm.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower(table.perm.long$"Área de Conhecimento Titulação"))
 
-table.doc.long <- rbind(
-  table.doc.long,
+table.perm.long <- rbind(
+  table.perm.long,
   data.frame(
     "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
     "Área de Conhecimento Titulação" = rep("Docentes", times = dim(table.doc)[1]),
@@ -3430,17 +3431,17 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
 }
 
-# rename table.doc.long
-colnames(table.doc.long)[2] <- "Docentes Permanentes"
+# rename table.perm.long
+colnames(table.perm.long)[2] <- "Docentes Permanentes"
 
 # change all column types to factors
-table.doc.long <- table.doc.long %>%
+table.perm.long <- table.perm.long %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
 
 # print tables
 if(!sjmisc::is_empty(table.doc)){
-  table.1.2.2.doc <- gtsummary::tbl_summary(
-    table.doc.long,
+  table.1.2.2.perm <- gtsummary::tbl_summary(
+    table.perm.long,
     by = "Ano",
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
@@ -3460,7 +3461,91 @@ if(!sjmisc::is_empty(table.doc)){
     gtsummary::remove_row_type(variables = c('Docentes Permanentes'), type = "level", level_value = ("Docentes")) %>%
     gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 } else {
-  table.1.2.2.doc <- list()
+  table.1.2.2.perm <- list()
+}
+
+# get Ano titulação e País from each element in sucupira.list
+anos.titulos <- lapply(sucupira.list, function(x) {
+  x$`Ano Titulação`[!is.na(x$`Ano Titulação`)]
+}) %>%
+  plyr::compact()
+pais.titulos <- lapply(sucupira.list, function(x) {
+  x$`País`[!is.na(x$`País`)]
+}) %>%
+  plyr::compact()
+
+# create new column Ano from list names and bind the column
+anos.titulos <- data.frame(
+  Ano = rep(names(anos.titulos), times = sapply(anos.titulos, length)),
+  Titulação = unlist(anos.titulos),
+  check.names = FALSE
+)
+pais.titulos <- data.frame(
+  Ano = rep(names(pais.titulos), times = sapply(pais.titulos, length)),
+  País = unlist(pais.titulos),
+  check.names = FALSE
+)
+
+# bind_cols from anos.titulos and pais.titulos based on Ano
+doc.compl <- data.frame(
+  Ano = anos.titulos$Ano,
+  `País de Titulação` = pais.titulos$País,
+  `Tempo de Titulação, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.titulos$Titulação),
+  check.names = FALSE
+)
+
+# add quadrienal
+table.perm.compl.long <- rbind(
+  doc.compl,
+  data.frame(
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
+    "País de Titulação" = rep("País", times = dim(table.doc)[1]),
+    "Tempo de Titulação, anos" = rep(NA, times = dim(table.doc)[1]),
+    check.names = FALSE
+  )
+)
+
+# add all levels for quadrienio.vigente to Ano
+table.perm.compl.long$Ano <- factor(
+  table.perm.compl.long$Ano,
+  levels = c(as.character(quadrienal.vigente), paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)))
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "País", na.rm = TRUE), digits = 0)
+}
+
+# print tables
+if(!sjmisc::is_empty(table.doc)){
+  table.1.2.2.perm.compl <- gtsummary::tbl_summary(
+    table.perm.compl.long,
+    by = "Ano",
+    statistic = list(
+      gtsummary::all_categorical() ~ "{n}",
+      gtsummary::all_continuous() ~ "{median} ({min}-{max})"
+      ),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0,
+    type = list(
+      "País de Titulação" ~ "categorical",
+      "Tempo de Titulação, anos" ~ "continuous"
+    ),
+    sort = gtsummary::all_categorical() ~ "frequency"
+  ) %>%
+    gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() %>%
+    gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+    gtsummary::modify_header(
+      list(
+        add_stat_1 ~ "**Quadriênio**",
+        gtsummary::all_stat_cols() ~ "**{level}**"
+      )
+    ) %>%
+    gtsummary::remove_row_type(variables = c('País de Titulação'), type = "level", level_value = ("País")) %>%
+    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+} else {
+  table.1.2.2.perm.compl <- list()
 }
 ```
 
@@ -3473,22 +3558,22 @@ source("Scripts/read-xlsx-sucupira.R", local = knitr::knit_global())
 source("Scripts/years-sucupira.R", local = knitr::knit_global())
 names(sucupira.list) <- as.character(anos)
 
-# get data for the current period
-sucupira <- sucupira.list[as.character(quadrienal.vigente)] %>%
+# keep sucupira.list only in quadrienal.vigente
+sucupira.list <- sucupira.list[as.character(quadrienal.vigente)] %>%
   plyr::compact()
 
-sucupira <- data.frame(do.call(dplyr::bind_rows, sucupira), check.names = FALSE)
-names(sucupira) <- names(sucupira.list[[as.character(max(as.numeric(names(sucupira.list))))]])
+# keep docentes colaboradores only
+sucupira.list <- lapply(sucupira.list, function(x) {
+  x[x$Categoria != "PERMANENTE", ]
+})
 
-# keep docentes permanente only
-sucupira <- sucupira[sucupira$Categoria != "PERMANENTE", ]
-
-# recode
-sucupira$'Data de Admissão' <- substr(as.Date(sucupira$'Data de Admissão', format = "%d/%m/%Y"), 1, 4)
-sucupira$'Data de Desligamento' <- substr(as.Date(sucupira$'Data de Desligamento', format = "%d/%m/%Y"), 1, 4)
-sucupira$'Data de Desligamento'[is.na(sucupira$'Data de Desligamento')] <- "Atual"
-
-docentes <- docentes.quadrienio
+docentes <- unique(
+  unlist(
+    lapply(sucupira.list, function(x) {
+      x$`Nome Docente`
+    })
+  )
+)
 
 table.doc <-
   data.frame(matrix(
@@ -3514,10 +3599,7 @@ for (i in 1:length(docentes)) {
   }
 }
 
-# remove empty rows
-table.doc <- table.doc[complete.cases(table.doc), ]
-
-table.doc.long <-
+table.col.long <-
   tidyr::gather(dplyr::select(table.doc, -1),
                 "Ano",
                 "Área de Conhecimento Titulação",
@@ -3526,10 +3608,10 @@ table.doc.long <-
   )
 
 # to title case
-table.doc.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower(table.doc.long$"Área de Conhecimento Titulação"))
+table.col.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower(table.col.long$"Área de Conhecimento Titulação"))
 
-table.doc.long <- rbind(
-  table.doc.long,
+table.col.long <- rbind(
+  table.col.long,
   data.frame(
     "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
     "Área de Conhecimento Titulação" = rep("Docentes", times = dim(table.doc)[1]),
@@ -3541,17 +3623,17 @@ my_N <- function(data, ...) {
   gtsummary::style_number(sum(data == "Docentes", na.rm = TRUE), digits = 0)
 }
 
-# rename table.doc.long
-colnames(table.doc.long)[2] <- "Docentes Colaboradores e Visitantes"
+# rename table.col.long
+colnames(table.col.long)[2] <- "Docentes Colaboradores"
 
 # change all column types to factors
-table.doc.long <- table.doc.long %>%
+table.col.long <- table.col.long %>%
   dplyr::mutate(dplyr::across(gtsummary::everything(), as.factor))
 
 # print tables
 if(!sjmisc::is_empty(table.doc)){
-  table.1.2.2.outros <- gtsummary::tbl_summary(
-    table.doc.long,
+  table.1.2.2.col <- gtsummary::tbl_summary(
+    table.col.long,
     by = "Ano",
     statistic = list(gtsummary::all_categorical() ~ "{n}"),
     missing = "no",
@@ -3568,18 +3650,104 @@ if(!sjmisc::is_empty(table.doc)){
         gtsummary::all_stat_cols() ~ "**{level}**"
       )
     ) %>%
-    gtsummary::remove_row_type(variables = c('Docentes Colaboradores e Visitantes'), type = "level", level_value = ("Docentes")) %>%
+    gtsummary::remove_row_type(variables = c('Docentes Colaboradores'), type = "level", level_value = ("Docentes")) %>%
     gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
 } else {
-  table.1.2.2.outros <- list()
+  table.1.2.2.col <- list()
+}
+
+# get Ano titulação e País from each element in sucupira.list
+anos.titulos <- lapply(sucupira.list, function(x) {
+  x$`Ano Titulação`[!is.na(x$`Ano Titulação`)]
+}) %>%
+  plyr::compact()
+pais.titulos <- lapply(sucupira.list, function(x) {
+  x$`País`[!is.na(x$`País`)]
+}) %>%
+  plyr::compact()
+
+# create new column Ano from list names and bind the column
+anos.titulos <- data.frame(
+  Ano = rep(names(anos.titulos), times = sapply(anos.titulos, length)),
+  Titulação = unlist(anos.titulos),
+  check.names = FALSE
+)
+pais.titulos <- data.frame(
+  Ano = rep(names(pais.titulos), times = sapply(pais.titulos, length)),
+  País = unlist(pais.titulos),
+  check.names = FALSE
+)
+
+# bind_cols from anos.titulos and pais.titulos based on Ano
+doc.compl <- data.frame(
+  Ano = anos.titulos$Ano,
+  `País de Titulação` = pais.titulos$País,
+  `Tempo de Titulação, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.titulos$Titulação),
+  check.names = FALSE
+)
+
+# add quadrienal
+table.col.compl.long <- rbind(
+  doc.compl,
+  data.frame(
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
+    "País de Titulação" = rep("País", times = dim(table.doc)[1]),
+    "Tempo de Titulação, anos" = rep(NA, times = dim(table.doc)[1]),
+    check.names = FALSE
+  )
+)
+
+# add all levels for quadrienio.vigente to Ano
+table.col.compl.long$Ano <- factor(
+  table.col.compl.long$Ano,
+  levels = c(as.character(quadrienal.vigente), paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)))
+)
+
+my_N <- function(data, ...) {
+  gtsummary::style_number(sum(data == "País", na.rm = TRUE), digits = 0)
+}
+
+# print tables
+if(!sjmisc::is_empty(table.doc)){
+  table.1.2.2.col.compl <- gtsummary::tbl_summary(
+    table.col.compl.long,
+    by = "Ano",
+    statistic = list(
+      gtsummary::all_categorical() ~ "{n}",
+      gtsummary::all_continuous() ~ "{median} ({min}-{max})"
+      ),
+    missing = "no",
+    digits = gtsummary::everything() ~ 0,
+    type = list(
+      "País de Titulação" ~ "categorical",
+      "Tempo de Titulação, anos" ~ "continuous"
+    ),
+    sort = gtsummary::all_categorical() ~ "frequency"
+  ) %>%
+    gtsummary::modify_header(label = "**Ano**", gtsummary::all_stat_cols() ~ "**{level}**") %>%
+    gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
+    gtsummary::bold_labels() %>%
+    gtsummary::add_stat(fns = gtsummary::all_categorical() ~ my_N) %>%
+    gtsummary::modify_header(
+      list(
+        add_stat_1 ~ "**Quadriênio**",
+        gtsummary::all_stat_cols() ~ "**{level}**"
+      )
+    ) %>%
+    gtsummary::remove_row_type(variables = c('País de Titulação'), type = "level", level_value = ("País")) %>%
+    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+} else {
+  table.1.2.2.col.compl <- list()
 }
 ```
 
 ```{r coerencia, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # List all tables
 table.1.2.2 <- list(
-  table.1.2.2.doc,
-  table.1.2.2.outros
+  table.1.2.2.perm,
+  table.1.2.2.perm.compl,
+  table.1.2.2.col,
+  table.1.2.2.col.compl
 )
 
 # Drop empty elements from the list
@@ -3608,7 +3776,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente à Proposta do Programa - Área de Conhecimento (Maior Titulação)")
+    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -3616,7 +3784,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
       latex_table_env = "tabularx",
       full_width = TRUE,
       position = "center"
-    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.65, rep(0.20/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm")) %>%
+    ) %>% kableExtra::column_spec(column = 1:(1 + length(quadrienal.vigente)+ 1), width = paste0(c(0.45, rep(0.40/(length(quadrienal.vigente)), times = length(quadrienal.vigente)), 0.15)*(21-3-3), "cm")) %>%
     kableExtra::footnote(
       general_title = "\\\\textbf{Fontes}:",
       general = c(

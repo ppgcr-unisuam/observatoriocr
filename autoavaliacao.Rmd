@@ -2925,8 +2925,8 @@ table.doc.long <- rbind(table.doc.long,
                         data.frame(
                           "Ano" = rep(paste0(
                             min(quadrienal.vigente), "-", max(quadrienal.vigente)
-                          ), times = dim(table.doc)[1]),
-                          "Categoria" = rep("Docentes", times = dim(table.doc)[1]),
+                          ), times = length(rowSums(!is.na(table.doc)))),
+                          "Categoria" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
                           check.names = FALSE
                         ))
 
@@ -3029,8 +3029,8 @@ table.doc.long <- rbind(table.doc.long,
                         data.frame(
                           "Ano" = rep(paste0(
                             min(quadrienal.vigente), "-", max(quadrienal.vigente)
-                          ), times = dim(table.doc)[1]),
-                          "Tipo vínculo" = rep("Docentes", times = dim(table.doc)[1]),
+                          ), times = length(rowSums(!is.na(table.doc)))),
+                          "Tipo vínculo" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
                           check.names = FALSE
                         ))
 
@@ -3137,8 +3137,8 @@ table.doc.long <- rbind(
   data.frame(
     "Ano" = rep(paste0(
       min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = dim(table.doc)[1]),
-    "Regime de Trabalho" = rep("Docentes", times = dim(table.doc)[1]),
+    ), times = length(rowSums(!is.na(table.doc)))),
+    "Regime de Trabalho" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3241,8 +3241,8 @@ table.doc.long <-
 table.doc.long <- rbind(
   table.doc.long,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "Carga Horária PG (Semanal)" = rep("Docentes", times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(rowSums(!is.na(table.doc)))),
+    "Carga Horária PG (Semanal)" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3421,8 +3421,8 @@ table.perm.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolowe
 table.perm.long <- rbind(
   table.perm.long,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "Área de Conhecimento Titulação" = rep("Docentes", times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(rowSums(!is.na(table.doc)))),
+    "Área de Conhecimento Titulação" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3464,13 +3464,19 @@ if(!sjmisc::is_empty(table.doc)){
   table.1.2.2.perm <- list()
 }
 
-# get Ano titulação e País from each element in sucupira.list
+# get Ano titulação, País e Inicio da Categoria from each element in sucupira.list
 anos.titulos <- lapply(sucupira.list, function(x) {
   x$`Ano Titulação`[!is.na(x$`Ano Titulação`)]
 }) %>%
   plyr::compact()
 pais.titulos <- lapply(sucupira.list, function(x) {
   x$`País`[!is.na(x$`País`)]
+}) %>%
+  plyr::compact()
+anos.credenciamento <- lapply(sucupira.list, function(x) {
+  x$`Início da Categoria`[!is.na(x$`Início da Categoria`)]
+  # extract year
+  x$`Início da Categoria` <- substr(as.Date(x$`Início da Categoria`, format = "%d/%m/%Y"), 1, 4)
 }) %>%
   plyr::compact()
 
@@ -3485,22 +3491,29 @@ pais.titulos <- data.frame(
   País = unlist(pais.titulos),
   check.names = FALSE
 )
+anos.credenciamento <- data.frame(
+  Ano = rep(names(anos.credenciamento), times = sapply(anos.credenciamento, length)),
+  Credenciamento = unlist(anos.credenciamento),
+  check.names = FALSE
+)
 
-# bind_cols from anos.titulos and pais.titulos based on Ano
+# bind_cols from based on Ano
 doc.compl <- data.frame(
   Ano = anos.titulos$Ano,
   `País de Titulação` = pais.titulos$País,
   `Tempo de Titulação, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.titulos$Titulação),
-  check.names = FALSE
+  check.names = FALSE,
+  `Tempo de Credenciamento, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.credenciamento$Credenciamento)
 )
 
 # add quadrienal
 table.perm.compl.long <- rbind(
   doc.compl,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "País de Titulação" = rep("País", times = dim(table.doc)[1]),
-    "Tempo de Titulação, anos" = rep(NA, times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(rowSums(!is.na(table.doc)))),
+    "País de Titulação" = rep("País", times = length(rowSums(!is.na(table.doc)))),
+    "Tempo de Titulação, anos" = rep(NA, times = length(rowSums(!is.na(table.doc)))),
+    "Tempo de Credenciamento, anos" = rep(NA, times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3528,7 +3541,8 @@ if(!sjmisc::is_empty(table.doc)){
     digits = gtsummary::everything() ~ 0,
     type = list(
       "País de Titulação" ~ "categorical",
-      "Tempo de Titulação, anos" ~ "continuous"
+      "Tempo de Titulação, anos" ~ "continuous",
+      "Tempo de Credenciamento, anos" ~ "continuous"
     ),
     sort = gtsummary::all_categorical() ~ "frequency"
   ) %>%
@@ -3580,7 +3594,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Permanente à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
+    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Permanente à Proposta do Programa")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -3671,8 +3685,8 @@ table.col.long$"Área de Conhecimento Titulação" <- tools::toTitleCase(tolower
 table.col.long <- rbind(
   table.col.long,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "Área de Conhecimento Titulação" = rep("Docentes", times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(rowSums(!is.na(table.doc)))),
+    "Área de Conhecimento Titulação" = rep("Docentes", times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3714,13 +3728,35 @@ if(!sjmisc::is_empty(table.doc)){
   table.1.2.2.col <- list()
 }
 
-# get Ano titulação e País from each element in sucupira.list
+# get Ano titulação, País e Inicio da Categoria from each element in sucupira.list
 anos.titulos <- lapply(sucupira.list, function(x) {
   x$`Ano Titulação`[!is.na(x$`Ano Titulação`)]
 }) %>%
   plyr::compact()
 pais.titulos <- lapply(sucupira.list, function(x) {
   x$`País`[!is.na(x$`País`)]
+}) %>%
+  plyr::compact()
+anos.credenciamento <- lapply(sucupira.list, function(x) {
+  x$`Início da Categoria`[!is.na(x$`Início da Categoria`)]
+  # extract year
+  x$`Início da Categoria` <- substr(as.Date(x$`Início da Categoria`, format = "%d/%m/%Y"), 1, 4)
+}) %>%
+  plyr::compact()
+
+# get Ano titulação, País e Inicio da Categoria from each element in sucupira.list
+anos.titulos <- lapply(sucupira.list, function(x) {
+  x$`Ano Titulação`[!is.na(x$`Ano Titulação`)]
+}) %>%
+  plyr::compact()
+pais.titulos <- lapply(sucupira.list, function(x) {
+  x$`País`[!is.na(x$`País`)]
+}) %>%
+  plyr::compact()
+anos.credenciamento <- lapply(sucupira.list, function(x) {
+  x$`Início da Categoria`[!is.na(x$`Início da Categoria`)]
+  # extract year
+  x$`Início da Categoria` <- substr(as.Date(x$`Início da Categoria`, format = "%d/%m/%Y"), 1, 4)
 }) %>%
   plyr::compact()
 
@@ -3735,22 +3771,29 @@ pais.titulos <- data.frame(
   País = unlist(pais.titulos),
   check.names = FALSE
 )
+anos.credenciamento <- data.frame(
+  Ano = rep(names(anos.credenciamento), times = sapply(anos.credenciamento, length)),
+  Credenciamento = unlist(anos.credenciamento),
+  check.names = FALSE
+)
 
-# bind_cols from anos.titulos and pais.titulos based on Ano
+# bind_cols from based on Ano
 doc.compl <- data.frame(
   Ano = anos.titulos$Ano,
   `País de Titulação` = pais.titulos$País,
   `Tempo de Titulação, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.titulos$Titulação),
-  check.names = FALSE
+  check.names = FALSE,
+  `Tempo de Credenciamento, anos` = as.numeric(anos.titulos$Ano) - as.numeric(anos.credenciamento$Credenciamento)
 )
 
 # add quadrienal
 table.col.compl.long <- rbind(
   doc.compl,
   data.frame(
-    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = dim(table.doc)[1]),
-    "País de Titulação" = rep("País", times = dim(table.doc)[1]),
-    "Tempo de Titulação, anos" = rep(NA, times = dim(table.doc)[1]),
+    "Ano" = rep(paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)), times = length(rowSums(!is.na(table.doc)))),
+    "País de Titulação" = rep("País", times = length(rowSums(!is.na(table.doc)))),
+    "Tempo de Titulação, anos" = rep(NA, times = length(rowSums(!is.na(table.doc)))),
+    "Tempo de Credenciamento, anos" = rep(NA, times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -3778,7 +3821,8 @@ if(!sjmisc::is_empty(table.doc)){
     digits = gtsummary::everything() ~ 0,
     type = list(
       "País de Titulação" ~ "categorical",
-      "Tempo de Titulação, anos" ~ "continuous"
+      "Tempo de Titulação, anos" ~ "continuous",
+      "Tempo de Credenciamento, anos" ~ "continuous"
     ),
     sort = gtsummary::all_categorical() ~ "frequency"
   ) %>%
@@ -3830,7 +3874,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Colaborador à Proposta do Programa - Área de Conhecimento, Ano e País (Maior Titulação)")
+    caption = ifelse(knitr::is_html_output(), "", "Coerência Acadêmica do Corpo Docente Colaborador à Proposta do Programa")
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -8842,7 +8886,7 @@ table.doc <-
   cbind(unique(sucupira.df$`Nome do Projeto de Pesquisa`[sucupira.df$`Categoria do Membro do Projeto` == "Docente"]), table.doc)
 colnames(table.doc) <-
   c("Nome do Projeto de Pesquisa", as.character(quadrienal.vigente))
-for (i in 1:dim(table.doc)[1]) {
+for (i in 1:length(rowSums(!is.na(table.doc)))) {
   for (j in 1:length(quadrienal.vigente)) {
     data <- sucupira.df[sucupira.df$Anos == quadrienal.vigente[j],]
     table.doc[i, j + 1] <-
@@ -8866,8 +8910,8 @@ table.doc.long <- rbind(
   data.frame(
     "Ano" = rep(paste0(
       min(quadrienal.vigente), "-", max(quadrienal.vigente)
-    ), times = dim(table.doc)[1]),
-    "Nome do Membro do Projeto" = rep("Membros", times = dim(table.doc)[1]),
+    ), times = length(rowSums(!is.na(table.doc)))),
+    "Nome do Membro do Projeto" = rep("Membros", times = length(rowSums(!is.na(table.doc)))),
     check.names = FALSE
   )
 )
@@ -8996,7 +9040,7 @@ table.doc <- cbind(
 )
 
 table.doc <- cbind(
-  c(seq(1, dim(table.doc)[1] - 1), ""),
+  c(seq(1, length(rowSums(!is.na(table.doc))) - 1), ""),
   table.doc
 )
 

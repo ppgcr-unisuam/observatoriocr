@@ -11471,6 +11471,11 @@ if (file.exists(file.path("cache", "impactos", "invited-positions.Rds"))) {
   saveRDS(editor.name.all, file.path("cache", "impactos", "invited-positions.Rds"))
 }
 
+# replace & by and for LaTeX output
+if (knitr::is_latex_output() && !sjmisc::is_empty(editor.name.all)) {
+  editor.name.all[] <- lapply(editor.name.all, function(x) gsub("&", "\\\\&", x))
+}
+
 # print tables
 if (knitr::is_html_output() && !sjmisc::is_empty(editor.name.all)) {
   # use kable for HTML output
@@ -11556,15 +11561,9 @@ if (file.exists(file.path("cache", "impactos", "reviewer-board.Rds"))) {
   saveRDS(peer.review.all, file.path("cache", "impactos", "reviewer-board.Rds"))
 }
 
-# Escape characters in table data & % $ # _ { }
-if(knitr::is_latex_output()) {
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\&", "\\\\&", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\%", "\\\\%", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\$", "\\\\$", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\#", "\\\\#", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\_", "\\\\_", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\{", "\\\\{", x)), silent = TRUE)
-  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\}", "\\\\}", x)), silent = TRUE)
+# replace & by and (escape did not work)
+if (knitr::is_latex_output() && !sjmisc::is_empty(peer.review.all)) {
+  peer.review.all[] <- lapply(peer.review.all, function(x) gsub("&", "\\\\&", x))
 }
 
 # print tables
@@ -11659,8 +11658,17 @@ if (file.exists(file.path("cache", "impactos", "membership.Rds")) | file.exists(
   rownames(member.all) <- NULL
   rownames(services.all) <- NULL
   
-  saveRDS(peer.review.all, file.path("cache", "impactos", "membership.Rds"))
+  saveRDS(member.all, file.path("cache", "impactos", "membership.Rds"))
   saveRDS(services.all, file.path("cache", "impactos", "services.Rds"))
+}
+
+# replace & by and (escape did not work)
+if (knitr::is_latex_output() && !sjmisc::is_empty(member.all)) {
+  member.all[] <- lapply(member.all, function(x) gsub("&", "\\\\&", x))
+}
+# replace & by and (escape did not work)
+if (knitr::is_latex_output() && !sjmisc::is_empty(services.all)) {
+  services.all[] <- lapply(services.all, function(x) gsub("&", "\\\\&", x))
 }
 
 # print tables

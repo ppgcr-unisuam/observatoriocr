@@ -8272,46 +8272,48 @@ for(i in 1:length(ID)){
       }
     }
   }
-  # get name of protagonista
-  protagonismo$Protagonista[i] <- table.docente[i, coluna + 1]
-  # format citation
-  if(!is.na(table.docente[i, coluna + 1])){
-    id <- ID[i]
-    produtos.id <- sucupira.df.autor[sucupira.df.autor$"ID da Produção" == id,]
-    for (j in 1:length(produtos.id$"Nome do Autor")) {
-      try(if (produtos.id$"Categoria do Autor"[j] == "Discente") {
-        produtos.id$"Nome do Autor"[j] <-
-          paste0("<b>", produtos.id$"Nome do Autor"[j], "¹", "</b>")
-      }, silent = TRUE)
-      try(if (produtos.id$"Categoria do Autor"[j] == "Egresso") {
-        produtos.id$"Nome do Autor"[j] <-
-          paste0("<b>", produtos.id$"Nome do Autor"[j], "²", "</b>")
-      }, silent = TRUE)
-      try(if (produtos.id$"Categoria do Autor"[j] == "Docente") {
-        produtos.id$"Nome do Autor"[j] <-
-          paste0("<b>", produtos.id$"Nome do Autor"[j], "³", "</b>")
-      }, silent = TRUE)
+  if(dim(subset)[1] > 0){
+    # get name of protagonista
+    protagonismo$Protagonista[i] <- table.docente[i, coluna + 1]
+    # format citation
+    if(!is.na(table.docente[i, coluna + 1])){
+      id <- ID[i]
+      produtos.id <- sucupira.df.autor[sucupira.df.autor$"ID da Produção" == id,]
+      for (j in 1:length(produtos.id$"Nome do Autor")) {
+        try(if (produtos.id$"Categoria do Autor"[j] == "Discente") {
+          produtos.id$"Nome do Autor"[j] <-
+            paste0("<b>", produtos.id$"Nome do Autor"[j], "¹", "</b>")
+        }, silent = TRUE)
+        try(if (produtos.id$"Categoria do Autor"[j] == "Egresso") {
+          produtos.id$"Nome do Autor"[j] <-
+            paste0("<b>", produtos.id$"Nome do Autor"[j], "²", "</b>")
+        }, silent = TRUE)
+        try(if (produtos.id$"Categoria do Autor"[j] == "Docente") {
+          produtos.id$"Nome do Autor"[j] <-
+            paste0("<b>", produtos.id$"Nome do Autor"[j], "³", "</b>")
+        }, silent = TRUE)
+      }
+      # get product metadata
+      source("Scripts/get-producao-metadata.R", local = knitr::knit_global())
+      metadata <- get_id_metadata(id = id, subtipo = "ARTIGO EM PERIÓDICO", produtos.detalhes = produtos.detalhes)
+      protagonismo$Citação[i] <- paste0(
+        paste0(
+          # remove NA values from Nome do Autor
+          produtos.id$"Nome do Autor"[!is.na(produtos.id$"Nome do Autor")],
+          collapse = "; "
+        ),
+        " (", sucupira.df.autor$"Ano da Produção"[sucupira.df.autor$"ID da Produção" == id], ") ",
+        sucupira.df.autor$"Nome da Produção"[sucupira.df.autor$"ID da Produção" == id],
+        metadata$detalhamento[1],
+        " (",
+        paste0("Altmetric: ", unique(produtos.detalhes$altmetric_score[produtos.detalhes$"ID da Produção" == id]), " | "),
+        paste0("CiteScore: ", unique(produtos.detalhes$SJR[produtos.detalhes$"ID da Produção" == id]), " | "),
+        paste0("SJR: ", unique(produtos.detalhes$CiteScore[produtos.detalhes$"ID da Produção" == id]), " | "),
+        paste0("Qualis: ", unique(produtos.detalhes$Qualis[produtos.detalhes$"ID da Produção" == id]), " | "),
+        paste0("Citações: ", unique(produtos.detalhes$citations[produtos.detalhes$"ID da Produção" == id])),
+        ")"
+      )
     }
-    # get product metadata
-    source("Scripts/get-producao-metadata.R", local = knitr::knit_global())
-    metadata <- get_id_metadata(id = id, subtipo = "ARTIGO EM PERIÓDICO", produtos.detalhes = produtos.detalhes)
-    protagonismo$Citação[i] <- paste0(
-      paste0(
-        # remove NA values from Nome do Autor
-        produtos.id$"Nome do Autor"[!is.na(produtos.id$"Nome do Autor")],
-        collapse = "; "
-      ),
-      " (", sucupira.df.autor$"Ano da Produção"[sucupira.df.autor$"ID da Produção" == id], ") ",
-      sucupira.df.autor$"Nome da Produção"[sucupira.df.autor$"ID da Produção" == id],
-      metadata$detalhamento[1],
-      " (",
-      paste0("Altmetric: ", unique(produtos.detalhes$altmetric_score[produtos.detalhes$"ID da Produção" == id]), " | "),
-      paste0("CiteScore: ", unique(produtos.detalhes$SJR[produtos.detalhes$"ID da Produção" == id]), " | "),
-      paste0("SJR: ", unique(produtos.detalhes$CiteScore[produtos.detalhes$"ID da Produção" == id]), " | "),
-      paste0("Qualis: ", unique(produtos.detalhes$Qualis[produtos.detalhes$"ID da Produção" == id]), " | "),
-      paste0("Citações: ", unique(produtos.detalhes$citations[produtos.detalhes$"ID da Produção" == id])),
-      ")"
-    )
   }
 }
 
@@ -9470,7 +9472,7 @@ table.mono <- table.mono[rep(row.names(table.mono), table.mono$`Orientações de
 # check for missing docentes.quadrienio
 table.mono$"Nome Docente" <- factor(
   table.mono$"Nome Docente",
-  levels = sort(unique(c("Docentes", levels(table.mono$"Nome Docente"), docentes.quadrienio)))
+  levels = sort(unique(c(levels(table.mono$"Nome Docente"), docentes.quadrienio)))
 )
 
 # check for missing anos in table.mono
@@ -9682,7 +9684,7 @@ table.aulas <- table.aulas[rep(row.names(table.aulas), table.aulas$`Número de D
 # check for missing docentes.quadrienio
 table.aulas$"Nome Docente" <- factor(
   table.aulas$"Nome Docente",
-  levels = sort(unique(c("Docentes", levels(table.aulas$"Nome Docente"), docentes.quadrienio)))
+  levels = sort(unique(c(levels(table.aulas$"Nome Docente"), docentes.quadrienio)))
 )
 
 # check for missing anos in table.aulas
@@ -9731,7 +9733,7 @@ table.ch <- table.ch[rep(row.names(table.ch), table.ch$`Carga Horária na Gradua
 # check for missing docentes.quadrienio
 table.ch$"Nome Docente" <- factor(
   table.ch$"Nome Docente",
-  levels = sort(unique(c("Docentes", levels(table.ch$"Nome Docente"), docentes.quadrienio)))
+  levels = sort(unique(c(levels(table.ch$"Nome Docente"), docentes.quadrienio)))
 )
 
 # check for missing anos in table.ch
@@ -9931,7 +9933,7 @@ if(!sjmisc::is_empty(table.insercao.2)){
       digits = 0,
       margin = NULL
     ) %>%
-    gtsummary::modify_header(label = "**Docentes permanentes com atuação na graduação**", stat_0 = "Atuação graduaçào") %>%
+    gtsummary::modify_header(label = "Docentes permanentes com atuação na graduação", stat_0 = "Atuação graduação") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
     gtsummary::bold_labels() 
 } else {
@@ -9973,7 +9975,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.insercao.gt)) {
     format = ifelse(knitr::is_html_output(), "html", "latex"),
     booktabs = TRUE,
     linesep = "",
-    caption = ifelse(knitr::is_html_output(), "", "**Docentes permanentes com atuação na graduação**"),
+    caption = ifelse(knitr::is_html_output(), "", "Docentes permanentes com atuação na graduação"),
   ) %>%
     kableExtra::kable_styling(
       bootstrap_options = c("basic", "hover", "condensed", "responsive"),
@@ -11552,6 +11554,17 @@ if (file.exists(file.path("cache", "impactos", "reviewer-board.Rds"))) {
   rownames(peer.review.all) <- NULL
   
   saveRDS(peer.review.all, file.path("cache", "impactos", "reviewer-board.Rds"))
+}
+
+# Escape characters in table data & % $ # _ { }
+if(knitr::is_latex_output()) {
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\&", "\\\\&", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\%", "\\\\%", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\$", "\\\\$", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\#", "\\\\#", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\_", "\\\\_", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\{", "\\\\{", x)), silent = TRUE)
+  try(peer.review.all <- apply(peer.review.all, 2, function(x) gsub("\\}", "\\\\}", x)), silent = TRUE)
 }
 
 # print tables

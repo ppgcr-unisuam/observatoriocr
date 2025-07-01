@@ -121,7 +121,7 @@ if (!sjmisc::is_empty(id.TCC)) {
 bancas <- dplyr::rename(bancas, Tipo = `Tipo de Trabalho de Conclusão`)
 
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(bancas, title = "Repositório - Bancas Examinadoras")
+create_dt(bancas, title = "Banco de Teses e Dissertações - Bancas Examinadoras")
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
@@ -208,7 +208,7 @@ if (!sjmisc::is_empty(id.TCC)) {
 
 # print table
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.tese, title = "Repositório - Teses")
+create_dt(bancas, title = "Banco de Teses e Dissertações - Teses Examinadas")
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```
@@ -295,7 +295,7 @@ if (!sjmisc::is_empty(id.TCC)) {
 
 # print table
 source("Scripts/table-with-buttons.R", local = knitr::knit_global())
-create_dt(table.dissert, title = "Repositório - Dissertações")
+create_dt(bancas, title = "Banco de Teses e Dissertações - Dissertações Examinadas")
 
 source("Scripts/fonte-sucupira.R", local = knitr::knit_global())
 ```

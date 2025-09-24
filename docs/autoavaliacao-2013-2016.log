@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.3)  15 SEP 2025 09:15
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  24 SEP 2025 08:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao-2013-2016.tex
 (./autoavaliacao-2013-2016.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-08-13>
+L3 programming layer <2025-09-02>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/bk10.clo
@@ -136,7 +136,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/unicode-math/unicode-math.sty 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-08-13 L3 programming layer (loader) 
+Package: expl3 2025-09-02 L3 programming layer (loader) 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count295
@@ -630,9 +630,78 @@ Package babel Info: Importing font and identification data for brazilian
 Package babel Info: Hyphen rules for 'brazilian' set to \l@portuguese
 (babel)             (\language72). Reported on input line 111.
 Package babel Info: Making " an active character on input line 143.
-)) (/usr/local/texlive/2025/texmf-dist/tex/latex/academicons/academicons.sty
-Package: academicons 2021/11/26 v1.9.1 Academicons Icons
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/academicons/academicons.sty
+Package: academicons 2025/09/20 v1.9.6-2 Academicons Icons
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             academicons scale = 0.5301336876817021.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'academicons(0)' created for font
+(fontspec)             'academicons' with options
+(fontspec)             [Scale=MatchLowercase,UprightFont =
+(fontspec)             academicons,BoldFont = academicons,ItalicFont =
+(fontspec)             academicons,BoldItalicFont = academicons].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.5301336876817021]"academicons"
+
+
+(/usr/local/texlive/2025/texmf-dist/tex/generic/academicons/academicons-xeluate
+x.tex)
+(/usr/local/texlive/2025/texmf-dist/tex/generic/academicons/academicons-generic
+.tex)) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/fontawesome5.
+sty
 Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-he
@@ -6792,19 +6861,19 @@ Underfull \hbox (badness 2245) in paragraph at lines 3084--3084
 [74] (./autoavaliacao-2013-2016.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-08-13>
+L3 programming layer <2025-09-02>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 53208 strings out of 468441
- 1126196 string characters out of 5445544
- 2057015 words of memory out of 5000000
- 81026 multiletter control sequences out of 15000+600000
- 630508 words of font info for 78 fonts, out of 8000000 for 9000
+ 53264 strings out of 468438
+ 1127617 string characters out of 5445464
+ 2056834 words of memory out of 5000000
+ 81079 multiletter control sequences out of 15000+600000
+ 630888 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,19n,114p,1212b,9848s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,126p,1212b,9848s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on autoavaliacao-2013-2016.pdf (78 pages).

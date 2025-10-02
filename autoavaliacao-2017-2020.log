@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.18)  24 SEP 2025 08:03
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.29)  2 OCT 2025 10:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -30,7 +30,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: xetex.def on input line 274.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+File: xetex.def 2025/09/29 v5.0o Graphics/color driver for xetex
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -155,9 +155,9 @@ Package: xparse 2024-08-16 L3 Experimental document command parser
 y
 Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
 X
 \l__fontspec_script_int=\count298
 \l__fontspec_language_int=\count299
@@ -2000,38 +2000,38 @@ lations-basic-dictionary')
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `brazil'. on input line 195.
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf>
+<PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf, page 1>
+<PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf, page 1>
+<PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf, page 1>
+<PPG/Images/Cover-1.pdf>
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf, page 1>
+<PPG/Images/Cover-1.pdf>
 
 
 File: PPG/Images/Cover-1.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-1.pdf, page 1>
+<PPG/Images/Cover-1.pdf>
 [1
 
 
 
 ]
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf>
+<PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf, page 1>
+<PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf, page 1>
+<PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf, page 1>
+<PPG/Images/Cover-2.pdf>
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf, page 1>
+<PPG/Images/Cover-2.pdf>
 
 
 File: PPG/Images/Cover-2.pdf Graphic file (type pdf)
-<use PPG/Images/Cover-2.pdf, page 1>
+<PPG/Images/Cover-2.pdf>
 [2
 
 ] (./autoavaliacao-2017-2020.toc
@@ -2124,2734 +2124,2765 @@ ex-text;!
 [7]
 
 [8]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 549--549
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 548--548
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 549--549
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 548--548
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 549--549
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 548--548
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 549--549
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 548--548
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
 
 [9]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 569--569
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 566--566
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 569--569
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 566--566
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 569--569
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 566--566
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 569--569
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 566--566
 []\TU/lmr/bx/n/10 Mestrado 
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 589--589
-[]\TU/lmr/bx/n/10 2017|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 589--589
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 589--589
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 589--589
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 578--590
- [][] 
  []
 
 
 
 [10]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 609--609
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 609--609
-[]\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 637--637
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 584--584
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 637--637
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 584--584
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 637--637
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 584--584
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 637--637
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 584--584
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 618--638
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 574--585
  [][] 
  []
 
 
 
 [11]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 659--659
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 603--603
 []\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 659--659
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 659--659
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 659--659
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 603--603
 []\TU/lmr/m/n/10 01/01/2010 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 659--659
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 659--659
-[]\TU/lmr/m/n/10 01/01/2014 
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 692--692
-[]\TU/lmr/bx/n/10 2017|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 692--692
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 692--692
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 692--692
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 668--693
- [][] 
  []
 
 
 
 [12]
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 5490) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Em Reabilitação - LP:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Abordagem Terapêutica
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 5490) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Em Reabilitação - LP:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Abordagem Terapêutica
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 4254) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 abilitação | Reabilitação
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 tabólico Máximo (Metmáx)
- []
-
-
-Underfull \hbox (badness 6725) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Em Diferentes Modalidades
- []
-
-
-Underfull \hbox (badness 5460) in paragraph at lines 762--762
-\TU/lmr/m/n/10 De Exercício a Partir Do
- []
-
-
-Underfull \hbox (badness 1142) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação De Incidências De
- []
-
-
-Underfull \hbox (badness 1394) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Lesões Osteomioarticulares e
- []
-
-
-Underfull \hbox (badness 2142) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Resposta Autonômica Cardí-
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 762--762
-\TU/lmr/m/n/10 ticantes De Treinamento De
- []
-
-
-Underfull \hbox (badness 3343) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
- []
-
-
-Underfull \hbox (badness 3343) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
- []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Análise Funcional De Idosos
- []
-
-
-Underfull \hbox (badness 5446) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação Da Especificidade
- []
-
-
-Underfull \hbox (badness 2189) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Da Influência Da Imagética
- []
-
-
-Underfull \hbox (badness 3019) in paragraph at lines 762--762
-\TU/lmr/m/n/10 lógicas Do Treinamento De
- []
-
-
-Underfull \hbox (badness 3250) in paragraph at lines 762--762
-\TU/lmr/m/n/10 turais Domiciliares e Dores
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Doenças Respiratórias Crôni-
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Funcionalidade Da Mão Em
- []
-
-
-Underfull \hbox (badness 2452) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Efeito Agudo Da Aplicação
- []
-
-
-Underfull \hbox (badness 5105) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Direta Sobre
- []
-
-
-Underfull \hbox (badness 7777) in paragraph at lines 762--762
-\TU/lmr/m/n/10 nar, Capacidade Funcional,
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Efeito Da Aplicação De Es-
- []
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 762--762
-\TU/lmr/m/n/10 timulação Transcraniana Por
- []
-
-
-Underfull \hbox (badness 1173) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação Postural Em Paci-
- []
-
-
-Underfull \hbox (badness 1997) in paragraph at lines 762--762
-\TU/lmr/m/n/10 entes Submetidas Ao Trata-
- []
-
-
-Underfull \hbox (badness 3354) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Epidemiologia e Intervenção
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 1331) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Agudo e Subagudo: Ensaio
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 2277) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Correlação Entre Deficiência
- []
-
-
-Underfull \hbox (badness 3281) in paragraph at lines 762--762
-\TU/lmr/m/n/10 De Vitamina D, Densidade
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 4254) in paragraph at lines 762--762
-\TU/lmr/m/n/10 entes Pós-Acidente Vascular
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
- []
-
-
-Underfull \hbox (badness 4686) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estratégias De Avaliação e
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Com Ataxia Espinocerebelar
- []
-
-
-Underfull \hbox (badness 1867) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
- []
-
-
-Underfull \hbox (badness 7081) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Intervenção Das Disfunções
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Terapia Cognitiva Funcio-
- []
-
-
-Underfull \hbox (badness 2837) in paragraph at lines 762--762
-\TU/lmr/m/n/10 nal: ”Changing Beliefs for
- []
-
-
-Underfull \hbox (badness 2050) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Functional Therapy (Cbecft)
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 762--762
-\TU/lmr/m/n/10 cientes Com Ataxia Degene-
- []
-
-
-Underfull \hbox (badness 1796) in paragraph at lines 762--762
-\TU/lmr/m/n/10 rativa Progressiva: Impacto
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 5490) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Em Reabilitação - LP:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Abordagem Terapêutica
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 5490) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Em Reabilitação - LP:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 Abordagem Terapêutica
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
- []
-
-
-Underfull \hbox (badness 4254) in paragraph at lines 762--762
-\TU/lmr/bx/n/10 abilitação | Reabilitação
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 tabólico Máximo (Metmáx)
- []
-
-
-Underfull \hbox (badness 6725) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Em Diferentes Modalidades
- []
-
-
-Underfull \hbox (badness 5460) in paragraph at lines 762--762
-\TU/lmr/m/n/10 De Exercício a Partir Do
- []
-
-
-Underfull \hbox (badness 1142) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação De Incidências De
- []
-
-
-Underfull \hbox (badness 1394) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Lesões Osteomioarticulares e
- []
-
-
-Underfull \hbox (badness 2142) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Resposta Autonômica Cardí-
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 762--762
-\TU/lmr/m/n/10 ticantes De Treinamento De
- []
-
-
-Underfull \hbox (badness 3343) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
- []
-
-
-Underfull \hbox (badness 3343) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
- []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Análise Funcional De Idosos
- []
-
-
-Underfull \hbox (badness 5446) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação Da Especificidade
- []
-
-
-Underfull \hbox (badness 2189) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Da Influência Da Imagética
- []
-
-
-Underfull \hbox (badness 3019) in paragraph at lines 762--762
-\TU/lmr/m/n/10 lógicas Do Treinamento De
- []
-
-
-Underfull \hbox (badness 3250) in paragraph at lines 762--762
-\TU/lmr/m/n/10 turais Domiciliares e Dores
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Doenças Respiratórias Crôni-
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Funcionalidade Da Mão Em
- []
-
-
-Underfull \hbox (badness 2452) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Efeito Agudo Da Aplicação
- []
-
-
-Underfull \hbox (badness 5105) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Direta Sobre
- []
-
-
-Underfull \hbox (badness 7777) in paragraph at lines 762--762
-\TU/lmr/m/n/10 nar, Capacidade Funcional,
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Efeito Da Aplicação De Es-
- []
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 762--762
-\TU/lmr/m/n/10 timulação Transcraniana Por
- []
-
-
-Underfull \hbox (badness 1173) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Avaliação Postural Em Paci-
- []
-
-
-Underfull \hbox (badness 1997) in paragraph at lines 762--762
-\TU/lmr/m/n/10 entes Submetidas Ao Trata-
- []
-
-
-Underfull \hbox (badness 3354) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Epidemiologia e Intervenção
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 1331) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Agudo e Subagudo: Ensaio
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Acidente Vascular Cerebral
- []
-
-
-Underfull \hbox (badness 2277) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Correlação Entre Deficiência
- []
-
-
-Underfull \hbox (badness 3281) in paragraph at lines 762--762
-\TU/lmr/m/n/10 De Vitamina D, Densidade
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estimulação Transcraniana
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Por Corrente Contínua Na
- []
-
-
-Underfull \hbox (badness 4254) in paragraph at lines 762--762
-\TU/lmr/m/n/10 entes Pós-Acidente Vascular
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Desenvolvimento e Validação
- []
-
-
-Underfull \hbox (badness 4686) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Estratégias De Avaliação e
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Com Ataxia Espinocerebelar
- []
-
-
-Underfull \hbox (badness 1867) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
- []
-
-
-Underfull \hbox (badness 7081) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Intervenção Das Disfunções
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
-[]\TU/lmr/m/n/10 Terapia Cognitiva Funcio-
- []
-
-
-Underfull \hbox (badness 2837) in paragraph at lines 762--762
-\TU/lmr/m/n/10 nal: ”Changing Beliefs for
- []
-
-
-Underfull \hbox (badness 2050) in paragraph at lines 762--762
-\TU/lmr/m/n/10 Functional Therapy (Cbecft)
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 762--762
-\TU/lmr/m/n/10 cientes Com Ataxia Degene-
- []
-
-
-Underfull \hbox (badness 1796) in paragraph at lines 762--762
-\TU/lmr/m/n/10 rativa Progressiva: Impacto
- []
-
-
-LaTeX Warning: Float too large for page by 1937.34317pt on input line 763.
-
-
-
-[13]
-Overfull \hbox (3.09442pt too wide) in paragraph at lines 776--797
- [][] 
- []
-
-
-
-[14
-
-
-]
-Underfull \hbox (badness 1917) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-LaTeX Warning: Float too large for page by 399.4039pt on input line 855.
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--921
-[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
- []
-
-
-LaTeX Warning: Float too large for page by 592.78397pt on input line 922.
-
-
-
-[15]
-
-[16]
-
-[17
-
-
-]
-
-[18]
-
-[19]
-
-[20]
-
-[21]
-
-[22]
-
-[23]
-
-[24]
-
-[25]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1258--1258
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 629--629
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1258--1258
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 629--629
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1258--1258
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 629--629
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1258--1258
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 629--629
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1241--1259
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 611--630
  [][] 
+ []
+
+
+
+[13]
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2010 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 650--650
+[]\TU/lmr/m/n/10 01/01/2014 
+ []
+
+
+
+[14]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 681--681
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 681--681
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 681--681
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 681--681
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 658--682
+ [][] 
+ []
+
+
+
+[15]
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Em Reabilitação - LP:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Abordagem Terapêutica
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Em Reabilitação - LP:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Abordagem Terapêutica
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 4254) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 abilitação | Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 tabólico Máximo (Metmáx)
+ []
+
+
+Underfull \hbox (badness 6725) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Em Diferentes Modalidades
+ []
+
+
+Underfull \hbox (badness 5460) in paragraph at lines 750--750
+\TU/lmr/m/n/10 De Exercício a Partir Do
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação De Incidências De
+ []
+
+
+Underfull \hbox (badness 1394) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Lesões Osteomioarticulares e
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Resposta Autonômica Cardí-
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 750--750
+\TU/lmr/m/n/10 ticantes De Treinamento De
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Análise Funcional De Idosos
+ []
+
+
+Underfull \hbox (badness 5446) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação Da Especificidade
+ []
+
+
+Underfull \hbox (badness 2189) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Da Influência Da Imagética
+ []
+
+
+Underfull \hbox (badness 3019) in paragraph at lines 750--750
+\TU/lmr/m/n/10 lógicas Do Treinamento De
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 750--750
+\TU/lmr/m/n/10 turais Domiciliares e Dores
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Doenças Respiratórias Crôni-
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Funcionalidade Da Mão Em
+ []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Efeito Agudo Da Aplicação
+ []
+
+
+Underfull \hbox (badness 5105) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Direta Sobre
+ []
+
+
+Underfull \hbox (badness 7777) in paragraph at lines 750--750
+\TU/lmr/m/n/10 nar, Capacidade Funcional,
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Efeito Da Aplicação De Es-
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 750--750
+\TU/lmr/m/n/10 timulação Transcraniana Por
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação Postural Em Paci-
+ []
+
+
+Underfull \hbox (badness 1997) in paragraph at lines 750--750
+\TU/lmr/m/n/10 entes Submetidas Ao Trata-
+ []
+
+
+Underfull \hbox (badness 3354) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Epidemiologia e Intervenção
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Agudo e Subagudo: Ensaio
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Correlação Entre Deficiência
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 750--750
+\TU/lmr/m/n/10 De Vitamina D, Densidade
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 4254) in paragraph at lines 750--750
+\TU/lmr/m/n/10 entes Pós-Acidente Vascular
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+Underfull \hbox (badness 4686) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estratégias De Avaliação e
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Com Ataxia Espinocerebelar
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
+ []
+
+
+Underfull \hbox (badness 7081) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Terapia Cognitiva Funcio-
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 750--750
+\TU/lmr/m/n/10 nal: ”Changing Beliefs for
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Functional Therapy (Cbecft)
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 750--750
+\TU/lmr/m/n/10 cientes Com Ataxia Degene-
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 750--750
+\TU/lmr/m/n/10 rativa Progressiva: Impacto
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Em Reabilitação - LP:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Abordagem Terapêutica
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Em Reabilitação - LP:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 Abordagem Terapêutica
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/bx/n/10 AC: Aspectos Funcionais
+ []
+
+
+Underfull \hbox (badness 4254) in paragraph at lines 750--750
+\TU/lmr/bx/n/10 abilitação | Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 tabólico Máximo (Metmáx)
+ []
+
+
+Underfull \hbox (badness 6725) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Em Diferentes Modalidades
+ []
+
+
+Underfull \hbox (badness 5460) in paragraph at lines 750--750
+\TU/lmr/m/n/10 De Exercício a Partir Do
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação De Incidências De
+ []
+
+
+Underfull \hbox (badness 1394) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Lesões Osteomioarticulares e
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Resposta Autonômica Cardí-
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 750--750
+\TU/lmr/m/n/10 ticantes De Treinamento De
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
+ []
+
+
+Underfull \hbox (badness 3343) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Abordagens Fisioterapêuticas
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Análise Funcional De Idosos
+ []
+
+
+Underfull \hbox (badness 5446) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação Da Especificidade
+ []
+
+
+Underfull \hbox (badness 2189) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Da Influência Da Imagética
+ []
+
+
+
+[16
+
+]
+Underfull \hbox (badness 3019) in paragraph at lines 750--750
+\TU/lmr/m/n/10 lógicas Do Treinamento De
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 750--750
+\TU/lmr/m/n/10 turais Domiciliares e Dores
+ []
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Doenças Respiratórias Crôni-
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Funcionalidade Da Mão Em
+ []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Efeito Agudo Da Aplicação
+ []
+
+
+Underfull \hbox (badness 5105) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Direta Sobre
+ []
+
+
+
+[17]
+Underfull \hbox (badness 7777) in paragraph at lines 750--750
+\TU/lmr/m/n/10 nar, Capacidade Funcional,
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Efeito Da Aplicação De Es-
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 750--750
+\TU/lmr/m/n/10 timulação Transcraniana Por
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Avaliação Postural Em Paci-
+ []
+
+
+Underfull \hbox (badness 1997) in paragraph at lines 750--750
+\TU/lmr/m/n/10 entes Submetidas Ao Trata-
+ []
+
+
+
+[18]
+Underfull \hbox (badness 3354) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Epidemiologia e Intervenção
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Agudo e Subagudo: Ensaio
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Acidente Vascular Cerebral
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Correlação Entre Deficiência
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 750--750
+\TU/lmr/m/n/10 De Vitamina D, Densidade
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estimulação Transcraniana
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Por Corrente Contínua Na
+ []
+
+
+Underfull \hbox (badness 4254) in paragraph at lines 750--750
+\TU/lmr/m/n/10 entes Pós-Acidente Vascular
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Desenvolvimento e Validação
+ []
+
+
+
+[19]
+Underfull \hbox (badness 4686) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Estratégias De Avaliação e
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Com Ataxia Espinocerebelar
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Impacto Da Inomogeneidade
+ []
+
+
+Underfull \hbox (badness 7081) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Intervenção Das Disfunções
+ []
+
+
+
+[20]
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 750--750
+[]\TU/lmr/m/n/10 Terapia Cognitiva Funcio-
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 750--750
+\TU/lmr/m/n/10 nal: ”Changing Beliefs for
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 750--750
+\TU/lmr/m/n/10 Functional Therapy (Cbecft)
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 750--750
+\TU/lmr/m/n/10 cientes Com Ataxia Degene-
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 750--750
+\TU/lmr/m/n/10 rativa Progressiva: Impacto
+ []
+
+
+
+[22]
+Overfull \hbox (3.09442pt too wide) in paragraph at lines 763--783
+ [][] 
+ []
+
+
+
+[23
+
+]
+Underfull \hbox (badness 1917) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+
+[24
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 839--839
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+
+[25]
+Underfull \hbox (badness 1917) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
  []
 
 
 
 [26]
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1272--1294
- [][] 
+Underfull \hbox (badness 1917) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
+ []
+
+
+Underfull \hbox (badness 1917) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
 
 [27]
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1303--1318
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 904--904
+[]\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
  []
 
 
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1324--1337
 
- []
+[29
 
+]
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1374--1374
+[30]
+
+[31]
+
+[32]
+
+[33]
+
+[34]
+
+[35]
+
+[36]
+
+[37]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1239--1239
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1374--1374
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1239--1239
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1374--1374
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1239--1239
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1374--1374
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1239--1239
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 1343--1375
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1223--1240
  [][] 
  []
 
 
 
-[29]
-
-[30
-
-]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1459--1459
-[]\TU/lmr/bx/n/10 2017|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1459--1459
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1459--1459
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1459--1459
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-
-[31
-
-]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1494--1494
-[]\TU/lmr/bx/n/10 2017|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1494--1494
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1494--1494
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1494--1494
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-
-[32]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1529--1529
-[]\TU/lmr/bx/n/10 2017|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1529--1529
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1529--1529
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1529--1529
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-
-[33]
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/bx/n/10 Agência 
- []
-
-
-Underfull \hbox (badness 7888) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Esclerodermia: Confiabili-
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 dade do Teste de AVD-
- []
-
-
-Underfull \hbox (badness 5431) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Programa Institucional de
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 1910) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 sobre a capacidade funcio-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 3029) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Esclerose sistêmica: avali-
- []
-
-
-Underfull \hbox (badness 1490) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 ação cinemática durante o
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 2302) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Neurociências e Tecnologia
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 tratamento de indivíduos
- []
-
-
-Underfull \hbox (badness 4518) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 com ataxia espnocerebelar
- []
-
-
-Underfull \hbox (badness 5431) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Programa Institucional de
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 E-
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Neuromodulação não-
- []
-
-
-Underfull \hbox (badness 4531) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 melhora do equilíbrio em
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 23038.000114/2020-
- []
-
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Edital No
- []
-
-
-Overfull \hbox (24.14253pt too wide) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 27/2019/REI/IFTO 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 23235.008495/2020-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Exercícios terapêuticos
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 descritivo dos exercícios
- []
-
-
-Underfull \hbox (badness 4981) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 clínico controlado aleatori-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 E-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Eficácia da Terapia
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 Cognitivo-Funcional em
- []
-
-
-Underfull \hbox (badness 5388) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 pacientes com dores lom-
- []
-
-
-Underfull \hbox (badness 4403) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 bares e cervicais crônicas
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 1371) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 deficiência física que prati-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Crescimento, desenvolvi-
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 mento e aptidão física de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 liação e intervenção nas
- []
-
-
-Underfull \hbox (badness 4739) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 ciências da reabilitação e
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.464291/2019-
+[38]
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1253--1274
+ [][] 
  []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.464291/2019-
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.314984/2013-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/bx/n/10 Agência 
- []
-
-
-Underfull \hbox (badness 7888) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Esclerodermia: Confiabili-
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 dade do Teste de AVD-
- []
-
-
-Underfull \hbox (badness 5431) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Programa Institucional de
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 1910) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 sobre a capacidade funcio-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 3029) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Esclerose sistêmica: avali-
- []
-
-
-Underfull \hbox (badness 1490) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 ação cinemática durante o
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 2302) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Neurociências e Tecnologia
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 tratamento de indivíduos
- []
-
-
-Underfull \hbox (badness 4518) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 com ataxia espnocerebelar
- []
-
-
-Underfull \hbox (badness 5431) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Programa Institucional de
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 E-
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Neuromodulação não-
- []
-
-
-Underfull \hbox (badness 4531) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 melhora do equilíbrio em
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 23038.000114/2020-
- []
-
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 5091) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Leandro Alberto Calazans
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Edital No
- []
-
-
-Overfull \hbox (24.14253pt too wide) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 27/2019/REI/IFTO 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 23235.008495/2020-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Exercícios terapêuticos
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 descritivo dos exercícios
- []
-
-
-Underfull \hbox (badness 4981) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 clínico controlado aleatori-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 E-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Eficácia da Terapia
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 Cognitivo-Funcional em
- []
-
-
-Underfull \hbox (badness 5388) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 pacientes com dores lom-
- []
-
-
-Underfull \hbox (badness 4403) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 bares e cervicais crônicas
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-
-Underfull \hbox (badness 1371) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 deficiência física que prati-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 Crescimento, desenvolvi-
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 mento e aptidão física de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 liação e intervenção nas
- []
-
-
-Underfull \hbox (badness 4739) in paragraph at lines 1574--1574
-\TU/lmr/m/n/10 ciências da reabilitação e
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.464291/2019-
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.464291/2019-
- []
-
-
-Overfull \hbox (2.13628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 CAPES 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 88882.314984/2013-
- []
-
-
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1574--1574
-[]\TU/lmr/m/n/10 FAPERJ 
- []
-
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
-ex-text;!
-
-LaTeX Warning: Float too large for page by 884.39317pt on input line 1575.
-
-
-
-[34]
-
-[35
-
-
-]
-
-[36]
-
-[37
 
-] [38
 
-]
 
 [39]
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1283--1297
+ [][] 
+ []
+
+
 
 [40]
-
-[41]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1828--1828
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1339--1339
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1828--1828
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1339--1339
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1828--1828
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1339--1339
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1828--1828
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1339--1339
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 1309--1340
+ [][] 
+ []
+
+
+
+[41]
 
 [42
 
 ]
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1884--1884
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1422--1422
+[]\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1884--1884
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1422--1422
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1422--1422
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1422--1422
+[]\TU/lmr/bx/n/10 2020|  
  []
 
 
 
-[43]
+[43
+
+]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1456--1456
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1456--1456
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1456--1456
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1456--1456
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
 
 [44]
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1909--1909
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1490--1490
+[]\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1909--1909
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1490--1490
+[]\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1932--1932
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1490--1490
+[]\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (12.4192pt too wide) in paragraph at lines 1932--1932
-[]\TU/lmr/bx/n/10 PositiveLRC 
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1490--1490
+[]\TU/lmr/bx/n/10 2020|  
  []
 
 
 
 [45]
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/bx/n/10 Agência 
+ []
+
+
+Underfull \hbox (badness 7888) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Esclerodermia: Confiabili-
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 dade do Teste de AVD-
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Programa Institucional de
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 1910) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 sobre a capacidade funcio-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 3029) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Esclerose sistêmica: avali-
+ []
+
+
+Underfull \hbox (badness 1490) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 ação cinemática durante o
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 2302) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Neurociências e Tecnologia
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 tratamento de indivíduos
+ []
+
+
+Underfull \hbox (badness 4518) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 com ataxia espnocerebelar
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Programa Institucional de
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 E-
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Neuromodulação não-
+ []
+
+
+Underfull \hbox (badness 4531) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 melhora do equilíbrio em
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 23038.000114/2020-
+ []
+
+
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Edital No
+ []
+
+
+Overfull \hbox (24.14253pt too wide) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 27/2019/REI/IFTO 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 23235.008495/2020-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Exercícios terapêuticos
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 E-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Eficácia da Terapia
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 Cognitivo-Funcional em
+ []
+
+
+Underfull \hbox (badness 5388) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 pacientes com dores lom-
+ []
+
+
+Underfull \hbox (badness 4403) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 bares e cervicais crônicas
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 deficiência física que prati-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Crescimento, desenvolvi-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 mento e aptidão física de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 liação e intervenção nas
+ []
+
+
+Underfull \hbox (badness 4739) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 ciências da reabilitação e
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.464291/2019-
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.464291/2019-
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.314984/2013-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/bx/n/10 Agência 
+ []
+
+
+Underfull \hbox (badness 7888) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Esclerodermia: Confiabili-
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 dade do Teste de AVD-
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Programa Institucional de
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 1910) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 sobre a capacidade funcio-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 3029) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Esclerose sistêmica: avali-
+ []
+
+
+Underfull \hbox (badness 1490) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 ação cinemática durante o
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
 
 [46
 
 ]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1968--1968
-[]\TU/lmr/bx/n/10 2017|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 2302) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Neurociências e Tecnologia
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1968--1968
-[]\TU/lmr/bx/n/10 2018|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1968--1968
-[]\TU/lmr/bx/n/10 2019|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 tratamento de indivíduos
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1968--1968
-[]\TU/lmr/bx/n/10 2020|  
+Underfull \hbox (badness 4518) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 com ataxia espnocerebelar
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1989--1989
-[]\TU/lmr/bx/n/10 2017|  
+Underfull \hbox (badness 5431) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Programa Institucional de
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1989--1989
-[]\TU/lmr/bx/n/10 2018|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1989--1989
-[]\TU/lmr/bx/n/10 2019|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 E-
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Neuromodulação não-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 1989--1989
-[]\TU/lmr/bx/n/10 2020|  
+Underfull \hbox (badness 4531) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 melhora do equilíbrio em
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2006--2006
-[]\TU/lmr/bx/n/10 2017|  
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2006--2006
-[]\TU/lmr/bx/n/10 2018|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 23038.000114/2020-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2006--2006
-[]\TU/lmr/bx/n/10 2019|  
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2006--2006
-[]\TU/lmr/bx/n/10 2020|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
  []
 
 
 
 [47]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2035--2035
-[]\TU/lmr/bx/n/10 2017|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 5091) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Leandro Alberto Calazans
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2035--2035
-[]\TU/lmr/bx/n/10 2018|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Edital No
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2035--2035
-[]\TU/lmr/bx/n/10 2019|  
+Overfull \hbox (24.14253pt too wide) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 27/2019/REI/IFTO 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2035--2035
-[]\TU/lmr/bx/n/10 2020|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 23235.008495/2020-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2056--2056
-[]\TU/lmr/bx/n/10 2017|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2056--2056
-[]\TU/lmr/bx/n/10 2018|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Exercícios terapêuticos
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2056--2056
-[]\TU/lmr/bx/n/10 2019|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2056--2056
-[]\TU/lmr/bx/n/10 2020|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 E-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2073--2073
-[]\TU/lmr/bx/n/10 2017|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Eficácia da Terapia
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2073--2073
-[]\TU/lmr/bx/n/10 2018|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 Cognitivo-Funcional em
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2073--2073
-[]\TU/lmr/bx/n/10 2019|  
+Underfull \hbox (badness 5388) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 pacientes com dores lom-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2073--2073
-[]\TU/lmr/bx/n/10 2020|  
+Underfull \hbox (badness 4403) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 bares e cervicais crônicas
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 deficiência física que prati-
+ []
+
+
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
+ []
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 Crescimento, desenvolvi-
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 mento e aptidão física de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 liação e intervenção nas
+ []
+
+
+Underfull \hbox (badness 4739) in paragraph at lines 1534--1534
+\TU/lmr/m/n/10 ciências da reabilitação e
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.464291/2019-
+ []
+
+
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.464291/2019-
  []
 
 
 
 [48]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2107--2107
-[]\TU/lmr/bx/n/10 2017|  
+Overfull \hbox (2.13628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 CAPES 
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2107--2107
-[]\TU/lmr/bx/n/10 2018|  
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 88882.314984/2013-
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2107--2107
-[]\TU/lmr/bx/n/10 2019|  
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1534--1534
+[]\TU/lmr/m/n/10 FAPERJ 
  []
 
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2107--2107
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 2086--2108
- [][] 
- []
-
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
+ex-text;!
 
 
 [49]
 
-[50]
+[50
+
+]
 
 [51]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2207--2207
-[]\TU/lmr/bx/n/10 2017|  
- []
 
+[52
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2207--2207
-[]\TU/lmr/bx/n/10 2018|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2207--2207
-[]\TU/lmr/bx/n/10 2019|  
- []
-
-
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2207--2207
-[]\TU/lmr/bx/n/10 2020|  
- []
-
-
-
-[52]
-Overfull \hbox (31.17876pt too wide) in paragraph at lines 2226--2240
- [][] 
- []
-
-
-
-[53
+] [53
 
 ]
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2017/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2017/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2018/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2018/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2019/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2019/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2020/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2276--2276
-[]\TU/lmr/bx/n/10 2020/2|  
- []
-
-
-Overfull \hbox (31.1762pt too wide) in paragraph at lines 2249--2277
- [][] 
- []
-
-
 
 [54]
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2017/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2017/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2018/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2018/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2019/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2019/2|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2020/1|  
- []
-
-
-Overfull \hbox (1.77951pt too wide) in paragraph at lines 2312--2312
-[]\TU/lmr/bx/n/10 2020/2|  
- []
-
-
-Overfull \hbox (31.1762pt too wide) in paragraph at lines 2286--2313
- [][] 
- []
-
-
 
 [55]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2352--2352
+
+[56]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1785--1785
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2352--2352
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1785--1785
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2352--2352
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1785--1785
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2352--2352
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1785--1785
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (15.0944pt too wide) in paragraph at lines 2327--2353
- [][] 
- []
 
-
-
-[56
+[57
 
 ]
-Underfull \hbox (badness 2635) in paragraph at lines 2391--2391
-[]\TU/lmr/bx/n/10 Abordagem Te-
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1840--1840
+[]\TU/lmr/bx/n/10 PositiveLRC 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 rapêutica Em
- []
-
-
-Underfull \hbox (badness 2635) in paragraph at lines 2391--2391
-[]\TU/lmr/bx/n/10 Abordagem Te-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 rapêutica Em
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Reabilitação |
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte E No
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte Adap-
- []
-
-
-Underfull \hbox (badness 3826) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 litação No Es-
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte E No
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte Adap-
- []
-
-
-Underfull \hbox (badness 2635) in paragraph at lines 2391--2391
-[]\TU/lmr/bx/n/10 Abordagem Te-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 rapêutica Em
- []
-
-
-Underfull \hbox (badness 2635) in paragraph at lines 2391--2391
-[]\TU/lmr/bx/n/10 Abordagem Te-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 rapêutica Em
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Reabilitação |
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte E No
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte Adap-
- []
-
-
-Underfull \hbox (badness 3826) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 litação No Es-
- []
-
-
-Underfull \hbox (badness 6157) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte E No
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2391--2391
-\TU/lmr/bx/n/10 Esporte Adap-
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1840--1840
+[]\TU/lmr/bx/n/10 PositiveLRC 
  []
 
 
 
-[57]
-Overfull \hbox (31.17657pt too wide) in paragraph at lines 2405--2435
- [][] 
- []
-
-
-
-[58
-
-
-
-]
-Overfull \hbox (31.17657pt too wide) in paragraph at lines 2447--2475
- [][] 
- []
-
-
+[58]
 
 [59]
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1863--1863
+[]\TU/lmr/bx/n/10 PositiveLRC 
+ []
 
-[60
 
-
-]
-
-[61]
-Overfull \hbox (7.17795pt too wide) in paragraph at lines 2566--2594
- [][] 
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1863--1863
+[]\TU/lmr/bx/n/10 PositiveLRC 
  []
 
 
 
-[62]
+[60]
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1884--1884
+[]\TU/lmr/bx/n/10 PositiveLRC 
+ []
 
-[63
+
+Overfull \hbox (12.4192pt too wide) in paragraph at lines 1884--1884
+[]\TU/lmr/bx/n/10 PositiveLRC 
+ []
+
+
+
+[61]
+
+[62
 
 ]
-
-[64]
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2666--2666
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1918--1918
 []\TU/lmr/bx/n/10 2017|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2666--2666
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1918--1918
 []\TU/lmr/bx/n/10 2018|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2666--2666
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1918--1918
 []\TU/lmr/bx/n/10 2019|  
  []
 
 
-Overfull \hbox (1.66045pt too wide) in paragraph at lines 2666--2666
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1918--1918
 []\TU/lmr/bx/n/10 2020|  
  []
 
 
-Overfull \hbox (27.09439pt too wide) in paragraph at lines 2621--2667
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1938--1938
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1954--1954
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1954--1954
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1954--1954
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1954--1954
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+
+[63]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1982--1982
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1982--1982
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1982--1982
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 1982--1982
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2002--2002
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2002--2002
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2002--2002
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2002--2002
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2018--2018
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2018--2018
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2018--2018
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2018--2018
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+
+[64]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2051--2051
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2051--2051
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2051--2051
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2051--2051
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 2031--2052
  [][] 
  []
 
 
 
 [65]
-Overfull \hbox (15.09442pt too wide) in paragraph at lines 2680--2730
+
+[66]
+
+[67]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2148--2148
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2148--2148
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2148--2148
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2148--2148
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+
+[68]
+Overfull \hbox (31.17876pt too wide) in paragraph at lines 2167--2180
  [][] 
  []
 
 
 
-[66]
+[69
 
-[67]
+]
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2017/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2017/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2018/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2018/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2019/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2019/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2020/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2215--2215
+[]\TU/lmr/bx/n/10 2020/2|  
+ []
+
+
+Overfull \hbox (31.1762pt too wide) in paragraph at lines 2189--2216
+ [][] 
+ []
+
+
+
+[70]
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2017/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2017/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2018/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2018/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2019/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2019/2|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2020/1|  
+ []
+
+
+Overfull \hbox (1.77951pt too wide) in paragraph at lines 2250--2250
+[]\TU/lmr/bx/n/10 2020/2|  
+ []
+
+
+Overfull \hbox (31.1762pt too wide) in paragraph at lines 2225--2251
+ [][] 
+ []
+
+
+
+[71]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2289--2289
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2289--2289
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2289--2289
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2289--2289
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (15.0944pt too wide) in paragraph at lines 2265--2290
+ [][] 
+ []
+
+
+
+[72
+
+]
+Underfull \hbox (badness 2635) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Abordagem Te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 rapêutica Em
+ []
+
+
+Underfull \hbox (badness 2635) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Abordagem Te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 rapêutica Em
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 | Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 No Esporte
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 E No Esporte
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 litação No Es-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 No Esporte
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 E No Esporte
+ []
+
+
+Underfull \hbox (badness 2635) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Abordagem Te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 rapêutica Em
+ []
+
+
+Underfull \hbox (badness 2635) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Abordagem Te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 rapêutica Em
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 | Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 No Esporte
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 E No Esporte
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 litação No Es-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+[]\TU/lmr/bx/n/10 Reabilitação
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 No Esporte
+ []
+
+
+Underfull \hbox (badness 6157) in paragraph at lines 2327--2327
+\TU/lmr/bx/n/10 E No Esporte
+ []
+
+
+
+[73
+
+]
+Overfull \hbox (31.17657pt too wide) in paragraph at lines 2340--2369
+ [][] 
+ []
+
+
+
+[74
+
+
+]
+Overfull \hbox (31.17657pt too wide) in paragraph at lines 2381--2408
+ [][] 
+ []
+
+
+
+[75]
+
+[76
+
+
+]
+
+[77]
+Overfull \hbox (7.17795pt too wide) in paragraph at lines 2497--2524
+ [][] 
+ []
+
+
+
+[78]
+
+[79
+
+]
+
+[80]
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2595--2595
+[]\TU/lmr/bx/n/10 2017|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2595--2595
+[]\TU/lmr/bx/n/10 2018|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2595--2595
+[]\TU/lmr/bx/n/10 2019|  
+ []
+
+
+Overfull \hbox (1.66045pt too wide) in paragraph at lines 2595--2595
+[]\TU/lmr/bx/n/10 2020|  
+ []
+
+
+Overfull \hbox (27.09439pt too wide) in paragraph at lines 2551--2596
+ [][] 
+ []
+
+
+
+[81]
+Overfull \hbox (15.09442pt too wide) in paragraph at lines 2609--2658
+ [][] 
+ []
+
+
+
+[82]
+
+[83]
 File: site.png Graphic file (type bmp)
 <site.png>
 
 
-[68]
+[84]
 File: observatorio.png Graphic file (type bmp)
 <observatorio.png>
 
 
-[69]
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2940--2940
-[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
- []
-
-
-LaTeX Warning: Float too large for page by 2593.01462pt on input line 2941.
-
-
-
-[70
+[86
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
 
-[71]
-Underfull \hbox (badness 8056) in paragraph at lines 2963--2963
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[87]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[88]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[89]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2867--2867
+[]\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
+ []
+
+
+
+[91]
+
+[92]
+
+[93]
+Underfull \hbox (badness 8056) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 LUCIANA CREPALDI LUN-
  []
 
 
-Underfull \hbox (badness 7151) in paragraph at lines 2963--2963
+Underfull \hbox (badness 7151) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 RENATO SANTOS DE AL-
  []
 
 
-Underfull \hbox (badness 7151) in paragraph at lines 2963--2963
+Underfull \hbox (badness 7151) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 RENATO SANTOS DE AL-
  []
 
 
-Underfull \hbox (badness 8056) in paragraph at lines 2963--2963
+Underfull \hbox (badness 8056) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 LUCIANA CREPALDI LUN-
  []
 
 
-Underfull \hbox (badness 7151) in paragraph at lines 2963--2963
+Underfull \hbox (badness 7151) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 RENATO SANTOS DE AL-
  []
 
 
-Underfull \hbox (badness 7151) in paragraph at lines 2963--2963
+Underfull \hbox (badness 7151) in paragraph at lines 2888--2888
 []\TU/lmr/bx/n/10 RENATO SANTOS DE AL-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+
+[94]
+
+[95]
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 3033--3033
+Underfull \hbox (badness 2591) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 International Journal of Environ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 3033--3033
+Underfull \hbox (badness 2591) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 International Journal of Environ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+
+[96]
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3033--3033
+Underfull \hbox (badness 10000) in paragraph at lines 2954--2954
 []\TU/lmr/m/n/10 LEANDRO ALBERTO CALA-
  []
 
 
-LaTeX Warning: Float too large for page by 190.43317pt on input line 3034.
 
-
-Underfull \hbox (badness 2245) in paragraph at lines 3057--3057
+[97]
+Underfull \hbox (badness 2245) in paragraph at lines 2976--2976
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 3057--3057
+Underfull \hbox (badness 2245) in paragraph at lines 2976--2976
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 3057--3057
+Underfull \hbox (badness 2245) in paragraph at lines 2976--2976
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 3057--3057
+Underfull \hbox (badness 2245) in paragraph at lines 2976--2976
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3075--3075
+
+[98]
+Underfull \hbox (badness 10000) in paragraph at lines 2992--2992
 []\TU/lmr/m/n/10 Editor for the
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 3075--3075
+Underfull \hbox (badness 2213) in paragraph at lines 2992--2992
 \TU/lmr/m/n/10 Evidence-Based Com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3075--3075
+Underfull \hbox (badness 10000) in paragraph at lines 2992--2992
 \TU/lmr/m/n/10 plementary and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3075--3075
+Underfull \hbox (badness 10000) in paragraph at lines 2992--2992
 []\TU/lmr/m/n/10 Editor for the
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 3075--3075
+Underfull \hbox (badness 2213) in paragraph at lines 2992--2992
 \TU/lmr/m/n/10 Evidence-Based Com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3075--3075
+Underfull \hbox (badness 10000) in paragraph at lines 2992--2992
 \TU/lmr/m/n/10 plementary and
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 3098--3098
+
+[99]
+Underfull \hbox (badness 3746) in paragraph at lines 3013--3013
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 3098--3098
+Underfull \hbox (badness 3746) in paragraph at lines 3013--3013
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 3098--3098
+Underfull \hbox (badness 3746) in paragraph at lines 3013--3013
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 3098--3098
+Underfull \hbox (badness 3746) in paragraph at lines 3013--3013
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
 
-[72]
-
-[73]
-
-[74]
-
-[75] (./autoavaliacao-2017-2020.aux)
+[100] (./autoavaliacao-2017-2020.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -4861,12 +4892,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 52118 strings out of 468438
- 1101360 string characters out of 5445464
- 1988063 words of memory out of 5000000
- 79933 multiletter control sequences out of 15000+600000
- 630888 words of font info for 80 fonts, out of 8000000 for 9000
+ 52112 strings out of 468389
+ 1101459 string characters out of 5440620
+ 1825923 words of memory out of 5000000
+ 79978 multiletter control sequences out of 15000+600000
+ 631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,19n,126p,1212b,8822s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,126p,1212b,9518s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2017-2020.pdf (79 pages).
+Output written on autoavaliacao-2017-2020.pdf (104 pages).

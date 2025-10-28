@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.3)  17 OCT 2025 17:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.27)  28 OCT 2025 10:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao-2021-2024.tex
 (./autoavaliacao-2021-2024.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
+L3 programming layer <2025-10-24>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/bk10.clo
@@ -136,9 +136,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/unicode-math/unicode-math.sty 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-09-02 L3 programming layer (loader) 
+Package: expl3 2025-10-24 L3 programming layer (loader) 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count295
 \g__pdfannot_backend_int=\count296
 \g__pdfannot_backend_link_int=\count297
@@ -150,10 +150,10 @@ ty
 Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLa
 TeX
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-08-16 L3 Experimental document command parser
+Package: xparse 2025-10-09 L3 Experimental document command parser
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.st
 y
-Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
@@ -597,36 +597,35 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 )
 \pandoc@box=\box64
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/10/01 v25.13 The multilingual framework for LuaLaTeX, pdfLa
+Package: babel 2025/10/22 v25.14 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 \babel@savecnt=\count327
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
-ne 2045.
+ne 2050.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
-ne 2047.
+ne 2052.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
-e 2049.
+e 2054.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
-e 2050.
+e 2055.
 LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
-on input line 2051.
+on input line 2056.
 LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
-on input line 2053.
+on input line 2058.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
-on input line 2078.
+on input line 2083.
 \U@D=\dimen191
 \l@unhyphenated=\language90
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/xebabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count328
-(/usr/local/texlive/2025/texmf-dist/tex/generic/babel-portuges/brazilian.ldf
-Language: portuges 2021/07/09 v1.2t Portuguese support from the babel system
 
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/pt/babel-brazilian
-.tex
+.tex)
 Package babel Info: Importing font and identification data for brazilian
-(babel)             from babel-pt-BR.ini. Reported on input line 12.
-)
+(babel)             from babel-pt-BR.ini. Reported on input line 4295.
+(/usr/local/texlive/2025/texmf-dist/tex/generic/babel-portuges/brazilian.ldf
+Language: portuges 2021/07/09 v1.2t Portuguese support from the babel system
 Package babel Info: Hyphen rules for 'brazilian' set to \l@portuguese
 (babel)             (\language72). Reported on input line 111.
 Package babel Info: Making " an active character on input line 143.
@@ -4198,19 +4197,19 @@ Underfull \hbox (badness 3746) in paragraph at lines 3030--3030
 [97] (./autoavaliacao-2021-2024.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
+L3 programming layer <2025-10-24>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 56146 strings out of 468389
- 1195505 string characters out of 5440620
- 1997243 words of memory out of 5000000
- 84012 multiletter control sequences out of 15000+600000
+ 56152 strings out of 468388
+ 1195649 string characters out of 5440602
+ 1998738 words of memory out of 5000000
+ 84019 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,17n,126p,1212b,12862s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,126p,1212b,12864s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on autoavaliacao-2021-2024.pdf (101 pages).

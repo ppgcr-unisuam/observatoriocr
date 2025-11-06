@@ -11350,11 +11350,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11454,11 +11454,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11558,11 +11558,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11662,11 +11662,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11766,11 +11766,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11870,11 +11870,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -11974,11 +11974,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12078,11 +12078,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12182,11 +12182,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12286,11 +12286,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12390,11 +12390,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12494,11 +12494,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12598,11 +12598,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {
@@ -12702,11 +12702,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+  # add LaTeX-formatted note manually
+  cat("\\vspace{0.5em}\n",
+      "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
+      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 }
-# add LaTeX-formatted note manually
-cat("\\vspace{0.5em}\n",
-    "\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-    "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
 
 # Add LaTeX commands for new page and float barrier
 if(knitr::is_latex_output()) {

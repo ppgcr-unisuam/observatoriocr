@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.4)  5 NOV 2025 19:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.4)  6 NOV 2025 05:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2348,7 +2348,10 @@ Overfull \hbox (12.64723pt too wide) in paragraph at lines 2074--2098
 
 [64] [65
 
-] [66] [67] [68] [69]
+] [66] [67] [68] [69
+
+
+]
 File: site.png Graphic file (type bmp)
 <site.png>
 [70]
@@ -2357,12 +2360,12 @@ File: observatorio.png Graphic file (type bmp)
 [71] [72
 
 ] [73] [74]
-Underfull \hbox (badness 2245) in paragraph at lines 2213--2213
+Underfull \hbox (badness 2245) in paragraph at lines 2223--2223
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2213--2213
+Underfull \hbox (badness 2245) in paragraph at lines 2223--2223
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
@@ -2378,7 +2381,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  42285 strings out of 468179
  841820 string characters out of 5433207
- 1532974 words of memory out of 5000000
+ 1532973 words of memory out of 5000000
  70372 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

@@ -11258,6 +11258,308 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(síntese.ano)) {
 \FloatBarrier
 ```
 
+\blandscape
+
+```{r 3-2-1-altmetric-breakdown-facebook, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# select produção by Altmetric breakdown
+prod_table <- metricas_all %>%
+  dplyr::filter(
+    !is.na(cited_by_fbwalls_count) &
+      cited_by_fbwalls_count > 0
+  )
+
+# filter by quadrienio vigente
+prod_table <- prod_table[prod_table$`Ano da Produção` == quadrienal.vigente, ]
+prod_label <- "Produções com compartilhamentos no Facebook"
+
+if (!sjmisc::is_empty(prod_table)) {
+  # format citation
+  prod_table <- prod_table %>%
+    dplyr::select(
+      ID = "ID da Produção",
+      Ano = "Ano da Produção",
+      Título  = "Nome da Produção",
+      Tipo = "Tipo de Produção",
+      Subtipo = "Subtipo de Produção",
+      DOI,
+      Facebook = "cited_by_fbwalls_count"
+    ) %>%
+    # format title case
+    dplyr::mutate(
+      Título = stringr::str_to_title(Título),
+      Tipo = stringr::str_to_title(Tipo),
+      Subtipo = stringr::str_to_title(Subtipo)
+    )
+  
+  # keep complete cases only
+  prod_table <- prod_table[complete.cases(prod_table), ]
+  
+  # remove duplicates
+  prod_table <- prod_table[!duplicated(prod_table$ID), ]
+  
+  # drop ID
+  prod_table <- dplyr::select(prod_table, -ID)
+  
+  # sort by last column
+  prod_table <- prod_table %>%
+    arrange(desc(tail(names(prod_table), 1)))
+}
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
+  # use kable for HTML output
+  knitr::kable(
+    prod_table,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = prod_label
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )  %>% kableExtra::column_spec(column = 1:dim(prod_table)[2], width = paste0(c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3), "cm")) %>%
+    kableExtra::column_spec(column = 1, bold = TRUE) %>%
+    kableExtra::row_spec(row = 0, bold = TRUE) %>%
+    kableExtra::footnote(
+      general_title = "<strong>Fontes</strong>: ",
+      general = c(
+        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+      ),
+      escape = FALSE)
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(prod_table)) {
+  # use tinytable for LaTeX output
+  prod_table <- data.frame(prod_table, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    prod_table,
+    width = c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3),
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", prod_label),
+    notes = list(
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+    )
+  ) %>%
+    tinytable::theme_latex(
+      rowhead = 1,
+      table = FALSE,
+      multipage	= TRUE,
+      placement = "H"
+    ) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+<br>
+
+```{r 3-2-1-altmetric-breakdown-blogs, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# select produção by Altmetric breakdown
+prod_table <- metricas_all %>%
+  dplyr::filter(
+    !is.na(cited_by_feeds_count) &
+      cited_by_feeds_count > 0
+  )
+
+# filter by quadrienio vigente
+prod_table <- prod_table[prod_table$`Ano da Produção` == quadrienal.vigente, ]
+prod_label <- "Produções com compartilhamentos em Blogs"
+
+if (!sjmisc::is_empty(prod_table)) {
+  # format citation
+  prod_table <- prod_table %>%
+    dplyr::select(
+      ID = "ID da Produção",
+      Ano = "Ano da Produção",
+      Título  = "Nome da Produção",
+      Tipo = "Tipo de Produção",
+      Subtipo = "Subtipo de Produção",
+      DOI,
+      Blogs = "cited_by_feeds_count"
+    ) %>%
+    # format title case
+    dplyr::mutate(
+      Título = stringr::str_to_title(Título),
+      Tipo = stringr::str_to_title(Tipo),
+      Subtipo = stringr::str_to_title(Subtipo)
+    )
+  
+  # keep complete cases only
+  prod_table <- prod_table[complete.cases(prod_table), ]
+  
+  # remove duplicates
+  prod_table <- prod_table[!duplicated(prod_table$ID), ]
+  
+  # drop ID
+  prod_table <- dplyr::select(prod_table, -ID)
+  
+  # sort by last column
+  prod_table <- prod_table %>%
+    arrange(desc(tail(names(prod_table), 1)))
+}
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
+  # use kable for HTML output
+  knitr::kable(
+    prod_table,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = prod_label
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )  %>% kableExtra::column_spec(column = 1:dim(prod_table)[2], width = paste0(c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3), "cm")) %>%
+    kableExtra::column_spec(column = 1, bold = TRUE) %>%
+    kableExtra::row_spec(row = 0, bold = TRUE) %>%
+    kableExtra::footnote(
+      general_title = "<strong>Fontes</strong>: ",
+      general = c(
+        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+      ),
+      escape = FALSE)
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(prod_table)) {
+  # use tinytable for LaTeX output
+  prod_table <- data.frame(prod_table, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    prod_table,
+    width = c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3),
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", prod_label),
+    notes = list(
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+    )
+  ) %>%
+    tinytable::theme_latex(
+      rowhead = 1,
+      table = FALSE,
+      multipage	= TRUE,
+      placement = "H"
+    ) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+<br>
+
+```{r 3-2-1-altmetric-breakdown-googleplus, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+# select produção by Altmetric breakdown
+prod_table <- metricas_all %>%
+  dplyr::filter(
+    !is.na(cited_by_gplus_count) &
+      cited_by_gplus_count > 0
+  )
+
+# filter by quadrienio vigente
+prod_table <- prod_table[prod_table$`Ano da Produção` == quadrienal.vigente, ]
+prod_label <- "Produções com compartilhamentos em Google+"
+
+if (!sjmisc::is_empty(prod_table)) {
+  # format citation
+  prod_table <- prod_table %>%
+    dplyr::select(
+      ID = "ID da Produção",
+      Ano = "Ano da Produção",
+      Título  = "Nome da Produção",
+      Tipo = "Tipo de Produção",
+      Subtipo = "Subtipo de Produção",
+      DOI,
+      'Google+' = "cited_by_gplus_count"
+    ) %>%
+    # format title case
+    dplyr::mutate(
+      Título = stringr::str_to_title(Título),
+      Tipo = stringr::str_to_title(Tipo),
+      Subtipo = stringr::str_to_title(Subtipo)
+    )
+  
+  # keep complete cases only
+  prod_table <- prod_table[complete.cases(prod_table), ]
+  
+  # remove duplicates
+  prod_table <- prod_table[!duplicated(prod_table$ID), ]
+  
+  # drop ID
+  prod_table <- dplyr::select(prod_table, -ID)
+  
+  # sort by last column
+  prod_table <- prod_table %>%
+    arrange(desc(tail(names(prod_table), 1)))
+}
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
+  # use kable for HTML output
+  knitr::kable(
+    prod_table,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = prod_label
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )  %>% kableExtra::column_spec(column = 1:dim(prod_table)[2], width = paste0(c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3), "cm")) %>%
+    kableExtra::column_spec(column = 1, bold = TRUE) %>%
+    kableExtra::row_spec(row = 0, bold = TRUE) %>%
+    kableExtra::footnote(
+      general_title = "<strong>Fontes</strong>: ",
+      general = c(
+        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+      ),
+      escape = FALSE)
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(prod_table)) {
+  # use tinytable for LaTeX output
+  prod_table <- data.frame(prod_table, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    prod_table,
+    width = c(0.05,0.30,0.15,0.15,0.25,0.10)*(29-3-3),
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", prod_label),
+    notes = list(
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+    )
+  ) %>%
+    tinytable::theme_latex(
+      rowhead = 1,
+      table = FALSE,
+      multipage	= TRUE,
+      placement = "H"
+    ) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(prod_table), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(prod_table), j = 1, bold = TRUE)
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+\elandscape
+
 <br>
 
 ```{r 3-2-2, eval = all(render_document, knitr::is_html_output())}

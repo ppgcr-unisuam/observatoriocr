@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.4)  6 NOV 2025 05:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.4)  6 NOV 2025 14:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2350,26 +2350,27 @@ Overfull \hbox (12.64723pt too wide) in paragraph at lines 2074--2098
 
 ] [66] [67] [68] [69
 
+] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83
 
 ]
 File: site.png Graphic file (type bmp)
 <site.png>
-[70]
+[84]
 File: observatorio.png Graphic file (type bmp)
 <observatorio.png>
-[71] [72
+[85] [86
 
-] [73] [74]
-Underfull \hbox (badness 2245) in paragraph at lines 2223--2223
+] [87] [88]
+Underfull \hbox (badness 2245) in paragraph at lines 2329--2329
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2223--2223
+Underfull \hbox (badness 2245) in paragraph at lines 2329--2329
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
-[75] (./autoavaliacao-2010-2012.aux)
+[89] (./autoavaliacao-2010-2012.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
@@ -2381,10 +2382,10 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  42285 strings out of 468179
  841820 string characters out of 5433207
- 1532973 words of memory out of 5000000
+ 1532974 words of memory out of 5000000
  70372 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,126p,1212b,2161s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2010-2012.pdf (79 pages).
+Output written on autoavaliacao-2010-2012.pdf (93 pages).

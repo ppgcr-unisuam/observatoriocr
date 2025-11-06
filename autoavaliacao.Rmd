@@ -5607,7 +5607,7 @@ lista.kw <- list()
 bancas.with.words <- c()
 table.bancas.long <- data.frame()
 
-if (!sjmisc::is_empty(id.TCC) && length(unique(bancas$`Linha de Pesquisa`[!is.na(bancas$Título) & bancas$Título != ""])) >= 2) {
+if (!sjmisc::is_empty(id.TCC)) {
   # loop over each ID
   for (i in 1:length(id.TCC)) {
     # select current ID

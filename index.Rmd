@@ -3405,6 +3405,13 @@ summ.table.pessoal <-
     sum(egressos$`Portador de Deficiência` == "Sim", na.rm = TRUE)
   )
 
+# Ensure all factor levels are set
+egressos$`Gênero` <- factor(egressos$`Gênero`, levels = c("Feminino", "Masculino", "Não Informado"))
+egressos$`Raça/Cor` <- factor(egressos$`Raça/Cor`, levels = c("Amarela", "Branca", "Indígena", "Parda", "Preta", "Não disponível"))
+egressos$`Portador de Deficiência` <- factor(egressos$`Portador de Deficiência`,
+                                             levels = c("Não", "Sim"),
+                                             labels = c("Não Portador", "Portador de Deficiência"))
+
 # rename Sim/Não em Portador de deficiência para "Portador de Deficiência" e "Não Portador de Deficiência"
 egressos$`Portador de Deficiência` <-
   factor(egressos$`Portador de Deficiência`,
@@ -3413,15 +3420,28 @@ egressos$`Portador de Deficiência` <-
 
 names(summ.table.pessoal) <-
   c(
-    unique(egressos$Gênero),
+    levels(factor(egressos$Gênero)),
     levels(egressos$`Raça/Cor`),
     levels(egressos$`Portador de Deficiência`)
   )
 
+# Renomeando as colunas de acordo com a ordem exata que queremos
+names(summ.table.pessoal) <- c(
+  "Feminino", "Masculino", "Não Informado", # Gênero
+  "Amarela", "Branca", "Indígena", "Parda", "Preta", "Não disponível", # Raça/Cor
+  "Não Portador", "Portador de Deficiência" # Portador de Deficiência
+)
+
 # plot area setup
-layout.m <- matrix(c(1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 11, 11, 11),
-                   ncol = 6,
-                   byrow = TRUE)
+layout.m <- matrix(
+  c(
+    1, 1, 2, 2, 3, 3,
+    4, 5, 6, 7, 8, 9,
+    10, 10, 10, 11, 11, 11
+  ),
+  ncol = 6,
+  byrow = TRUE
+)
 source("Scripts/plot-margins.R", local = knitr::knit_global())
 
 summ.data <- summ.table.pessoal

@@ -122,7 +122,8 @@ states <-
 paths <- c(
   file.path(getwd(), "PPG"),
   file.path(getwd(), "Sucupira"),
-  file.path(getwd(), "Impacto", "Sage Policy Profiles")
+  file.path(getwd(), "Impacto", "Sage Policy Profiles"),
+  file.path(getwd(), "Lattes xml")
 )
 
 for (i in 1:length(paths)) {

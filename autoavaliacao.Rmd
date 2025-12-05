@@ -28,8 +28,7 @@ link-citations: true
 always_allow_html: true
 tables: true
 params:
-#  quadrienal.vigente: 2025;2026;2027;2028
-  quadrienal.vigente: 2010;2011;2012
+  quadrienal.vigente: 2025;2026;2027;2028
   render_document: FALSE
 ---
 
@@ -13530,6 +13529,117 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.posdoc.hist)) {
     ) %>%
     tinytable::style_tt(i = 0, j = 1:ncol(table.posdoc.hist), bold = TRUE) %>%
     tinytable::style_tt(i = 1:nrow(table.posdoc.hist), j = 1, bold = TRUE)
+}
+
+# Add LaTeX commands for new page and float barrier
+if(knitr::is_latex_output()) {
+  cat('\\newpage')
+}
+```
+
+```{r 3-3-2-bancas-de-trabalho-de-conclusao-de-curso, eval = all(render_document, has.lattes.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
+source("Scripts/lattes_xml.parse.R", local = knitr::knit_global())
+
+# Example usage:
+data <- process_lattes_folder("./Lattes xml", "./Lattes xml", save_format = "flat-excel", output_filename = "all_bancas")
+
+data$titulo <- stringr::str_to_title(data$titulo)
+data$nome_candidato <- stringr::str_to_title(data$nome_candidato)
+data$nome_completo <- stringr::str_to_title(data$nome_completo)
+data$tipo <- stringr::str_to_title(data$tipo)
+data$nome_instituicao <- stringr::str_to_upper(tolower(data$nome_instituicao))
+
+# to title case
+subset_banca <- dplyr::select(
+  data,
+  'Ano'= ano,
+  'Título' = titulo,
+  'Natureza' = natureza,
+  'IES' = nome_instituicao,
+  'Tipo' = tipo,
+  'Candidato' = nome_candidato,
+  'Examinador' = nome_completo,
+  'Idioma' = idioma,
+  'Ordem' = ordem
+)
+
+# paste examinadores by order
+bancas_summary <- subset_banca |>
+  dplyr::group_by(Ano, Título, Natureza, IES, Tipo, Candidato, Idioma) |>
+  dplyr::summarise(
+    Examinadores = paste(Examinador[order(Ordem)], collapse = "; ")
+  ) |>
+  dplyr::ungroup()
+
+# Reorder columns
+bancas_summary <- bancas_summary |>
+  dplyr::select(
+    Ano,
+    Natureza,
+    Tipo,
+    IES,
+    Título,
+    Candidato,
+    Examinadores,
+    Idioma
+  )
+
+# remove duplicates
+bancas_summary <- bancas_summary[!duplicated(bancas_summary), ]
+
+# filter by quadrienio vigente
+bancas_summary <- bancas_summary[bancas_summary$Ano %in% quadrienal.vigente, ]
+
+# sort by Ano decreasing
+bancas_summary <- bancas_summary[order(bancas_summary$Ano, decreasing = TRUE), ]
+rownames(bancas_summary) <- NULL
+
+# print tables
+if (knitr::is_html_output() && !sjmisc::is_empty(bancas_summary)) {
+  # use kable for HTML output
+  knitr::kable(
+    bancas_summary,
+    align = "l",
+    escape = FALSE,
+    format = "html",
+    booktabs = TRUE,
+    linesep = "",
+    caption = "Bancas examinadoras de trabalho de conclusão de curso"
+  ) %>% kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = TRUE,
+    position = "center"
+  )  %>% kableExtra::column_spec(column = 1:dim(bancas_summary)[2], width = paste0(c(0.05,0.15,0.15,0.20,0.25,0.15,0.30,0.10)*(29-3-3), "cm")) %>%
+    kableExtra::column_spec(column = 1, bold = TRUE) %>%
+    kableExtra::row_spec(row = 0, bold = TRUE) %>%
+    kableExtra::footnote(
+      general_title = "<strong>Fontes</strong>: ",
+      general = c(
+        "<a href='https://lattes.cnpq.br/'>Plataforma Lattes</a>"
+      ),
+      escape = FALSE)
+} else if (knitr::is_latex_output() && !sjmisc::is_empty(bancas_summary)) {
+  # use tinytable for LaTeX output
+  bancas_summary <- data.frame(bancas_summary, check.names = FALSE)
+  options(tinytable_print_output = "latex")
+  tinytable::tt(
+    bancas_summary,
+    width = c(0.05,0.15,0.15,0.20,0.25,0.15,0.30,0.10)*(29-3-3),
+    align = "l",
+    caption = ifelse(knitr::is_html_output(), "", "Bancas examinadoras de trabalho de conclusão de curso"),
+    notes = list(
+      "\\textbf{Fontes}: \\textbf{\\href{https://lattes.cnpq.br/}{Plataforma Lattes}}"
+    ),
+    escape = TRUE
+  ) %>%
+    tinytable::theme_latex(
+      rowhead = 1,
+      table = FALSE,
+      multipage	= TRUE,
+      placement = "H"
+    ) %>%
+    tinytable::style_tt(i = 0, j = 1:ncol(bancas_summary), bold = TRUE) %>%
+    tinytable::style_tt(i = 1:nrow(bancas_summary), j = 1, bold = TRUE)
 }
 
 # Add LaTeX commands for new page and float barrier

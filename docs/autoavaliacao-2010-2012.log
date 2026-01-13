@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.27)  30 DEC 2025 13:18
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.1.2)  13 JAN 2026 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **autoavaliacao-2010-2012.tex
 (./autoavaliacao-2010-2012.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-12-24>
+L3 programming layer <2025-12-29>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/bk10.clo
@@ -136,7 +136,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/unicode-math/unicode-math.sty 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-12-24 L3 programming layer (loader) 
+Package: expl3 2025-12-29 L3 programming layer (loader) 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
 \g__graphics_track_int=\count295
@@ -597,7 +597,7 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 )
 \pandoc@box=\box64
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLa
+Package: babel 2025/12/30 v25.18 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
 \babel@savecnt=\count327
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
@@ -623,7 +623,7 @@ on input line 2101.
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/pt/babel-brazilian
 .tex)
 Package babel Info: Importing font and identification data for brazilian
-(babel)             from babel-pt-BR.ini. Reported on input line 4320.
+(babel)             from babel-pt-BR.ini. Reported on input line 4321.
 (/usr/local/texlive/2025/texmf-dist/tex/generic/babel-portuges/brazilian.ldf
 Language: portuges 2021/07/09 v1.2t Portuguese support from the babel system
 Package babel Info: Hyphen rules for 'brazilian' set to \l@portuguese
@@ -2109,82 +2109,82 @@ ex-text;!
 Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=t
 ex-text;!
 [3] [4] [5] [6] [7] [8]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 553--553
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 554--554
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 553--553
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 554--554
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 553--553
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 554--554
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 553--553
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 554--554
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 [9]
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 585--585
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 586--586
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 585--585
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 586--586
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 
-Overfull \hbox (7.67752pt too wide) in paragraph at lines 585--585
+Overfull \hbox (7.67752pt too wide) in paragraph at lines 586--586
 []\TU/lmr/bx/n/10 Doutorado 
  []
 
 
-Overfull \hbox (1.69751pt too wide) in paragraph at lines 585--585
+Overfull \hbox (1.69751pt too wide) in paragraph at lines 586--586
 []\TU/lmr/bx/n/10 Mestrado 
  []
 
 [10] [11]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 623--623
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 624--624
 []\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 623--623
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 624--624
 []\TU/lmr/m/n/10 01/01/2010 
  []
 
 [12] [13]
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Overfull \hbox (7.37837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.37837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2010 
  []
 
 
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2014 
  []
 
 
-Overfull \hbox (7.27837pt too wide) in paragraph at lines 665--665
+Overfull \hbox (7.27837pt too wide) in paragraph at lines 666--666
 []\TU/lmr/m/n/10 01/01/2014 
  []
 
@@ -2193,22 +2193,22 @@ Overfull \hbox (7.27837pt too wide) in paragraph at lines 665--665
 ] [17] [18] [19
 
 ]
-Underfull \hbox (badness 1917) in paragraph at lines 825--825
+Underfull \hbox (badness 1917) in paragraph at lines 826--826
 []\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 825--825
+Underfull \hbox (badness 10000) in paragraph at lines 826--826
 []\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 825--825
+Underfull \hbox (badness 1917) in paragraph at lines 826--826
 []\TU/lmr/bx/n/10 AVALIAÇÃO DOS SISTEMAS CARDIOVASCU-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 825--825
+Underfull \hbox (badness 10000) in paragraph at lines 826--826
 []\TU/lmr/bx/n/10 AVALIAÇÃO FUNCIONAL DO SISTEMA
  []
 
@@ -2221,152 +2221,152 @@ Underfull \hbox (badness 10000) in paragraph at lines 825--825
 ] [36
 
 ] [37] [38]
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/bx/n/10 Agência 
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 VIII Fórum Nacional de
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 1446--1446
+Underfull \hbox (badness 1509) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 Pesquisa e Pós Graduação
  []
 
 
-Underfull \hbox (badness 4013) in paragraph at lines 1446--1446
+Underfull \hbox (badness 4013) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio à Organização de
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 1446--1446
+Underfull \hbox (badness 2443) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 à Terceira Idade (UNATI-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 1446--1446
+Underfull \hbox (badness 1442) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 forço, composição corporal,
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
 
-Overfull \hbox (8.22627pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (8.22627pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/bx/n/10 Agência 
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 VIII Fórum Nacional de
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 1446--1446
+Underfull \hbox (badness 1509) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 Pesquisa e Pós Graduação
  []
 
 
-Underfull \hbox (badness 4013) in paragraph at lines 1446--1446
+Underfull \hbox (badness 4013) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio à Organização de
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 1446--1446
+Underfull \hbox (badness 2443) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 à Terceira Idade (UNATI-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 1446--1446
+Underfull \hbox (badness 1442) in paragraph at lines 1447--1447
 \TU/lmr/m/n/10 forço, composição corporal,
  []
 
 
-Overfull \hbox (7.27628pt too wide) in paragraph at lines 1446--1446
+Overfull \hbox (7.27628pt too wide) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 FAPERJ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1446--1446
+Underfull \hbox (badness 10000) in paragraph at lines 1447--1447
 []\TU/lmr/m/n/10 Auxílio ao Pesquisador
  []
 
@@ -2402,59 +2402,59 @@ ignored error: Infinite glue shrinkage found in box being split [44] [45] [46]
 
 
 ] [63]
-Overfull \hbox (12.64723pt too wide) in paragraph at lines 2205--2229
+Overfull \hbox (12.64723pt too wide) in paragraph at lines 2206--2230
  [][] 
  []
 
 [64] [65
 
 ] [66] [67] [68]
-Underfull \hbox (badness 1033) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1033) in paragraph at lines 2309--2309
 []\TU/lmr/m/n/10 Dias, C. M., Vieira, R. de O., Oliveira,
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1783) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 J. F., Lopes, A. J., Menezes, S. L. S.
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 2308--2308
+Underfull \hbox (badness 2189) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 de, & Guimarães, F. S. (2011). Três
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 2308--2308
+Underfull \hbox (badness 2050) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 protocolos fisioterapêuticos: efeitos sobre
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1158) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 os volumes pulmonares após cirurgia car-
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1033) in paragraph at lines 2309--2309
 []\TU/lmr/m/n/10 Dias, C. M., Vieira, R. de O., Oliveira,
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1783) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 J. F., Lopes, A. J., Menezes, S. L. S.
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 2308--2308
+Underfull \hbox (badness 2189) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 de, & Guimarães, F. S. (2011). Três
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 2308--2308
+Underfull \hbox (badness 2050) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 protocolos fisioterapêuticos: efeitos sobre
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 2308--2308
+Underfull \hbox (badness 1158) in paragraph at lines 2309--2309
 \TU/lmr/m/n/10 os volumes pulmonares após cirurgia car-
  []
 
@@ -2471,19 +2471,19 @@ File: observatorio.png Graphic file (type bmp)
 [72] [73
 
 ] [74] [75]
-Underfull \hbox (badness 2245) in paragraph at lines 2403--2403
+Underfull \hbox (badness 2245) in paragraph at lines 2404--2404
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2403--2403
+Underfull \hbox (badness 2245) in paragraph at lines 2404--2404
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 [76] (./autoavaliacao-2010-2012.aux)
  ***********
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-12-24>
+L3 programming layer <2025-12-29>
  ***********
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2491,8 +2491,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  46281 strings out of 468179
- 969415 string characters out of 5433206
- 1623682 words of memory out of 5000000
+ 969415 string characters out of 5433208
+ 1624685 words of memory out of 5000000
  74356 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

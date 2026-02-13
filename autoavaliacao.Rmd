@@ -3634,7 +3634,7 @@ table.perm.compl.long <- rbind(
   )
 )
 
-# add all levels for quadrienio.vigente to Ano
+# add all levels for quadrienal.vigente to Ano
 table.perm.compl.long$Ano <- factor(
   table.perm.compl.long$Ano,
   levels = c(as.character(quadrienal.vigente), paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)))
@@ -3914,7 +3914,7 @@ table.col.compl.long <- rbind(
   )
 )
 
-# add all levels for quadrienio.vigente to Ano
+# add all levels for quadrienal.vigente to Ano
 table.col.compl.long$Ano <- factor(
   table.col.compl.long$Ano,
   levels = c(as.character(quadrienal.vigente), paste0(min(quadrienal.vigente), "-", max(quadrienal.vigente)))
@@ -7156,7 +7156,7 @@ names(sucupira.df.disc) <- names(sucupira)
 # rename column sucupira.df.disc$"Ano Titulação" to "Anos"
 colnames(sucupira.df.disc)[colnames(sucupira.df.disc) == "Ano Titulação"] <- "Anos"
 
-# filter Anos within quadrienio.vigente
+# filter Anos within quadrienal.vigente
 sucupira.df.disc <- sucupira.df.disc[sucupira.df.disc$Anos %in% quadrienal.vigente, ]
 ```
 

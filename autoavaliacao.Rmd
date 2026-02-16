@@ -498,7 +498,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(summ.df)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(summ.df)) {
@@ -511,7 +511,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(summ.df)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Prenchimento do Coleta - Quantidade de dados por aba, por ano"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -593,7 +593,7 @@ if (knitr::is_html_output() & !sjmisc::is_empty(cursos)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(summ.df)){
@@ -606,7 +606,7 @@ if (knitr::is_html_output() & !sjmisc::is_empty(cursos)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Objetivos do Curso"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -659,7 +659,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -672,7 +672,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Perfil de Egressos"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -975,7 +975,7 @@ if(any(lapply(table.1.1.1.ac, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.1.1.ac)) {
   table.1.1.1.ac <- table.1.1.1.ac %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.1.1.ac)
 }
@@ -1002,7 +1002,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.1.1.ac)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -1061,7 +1061,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -1074,7 +1074,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Áreas de Concentração"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -1265,7 +1265,7 @@ if(any(lapply(table.1.1.1.lp, length) > 0)){
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.1.1.lp)) {
   
   table.1.1.1.lp <- table.1.1.1.lp %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.1.1.lp)
 }
@@ -1292,7 +1292,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.1.1.lp)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -1351,7 +1351,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -1364,7 +1364,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Linhas de Pesquisa"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -1822,7 +1822,7 @@ if(any(lapply(table.1.1.1.ppdp, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.1.1.ppdp)) {
   table.1.1.1.ppdp <- table.1.1.1.ppdp %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.1.1.ppdp)
 }
@@ -1849,7 +1849,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.1.1.ppdp)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -2015,7 +2015,7 @@ if (!sjmisc::is_empty(lista.AC.LP)) {
       "    kableExtra::row_spec(row = 0, bold = TRUE) %>% \n\n",
       "    kableExtra::footnote(\n\n",
       "       general_title = '<strong>Fontes</strong>: ',\n\n",
-      "       general = c('<a href=\"https://sucupira.capes.gov.br/sucupira/\">Plataforma Sucupira</a>'),\n\n",
+      "       general = c('<a href=\"https://sucupira.capes.gov.br\">Plataforma Sucupira</a>'),\n\n",
       "       escape = FALSE)\n\n",
       "} else {\n\n",
       "  # use tinytable for LaTeX output\n\n",
@@ -2028,7 +2028,7 @@ if (!sjmisc::is_empty(lista.AC.LP)) {
       "    align = 'l',\n\n",
       "    caption = '", caption.1, "',\n\n",
       "    notes = list(\n\n",
-      "      '\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}'\n\n",
+      "      '\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}'\n\n",
       "    ),\n\n",
       "    row.names = FALSE\n\n",
       "  ) %>% \n\n",
@@ -2131,7 +2131,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(coerencia.tbl)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(coerencia.tbl)){
@@ -2144,7 +2144,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(coerencia.tbl)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Coerência e abrangência (AC > LP > PP)"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -2252,7 +2252,7 @@ table.1.1.2 <-
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.1.2)) {
   table.1.1.2 <- table.1.1.2 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.1.2)
 }
@@ -2279,7 +2279,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.1.2)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -2534,7 +2534,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -2547,7 +2547,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Disciplinas de Mestrado"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -2635,7 +2635,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -2648,7 +2648,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Disciplinas de Doutorado"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -2821,7 +2821,7 @@ if (knitr::is_html_output()) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else {
@@ -2834,7 +2834,7 @@ if (knitr::is_html_output()) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Infraestrutura de Laboratórios e Equipamentos"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -3419,7 +3419,7 @@ if(any(lapply(table.1.1.1.dim, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.1.1.dim)) {
   table.1.1.1.dim <- table.1.1.1.dim %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.1.1.dim)
 }
@@ -3446,7 +3446,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.1.1.dim)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -3695,7 +3695,7 @@ if(any(lapply(table.1.2.2, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.2.2)) {
   table.1.2.2 <- table.1.2.2 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.2)
 }
@@ -3722,7 +3722,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -3975,7 +3975,7 @@ if(any(lapply(table.1.2.2, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.2.2)) {
   table.1.2.2 <- table.1.2.2 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.2)
 }
@@ -4002,7 +4002,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.2)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -4243,7 +4243,7 @@ if(sum(lapply(table.1.2.3, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.1.2.3)) {
   table.1.2.3 <- table.1.2.3 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.3)
 }
@@ -4270,7 +4270,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.1.2.3)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -4488,7 +4488,7 @@ if(any(lapply(table.excl.list, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.excl.gt)) {
   table.excl.gt <- table.excl.gt %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.excl.gt)
 }
@@ -4515,7 +4515,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.excl.gt)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -4646,7 +4646,7 @@ table.1.2.5 <- table.cap.aux.gt
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.cap.aux)) {
   table.1.2.5 <- table.1.2.5 %>% 
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.5)
 }
@@ -4673,7 +4673,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.cap.aux)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -4784,7 +4784,7 @@ table.1.2.5 <- table.cap.bolsa.gt
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.cap.bolsa)) {
   table.1.2.5 <- table.1.2.5 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.5)
 }
@@ -4811,7 +4811,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.cap.bolsa)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -4934,7 +4934,7 @@ table.1.2.5 <- table.cap.pq.gt
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.cap.pq)) {
   table.1.2.5 <- table.1.2.5 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.1.2.5)
 }
@@ -4961,7 +4961,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.cap.pq)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -5049,7 +5049,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(financiadores)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(financiadores)) {
@@ -5062,7 +5062,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(financiadores)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Capacidade de captação de recursos - Detalhes dos financiadores"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -5301,7 +5301,7 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0 && !sjmisc::is_empty(su
   # Print HTML table
   if (knitr::is_html_output() && !sjmisc::is_empty(sucupira.perfil.disc)) {
     table.matr.gt <- table.matr.gt %>%
-      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
     
     print(table.matr.gt)
   }
@@ -5328,7 +5328,7 @@ if (nlevels(sucupira.perfil.disc$`Nível Discente`) != 0 && !sjmisc::is_empty(su
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -5813,7 +5813,7 @@ if (!sjmisc::is_empty(id.TCC)) {
   # Print HTML table
   if (knitr::is_html_output() && !sjmisc::is_empty(table.bancas.long)) {
     table.2.1.1 <- table.2.1.1 %>%
-      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
     
     print(table.2.1.1)
   }
@@ -5840,7 +5840,7 @@ if (!sjmisc::is_empty(id.TCC)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -5891,7 +5891,7 @@ if (!sjmisc::is_empty(lista.kw)) {
       "    kableExtra::row_spec(row = 0, bold = TRUE) %>% \n\n",
       "    kableExtra::footnote(\n\n",
       "      general_title = '<strong>Fontes</strong>: ',\n\n",
-      "      general = c('<a href=\"https://sucupira.capes.gov.br/sucupira/\">Plataforma Sucupira</a>'),\n\n",
+      "      general = c('<a href=\"https://sucupira.capes.gov.br\">Plataforma Sucupira</a>'),\n\n",
       "      escape = FALSE)\n\n",
       "} else {\n\n",
       "  # use tinytable for LaTeX output\n\n",
@@ -5904,7 +5904,7 @@ if (!sjmisc::is_empty(lista.kw)) {
       "    align = 'l',\n\n",
       "    caption = '", caption.2, "',\n\n",
       "    notes = list(\n\n",
-      "      '\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}'\n\n",
+      "      '\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}'\n\n",
       "                ),\n\n",
       "              row.names = FALSE\n\n",
       "  ) %>% \n\n",
@@ -6685,7 +6685,7 @@ if(any(lapply(table.2.1.2.a, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.1.2.a)) {
   table.2.1.2.a <- table.2.1.2.a %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.1.2.a)
 }
@@ -6712,7 +6712,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.1.2.a)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -6737,7 +6737,7 @@ if(any(lapply(table.2.1.2.b, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.1.2.b)) {
   table.2.1.2.b <- table.2.1.2.b %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.1.2.b)
 }
@@ -6764,7 +6764,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.1.2.b)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -6788,7 +6788,7 @@ if(any(lapply(table.2.1.2.c, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.1.2.c)) {
   table.2.1.2.c <- table.2.1.2.c %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.1.2.c)
 }
@@ -6815,7 +6815,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.1.2.c)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -6840,7 +6840,7 @@ if(any(lapply(table.2.1.2.d, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.1.2.d)) {
   table.2.1.2.d <- table.2.1.2.d %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.1.2.d)
 }
@@ -6867,7 +6867,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.1.2.d)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -7529,7 +7529,7 @@ if(any(lapply(table.2.2.1.a, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.1.a)) {
   table.2.2.1.a <- table.2.2.1.a %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.1.a)
 }
@@ -7556,7 +7556,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.1.a)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -7581,7 +7581,7 @@ if(any(lapply(table.2.2.1.b, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.1.b)) {
   table.2.2.1.b <- table.2.2.1.b %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.1.b)
 }
@@ -7608,7 +7608,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.1.b)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -7632,7 +7632,7 @@ if(any(lapply(table.2.2.1.c, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.1.c)) {
   table.2.2.1.c <- table.2.2.1.c %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.1.c)
 }
@@ -7659,7 +7659,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.1.c)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -8324,7 +8324,7 @@ if(any(lapply(table.2.2.2.a, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.2.a)) {
   table.2.2.2.a <- table.2.2.2.a %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.2.a)
 }
@@ -8351,7 +8351,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.2.a)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -8376,7 +8376,7 @@ if(any(lapply(table.2.2.2.b, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.2.b)) {
   table.2.2.2.b <- table.2.2.2.b %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.2.b)
 }
@@ -8403,7 +8403,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.2.b)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -8427,7 +8427,7 @@ if(any(lapply(table.2.2.2.c, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.2.2.c)) {
   table.2.2.2.c <- table.2.2.2.c %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.2.2.c)
 }
@@ -8454,7 +8454,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.2.2.c)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -8727,7 +8727,7 @@ if(!sjmisc::is_empty(table.continuada)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.3.1)) {
   table.2.3.1 <- table.2.3.1 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.3.1)
 }
@@ -8754,7 +8754,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.3.1)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -8808,7 +8808,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.continuada.2)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(table.continuada.2)) {
@@ -8821,7 +8821,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.continuada.2)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Formação continuada no Programa - Detalhes"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -9480,7 +9480,7 @@ if(any(lapply(table.2.4.1.a, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.4.1.a)) {
   table.2.4.1.a <- table.2.4.1.a %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>") %>%
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>") %>%
     gtsummary::modify_source_note("O protagonismo do docente permanente foi definido pela ordem de autoria: 1º autor, 2º autor, penúltmo ou último")
   
   print(table.2.4.1.a)
@@ -9508,7 +9508,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.4.1.a)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
         "Protagonismo definido pela ordem de autoria: 1º autor, 2º autor, penúltimo ou último"
       ),
       escape = FALSE
@@ -9561,7 +9561,7 @@ if(knitr::is_latex_output()) {
 #     kableExtra::footnote(
 #       general_title = "<strong>Fontes</strong>: ",
 #       general = c(
-#         "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+#         "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
 #       ),
 #       escape = FALSE)
 # } else if (knitr::is_latex_output() && !sjmisc::is_empty(protagonismo)) {
@@ -9574,7 +9574,7 @@ if(knitr::is_latex_output()) {
 #     align = "l",
 #     caption = ifelse(knitr::is_html_output(), "", "Produção bibliográfica (artigos/livros/capítulos) dos Docentes Permanentes produzidos em coautoria com os discentes/egressos - Protagonismo"),
 #     notes = list(
-#       "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+#       "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
 #     )
 #   ) %>%
 #     tinytable::theme_latex(
@@ -9700,7 +9700,7 @@ if(!sjmisc::is_empty(turmas.curso)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.part1)) {
   table.part1 <- table.part1 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.part1)
 }
@@ -9727,7 +9727,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.part1)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -9766,7 +9766,7 @@ if(!sjmisc::is_empty(turmas.curso)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.part2)) {
   table.part2 <- table.part2 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.part2)
 }
@@ -9793,7 +9793,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.part2)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -9844,7 +9844,7 @@ if(!sjmisc::is_empty(turmas.doc)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.part3)) {
   table.part3 <- table.part3 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.part3)
 }
@@ -9871,7 +9871,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.part3)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -9913,7 +9913,7 @@ if(!sjmisc::is_empty(turmas.posdoc)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(turmas.posdoc)) {
   table.part4 <- table.part4 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.part4)
 }
@@ -9940,7 +9940,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(turmas.posdoc)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -10062,7 +10062,7 @@ if(knitr::is_html_output()) {
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.doc.gt)) {
   table.doc.gt <- table.doc.gt %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.doc.gt)
 }
@@ -10089,7 +10089,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.doc.gt)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -10173,7 +10173,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.projetos.doc)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(table.projetos.doc)){
@@ -10186,7 +10186,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.projetos.doc)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Docentes Permanentes Responsáveis por Projetos, por Linha de Pesquisa"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -10334,7 +10334,7 @@ if (nlevels(sucupira.df.matr$`Nível Discente`) != 0) {
   # Print HTML table
   if (knitr::is_html_output() && !sjmisc::is_empty(sucupira.df.matr)) {
     table.matr.gt <- table.matr.gt %>%
-      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+      gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
     
     
     print(table.matr.gt)
@@ -10362,7 +10362,7 @@ if (nlevels(sucupira.df.matr$`Nível Discente`) != 0) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -10451,7 +10451,7 @@ if (nlevels(sucupira.df.tit$`Nível Discente`) != 0) {
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(sucupira.df.tit)) {
   table.tit.gt <- table.tit.gt %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.tit.gt)
 }
@@ -10478,7 +10478,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(sucupira.df.tit)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -10726,7 +10726,7 @@ if(any(lapply(table.2.5.5a, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.5.5a)) {
   table.2.5.5a <- table.2.5.5a %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.5.5a)
 }
@@ -10753,7 +10753,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.5.5a)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -10889,7 +10889,7 @@ if(any(lapply(table.2.5.5b, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.2.5.5b)) {
   table.2.5.5b <- table.2.5.5b %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.2.5.5b)
 }
@@ -10916,7 +10916,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.2.5.5b)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -11062,7 +11062,7 @@ if(any(lapply(table.insercao.list, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.insercao.gt)) {
   table.insercao.gt <- table.insercao.gt %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.insercao.gt)
 }
@@ -11089,7 +11089,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.insercao.gt)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -11939,7 +11939,7 @@ if(any(lapply(table.3.1.2, length) > 0)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.3.1.2)) {
   table.3.1.2 <- table.3.1.2 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>")
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>")
   
   print(table.3.1.2)
 }
@@ -11966,7 +11966,7 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(table.3.1.2)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+        "\\\\textbf{Fontes}: \\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
       ),
       escape = FALSE
     )
@@ -12155,13 +12155,13 @@ if(!sjmisc::is_empty(síntese.ano)){
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(síntese.ano)) {
   table.3.2.1 <- table.3.2.1 %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>") %>%
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>") %>%
     gtsummary::modify_source_note("<a href='https://www.altmetric.com/'>Altmetric</a>") %>%
     gtsummary::modify_source_note("<a href='https://www.dimensions.ai/'>Dimensions</a>") %>%
     gtsummary::modify_source_note("<a href='https://www.scimagojr.com/'>SJR</a>") %>%
     gtsummary::modify_source_note("<a href='https://www.scopus.com/sources'>CiteScore</a>") %>%
     gtsummary::modify_source_note("<a href='https://plu.mx'>PlumX</a>") %>%
-    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf'>Qualis</a>") %>%
+    gtsummary::modify_source_note("<a href='https://sucupira.capes.gov.brpublic/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf'>Qualis</a>") %>%
     gtsummary::modify_source_note("<a href='https://www.crossref.org'>CrossRef</a>") %>%
     gtsummary::modify_source_note("<a href='https://doaj.org'>DOAJ</a>")
   
@@ -12190,13 +12190,13 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(síntese.ano)) {
     kableExtra::footnote(
       general_title = "",
       general = c(
-        "\\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+        "\\\\textbf{\\\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
         "\\\\textbf{\\\\href{https://www.altmetric.com/}{Altmetric}}",
         "\\\\textbf{\\\\href{https://www.dimensions.ai/}{Dimensions}}",
         "\\\\textbf{\\\\href{https://www.scimagojr.com/}{SJR}}",
         "\\\\textbf{\\\\href{https://www.scopus.com/sources}{CiteScore}}",
         "\\\\textbf{\\\\href{https://plu.mx}{PlumX}}",
-        "\\\\textbf{\\\\href{https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf}{Qualis}}",
+        "\\\\textbf{\\\\href{https://sucupira.capes.gov.brpublic/consultas/coleta/veiculoPublicacaoQualis/listaConsultaGeralPeriodicos.jsf}{Qualis}}",
         "\\\\textbf{\\\\href{https://www.crossref.org}{CrossRef}}",
         "\\\\textbf{\\\\href{https://doaj.org}{DOAJ}}",
         "As métricas são referentes apenas às produções com \\\\textit{digital object identifier} (DOI)",
@@ -12205,6 +12205,15 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(síntese.ano)) {
       escape = FALSE
     )
   print(kable_table)
+}
+
+make_fontes_note <- function() {
+  if (knitr::is_html_output()) {
+    return("<strong>Fontes:</strong> <a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>, <a href='https://www.altmetric.com/'>Altmetric</a>")
+  }
+  if (knitr::is_latex_output()) {
+    return("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}, \\href{https://www.altmetric.com/}{Altmetric}")
+  }
 }
 ```
 
@@ -12282,7 +12291,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12309,8 +12318,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12388,7 +12396,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12415,9 +12423,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 
 if (!sjmisc::is_empty(prod_table)) {
-  # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12495,7 +12501,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12523,8 +12529,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12602,7 +12607,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12630,8 +12635,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12709,7 +12713,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12737,8 +12741,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12816,7 +12819,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12844,8 +12847,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -12923,7 +12925,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -12951,8 +12953,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13030,7 +13031,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13058,8 +13059,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13137,7 +13137,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13165,8 +13165,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13244,7 +13243,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13272,8 +13271,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13351,7 +13349,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13379,8 +13377,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13458,7 +13455,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13486,8 +13483,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13565,7 +13561,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13593,8 +13589,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13672,7 +13667,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13700,8 +13695,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13779,7 +13773,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13807,8 +13801,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -13886,7 +13879,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://www.altmetric.com/'>Altmetric</a>"
       ),
       escape = FALSE)
@@ -13914,8 +13907,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(prod_table)) {
 
 if (!sjmisc::is_empty(prod_table)) {
   # add LaTeX-formatted note manually
-  cat("\\textbf{Fontes}: \\href{https://sucupira.capes.gov.br/sucupira/}{\\textbf{Plataforma Sucupira}}, ",
-      "\\href{https://www.altmetric.com/}{\\textbf{Altmetric}}\n\n")
+  cat(make_fontes_note(), "\n\n")
 }
 
 # Add LaTeX commands for new page and float barrier
@@ -14261,6 +14253,9 @@ if (dim(externos)[1] != 0) {
   externos <- externos[order(externos$'Nome do Participante', decreasing = FALSE),]
 }
 
+# remove row names
+rownames(externos) <- NULL
+
 # print tables
 if (knitr::is_html_output() && !sjmisc::is_empty(externos)) {
   # use kable for HTML output
@@ -14282,7 +14277,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(externos)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(externos)) {
@@ -14291,11 +14286,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(externos)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     externos,
-    width = c(0.30,0.20,0.40,0.10)*(21-3-3),
+    width = c(0.30,0.20,0.40,0.10)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Parcerias para desenvolvimento de produtos/publicações conjuntas"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -14403,7 +14398,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.posdoc.hist)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>"
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>"
       ),
       escape = FALSE)
 } else if (knitr::is_latex_output() && !sjmisc::is_empty(table.posdoc.hist)) {
@@ -14412,11 +14407,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(table.posdoc.hist)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     table.posdoc.hist,
-    width = c(0.25,0.35,0.15,0.15,0.10)*(21-3-3),
+    width = c(0.25,0.35,0.15,0.15,0.10)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Atração de pós-doutorandos"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}"
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
   ) %>%
     tinytable::theme_latex(
@@ -14496,6 +14491,9 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(editor.name.all)) {
   editor.name.all[] <- lapply(editor.name.all, function(x) gsub("&", "\\\\&", x))
 }
 
+# remove rownames
+rownames(editor.name.all) <- NULL
+
 # print tables
 if (knitr::is_html_output() && !sjmisc::is_empty(editor.name.all)) {
   # use kable for HTML output
@@ -14517,7 +14515,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(editor.name.all)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://orcid.org'>ORCID</a>"
       ),
       escape = FALSE)
@@ -14527,11 +14525,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(editor.name.all)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     editor.name.all,
-    width = c(0.10,0.10,0.25,0.30,0.15,0.10)*(21-3-3),
+    width = c(0.10,0.10,0.25,0.30,0.15,0.10)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Assessoria de ONGs, empresas, agências de fomento, revistas científicas ou órgãos de governo"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
       "\\textbf{\\href{https://orcid.org}{ORCID}}"
     )
   ) %>%
@@ -14602,6 +14600,9 @@ if (knitr::is_latex_output() && !sjmisc::is_empty(peer.review.all)) {
   peer.review.all[] <- lapply(peer.review.all, function(x) gsub("&", "\\\\&", x))
 }
 
+# remove rownames
+rownames(peer.review.all) <- NULL
+
 # print tables
 if (knitr::is_html_output() && !sjmisc::is_empty(peer.review.all)) {
   # use kable for HTML output
@@ -14623,7 +14624,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(peer.review.all)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://orcid.org'>ORCID</a>"
       ),
       escape = FALSE)
@@ -14633,11 +14634,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(peer.review.all)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     peer.review.all,
-    width = c(0.05,0.05,0.25,0.25,0.10,0.10,0.10,0.10)*(21-3-3),
+    width = c(0.05,0.05,0.25,0.25,0.10,0.10,0.10,0.10)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Revisor de periódicos nacionais e internacionais"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
       "\\textbf{\\href{https://orcid.org}{ORCID}}"
     )
   ) %>%
@@ -14756,7 +14757,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(member.all)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://orcid.org'>ORCID</a>"
       ),
       escape = FALSE)
@@ -14766,11 +14767,11 @@ if (knitr::is_html_output() && !sjmisc::is_empty(member.all)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     member.all,
-    width = c(0.10,0.10,0.30,0.30,0.10,0.10)*(21-3-3),
+    width = c(0.10,0.10,0.30,0.30,0.10,0.10)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Liderança de sociedades e/ou de órgãos científicos, culturais, profissionais, sociais, governamentais"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
       "\\textbf{\\href{https://orcid.org}{ORCID}}"
     )
   ) %>%
@@ -14810,7 +14811,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(services.all)) {
     kableExtra::footnote(
       general_title = "<strong>Fontes</strong>: ",
       general = c(
-        "<a href='https://sucupira.capes.gov.br/sucupira/'>Plataforma Sucupira</a>",
+        "<a href='https://sucupira.capes.gov.br'>Plataforma Sucupira</a>",
         "<a href='https://orcid.org'>ORCID</a>"
       ),
       escape = FALSE)
@@ -14824,7 +14825,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(services.all)) {
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Assessorias de ONGs, empresas, agências de fomento, revistas científicas ou órgãos de governo"),
     notes = list(
-      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br/sucupira/}{Plataforma Sucupira}}",
+      "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}",
       "\\textbf{\\href{https://orcid.org}{ORCID}}"
     )
   ) %>%
@@ -14894,6 +14895,9 @@ internacional <- internacional[internacional$`Publicação` %in% quadrienal.vige
 # sort by increasing year
 internacional <- internacional[order(internacional$`Publicação`, decreasing = FALSE),]
 
+# remove rownames
+rownames(internacional) <- NULL
+
 # print tables
 if (knitr::is_html_output() && !sjmisc::is_empty(internacional)) {
   # use kable for HTML output
@@ -14918,7 +14922,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(internacional)) {
   options(tinytable_print_output = "latex")
   tinytable::tt(
     internacional,
-    width = c(0.10,0.50,0.10,0.30)*(21-3-3),
+    width = c(0.10,0.50,0.10,0.30)*(29-3-3),
     align = "l",
     caption = ifelse(knitr::is_html_output(), "", "Mobilidade e atuação acadêmica internacional")
   ) %>%

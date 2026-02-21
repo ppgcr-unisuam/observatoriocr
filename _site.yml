@@ -17,7 +17,8 @@ excludes:
   - repository-open-graph-observatorio.png
   - 1_inicio.html
   - 2_caches.html
-  - autoavaliacao.log
+  - "*.log"
+  - "**/*.log"
   - cache
   - Metrics
   - Scripts
@@ -213,6 +214,9 @@ navbar:
           href: [autoavaliacao-2010-2012.html]
     - text: "Relatórios"
       menu:
+        - text: "Consolidado"
+          icon: "fa-file-pdf"
+          href: [consolidado.pdf]
         - text: "2025-2028"
           icon: "fa-file-pdf"
           href: [autoavaliacao-2025-2028.pdf]

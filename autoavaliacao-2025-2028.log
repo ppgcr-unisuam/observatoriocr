@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  23 FEB 2026 11:20
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  12 MAR 2026 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -482,7 +482,7 @@ tim
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2025/07/09 v3.2b Micro-typographical refinements (RS)
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count312
@@ -490,24 +490,24 @@ Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \MT@toks=\toks24
 \MT@tempbox=\box55
 \MT@count=\count313
-LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
-LaTeX Info: Redefining \leftprotrusion on input line 1088.
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
 \MT@prot@toks=\toks25
-LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
 LaTeX Info: Redefining \textls on input line 1449.
 \MT@outer@kern=\dimen169
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count314
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype-xetex.def
-File: microtype-xetex.def 2025/07/09 v3.2b Definitions specific to xetex (RS)
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 443.
 LaTeX Info: Redefining \lslig on input line 451.
 \MT@outer@space=\skip54
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2025/07/09 v3.2b microtype main configuration file (RS)
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/parskip/parskip.sty
@@ -1993,9 +1993,7 @@ LaTeX Info: Redefining \microtypecontext on input line 194.
 Package microtype Info: Applying patch `item' on input line 194.
 Package microtype Info: Applying patch `toc' on input line 194.
 Package microtype Info: Applying patch `eqnum' on input line 194.
-
-Package microtype Warning: Unable to apply patch `footnote' on input line 194.
-
+Package microtype Info: Applying patch `footnote' on input line 194.
 Package microtype Info: Applying patch `verbatim' on input line 194.
 LaTeX Info: Redefining \microtypesetup on input line 194.
 Package microtype Info: Character protrusion enabled (level 2).
@@ -2005,7 +2003,7 @@ Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
+File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring OFF on input line 194.
@@ -2629,7 +2627,7 @@ ignored error: Infinite glue shrinkage found in box being split [45] [46] [47]
 [48
 
 ]
-Overfull \hbox (12.86089pt too wide) in paragraph at lines 1776--1776
+Overfull \hbox (12.86089pt too wide) in paragraph at lines 1777--1777
 []\TU/lmr/bx/n/10 Quadriênio|  
  []
 
@@ -2640,12 +2638,12 @@ Overfull \hbox (12.86089pt too wide) in paragraph at lines 1776--1776
 ] [57] [58] [59] [60
 
 ]
-Underfull \hbox (badness 1314) in paragraph at lines 2200--2200
+Underfull \hbox (badness 1314) in paragraph at lines 2201--2201
 []\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 2200--2200
+Underfull \hbox (badness 1314) in paragraph at lines 2201--2201
 []\TU/lmr/bx/n/10 Leandro Alberto Calazans No-
  []
 
@@ -2660,239 +2658,239 @@ Underfull \hbox (badness 1314) in paragraph at lines 2200--2200
 ] [65] [66
 
 ] [67]
-Overfull \hbox (3.09442pt too wide) in paragraph at lines 2344--2382
+Overfull \hbox (3.09442pt too wide) in paragraph at lines 2345--2383
  [][] 
  []
 
 [68] [69]
-Underfull \hbox (badness 1515) in paragraph at lines 2471--2471
+Underfull \hbox (badness 1515) in paragraph at lines 2472--2472
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2471--2471
+Underfull \hbox (badness 1515) in paragraph at lines 2472--2472
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 [70
 
 ]
-Underfull \hbox (badness 1515) in paragraph at lines 2497--2497
+Underfull \hbox (badness 1515) in paragraph at lines 2498--2498
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2497--2497
+Underfull \hbox (badness 1515) in paragraph at lines 2498--2498
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 [71]
-Underfull \hbox (badness 1917) in paragraph at lines 2530--2530
+Underfull \hbox (badness 1917) in paragraph at lines 2531--2531
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2530--2530
+Underfull \hbox (badness 10000) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Desenvolvimento De
  []
 
 
-Underfull \hbox (badness 5388) in paragraph at lines 2530--2530
+Underfull \hbox (badness 5388) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Complaints And Pain Predominance In
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2530--2530
+Underfull \hbox (badness 1043) in paragraph at lines 2531--2531
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2530--2530
+Underfull \hbox (badness 10000) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 2530--2530
+Underfull \hbox (badness 1917) in paragraph at lines 2531--2531
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2530--2530
+Underfull \hbox (badness 10000) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Desenvolvimento De
  []
 
 
-Underfull \hbox (badness 5388) in paragraph at lines 2530--2530
+Underfull \hbox (badness 5388) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Complaints And Pain Predominance In
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2530--2530
+Underfull \hbox (badness 1043) in paragraph at lines 2531--2531
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2530--2530
+Underfull \hbox (badness 10000) in paragraph at lines 2531--2531
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 [72]
-Underfull \hbox (badness 1515) in paragraph at lines 2559--2559
+Underfull \hbox (badness 1515) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2559--2559
+Underfull \hbox (badness 1043) in paragraph at lines 2560--2560
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2559--2559
+Underfull \hbox (badness 10000) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 Desenvolvimento De
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2559--2559
+Underfull \hbox (badness 10000) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2559--2559
+Underfull \hbox (badness 1515) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2559--2559
+Underfull \hbox (badness 1043) in paragraph at lines 2560--2560
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2559--2559
+Underfull \hbox (badness 10000) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 Desenvolvimento De
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2559--2559
+Underfull \hbox (badness 10000) in paragraph at lines 2560--2560
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 [73]
-Overfull \hbox (17.5824pt too wide) in paragraph at lines 2591--2591
+Overfull \hbox (17.5824pt too wide) in paragraph at lines 2592--2592
 []\TU/lmr/bx/n/10 YouTube/Vimeo 
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2591--2591
+Underfull \hbox (badness 1515) in paragraph at lines 2592--2592
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Overfull \hbox (17.5824pt too wide) in paragraph at lines 2591--2591
+Overfull \hbox (17.5824pt too wide) in paragraph at lines 2592--2592
 []\TU/lmr/bx/n/10 YouTube/Vimeo 
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2591--2591
+Underfull \hbox (badness 1515) in paragraph at lines 2592--2592
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 [74]
-Underfull \hbox (badness 1515) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1515) in paragraph at lines 2625--2625
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1917) in paragraph at lines 2625--2625
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1043) in paragraph at lines 2625--2625
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2624--2624
+Underfull \hbox (badness 10000) in paragraph at lines 2625--2625
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1515) in paragraph at lines 2625--2625
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1917) in paragraph at lines 2625--2625
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2624--2624
+Underfull \hbox (badness 1043) in paragraph at lines 2625--2625
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2624--2624
+Underfull \hbox (badness 10000) in paragraph at lines 2625--2625
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 [75] [76]
-Underfull \hbox (badness 1515) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1515) in paragraph at lines 2656--2656
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1043) in paragraph at lines 2656--2656
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2655--2655
+Underfull \hbox (badness 10000) in paragraph at lines 2656--2656
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1917) in paragraph at lines 2656--2656
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1515) in paragraph at lines 2656--2656
 []\TU/lmr/m/n/10 The Effectiveness Of Spinal Manipulative
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1043) in paragraph at lines 2656--2656
 \TU/lmr/m/n/10 mulation Using Conventional And Inverse
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2655--2655
+Underfull \hbox (badness 10000) in paragraph at lines 2656--2656
 []\TU/lmr/m/n/10 Rethinking Methodologies In Nocturnal
  []
 
 [77]
-Underfull \hbox (badness 1917) in paragraph at lines 2655--2655
+Underfull \hbox (badness 1917) in paragraph at lines 2656--2656
 \TU/lmr/m/n/10 A Qualitative Study On Brazilian Older
  []
 
 [78]
-Underfull \hbox (badness 4954) in paragraph at lines 2678--2678
+Underfull \hbox (badness 4954) in paragraph at lines 2679--2679
 []\TU/lmr/m/n/10 Association Between World
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 2678--2678
+Underfull \hbox (badness 1210) in paragraph at lines 2679--2679
 []\TU/lmr/m/n/10 Centers for Disease Control
  []
 
 
-Underfull \hbox (badness 4954) in paragraph at lines 2678--2678
+Underfull \hbox (badness 4954) in paragraph at lines 2679--2679
 []\TU/lmr/m/n/10 Association Between World
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 2678--2678
+Underfull \hbox (badness 1210) in paragraph at lines 2679--2679
 []\TU/lmr/m/n/10 Centers for Disease Control
  []
 
@@ -2905,188 +2903,188 @@ File: site.png Graphic file (type bmp)
 File: observatorio.png Graphic file (type bmp)
 <observatorio.png>
 [82]
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 2760--2760
+Underfull \hbox (badness 3746) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 2760--2760
+Underfull \hbox (badness 3746) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 [83
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2760--2760
+Underfull \hbox (badness 10000) in paragraph at lines 2761--2761
 []\TU/lmr/m/n/10 Co-Autor, Examinador Ex-
  []
 
 [84]
-Underfull \hbox (badness 2111) in paragraph at lines 2784--2784
+Underfull \hbox (badness 2111) in paragraph at lines 2785--2785
 []\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2784--2784
+Underfull \hbox (badness 10000) in paragraph at lines 2785--2785
 []\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 2784--2784
+Underfull \hbox (badness 2111) in paragraph at lines 2785--2785
 []\TU/lmr/bx/n/10 FREDERICO BARRETO KO-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2784--2784
+Underfull \hbox (badness 10000) in paragraph at lines 2785--2785
 []\TU/lmr/bx/n/10 JULIANA VALENTIM BIT-
  []
 
 [85]
-Underfull \hbox (badness 2809) in paragraph at lines 2820--2820
+Underfull \hbox (badness 2809) in paragraph at lines 2821--2821
 []\TU/lmr/m/n/10 REVISTA AUGUSTUS (UNISUAM. ON-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2820--2820
+Underfull \hbox (badness 10000) in paragraph at lines 2821--2821
 []\TU/lmr/m/n/10 Journal of Physical
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 2820--2820
+Underfull \hbox (badness 2809) in paragraph at lines 2821--2821
 []\TU/lmr/m/n/10 REVISTA AUGUSTUS (UNISUAM. ON-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2820--2820
+Underfull \hbox (badness 10000) in paragraph at lines 2821--2821
 []\TU/lmr/m/n/10 Journal of Physical
  []
 
 [86] [87]
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 []\TU/lmr/bx/n/10 Ano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 \TU/lmr/bx/n/10 (iní-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2841--2841
+Underfull \hbox (badness 10000) in paragraph at lines 2842--2842
 []\TU/lmr/bx/n/10 Ano
  []
 
 [88]
-Underfull \hbox (badness 2245) in paragraph at lines 2866--2866
+Underfull \hbox (badness 2245) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2866--2866
+Underfull \hbox (badness 2245) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 2866--2866
+Underfull \hbox (badness 3872) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Sociedade Brasileira do Estudo da Dor
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2866--2866
+Underfull \hbox (badness 2245) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2866--2866
+Underfull \hbox (badness 2245) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 2866--2866
+Underfull \hbox (badness 3872) in paragraph at lines 2867--2867
 []\TU/lmr/m/n/10 Sociedade Brasileira do Estudo da Dor
  []
 
 [89]
-Underfull \hbox (badness 2245) in paragraph at lines 2884--2884
+Underfull \hbox (badness 2245) in paragraph at lines 2885--2885
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2884--2884
+Underfull \hbox (badness 2245) in paragraph at lines 2885--2885
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 [90]
-Underfull \hbox (badness 3746) in paragraph at lines 2909--2909
+Underfull \hbox (badness 3746) in paragraph at lines 2911--2911
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 2909--2909
+Underfull \hbox (badness 3746) in paragraph at lines 2911--2911
 []\TU/lmr/m/n/10 Emirados Ára-
  []
 
-[91] (./autoavaliacao-2025-2028.aux)
+[91] [92] (./autoavaliacao-2025-2028.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -3096,12 +3094,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 46783 strings out of 468174
- 980196 string characters out of 5433150
- 1613711 words of memory out of 5000000
- 74863 multiletter control sequences out of 15000+600000
+ 46799 strings out of 468174
+ 980581 string characters out of 5433150
+ 1613765 words of memory out of 5000000
+ 74879 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,126p,1212b,4159s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on autoavaliacao-2025-2028.pdf (95 pages).
+Output written on autoavaliacao-2025-2028.pdf (96 pages).

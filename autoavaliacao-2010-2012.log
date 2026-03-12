@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  23 FEB 2026 11:06
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  12 MAR 2026 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -482,7 +482,7 @@ tim
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2025/07/09 v3.2b Micro-typographical refinements (RS)
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count312
@@ -490,24 +490,24 @@ Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \MT@toks=\toks24
 \MT@tempbox=\box55
 \MT@count=\count313
-LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
-LaTeX Info: Redefining \leftprotrusion on input line 1088.
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
 \MT@prot@toks=\toks25
-LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
 LaTeX Info: Redefining \textls on input line 1449.
 \MT@outer@kern=\dimen169
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count314
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype-xetex.def
-File: microtype-xetex.def 2025/07/09 v3.2b Definitions specific to xetex (RS)
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 443.
 LaTeX Info: Redefining \lslig on input line 451.
 \MT@outer@space=\skip54
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2025/07/09 v3.2b microtype main configuration file (RS)
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/parskip/parskip.sty
@@ -1969,9 +1969,7 @@ LaTeX Info: Redefining \microtypecontext on input line 194.
 Package microtype Info: Applying patch `item' on input line 194.
 Package microtype Info: Applying patch `toc' on input line 194.
 Package microtype Info: Applying patch `eqnum' on input line 194.
-
-Package microtype Warning: Unable to apply patch `footnote' on input line 194.
-
+Package microtype Info: Applying patch `footnote' on input line 194.
 Package microtype Info: Applying patch `verbatim' on input line 194.
 LaTeX Info: Redefining \microtypesetup on input line 194.
 Package microtype Info: Character protrusion enabled (level 2).
@@ -1981,7 +1979,7 @@ Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
+File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring OFF on input line 194.
@@ -2392,59 +2390,59 @@ ignored error: Infinite glue shrinkage found in box being split [44] [45] [46]
 
 
 ] [63]
-Overfull \hbox (12.64723pt too wide) in paragraph at lines 2095--2119
+Overfull \hbox (12.64723pt too wide) in paragraph at lines 2096--2120
  [][] 
  []
 
 [64] [65
 
 ] [66] [67] [68]
-Underfull \hbox (badness 1033) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1033) in paragraph at lines 2199--2199
 []\TU/lmr/m/n/10 Dias, C. M., Vieira, R. de O., Oliveira,
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1783) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 J. F., Lopes, A. J., Menezes, S. L. S.
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 2198--2198
+Underfull \hbox (badness 2189) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 de, & Guimarães, F. S. (2011). Três
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 2198--2198
+Underfull \hbox (badness 2050) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 protocolos fisioterapêuticos: efeitos sobre
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1158) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 os volumes pulmonares após cirurgia car-
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1033) in paragraph at lines 2199--2199
 []\TU/lmr/m/n/10 Dias, C. M., Vieira, R. de O., Oliveira,
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1783) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 J. F., Lopes, A. J., Menezes, S. L. S.
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 2198--2198
+Underfull \hbox (badness 2189) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 de, & Guimarães, F. S. (2011). Três
  []
 
 
-Underfull \hbox (badness 2050) in paragraph at lines 2198--2198
+Underfull \hbox (badness 2050) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 protocolos fisioterapêuticos: efeitos sobre
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 2198--2198
+Underfull \hbox (badness 1158) in paragraph at lines 2199--2199
 \TU/lmr/m/n/10 os volumes pulmonares após cirurgia car-
  []
 
@@ -2461,12 +2459,12 @@ File: observatorio.png Graphic file (type bmp)
 [72] [73
 
 ] [74] [75]
-Underfull \hbox (badness 2245) in paragraph at lines 2293--2293
+Underfull \hbox (badness 2245) in paragraph at lines 2294--2294
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 2293--2293
+Underfull \hbox (badness 2245) in paragraph at lines 2294--2294
 []\TU/lmr/m/n/10 Associação Brasileira de Pesquisa e Pós-
  []
 
@@ -2480,10 +2478,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 46282 strings out of 468174
- 969416 string characters out of 5433150
- 1624473 words of memory out of 5000000
- 74362 multiletter control sequences out of 15000+600000
+ 46285 strings out of 468174
+ 969495 string characters out of 5433150
+ 1625527 words of memory out of 5000000
+ 74365 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,126p,1212b,2743s stack positions out of 10000i,1000n,20000p,200000b,200000s

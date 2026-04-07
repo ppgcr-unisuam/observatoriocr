@@ -88,6 +88,7 @@ packs.cran <-
     "units",
     "usethis",
     "vioplot",
+    "webshot",
     "webshot2",
     "yaml"
   )
@@ -108,7 +109,7 @@ packs.git <-
 
 # check if there is internet connection
 if (curl::has_internet()) {
-  for (i in 1:length(packs.cran)) {
+  for (i in seq_along(packs.cran)) {
     if (!require(packs.cran[i],
                  character.only = TRUE,
                  quietly = TRUE)) {
@@ -167,6 +168,6 @@ if (curl::has_internet()) {
 # load all libraries
 packs <- unique(c(packs.cran, packs.git))
 
-for (i in 1:length(packs)) {
+for (i in seq_along(packs)) {
   library(packs[i], character.only = TRUE)
 }

@@ -2,13 +2,13 @@
 packs.cran <- c("svDialogs")
 
 # loop for to install packages
-for (i in 1:length(packs.cran)) {
+for (i in seq_along(packs.cran)) {
   # install packages from CRAN
   if (!require(packs.cran[i], character.only = TRUE, quietly = TRUE))
     install.packages(packs.cran[i], character.only = TRUE)
 }
 # loop for to load packages
-for (i in 1:length(packs.cran)) {
+for (i in seq_along(packs.cran)) {
   # load required packages
   library(packs.cran[i], character.only = TRUE, quietly = TRUE)
 }

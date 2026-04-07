@@ -1824,12 +1824,7 @@ table.1 <-
 # print table
 print(table.1)
 
-cat('\n\n')
-
-cat(
-  "**Fontes**: [**CAPES**](https://www.gov.br/capes/pt-br), [**CNPq**](https://www.gov.br/cnpq/pt-br), [**FAPERJ**](http://www.faperj.br), **UNISUAM**"
-)
-cat('<br><a style="float:right" href="#top"><b>Início &nbsp;</b>', fontawesome::fa("circle-arrow-up"), '</a><br>')
+source("Scripts/fonte-agencias.R", local = knitr::knit_global())
 ```
 
 <br>

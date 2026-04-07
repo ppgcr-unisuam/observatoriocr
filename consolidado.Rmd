@@ -117,7 +117,7 @@ cat('\n\n')
 
 ```{r bigdata, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
 # read bigdata
-source("Scripts/sucupira.bigdata.R", local = knitr::knit_global())
+source("Scripts/sucupira-bigdata.R", local = knitr::knit_global())
 sucupira_bigdata <- tabelao
 ```
 

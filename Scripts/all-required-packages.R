@@ -100,11 +100,11 @@ packs.git <-
     "geobr",
     "packup",
     "rcrossref",
-    "retractcheck",
+#    "retractcheck",
     "rscopus",
     "sf",
-    "pacman",
-    "textreadr"
+    "pacman"
+#    "textreadr"
   )
 
 # check if there is internet connection
@@ -143,16 +143,16 @@ if (curl::has_internet()) {
     remotes::install_github("r-spatial/sf")
   }
   
-  if (!require("pacman")) {
-    install.packages("pacman")
-    pacman::p_load_gh("trinker/textreadr")
-  }
+  # if (!require("pacman")) {
+  #   install.packages("pacman")
+  #   pacman::p_load_gh("trinker/textreadr")
+  # }
   
-  if (!require("retractcheck",
-               character.only = TRUE,
-               quietly = TRUE)) {
-    remotes::install_github("chartgerink/retractcheck")
-  }
+  # if (!require("retractcheck",
+  #              character.only = TRUE,
+  #              quietly = TRUE)) {
+  #   remotes::install_github("chartgerink/retractcheck")
+  # }
   
   # update TeX packages
   tinytex::tlmgr_update()

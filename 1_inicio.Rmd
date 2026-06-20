@@ -102,7 +102,7 @@ qualis <- readxl::read_xlsx(list.files(
 
 ```{r geobr-data, cache = TRUE, cache.path = "cache/geobr-data/", eval = curl::has_internet()}
 # reading BR geospatial data from IPEA
-geoBRdata <- geobr::list_geobr()$years[3]
+geoBRdata <- geobr::list_geobr()$year[3]
 # reading BR geospatial data from IPEA
 last.update <-
   as.numeric(strsplit(geoBRdata, ", ")[[1]][length(strsplit(geoBRdata, ", ")[[1]]) - 1])
@@ -797,7 +797,7 @@ has.table.dsc <- FALSE
 
 ## **Agregar dados de produção**
 
-```{r bind-all, cache = TRUE, cache.path = "cache/bind-all/", eval = any(has.sucupira.files, has.ppg.files)}
+```{r bind-all, cache = TRUE, cache.path = "cache/bind-all/", eval = exists("produtos.detalhes.sucupira")}
 # drop lines with empty ID or Ano de publicação
 produtos.detalhes.sucupira <- produtos.detalhes.sucupira[
   !is.na(produtos.detalhes.sucupira$`ID da Produção`) | 

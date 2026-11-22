@@ -119,6 +119,7 @@ cat('\n\n')
 # read bigdata
 source("Scripts/sucupira-bigdata.R", local = knitr::knit_global())
 sucupira_bigdata <- tabelao
+source("Scripts/years-sucupira.R", local = knitr::knit_global())
 
 library(dplyr)
 ```
@@ -387,7 +388,12 @@ matriculas_pessoa <- matriculas_desfechos %>%
   dplyr::group_by(id_pessoa, nivel) %>%
   dplyr::summarise(data_matricula = min(data_matricula), .groups = "drop")
 
-data_fim_sobrevida <- as.Date(sprintf("%04d-12-31", max(dados_modelo$Ano, na.rm = TRUE)))
+if (length(anos) == 0) {
+  stop("Não foram encontradas pastas Sucupira com arquivos de dados anuais.")
+}
+ano_mais_antigo_sucupira <- min(anos)
+ano_mais_recente_sucupira <- max(anos)
+data_fim_sobrevida <- as.Date(sprintf("%04d-12-31", ano_mais_recente_sucupira))
 
 titulacoes_pessoa <- tcc_desfechos %>%
   dplyr::inner_join(matriculas_pessoa, by = c("id_pessoa", "nivel")) %>%
@@ -911,12 +917,12 @@ if (knitr::is_latex_output()) cat("\\clearpage\n")
 ```
 
 ```{r series-sobrepostas-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
-cat("## **Séries temporais sobrepostas**\n\n")
-cat("Cada gráfico sobrepõe as duas séries anuais do par. Os valores foram padronizados em escore z para permitir a comparação dos padrões temporais, mesmo quando as contagens têm escalas diferentes.\n\n")
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+cat("## **Séries temporais e correlações cruzadas**\n\n")
+cat("Cada par de gráficos reúne as séries anuais sobrepostas (valores padronizados em escore z) e a correlação cruzada correspondente. Na correlação, τ positivo indica que a série Y ocorre após a série X.\n\n")
 ```
 
-```{r series-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
-if (knitr::is_latex_output()) cat("\\clearpage\n")
+```{r series-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
 grafico_series_sobrepostas(
   dados_correlacao_anual,
   "Total de alunos",
@@ -925,8 +931,17 @@ grafico_series_sobrepostas(
 )
 ```
 
-```{r series-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+```{r correlacao-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
+grafico_correlacao_cruzada(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de defesas",
+  "Correlação cruzada: total de alunos × total de defesas"
+)
 if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r series-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
 grafico_series_sobrepostas(
   dados_correlacao_anual,
   "Total de alunos",
@@ -935,8 +950,17 @@ grafico_series_sobrepostas(
 )
 ```
 
-```{r series-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+```{r correlacao-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
+grafico_correlacao_cruzada(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de artigos",
+  "Correlação cruzada: total de alunos × total de artigos"
+)
 if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r series-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
 grafico_series_sobrepostas(
   dados_correlacao_anual,
   "Total de egressos",
@@ -945,39 +969,14 @@ grafico_series_sobrepostas(
 )
 ```
 
-```{r correlacoes-anuais-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
-cat("## **Correlações cruzadas anuais**\n\n")
-cat("Cada gráfico mostra a correlação cruzada R em função do atraso temporal τ, em anos. A linha vertical tracejada marca o atraso em que |R| é maior; τ positivo indica que a série Y ocorre após a série X.\n\n")
-```
-
-```{r correlacao-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
-if (knitr::is_latex_output()) cat("\\clearpage\n")
-grafico_correlacao_cruzada(
-  dados_correlacao_anual,
-  "Total de alunos",
-  "Total de defesas",
-  "Correlação cruzada: total de alunos × total de defesas"
-)
-```
-
-```{r correlacao-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
-if (knitr::is_latex_output()) cat("\\clearpage\n")
-grafico_correlacao_cruzada(
-  dados_correlacao_anual,
-  "Total de alunos",
-  "Total de artigos",
-  "Correlação cruzada: total de alunos × total de artigos"
-)
-```
-
-```{r correlacao-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
-if (knitr::is_latex_output()) cat("\\clearpage\n")
+```{r correlacao-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 3.4, results = 'asis', fig.pos = 'H'}
 grafico_correlacao_cruzada(
   dados_correlacao_anual,
   "Total de egressos",
   "Total de artigos",
   "Correlação cruzada: total de egressos × total de artigos"
 )
+if (knitr::is_latex_output()) cat("\\clearpage\n")
 ```
 
 ```{r sobrevida-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}

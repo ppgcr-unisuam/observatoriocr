@@ -85,7 +85,7 @@ source("Scripts/cover-3.R", local = knitr::knit_global())
 ```
 
 ```{r, eval = all(knitr::is_html_output(), has.avaliacao)}
-cat("## **Consolidado** {#avalicao-capes .tabset}")
+cat("## **Consolidado** {#avalicao-capes}")
 cat('\n\n')
 cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
 cat('\n\n')
@@ -101,7 +101,7 @@ cat('<br>')
 ```
 
 ```{r, eval = all(knitr::is_html_output(), has.sucupira.files)}
-cat("## **Análises** {#coleta .tabset}")
+cat("## **Análises** {#coleta}")
 cat('\n\n')
 cat('<hr style="height:2px;border-width:0;color:black;background-color:black">')
 cat('\n\n')
@@ -119,16 +119,97 @@ cat('\n\n')
 # read bigdata
 source("Scripts/sucupira-bigdata.R", local = knitr::knit_global())
 sucupira_bigdata <- tabelao
+
+library(dplyr)
 ```
 
-```{r tb1, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
-library(dplyr)
+```{r preparar-desfechos, include = FALSE, eval = all(has.sucupira.files)}
+parsear_data_sucupira <- function(x) {
+  x <- trimws(as.character(x))
+  data <- suppressWarnings(as.Date(x, format = "%d/%m/%Y"))
+  converter <- is.na(data) & !is.na(x) & nzchar(x)
+  data[converter] <- suppressWarnings(as.Date(x[converter], format = "%Y-%m-%d"))
+  data
+}
 
-# print perguntas (modelo bruto e ajustado)
-cat("<p style='color: black; font-weight: bold;'>Existe tendência temporal no número total de discentes, ajustando pelo número total de docentes?</p>")
-cat("\n\n")
+meses_completos <- function(inicio, fim) {
+  meses <- (as.integer(format(fim, "%Y")) - as.integer(format(inicio, "%Y"))) * 12 +
+    as.integer(format(fim, "%m")) - as.integer(format(inicio, "%m"))
+  meses - as.integer(as.integer(format(fim, "%d")) < as.integer(format(inicio, "%d")))
+}
 
-# Totais por ano
+idade_em_data <- function(nascimento, evento) {
+  idade <- as.integer(format(evento, "%Y")) - as.integer(format(nascimento, "%Y"))
+  idade - as.integer(format(evento, "%m%d") < format(nascimento, "%m%d"))
+}
+
+tcc_desfechos <- sucupira_bigdata %>%
+  dplyr::filter(
+    !is.na(`Identificador do Trabalho de Conclusão`),
+    !is.na(`Identificador da Pessoa do Autor`),
+    !is.na(`Data da Defesa`)
+  ) %>%
+  dplyr::transmute(
+    id_tcc = as.character(`Identificador do Trabalho de Conclusão`),
+    id_pessoa = as.character(`Identificador da Pessoa do Autor`),
+    linha_pesquisa = as.character(`Linha de Pesquisa`),
+    nivel = dplyr::case_when(
+      grepl("DISSERT", `Tipo de Trabalho de Conclusão`, ignore.case = TRUE) ~ "Mestrado",
+      grepl("TESE", `Tipo de Trabalho de Conclusão`, ignore.case = TRUE) ~ "Doutorado",
+      TRUE ~ NA_character_
+    ),
+    data_defesa = parsear_data_sucupira(`Data da Defesa`)
+  ) %>%
+  dplyr::filter(!is.na(data_defesa), !is.na(nivel)) %>%
+  dplyr::arrange(id_tcc, data_defesa) %>%
+  dplyr::distinct(id_tcc, .keep_all = TRUE)
+
+matriculas_desfechos <- sucupira_bigdata %>%
+  dplyr::filter(
+    !is.na(`Identificador da Pessoa`),
+    !is.na(`Nível Discente`),
+    !is.na(`Data Matrícula`)
+  ) %>%
+  dplyr::transmute(
+    id_pessoa = as.character(`Identificador da Pessoa`),
+    nivel = dplyr::case_when(
+      grepl("MESTRADO", `Nível Discente`, ignore.case = TRUE) ~ "Mestrado",
+      grepl("DOUTORADO", `Nível Discente`, ignore.case = TRUE) ~ "Doutorado",
+      TRUE ~ NA_character_
+    ),
+    data_matricula = parsear_data_sucupira(`Data Matrícula`),
+    data_nascimento = parsear_data_sucupira(`Data de Nascimento`),
+    sexo = as.character(`Gênero`)
+  ) %>%
+  dplyr::filter(!is.na(data_matricula), !is.na(nivel)) %>%
+  dplyr::group_by(id_pessoa, nivel) %>%
+  dplyr::summarise(
+    data_matricula = min(data_matricula),
+    data_nascimento = if (all(is.na(data_nascimento))) as.Date(NA) else min(data_nascimento, na.rm = TRUE),
+    sexo = if (all(is.na(sexo))) NA_character_ else dplyr::first(sexo[!is.na(sexo)]),
+    .groups = "drop"
+  )
+
+producoes_desfechos <- sucupira_bigdata %>%
+  dplyr::filter(!is.na(`ID da Produção`), !is.na(`Ano da Produção`)) %>%
+  dplyr::transmute(
+    id_producao = as.character(`ID da Produção`),
+    ano_producao = suppressWarnings(as.integer(`Ano da Produção`)),
+    tipo_producao = as.character(`Tipo de Produção`),
+    subtipo_producao = as.character(`Subtipo de Produção`),
+    vinculada_tcc = as.character(`Produção vinculada a TCC concluído`)
+  ) %>%
+  dplyr::filter(!is.na(ano_producao)) %>%
+  dplyr::distinct(id_producao, .keep_all = TRUE)
+
+autores_producoes_desfechos <- sucupira_bigdata %>%
+  dplyr::filter(!is.na(`ID da Produção`), !is.na(`ID Pessoa do Autor`)) %>%
+  dplyr::transmute(
+    id_producao = as.character(`ID da Produção`),
+    id_pessoa = as.character(`ID Pessoa do Autor`)
+  ) %>%
+  dplyr::distinct()
+
 total_docentes <- sucupira_bigdata %>%
   dplyr::group_by(dir_name) %>%
   dplyr::summarise(total_docentes = dplyr::n_distinct(`Identificador do Docente`, na.rm = TRUE))
@@ -137,144 +218,829 @@ total_discentes <- sucupira_bigdata %>%
   dplyr::group_by(dir_name) %>%
   dplyr::summarise(total_discentes = dplyr::n_distinct(`Identificador do Discente`, na.rm = TRUE))
 
-# Juntar e criar razão
 dados_modelo <- total_docentes %>%
   dplyr::inner_join(total_discentes, by = "dir_name") %>%
-  dplyr::mutate(razao = total_discentes / total_docentes)
-
-dados_modelo <- dados_modelo %>%
-  dplyr::mutate(Ano = as.integer(gsub("dir_", "", dir_name))) %>%
+  dplyr::mutate(
+    Ano = as.integer(gsub("dir_", "", dir_name)),
+    razao = total_discentes / total_docentes
+  ) %>%
   dplyr::select(Ano, total_docentes, total_discentes, razao)
 
-# DESCRITIVA com gtsummary
-tb_descritiva <- dados_modelo %>%
-  dplyr::select(Ano, total_docentes, total_discentes, razao) %>%
-  gtsummary::tbl_summary(
-    by = Ano,
-    include = c(
-      total_docentes,
-      total_discentes,
-      razao),
-    type = list(
-      total_docentes ~ "continuous",
-      total_discentes ~ "continuous",
-      razao ~ "continuous"
-    ),
-    label = list(
-      total_docentes ~ "Total de docentes",
-      total_discentes ~ "Total de discentes",
-      razao ~ "Razão discentes/docentes"
-    ),
-    digits = list(
-      total_docentes ~ 0,
-      total_discentes ~ 0,
-      razao ~ 2
-    ),
-    statistic = gtsummary::all_continuous() ~ "{mean}"
+dados_titulacao <- tcc_desfechos %>%
+  dplyr::inner_join(matriculas_desfechos, by = c("id_pessoa", "nivel")) %>%
+  dplyr::mutate(
+    ano_titulacao = as.integer(format(data_defesa, "%Y")),
+    tempo_titulacao_meses = meses_completos(data_matricula, data_defesa),
+    idade_defesa = idade_em_data(data_nascimento, data_defesa)
   ) %>%
-  gtsummary::modify_header(label = "**Variável**") %>%
-  gtsummary::modify_footnote(
-    gtsummary::all_stat_cols() ~ "N"
+  dplyr::left_join(dados_modelo %>% dplyr::select(Ano, total_docentes), by = c("ano_titulacao" = "Ano")) %>%
+  dplyr::left_join(dados_modelo %>% dplyr::select(Ano, total_discentes), by = c("ano_titulacao" = "Ano")) %>%
+  dplyr::mutate(idade_programa = ano_titulacao - 2010L) %>%
+  dplyr::filter(!is.na(tempo_titulacao_meses), tempo_titulacao_meses >= 0, !is.na(total_docentes)) %>%
+  dplyr::distinct(id_tcc, .keep_all = TRUE)
+
+resumo_titulacao <- dados_titulacao %>%
+  dplyr::group_by(Ano = ano_titulacao) %>%
+  dplyr::summarise(
+    `TCCs titulados` = dplyr::n(),
+    `Tempo médio para titulação (meses)` = mean(tempo_titulacao_meses),
+    .groups = "drop"
   )
 
-# Print HTML table
-tb_descritiva <- tb_descritiva %>%
-  gtsummary::as_gt() %>%
-  gt::tab_style(
-    style = gt::cell_borders(
-      sides = c("top", "bottom"),
-      color = "black", 
-      style = "solid",
-      weight = gt::px(0.5)
-    ),
-    locations = gt::cells_body(
-      columns = gt::everything(),
-      rows = gt::everything()
-    )
-  )
-tb_descritiva
-
-# Add LaTeX commands for new page and float barrier
-cat("\\FloatBarrier\n")
-
-# MODELOS
-# Modelo bruto
-model_bruto <- lm(total_discentes ~ Ano, data = dados_modelo)
-
-# Modelo ajustado por ano
-model_ajustado <- lm(total_discentes ~  Ano + total_docentes, data = dados_modelo)
-
-if(nrow(dados_modelo) > 1) {
-  # TABELA MERGED
-  tb_merged <-
-    gtsummary::tbl_merge(
-      tbls = list(
-        gtsummary::tbl_regression(
-          model_bruto,
-          exponentiate = FALSE,
-          include = Ano,
-          label = list(
-            Ano ~ "Anos"
-          ),
-          tidy_fun = broom.helpers::tidy_parameters
-        ),
-        gtsummary::tbl_regression(
-          model_ajustado,
-          exponentiate = FALSE,
-          include = Ano,
-          label = list(
-            Ano ~ "Anos"
-          ),
-          tidy_fun = broom.helpers::tidy_parameters
-        )
+publicacoes_tcc <- producoes_desfechos %>%
+  dplyr::filter(
+    toupper(vinculada_tcc) == "SIM",
+    grepl("BIBLIOGR", tipo_producao, ignore.case = TRUE)
+  ) %>%
+  dplyr::inner_join(autores_producoes_desfechos, by = "id_producao") %>%
+  dplyr::inner_join(
+    tcc_desfechos %>%
+      dplyr::transmute(
+        id_tcc,
+        id_pessoa,
+        ano_defesa = as.integer(format(data_defesa, "%Y"))
       ),
-      tab_spanner = c("**Modelo bruto**", "**Modelo ajustado**")
+    by = "id_pessoa"
+  ) %>%
+  dplyr::filter(ano_producao >= ano_defesa) %>%
+  dplyr::group_by(id_producao) %>%
+  dplyr::slice_max(order_by = ano_defesa, n = 1, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  dplyr::group_by(id_tcc) %>%
+  dplyr::summarise(
+    ano_defesa = dplyr::first(ano_defesa),
+    ano_primeira_publicacao = min(ano_producao),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(tempo_publicacao_meses = (ano_primeira_publicacao - ano_defesa) * 12L) %>%
+  dplyr::left_join(dados_modelo %>% dplyr::select(Ano, total_docentes), by = c("ano_defesa" = "Ano")) %>%
+  dplyr::filter(!is.na(total_docentes))
+
+resumo_publicacao <- publicacoes_tcc %>%
+  dplyr::group_by(Ano = ano_defesa) %>%
+  dplyr::summarise(
+    `TCCs com publicação` = dplyr::n(),
+    `Tempo médio estimado para publicação (meses)` = mean(tempo_publicacao_meses),
+    .groups = "drop"
+  )
+
+artigos_ano <- producoes_desfechos %>%
+  dplyr::filter(
+    toupper(tipo_producao) == "BIBLIOGRÁFICA",
+    grepl("ARTIGO.*PERI", subtipo_producao, ignore.case = TRUE)
+  ) %>%
+  dplyr::group_by(Ano = ano_producao) %>%
+  dplyr::summarise(`Total de artigos` = dplyr::n_distinct(id_producao), .groups = "drop")
+
+producao_ano <- producoes_desfechos %>%
+  dplyr::group_by(Ano = ano_producao) %>%
+  dplyr::summarise(`Total da produção` = dplyr::n_distinct(id_producao), .groups = "drop")
+
+defesas_ano <- tcc_desfechos %>%
+  dplyr::mutate(Ano = as.integer(format(data_defesa, "%Y"))) %>%
+  dplyr::group_by(Ano) %>%
+  dplyr::summarise(`Total de defesas` = dplyr::n_distinct(id_tcc), .groups = "drop")
+
+egressos_ano <- sucupira_bigdata %>%
+  dplyr::filter(!is.na(`Identificador do Egresso`), !is.na(`Ano Titulação`)) %>%
+  dplyr::transmute(
+    Ano = suppressWarnings(as.integer(`Ano Titulação`)),
+    id_egresso = as.character(`Identificador do Egresso`)
+  ) %>%
+  dplyr::filter(!is.na(Ano), !is.na(id_egresso), nzchar(id_egresso)) %>%
+  dplyr::distinct(Ano, id_egresso) %>%
+  dplyr::group_by(Ano) %>%
+  dplyr::summarise(`Total de egressos` = dplyr::n_distinct(id_egresso), .groups = "drop")
+
+dados_correlacao_anual <- data.frame(
+  Ano = seq.int(min(dados_modelo$Ano), max(dados_modelo$Ano))
+) %>%
+  dplyr::left_join(dados_modelo %>% dplyr::select(Ano, `Total de alunos` = total_discentes), by = "Ano") %>%
+  dplyr::left_join(defesas_ano, by = "Ano") %>%
+  dplyr::left_join(egressos_ano, by = "Ano") %>%
+  dplyr::left_join(artigos_ano, by = "Ano") %>%
+  dplyr::mutate(
+    `Total de defesas` = dplyr::if_else(!is.na(`Total de alunos`), tidyr::replace_na(`Total de defesas`, 0L), NA_integer_),
+    `Total de egressos` = dplyr::if_else(!is.na(`Total de alunos`), tidyr::replace_na(`Total de egressos`, 0L), NA_integer_),
+    `Total de artigos` = dplyr::if_else(!is.na(`Total de alunos`), tidyr::replace_na(`Total de artigos`, 0L), NA_integer_)
+  ) %>%
+  dplyr::arrange(Ano)
+
+# Conta as produções vinculadas a TCCs, atribuindo cada registro ao TCC mais
+# recente do autor que já havia sido defendido no ano da produção.
+producoes_por_tcc <- producoes_desfechos %>%
+  dplyr::filter(toupper(vinculada_tcc) == "SIM") %>%
+  dplyr::inner_join(autores_producoes_desfechos, by = "id_producao") %>%
+  dplyr::inner_join(
+    tcc_desfechos %>%
+      dplyr::transmute(
+        id_tcc,
+        id_pessoa,
+        ano_defesa = as.integer(format(data_defesa, "%Y"))
+      ),
+    by = "id_pessoa"
+  ) %>%
+  dplyr::filter(ano_producao >= ano_defesa) %>%
+  dplyr::group_by(id_producao) %>%
+  dplyr::slice_max(order_by = ano_defesa, n = 1, with_ties = FALSE) %>%
+  dplyr::ungroup() %>%
+  dplyr::group_by(id_tcc) %>%
+  dplyr::summarise(
+    `Total de artigos` = dplyr::n_distinct(id_producao[
+      which(
+        toupper(tipo_producao) == "BIBLIOGRÁFICA" &
+          grepl("ARTIGO.*PERI", subtipo_producao, ignore.case = TRUE)
+      )
+    ]),
+    `Total da produção` = dplyr::n_distinct(id_producao),
+    .groups = "drop"
+  )
+
+resumo_exposicoes_ano <- dados_titulacao %>%
+  dplyr::group_by(Ano = ano_titulacao) %>%
+  dplyr::summarise(
+    `Linha de Pesquisa (n)` = paste(
+      paste0(names(table(linha_pesquisa)), ": ", as.integer(table(linha_pesquisa))),
+      collapse = "; "
+    ),
+    `Nível (n)` = paste(
+      paste0(names(table(nivel)), ": ", as.integer(table(nivel))),
+      collapse = "; "
+    ),
+    `Idade média (anos)` = mean(idade_defesa, na.rm = TRUE),
+    `Sexo (n)` = paste(
+      paste0(names(table(sexo)), ": ", as.integer(table(sexo))),
+      collapse = "; "
+    ),
+    .groups = "drop"
+  )
+
+dados_modelo_tcc <- dados_titulacao %>%
+  dplyr::left_join(producoes_por_tcc, by = "id_tcc") %>%
+  dplyr::left_join(
+    publicacoes_tcc %>% dplyr::select(id_tcc, tempo_publicacao_meses),
+    by = "id_tcc"
+  ) %>%
+  tidyr::replace_na(list(`Total de artigos` = 0L, `Total da produção` = 0L))
+
+matriculas_pessoa <- matriculas_desfechos %>%
+  dplyr::group_by(id_pessoa, nivel) %>%
+  dplyr::summarise(data_matricula = min(data_matricula), .groups = "drop")
+
+data_fim_sobrevida <- as.Date(sprintf("%04d-12-31", max(dados_modelo$Ano, na.rm = TRUE)))
+
+titulacoes_pessoa <- tcc_desfechos %>%
+  dplyr::inner_join(matriculas_pessoa, by = c("id_pessoa", "nivel")) %>%
+  dplyr::filter(data_defesa >= data_matricula, data_defesa <= data_fim_sobrevida) %>%
+  dplyr::group_by(id_pessoa, nivel) %>%
+  dplyr::summarise(data_titulacao = min(data_defesa), .groups = "drop")
+
+producoes_pessoa <- producoes_desfechos %>%
+  dplyr::mutate(data_producao = as.Date(sprintf("%04d-07-01", ano_producao))) %>%
+  dplyr::inner_join(autores_producoes_desfechos, by = "id_producao") %>%
+  dplyr::distinct(id_pessoa, id_producao, data_producao) %>%
+  dplyr::inner_join(matriculas_pessoa, by = "id_pessoa") %>%
+  dplyr::filter(data_producao >= data_matricula, data_producao <= data_fim_sobrevida) %>%
+  dplyr::group_by(id_pessoa, nivel) %>%
+  dplyr::summarise(
+    primeira_producao = min(data_producao),
+    ultima_producao = max(data_producao),
+    .groups = "drop"
+  )
+
+dados_sobrevida <- matriculas_pessoa %>%
+  dplyr::filter(data_matricula <= data_fim_sobrevida) %>%
+  dplyr::left_join(titulacoes_pessoa, by = c("id_pessoa", "nivel")) %>%
+  dplyr::left_join(producoes_pessoa, by = c("id_pessoa", "nivel")) %>%
+  dplyr::mutate(
+    nivel = factor(nivel, levels = c("Mestrado", "Doutorado")),
+    evento_titulacao = as.integer(!is.na(data_titulacao)),
+    evento_primeira_producao = as.integer(!is.na(primeira_producao)),
+    evento_ultima_producao = as.integer(!is.na(ultima_producao)),
+    data_fim_titulacao = dplyr::coalesce(data_titulacao, data_fim_sobrevida),
+    data_fim_primeira_producao = dplyr::coalesce(primeira_producao, data_fim_sobrevida),
+    data_fim_ultima_producao = dplyr::coalesce(ultima_producao, data_fim_sobrevida),
+    tempo_matricula_titulacao_meses = meses_completos(data_matricula, data_fim_titulacao),
+    tempo_matricula_primeira_producao_meses = meses_completos(data_matricula, data_fim_primeira_producao),
+    tempo_matricula_ultima_producao_meses = meses_completos(data_matricula, data_fim_ultima_producao)
+  ) %>%
+  dplyr::transmute(
+    `ID da Pessoa` = id_pessoa,
+    Nível = nivel,
+    `Tempo matrícula–titulação (meses)` = tempo_matricula_titulacao_meses,
+    `Evento titulação` = evento_titulacao,
+    `Tempo matrícula–1ª produção (meses)` = tempo_matricula_primeira_producao_meses,
+    `Evento 1ª produção` = evento_primeira_producao,
+    `Tempo matrícula–última produção (meses)` = tempo_matricula_ultima_producao_meses,
+    `Evento última produção observada` = evento_ultima_producao,
+    tempo_matricula_titulacao_meses,
+    evento_titulacao,
+    tempo_matricula_primeira_producao_meses,
+    evento_primeira_producao,
+    tempo_matricula_ultima_producao_meses,
+    evento_ultima_producao
+  )
+
+dados_anual_completo <- dados_modelo %>%
+  dplyr::left_join(resumo_exposicoes_ano, by = "Ano") %>%
+  dplyr::left_join(resumo_titulacao, by = "Ano") %>%
+  dplyr::left_join(resumo_publicacao, by = "Ano") %>%
+  dplyr::left_join(artigos_ano, by = "Ano") %>%
+  dplyr::left_join(producao_ano, by = "Ano") %>%
+  tidyr::replace_na(list(
+    `TCCs titulados` = 0L,
+    `TCCs com publicação` = 0L,
+    `Total de artigos` = 0L,
+    `Total da produção` = 0L
+  )) %>%
+  dplyr::transmute(
+    Ano,
+    `Linha de Pesquisa (n)` = `Linha de Pesquisa (n)`,
+    `Nível (n)` = `Nível (n)`,
+    `Idade média (anos)` = `Idade média (anos)`,
+    `Sexo (n)` = `Sexo (n)`,
+    `Idade do Programa (anos)` = Ano - 2010L,
+    Docentes = total_docentes,
+    Discentes = total_discentes,
+    `Razão discentes/docentes` = razao,
+    `TCCs titulados` = `TCCs titulados`,
+    `Tempo médio para titulação (meses)` = `Tempo médio para titulação (meses)`,
+    `TCCs com publicação` = `TCCs com publicação`,
+    `Tempo médio estimado para publicação (meses)` = `Tempo médio estimado para publicação (meses)`,
+    `Total de artigos` = `Total de artigos`,
+    `Total da produção` = `Total da produção`
+  )
+
+media_marginal_linear <- function(modelo, variavel) {
+  moldura <- stats::model.frame(modelo)
+  tabela_vazia <- data.frame(
+    Categoria = character(),
+    n = integer(),
+    Media = numeric(),
+    IC_inferior = numeric(),
+    IC_superior = numeric()
+  )
+  if (!variavel %in% names(moldura)) return(tabela_vazia)
+  if (is.character(moldura[[variavel]])) {
+    moldura[[variavel]] <- factor(moldura[[variavel]])
+  }
+  if (!is.factor(moldura[[variavel]])) return(tabela_vazia)
+
+  moldura[[variavel]] <- droplevels(moldura[[variavel]])
+  niveis <- levels(moldura[[variavel]])
+  beta <- stats::coef(modelo)
+  matriz_vcov <- stats::vcov(modelo)
+  graus_liberdade <- modelo$df.residual
+
+  do.call(rbind, lapply(niveis, function(nivel_atual) {
+    novos_dados <- moldura
+    novos_dados[[variavel]] <- factor(rep(nivel_atual, nrow(novos_dados)), levels = niveis)
+    matriz <- stats::model.matrix(
+      stats::delete.response(stats::terms(modelo)),
+      data = novos_dados,
+      contrasts.arg = modelo$contrasts
     )
-  
-  tb_merged <-
-    tb_merged %>%
-    gtsummary::modify_fmt_fun(
-        estimate_1 ~ function(x) gtsummary::style_number(x, digits = 0),
-        estimate_2 ~ function(x) gtsummary::style_number(x, digits = 0),
-        conf.low_1 ~ function(x) gtsummary::style_number(x, digits = 0),
-        conf.high_1 ~ function(x) gtsummary::style_number(x, digits = 0),
-        conf.low_2 ~ function(x) gtsummary::style_number(x, digits = 0),
-        conf.high_2 ~ function(x) gtsummary::style_number(x, digits = 0)
-    ) %>%
-    gtsummary::modify_header(
-      label = "**Variável**",
-      estimate_1 ~ "**Discentes**",
-      estimate_2 ~ "**Discentes**",
-      conf.low_1 ~ "**IC 95%**",
-      conf.low_2 ~ "**IC 95%**"
-    ) %>%
-    gtsummary::remove_abbreviation()
-  
-  tb_merged %>%
-    gtsummary::as_kable_extra(
+    x_medio <- colMeans(matriz)[names(beta)]
+
+    estimativa <- erro <- inferior <- superior <- NA_real_
+    if (!anyNA(beta) && !anyNA(x_medio) && graus_liberdade > 0) {
+      estimativa <- sum(x_medio * beta)
+      variancia <- as.numeric(t(x_medio) %*% matriz_vcov[names(beta), names(beta), drop = FALSE] %*% x_medio)
+      erro <- sqrt(max(variancia, 0))
+      margem <- stats::qt(0.975, df = graus_liberdade) * erro
+      inferior <- estimativa - margem
+      superior <- estimativa + margem
+    }
+
+    data.frame(
+      Categoria = nivel_atual,
+      n = sum(moldura[[variavel]] == nivel_atual),
+      Media = estimativa,
+      IC_inferior = inferior,
+      IC_superior = superior
+    )
+  }))
+}
+
+mostrar_modelos_exposicoes <- function(modelo_bruto, modelo_ajustado, legenda) {
+  fatores <- c(
+    linha_pesquisa = "Linha de Pesquisa",
+    nivel = "Nível",
+    sexo = "Sexo"
+  )
+  formatar <- function(x) ifelse(is.finite(x), sprintf("%.3f", x), "Não estimável")
+
+  tabelas_medias <- lapply(names(fatores), function(variavel) {
+    medias_brutas <- media_marginal_linear(modelo_bruto, variavel)
+    medias_ajustadas <- media_marginal_linear(modelo_ajustado, variavel)
+    categorias <- union(medias_brutas$Categoria, medias_ajustadas$Categoria)
+    if (length(categorias) == 0) return(NULL)
+    indice_bruto <- match(categorias, medias_brutas$Categoria)
+    indice_ajustado <- match(categorias, medias_ajustadas$Categoria)
+
+    data.frame(
+      Exposição = rep(unname(fatores[[variavel]]), length(categorias)),
+      Categoria = categorias,
+      `n bruto` = medias_brutas$n[indice_bruto],
+      `Média estimada (bruto)` = formatar(medias_brutas$Media[indice_bruto]),
+      `IC 95% (bruto)` = paste0("[", formatar(medias_brutas$IC_inferior[indice_bruto]), "; ", formatar(medias_brutas$IC_superior[indice_bruto]), "]"),
+      `n ajustado` = medias_ajustadas$n[indice_ajustado],
+      `Média estimada (ajustado)` = formatar(medias_ajustadas$Media[indice_ajustado]),
+      `IC 95% (ajustado)` = paste0("[", formatar(medias_ajustadas$IC_inferior[indice_ajustado]), "; ", formatar(medias_ajustadas$IC_superior[indice_ajustado]), "]"),
+      check.names = FALSE
+    )
+  }) %>%
+    dplyr::bind_rows()
+
+  if (nrow(tabelas_medias) > 0) {
+
+    tabela_medias <- knitr::kable(
+      tabelas_medias,
       format = ifelse(knitr::is_html_output(), "html", "latex"),
       booktabs = TRUE,
-      linesep = "",
-      caption = paste0(
-        "Modelos de regressão linear para o total de discentes por ano (",
-        min(dados_modelo$Ano, na.rm = TRUE), "-", max(dados_modelo$Ano, na.rm = TRUE),
-        ")"
-      )
+      caption = paste0(legenda, ". Médias marginais estimadas por categoria nos modelos bruto e ajustado.")
     ) %>%
-    kableExtra::kable_styling(
-      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-      full_width = TRUE,
-      position = "center",
-      latex_options = "hold_position"
-    )
-} else {
-  cat('<p style="color: red; font-weight: bold;">Modelos não disponíveis para exibição.</p>')
+      kableExtra::kable_styling(
+        bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+        latex_options = c("hold_position", "scale_down"),
+        full_width = FALSE,
+        font_size = 9,
+        position = "center"
+      ) %>%
+      kableExtra::add_footnote(
+        label = "Ajustado por número de docentes, número de discentes e idade do Programa; médias calculadas pela padronização sobre a distribuição observada das demais variáveis do modelo.",
+        notation = "none"
+      )
+    print(tabela_medias)
+  }
+
+
 }
 
-# Add LaTeX commands for new page and float barrier
-if(knitr::is_latex_output() && !sjmisc::is_empty(nrow(dados_modelo) > 1)) {
-  cat('\\newpage')
+grafico_correlacao_cruzada <- function(dados, x, y, titulo, max_lag = 5L) {
+  serie <- dados %>%
+    dplyr::select(Ano, x = tidyselect::all_of(x), y = tidyselect::all_of(y)) %>%
+    dplyr::arrange(Ano)
+
+  n_anos <- nrow(serie)
+  max_lag <- min(as.integer(max_lag), floor((n_anos - 1) / 3))
+  if (n_anos < 4 || max_lag < 1) {
+    cat("Não há anos suficientes para calcular as correlações cruzadas por defasagem.\n\n")
+    return(invisible(NULL))
+  }
+
+  calcular_lag <- function(lag) {
+    if (lag >= 0) {
+      indices_x <- seq_len(n_anos - lag)
+      indices_y <- indices_x + lag
+    } else {
+      indices_y <- seq_len(n_anos + lag)
+      indices_x <- indices_y - lag
+    }
+
+    x_lag <- serie$x[indices_x]
+    y_lag <- serie$y[indices_y]
+    manter <- stats::complete.cases(x_lag, y_lag)
+    x_lag <- x_lag[manter]
+    y_lag <- y_lag[manter]
+
+    if (length(x_lag) < 3 || dplyr::n_distinct(x_lag) < 2 || dplyr::n_distinct(y_lag) < 2) {
+      return(data.frame(
+        Defasagem = lag,
+        R = NA_real_,
+        n = length(x_lag)
+      ))
+    }
+
+    data.frame(
+      Defasagem = lag,
+      R = unname(stats::cor(x_lag, y_lag, method = "pearson")),
+      n = length(x_lag)
+    )
+  }
+
+  resultados <- do.call(rbind, lapply(seq.int(-max_lag, max_lag), calcular_lag))
+  resultados_validos <- resultados %>% dplyr::filter(!is.na(R))
+  if (nrow(resultados_validos) == 0) {
+    cat("Não foi possível calcular R para nenhuma defasagem com os dados disponíveis.\n\n")
+    return(invisible(NULL))
+  }
+  pico <- resultados_validos[which.max(abs(resultados_validos$R)), , drop = FALSE]
+  subtitulo <- sprintf(
+    "Maior |R| = %.3f em τ = %+d anos; τ positivo indica que Y ocorre após X.",
+    pico$R,
+    pico$Defasagem
+  )
+
+  ggplot2::ggplot(resultados, ggplot2::aes(x = Defasagem, y = R)) +
+    ggplot2::geom_hline(yintercept = 0, color = "gray55", linewidth = 0.4) +
+    ggplot2::geom_vline(xintercept = pico$Defasagem, color = "#B04A5A", linetype = "dashed", linewidth = 0.6) +
+    ggplot2::geom_line(linewidth = 0.8, na.rm = TRUE) +
+    ggplot2::geom_point(size = 2.3, color = "#176B87", na.rm = TRUE) +
+    ggplot2::geom_text(
+      ggplot2::aes(label = ifelse(is.na(R), "", sprintf("%.3f", R))),
+      show.legend = FALSE,
+      vjust = -0.8,
+      size = 3,
+      na.rm = TRUE
+    ) +
+    ggplot2::scale_x_continuous(breaks = seq.int(-max_lag, max_lag, by = 1)) +
+    ggplot2::scale_y_continuous(limits = c(-1, 1), breaks = seq(-1, 1, by = 0.25)) +
+    ggplot2::labs(
+      title = titulo,
+      subtitle = subtitulo,
+      x = "Atraso τ (anos)",
+      y = "Correlação cruzada R"
+    ) +
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(plot.title = ggplot2::element_text(face = "bold"))
 }
+
+grafico_series_sobrepostas <- function(dados, x, y, titulo) {
+  serie <- dados %>%
+    dplyr::select(Ano, x = tidyselect::all_of(x), y = tidyselect::all_of(y)) %>%
+    dplyr::arrange(Ano)
+
+  padronizar <- function(valor) {
+    desvio <- stats::sd(valor, na.rm = TRUE)
+    if (is.na(desvio) || desvio == 0) return(rep(NA_real_, length(valor)))
+    (valor - mean(valor, na.rm = TRUE)) / desvio
+  }
+
+  dados_plot <- data.frame(
+    Ano = rep(serie$Ano, 2),
+    Variavel = rep(c(x, y), each = nrow(serie)),
+    Valor_padronizado = c(padronizar(serie$x), padronizar(serie$y))
+  ) %>%
+    dplyr::mutate(Variavel = factor(Variavel, levels = c(x, y)))
+
+  ggplot2::ggplot(dados_plot, ggplot2::aes(x = Ano, y = Valor_padronizado, color = Variavel, group = Variavel)) +
+    ggplot2::geom_hline(yintercept = 0, color = "gray65", linewidth = 0.4) +
+    ggplot2::geom_line(linewidth = 0.9, na.rm = TRUE) +
+    ggplot2::geom_point(size = 2.2, na.rm = TRUE) +
+    ggplot2::scale_x_continuous(breaks = sort(unique(serie$Ano))) +
+    ggplot2::labs(
+      title = titulo,
+      subtitle = "Séries padronizadas (escore z) para comparar os movimentos anuais.",
+      x = "Ano",
+      y = "Valor padronizado (z-score)",
+      color = "Série"
+    ) +
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(face = "bold"),
+      legend.position = "bottom"
+    )
+}
+
+grafico_kaplan_meier <- function(dados, variavel_tempo, variavel_evento, titulo) {
+  sobrevida_grupo <- function(nivel_atual) {
+    dados_nivel <- dados[dados[["Nível"]] == nivel_atual, , drop = FALSE]
+    tempo <- dados_nivel[[variavel_tempo]]
+    evento <- dados_nivel[[variavel_evento]]
+    valido <- stats::complete.cases(tempo, evento) & tempo >= 0
+    tempo <- tempo[valido]
+    evento <- evento[valido]
+
+    if (length(tempo) == 0) return(NULL)
+
+    ajuste <- survival::survfit(survival::Surv(tempo, evento) ~ 1)
+    resumo <- summary(ajuste)
+    if (length(resumo$time) == 0) {
+      curva <- data.frame(
+        tempo = c(0, max(tempo)),
+        evento_acumulado = 0,
+        inferior = 0,
+        superior = 0
+      )
+    } else {
+      curva <- data.frame(
+        tempo = c(0, resumo$time),
+        evento_acumulado = c(0, 1 - resumo$surv),
+        inferior = c(0, 1 - resumo$upper),
+        superior = c(0, 1 - resumo$lower)
+      )
+    }
+    curva$Nível <- nivel_atual
+
+    tempos_censura <- tempo[evento == 0]
+    censura <- data.frame(
+      tempo = tempos_censura,
+      evento_acumulado = vapply(tempos_censura, function(t) {
+        anteriores <- which(ajuste$time <= t)
+        if (length(anteriores) == 0) 0 else 1 - ajuste$surv[max(anteriores)]
+      }, numeric(1)),
+      Nível = nivel_atual
+    )
+    list(curva = curva, censura = censura)
+  }
+
+  niveis <- unique(as.character(dados[["Nível"]]))
+  niveis <- niveis[!is.na(niveis)]
+  resultados <- lapply(niveis, sobrevida_grupo)
+  resultados <- Filter(Negate(is.null), resultados)
+  if (length(resultados) == 0) {
+    cat("Não há observações suficientes para estimar as curvas de sobrevida por nível.\n\n")
+    return(invisible(NULL))
+  }
+
+  curva <- do.call(rbind, lapply(resultados, `[[`, "curva"))
+  censura <- do.call(rbind, lapply(resultados, `[[`, "censura"))
+
+  ggplot2::ggplot(curva, ggplot2::aes(x = tempo, y = evento_acumulado, color = `Nível`, fill = `Nível`, group = `Nível`)) +
+    ggplot2::geom_ribbon(ggplot2::aes(ymin = inferior, ymax = superior), alpha = 0.18, color = NA) +
+    ggplot2::geom_step(linewidth = 0.9) +
+    ggplot2::geom_point(
+      data = censura,
+      ggplot2::aes(x = tempo, y = evento_acumulado, color = `Nível`),
+      inherit.aes = FALSE,
+      shape = 3,
+      size = 2
+    ) +
+    ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.2)) +
+    ggplot2::labs(
+      title = titulo,
+      x = "Tempo desde a matrícula (meses)",
+      y = "Probabilidade acumulada de ocorrência do evento (1 − S(t))",
+      color = "Nível",
+      fill = "Nível"
+    ) +
+    ggplot2::theme_minimal(base_size = 12) +
+    ggplot2::theme(plot.title = ggplot2::element_text(face = "bold"))
+}
+
+tabela_sintese_cox <- function(dados, variavel_tempo, variavel_evento, desfecho) {
+  dados_modelo <- data.frame(
+    tempo = dados[[variavel_tempo]],
+    evento = dados[[variavel_evento]],
+    nivel = dados[["Nível"]]
+  ) %>%
+    dplyr::filter(stats::complete.cases(tempo, evento, nivel), tempo >= 0) %>%
+    dplyr::mutate(nivel = factor(nivel, levels = c("Mestrado", "Doutorado")))
+
+  n_mestrado <- sum(dados_modelo$nivel == "Mestrado")
+  e_mestrado <- sum(dados_modelo$evento[dados_modelo$nivel == "Mestrado"])
+  n_doutorado <- sum(dados_modelo$nivel == "Doutorado")
+  e_doutorado <- sum(dados_modelo$evento[dados_modelo$nivel == "Doutorado"])
+
+  modelo <- NULL
+  if (dplyr::n_distinct(dados_modelo$nivel) == 2 && sum(dados_modelo$evento) > 0) {
+    modelo <- tryCatch(
+      survival::coxph(survival::Surv(tempo, evento) ~ nivel, data = dados_modelo),
+      error = function(e) NULL
+    )
+  }
+
+  hr <- ic <- p <- "Não estimável"
+  if (!is.null(modelo) && length(stats::coef(modelo)) > 0 && is.finite(stats::coef(modelo)[1])) {
+    beta <- stats::coef(modelo)[1]
+    erro_padrao <- sqrt(diag(stats::vcov(modelo)))[1]
+    hr <- sprintf("%.3f", exp(beta))
+    ic <- sprintf("[%.3f; %.3f]", exp(beta - 1.96 * erro_padrao), exp(beta + 1.96 * erro_padrao))
+    p_modelo <- summary(modelo)$coefficients[1, "Pr(>|z|)"]
+    p <- ifelse(is.finite(p_modelo), sprintf("%.3f", p_modelo), "Não estimável")
+  }
+
+  knitr::kable(
+    data.frame(
+      Desfecho = desfecho,
+      `N mestrado` = n_mestrado,
+      `Eventos mestrado` = e_mestrado,
+      `N doutorado` = n_doutorado,
+      `Eventos doutorado` = e_doutorado,
+      `HR (doutorado vs. mestrado)` = hr,
+      `IC 95%` = ic,
+      `p` = p,
+      check.names = FALSE
+    ),
+    format = ifelse(knitr::is_html_output(), "html", "latex"),
+    booktabs = TRUE,
+    digits = 3,
+    caption = paste0("Síntese do modelo de Cox: ", desfecho)
+  ) %>%
+    kableExtra::kable_styling(
+      bootstrap_options = c("basic", "hover", "condensed", "responsive"),
+      latex_options = "hold_position",
+      full_width = TRUE,
+      font_size = 11,
+      position = "center"
+    )
+}
+```
+
+```{r novos-modelos-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
+cat("## **Médias estimadas por categoria e desfecho**\n\n")
+cat("Os modelos usam uma observação por TCC. Para Linha de Pesquisa, Nível e Sexo, as tabelas apresentam médias marginais estimadas por categoria nos modelos bruto e ajustado; a distribuição observada das demais variáveis é usada na padronização. Para idade, variável contínua, é apresentado o beta. Total de artigos e produção contam os registros vinculados a TCC atribuídos ao TCC mais recente do autor já defendido. Os modelos ajustados incluem número de docentes, número de discentes e idade do Programa.\n\n")
+```
+
+```{r modelo-exposicoes-titulacao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+cat("### **Tempo para titulação (meses)**\n\n")
+modelo_titulacao_exposicoes_bruto <- stats::lm(
+  tempo_titulacao_meses ~ linha_pesquisa + nivel + idade_defesa + sexo,
+  data = dados_modelo_tcc
+)
+modelo_titulacao_exposicoes_ajustado <- stats::lm(
+  tempo_titulacao_meses ~ linha_pesquisa + nivel + idade_defesa + sexo + total_docentes + total_discentes + idade_programa,
+  data = dados_modelo_tcc
+)
+mostrar_modelos_exposicoes(
+  modelo_titulacao_exposicoes_bruto,
+  modelo_titulacao_exposicoes_ajustado,
+  "Associação das exposições com o tempo para titulação"
+)
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r modelo-exposicoes-publicacao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+cat("### **Tempo para publicação (meses)**\n\n")
+dados_publicacao_modelo <- dados_modelo_tcc %>% dplyr::filter(!is.na(tempo_publicacao_meses))
+if (nrow(dados_publicacao_modelo) > 3) {
+  modelo_publicacao_exposicoes_bruto <- stats::lm(
+    tempo_publicacao_meses ~ linha_pesquisa + nivel + idade_defesa + sexo,
+    data = dados_publicacao_modelo
+  )
+  modelo_publicacao_exposicoes_ajustado <- stats::lm(
+    tempo_publicacao_meses ~ linha_pesquisa + nivel + idade_defesa + sexo + total_docentes + total_discentes + idade_programa,
+    data = dados_publicacao_modelo
+  )
+  mostrar_modelos_exposicoes(
+    modelo_publicacao_exposicoes_bruto,
+    modelo_publicacao_exposicoes_ajustado,
+    "Associação das exposições com o tempo para publicação"
+  )
+} else {
+  cat("Não há dados vinculados a TCCs suficientes para estimar os modelos.\n\n")
+}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r modelo-exposicoes-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+cat("### **Total de artigos**\n\n")
+modelo_artigos_exposicoes_bruto <- stats::lm(
+  `Total de artigos` ~ linha_pesquisa + nivel + idade_defesa + sexo,
+  data = dados_modelo_tcc
+)
+modelo_artigos_exposicoes_ajustado <- stats::lm(
+  `Total de artigos` ~ linha_pesquisa + nivel + idade_defesa + sexo + total_docentes + total_discentes + idade_programa,
+  data = dados_modelo_tcc
+)
+mostrar_modelos_exposicoes(
+  modelo_artigos_exposicoes_bruto,
+  modelo_artigos_exposicoes_ajustado,
+  "Associação das exposições com o total de artigos vinculados a TCCs"
+)
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r modelo-exposicoes-producao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+cat("### **Total da produção**\n\n")
+modelo_producao_exposicoes_bruto <- stats::lm(
+  `Total da produção` ~ linha_pesquisa + nivel + idade_defesa + sexo,
+  data = dados_modelo_tcc
+)
+modelo_producao_exposicoes_ajustado <- stats::lm(
+  `Total da produção` ~ linha_pesquisa + nivel + idade_defesa + sexo + total_docentes + total_discentes + idade_programa,
+  data = dados_modelo_tcc
+)
+mostrar_modelos_exposicoes(
+  modelo_producao_exposicoes_bruto,
+  modelo_producao_exposicoes_ajustado,
+  "Associação das exposições com o total da produção vinculada a TCCs"
+)
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+```
+
+```{r series-sobrepostas-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
+cat("## **Séries temporais sobrepostas**\n\n")
+cat("Cada gráfico sobrepõe as duas séries anuais do par. Os valores foram padronizados em escore z para permitir a comparação dos padrões temporais, mesmo quando as contagens têm escalas diferentes.\n\n")
+```
+
+```{r series-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_series_sobrepostas(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de defesas",
+  "Séries anuais: alunos e defesas"
+)
+```
+
+```{r series-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_series_sobrepostas(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de artigos",
+  "Séries anuais: alunos e artigos"
+)
+```
+
+```{r series-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_series_sobrepostas(
+  dados_correlacao_anual,
+  "Total de egressos",
+  "Total de artigos",
+  "Séries anuais: egressos e artigos"
+)
+```
+
+```{r correlacoes-anuais-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
+cat("## **Correlações cruzadas anuais**\n\n")
+cat("Cada gráfico mostra a correlação cruzada R em função do atraso temporal τ, em anos. A linha vertical tracejada marca o atraso em que |R| é maior; τ positivo indica que a série Y ocorre após a série X.\n\n")
+```
+
+```{r correlacao-alunos-defesas, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_correlacao_cruzada(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de defesas",
+  "Correlação cruzada: total de alunos × total de defesas"
+)
+```
+
+```{r correlacao-alunos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_correlacao_cruzada(
+  dados_correlacao_anual,
+  "Total de alunos",
+  "Total de artigos",
+  "Correlação cruzada: total de alunos × total de artigos"
+)
+```
+
+```{r correlacao-egressos-artigos, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_correlacao_cruzada(
+  dados_correlacao_anual,
+  "Total de egressos",
+  "Total de artigos",
+  "Correlação cruzada: total de egressos × total de artigos"
+)
+```
+
+```{r sobrevida-intro, eval = all(has.sucupira.files), echo = FALSE, results = 'asis'}
+cat("## **Análise de sobrevida: matrícula até titulação e produção**\n\n")
+cat("As curvas são estratificadas por nível (mestrado/doutorado), com uma observação por ID da Pessoa e nível. O seguimento começa na primeira matrícula registrada naquele nível e termina em 31 de dezembro do ano mais recente disponível na Sucupira. Para produção, a base informa apenas o ano; a data foi aproximada como 1º de julho. O indicador de evento vale 1 quando o evento foi observado e 0 quando o acompanhamento foi censurado. Para última produção, considera-se evento a última produção observada no período; pessoas sem produção são censuradas no fim do seguimento. A tabela abaixo de cada gráfico resume um modelo de Cox não ajustado, comparando doutorado com mestrado (HR > 1 indica maior taxa instantânea de ocorrência do evento no doutorado).\n\n")
+```
+
+
+```{r sobrevida-titulacao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_kaplan_meier(
+  dados_sobrevida,
+  "tempo_matricula_titulacao_meses",
+  "evento_titulacao",
+  "Sobrevida até a titulação"
+)
+```
+
+```{r modelo-sobrevida-titulacao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+tabela_sintese_cox(
+  dados_sobrevida,
+  "tempo_matricula_titulacao_meses",
+  "evento_titulacao",
+  "Tempo até titulação"
+)
+```
+
+```{r sobrevida-primeira-producao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_kaplan_meier(
+  dados_sobrevida,
+  "tempo_matricula_primeira_producao_meses",
+  "evento_primeira_producao",
+  "Sobrevida até a primeira produção"
+)
+```
+
+```{r modelo-sobrevida-primeira-producao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+tabela_sintese_cox(
+  dados_sobrevida,
+  "tempo_matricula_primeira_producao_meses",
+  "evento_primeira_producao",
+  "Tempo até a primeira produção"
+)
+```
+
+```{r sobrevida-ultima-producao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', fig.width = 8, fig.height = 5.5, results = 'asis', fig.pos = 'H'}
+if (knitr::is_latex_output()) cat("\\clearpage\n")
+grafico_kaplan_meier(
+  dados_sobrevida,
+  "tempo_matricula_ultima_producao_meses",
+  "evento_ultima_producao",
+  "Sobrevida até a última produção observada"
+)
+```
+
+```{r modelo-sobrevida-ultima-producao, eval = all(has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, results = 'asis'}
+tabela_sintese_cox(
+  dados_sobrevida,
+  "tempo_matricula_ultima_producao_meses",
+  "evento_ultima_producao",
+  "Tempo até a última produção observada"
+)
 ```
 
 <br>

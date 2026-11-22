@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  19 NOV 2026 17:52
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.16)  22 NOV 2026 18:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1581,21 +1581,6 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 ) (./autoavaliacao-2021-2024.aux
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
 (babel)             Reported on input line 8.
-
-LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
-
-
-LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
-
-
-LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
-
-
-LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
-
-
-LaTeX Warning: Label `tab:avaliacao-capes' multiply defined.
-
 
 LaTeX Warning: Label `tab:autoavaliacao-ppg' multiply defined.
 
@@ -5187,10 +5172,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 57098 strings out of 468174
- 1218176 string characters out of 5433150
- 2028802 words of memory out of 5000000
- 85174 multiletter control sequences out of 15000+600000
+ 57103 strings out of 468174
+ 1218293 string characters out of 5433150
+ 2028962 words of memory out of 5000000
+ 85179 multiletter control sequences out of 15000+600000
  631776 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,19n,126p,1469b,14549s stack positions out of 10000i,1000n,20000p,200000b,200000s

@@ -149,6 +149,53 @@ docentes.quadrienio <- docentes.quadrienio[!duplicated(docentes.quadrienio),]
 
 # to title case
 docentes.quadrienio <- sort(tools::toTitleCase(tolower(docentes.quadrienio)))
+
+# Lista de docentes vinculados em cada ano do quadriênio.
+docentes.vinculados.por.ano <- lapply(as.character(quadrienal.vigente), function(ano) {
+  dados.ano <- sucupira.list[[ano]]
+  if (is.null(dados.ano) || !"Nome Docente" %in% names(dados.ano)) {
+    return(character(0))
+  }
+  nomes <- dados.ano$`Nome Docente`
+  nomes <- nomes[!is.na(nomes)]
+  unique(tools::toTitleCase(tolower(nomes)))
+})
+names(docentes.vinculados.por.ano) <- as.character(quadrienal.vigente)
+
+# Troca zeros por traços apenas para docentes sem vínculo no ano da coluna.
+# As contagens continuam calculadas a partir dos registros efetivamente existentes.
+marcar_docente_sem_vinculo <- function(tabela, anos.colunas = quadrienal.vigente) {
+  if (!inherits(tabela, "gtsummary") || is.null(tabela$table_body)) {
+    return(tabela)
+  }
+
+  gtsummary::modify_table_body(tabela, function(table_body) {
+    for (j in seq_along(anos.colunas)) {
+      coluna.stat <- paste0("stat_", j)
+      ano.coluna <- regmatches(
+        as.character(anos.colunas[j]),
+        regexpr("[0-9]{4}", as.character(anos.colunas[j]))
+      )
+
+      if (!coluna.stat %in% names(table_body) || length(ano.coluna) == 0) {
+        next
+      }
+
+      docentes.ano <- docentes.vinculados.por.ano[[ano.coluna]]
+      if (is.null(docentes.ano)) {
+        next
+      }
+
+      linha.docente <- table_body$row_type == "level" &
+        table_body$label %in% unique(unlist(docentes.vinculados.por.ano))
+      sem.vinculo <- linha.docente & !(table_body$label %in% docentes.ano)
+      valor.zero <- !is.na(table_body[[coluna.stat]]) &
+        as.character(table_body[[coluna.stat]]) == "0"
+      table_body[[coluna.stat]][sem.vinculo & valor.zero] <- "-"
+    }
+    table_body
+  })
+}
 ```
 
 ```{r cover-one, echo = FALSE, include = FALSE, eval = all(render_document, knitr::is_html_output())}
@@ -228,7 +275,8 @@ for (j in 1:length(abas)) {
       format = ifelse(knitr::is_html_output(), "html", "latex"),
       booktabs = TRUE,
       linesep = "",
-      caption = ifelse(knitr::is_html_output(), "", abas[j])
+      caption = ifelse(knitr::is_html_output(), "", abas[j]),
+      label = paste0("avaliacao-capes-", j)
     ) %>% kableExtra::kable_styling(
       bootstrap_options = c("striped", "hover", "condensed", "responsive"),
       latex_options = c("striped", "repeat_header", "HOLD_position"),
@@ -487,7 +535,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(summ.df)) {
     format = "html",
     booktabs = TRUE,
     linesep = "",
-    caption = "Prenchimento do Coleta - Quantidade de dados por aba, por ano"
+    caption = "Preenchimento do Coleta - Quantidade de dados por aba, por ano"
   ) %>% kableExtra::kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive"),
     full_width = TRUE,
@@ -509,7 +557,7 @@ if (knitr::is_html_output() && !sjmisc::is_empty(summ.df)) {
     summ.df,
     width = c(0.60, rep(0.40/(length(quadrienal.vigente)), times = length(quadrienal.vigente)))*(21-3-3),
     align = "l",
-    caption = ifelse(knitr::is_html_output(), "", "Prenchimento do Coleta - Quantidade de dados por aba, por ano"),
+    caption = ifelse(knitr::is_html_output(), "", "Preenchimento do Coleta - Quantidade de dados por aba, por ano"),
     notes = list(
       "\\textbf{Fontes}: \\textbf{\\href{https://sucupira.capes.gov.br}{Plataforma Sucupira}}"
     )
@@ -4123,7 +4171,8 @@ if(!sjmisc::is_empty(table.doc.long)){
     ) %>%
     gtsummary::modify_header(label = "Estabilidade do corpo docente permanente", stat_0 = "Atuação externa") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels() 
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.doc.gt.1 <- list()
 }
@@ -4674,7 +4723,8 @@ if(!sjmisc::is_empty(table.cap.aux)) {
     ) %>%
     gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(
       quadrienal.vigente
-    ) + 1)))
+    ) + 1))) %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.cap.aux.gt <- list()
 }
@@ -4812,7 +4862,8 @@ if(!sjmisc::is_empty(table.cap.bolsa)) {
     ) %>%
     gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(
       quadrienal.vigente
-    ) + 1)))
+    ) + 1))) %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.cap.bolsa.gt <- list()
 }
@@ -4960,7 +5011,8 @@ if(!sjmisc::is_empty(table.cap.pq)){
     ) %>%  
     gtsummary::remove_row_type(variables = c('Bolsa CNPq'), 
                                type = "level", level_value = ("Modalidade")) %>%
-    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1))) %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.cap.pq.gt <- list()
 }
@@ -9492,7 +9544,8 @@ if(!sjmisc::is_empty(table.docente)) {
       type = "level",
       level_value = ("Docente")
     ) %>%
-    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+    gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1))) %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.docente.gt <- list()
 }
@@ -9880,6 +9933,11 @@ if(!sjmisc::is_empty(turmas.doc)){
   table.part3 <- list()
 }
 
+table.part3 <- marcar_docente_sem_vinculo(
+  table.part3,
+  anos.colunas = sort(unique(turmas.doc$`Período/Ano`))
+)
+
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(table.part3)) {
   table.part3 <- table.part3 %>%
@@ -9948,6 +10006,11 @@ if(!sjmisc::is_empty(turmas.posdoc)){
 } else {
   table.part4 <- list()
 }
+
+table.part4 <- marcar_docente_sem_vinculo(
+  table.part4,
+  anos.colunas = sort(unique(turmas.posdoc$`Período/Ano`))
+)
 
 # Print HTML table
 if (knitr::is_html_output() && !sjmisc::is_empty(turmas.posdoc)) {
@@ -10089,7 +10152,8 @@ table.doc.gt <-
     type = "level",
     level_value = ("Membros")
   ) %>%
-  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1)))
+  gtsummary::modify_column_hide(columns = paste0("stat_", as.character(length(quadrienal.vigente) + 1))) %>%
+  marcar_docente_sem_vinculo()
 ```
 
 ```{r 2-5-2-docentes, eval = all(render_document, has.sucupira.files), echo = FALSE, warning = FALSE, message = FALSE, fig.align = 'center', results = 'asis', fig.pos='H'}
@@ -10369,6 +10433,8 @@ if (nlevels(sucupira.df.matr$`Nível Discente`) != 0) {
         .header = paste0("**{strata}**")
       )
   }
+
+  table.matr.gt <- marcar_docente_sem_vinculo(table.matr.gt)
   
   # Print HTML table
   if (knitr::is_html_output() && !sjmisc::is_empty(sucupira.df.matr)) {
@@ -10485,6 +10551,10 @@ if (nlevels(sucupira.df.tit$`Nível Discente`) != 0) {
         .header = paste0("**{strata}**")
       )
   }
+}
+
+if (exists("table.tit.gt")) {
+  table.tit.gt <- marcar_docente_sem_vinculo(table.tit.gt)
 }
 
 # Print HTML table
@@ -10637,7 +10707,8 @@ if(!sjmisc::is_empty(table.mono)){
     ) %>%
     gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels() 
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.mono.gt <- list()
 }
@@ -10686,7 +10757,8 @@ if(!sjmisc::is_empty(table.ic)){
     ) %>%
     gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels()
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.ic.gt <- list()
 }
@@ -10735,7 +10807,8 @@ if(!sjmisc::is_empty(table.tut)){
     ) %>%
     gtsummary::modify_header(label = "**Orientações na Graduação**", stat_0 = "Total") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels()
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.tut.gt <- list()
 }
@@ -10850,7 +10923,8 @@ if(!sjmisc::is_empty(table.aulas)){
     ) %>%
     gtsummary::modify_header(label = "**Disciplinas na Graduação**", stat_0 = "Total") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels() 
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.aulas.gt <- list()
 }
@@ -10899,7 +10973,8 @@ if(!sjmisc::is_empty(table.ch)){
     ) %>%
     gtsummary::modify_header(label = "**Disciplinas na Graduação - Carga Horária (Anual)**", stat_0 = "Total") %>%
     gtsummary::modify_footnote(gtsummary::all_stat_cols() ~ NA) %>%
-    gtsummary::bold_labels() 
+    gtsummary::bold_labels() %>%
+    marcar_docente_sem_vinculo()
 } else {
   table.ch.gt <- list()
 }

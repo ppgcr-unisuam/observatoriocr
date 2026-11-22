@@ -101,7 +101,6 @@ packs.git <-
     "geobr",
     "packup",
     "rcrossref",
-    #    "retractcheck",
     "rscopus",
     "sf",
     "pacman"
@@ -150,12 +149,6 @@ if (curl::has_internet()) {
   # if (!require("pacman")) {
   #   install.packages("pacman")
   #   pacman::p_load_gh("trinker/textreadr")
-  # }
-  
-  # if (!require("retractcheck",
-  #              character.only = TRUE,
-  #              quietly = TRUE)) {
-  #   remotes::install_github("chartgerink/retractcheck")
   # }
   
   # update TeX packages
